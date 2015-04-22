@@ -1,0 +1,24 @@
+front_user_show_private:
+    path:     /my-profile/
+    defaults: { _controller: "FrontFrontBundle:User:showPrivate" }
+
+front_user_edit:
+    path:     /profile/{id}/edit
+    defaults: { _controller: "FrontFrontBundle:User:edit" }
+
+front_user_update:
+    path:     /profile/{id}/update
+    defaults: { _controller: "FrontFrontBundle:User:update" }
+    requirements: { _method: post|put }
+    
+front_user_import_facebook_event:
+    path:     /import_facebook_event/
+    defaults: { _controller: "FrontFrontBundle:User:importFacebookEvent" }    
+    
+front_user_show_public:
+    path:      /profile/{username}/{id}
+    defaults:  { _controller: FrontFrontBundle:User:showPublic }  
+    
+callback_username:
+    path:      /callback_username/
+    defaults:  { _controller: UserUserBundle:User:callbackUsername }      

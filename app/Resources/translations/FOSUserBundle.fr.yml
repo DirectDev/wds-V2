@@ -1,0 +1,61 @@
+change_password:
+    submit: Changer
+
+form:
+    email: Email
+    password: Password
+    password_confirmation: 'Password Confirmation'
+    username: Nom
+
+group:
+    edit:
+        submit: Editer
+
+    new:
+        submit: Nouveau
+
+    show:
+        name: 'Nom du groupe'
+
+profile:
+    edit:
+        submit: Editer
+
+    show:
+        email: Email
+        username: Nom
+
+registration:
+    back: Retour
+    check_email: 'Vérification de l''email'
+    confirmed: Confirmé
+
+    email:
+        message: Message
+        subject: Sujet
+
+    submit: M'inscrire
+
+resetting:
+    check_email: 'Vérification de l''email'
+
+    email:
+        message: Message
+        subject: Sujet
+
+    password_already_requested: 'Password déjà demandé'
+
+    request:
+        invalid_username: 'Nom invalide'
+        submit: Envoyer
+        username: Nom
+
+    reset:
+        submit: Réinitialiser
+
+security:
+    login:
+        password: Password
+        remember_me: 'Rester connecté'
+        submit: Me connecter
+        username: Nom

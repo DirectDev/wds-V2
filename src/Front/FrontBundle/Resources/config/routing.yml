@@ -1,0 +1,75 @@
+homepage:
+    path:      /
+    defaults:  { _controller: FrontFrontBundle:Default:index }
+    
+citypage:
+    path:      /city/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:Default:city }    
+    requirements:
+      _method: GET
+   
+calendarpage:
+    path:      /calendar/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:Default:calendar }    
+    requirements:
+      _method: GET      
+      
+policy:
+    path:      /policy
+    defaults:  { _controller: FrontFrontBundle:Default:policy }      
+      
+front_musictype_filter_list:
+  pattern: /filter/musictypelist
+  defaults: { _controller: FrontFrontBundle:Default:filterListByMusicType }
+  requirements:
+    _method: POST      
+  
+front_musictype_filter_map:
+  pattern: /filter/musictypemap
+  defaults: { _controller: FrontFrontBundle:Default:filterMapByMusicType }
+  requirements:
+    _method: POST      
+    
+front_eventtype_filter_list:
+  pattern: /filter/eventtypelist
+  defaults: { _controller: FrontFrontBundle:Default:filterListByEventType }
+  requirements:
+    _method: POST      
+  
+front_eventtype_filter_map:
+  pattern: /filter/eventtypemap
+  defaults: { _controller: FrontFrontBundle:Default:filterMapByEventType }
+  requirements:
+    _method: POST        
+      
+FrontFrontBundle_user:
+    resource: "@FrontFrontBundle/Resources/config/routing/user.yml"
+    prefix:   /      
+    
+FrontFrontBundle_address:
+    resource: "@FrontFrontBundle/Resources/config/routing/address.yml"
+    prefix:   /address        
+
+FrontFrontBundle_country:
+    resource: "@FrontFrontBundle/Resources/config/routing/country.yml"
+    prefix:   /country        
+
+FrontFrontBundle_event:
+    resource: "@FrontFrontBundle/Resources/config/routing/event.yml"
+    prefix:   /event        
+
+FrontFrontBundle_eventdate:
+    resource: "@FrontFrontBundle/Resources/config/routing/eventdate.yml"
+    prefix:   /eventdate      
+
+FrontFrontBundle_eventtype:
+    resource: "@FrontFrontBundle/Resources/config/routing/eventtype.yml"
+    prefix:   /eventtype      
+
+FrontFrontBundle_musictype:
+    resource: "@FrontFrontBundle/Resources/config/routing/musictype.yml"
+    prefix:   /musictype  
+    
+FrontFrontBundle_city:
+    resource: "@FrontFrontBundle/Resources/config/routing/city.yml"
+    prefix:   /city         

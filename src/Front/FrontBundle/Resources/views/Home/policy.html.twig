@@ -1,0 +1,38 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ page.getTitle|capitalize }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription|capitalize }}" />
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+
+{% block content %}
+    
+    <div class="page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ page.getTitle|capitalize }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="container">
+            
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        {{ page.getContent|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

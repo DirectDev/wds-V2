@@ -1,0 +1,45 @@
+{% if event.isValid %}
+    <div class="col-sm-4 panel panel-list-homepage">
+        <div class="event-image">
+            <a class="" href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}">
+                <img src="{{ asset(event.getDefaultImageUrl)| imagine_filter('home_thumb') }}" class="img-responsive" alt="{{ event.getTitle()|capitalize }}">
+            </a>
+            <div class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label overlay-label{% if next %}-next{% endif %}">
+                <div>                    
+                    <span  class="h3">
+                        {% if event.getNextEventDate(startdate).startdate|date("m/d/Y") == "now"|date("m/d/Y") %}
+                            {% trans %}front.today{% endtrans %}
+                        {% else %}
+                            {{ event.getNextEventDate(startdate).startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>    
+        </div>
+
+        <div class="panel-body">
+            <div class="media">
+                {% if event.user and event.user.getProfilePictureUrl %}
+                    <a class="pull-right media-photo media-round card-profile-picture card-profile-picture-offset sm-hidden" 
+                       href="{{ path('front_user_show_public', { 'id': event.user.id, 'username': event.user.username }) }}">
+                        {% if event.user.isFacebookUser %}
+                            <img src='{{ event.user.getProfilePictureUrl }}' class='img-circle' />
+                        {% else %}
+                            <img src='{{ asset( event.user.getProfilePictureUrl)| imagine_filter('card_profile_picture') }}' class='img-circle' />
+                        {% endif %}
+                    </a>
+                {% endif %}
+
+                <a class="text-normal" href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI  }) }}">
+                    <div class="h5 listing-name text-truncate row-space-top-1" title="{{ event.getTitle()|capitalize }}">{{ event.getTitle()|capitalize }}</div>
+                </a>
+                <div class="text-muted listing-location text-truncate">
+                    <a class="text-normal link-reset" href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}">{{ event.getEventType }} / {{ event.getMusicTypesText }}</a>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+{% endif %}
+
+

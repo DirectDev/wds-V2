@@ -1,0 +1,6 @@
+search_search_admin_user:
+  pattern: /search/user
+  defaults: { _controller: SearchSearchBundle:AdminSearch:userAdminSearch }
+  requirements:
+    _method: POST
+    

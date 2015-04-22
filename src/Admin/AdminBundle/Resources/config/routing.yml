@@ -1,0 +1,36 @@
+admin_admin_homepage:
+    path:      /
+    defaults:  { _controller: AdminAdminBundle:Default:index }
+    
+AdminAdminBundle_page:
+    resource: "@AdminAdminBundle/Resources/config/routing/page.yml"
+    prefix: /page
+    
+AdminAdminBundle_address:
+    resource: "@AdminAdminBundle/Resources/config/routing/address.yml"
+    prefix:   /address            
+
+AdminAdminBundle_city:
+    resource: "@AdminAdminBundle/Resources/config/routing/city.yml"
+    prefix:   /city 
+
+AdminAdminBundle_country:
+    resource: "@AdminAdminBundle/Resources/config/routing/country.yml"
+    prefix:   /country        
+
+AdminAdminBundle_event:
+    resource: "@AdminAdminBundle/Resources/config/routing/event.yml"
+    prefix:   /event        
+
+AdminAdminBundle_eventdate:
+    resource: "@AdminAdminBundle/Resources/config/routing/eventdate.yml"
+    prefix:   /eventdate      
+
+AdminAdminBundle_eventtype:
+    resource: "@AdminAdminBundle/Resources/config/routing/eventtype.yml"
+    prefix:   /eventtype      
+
+AdminAdminBundle_musictype:
+    resource: "@AdminAdminBundle/Resources/config/routing/musictype.yml"
+    prefix:   /musictype       
+    

@@ -1,0 +1,30 @@
+admin_address:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:Address:index" }
+
+admin_address_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:Address:show" }
+
+admin_address_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:Address:new" }
+
+admin_address_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:Address:create" }
+    requirements: { _method: post }
+
+admin_address_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:Address:edit" }
+
+admin_address_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:Address:update" }
+    requirements: { _method: post|put }
+
+admin_address_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:Address:delete" }
+    requirements: { _method: post|delete }

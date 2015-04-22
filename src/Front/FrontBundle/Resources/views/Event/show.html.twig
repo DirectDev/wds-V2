@@ -1,0 +1,185 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ event.getTitle|capitalize }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ event.getDescription|capitalize }}" />
+    <!-- partage facebook -->
+    <meta property="og:title" content="{{ event.getTitle|capitalize }}" />
+    <meta property="og:description" content="{{ event.getDescription|capitalize }}" />
+    <!--<meta property="og:image" content="URL_image" />-->
+    <!-- partage facebook -->
+{% endblock %}
+
+{% block topJavascripts %}   
+    {{ parent() }}
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+    </script>
+{% endblock %}    
+
+{% block content %}
+
+    <div class="page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>{{ event.getTitle|capitalize }}</h2>
+                    <p>{{ event.getUser|capitalize }}</p>
+                </div>
+                <div class="col-md-6">
+                    {% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
+                        <div class='pull-right'>
+                            <a href="{{ path('front_event_edit', {id: event.id} ) }}" class="btn btn-success btn-lg pull-right">
+                                <span> {% trans %}front.edit{% endtrans %}</span>
+                            </a>
+                        </div>
+                        <div class='pull-right  home_button'>
+                            <a href="{{ path('home')}}" class="btn btn-default btn-lg pull-right">
+                                <span> {% trans %}link.home{% endtrans %}</span>
+                            </a>
+                        </div>    
+                    {% else %}
+                        <ul class="breadcrumbs">
+                            <li><a href="{{ path('home')}}">{% trans %}link.home{% endtrans %}</a></li>
+                                {% if event.getEventType %}
+                                <li><a href="#">{{ event.getEventType }}</a></li>
+                                {% endif %}
+                                {% if event.getMusicTypesText %}
+                                <li><a href="#">{{ event.getMusicTypesText }}</a></li>
+                                {% endif %}
+                                {% if event.getAddress and event.getAddress.city %}
+                                <li>{{ event.getAddress.city }}</li>
+                                {% endif %}
+                        </ul>
+                    {% endif %} 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="container">
+
+            <div id="event_alerts" rel="{{ path('front_event_alerts', { id : event.id } ) }}">
+                {% render(path('front_event_alerts', { id : event.id } )) %}
+            </div>
+
+
+
+            <div class="project-page row">
+
+                <!-- Start Single Project Slider -->
+                <div class="project-media col-md-8">
+                    <div class="touch-slider project-slider">
+                        {% for eventFile in event.eventFiles %}
+                            {% if eventFile.isImage %}
+                                <div class="project-slider-item">
+                                    <a class="lightbox" title="{{ event.getTitle|capitalize }}" href="{{ asset(eventFile.getLargePathUri()) }}" data-lightbox-gallery="gallery2">
+                                        <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(eventFile.getLargePathUri()) }}">
+                                    </a>    
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% if event.eventFiles|length == 0 %}
+                            <div class="project-slider-item">
+                                <a class="lightbox" title="{{ event.getTitle|capitalize }}" href="{{ asset('images/wds_750x340_rose.png') }}" data-lightbox-gallery="gallery2">
+                                    <img alt="{{ event.getTitle|capitalize }}" src="{{ asset('images/wds_750x340_rose.png') }}">
+                                </a>    
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- End Single Project Slider -->
+
+                <!-- Start Project Content -->
+                <div class="project-content col-md-4">
+                    {% if event.getAddress %}
+                        <h4><span>{% trans %}event.address_title{% endtrans %}</span></h4>
+                        <p>{{ event.getAddress.getFullAddress }}</p>
+                    {% endif %}
+
+                    <h4><span>{% trans %}event.details_title{% endtrans %}</span></h4>
+                    <ul>
+                        <li><strong>{% trans %}event.music{% endtrans %} :</strong> {{ event.getMusicTypesText() }}</li>
+                        <li><strong>{% trans %}event.type{% endtrans %} :</strong> {{ event.eventType }}</li>
+                        <li><strong>{% trans %}event.date{% endtrans %} :</strong>
+                            {% if event.getNextEventDate()|length %} 
+                                {% if event.getNextEventDate().getStopDate() %}
+                                    {% trans %}event.from{% endtrans %}
+                                {% endif %}
+                                {{ event.getNextEventDate().getStartDate()|localizeddate('medium', 'none', app.request.locale) }}
+                                {{ event.getNextEventDate().getStartTime()|date('H:i') }}
+                                {% if event.getNextEventDate().getStopDate() %}
+                                    {% trans %}event.to{% endtrans %}
+                                    {{ event.getNextEventDate().getStopDate()|localizeddate('medium', 'none', app.request.locale) }}
+                                    {{ event.getNextEventDate().getStopTime()|date('H:i') }}
+                                {% endif %}
+                            {% endif %}
+                        </li>
+                    </ul>
+                    <div class="post-share">
+                        <span>{% trans %}event.share_this{% endtrans %}</span>
+                        <a class="facebook" href="#"><i class="icon-facebook"></i></a>
+                        <a class="twitter" href="#"><i class="icon-twitter"></i></a>
+                        <a class="gplus" href="#"><i class="icon-gplus"></i></a>
+                    </div>
+                </div>
+                <!-- End Project Content -->
+
+            </div>
+
+            <div class="recent-projects row">
+                <h4 class="title"><span>{% trans %}event.description_title{% endtrans %}</span></h4>
+                {{ event.getDescription()|raw }}
+
+                <div id='eventdates_anchor'></div>
+            </div>  
+
+            <div class="recent-projects row">
+                <h4 class="title"><span>{% trans %}event.eventdates_title{% endtrans %}</span></h4>
+
+                <div id='eventdates' class='row'>
+                    {% include 'FrontFrontBundle:EventDate:list.html.twig' with { event : event } %}
+                </div>
+
+                {% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
+                    <div id='eventdates_form' class="panel-body col-sm-6">
+                        <div  id='eventdate_new_edit' class="panel panel-default">
+                            {% render(path('front_eventdate_new', { id : event.id } )) %}
+                        </div>
+                    </div>
+                    <div class="panel-body col-sm-6">
+                        {% render(path('front_eventdate_add_by_weekday', { id : event.id } )) %}
+                    </div>
+                {% endif %}
+                <div id='address_anchor'>
+            </div>     
+
+            <div class="recent-projects row">
+                <h4 class="title"><span>{% trans %}event.address_title{% endtrans %}</span></h4>
+                <div id='address'>
+                    {% if not event.getAddress %}
+                        {% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
+                            {% render(path('front_address_event_new', { id : event.id } )) %}
+                        {% endif %}
+                    {% else %}
+                        {% render(path('front_address_show', { id : event.getAddress().id } )) %}
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if event.getAddress and event.getAddress().isValid() %}    
+                <div class="recent-projects row">
+                    <h4 class="title"><span>{% trans %}front.map_title{% endtrans %}</span></h4>
+                    {% include 'FrontFrontBundle:Event:map.html.twig' %}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

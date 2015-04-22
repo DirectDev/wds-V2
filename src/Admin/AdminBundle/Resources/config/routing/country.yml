@@ -1,0 +1,30 @@
+admin_country:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:Country:index" }
+
+admin_country_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:Country:show" }
+
+admin_country_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:Country:new" }
+
+admin_country_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:Country:create" }
+    requirements: { _method: post }
+
+admin_country_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:Country:edit" }
+
+admin_country_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:Country:update" }
+    requirements: { _method: post|put }
+
+admin_country_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:Country:delete" }
+    requirements: { _method: post|delete }

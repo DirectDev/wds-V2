@@ -1,0 +1,674 @@
+
+create: Create
+delete: Delete
+update: Update
+
+address:
+    city: City
+    country: Country
+    name: Title
+    postcode: Postcode
+    street: Street
+    streetComplement: 'Street complement'
+
+admin:
+    add: Add
+    address_edit_title: 'Address edit'
+    address_list_title: 'Address list'
+    address_new_title: 'New address'
+    address_show_title: Address
+    addresses: Addresses
+    back_to_list: 'Back to list'
+    cities: Cities
+    city_edit_title: 'City edit'
+    city_list_title: 'City list'
+    city_new_title: 'New city'
+    city_show_title: City
+    countries: Countries
+    country_edit_title: 'Country edit'
+    country_list_title: 'Country list'
+    country_new_title: 'New country'
+    country_show_title: Country
+    delete: Delete
+    edit: Edit
+    event_edit_title: 'Event edit'
+    event_list_title: 'Event list'
+    event_new_title: 'New event'
+    event_show_title: Event
+    eventdate_edit_title: 'Event date edit'
+    eventdate_list_title: 'Event date list'
+    eventdate_new_title: 'New event date'
+    eventdate_show_title: 'Event date'
+    eventdates: 'Event dates'
+    events: Events
+    eventtype_edit_title: 'Event type edit'
+    eventtype_list_title: 'Event type list'
+    eventtype_new_title: 'New event type'
+    eventtype_show_title: 'Event type'
+    eventtypes: 'Event types'
+    general_title: Administration
+    link_add_address: 'Add address'
+    link_add_eventdate: 'Add event date'
+    link_delete_address: 'Delete address'
+    link_delete_eventdate: 'Delete event date'
+    musictype_edit_title: 'Music type edit'
+    musictype_list_title: 'Music type list'
+    musictype_new_title: 'New music type'
+    musictype_show_title: 'Music type'
+    musictypes: 'Music types'
+    page_edit_title: 'Page edit'
+    page_list_title: 'Page list'
+    page_new_title: 'New page'
+    page_show_title: Page
+    pages: Pages
+    translations: Translations
+    update: Update
+    user_edit_title: 'User edit'
+    user_list_title: 'User list'
+    user_new_title: 'New user'
+    user_show_title: User
+    users: Users
+
+contact:
+    contact_alert_success: 'Your contact enquiry was successfully sent. Thank you!'
+    contact_alert_warning: 'Your contact enquiry was NOT sent. Please try again.'
+    contact_page_title: Contact
+    contact_title: 'Contact Us'
+    send: Send
+    testimonial_author_job: '- Developer & Salsa dancer'
+    testimonial_author_name: 'Jerome B'
+    testimonial_p1: 'WeDanceSalsa is an idea of Salsa dancers. Our main purpose is to give instant information about where to dance salsa, anywhere on the globe, anytime.'
+    testimonial_p2: 'Please contact us about any question or suggestion you have. We''ll do our best to answer you as fast as possible.'
+    testimonial_p3: 'Thanks for the interest you show to our project.'
+
+delete: Delete
+en: English
+
+event:
+    address_title: Address
+    addresses_title: Addresses
+
+    alert:
+        invalid_address: 'Please add a correct address'
+        missing_address: 'Please add an address'
+        no_next_date: 'There are no future dates for this event'
+        no_profile_picture: 'There is no picture for this event'
+        new_info: 'First, add a title, a description, a type and the music types.'
+        new_info2: 'You may add an address, dates, and pictures on the next page.'
+        valid: 'This event is valid and shows in search results.'
+
+    date: Date
+    description_title: Description
+    details_title: Details
+    event_title: Event
+    eventdates_title: Dates
+    eventdates_add_form_title: "Add a single date : "
+    eventdates_edit_form_title: Edit date
+    eventdates_repeat_form_title: "Add a weekly date : "
+    from: From
+    images_title: Images
+    music: Music
+    share_this: 'Share this'
+    to: To
+    type: 'Event type'
+
+file:
+    add_file: 'Add image'
+    cancel: Cancel
+    delete_file: 'Delete image'
+    drag_drop_message: 'Or drag and drop your images here'
+    save: Save images
+    start_upload: 'Start upload'
+    uploading: Uploading
+
+footer:
+    contact: 'Contact Us'
+    policy: 'Privacy Policy'
+
+form:
+    admin_adminbundle_address:
+        children:
+            city:
+                label: City
+
+            country:
+                label: Country
+
+            name:
+                label: Name
+
+            postcode:
+                label: Postcode
+
+            street:
+                label: Street
+
+            streetComplement:
+                label: 'Street complement'
+
+    admin_adminbundle_city:
+        children:
+            latitude:
+                label: Latitude
+
+            longitude:
+                label: Longitude
+
+            searchcity:
+                label: Name
+
+    admin_adminbundle_country:
+        children:
+            name:
+                label: Country
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+    admin_adminbundle_event:
+        children:
+            addresses:
+                label: Addresses
+
+                prototype:
+                    children:
+                        city:
+                            label: City
+
+                        country:
+                            label: Country
+
+                        name:
+                            label: Title
+
+                        postcode:
+                            label: Postcode
+
+                        street:
+                            label: Street
+
+                        streetComplement:
+                            label: 'Street complement'
+
+            eventDates:
+                label: 'Event dates'
+
+                prototype:
+                    children:
+                        startdate:
+                            label: 'Start date'
+
+                        starttime:
+                            label: 'Start time'
+
+                        stopdate:
+                            label: 'Stop date'
+
+                        stoptime:
+                            label: 'Stop time'
+
+            eventType:
+                label: 'Event type'
+
+            musicTypes:
+                label: 'Music type'
+
+            name:
+                label: Event
+
+            translations:
+                children:
+                    en:
+                        children:
+                            description:
+                                label: Description
+
+                            title:
+                                label: Title
+
+                label: Translations
+
+            user:
+                label: User
+
+    admin_adminbundle_eventdate:
+        children:
+            startdate:
+                label: 'Start date'
+
+            starttime:
+                label: 'Start time'
+
+            stopdate:
+                label: 'Stop date'
+
+            stoptime:
+                label: 'Stop time'
+
+    admin_adminbundle_eventtype:
+        children:
+            name:
+                label: 'Event type'
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+    admin_adminbundle_musictype:
+        children:
+            name:
+                label: 'Music type'
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+    admin_adminbundle_page:
+        children:
+            name:
+                label: Name
+
+            translations:
+                children:
+                    en:
+                        children:
+                            content:
+                                label: Content
+
+                            description:
+                                label: Description
+
+                            title:
+                                label: Title
+
+                label: Translations
+
+    contact_contactbundle_enquiry:
+        children:
+            email:
+                label: Email
+
+            message:
+                label: Message
+
+            name:
+                label: Name
+
+            subject:
+                label: Subject
+
+    form:
+        children:
+            stopdate:
+                label: until
+
+            time:
+                label: at
+
+            weekday:
+                label: ''
+
+    front_front_bundle_eventtypefrontfilter:
+        children:
+            name:
+                label: 'Event type'
+
+    front_front_bundle_musictypefrontfilter:
+        children:
+            name:
+                label: Music
+
+    front_frontbundle_address:
+        children:
+            city:
+                label: City
+
+            country:
+                label: Country
+
+            name:
+                label: Name
+
+            postcode:
+                label: Postcode
+
+            street:
+                label: Street
+
+            streetComplement:
+                label: 'Street complement'
+
+    front_frontbundle_city:
+        children:
+            latitude:
+                label: Latitude
+
+            longitude:
+                label: Longitude
+
+            searchcity:
+                label: Name
+
+    front_frontbundle_country:
+        children:
+            name:
+                label: Country
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+    front_frontbundle_event:
+        children:
+            addresses:
+                label: Addresses
+
+                prototype:
+                    children:
+                        city:
+                            label: City
+
+                        country:
+                            label: Country
+
+                        name:
+                            label: Title
+
+                        postcode:
+                            label: Postcode
+
+                        street:
+                            label: Street
+
+                        streetComplement:
+                            label: 'Street complement'
+
+            eventDates:
+                label: 'Event dates'
+
+                prototype:
+                    children:
+                        startdate:
+                            label: 'Start date'
+
+                        starttime:
+                            label: 'Start time'
+
+                        stopdate:
+                            label: 'Stop date'
+
+                        stoptime:
+                            label: 'Stop time'
+
+            eventType:
+                label: 'Event type'
+
+            musicTypes:
+                label: 'Music type'
+
+            name:
+                label: Event
+
+            translations:
+                children:
+                    en:
+                        children:
+                            description:
+                                label: Description
+
+                            title:
+                                label: Title
+
+                label: Translations
+
+            user:
+                label: User
+
+    front_frontbundle_eventdate:
+        children:
+            startdate:
+                label: 'Start date'
+
+            starttime:
+                label: 'Start time'
+
+            stopdate:
+                label: 'Stop date'
+
+            stoptime:
+                label: 'Stop time'
+
+    front_frontbundle_eventtype:
+        children:
+            name:
+                label: 'Event type'
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+    front_frontbundle_musictype:
+        children:
+            name:
+                label: 'Music type'
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+    front_frontbundle_page:
+        children:
+            name:
+                label: Name
+
+            translations:
+                children:
+                    en:
+                        children:
+                            content:
+                                label: Content
+
+                            description:
+                                label: Description
+
+                            title:
+                                label: Title
+
+                label: Translations
+
+    front_frontbundle_user:
+        children:
+            addresses:
+                label: Addresses
+
+                prototype:
+                    children:
+                        city:
+                            label: City
+
+                        country:
+                            label: Country
+
+                        name:
+                            label: Title
+
+                        postcode:
+                            label: Postcode
+
+                        street:
+                            label: Street
+
+                        streetComplement:
+                            label: 'Street complement'
+
+            facebook_link:
+                label: 'Facebook link'
+
+            flickr_link:
+                label: 'Flickr link'
+
+            google_link:
+                label: 'Google link'
+
+            instagram_link:
+                label: 'Instagram link'
+
+            linkedin_link:
+                label: 'LinkedIn link'
+
+            musicTypes:
+                label: Music
+
+            translations:
+                children:
+                    en:
+                        children:
+                            baseline:
+                                label: Baseline
+
+                            description:
+                                label: Description
+
+                            description_short:
+                                label: 'Short description'
+
+                label: Translations
+
+            tumblr_link:
+                label: 'Tumblr link'
+
+            twitter_link:
+                label: 'Twitter link'
+
+            userTypes:
+                label: Type
+
+            username:
+                label: Username
+
+            vimeo_link:
+                label: 'Vimeo link'
+
+    user_userbundle_user:
+        children:
+            facebook_access_token:
+                label: 'facebook token'
+
+            facebook_id:
+                label: 'facebook id'
+
+            google_access_token:
+                label: 'google token'
+
+            google_id:
+                label: 'google id'
+
+fr: Français
+
+front:
+    add: Add
+    add_date: Add date
+    add_weekly_date: Add dates
+    addresses_title: Addresses
+
+    alert:
+        warning: 'Warning ! '
+        info: 'Info : '
+        success: 'Well done ! '
+
+    back: Back
+    back_to_list: 'Back to list'
+    cancel: Cancel
+    edit: Edit
+    event_new_title: 'New event'
+    eventdates_title: Dates
+    link_add_address: 'Add address'
+    link_add_eventdate: 'Add event date'
+    link_delete_address: 'Delete address'
+    link_delete_eventdate: 'Delete event date'
+    today: Today
+    user_edit_title: 'User edit'
+    user_show_title: 'User show'
+    map_title: 'Map'
+    search_event_button: Search for events
+    baseline: Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.
+
+home:
+    about_us_benefit_1: 'A map showing today''s events/lessons/shows...'
+    about_us_benefit_2: 'An easy way to find salsa in a city/country you''ve never been to before.'
+    about_us_benefit_3: 'A place dedicated to Salsa/Bachat/Kizomba/Tango exclusively.'
+    about_us_benefit_4: 'Multiple languages.'
+    about_us_benefit_5: 'Multiple dances.'
+    about_us_benefit_6: 'Totally free website.'
+    about_us_benefits: 'The benefits are:'
+    about_us_p1: 'Our main purpose is to give instant information about <strong>WHERE TO DANCE SALSA, ANYWHERE ON THE GLOBE, ANYTIME</strong>. The idea is to combine dancer''s skills to build a social/community like website, using the latest technologies like geocoding and social sharing to make it work.'
+    about_us_title: 'More about WeDanceSalsa'
+    about_us_title_desc: '<strong>WeDanceSalsa</strong> is an idea of Salsa dancers'
+
+    alert:
+        success_contact_button: 'Contact Us'
+        success_contribute: 'If you are interested by this project, you can contribute by :  sharing this website on Facebook, introducing the website to other people, writing translations, suggesting new functionalities,   helping with design, helping with communication/SEO'
+        success_events: 'This page shows Salsa events around <strong>%city%</strong> on <strong>%date%</strong>. Feel free to add your event.'
+        warning: 'Warning !'
+        warning_no_events: 'There are no events around <strong>%city%</strong> on <strong>%date%</strong>.  Feel free to add your event'
+
+link:
+    home: Home
+
+navbar:
+    help: Help
+    login: Login
+    logout: Logout
+    publish_button: 'Add Event'
+    register: Register
+
+user:
+    addresses_title: 'My Address'
+    description_title: 'My Description'
+    events_title: 'My Next Events'
+    images_title: 'My Pictures'
+    profile_title: 'My Profile'
+    user_title: 'My Profile'
+
+user_bundle:
+    login: Login
+    question_already_registered: 'Already registered ?'
+    question_not_registered: 'Not registered yet ?'
+    register: Register
+    return_home_page: 'Return to home page'
+
+    signin:
+        or: or
+        signin_facebook: 'Signin with facebook'
+        signin_google: 'Signin with google'

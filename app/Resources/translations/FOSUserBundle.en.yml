@@ -1,0 +1,61 @@
+change_password:
+    submit: Submit
+
+form:
+    email: Email
+    password: Password
+    password_confirmation: 'Password confirmation'
+    username: Name
+
+group:
+    edit:
+        submit: Submit
+
+    new:
+        submit: Submit
+
+    show:
+        name: Name
+
+profile:
+    edit:
+        submit: Submit
+
+    show:
+        email: Email
+        username: Name
+
+registration:
+    back: Back
+    check_email: 'Check email'
+    confirmed: Confirmed
+
+    email:
+        message: Message
+        subject: Subject
+
+    submit: Register
+
+resetting:
+    check_email: 'Check email'
+
+    email:
+        message: Message
+        subject: Subject
+
+    password_already_requested: 'Password already requested'
+
+    request:
+        invalid_username: 'Invalid name'
+        submit: Submit
+        username: Name
+
+    reset:
+        submit: Submit
+
+security:
+    login:
+        password: Password
+        remember_me: 'Remember me'
+        submit: Login
+        username: Name

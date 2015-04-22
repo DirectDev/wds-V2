@@ -1,0 +1,22 @@
+fos_user:
+    email:
+        already_used: 'Email already used'
+        blank: Mandatory
+        invalid: 'Invalid email'
+        long: 'Too long'
+        short: 'Too short'
+
+    group:
+        blank: Mandatory
+        long: 'Too long'
+        short: 'Too short'
+
+    password:
+        blank: Mandatory
+        short: 'Too short'
+
+    username:
+        already_used: 'Name already used'
+        blank: Mandatory
+        long: 'Too long'
+        short: 'Too short'

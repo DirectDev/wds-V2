@@ -1,0 +1,7 @@
+parameters:
+#    search_search.example.class: Search\SearchBundle\Example
+
+services:
+#    search_search.example:
+#        class: %search_search.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

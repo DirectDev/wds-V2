@@ -1,0 +1,35 @@
+
+{% if entity.name %}
+    <strong>{% trans %}address.name{% endtrans %}</strong> : {{ entity.name|capitalize }}</br>
+{% endif %}
+{% if entity.street %}
+    <strong>{% trans %}address.street{% endtrans %}</strong> : {{ entity.street|capitalize }}</br>
+{% endif %}
+{% if entity.streetComplement %}
+    <strong>{% trans %}address.streetComplement{% endtrans %}</strong> : {{ entity.streetComplement|capitalize }}</br>
+{% endif %}
+{% if entity.city %}
+    <strong>{% trans %}address.city{% endtrans %}</strong> : {{ entity.city|capitalize }}</br>
+{% endif %}
+{% if entity.postcode %}
+    <strong>{% trans %}address.postcode{% endtrans %}</strong> : {{ entity.postcode|capitalize }}</br>
+{% endif %}
+{% if entity.country %}
+    <strong>{% trans %}address.country{% endtrans %}</strong> : {{ entity.country|capitalize }}</br>
+{% endif %}
+</br>
+
+{% if app.user is not null and app.user == entity.getUser() and is_granted('ROLE_USER') %} 
+    <div class='row'>
+        <div class='col-sm-1'>
+            <a class="btn btn-success btn-sm pull-left address_edit" href="{{ path('front_address_edit', { 'id': entity.id }) }}">
+                <span>{% trans %}front.edit{% endtrans %}</span>
+            </a>
+        </div>
+        <div class='col-sm-1'>
+            {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
+            {{ form_end(delete_form) }}
+
+        </div>
+    </div>
+{% endif %}

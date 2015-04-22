@@ -1,0 +1,64 @@
+<div class="section" id='home_more'>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="big-title">
+                    <h1>{{ 'home.about_us_title'|trans|raw }}</h1>
+                    <p class="title-desc">{{ 'home.about_us_title_desc'|trans|raw }}</p>
+                </div>
+        
+                </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-8">
+
+               <p class="justify">{{ 'home.about_us_p1'|trans|raw }}</p>
+                
+                <div class="hr1" style="margin-bottom:14px;"></div>
+                
+                <p>{{ 'home.about_us_benefits'|trans|raw }}</p>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="icons-list">
+                            <li><i class="icon-check-2"></i> {% trans %}home.about_us_benefit_1{% endtrans %}</li>
+                            <li><i class="icon-check-2"></i> {% trans %}home.about_us_benefit_2{% endtrans %}</li>
+                            <li><i class="icon-check-2"></i> {% trans %}home.about_us_benefit_3{% endtrans %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="icons-list">
+                            <li><i class="icon-check-2"></i> {% trans %}home.about_us_benefit_4{% endtrans %}</li>
+                            <li><i class="icon-check-2"></i> {% trans %}home.about_us_benefit_5{% endtrans %}</li>
+                            <li><i class="icon-check-2"></i> {% trans %}home.about_us_benefit_6{% endtrans %}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hr1" style="margin-bottom:20px;"></div>
+            </div>
+
+            <div class="col-md-4">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                {% if user.isFacebookUser %}
+                                        <img src='{{ user.profilePictureUrl }}' />
+                                {% elseif user.profilePictureUrl %}
+                                        <img src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' />
+                                {% endif %}
+                                <div class="member-name">
+                                    {{ user.username|capitalize }}
+                                    {% if user.getUserType %}    
+                                        <span>{{ user.getUserType }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+        </div>
+
+    </div>
+</div>

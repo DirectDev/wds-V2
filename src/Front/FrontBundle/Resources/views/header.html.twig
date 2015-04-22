@@ -1,0 +1,18 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% if page %}
+
+    {% block title %}
+        {{ page.getTitle }}
+    {% endblock %}
+    {% block head %}
+        {{ parent() }}
+        <meta name="description" content="{{ page.getDescription }}" />
+        <!-- partage facebook -->
+        <meta property="og:title" content="{{ page.getTitle }}" />
+        <meta property="og:description" content="{{ page.getDescription }}" />
+        <meta property="og:image" content="{{ asset('images/wedancesalsa.png')}}" />
+        <!-- partage facebook -->
+    {% endblock %}
+    
+{% endif %}

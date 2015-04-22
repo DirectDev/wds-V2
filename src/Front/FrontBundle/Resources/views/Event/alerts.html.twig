@@ -1,0 +1,40 @@
+{% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
+    {% if not event.address  %}
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+            {% trans %}event.alert.missing_address{% endtrans %} <a href="#address_anchor" >{% trans %}front.add{% endtrans %}</a>
+        </div>
+    {% endif %}
+    {% if event.address and not event.address.isValid  %}
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+            {% trans %}event.alert.invalid_address{% endtrans %} <a href="#address_anchor" >{% trans %}front.add{% endtrans %}</a>
+        </div>
+    {% endif %}
+    {% if not event.getNextEventDate()  %}
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+            {% trans %}event.alert.no_next_date{% endtrans %} <a href="#eventdates_anchor" >{% trans %}front.add{% endtrans %}</a>
+        </div>
+    {% endif %}
+    {% if not event.getProfilePicture()  %}
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+            {% trans %}event.alert.no_profile_picture{% endtrans %} 
+            <a href="{{ path('front_event_edit', {id: event.id} ) }}#images" class="">
+                <span> {% trans %}front.add{% endtrans %}</span>
+            </a>
+        </div>
+    {% endif %}
+    {% if  event.isShownInSearchResults()  %}
+        <div class="alert alert-success fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.success{% endtrans %}</strong>
+            {% trans %}event.alert.valid{% endtrans %} 
+        </div>
+    {% endif %}
+{% endif %}

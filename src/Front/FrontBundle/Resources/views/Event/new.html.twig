@@ -1,0 +1,218 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {% trans %}front.event_new_title{% endtrans %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{% trans %}front.event_new_title{% endtrans %}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="container">
+            
+            <div class="alert alert-info fade in">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+                {% trans %}event.alert.new_info{% endtrans %}
+            </div>
+            
+            <div class="alert alert-info fade in">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+                {% trans %}event.alert.new_info2{% endtrans %}
+            </div>
+
+            {% form_theme form with ['FrontFrontBundle:Form:bootstrap_form_override.html.twig'] %}
+
+            {{ form_errors(form) }}
+            {# {{ form_errors(form.addresses) }}
+             {{ form_errors(form.eventDates) }}#}
+
+            <div class="recent-projects">  
+
+                <h4 class="classic-title"><span>{% trans %}event.event_title{% endtrans %}</span></h4>
+
+
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.musicTypes) }}
+                {{ form_row(form.eventType) }}
+                {{ form_row(form.translations) }}
+
+
+                {#<h4 class="classic-title"><span>{% trans %}event.addresses_title{% endtrans %}</span></h4>
+                    <ul class="addresses" data-prototype="{{ form_widget(form.addresses.vars.prototype)|e }}">
+                        {% for address in form.addresses %}
+                            <li>
+                                {{ form_row(address.name) }}
+                                {{ form_row(address.street) }}
+                                {{ form_row(address.streetComplement) }}
+                                {{ form_row(address.postcode) }}
+                                {{ form_row(address.city) }}                                    
+                                {{ form_row(address.country) }}         
+                            </li>
+                        {% endfor %}
+                    </ul>#}
+
+
+                {#<h4 class="classic-title"><span>{% trans %}event.eventdates_title{% endtrans %}</span></h4>
+                    <ul class="eventdate" data-prototype="{{ form_widget(form.eventDates.vars.prototype)|e }}">
+                        {% for eventDate in form.eventDates %}
+                            <li>
+                                {{ form_row(eventDate.startdate) }}
+                                {{ form_row(eventDate.starttime) }}
+                                {{ form_row(eventDate.stopdate) }}                                  
+                                {{ form_row(eventDate.stoptime) }}                                  
+                            </li>
+                        {% endfor %}
+                    </ul>#}
+
+                <div class='row'>
+                    <div class='col-md-1 pull-right'>
+                        {{ form_row(form.submit) }}
+                    </div>
+                </div>
+
+                {{ form_end(form) }}
+
+            </div>
+
+
+        </div>
+    </div>
+
+    {#<script>
+             
+             var $collectionHolderAddress;
+ 
+             // setup an "add a address" link
+             var $addLinkAddress = $("<a href='#' class='add_address_link'>{% trans %}front.link_add_address{% endtrans %}</a>");
+             var $newLinkLiAddress = $('<li></li>').append($addLinkAddress);
+             var $removeFormAAddress = $("<a href='#'>{% trans %}front.link_delete_address{% endtrans %}</a>");
+ 
+             jQuery(document).ready(function() {
+                 // Get the ul that holds the collection of addresss
+                 $collectionHolderAddress = $('ul.addresses');
+ 
+                 $collectionHolderAddress.find('li').each(function() {
+                     addFormDeleteLink($(this));
+                 });
+ 
+                 // add the "add a address" anchor and li to the addresss ul
+                 $collectionHolderAddress.append($newLinkLiAddress);
+ 
+                 // count the current form inputs we have (e.g. 2), use that as the new
+                 // index when inserting a new item (e.g. 2)
+                 $collectionHolderAddress.data('index', $collectionHolderAddress.find(':input').length);
+ 
+                 $addLinkAddress.on('click', function(e) {
+                     // prevent the link from creating a "#" on the URL
+                     e.preventDefault();
+ 
+                     // add a new address form (see next code block)
+                     addForm($collectionHolderAddress, $newLinkLiAddress);
+                     
+                     //efface le lien pour qu'il n'y ai qu'une addresse
+                     $addLinkAddress.hide();
+                     
+                 });
+             });
+ 
+             function addForm($collectionHolderAddress, $newLinkLiAddress) {
+                 // Get the data-prototype explained earlier
+                 var prototype = $collectionHolderAddress.data('prototype');
+ 
+                 // get the new index
+                 var index = $collectionHolderAddress.data('index');
+ 
+                 // Replace '__name__' in the prototype's HTML to
+                 // instead be a number based on how many items we have
+                 //var newForm = prototype.replace(/__name__/g, index);
+                 var newForm = prototype.replace(/__name__/g, index);
+ 
+                 // increase the index with one for the next item
+                 $collectionHolderAddress.data('index', index + 1);
+ 
+                 // Display the form in the page in an li, before the "Add a address" link li
+                 var $newFormLi = $('<li></li>').append(newForm);
+                 $newLinkLiAddress.before($newFormLi);
+ 
+                 addFormDeleteLink($newFormLi);
+             }
+ 
+             function addFormDeleteLink($FormLi) {
+                 
+                 $FormLi.append($removeFormAAddress);
+ 
+                 $removeFormAAddress.on('click', function(e) {
+                     // prevent the link from creating a "#" on the URL
+                     e.preventDefault();
+ 
+                     // remove the li for the  form
+                     $FormLi.remove();
+                     
+                     $addLinkAddress.show();
+                 });
+ 
+             }
+             
+             
+         </script> 
+         
+         <script>
+             
+             var collectionHolder = $('ul.eventdate');
+ 
+             var $addTagLink = $('<a href="#" class="add_tag_link">{% trans %}front.link_add_eventdate{% endtrans %}</a>');
+             var $newLinkLi = $('<li></li>').append($addTagLink);
+ 
+             jQuery(document).ready(function() {
+ 
+                 collectionHolder.find('li').each(function() {
+                     addTagFormDeleteLink($(this));
+                 });
+ 
+                 collectionHolder.append($newLinkLi);
+ 
+                 $addTagLink.on('click', function(e) {
+                     e.preventDefault();
+ 
+                     addTagForm(collectionHolder, $newLinkLi);
+                 });
+             });
+ 
+             function addTagForm(collectionHolder, $newLinkLi) {
+                 var prototype = collectionHolder.attr('data-prototype');
+ 
+                 var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+ 
+                 var $newFormLi = $('<li></li>').append(newForm);
+                 addTagFormDeleteLink($newFormLi);
+                 $newLinkLi.before($newFormLi);
+             }
+ 
+             function addTagFormDeleteLink($tagFormLi) {
+                 var $removeFormA = $('<a href="#">{% trans %}front.link_delete_eventdate{% endtrans %}</a>');
+                 $tagFormLi.append('</br>');
+                 $tagFormLi.append($removeFormA);
+ 
+                 $removeFormA.on('click', function(e) {
+                     e.preventDefault();
+ 
+                     $tagFormLi.remove();
+                 });
+             }
+             
+         </script>#}
+
+{% endblock %}    

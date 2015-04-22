@@ -1,0 +1,22 @@
+<div class='div_navbar_search'>
+    <form id="search_form" action="{{ path('search_search_front_user') }}" method="post" class="navbar-form navbar-left" role="search">
+            {# form_theme userFrontSearchForm with ['SearchSearchBundle:Form:bootstrap_form_search_override.html.twig'] %}
+            {{ form_widget(userFrontSearchForm) #}
+            <input id="search_search_bundle_userfrontsearch_keyword" class="form-control" type="text" autocomplete="off" required="required" 
+                   name="search_search_bundle_userfrontsearch[keyword]" >
+    </form>
+
+    <div class="loading"></div>
+    <div id="div_search_results" class="hidden search_results"> 
+    </div>
+
+    <script>
+        $(document).on('keyup', '#search_search_bundle_userfrontsearch_keyword', function() {
+            searchFront($(this), '{{ path('search_search_front_user')}}', $('#div_search_results'),  $(".loading"));
+        });
+        $(document).on('click', 'body', function() {
+            $('#div_search_results').hover(function(){return;});
+            $('#div_search_results').removeClass('show').addClass('hidden');
+        });
+    </script>
+</div>

@@ -1,0 +1,49 @@
+<!-- _langueSwitcher.html.twig -->
+
+{# If method is not GET the langue switcher is hidden to prevent change the url on a post action #}
+{# if app.request.get('_route') and app.request.get('_method') and "GET" in app.request.get('_method').methods #}
+
+{% set actualLangue = app.request.locale %}
+
+{% set routeParams = app.request.get('_route_params') %}
+<ul class="nav navbar-left" id='language_switcher'>
+    <li class="dropdown">
+  {% for langue in ['fr','en'] %} 
+            
+            {% if actualLangue == langue %}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('images/flags/'~langue~'.gif') }}" alt="{{langue}}"/>
+                    {{langue|trans}}
+                    <span class="caret"></span></a>
+            {% endif %}
+  {% endfor %} 
+            
+  <ul class="dropdown-menu" role="menu">
+      
+  {% for langue in ['fr','en'] %} 
+   
+
+
+    {% if routeParams['_locale'] is defined %}
+    {%set routeParams = routeParams|merge({'_locale': langue}) %}
+    {% endif %}
+      
+    {% if app.request.get('_route') == 'homepage' %}
+        {% set route = 'home' %}
+    {% else %}
+        {% set route = app.request.get('_route') %}
+    {% endif %}  
+    
+    <li>
+        <a href="{{ path(route, routeParams) }}">
+            <img src="{{ asset('images/flags/'~langue~'.gif') }}" alt="{{langue}}"/>
+            {{langue|trans}}
+        </a>
+    </li>
+
+  {% endfor %}
+  </ul>
+</li>
+</ul>
+{# endif #}
+

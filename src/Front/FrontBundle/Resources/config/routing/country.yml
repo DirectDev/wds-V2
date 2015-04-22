@@ -1,0 +1,30 @@
+front_country:
+    path:     /
+    defaults: { _controller: "FrontFrontBundle:Country:index" }
+
+front_country_show:
+    path:     /{id}/show
+    defaults: { _controller: "FrontFrontBundle:Country:show" }
+
+front_country_new:
+    path:     /new
+    defaults: { _controller: "FrontFrontBundle:Country:new" }
+
+front_country_create:
+    path:     /create
+    defaults: { _controller: "FrontFrontBundle:Country:create" }
+    requirements: { _method: post }
+
+front_country_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FrontFrontBundle:Country:edit" }
+
+front_country_update:
+    path:     /{id}/update
+    defaults: { _controller: "FrontFrontBundle:Country:update" }
+    requirements: { _method: post|put }
+
+front_country_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FrontFrontBundle:Country:delete" }
+    requirements: { _method: post|delete }

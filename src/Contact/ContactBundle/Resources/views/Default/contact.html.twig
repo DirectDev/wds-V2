@@ -1,0 +1,150 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {% trans %}contact.contact_page_title{% endtrans %}
+{% endblock %}
+    
+{% block topJavascripts %}   
+    {{ parent() }}
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+    </script>
+{% endblock %}       
+
+{% block content %}
+
+
+
+<div id="map" data-position-latitude="50.62925" data-position-longitude="3.057256" data-marker-img="images/marker.png"></div>
+<script>
+    (function ( $ ) {
+            $.fn.CustomMap = function( options ) {
+
+                    var posLatitude = $('#map').data('position-latitude'),
+                    posLongitude = $('#map').data('position-longitude');
+
+                    var settings = $.extend({
+                            home: { latitude: posLatitude, longitude: posLongitude },
+                            text: '',
+                            icon_url: $('#map').data('marker-img'),	
+                            zoom: 15
+                    }, options );
+
+                    var coords = new google.maps.LatLng(settings.home.latitude, settings.home.longitude);
+
+                    return this.each(function() {	
+                            var element = $(this);
+
+                            var options = {
+                                    zoom: settings.zoom,
+                                    center: coords,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                    mapTypeControl: false,
+                                    scaleControl: false,
+                                    streetViewControl: false,
+                                    panControl: true,
+                                    disableDefaultUI: true,
+                                    zoomControlOptions: {
+                                            style: google.maps.ZoomControlStyle.DEFAULT
+                                    },
+                                    overviewMapControl: true,	
+                            };
+
+                            var map = new google.maps.Map(element[0], options);
+
+                            var icon = { 
+                                    url: settings.icon_url, 
+                                    origin: new google.maps.Point(0, 0)
+                            };
+
+                            var marker = new google.maps.Marker({
+                                    position: coords,
+                                    map: map,
+                                    icon: icon,
+                                    draggable: false
+                            });
+
+                            var info = new google.maps.InfoWindow({
+                                    content: settings.text
+                            });
+
+                            google.maps.event.addListener(marker, 'click', function() { 
+                                    info.open(map, marker);
+                            });
+
+                            var styles = [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}];
+
+                            map.setOptions({styles: styles});
+                    });
+
+            };
+    }( jQuery ));
+
+    jQuery(document).ready(function() {
+            jQuery('#map').CustomMap();
+    });
+</script>
+
+
+
+
+<div id="content">
+    <div class="container">
+
+        <div class="row">
+            
+            <h4 class="classic-title"><span>{% trans %}contact.contact_title{% endtrans %}</span></h4>
+
+            <div class="col-md-8">
+
+
+                <div id="contact-form" class="contatct-form">
+                    <div class="loader"></div>
+                    
+                    {% for flashMessage in app.session.flashbag.get('contact-notice-success') %}
+                        <div class="alert alert-success">
+                            {{ flashMessage|trans() }}
+                        </div>
+                    {% endfor %}
+                    
+                    {% for flashMessage in app.session.flashbag.get('contact-notice-warning') %}
+                        <div class="alert alert-warning">
+                            {{ flashMessage|trans()}}
+                        </div>
+                    {% endfor %}
+                    
+                    {% form_theme form with ['ContactContactBundle:Form:bootstrap_form_override.html.twig'] %}
+                    {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        {{ form(form) }}
+                        {{ form_row(form.submit) }}
+                    {{ form_end(form) }}
+                    
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                
+                <div class="classic-testimonials">
+                    <div class="testimonial-content">
+                        <p>{% trans %}contact.testimonial_p1{% endtrans %}</p></br>
+                        <p>{% trans %}contact.testimonial_p2{% endtrans %}</p></br>
+                        <p>{% trans %}contact.testimonial_p3{% endtrans %}</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <span>{% trans %}contact.testimonial_author_name{% endtrans %}</span>
+                        {% trans %}contact.testimonial_author_job{% endtrans %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}    
+

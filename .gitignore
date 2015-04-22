@@ -35,3 +35,7 @@
 
 # Composer PHAR
 /composer.phar
+/www/Unify
+/app/config/parameters.yml.dist
+/app/config/social_parameters.dist.yml
+/app/config/social_parameters.yml

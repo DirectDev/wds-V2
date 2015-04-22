@@ -1,0 +1,29 @@
+{% form_theme edit_form with ['FrontFrontBundle:Form:bootstrap_form_override.html.twig'] %}
+
+{{ form_start(edit_form) }}
+{{ form_errors(edit_form) }}
+
+
+{{ form_row(edit_form.name) }}
+{{ form_row(edit_form.street) }}
+{{ form_row(edit_form.streetComplement) }}
+{{ form_row(edit_form.postcode) }}
+{{ form_row(edit_form.city) }}                                    
+{{ form_row(edit_form.country) }}
+
+{{ form_row(edit_form.submit) }}
+
+{{ form_end(edit_form) }}
+
+<div class='row'>
+    <div class='col-sm-1'>
+        <a class="btn btn-warning btn-sm pull-left address_edit" href="{{ path('front_address_show', { id : edit_form.vars.value.id }) }}">
+            <span>{% trans %}front.cancel{% endtrans %}</span>
+        </a>
+    </div>
+    <div class='col-sm-1'>
+        {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
+        {{ form_end(delete_form) }}
+    </div>
+</div>
+

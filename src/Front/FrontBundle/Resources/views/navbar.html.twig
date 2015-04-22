@@ -1,0 +1,49 @@
+<div class="hidden-header"></div>
+<header class="clearfix">
+
+    <div class="navbar navbar-default navbar-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="icon-menu-1"></i>
+                </button>
+                <a class="navbar-brand" href="{{ path('home')}}">
+                    <img src="{{ asset('images/wedancesalsa.png')}}" title="WeDanceSalsa" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class='col-sm-2'>
+                    <span class='baseline'>
+                        <p>{% trans %}front.baseline{% endtrans %}</p> 
+                    </span>
+                </div>        
+
+                <form class="navbar-form navbar-right" action="{{ path('front_event_new') }}">
+                    <button type="submit" class="btn btn-primary btn-md">{% trans %}navbar.publish_button{% endtrans %}</button>    
+                </form>    
+
+                {% include 'FrontFrontBundle::languageSwitcher.html.twig' %}  
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted("ROLE_USER") %}
+                        <li class="{% if app.user.profilePictureUrl %}loggedin{% endif %}">
+                            <a href="{{ path('front_user_show_private') }}">
+                                {% if app.user.isFacebookUser %}
+                                    <img src='{{ app.user.profilePictureUrl }}' height='20px' class="img-circle nav-image"/> 
+                                {% elseif app.user.profilePictureUrl %}
+                                    <img src='{{ asset(app.user.profilePictureUrl)| imagine_filter('loggedin') }}' class="img-circle nav-image" /> 
+                                {% endif %}
+                                {{ app.user.username|capitalize }}
+                            </a>
+                        </li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">{% trans %}navbar.logout{% endtrans %}</a></li>
+                        {% else %}
+                        <li><a href="{{ path('fos_user_registration_register') }}">{% trans %}navbar.register{% endtrans %}</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}">{% trans %}navbar.login{% endtrans %}</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</header>

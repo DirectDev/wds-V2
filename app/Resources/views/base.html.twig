@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block head %}
+            <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="{{ asset("css/front/bootstrap.css") }}" type="text/css" media="screen">
+            <link rel="stylesheet" href="{{ asset('css/front/bootstrap-validator/bootstrapValidator.css') }}"/>
+
+            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/settings.css") }}" media="screen" />
+            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/style.css") }}" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/responsive.css") }}" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/colors/orange.css") }}" title="pink" media="screen" />
+            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/fontello.css") }}" media="screen"> 
+
+            <link rel="stylesheet" href="{{ asset('css/front/main.css') }}" />
+            <link rel="stylesheet" href="{{ asset('datetimepicker/css/datetimepicker.css') }}" />
+            <link rel="stylesheet" href="{{ asset('datepicker/css/datepicker.css') }}" /> 
+
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        {% block topJavascripts %}
+
+            <script src="{{ asset('js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/jquery-ui-1.11.1/jquery-ui.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/front/mainTop.js') }}" type="text/javascript"></script>
+
+            <script type="text/javascript" src="{{ asset("js/front/jquery.migrate.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("js/front/modernizrr.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("js/front/bootstrap.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("js/front/owl.carousel.min.js") }}"></script>
+            <!-- ///// -->  
+             {# <script type="text/javascript" src="{{ asset("js/front/jquery.fitvids.js") }}"></script> <!-- responsive videos-->  
+              
+              <script type="text/javascript" src="{{ asset("js/front/nivo-lightbox.min.js") }}"></script>
+              <script type="text/javascript" src="{{ asset("js/front/jquery.isotope.min.js") }}"></script> <!-- filtre/tri -->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.appear.js") }}"></script> 
+              <script type="text/javascript" src="{{ asset("js/front/count-to.js") }}"></script>  <!--  compteur-->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.textillate.js") }}"></script> <!-- animation de texte-->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.lettering.js") }}"></script>  <!-- animation de texte-->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.easypiechart.min.js") }}"></script> <!-- charts-->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.nicescroll.min.js") }}"></script>  <!-- barre de scroll personalisee-->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.parallax.js") }}"></script>     <!--   background parallax-->  
+              <script type="text/javascript" src="{{ asset("js/front/jquery.themepunch.plugins.min.js") }}"></script> 
+              <script type="text/javascript" src="{{ asset("js/front/jquery.themepunch.revolution.min.js") }}"></script>
+              #}
+              <!-- /// -->
+            <script type="text/javascript" src="{{ asset("js/front/script.js") }}"></script>
+
+            <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+            {% if app.request.locale != 'en' %}
+                <script src="{{ asset('datepicker/js/locales/bootstrap-datepicker.' ~ app.request.locale ~ '.js') }}" type="text/javascript"></script> 
+            {% endif  %}
+
+        {% endblock %}
+
+    </head>
+    <body>
+
+
+
+    {% block body %}{% endblock %}
+    {% block bottomJavascripts %}
+
+        <script src="{{ asset('js/front/mainBottom.js') }}" type="text/javascript"></script>
+        <script  src="{{ asset('js/front/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
+        <script  src="{{ asset('js/front/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                reloadBootstrapValidator();
+            });
+        </script>
+
+        <script>
+            $(document).on('click focus', 'form input.datepicker', function () {
+
+                $("form input.datepicker").datepicker({
+                    format: "yyyy-mm-dd", // bug avec les heures
+                    autoclose: true,
+                    language: "{{ app.request.locale }}"
+                });
+            });
+            $('form:not(.navbar-form):not(.no_validation) input.datepicker').on('change show', function (e) {
+                $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator('revalidateField', $(this));
+            });
+        </script>
+        <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('.ckeditor');
+            });
+        </script>
+
+
+    {% endblock %}
+</body>
+</html>

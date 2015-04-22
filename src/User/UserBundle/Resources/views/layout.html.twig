@@ -1,0 +1,165 @@
+{% extends "FrontFrontBundle::layout.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/front/bootstrap-social.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/front/font-awesome.css') }}" /> 
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row login-page">
+
+        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+
+            <div class="panel panel-default">
+
+                <div class="panel-padding panel-body">
+
+
+                    {# BLOCK BUTTON FACEBOOK #}
+
+                    <script>
+                        window.fbAsyncInit = function () {
+                            // init the FB JS SDK
+                            FB.init({
+                                appId: '{{ facebook_app_id }}', // App ID from the app dashboard
+                                channelUrl: '/facebookchannel.php', // Channel file for x-domain comms
+                                status: true, // Check Facebook Login status
+                                xfbml: true,
+                                oauth: true, // Look for social plugins on the page
+                            });
+                        };
+
+                        // Load the SDK asynchronously
+                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) {
+                                return;
+                            }
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+
+                        function fb_login() {
+                            FB.getLoginStatus(function (response) {
+                                if (response.status === 'connected') {
+                                    // connected
+                                    //alert('Already connected, redirect to login page to create token.');
+                                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                } else {
+                                    // not_authorized
+                                    FB.login(function (response) {
+                                        if (response.authResponse) {
+                                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                        } else {
+                                            alert('Cancelled.');
+                                        }
+                                    }, {scope: 'email'});
+                                }
+                            });
+                        }
+                    </script>
+
+                    <a class="btn btn-block btn-lg btn-social btn-facebook" onclick="fb_login();">
+                        <i class="fa fa-facebook"></i> {% trans %}user_bundle.signin.signin_facebook{% endtrans %}
+                    </a>
+
+                    </br>
+
+                    {# BLOCK BUTTON FACEBOOK #}
+
+                    {# BLOCK BUTTON GOOGLE #}
+
+                    <script type="text/javascript">
+
+                        function signinCallback(authResult) {
+                            if (authResult['access_token']) {
+                                // Autorisation réussie
+                                // Masquer le bouton de connexion maintenant que l'utilisateur est autorisé, par exemple :
+                                //document.getElementById('signinButton').setAttribute('style', 'display: none');
+                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "google"}) }}";
+                            } else if (authResult['error']) {
+                                // Une erreur s'est produite.
+                                // Codes d'erreur possibles :
+                                //   "access_denied" - L'utilisateur a refusé l'accès à votre application
+                                //   "immediate_failed" - La connexion automatique de l'utilisateur a échoué
+                                // console.log('Une erreur s'est produite : ' + authResult['error']);
+                            }
+                        }
+                        ;
+
+
+                        function render() {
+                            gapi.signin.render('SigninInGoogle', {
+                                'callback': 'signinCallback',
+                                'clientid': '{{ google_app_id }}',
+                                'cookiepolicy': 'single_host_origin',
+                                'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+                                'scope': 'https://www.googleapis.com/auth/plus.login'
+                            });
+                        }
+                        function gg_login() {
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+
+
+                        }
+
+                    </script>
+
+                    <div id="SigninInGoogle">
+                        <span>
+                            <a id="btn-google-plus-signin" class="btn btn-block btn-lg  btn-social btn-google-plus" onclick="gg_login();">
+                                <i class="fa fa-google"></i> {% trans %}user_bundle.signin.signin_google{% endtrans %}
+                            </a>
+                        </span>
+                    </div>
+
+                    {# BLOCK BUTTON GOOGLE #}
+
+                    <div class="signup-or-separator">
+                        <h6 class="text shift text-special">{% trans %}user_bundle.signin.or{% endtrans %}</h6>
+                        <hr>
+                    </div>
+
+                    <div>
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        {% if is_granted("ROLE_USER") %}
+                            {% trans %}user_bundle.return_home_page{% endtrans %}<a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a>
+                        {% else %}
+                            {% if app.request.attributes.get('_route') != 'fos_user_registration_register' %}
+                                {% trans %}user_bundle.question_not_registered{% endtrans %} <a href="{{ path('fos_user_registration_register') }}">{% trans %}user_bundle.register{% endtrans %}</a>
+                            {% else %}
+                                {% trans %}user_bundle.question_already_registered{% endtrans %} <a href="{{ path('fos_user_security_login') }}">{% trans %}user_bundle.login{% endtrans %}</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>     
+
+    </div>
+
+
+{% endblock %}

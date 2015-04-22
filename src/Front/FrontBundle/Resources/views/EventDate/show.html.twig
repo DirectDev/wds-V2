@@ -1,0 +1,34 @@
+<div class='col-sm-2' id='eventdate_{{ entity.id }}'>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {#{% if entity.stopdate %}
+                <strong>{% trans %}event.from{% endtrans %} : </strong>
+            {% endif %}#}
+
+            <strong>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'LLLL  yyyy')|capitalize }}</strong>
+            <br>
+            {{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }} {{ entity.starttime|date('H:i') }}
+            <br>
+
+            {% if entity.stopdate %}
+                <strong>{% trans %}event.to{% endtrans %} : </strong></br>
+                {{ entity.stopdate|localizeddate('medium', 'none', app.request.locale) }}
+                {{ entity.stoptime|date('H:i') }}
+            {% else %}
+                </br>
+            {% endif %}
+            </br>
+
+            {% if app.user is not null and app.user == entity.event.user and is_granted('ROLE_USER') %} 
+                <a class="btn btn-success btn-sm pull-left eventdate_edit" 
+                   href="{{ path('front_eventdate_edit', { 'id': entity.id }) }}" 
+                   rel='{{ entity.id }}'>
+                    <span>{% trans %}front.edit{% endtrans %}</span>
+                </a>
+
+                {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                {{ form_end(delete_form) }}
+            {% endif %}
+        </div>
+    </div>
+</div>

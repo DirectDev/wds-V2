@@ -1,0 +1,27 @@
+<div class="panel-body">
+    <h3>{% trans %}event.eventdates_edit_form_title{% endtrans %}</h3>
+    {% form_theme edit_form with ['FrontFrontBundle:Form:bootstrap_form_override_eventdates.html.twig'] %}
+
+    {{ form_start(edit_form, { 'attr' : {'id': 'form_eventdate_edit'} } ) }}
+    {{ form_errors(edit_form) }}
+
+
+    {{ form_row(edit_form.startdate) }}
+    {{ form_row(edit_form.starttime) }}
+    {{ form_row(edit_form.stopdate) }}
+    {{ form_row(edit_form.stoptime) }}
+
+    {{ form_row(edit_form.submit) }}
+
+    {{ form_end(edit_form) }}
+
+    <a class="btn btn-warning btn-sm pull-left eventdate_cancel" 
+       href="{{ path('front_eventdate_show', { id : edit_form.vars.value.id } ) }}"
+       rel='{{ edit_form.vars.value.id }}'>
+        <span>{% trans %}front.cancel{% endtrans %}</span>
+    </a>
+
+    {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
+    {{ form_end(delete_form) }}
+</div>
+

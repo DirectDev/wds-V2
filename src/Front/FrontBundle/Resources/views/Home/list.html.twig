@@ -1,0 +1,18 @@
+{% set count = 0 %}
+{% set countNext = 0 %}
+{% for event in events %}
+        {% include 'FrontFrontBundle:Home:event.html.twig' with { 'next' : false } %}
+        {% if event.isValid %}
+            {% set count = count + 1  %}
+        {% endif %}
+{% endfor %}
+
+{% set max = (max_event_list - count) %}
+{% for event in nextEvents %}
+        {% if loop.index <= max %}
+            {% include 'FrontFrontBundle:Home:event.html.twig' with { 'next' : true  } %}
+        {% endif %}
+        {% if event.isValid %}
+            {% set countNext = countNext + 1  %}
+        {% endif %}
+{% endfor %}

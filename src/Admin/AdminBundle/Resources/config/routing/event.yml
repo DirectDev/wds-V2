@@ -1,0 +1,30 @@
+admin_event:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:Event:index" }
+
+admin_event_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:Event:show" }
+
+admin_event_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:Event:new" }
+
+admin_event_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:Event:create" }
+    requirements: { _method: post }
+
+admin_event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:Event:edit" }
+
+admin_event_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:Event:update" }
+    requirements: { _method: post|put }
+
+admin_event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:Event:delete" }
+    requirements: { _method: post|delete }

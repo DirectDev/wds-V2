@@ -1,0 +1,30 @@
+admin_musictype:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:MusicType:index" }
+
+admin_musictype_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:MusicType:show" }
+
+admin_musictype_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:MusicType:new" }
+
+admin_musictype_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:MusicType:create" }
+    requirements: { _method: post }
+
+admin_musictype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:MusicType:edit" }
+
+admin_musictype_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:MusicType:update" }
+    requirements: { _method: post|put }
+
+admin_musictype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:MusicType:delete" }
+    requirements: { _method: post|delete }

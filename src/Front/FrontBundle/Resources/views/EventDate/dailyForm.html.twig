@@ -1,0 +1,22 @@
+<div  id='eventdate_add_by_weekday' class="panel panel-default">
+    <div class="panel-body">
+        <h3>{% trans %}event.eventdates_repeat_form_title{% endtrans %}</h3>
+        {% form_theme form with ['FrontFrontBundle:Form:bootstrap_form_override_eventdates.html.twig'] %}
+        {{ form_start(form, { 'attr' : {'id': 'form_eventdate_daily'} } ) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.weekday) }}
+        {{ form_row(form.time) }}
+        {{ form_row(form.stopdate) }}
+
+        <div class='row'>
+            <div class='col-md-1 pull-right'>
+                <button class="btn btn-success btn-md pull-right" type="submit">
+                    <span>{% trans %}front.add_weekly_date{% endtrans %}</span>
+                </button>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>

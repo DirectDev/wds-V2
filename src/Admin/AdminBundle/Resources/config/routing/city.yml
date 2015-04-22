@@ -1,0 +1,30 @@
+admin_city:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:City:index" }
+
+admin_city_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:City:show" }
+
+admin_city_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:City:new" }
+
+admin_city_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:City:create" }
+    requirements: { _method: post }
+
+admin_city_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:City:edit" }
+
+admin_city_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:City:update" }
+    requirements: { _method: post|put }
+
+admin_city_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:City:delete" }
+    requirements: { _method: post|delete }

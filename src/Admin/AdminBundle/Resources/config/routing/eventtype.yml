@@ -1,0 +1,30 @@
+admin_eventtype:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:EventType:index" }
+
+admin_eventtype_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:EventType:show" }
+
+admin_eventtype_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:EventType:new" }
+
+admin_eventtype_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:EventType:create" }
+    requirements: { _method: post }
+
+admin_eventtype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:EventType:edit" }
+
+admin_eventtype_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:EventType:update" }
+    requirements: { _method: post|put }
+
+admin_eventtype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:EventType:delete" }
+    requirements: { _method: post|delete }

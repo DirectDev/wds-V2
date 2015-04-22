@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ path('admin_user') }}">{% trans %}admin.users{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_page') }}">{% trans %}admin.pages{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_address') }}">{% trans %}admin.addresses{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_city') }}">{% trans %}admin.cities{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_country') }}">{% trans %}admin.countries{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_event') }}">{% trans %}admin.events{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_eventdate') }}">{% trans %}admin.eventdates{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_eventtype') }}">{% trans %}admin.eventtypes{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_musictype') }}">{% trans %}admin.musictypes{% endtrans %}</a></li>
+        <li><a href="{{ path('jms_translation_index') }}">{% trans %}admin.translations{% endtrans %}</a></li>
+      </ul>
+            
+      <ul class="nav navbar-nav navbar-right">
+        {% if is_granted("ROLE_USER") %}
+             <li><a href="{{ path('admin_user_show', {id : app.user.id} ) }}">{{ app.user.username }}</a></li>
+             <li><a href="{{ path('fos_user_security_logout') }}">{% trans %}navbar.logout{% endtrans %}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

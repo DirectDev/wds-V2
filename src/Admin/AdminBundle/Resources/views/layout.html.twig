@@ -1,0 +1,52 @@
+{% extends "::base_admin.html.twig" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block topJavascripts %}
+    {{ parent() }}
+{% endblock %}  
+
+
+{% block body %}
+
+    
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <h3>
+                <a class="logo" href="{{ path('admin_admin_homepage') }}">{% trans %}admin.general_title{% endtrans %}</a>
+            </h3>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class='row'>
+            
+        <div class='col-sm-12'>
+            
+            {% include 'AdminAdminBundle:Admin:navbar.html.twig' %}
+            
+            {% block content %}{% endblock %}
+            
+        </div>     
+            
+    </div>
+
+  
+</div>  
+
+{% endblock %}
+
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+{% endblock %}    

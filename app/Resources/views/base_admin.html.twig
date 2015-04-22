@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Admin{% endblock %}</title>
+        <meta name="robots" content="noindex, nofollow" />
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+                
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/admin/main.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/admin/bootstrap-theme.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/admin/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/admin/font-awesome.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/admin/bootstrap-validator/bootstrapValidator.css') }}"/>
+            
+            <!-- <link rel="stylesheet" href="{{ asset('datetimepicker/css/datetimepicker.css') }}" />-->
+            <link rel="stylesheet" href="{{ asset('datepicker/css/datepicker.css') }}" />
+        {% endblock %}
+            
+        {% block topJavascripts %}
+        
+            <script src="{{ asset('js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/jquery-ui-1.11.1/jquery-ui.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/admin/mainTop.js') }}" type="text/javascript"></script>
+
+        {% endblock %}    
+        
+    </head>
+    <body>
+        
+        {% block body %}
+        {% endblock %}
+        
+        {% block bottomJavascripts %}
+        
+            <script src="{{ asset('js/admin/mainBottom.js') }}" type="text/javascript"></script>
+             <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('datepicker/js/locales/bootstrap-datepicker.fr.js') }}" type="text/javascript"></script>
+            
+            <script src="{{ asset('js/admin/bootstrap.js') }}" type="text/javascript"></script> 
+            <script  src="{{ asset('js/admin/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
+            <script  src="{{ asset('js/admin/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('form').bootstrapValidator({
+                        message: 'This value is not valid',
+                        feedbackIcons: {
+                            valid: 'glyphicon glyphicon-ok',
+                            invalid: 'glyphicon glyphicon-remove',
+                            validating: 'glyphicon glyphicon-refresh'
+                        },
+                        fields: {}
+                    });
+                });
+            </script>
+            <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+            <script>
+                $( document ).ready(function() {
+                    CKEDITOR.replace( '.ckeditor' );
+                });
+            </script>
+                    
+            <script>       
+                $(document).on('click focus', 'form input.datepicker', function () {
+
+                    $("form input.datepicker").datepicker({
+                        format: "yyyy-mm-dd", // bug avec les heures
+                        autoclose: true,
+                        language:"{{ app.request.locale }}"
+                    });
+                });
+            </script>
+
+            
+        {% endblock %}
+        
+    </body>
+</html>

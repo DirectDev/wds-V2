@@ -1,0 +1,65 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ page.getTitle }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription }}" />
+    <!-- partage facebook -->
+    <meta property="og:title" content="{{ page.getTitle }}" />
+    <meta property="og:description" content="{{ page.getDescription }}" />
+    <!--<meta property="og:image" content="URL_image" />-->
+    <!-- partage facebook -->
+{% endblock %}
+
+{% block topJavascripts %}   
+    {{ parent() }}
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+    </script>
+{% endblock %}    
+
+{% block content %}
+
+    <div class="page-container">
+        <div class="row">
+
+            <div class="col-md-4 home-map">
+                {% include 'FrontFrontBundle:Home:map.html.twig' %}
+            </div>
+
+
+            <div class="col-md-8 home-list">
+
+                <div class="row row-table panel panel-default filter-section" id="search_form">
+
+                    {% include 'FrontFrontBundle:Home:search.html.twig' %}   
+
+                </div>
+
+                {% include 'FrontFrontBundle:Home:filters.html.twig' with { 'musicTypeFrontFilterForm' : musicTypeFrontFilterForm } %}
+
+
+                <div class="row row-table panel panel-default" id="event-list">
+                    <div class="panel-body">
+                        {% include 'FrontFrontBundle:Home:list.html.twig' %}
+                    </div>        
+                </div>  
+
+                {% include 'FrontFrontBundle:Home:alerts.html.twig' %}
+
+
+
+            </div>
+
+        </div>
+
+
+        {% include 'FrontFrontBundle:Home:more.html.twig' %}
+
+    </div>
+
+
+
+{% endblock %}

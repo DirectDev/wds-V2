@@ -1,0 +1,50 @@
+{% set count = (events|length + nextEvents|length) %}
+{% if count == 0 %}
+    <div class="panel-body sm-hidden">
+        <div class="alert alert-warning fade in">
+            <p>{{ ('home.alert.warning_no_events')|trans({'%city%': app.session.get('city')|capitalize, '%date%' : app.session.get('startdate')|localizeddate('full', 'none', app.request.locale )|capitalize })|raw }}
+                <a href="{{ path('front_event_new') }}" >   
+                    <button class="btn btn-primary" type="button">{% trans %}navbar.publish_button{% endtrans %}</button>
+                </a>
+            </p>
+        </div>
+    </div> 
+
+{% endif %} 
+{% if count > 0 and count <= 3 %}
+
+    <div class="panel-body  sm-hidden">
+        <div class="alert alert-success fade in">
+            <p>{{ ('home.alert.success_events')|trans({'%city%': app.session.get('city')|capitalize, '%date%' : app.session.get('startdate')|localizeddate('full', 'none', app.request.locale )|capitalize })|raw }}
+                <a href="{{ path('front_event_new') }}" >   
+                    <button class="btn btn-primary" type="button">{% trans %}navbar.publish_button{% endtrans %}</button>
+                </a>
+            </p>
+        </div>
+    </div> 
+
+{% endif %} 
+{% if count <= 6 %}
+
+    <div class="panel-body sm-hidden">
+        <div class="alert alert-success fade in">
+            <div class="row">
+                <div class='col-sm-1 pull-left sm-hidden'>
+                    <img src='{{ asset( 'images/picto_contribute.png') }}' class='img-circle' />
+                </div>
+                <div class='col-sm-9'>
+                    <div  class="pull-left">   
+                        <p>{% trans %}home.alert.success_contribute{% endtrans %}</p>
+                    </div> 
+                </div> 
+                <div class='col-sm-2 pull-right'>
+                    <a href="{{ path('contact_contact_contact') }}" > 
+                        <button class="btn btn-default pull-right" type="button">{% trans %}home.alert.success_contact_button{% endtrans %}</button>
+                    </a>    
+                </div>
+
+            </div>
+
+        </div>  
+    </div>
+{% endif %} 

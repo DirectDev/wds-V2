@@ -1,0 +1,22 @@
+fos_user:
+    email:
+        already_used: 'Déjà utilisée'
+        blank: Obligatoire
+        invalid: 'L''adresse n''est pas correcte'
+        long: 'Trop long'
+        short: 'Trop court'
+
+    group:
+        blank: Obligatoire
+        long: 'Trop long'
+        short: 'Trop court'
+
+    password:
+        blank: Obligatoire
+        short: 'Trop court'
+
+    username:
+        already_used: 'Déjà utilisé'
+        blank: Obligatoire
+        long: 'Trop long'
+        short: 'Trop court'

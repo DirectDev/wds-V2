@@ -1,0 +1,30 @@
+front_eventtype:
+    path:     /
+    defaults: { _controller: "FrontFrontBundle:EventType:index" }
+
+front_eventtype_show:
+    path:     /{id}/show
+    defaults: { _controller: "FrontFrontBundle:EventType:show" }
+
+front_eventtype_new:
+    path:     /new
+    defaults: { _controller: "FrontFrontBundle:EventType:new" }
+
+front_eventtype_create:
+    path:     /create
+    defaults: { _controller: "FrontFrontBundle:EventType:create" }
+    requirements: { _method: post }
+
+front_eventtype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FrontFrontBundle:EventType:edit" }
+
+front_eventtype_update:
+    path:     /{id}/update
+    defaults: { _controller: "FrontFrontBundle:EventType:update" }
+    requirements: { _method: post|put }
+
+front_eventtype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FrontFrontBundle:EventType:delete" }
+    requirements: { _method: post|delete }

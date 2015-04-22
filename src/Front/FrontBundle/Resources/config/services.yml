@@ -1,0 +1,16 @@
+services:
+    acme_locale.locale_listener:
+        class: Front\FrontBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
+            
+            
+    facebook.services:
+        class: Front\FrontBundle\Services\FacebookServices
+        arguments: ["@doctrine.orm.entity_manager", "@security.context", '%facebook_app_id%', '%facebook_app_secret%']  
+        
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

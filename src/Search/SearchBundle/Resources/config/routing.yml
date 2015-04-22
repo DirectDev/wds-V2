@@ -1,0 +1,7 @@
+search_search_front:
+    resource: "@SearchSearchBundle/Resources/config/routing/searchFront.yml"
+    prefix:   /front/    
+    
+search_search_admin:
+    resource: "@SearchSearchBundle/Resources/config/routing/searchAdmin.yml"
+    prefix:   /admin/      

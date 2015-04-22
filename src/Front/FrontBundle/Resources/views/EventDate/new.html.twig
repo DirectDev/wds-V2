@@ -1,0 +1,22 @@
+<div class="panel-body">
+    <h3>{% trans %}event.eventdates_add_form_title{% endtrans %}</h3>
+    {% if app.user is not null and app.user == form.vars.value.event.user and is_granted('ROLE_USER') %} 
+        {% form_theme form with ['FrontFrontBundle:Form:bootstrap_form_override_eventdates.html.twig'] %}
+
+        {{ form_start(form, { 'attr' : {'id': 'form_eventdate_new'} } ) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.startdate) }}
+        {{ form_row(form.starttime) }}
+        {{ form_row(form.stopdate) }}
+        {{ form_row(form.stoptime) }}
+
+        <div class='row'>
+            <div class='col-md-1 pull-right'>
+                {{ form_row(form.submit) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    {% endif %}
+</div>

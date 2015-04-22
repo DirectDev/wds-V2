@@ -1,0 +1,40 @@
+{% extends 'AdminAdminBundle::layout.html.twig' %}
+
+{% block content -%}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class='admin-title'>
+            <div class='pull-left'>
+                <h1>{% trans %}admin.address_edit_title{% endtrans %}</h1>
+            </div>
+
+            <div class='pull-right'>
+                {% form_theme delete_form with ['AdminAdminBundle:Form:bootstrap_form_delete_override.html.twig'] %}
+                {{ form(delete_form) }}
+            </div>
+
+            <div class='pull-right'>
+                <a href="{{ path('admin_address') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                    <span> {% trans %}admin.back_to_list{% endtrans %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+        
+    <div class="panel-body">    
+
+        <div class="panel panel-info">
+            <div class="panel-body">
+               {% form_theme edit_form with ['AdminAdminBundle:Form:bootstrap_form_override.html.twig'] %}
+                {{ form(edit_form) }}
+            </div>
+  
+        </div>
+        
+     </div>   
+
+{% endblock %}
+
+

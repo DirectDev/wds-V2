@@ -1,0 +1,30 @@
+admin_eventdate:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:EventDate:index" }
+
+admin_eventdate_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:EventDate:show" }
+
+admin_eventdate_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:EventDate:new" }
+
+admin_eventdate_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:EventDate:create" }
+    requirements: { _method: post }
+
+admin_eventdate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:EventDate:edit" }
+
+admin_eventdate_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:EventDate:update" }
+    requirements: { _method: post|put }
+
+admin_eventdate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:EventDate:delete" }
+    requirements: { _method: post|delete }

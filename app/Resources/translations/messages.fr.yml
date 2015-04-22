@@ -1,0 +1,674 @@
+
+create: Créer
+delete: Effacer
+update: 'Mettre à jour'
+
+address:
+    city: Ville
+    country: Pays
+    name: Titre
+    postcode: 'Code postal'
+    street: Rue
+    streetComplement: 'Rue complement'
+
+admin:
+    add: Ajouter
+    address_edit_title: 'Modifier l''adresse'
+    address_list_title: 'Liste des adresses'
+    address_new_title: 'Nouvelle adresse'
+    address_show_title: Adresse
+    addresses: Adresses
+    back_to_list: 'Retour à la liste'
+    cities: Villes
+    city_edit_title: 'Modifier la ville'
+    city_list_title: 'Liste des villes'
+    city_new_title: 'Nouvelle ville'
+    city_show_title: Ville
+    countries: Pays
+    country_edit_title: 'Modifier le pays'
+    country_list_title: 'Liste des pays'
+    country_new_title: 'Nouveau pays'
+    country_show_title: Pays
+    delete: Effacer
+    edit: Modifier
+    event_edit_title: 'Modifier l''évenement'
+    event_list_title: 'Liste des évenements'
+    event_new_title: 'Nouvel évenement'
+    event_show_title: Evenement
+    eventdate_edit_title: 'Modifier la date'
+    eventdate_list_title: 'Liste des dates'
+    eventdate_new_title: 'Nouvelle date'
+    eventdate_show_title: Date
+    eventdates: Dates
+    events: Evenements
+    eventtype_edit_title: 'Modifier le type d''évenement'
+    eventtype_list_title: 'Liste de type d''évenement'
+    eventtype_new_title: 'Nouveau type d''évenement'
+    eventtype_show_title: 'Type d''évenement'
+    eventtypes: 'types d''évenements'
+    general_title: Administration
+    link_add_address: 'Ajouter une adresse'
+    link_add_eventdate: 'Ajouter une date'
+    link_delete_address: 'Effacer l''adresse'
+    link_delete_eventdate: 'Effacer une date'
+    musictype_edit_title: 'Modifier la musique'
+    musictype_list_title: 'Liste des musiques'
+    musictype_new_title: 'Nouvelle musique'
+    musictype_show_title: Musique
+    musictypes: Musiques
+    page_edit_title: 'Modifier la page'
+    page_list_title: 'Liste des pages'
+    page_new_title: 'Nouvelle page'
+    page_show_title: Page
+    pages: Pages
+    translations: Traductions
+    update: 'Mise à jour'
+    user_edit_title: 'Modifier l''utilisateur'
+    user_list_title: 'Liste d''utilisateurs'
+    user_new_title: 'Nouvel utilisateur'
+    user_show_title: Utilisateur
+    users: Utilisateurs
+
+contact:
+    contact_alert_success: 'Votre message a été envoyé avec succès. Merci !'
+    contact_alert_warning: 'Votre message n''a pas été envoyé. Merci de réessayer.'
+    contact_page_title: Contact
+    contact_title: Contactez-nous
+    send: Envoyer
+    testimonial_author_job: '- Développeur & Danseur de Salsa'
+    testimonial_author_name: 'Jérôme B'
+    testimonial_p1: 'WeDanceSalsa est une idée venant de danseurs de Salsa. Notre objectif est de pouvoir vous informer sur les événements Salsa, d''aujourd''hui, de demain, près de chez vous, ou N''IMPORTE OU dans le monde.'
+    testimonial_p2: 'Merci de nous contacter en cas de question ou de suggestion. Nous nous efforcerons de vous répondre le plus rapidement possible.'
+    testimonial_p3: 'Merci de l''intérêt que vous portez à ce projet.'
+
+delete: Effacer
+en: English
+
+event:
+    address_title: Adresse
+    addresses_title: Adresses
+
+    alert:
+        invalid_address: 'Merci d''indiquer une adresse correcte'
+        missing_address: 'Merci d''indiquer une adresse'
+        no_next_date: 'Il n''y a pas de date à venir pour cet évenement'
+        no_profile_picture: 'Il n''y a pas d''image pour cet évenement'
+        new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''évenement.'
+        new_info2: 'Vous pourrez ajouter l''adresse, les dates et des images sur la page suivante.'
+        valid: 'Cet événement apparaît maintenant dans les résultats de recherche.'
+
+    date: Date
+    description_title: Description
+    details_title: Détails
+    event_title: Evenement
+    eventdates_title: Dates
+    eventdates_add_form_title: "Ajouter une date unique : "
+    eventdates_edit_form_title: Modifier la date
+    eventdates_repeat_form_title: "Ajouter une date hebdomadaire : "
+    from: Du
+    images_title: Images
+    music: Musique
+    share_this: Partager
+    to: Au
+    type: 'Type d''évenement'
+
+file:
+    add_file: Ajouter
+    cancel: Annuler
+    delete_file: Effacer
+    drag_drop_message: 'ou glissez-déposez vos fichiers ici'
+    save: Enregistrer les images
+    start_upload: Uploader
+    uploading: Chargement
+
+footer:
+    contact: 'Contactez-nous'
+    policy: 'Mentions Légales'
+
+form:
+    admin_adminbundle_address:
+        children:
+            city:
+                label: Ville
+
+            country:
+                label: Pays
+
+            name:
+                label: Nom
+
+            postcode:
+                label: 'Code postal'
+
+            street:
+                label: Rue
+
+            streetComplement:
+                label: ''
+
+    admin_adminbundle_city:
+        children:
+            latitude:
+                label: Latitude
+
+            longitude:
+                label: Longitude
+
+            searchcity:
+                label: Nom
+
+    admin_adminbundle_country:
+        children:
+            name:
+                label: Pays
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    admin_adminbundle_event:
+        children:
+            addresses:
+                label: Adresses
+
+                prototype:
+                    children:
+                        city:
+                            label: Ville
+
+                        country:
+                            label: Pays
+
+                        name:
+                            label: Titre
+
+                        postcode:
+                            label: 'Code postal'
+
+                        street:
+                            label: Rue
+
+                        streetComplement:
+                            label: 'Rue complement'
+
+            eventDates:
+                label: Dates
+
+                prototype:
+                    children:
+                        startdate:
+                            label: Début
+
+                        starttime:
+                            label: Heure
+
+                        stopdate:
+                            label: Fin
+
+                        stoptime:
+                            label: Heure
+
+            eventType:
+                label: Type
+
+            musicTypes:
+                label: Musique
+
+            name:
+                label: Evenement
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            description:
+                                label: Description
+
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+            user:
+                label: User
+
+    admin_adminbundle_eventdate:
+        children:
+            startdate:
+                label: Début
+
+            starttime:
+                label: Heure
+
+            stopdate:
+                label: Fin
+
+            stoptime:
+                label: Heure
+
+    admin_adminbundle_eventtype:
+        children:
+            name:
+                label: Type
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    admin_adminbundle_musictype:
+        children:
+            name:
+                label: Musique
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    admin_adminbundle_page:
+        children:
+            name:
+                label: Nom
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            content:
+                                label: Contenu
+
+                            description:
+                                label: Description
+
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    contact_contactbundle_enquiry:
+        children:
+            email:
+                label: Email
+
+            message:
+                label: Message
+
+            name:
+                label: Nom
+
+            subject:
+                label: Sujet
+
+    form:
+        children:
+            stopdate:
+                label: 'jusqu''au'
+
+            time:
+                label: 'à'
+
+            weekday:
+                label: ''
+
+    front_front_bundle_eventtypefrontfilter:
+        children:
+            name:
+                label: Type
+
+    front_front_bundle_musictypefrontfilter:
+        children:
+            name:
+                label: Musique
+
+    front_frontbundle_address:
+        children:
+            city:
+                label: Ville
+
+            country:
+                label: Pays
+
+            name:
+                label: Nom
+
+            postcode:
+                label: 'Code postal'
+
+            street:
+                label: Rue
+
+            streetComplement:
+                label: 'Rue complement'
+
+    front_frontbundle_city:
+        children:
+            latitude:
+                label: Latitude
+
+            longitude:
+                label: Longitude
+
+            searchcity:
+                label: Nom
+
+    front_frontbundle_country:
+        children:
+            name:
+                label: Pays
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    front_frontbundle_event:
+        children:
+            addresses:
+                label: Adresses
+
+                prototype:
+                    children:
+                        city:
+                            label: Ville
+
+                        country:
+                            label: Pays
+
+                        name:
+                            label: Titre
+
+                        postcode:
+                            label: 'Code postal'
+
+                        street:
+                            label: Rue
+
+                        streetComplement:
+                            label: 'Rue complement'
+
+            eventDates:
+                label: Dates
+
+                prototype:
+                    children:
+                        startdate:
+                            label: Début
+
+                        starttime:
+                            label: Heure
+
+                        stopdate:
+                            label: Fin
+
+                        stoptime:
+                            label: Heure
+
+            eventType:
+                label: Type
+
+            musicTypes:
+                label: Musique
+
+            name:
+                label: Evenement
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            description:
+                                label: Description
+
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+            user:
+                label: User
+
+    front_frontbundle_eventdate:
+        children:
+            startdate:
+                label: Début
+
+            starttime:
+                label: Heure
+
+            stopdate:
+                label: Fin
+
+            stoptime:
+                label: Heure
+
+    front_frontbundle_eventtype:
+        children:
+            name:
+                label: Type
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    front_frontbundle_musictype:
+        children:
+            name:
+                label: Musique
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    front_frontbundle_page:
+        children:
+            name:
+                label: Nom
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            content:
+                                label: Contenu
+
+                            description:
+                                label: Description
+
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+    front_frontbundle_user:
+        children:
+            addresses:
+                label: Adresses
+
+                prototype:
+                    children:
+                        city:
+                            label: Ville
+
+                        country:
+                            label: Pays
+
+                        name:
+                            label: Titre
+
+                        postcode:
+                            label: 'Code postal'
+
+                        street:
+                            label: Rue
+
+                        streetComplement:
+                            label: 'Rue complement'
+
+            facebook_link:
+                label: 'Lien Facebook'
+
+            flickr_link:
+                label: 'Lien Flickr'
+
+            google_link:
+                label: 'Lien Google'
+
+            instagram_link:
+                label: 'Lien Instagram'
+
+            linkedin_link:
+                label: 'Lien LinkedIn'
+
+            musicTypes:
+                label: Musique
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            baseline:
+                                label: Slogan
+
+                            description:
+                                label: Description
+
+                            description_short:
+                                label: 'Description courte'
+
+                label: Traductions
+
+            tumblr_link:
+                label: 'Lien Tumblr'
+
+            twitter_link:
+                label: 'Lien Twitter'
+
+            userTypes:
+                label: Type
+
+            username:
+                label: Identifiant
+
+            vimeo_link:
+                label: 'Lien Vimeo'
+
+    user_userbundle_user:
+        children:
+            facebook_access_token:
+                label: 'facebook token'
+
+            facebook_id:
+                label: 'facebook id'
+
+            google_access_token:
+                label: 'google token'
+
+            google_id:
+                label: 'google id'
+
+fr: Français
+
+front:
+    add: Ajouter
+    add_date: Ajouter la date
+    add_weekly_date: Ajouter les dates
+    addresses_title: Adresses
+
+    alert:
+        warning: 'Attention ! '
+        info: 'Info : '
+        success: 'Félicitations ! '
+
+    back: Retour
+    back_to_list: 'Retour à la liste'
+    cancel: Annuler
+    edit: Modifier
+    event_new_title: 'Nouvel évenement'
+    eventdates_title: Dates
+    link_add_address: 'Ajouter une adresse'
+    link_add_eventdate: 'Ajouter une date'
+    link_delete_address: 'Effacer l''adresse'
+    link_delete_eventdate: 'Effacer la date'
+    today: 'Aujourd''hui'
+    user_edit_title: 'Modifier l''utilisateur'
+    user_show_title: 'Afficher l''utilisateur'
+    map_title: 'Carte'
+    search_event_button: Recherchez les événements
+    baseline: La Salsa près de chez soi, en vacances, et n'importe où dans le monde.
+
+home:
+    about_us_benefit_1: 'Une carte montrant les soirées/cours/festival... du jour.'
+    about_us_benefit_2: 'Une façon rapide de trouver la salsa dans n''importe quelle ville où vous n''êtes jamais allé.'
+    about_us_benefit_3: 'Un site réservé à la Salsa/Bachata/Kizomba/Tango.'
+    about_us_benefit_4: 'Un site multilingue.'
+    about_us_benefit_5: 'Plusieurs danses.'
+    about_us_benefit_6: 'C''est gratuit.'
+    about_us_benefits: 'Les avantages sont :'
+    about_us_p1: 'Notre objectif est de pouvoir vous informer sur les événements Salsa, d''aujourd''hui, de demain, près de chez vous, ou <strong>N''IMPORTE OU</strong> dans le monde. Le projet est de combiner les compétences des danseurs pour construire une site de type réseau social, pratique, rapide, utilisant les dernières technologies comme la géolocalisation.'
+    about_us_title: 'WeDanceSalsa en 2 mots'
+    about_us_title_desc: '<strong>WeDanceSalsa</strong> est une idée venant de danseurs de Salsa'
+
+    alert:
+        success_contact_button: 'Contactez-nous'
+        success_contribute: 'Si ce projet vous intéresse, vous pouvez contribuer en : partageant sur Facebook, en parlant à vos amis, traduisant le site, faisant des suggestions de nouvelles fonctionnalités, aidant pour le design ou la communication/SEO, etc. '
+        success_events: 'Cette page indique les évenements Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>. Ajoutez votre évenement.'
+        warning: 'Attention !'
+        warning_no_events: 'Il n''y a pas encore d''évenement Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>.  Ajoutez votre évenement.'
+
+link:
+    home: Accueil
+
+navbar:
+    help: Aide
+    login: Connexion
+    logout: Déconnexion
+    publish_button: 'Ajouter un évenement'
+    register: Inscription
+
+user:
+    addresses_title: 'Mon Adresse'
+    description_title: 'Ma Description'
+    events_title: 'Mes Prochains Evenements'
+    images_title: 'Mes Images'
+    profile_title: 'Mon Profil'
+    user_title: 'Mon Profil'
+
+user_bundle:
+    login: Connexion
+    question_already_registered: 'Vous n''avez pas de compte ?'
+    question_not_registered: 'Vous avez déjà un compte ?'
+    register: Inscription
+    return_home_page: 'Retourner à la page d''accueil'
+
+    signin:
+        or: ou
+        signin_facebook: 'Se connecter avec Facebook'
+        signin_google: 'Se connecter avec Google'

@@ -1,0 +1,4 @@
+services:
+    image_bundle.get_editiId_and_existingFiles:
+        arguments: [@service_container]
+        class: File\FileBundle\Services\ServiceForController

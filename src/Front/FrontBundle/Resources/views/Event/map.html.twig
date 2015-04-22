@@ -1,0 +1,28 @@
+<div id="map-canvas-event"></div>
+
+
+{% set latitude = app.session.get('latitude') %}
+{% set longitude = app.session.get('longitude') %}
+
+<script type="text/javascript">
+
+            function initializeGoogleMap() {
+            var city = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
+            var mapOptions = {
+                zoom: 18,
+                center: city
+            }
+            var map = new google.maps.Map(document.getElementById('map-canvas-event'), mapOptions);
+            
+                var pointer1 = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
+                var marker1 = new google.maps.Marker({
+                    position: pointer1,
+                    map: map,
+                    title: '{{ event.getTitle|capitalize }}'
+                });
+            
+            }
+
+           google.maps.event.addDomListener(window, 'load', initializeGoogleMap);
+
+</script>

@@ -1,0 +1,53 @@
+<div id="map-canvas-home"></div>
+
+
+{% set latitude = app.session.get('latitude') %}
+{% set longitude = app.session.get('longitude') %}
+
+<script type="text/javascript">
+
+            function initializeGoogleMap() {
+            var city = new google.maps.LatLng({{ latitude }}, {{ longitude }});
+            var mapOptions = {
+                zoom: 12,
+                center: city
+            }
+            var map = new google.maps.Map(document.getElementById('map-canvas-home'), mapOptions);
+            
+            var image = '{{ asset('images/google_marker.gif')}}';
+            
+            {% set count = 0 %}
+            {% for event in events %}
+                {% if event.isValid %}
+                    {% set count = count + 1  %}    
+
+                    var pointer{{ loop.index }} = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
+                    var marker{{ loop.index }} = new google.maps.Marker({
+                        position: pointer{{ loop.index }},
+                        map: map,
+                        title: '{{ event.getTitle|capitalize }}'
+                    }); 
+            
+                {% endif %}
+            {% endfor %}
+                
+            {% set max = (max_event_list - count) %}
+            {% for event in nextEvents %}
+                {% if event.isValid and loop.index <= max %}
+            
+                var pointerN{{ loop.index }} = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
+                var markerN{{ loop.index }} = new google.maps.Marker({
+                    position: pointerN{{ loop.index }},
+                    map: map,
+                    icon: image,
+                    title: '{{ event.getTitle|capitalize }}'
+                });
+            
+                {% endif %}
+            {% endfor %}    
+
+            }
+
+           google.maps.event.addDomListener(window, 'load', initializeGoogleMap);
+
+</script>
