@@ -22,44 +22,305 @@
 
 {% block content %}
 
-    <div class="page-container">
-        <div class="row">
-
-            <div class="col-md-4 home-map">
-                {% include 'FrontFrontBundle:Home:map.html.twig' %}
-            </div>
-
-
-            <div class="col-md-8 home-list">
-
-                <div class="row row-table panel panel-default filter-section" id="search_form">
-
-                    {% include 'FrontFrontBundle:Home:search.html.twig' %}   
-
+    <div class="job-img margin-bottom-30">
+        <div class="job-banner">
+            <h2>Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.</h2>
+        </div>   
+        <div class="job-img-inputs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 md-margin-bottom-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                            <input type="text" placeholder="what job you are looking for" class="form-control">
+                        </div>
+                    </div>    
+                    <div class="col-sm-4 md-margin-bottom-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                            <input type="text" placeholder="where would you like to work" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn-u btn-block btn-u-dark"> Search Job</button>
+                    </div>
                 </div>
+            </div>    
+        </div>    
+    </div>    
 
-                {% include 'FrontFrontBundle:Home:filters.html.twig' with { 'musicTypeFrontFilterForm' : musicTypeFrontFilterForm } %}
+    
 
-
-                <div class="row row-table panel panel-default" id="event-list">
-                    <div class="panel-body">
-                        {% include 'FrontFrontBundle:Home:list.html.twig' %}
-                    </div>        
-                </div>  
-
-                {% include 'FrontFrontBundle:Home:alerts.html.twig' %}
-
-
-
-            </div>
-
+    <div class="container content-sm">
+        <div class="text-center margin-bottom-50">
+            <h2 class="title-v2 title-center">Découvrez la salsa dans ces villes</h2>
+            <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
         </div>
 
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnails-v1">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="assets/img/masonry/blog2.jpg" alt="">                            
+                    </div>
+                    <div class="caption">
+                        <h3><a href="#">Lille</a></h3>
+                        <p>Donec id elit non mi porta gravida at eget metsit us. Fusce dapibus, justo sit amet risus etiam portapsum generators on the Internet tend to repeat predefined.</p>
+                        <p><a class="read-more" href="#">See More</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnails-v1">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="assets/img/masonry/blog3.jpg" alt="">                            
+                    </div>
+                    <div class="caption">
+                        <h3><a href="#">Paris</a></h3>
+                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text, all the  ipsum generators.</p>
+                        <p><a class="read-more" href="#">See More</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnails-v1">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="assets/img/masonry/blog4.jpg" alt="">                            
+                    </div>
+                    <div class="caption">
+                        <h3><a href="#">Strasbourg</a></h3>
+                        <p>Donec id elit non mi porta gravida at eget metsit us. Fusce dapibus, justo sit amet risus etiam portapsum generators on the Internet tend to repeat predefined.</p>
+                        <p><a class="read-more" href="#">See More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        {% include 'FrontFrontBundle:Home:more.html.twig' %}
+    <div class="container content-sm">
+        <div class="text-center margin-bottom-50">
+            <h2 class="title-v2 title-center">Les festivals salsas à travers le monde</h2>
+            <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnails-v1">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="assets/img/masonry/blog2.jpg" alt="">                            
+                    </div>
+                    <div class="caption">
+                        <h3><a href="#">Salsa Swim</a></h3>
+                        <p>Donec id elit non mi porta gravida at eget metsit us. Fusce dapibus, justo sit amet risus etiam portapsum generators on the Internet tend to repeat predefined.</p>
+                        <p><a class="read-more" href="#">See More</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnails-v1">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="assets/img/masonry/blog3.jpg" alt="">                            
+                    </div>
+                    <div class="caption">
+                        <h3><a href="#">Bachaturo</a></h3>
+                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text, all the  ipsum generators.</p>
+                        <p><a class="read-more" href="#">See More</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnails-v1">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="assets/img/masonry/blog4.jpg" alt="">                            
+                    </div>
+                    <div class="caption">
+                        <h3><a href="#">Tumbao</a></h3>
+                        <p>Donec id elit non mi porta gravida at eget metsit us. Fusce dapibus, justo sit amet risus etiam portapsum generators on the Internet tend to repeat predefined.</p>
+                        <p><a class="read-more" href="#">See More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
+    <div class="container team-v1 content-sm">
+        <div class="margin-bottom-40 text-center">
+            <h2 class="title-v2 title-center">Les acteurs de la salsa</h2>
+            <p>We <strong>meet</strong> and get to know you. You tell us and we listen. <br> 
+                We build your website to realise your vision and we <strong>deliver</strong> the ready product.</p>
+        </div>
+
+        <!-- Easy Blocks v1 -->                
+        <div class="row high-rated margin-bottom-20">
+            <!-- Easy Block -->                
+            <div class="col-md-3 col-sm-6 md-margin-bottom-40">
+                <div class="easy-block-v1">
+                    <div class="easy-block-v1-badge rgba-default">Marketing</div>                
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="rounded-x active" data-target="#carousel-example-generic" data-slide-to="0"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img alt="" src="assets/img/main/img3.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img1.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img7.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-h">
+                        <h3>Savoy Hotel London</h3>
+                        <div class="star-vote pull-right">
+                            <ul class="list-inline">
+                                <li><i class="color-green fa fa-star"></i></li>
+                                <li><i class="color-green fa fa-star"></i></li>
+                                <li><i class="color-green fa fa-star"></i></li>
+                                <li><i class="color-green fa fa-star-half-o"></i></li>
+                                <li><i class="color-green fa fa-star-o"></i></li>
+                            </ul>
+                        </div>
+                    </div>     
+                    <ul class="list-unstyled">
+                        <li><span class="color-green">Position:</span> Manager / Executive</li>
+                        <li><span class="color-green">Required:</span> 5 - years of experience</li>
+                    </ul>    
+                    <a class="btn-u btn-u-sm" href="#">View More</a>
+                </div>  
+            </div>
+            <!-- End Easy Block -->
+
+            <!-- Easy Block -->
+            <div class="col-md-3 col-sm-6 md-margin-bottom-40">
+                <div class="easy-block-v1">
+                    <div class="easy-block-v1-badge rgba-red">Marketing</div>
+                    <div id="carousel-example-generic-2" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="rounded-x active" data-target="#carousel-example-generic-2" data-slide-to="0"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic-2" data-slide-to="1"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic-2" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img alt="" src="assets/img/main/img12.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img10.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img21.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-h">
+                        <h3>Thomas Cook Holidays</h3>
+                        <ul class="list-inline star-vote">
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star-half-o"></i></li>
+                        </ul>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><span class="color-green">Position:</span> Marketing / Advertising</li>
+                        <li><span class="color-green">Required:</span> 7 - years of experience</li>
+                    </ul>    
+                    <a class="btn-u btn-u-sm" href="#">View More</a>
+                </div>
+            </div>
+            <!-- End Easy Block -->
+
+            <!-- Easy Block -->
+            <div class="col-md-3 col-sm-6 md-margin-bottom-40">
+                <div class="easy-block-v1">
+                    <div class="easy-block-v1-badge rgba-blue">Education</div>
+                    <div id="carousel-example-generic-3" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="rounded-x active" data-target="#carousel-example-generic-3" data-slide-to="0"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic-3" data-slide-to="1"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic-3" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img alt="" src="assets/img/main/img4.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img14.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img8.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-h">
+                        <h3>University of Aberdeen</h3>
+                        <ul class="list-inline star-vote">
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star-o"></i></li>
+                            <li><i class="color-green fa fa-star-o"></i></li>
+                        </ul>
+                    </div>     
+                    <ul class="list-unstyled">
+                        <li><span class="color-green">Position:</span> Education / Training</li>
+                        <li><span class="color-green">Required:</span> 10 - years of experience</li>
+                    </ul>    
+                    <a class="btn-u btn-u-sm" href="#">View More</a>
+                </div>
+            </div>
+            <!-- End Easy Block -->
+
+            <!-- Easy Block -->
+            <div class="col-md-3 col-sm-6">
+                <div class="easy-block-v1">
+                    <div class="easy-block-v1-badge rgba-purple">IT Management</div>
+                    <div id="carousel-example-generic-4" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="rounded-x active" data-target="#carousel-example-generic-4" data-slide-to="0"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic-4" data-slide-to="1"></li>
+                            <li class="rounded-x" data-target="#carousel-example-generic-4" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img alt="" src="assets/img/main/img20.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img23.jpg">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="assets/img/main/img25.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-h">
+                        <h3>IT Project Management</h3>
+                        <ul class="list-inline star-vote">
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star"></i></li>
+                            <li><i class="color-green fa fa-star-o"></i></li>
+                        </ul>
+                    </div>     
+                    <ul class="list-unstyled">
+                        <li><span class="color-green">Position:</span> Project / Program Management</li>
+                        <li><span class="color-green">Required:</span> 2 - years of experience</li>
+                    </ul>    
+                    <a class="btn-u btn-u-sm" href="#">View More</a>
+                </div>    
+            </div>
+            <!-- End Easy Block -->
+        </div>
+        <!-- End Easy Blocks v1 -->                
+
+    </div>
 
 {% endblock %}

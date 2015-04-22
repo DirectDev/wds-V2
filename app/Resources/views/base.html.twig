@@ -1,77 +1,98 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]> <html lang="{{ app.request.locale }}" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="{{ app.request.locale }}" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="{{ app.request.locale }}"> <!--<![endif]-->  
     <head>
-        <meta charset="UTF-8" />
         {% block head %}
             <title>{% block title %}{% endblock %}</title>
         {% endblock %}
 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico">
+
         {% block stylesheets %}
 
-            <link rel="stylesheet" href="{{ asset("css/front/bootstrap.css") }}" type="text/css" media="screen">
-            <link rel="stylesheet" href="{{ asset('css/front/bootstrap-validator/bootstrapValidator.css') }}"/>
 
-            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/settings.css") }}" media="screen" />
-            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/style.css") }}" media="screen">
-            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/responsive.css") }}" media="screen">
-            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/colors/orange.css") }}" title="pink" media="screen" />
-            <link rel="stylesheet" type="text/css" href="{{ asset("css/front/fontello.css") }}" media="screen"> 
+            <!-- Web Fonts -->
+            <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
-            <link rel="stylesheet" href="{{ asset('css/front/main.css') }}" />
-            <link rel="stylesheet" href="{{ asset('datetimepicker/css/datetimepicker.css') }}" />
-            <link rel="stylesheet" href="{{ asset('datepicker/css/datepicker.css') }}" /> 
+            <!-- CSS Global Compulsory -->
+            <link rel="stylesheet" href="{{ asset("front/plugins/bootstrap/css/bootstrap.min.css") }}">
+            <link rel="stylesheet" href="{{ asset('front/plugins/bootstrap-validator/bootstrapValidator.css') }}"/>
+            <link rel="stylesheet" href="{{ asset("front/css/style.css") }}">
+            <link rel="stylesheet" href="{{ asset("front/css/main.css") }}">
+
+            <!-- CSS Header and Footer -->
+            <link rel="stylesheet" href="{{ asset("front/css/headers/header-default.css") }}">
+            <link rel="stylesheet" href="{{ asset("front/css/footers/footer-v3.css") }}">
+
+            <!-- CSS Implementing Plugins -->
+            <link rel="stylesheet" href="{{ asset("front/plugins/animate.css") }}">
+            <link rel="stylesheet" href="{{ asset("front/plugins/line-icons/line-icons.css") }}">
+            <link rel="stylesheet" href="{{ asset("front/plugins/font-awesome/css/font-awesome.min.css") }}">
+            <link rel="stylesheet" href="{{ asset("front/plugins/revolution-slider/rs-plugin/css/settings.css") }}" type="text/css" media="screen">
+            <!--[if lt IE 9]><link rel="stylesheet" href="{{ asset("front/plugins/revolution-slider/rs-plugin/css/settings-ie8.css") }}" type="text/css" media="screen"><![endif]-->
+
+            <!-- CSS Customization -->
+            <link rel="stylesheet" href="{{ asset("front/css/custom.css") }}">
+
+
+            <!-- CSS Page Style -->    
+            <link rel="stylesheet" href="{{ asset("front/css/pages/page_job.css") }}">
 
         {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
         {% block topJavascripts %}
 
-            <script src="{{ asset('js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('js/jquery-ui-1.11.1/jquery-ui.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('js/front/mainTop.js') }}" type="text/javascript"></script>
+            <script type="text/javascript" src="{{ asset("front/plugins/jquery/jquery.min.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("front/plugins/jquery/jquery-migrate.min.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("front/plugins/bootstrap/js/bootstrap.min.js") }}"></script> 
 
-            <script type="text/javascript" src="{{ asset("js/front/jquery.migrate.js") }}"></script>
-            <script type="text/javascript" src="{{ asset("js/front/modernizrr.js") }}"></script>
-            <script type="text/javascript" src="{{ asset("js/front/bootstrap.js") }}"></script>
-            <script type="text/javascript" src="{{ asset("js/front/owl.carousel.min.js") }}"></script>
-            <!-- ///// -->  
-             {# <script type="text/javascript" src="{{ asset("js/front/jquery.fitvids.js") }}"></script> <!-- responsive videos-->  
-              
-              <script type="text/javascript" src="{{ asset("js/front/nivo-lightbox.min.js") }}"></script>
-              <script type="text/javascript" src="{{ asset("js/front/jquery.isotope.min.js") }}"></script> <!-- filtre/tri -->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.appear.js") }}"></script> 
-              <script type="text/javascript" src="{{ asset("js/front/count-to.js") }}"></script>  <!--  compteur-->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.textillate.js") }}"></script> <!-- animation de texte-->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.lettering.js") }}"></script>  <!-- animation de texte-->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.easypiechart.min.js") }}"></script> <!-- charts-->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.nicescroll.min.js") }}"></script>  <!-- barre de scroll personalisee-->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.parallax.js") }}"></script>     <!--   background parallax-->  
-              <script type="text/javascript" src="{{ asset("js/front/jquery.themepunch.plugins.min.js") }}"></script> 
-              <script type="text/javascript" src="{{ asset("js/front/jquery.themepunch.revolution.min.js") }}"></script>
-              #}
-              <!-- /// -->
-            <script type="text/javascript" src="{{ asset("js/front/script.js") }}"></script>
+            <script src="{{ asset('front/js/mainTop.js') }}" type="text/javascript"></script>
 
-            <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('front/plugins/datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
             {% if app.request.locale != 'en' %}
-                <script src="{{ asset('datepicker/js/locales/bootstrap-datepicker.' ~ app.request.locale ~ '.js') }}" type="text/javascript"></script> 
+                <script src="{{ asset('front/plugins/datepicker/js/locales/bootstrap-datepicker.' ~ app.request.locale ~ '.js') }}" type="text/javascript"></script> 
             {% endif  %}
 
         {% endblock %}
 
     </head>
-    <body>
+
+    <body>    
+
+        <div class="wrapper">    
 
 
+        {% block body %}{% endblock %}
 
-    {% block body %}{% endblock %}
+
+    </div>
+
     {% block bottomJavascripts %}
 
-        <script src="{{ asset('js/front/mainBottom.js') }}" type="text/javascript"></script>
-        <script  src="{{ asset('js/front/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
-        <script  src="{{ asset('js/front/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
+        <!-- JS Implementing Plugins -->
+        <script type="text/javascript" src="{{ asset("front/plugins/back-to-top.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("front/plugins/smoothScroll.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("front/plugins/jquery.parallax.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("front/plugins/counter/waypoints.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("front/plugins/counter/jquery.counterup.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("front/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("front/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js") }}"></script>
+        <!-- JS Customization -->
+        <script type="text/javascript" src="{{ asset("front/js/custom.js") }}"></script>
+        <!-- JS Page Level -->           
+        <script type="text/javascript" src="{{ asset("front/js/app.js") }}"></script>
+        <!--[if lt IE 9]>
+            <script src="{{ asset("front/plugins/respond.js") }}"></script>
+            <script src="{{ asset("front/plugins/html5shiv.js") }}"></script>
+            <script src="{{ asset("front/plugins/placeholder-IE-fixes.js") }}"></script>
+        <![endif]-->
+
+        <script src="{{ asset('front/js/mainBottom.js') }}" type="text/javascript"></script>
+        <script  src="{{ asset('front/plugins/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
+        <script  src="{{ asset('front/plugins/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 reloadBootstrapValidator();
@@ -91,7 +112,7 @@
                 $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator('revalidateField', $(this));
             });
         </script>
-        <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+        <script src="{{ asset('front/plugins/ckeditor/ckeditor.js') }}"></script>
         <script>
             $(document).ready(function () {
                 CKEDITOR.replace('.ckeditor');

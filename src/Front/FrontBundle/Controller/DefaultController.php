@@ -30,6 +30,8 @@ class DefaultController extends Controller {
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('home');
         if (!$page)
             throw new \Exception('Page not found!');
+        
+        return $this->render('FrontFrontBundle:Home:index.html.twig', array(    'page' => $page,      ));
 
 //        try {
 //        // bug reponse de free_geo_ip trop longue

@@ -6,8 +6,6 @@
     
 
 {% block body %}
-
-    <div id="container">
         
         {% include 'FrontFrontBundle::navbar.html.twig' %}
     
@@ -15,34 +13,4 @@
         
         {% include 'FrontFrontBundle::footer.html.twig' %}
         
-    </div>    
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('js/jquery-ui-1.11.1/jquery-ui.min.js') }}" type="text/javascript"></script>
-    
-    <script src="{{ asset('js/admin/bootstrap.js') }}" type="text/javascript"></script> 
-    
-    <script  src="{{ asset('js/admin/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
-    <script  src="{{ asset('js/admin/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('form').bootstrapValidator({
-                message: 'This value is not valid',
-                feedbackIcons: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {}
-            });
-        });
-    </script>
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script>
-        $( document ).ready(function() {
-            CKEDITOR.replace( '.ckeditor' );
-        });
-    </script>
 {% endblock %}

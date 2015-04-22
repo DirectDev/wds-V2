@@ -13,12 +13,12 @@
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
     <div class="form-group" >        
-        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control input-lg" placeHolder="{{ 'security.login.username'|trans }}"/>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control " placeHolder="{{ 'security.login.username'|trans }}"/>
     </div>
     
 
     <div class="form-group" >
-        <input type="password" id="password" name="_password" required="required" class="form-control input-lg" placeholder="{{ 'security.login.password'|trans }}" />
+        <input type="password" id="password" name="_password" required="required" class="form-control " placeholder="{{ 'security.login.password'|trans }}" />
     </div>
 
     
@@ -29,7 +29,7 @@
     </div>
  
     <div class="clearfix">
-        <button type="submit" id="_submit" name="_submit"  class="btn btn-primary btn-lg pull-right">{{ 'security.login.submit'|trans }}</button>
+        <button type="submit" id="_submit" name="_submit"  class="btn btn-primary  pull-right">{{ 'security.login.submit'|trans }}</button>
     </div>
 
 </form>
