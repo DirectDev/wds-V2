@@ -20,196 +20,334 @@
     </script>
 {% endblock %}    
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/shortcode_timeline2.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css") }}">    
+    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css") }}">
+{% endblock %}    
+
+
+
 {% block content %}
 
-    <div class="page-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>{{ user.username|capitalize }}</h2>
-                    <p>{{ user.getBaseline|capitalize }}</p>
-                </div>
-                <div class="col-md-6">
-                    {% if app.user is not null and app.user == user and is_granted('ROLE_USER') %}
-                        <div class='pull-right'>
-                            <a href="{{ path('front_user_edit', {id: user.id} ) }}" class="btn btn-success btn-lg pull-right">
-                                <span> {% trans %}front.edit{% endtrans %}</span>
-                            </a>
+    <!--=== Content Part ===-->
+    <div class="container content profile">
+
+
+        <!--=== Breadcrumbs ===-->
+        <div class="breadcrumbs">
+            <div class="container">
+                <h1 class="pull-left">{{ user.username|capitalize }}</h1>
+                <ul class="pull-right breadcrumb">
+                    <li><a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a></li>
+                    <li><a href="">Portfolio</a></li>
+                    <li class="active">{{ user.username|capitalize }}</li>
+                </ul>
+            </div><!--/container-->
+        </div><!--/breadcrumbs-->
+        <!--=== End Breadcrumbs ===-->
+
+        <!-- Profile Content -->
+        <div class="col-md-12">
+            <div class="profile-body">
+                <div class="profile-bio">
+                    <div class="row">
+                        <div class="col-md-5 ">                               
+                            {% if user.isFacebookUser %}
+                                <img class="img-responsive md-margin-bottom-10" width="300px" src='{{ user.profilePictureUrl }}' />
+                            {% elseif user.profilePictureUrl %}
+                                <img class="img-responsive md-margin-bottom-10" width="300px" src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' />
+                            {% endif %}
                         </div>
-                    {% endif %}
-                    <div class='pull-right  home_button'>
-                        <a href="{{ path('home')}}" class="btn btn-default btn-lg pull-right">
-                            <span> {% trans %}link.home{% endtrans %}</span>
-                        </a>
-                    </div>  
-                </div>
-            </div>
-        </div>
-    </div>
+                        <div class="col-md-7">
 
-    <div id="content">
-        <div class="container">
+                            <div class="overflow-h">
+                                <div class="pull-left">
+                                    <h2>
+                                        {{ user.username|capitalize }}
+                                        {% if app.user is not null and app.user == user and is_granted('ROLE_USER') %}
+                                            <a class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs " href="{{ path('front_user_edit', {id: user.id} ) }}">{% trans %}front.edit{% endtrans %}</a>
+                                        {% endif %}
+                                    </h2>
+                                    <span>Dancer</span>
+                                </div> 
+                                <ul class="social-icons pull-right">
+                                    <li><a class="rounded-x social_facebook {% if not user.facebookLink %}disabled{% endif %}" data-original-title="Facebook" href="{{ user.facebookLink }}" target="_blank"></a></li>
+                                    <li><a class="rounded-x social_twitter {% if not user.twitterLink %}disabled{% endif %}" data-original-title="Twitter" href="test{{ user.twitterLink }}" target="_blank"></a></li>
+                                    <li><a class="rounded-x social_googleplus {% if not user.googleLink %}disabled{% endif %}" data-original-title="Google Plus" href="{{ user.googleLink }}" target="_blank"></a></li>
+                                    <li><a class="rounded-x social_linkedin {% if not user.instagramLink %}disabled{% endif %}" data-original-title="Linkedin" href="{{ user.instagramLink }}" target="_blank"></a></li>
+                                </ul>
 
-            <div class="page-content">
-                <div class="row">
-                    <div class="col-md-8">
 
-                        <h4 class="classic-title">
-                            <span>{% trans %}user.profile_title{% endtrans %}</span>
-                        </h4>
-
-                        <p>{{ user.getUserTypesText }} --- {{ user.getMusicTypesText }}</p>
+                            </div>
+                        </div>  
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
+                        <p> consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                        <p>{{ user.getBaseline|capitalize }}</p>
                         <p>{{ user.getDescriptionShort|raw }}</p>
 
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="team-member">
-                            <div class="member-photo">
-                                {% if user.isFacebookUser %}
-                                    <img src='{{ user.profilePictureUrl }}' />
-                                {% elseif user.profilePictureUrl %}
-                                    <img src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' />
-                                {% endif %}
-                                <div class="member-name">
-                                    {{ user.username|capitalize }}
-                                    {% if user.getUserType %}    
-                                        <span>{{ user.getUserType }}</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <!-- <div class="member-info">
-                                 <p>{{ user.getMusicTypesText }}</br>
-                            {{ user.getUserTypesText }}
-                        </p>
-                    </div>-->
-                            <div class="member-socail">
-                                <a class="facebook {% if not user.facebookLink %}disabled{% endif %}" href="{{ user.facebookLink }}" target="_blank">
-                                    <i class="icon-facebook-2"></i>
-                                </a>
-                                <a class="twitter {% if not user.twitterLink %}disabled{% endif %}" href="{{ user.twitterLink }}"  target="_blank">
-                                    <i class="icon-twitter-2"></i>
-                                </a>
-                                <a class="gplus {% if not user.googleLink %}disabled{% endif %}" href="{{ user.googleLink }}"  target="_blank">
-                                    <i class="icon-gplus"></i>
-                                </a>
-                                <a class="instagramm {% if not user.instagramLink %}disabled{% endif %}" href="{{ user.instagramLink }}"  target="_blank">
-                                    <i class="icon-instagram"></i>
-                                </a>
-                                {% if user.flickrLink %}    
-                                    <a class="flickr" href="{{ user.flickrLink }}"  target="_blank">
-                                        <i class="icon-flickr-1"></i>
-                                    </a>
-                                {% endif %}  
-                                {% if user.tumblrLink %}     
-                                    <a class="tumblr" href="{{ user.tumblrLink }}"  target="_blank">
-                                        <i class="icon-tumblr-1"></i>
-                                    </a>
-                                {% endif %}  
-                                {% if user.vimeoLink %}     
-                                    <a class="vimeo" href="{{ user.vimeoLink }}"  target="_blank">
-                                        <i class="icon-vimeo-1"></i>
-                                    </a>
-                                {% endif %}  
-                                {% if user.linkedinLink %}     
-                                    <a class="linkedin" href="{{ user.linkedinLink }}"  target="_blank">
-                                        <i class="icon-linkedin"></i>
-                                    </a>    
-                                {% endif %}  
-                            </div>
-                        </div>
-                    </div>   
-
-                </div>   
-            </div>   
-
-
-            <div class="recent-projects row">
-                <h4 class="title"><span>{% trans %}user.description_title{% endtrans %}</span></h4>
-                {{ user.getDescription|raw }}
-
-            </div>    
-
-            <div class="recent-projects  row">
-                <h4 class="title"><span>{% trans %}user.images_title{% endtrans %}</span></h4>
-
-            </div>    
-
-            <div id="portfolio" class="portfolio-3 row">
-
-                {% for userFile in user.userFiles %}
-                    {% if userFile.isImage %}
-                        <div class="portfolio-item web drawing col-md-4">
-                            <div class="portfolio-border">
-                                <div class="portfolio-thumb">
-                                    <a class="lightbox" href="{{ asset(userFile.getMediumPathUri) }}" title="{{ user.username|capitalize }}">
-                                        <img alt="{{ user.username|capitalize }}" src="{{ asset(userFile.getMediumPathUri) }}" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif%}
-                {% endfor%}
-
-            </div>            
-
-            <div class="recent-projects  row">
-                <h4 class="title"><span>{% trans %}user.addresses_title{% endtrans %}</span> : </h4>
-                <div id='address' class="clear-fix">
-                    {% if not user.getAddress %}
-                        {% if app.user is not null and app.user == user and is_granted('ROLE_USER') %}
-                            {% render(path('front_address_user_new', { id : user.id } )) %}
+                        {#{% if user.getUserType %}    
+                            <p><i class="icon-custom icon-sm rounded-x icon-bg-orange fa fa-heart-o "></i> {{ user.getUserType }}</p>
+                        {% endif %}#}
+                        {% if user.getMusicType %}    
+                            <p><i class="icon-custom icon-sm rounded-x icon-bg-orange fa fa-heart-o "></i> {{ user.getMusicTypesText }}</p>
                         {% endif %}
-                    {% else %}
-                        {% render(path('front_address_show', { id : user.getAddress().id } )) %}
-                    {% endif %}
-                </div>
-            </div>    
+                        <p><i class="icon-custom icon-sm rounded-x icon-bg-blue fa fa-map-marker "></i> Lille, France</p>
 
-
-            {% if user.events|length %}
-                <div class="recent-projects  row">
-                    <h4 class="title"><span>{% trans %}user.events_title{% endtrans %}</span></h4>
-
+                    </div>
                 </div>    
+            </div><!--/end row-->
 
-                <div id="portfolio" class="portfolio-3  row">
+            <hr>
 
-                    {% for event in user.events %}
-                        {% if event.isValid %}
-                            <div class="portfolio-item web drawing col-md-4">
-                                <div class="portfolio-border">
-                                    <div class="portfolio-thumb">
-                                        <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI  }) }}"
-                                           title='{{ event.getTitle|capitalize }}'>
-                                            <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(event.getDefaultImageUrl) }}" />
-                                        </a>
-                                    </div>
+
+            
+                        <!--Timeline-->
+                        {% if user.events|length %}
+                            <div class="panel panel-profile">
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> {% trans %}user.events_title{% endtrans %}</h2>
+                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
                                 </div>
+                                <div class="panel-body margin-bottom-40">
+                                    <ul class="timeline-v2 timeline-me">
+                                        {% for event in user.events %}
+                                            {% if event.isValid %}
+            
+                                                <li>
+                                                    <time datetime="" class="cbp_tmtime"><span>Soirée</span> <span>10 jan 2015</span></time>
+                                                    <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                                                    <div class="cbp_tmlabel">
+                                                        <h2>{{ event.getTitle|capitalize }}</h2>
+                                                        <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p> 
+                                                    </div>
+                                                </li>
+            
+                                            {% endif%}
+                                        {% endfor%}
+                                    </ul>
+                                </div>    
                             </div>
                         {% endif%}
-                    {% endfor%}
-
-                    {% for event in user.events %}
-                        {% if not event.isValid %}
-                            <div class="portfolio-item web drawing col-md-4">
-                                <div class="portfolio-border">
-                                    <div class="portfolio-thumb">
-                                        <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI  }) }}"
-                                           title='{{ event.getTitle|capitalize }}'>
-                                            <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(event.getDefaultImageUrl) }}" />
-                                        </a>
+            
+                        <!--End Timeline-->
+            
+                        <hr>
+            
+            
+            
+                        <div class="row">
+            
+                            <!--=== Cube-Portfdlio ===-->
+                            <div class="panel panel-profile">
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Mes photos</h2>
+                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                </div>
+                                <div class="cube-portfolio margin-bottom-20">
+            
+            
+            
+                                    <div id="grid-container" class="cbp-l-grid-fullWidth">
+            
+                                        {% for userFile in user.userFiles %}
+                                            {% if userFile.isImage %}
+            
+                                                <div class="cbp-item graphic">
+                                                    <div class="cbp-caption">
+                                                        <div class="cbp-caption-defaultWrap">
+                                                            <img src="{{ asset(userFile.getMediumPathUri) }}" alt="">
+                                                        </div>
+                                                        <div class="cbp-caption-activeWrap">
+                                                            <div class="cbp-l-caption-alignCenter">
+                                                                <div class="cbp-l-caption-body">
+                                                                    <ul class="link-captions">
+                                                                        <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                                                        <li><a href="{{ asset(userFile.getMediumPathUri) }}" class="cbp-lightbox" data-title="{{ user.username|capitalize }}"><i class="rounded-x fa fa-search"></i></a></li>
+                                                                    </ul>
+                                                                    <div class="cbp-l-grid-agency-title">{{ user.username|capitalize }}</div>
+                                                                    <div class="cbp-l-grid-agency-desc">Web Design</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>            
+            
+                                            {% endif%}
+                                        {% endfor%}
+            
+                                        <div class="cbp-item graphic">
+                                            <div class="cbp-caption">
+                                                <div class="cbp-caption-defaultWrap">
+                                                    <img src="{{ asset("assets/img/main/img26.jpg") }}" alt="">
+                                                </div>
+                                                <div class="cbp-caption-activeWrap">
+                                                    <div class="cbp-l-caption-alignCenter">
+                                                        <div class="cbp-l-caption-body">
+                                                            <ul class="link-captions">
+                                                                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                                                <li><a href="{{ asset("assets/img/main/img26.jpg") }}" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                                            </ul>
+                                                            <div class="cbp-l-grid-agency-title">Design Object 01</div>
+                                                            <div class="cbp-l-grid-agency-desc">Web Design</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+            
+                                        <div class="cbp-item web-design logos">
+                                            <div class="cbp-caption">
+                                                <div class="cbp-caption-defaultWrap">
+                                                    <img src="{{ asset("assets/img/main/img2.jpg") }}" alt="">
+                                                </div>
+                                                <div class="cbp-caption-activeWrap">
+                                                    <div class="cbp-l-caption-alignCenter">
+                                                        <div class="cbp-l-caption-body">
+                                                            <ul class="link-captions">
+                                                                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                                                <li><a href="{{ asset("assets/img/main/img2.jpg") }}" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                                            </ul>
+                                                            <div class="cbp-l-grid-agency-title">Design Object 02</div>
+                                                            <div class="cbp-l-grid-agency-desc">Web Design</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cbp-item graphic logos">
+                                            <div class="cbp-caption">
+                                                <div class="cbp-caption-defaultWrap">
+                                                    <img src="{{ asset("assets/img/main/img9.jpg") }}" alt="">
+                                                </div>
+                                                <div class="cbp-caption-activeWrap">
+                                                    <div class="cbp-l-caption-alignCenter">
+                                                        <div class="cbp-l-caption-body">
+                                                            <ul class="link-captions">
+                                                                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                                                                <li><a href="{{ asset("assets/img/main/img9.jpg") }}" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search"></i></a></li>
+                                                            </ul>
+                                                            <div class="cbp-l-grid-agency-title">Design Object 03</div>
+                                                            <div class="cbp-l-grid-agency-desc">Web Design</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                    </div><!--/end Grid Container-->
+                                </div>
+                                <!--=== End Cube-Portfdlio ===-->
+                            </div>
+                        </div>
+            
+            
+            
+                        <hr>
+            
+                        <!-- Video Blocks -->      
+                        <div class="panel panel-profile">
+                            <div class="panel-heading overflow-h">
+                                <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Mes vidéos</h2>
+                                <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                            </div>
+            
+                            <div class="row margin-bottom-60">
+            
+                                <div class="col-md-4">
+                                    <div class="responsive-video margin-bottom-30">
+                                        <iframe src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="responsive-video margin-bottom-30">
+                                        <iframe src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="responsive-video margin-bottom-30">
+                                        <iframe src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- Vimeo Video -->                
+                                <div class="col-md-4">
+                                    <div class="responsive-video md-margin-bottom-40">
+                                        <iframe width="100%" src="//www.youtube.com/embed/4dmt7tQG1-w" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- End Vimeo Video -->
+            
+                                <!-- Youtube Video -->
+                                <div class="col-md-4">
+                                    <div class="responsive-video">
+                                        <iframe width="100%" src="//www.youtube.com/embed/Squv4KI751w" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- End Youtube Video -->
                             </div>
-                        {% endif%}
-                    {% endfor%}
-
-                </div>
-            {% endif%}
+                        </div>
+                        <!-- End Video Blocks -->                
+            
+                        <hr>
+            
+                        <!-- Soundcloud Music -->
+                        <div class="panel panel-profile">
+                            <div class="panel-heading overflow-h">
+                                <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Mes musiques</h2>
+                                <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                            </div>
+            
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-6 md-margin-bottom-20"> 
+                                    <iframe width="100%" height="305" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/82304720&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
+                                </div>                    
+                                <div class="col-md-6"> 
+                                    <iframe width="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/19048953&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true"></iframe>
+            
+                                    <div class="md-margin-bottom-20"></div><!--space for mobile view-->
+            
+                                    <iframe width="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/78441806&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true"></iframe>
+                                </div>                    
+                            </div>
+                            <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/31532505&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true"></iframe>
+                        </div>
+                        <!-- End Soundcloud Music -->
 
 
         </div>
     </div>
+    <!-- End Profile Content -->
+
+
+
+</div><!--/container-->	 	
+<!--=== End Content Part ===-->
 
 {% endblock %}
+
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initCounter();
+            App.initParallaxBg();
+            RevolutionSlider.initRSfullScreenOffset();
+            PortfolioPage.init();
+
+        });
+    </script>
+
+{% endblock %}    
+

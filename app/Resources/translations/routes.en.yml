@@ -463,8 +463,14 @@ front_user_show_private: /my-profile/
 # Desc: /profile/{username}/{id}
 front_user_show_public: '/profile/{username}/{id}'
 
-# Desc: /profile/{id}/update
-front_user_update: '/profile/{id}/update'
+# Desc: /profile/{id}/update_profile
+front_user_update_profile: '/profile/{id}/update_profile'
+
+# Desc: /profile/{id}/update_description
+front_user_update_description: '/profile/{id}/update_description'
+
+# Desc: /profile/{id}/update_link
+front_user_update_link: '/profile/{id}/update_link'
 
 # Desc: /callback_username/
 callback_username: '/callback_username/en/'

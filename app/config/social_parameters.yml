@@ -1,6 +1,6 @@
 parameters:
     facebook_app_id: fb_id
     facebook_app_secret: fb_secret
-    google_app_id: google_app_id
-    google_app_secret:  google_app_secret 
-    google_map_api_key: google_map_api_key
+    google_app_id: 717297990545-2k4ea28rpqcsv9379g8sfrunp950djnu.apps.googleusercontent.com
+    google_app_secret:  ChjD-OnSfQMhLt7iaQj0R8v- 
+    google_map_api_key: AIzaSyDYK_X6FMBq3cLaoHaRcYc3duXbObRlA1M

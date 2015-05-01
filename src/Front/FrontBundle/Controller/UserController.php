@@ -6,6 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use User\UserBundle\Entity\User;
 use Front\FrontBundle\Form\UserType;
+use Front\FrontBundle\Form\UserDescriptionType;
+use Front\FrontBundle\Form\UserProfileType;
+use Front\FrontBundle\Form\UserLinkType;
 use User\UserBundle\Entity\UserFile;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,7 +18,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  */
 class UserController extends Controller {
-
 
     /**
      * Finds and displays a User entity.
@@ -32,7 +34,7 @@ class UserController extends Controller {
 
         return $this->render('FrontFrontBundle:User:showPrivate.html.twig', array(
                     'user' => $entity,
-                ));
+        ));
     }
 
     /**
@@ -40,8 +42,8 @@ class UserController extends Controller {
      *
      */
     public function showPrivateAction() {
-        
-        if(!$this->getUser())
+
+        if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $entity = $this->get('security.context')->getToken()->getUser();
@@ -70,7 +72,7 @@ class UserController extends Controller {
                     'user' => $entity,
                     'editId' => $editId,
                     'existingFiles' => $existingFiles,
-                ));
+        ));
     }
 
     /**
@@ -78,10 +80,10 @@ class UserController extends Controller {
      *
      */
     public function editAction($id) {
-        
-        if(!$this->getUser())
+
+        if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UserUserBundle:User')->find($id);
@@ -90,7 +92,9 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editProfileForm = $this->createEditProfileForm($entity);
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+        $editLinkForm = $this->createEditLinkForm($entity);
 
 
         /*
@@ -112,10 +116,12 @@ class UserController extends Controller {
 
         return $this->render('FrontFrontBundle:User:edit.html.twig', array(
                     'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
+                    'edit_profile_form' => $editProfileForm->createView(),
+                    'edit_description_form' => $editDescriptionForm->createView(),
+                    'edit_link_form' => $editLinkForm->createView(),
                     'editId' => $editId,
                     'existingFiles' => $existingFiles,
-                ));
+        ));
     }
 
     /**
@@ -130,9 +136,45 @@ class UserController extends Controller {
             'action' => $this->generateUrl('front_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'attr' => array('locale' => $this->get('request')->getLocale())
-                ));
+        ));
 
         $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-lg pull-right')));
+
+        return $form;
+    }
+
+    private function createEditProfileForm(User $entity) {
+        $form = $this->createForm(new UserProfileType(), $entity, array(
+            'action' => $this->generateUrl('front_user_update_profile', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            'attr' => array('locale' => $this->get('request')->getLocale())
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
+
+        return $form;
+    }
+
+    private function createEditDescriptionForm(User $entity) {
+        $form = $this->createForm(new UserDescriptionType(), $entity, array(
+            'action' => $this->generateUrl('front_user_update_description', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            'attr' => array('locale' => $this->get('request')->getLocale())
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
+
+        return $form;
+    }
+
+    private function createEditLinkForm(User $entity) {
+        $form = $this->createForm(new UserLinkType(), $entity, array(
+            'action' => $this->generateUrl('front_user_update_link', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            'attr' => array('locale' => $this->get('request')->getLocale())
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
 
         return $form;
     }
@@ -141,11 +183,12 @@ class UserController extends Controller {
      * Edits an existing User entity.
      *
      */
-    public function updateAction(Request $request, $id) {
-        
-        if(!$this->getUser())
+    
+    public function updateProfileAction(Request $request, $id) {
+
+        if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UserUserBundle:User')->find($id);
@@ -153,41 +196,86 @@ class UserController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-        
-        $originalAddresses = new ArrayCollection();
-        foreach ($entity->getAddresses() as $address) 
-            $originalAddresses->add($address);
 
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
-            
-            foreach ($originalAddresses as $address) 
-                if ($entity->getAddresses()->contains($address) == false) 
-                     $em->remove($address);
-            
+        $editLinkForm = $this->createEditLinkForm($entity);
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+        $editProfileForm = $this->createEditProfileForm($entity);
+        $editProfileForm->handleRequest($request);
+
+        if ($editProfileForm->isValid()) {
             $em->flush();
-            
-            try {
-                $em->refresh($entity);
-                $address = $entity->getAddress();
-                $this->setLatitudeAndLongitude($address);
-                $em->persist($address);
-                $em->flush();
-            } catch (\Exception $e) {
-                
-            }
-
-            return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:User:edit.html.twig', array(
                     'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                ));
+                    'edit_profile_form' => $editProfileForm->createView(),
+                    'edit_description_form' => $editDescriptionForm->createView(),
+                    'edit_link_form' => $editLinkForm->createView(),
+        ));
     }
+    
+    public function updateDescriptionAction(Request $request, $id) {
 
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+
+        $editLinkForm = $this->createEditLinkForm($entity);
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+        $editProfileForm = $this->createEditProfileForm($entity);
+        $editDescriptionForm->handleRequest($request);
+
+        if ($editDescriptionForm->isValid()) {
+            $em->flush();
+        }
+
+        return $this->render('FrontFrontBundle:User:edit.html.twig', array(
+                    'entity' => $entity,
+                    'edit_profile_form' => $editProfileForm->createView(),
+                    'edit_description_form' => $editDescriptionForm->createView(),
+                    'edit_link_form' => $editLinkForm->createView(),
+        ));
+    }
+    
+    public function updateLinkAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+
+        $editLinkForm = $this->createEditLinkForm($entity);
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+        $editProfileForm = $this->createEditProfileForm($entity);
+        $editLinkForm->handleRequest($request);
+
+        if ($editLinkForm->isValid()) {
+            $em->flush();
+        }
+
+        return $this->render('FrontFrontBundle:User:edit.html.twig', array(
+                    'entity' => $entity,
+                    'edit_profile_form' => $editProfileForm->createView(),
+                    'edit_description_form' => $editDescriptionForm->createView(),
+                    'edit_link_form' => $editLinkForm->createView(),
+        ));
+    }
 
     private function handleFiles($entity, $editId = null) {
         /*
@@ -233,13 +321,13 @@ class UserController extends Controller {
          * UPLOAD FILE FORM END
          */
     }
-    
+
     private function setLatitudeAndLongitude($entity) {
         try {
-            
-            if(!$entity OR !$entity->stringForGoogleMaps())
+
+            if (!$entity OR ! $entity->stringForGoogleMaps())
                 return;
-            
+
             $geocode = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
@@ -247,7 +335,6 @@ class UserController extends Controller {
 
             $entity->setLatitude($geocode['latitude']);
             $entity->setLongitude($geocode['longitude']);
-            
         } catch (\Exception $e) {
             throw $e;
         }

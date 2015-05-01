@@ -5,11 +5,21 @@ front_user_show_private:
 front_user_edit:
     path:     /profile/{id}/edit
     defaults: { _controller: "FrontFrontBundle:User:edit" }
-
-front_user_update:
-    path:     /profile/{id}/update
-    defaults: { _controller: "FrontFrontBundle:User:update" }
+  
+front_user_update_profile:
+    path:     /profile/{id}/update_profile
+    defaults: { _controller: "FrontFrontBundle:User:updateProfile" }
     requirements: { _method: post|put }
+    
+front_user_update_description:
+    path:     /profile/{id}/update_description
+    defaults: { _controller: "FrontFrontBundle:User:updateDescription" }
+    requirements: { _method: post|put }
+    
+front_user_update_link:
+    path:     /profile/{id}/update_link
+    defaults: { _controller: "FrontFrontBundle:User:updateLink" }
+    requirements: { _method: post|put }    
     
 front_user_import_facebook_event:
     path:     /import_facebook_event/

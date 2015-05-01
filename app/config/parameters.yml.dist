@@ -1,20 +1,22 @@
-# This file is auto-generated during the composer install
 parameters:
-    database_driver: pdo_mysql
-    database_host: 127.0.0.1
-    database_port: null
-    database_name: project-salsa
-    database_user: root
-    database_password: null
-    mailer_transport: smtp
-    mailer_host: ~
-    mailer_user: ~
-    mailer_password: null
-    mailer_auth_mode: null
-    mailer_port: 25
-    mailer_encryption: null
-    locale: en
-    secret: azertyuiopqsdfghjklmwxcvbn
-    debug_toolbar: true
-    debug_redirects: false
+    database_driver:   pdo_mysql
+    database_host:     wedancesdc_mutu.mysql.db
+    database_port:     ~
+    database_name:     wedancesdc_mutu
+    database_user:     wedancesdc_mutu
+    database_password: kstke7S3yFC9
+
+    mailer_transport:  mail
+    mailer_host:       ssl0.ovh.net
+    mailer_user:       wds-contact@wedancesalsa.com
+    mailer_password:   wds9900066
+    mailer_auth_mode:  login
+    mailer_port:       465
+    mailer_encryption: ssl
+
+    locale:            fr   
+    secret:            cejetonesttroptroptopsecret
+
+    debug_toolbar:          true
+    debug_redirects:        false
     use_assetic_controller: true
