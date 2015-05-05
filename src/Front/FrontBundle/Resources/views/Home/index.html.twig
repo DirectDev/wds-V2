@@ -13,6 +13,12 @@
     <!-- partage facebook -->
 {% endblock %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("front/css/pages/page_job.css") }}">
+{% endblock %}
+
 {% block topJavascripts %}   
     {{ parent() }}
     <script type="text/javascript"

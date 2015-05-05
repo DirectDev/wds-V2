@@ -34,7 +34,7 @@
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
         <div class="container">
-            <h1 class="pull-left">Salsa in {{ city }}, calendar (31 mars 2015)</h1>
+            <h1 class="pull-left">Salsa in {{ city }}, calendar ({{ app.session.get('startdate')|localizeddate('full', 'none', app.request.locale )|capitalize }})</h1>
             <ul class="pull-right breadcrumb">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="">Page</a></li>
@@ -201,6 +201,9 @@
 
                         <!-- Easy Blocks v1 -->                
                         <div class="row high-rated margin-bottom-20">
+                            
+                            {% include 'FrontFrontBundle:Home:list.html.twig' %}
+                            
                             <!-- Easy Block -->                
                             <div class="col-md-6 col-sm-12 md-margin-bottom-40 category_1"  data-cat="1">
                                 <div class="easy-block-v1">

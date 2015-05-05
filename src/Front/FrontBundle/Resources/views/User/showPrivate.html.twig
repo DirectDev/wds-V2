@@ -123,7 +123,7 @@
                                                     <time datetime="" class="cbp_tmtime"><span>Soirée</span> <span>10 jan 2015</span></time>
                                                     <i class="cbp_tmicon rounded-x hidden-xs"></i>
                                                     <div class="cbp_tmlabel">
-                                                        <h2>{{ event.getTitle|capitalize }}</h2>
+                                                        <h2><a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" >{{ event.getTitle|capitalize }}</a></h2>
                                                         <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p> 
                                                     </div>
                                                 </li>
