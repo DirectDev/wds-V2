@@ -1,3 +1,42 @@
+<form id="search_event_form" action="{{ path('search_search_front_event') }}" method="GET" class="no_validation" role="search">
+
+    {% set placeholder_city = app.session.get('city')|capitalize %}
+    {% if not placeholder_city %}
+        {% set placeholder_city = 'Lille, France'%}
+    {% endif  %}
+
+    {% set placeholder_date = app.session.get('startdate')|capitalize %}
+    {% if not placeholder_date %}
+        {% set placeholder_date = "now"|date("d m Y") %}
+    {% endif  %}
+
+    <div class="job-img-inputs">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 md-margin-bottom-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input type="text" autocomplete="off" class="form-control" id="search_search_bundle_cityfrontsearch_searchcity" 
+                               placeholder="{{ placeholder_city }}"
+                               name="searchcity">
+                    </div>
+                </div>    
+                <div class="col-sm-4 md-margin-bottom-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" autocomplete="off" class="form-control  datepicker" id="search_search_bundle_eventdatefrontsearch_searcheventdate" 
+                               placeholder="{{ placeholder_date }}"
+                               name="searcheventdate">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn-u btn-block btn-u-dark"> {% trans %}front.search_event_button{% endtrans %}</button>
+                </div>
+            </div>
+        </div>    
+    </div>
+</form>
+{#
 <form id="search_event_form" action="{{ path('search_search_front_event') }}" method="GET" class="form-inline no_validation" role="search">
 
     {% set placeholder_city = app.session.get('city')|capitalize %}
@@ -28,4 +67,4 @@
         </div>
     </div>
     <button type="submit" class="btn btn-search btn-lg pull-right">{% trans %}front.search_event_button{% endtrans %}</button>
-</form>  
+</form>  #}

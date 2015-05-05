@@ -53,7 +53,7 @@ class FrontSearchController extends Controller {
             $searcheventdate = $session->get('startdate');
 
         if (!$searchcity)
-            return new response('', 404);
+            return new response('city error', 404);
 
         return $this->redirect($this->generateUrl('calendarpage', array('searchcity' => $searchcity, 'searcheventdate' => $searcheventdate)));
     }

@@ -26,27 +26,7 @@
         <div class="job-banner">
             <h2>Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.</h2>
         </div>   
-        <div class="job-img-inputs">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 md-margin-bottom-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-                            <input type="text" placeholder="what job you are looking for" class="form-control">
-                        </div>
-                    </div>    
-                    <div class="col-sm-4 md-margin-bottom-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                            <input type="text" placeholder="where would you like to work" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn-u btn-block btn-u-dark"> Search Job</button>
-                    </div>
-                </div>
-            </div>    
-        </div>    
+        {% include 'FrontFrontBundle:Home:search.html.twig' %}    
     </div>    
 
     

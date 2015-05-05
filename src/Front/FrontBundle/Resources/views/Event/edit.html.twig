@@ -109,14 +109,14 @@
                             <br>
                             {% set action_path = path('front_event_edit' , { id: entity.id, editId: editId }) %}
                             {% include 'FileFileBundle::uploadFileForm.html.twig' with {
-                        action_path: action_path,
-                        cancel_path: 'front_event',
-                        delete_path: 'front_event_delete',
-                        id: entity.id, 
-                        editId: editId, 
-                        existingFiles: existingFiles,
-                        entity: entity,
-                } %}
+                                    action_path: action_path,
+                                    cancel_path: 'front_event',
+                                    delete_path: 'front_event_delete',
+                                    id: entity.id, 
+                                    editId: editId, 
+                                    existingFiles: existingFiles,
+                                    entity: entity,
+                            } %}
 
 
                         </div>
@@ -148,7 +148,7 @@
 
 {% block bottomJavascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/underscore-min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('front/js/underscore-min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/jquery.fileupload.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script> 
