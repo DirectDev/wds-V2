@@ -60,7 +60,7 @@ class AddressController extends Controller {
 
             $event = $entity->getEvent();
             if ($event)
-                return $this->redirect($this->generateUrl('front_event_show', array('id' => $event->getId(), 'uri' => $event->getURI())));
+                return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
 
             return $this->redirect($this->generateUrl('front_address_show', array('id' => $entity->getId())));
         }
@@ -288,7 +288,7 @@ class AddressController extends Controller {
 
             $event = $entity->getEvent();
             if ($event)
-                return $this->redirect($this->generateUrl('front_event_show', array('id' => $event->getId(), 'uri' => $event->getURI())));
+                return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
 
             $user = $entity->getUser();
             if ($user)
@@ -332,7 +332,7 @@ class AddressController extends Controller {
         }
 
         if ($event)
-            return $this->redirect($this->generateUrl('front_event_show', array('id' => $event->getId(), 'uri' => $event->getURI())));
+            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
 
         if ($user)
             return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));

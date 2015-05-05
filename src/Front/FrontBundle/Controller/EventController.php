@@ -64,7 +64,7 @@ class EventController extends Controller {
                 
             }
 
-            return $this->redirect($this->generateUrl('front_event_show', array('id' => $entity->getId(), 'uri' => $entity->getURI())));
+            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $entity->getId(), 'uri' => $entity->getURI())));
         }
 
         return $this->render('FrontFrontBundle:Event:new.html.twig', array(

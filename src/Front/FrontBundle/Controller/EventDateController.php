@@ -49,7 +49,7 @@ class EventDateController extends Controller {
         }
 
         if ($request->isMethod('POST'))
-            return $this->render('FrontFrontBundle:EventDate:list.html.twig', array(
+            return $this->render('FrontFrontBundle:EventDate:list_tagbox.html.twig', array(
                         'event' => $event,
             ));
 
@@ -107,10 +107,6 @@ class EventDateController extends Controller {
 
     /**
      * Finds and displays a EventDate entity.
-     *
-     * @Route("/{id}", name="front_eventdate_show")
-     * @Method("GET")
-     * @Template()
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
@@ -122,11 +118,35 @@ class EventDateController extends Controller {
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),
+        
+        return $this->render('FrontFrontBundle:EventDate:show.html.twig', array(
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
+                        )
         );
+
+    }
+    
+    /**
+     * Finds and displays a EventDate entity.
+     */
+    public function showTagboxAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:EventDate')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find EventDate entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        
+        return $this->render('FrontFrontBundle:EventDate:show_tagbox.html.twig', array(
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
+                        )
+        );
+        
     }
 
     /**
@@ -202,7 +222,7 @@ class EventDateController extends Controller {
 
             $event = $entity->getEvent();
             if ($event)
-                return $this->render('FrontFrontBundle:EventDate:list.html.twig', array(
+                return $this->render('FrontFrontBundle:EventDate:list_tagbox.html.twig', array(
                             'event' => $event,
                 ));
         }
@@ -258,7 +278,7 @@ class EventDateController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('front_eventdate_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete'), 'attr' => array('class' => 'btn btn-danger btn-sm pull-left')))
+                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete'), 'attr' => array('class' => 'btn btn-danger btn-sm pull-right')))
                         ->getForm()
         ;
     }
@@ -295,7 +315,7 @@ class EventDateController extends Controller {
                 $today->add(new \DateInterval('P1D'));
             }
 
-            return $this->render('FrontFrontBundle:EventDate:list.html.twig', array(
+            return $this->render('FrontFrontBundle:EventDate:list_tagbox.html.twig', array(
                         'event' => $event,
             ));
         }

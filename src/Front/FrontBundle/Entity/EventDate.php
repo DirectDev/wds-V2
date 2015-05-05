@@ -71,11 +71,16 @@ class EventDate {
                 . ' - ' . $this->stopdate->format('Y-m-d')
                 . ' ' . $this->stoptime->format('H:i');
     }
-    
-    public function getEvent(){
+
+    public function getEvent() {
         foreach ($this->events as $event) {
-            return $event;            
+            return $event;
         }
+    }
+
+    public function getAddress() {
+        $Event = $this->getEvent();
+        return $Event->getAddress();
     }
 
     /**

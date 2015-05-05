@@ -5,6 +5,10 @@ front_eventdate:
 front_eventdate_show:
     path:     /{id}/show
     defaults: { _controller: "FrontFrontBundle:EventDate:show" }
+    
+front_eventdate_show_tagbox:
+    path:     /{id}/show_tagbox
+    defaults: { _controller: "FrontFrontBundle:EventDate:showTagbox" }    
 
 front_eventdate_new:
     path:     /{id}/new

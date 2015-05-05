@@ -1,0 +1,26 @@
+<div class="col-md-4">
+    <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+        <h2>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd LLLL  yyyy')|capitalize }}</h2>
+        <p>
+            {{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }} {{ entity.starttime|date('H:i') }}
+            {% if entity.stopdate %}
+                <strong>{% trans %}event.to{% endtrans %} : </strong>
+                {{ entity.stopdate|localizeddate('medium', 'none', app.request.locale) }}
+                {{ entity.stoptime|date('H:i') }}
+            {% else %}
+                </br>
+            {% endif %}
+        </p>
+        {% if app.user is not null and app.user == entity.event.user and is_granted('ROLE_USER') %} 
+            <a class="btn btn-success btn-sm pull-right eventdate_edit" 
+               href="{{ path('front_eventdate_edit', { 'id': entity.id }) }}" 
+               rel='{{ entity.id }}'>
+                <span>{% trans %}front.edit{% endtrans %}</span>
+            </a>
+
+            {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
+            {{ form_end(delete_form) }}
+            <div class="clear-both"></div>
+        {% endif %}
+    </div>
+</div>

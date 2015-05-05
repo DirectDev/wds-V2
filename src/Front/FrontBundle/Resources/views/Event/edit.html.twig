@@ -8,87 +8,107 @@
 
     {% set event =  edit_form.vars.value  %}
 
-    <div class="page-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>{{ entity.getTitle }}</h2>
-                </div>
-                <div class="col-md-6">
-                    <div class='pull-right'>
-                        <a href="{{ path('front_event_show', {id : event.id, uri : event.getURI }) }}" class="btn btn-warning btn-sm pull-right">
-                            <i class="glyphicon glyphicon-arrow-left"></i>
-                            <span> {% trans %}front.back{% endtrans %}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <!--=== Content Part ===-->
+    <div class="container content profile">
+
+
+        <!--=== Breadcrumbs ===-->
+        <div class="breadcrumbs">
+            <div class="container">
+                <h1 class="pull-left">{{ entity.getTitle }}</h1>
+                <a href="{{ path('front_event_show', {id : event.id, uri : event.getURI }) }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                    <span> {% trans %}front.back{% endtrans %}</span>
+                </a>
+            </div><!--/container-->
+        </div><!--/breadcrumbs-->
+        <!--=== End Breadcrumbs ===-->
+
+        <div class="alert alert-info fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+            {% trans %}event.alert.new_info{% endtrans %}
         </div>
-    </div>
+
+        <div class="alert alert-info fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+            {% trans %}event.alert.new_info2{% endtrans %}
+        </div>
+
+        <!-- Profile Content -->
+        <div class="col-md-12">
+            <div class="profile-body margin-bottom-20">
+                <div class="tab-v1">
+                    <ul class="nav nav-justified nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#profile">Edit Event</a></li>
+                        <li><a data-toggle="tab" href="#description">Address</a></li>
+                        <li><a data-toggle="tab" href="#link">Dates</a></li>
+                        <li><a data-toggle="tab" href="#picture">Pictures</a></li>
+                    </ul>          
+                    <div class="tab-content">
 
 
-    <div id="content">
-        <div class="container">
 
-            {% form_theme edit_form with ['FrontFrontBundle:Form:bootstrap_form_override.html.twig'] %}
+                        <div id="profile" class="profile-edit tab-pane fade in active">
+                            <h2 class="heading-md">Manage your name and details.</h2>
+                            <br>
 
-            {{ form_errors(edit_form) }}
-            {# {{ form_errors(edit_form.addresses) }}
-             {{ form_errors(edit_form.eventDates) }}#}
+                            {% form_theme edit_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
 
-            <div class="recent-projects">  
+                            {{ form_start(edit_form) }}
+                            {{ form_errors(edit_form) }}
 
-                <h4 class="classic-title"><span>{% trans %}event.event_title{% endtrans %}</span></h4>
+                            {{ form_row(edit_form.musicTypes) }}
+                            {{ form_row(edit_form.eventType) }}
+                            {{ form_row(edit_form.translations) }}
 
+                            {{ form_row(edit_form.submit) }}
 
-                {{ form_start(edit_form) }}
-                {{ form_errors(edit_form) }}
+                            {{ form_end(edit_form) }}
+                        </div>
 
-                {{ form_row(edit_form.musicTypes) }}
-                {{ form_row(edit_form.eventType) }}
-                {{ form_row(edit_form.translations) }}
-
-
-                {#<h4 class="classic-title"><span>{% trans %}event.addresses_title{% endtrans %}</span></h4>
-                    <ul class="addresses" data-prototype="{{ form_widget(edit_form.addresses.vars.prototype)|e }}">
-                        {% for address in edit_form.addresses %}
-                            <li>
-                                {{ form_row(address.name) }}
-                                {{ form_row(address.street) }}
-                                {{ form_row(address.streetComplement) }}
-                                {{ form_row(address.postcode) }}
-                                {{ form_row(address.city) }}                                    
-                                {{ form_row(address.country) }}         
-                            </li>
-                        {% endfor %}
-                    </ul>#}
+                        <div id="description" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Manage your descriptions</h2>
+                            <br>
+                            {% if not event.getAddress %}
+                                {% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
+                                    {% render(path('front_address_event_new', { id : event.id } )) %}
+                                {% endif %}
+                            {% else %}
+                                {% render(path('front_address_edit', { id : event.getAddress().id } )) %}
+                            {% endif %}
 
 
-                {#<h4 class="classic-title"><span>{% trans %}event.eventdates_title{% endtrans %}</span></h4>
-                    <ul class="eventdate" data-prototype="{{ form_widget(edit_form.eventDates.vars.prototype)|e }}">
-                        {% for eventDate in edit_form.eventDates %}
-                            <li>
-                                {{ form_row(eventDate.startdate) }}
-                                {{ form_row(eventDate.starttime) }}
-                                {{ form_row(eventDate.stopdate) }}                                  
-                                {{ form_row(eventDate.stoptime) }}                                  
-                            </li>
-                        {% endfor %}
-                    </ul>#}
 
-                <div class='row'>
-                    <div class='col-md-1 pull-right'>
-                        {{ form_row(edit_form.submit) }}
-                    </div>
-                </div>
+                        </div>
 
+                        <div id="link" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Manage your links</h2>
+                            <p>Link your profile to social networks.</p>
+                            <br>
 
-                {{ form_end(edit_form) }}
+                            <div id='eventdates_form' class="panel-body col-sm-6">
+                                <div  id='eventdate_new_edit' class="panel panel-default">
+                                    {% render(path('front_eventdate_new', { id : event.id } )) %}
+                                </div>
+                            </div>
+                            <div class="panel-body col-sm-6">
+                                {% render(path('front_eventdate_add_by_weekday', { id : event.id } )) %}
+                            </div>
+                            <div class="clear-both"></div>
+                            <div id='eventdates' class='row'>
+                                {% include 'FrontFrontBundle:EventDate:list_tagbox.html.twig' with { event : event } %}
+                            </div>
 
-                <h4 class="classic-title" id='images'><span>{% trans %}event.images_title{% endtrans %}</span></h4>
-                <div class='panel-footer'>
-                    {% set action_path = path('front_event_edit' , { id: entity.id, editId: editId }) %}
-                    {% include 'FileFileBundle::uploadFileForm.html.twig' with {
+                        </div>
+
+                        <div id="picture" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Add Pictures</h2>
+                            <p>{% trans %}user.images_title{% endtrans %}</p>
+                            <br>
+                            {% set action_path = path('front_event_edit' , { id: entity.id, editId: editId }) %}
+                            {% include 'FileFileBundle::uploadFileForm.html.twig' with {
                         action_path: action_path,
                         cancel_path: 'front_event',
                         delete_path: 'front_event_delete',
@@ -97,152 +117,32 @@
                         existingFiles: existingFiles,
                         entity: entity,
                 } %}
-                </div>
 
+
+                        </div>
+                    </div>
+                </div>    
             </div>
-
         </div>
     </div>
+    <!-- End Profile Content -->
 
 
-    {#<script>
-        
-        var $collectionHolderAddress;
 
-        // setup an "add a address" link
-        var $addLinkAddress = $("<a href='#' class='add_address_link'>{% trans %}front.link_add_address{% endtrans %}</a>");
-        var $newLinkLiAddress = $('<li></li>').append($addLinkAddress);
-        var $removeFormAAddress = $("<a href='#'>{% trans %}front.link_delete_address{% endtrans %}</a>");
+</div><!--/container-->	 	
+<!--=== End Content Part ===-->
 
-        jQuery(document).ready(function() {
-            // Get the ul that holds the collection of addresss
-            $collectionHolderAddress = $('ul.addresses');
 
-            $collectionHolderAddress.find('li').each(function() {
-                addFormDeleteLink($(this));
-            });
+<script>
+    $(document).on('click focus', 'form input.datepicker', function () {
 
-            // add the "add a address" anchor and li to the addresss ul
-            $collectionHolderAddress.append($newLinkLiAddress);
-
-            // count the current form inputs we have (e.g. 2), use that as the new
-            // index when inserting a new item (e.g. 2)
-            $collectionHolderAddress.data('index', $collectionHolderAddress.find(':input').length);
-
-            $addLinkAddress.on('click', function(e) {
-                // prevent the link from creating a "#" on the URL
-                e.preventDefault();
-
-                // add a new address form (see next code block)
-                addForm($collectionHolderAddress, $newLinkLiAddress);
-                
-                //efface le lien pour qu'il n'y ai qu'une addresse
-                $addLinkAddress.hide();
-                
-            });
-            
-            {% if edit_form.addresses|length %}
-                $addLinkAddress.hide();
-            {% endif %}
+        $("form input.datepicker").datepicker({
+            format: "yyyy-mm-dd", // bug avec les heures
+            autoclose: true,
+            language: "{{ app.request.locale }}"
         });
-
-        function addForm($collectionHolderAddress, $newLinkLiAddress) {
-            // Get the data-prototype explained earlier
-            var prototype = $collectionHolderAddress.data('prototype');
-
-            // get the new index
-            var index = $collectionHolderAddress.data('index');
-
-            // Replace '__name__' in the prototype's HTML to
-            // instead be a number based on how many items we have
-            //var newForm = prototype.replace(/__name__/g, index);
-            var newForm = prototype.replace(/__name__/g, index);
-
-            // increase the index with one for the next item
-            $collectionHolderAddress.data('index', index + 1);
-
-            // Display the form in the page in an li, before the "Add a address" link li
-            var $newFormLi = $('<li></li>').append(newForm);
-            $newLinkLiAddress.before($newFormLi);
-
-            addFormDeleteLink($newFormLi);
-        }
-
-        function addFormDeleteLink($FormLi) {
-            
-            $FormLi.append($removeFormAAddress);
-
-            $removeFormAAddress.on('click', function(e) {
-                // prevent the link from creating a "#" on the URL
-                e.preventDefault();
-
-                // remove the li for the  form
-                $FormLi.remove();
-                
-                $addLinkAddress.show();
-            });
-
-        }
-        
-        
-    </script> 
-    
-    <script>
-        
-        var collectionHolder = $('ul.eventdate');
-
-        var $addTagLink = $('<a href="#" class="add_tag_link">{% trans %}front.link_add_eventdate{% endtrans %}</a>');
-        var $newLinkLi = $('<li></li>').append($addTagLink);
-
-        jQuery(document).ready(function() {
-
-            collectionHolder.find('li').each(function() {
-                addTagFormDeleteLink($(this));
-            });
-
-            collectionHolder.append($newLinkLi);
-
-            $addTagLink.on('click', function(e) {
-                e.preventDefault();
-
-                addTagForm(collectionHolder, $newLinkLi);
-            });
-        });
-
-        function addTagForm(collectionHolder, $newLinkLi) {
-            var prototype = collectionHolder.attr('data-prototype');
-
-            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
-
-            var $newFormLi = $('<li></li>').append(newForm);
-            addTagFormDeleteLink($newFormLi);
-            $newLinkLi.before($newFormLi);
-        }
-
-        function addTagFormDeleteLink($tagFormLi) {
-            var $removeFormA = $('<a href="#">{% trans %}front.link_delete_eventdate{% endtrans %}</a>');
-            $tagFormLi.append('</br>');
-            $tagFormLi.append($removeFormA);
-
-            $removeFormA.on('click', function(e) {
-                e.preventDefault();
-
-                $tagFormLi.remove();
-            });
-        }
-        
-    </script>#}
-
-    <script>
-        $(document).on('click focus', 'form input.datepicker', function () {
-
-            $("form input.datepicker").datepicker({
-                format: "yyyy-mm-dd", // bug avec les heures
-                autoclose: true,
-                language: "{{ app.request.locale }}"
-            });
-        });
-    </script>
+    });
+</script>
 
 {% endblock %}    
 

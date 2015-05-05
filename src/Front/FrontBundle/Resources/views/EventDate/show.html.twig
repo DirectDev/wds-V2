@@ -1,10 +1,29 @@
+<li>
+    <time class="cbp_tmtime" datetime=""><span>{{ entity.startdate|date('Y') }}</span> <span>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'LLL')|capitalize }}</span></time>
+    <i class="cbp_tmicon rounded-x hidden-xs"></i>
+    <div class="cbp_tmlabel">
+        <h2>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }}  {{ entity.starttime|date('H:i') }}</h2>    
+        <p> 
+            <b>Horaires :</b>
+        </p>
+        {% if entity.getAddress and entity.getAddress().isValid() %}  
+            <p>
+                <b>Adresse :</b> {{ entity.getAddress() }}
+            </p>
+        {% endif %}
+    </div>
+</li>
+{#
+
+
+
 <div class='col-sm-2' id='eventdate_{{ entity.id }}'>
     <div class="panel panel-default">
         <div class="panel-body">
             {#{% if entity.stopdate %}
                 <strong>{% trans %}event.from{% endtrans %} : </strong>
             {% endif %}#}
-
+{#
             <strong>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'LLLL  yyyy')|capitalize }}</strong>
             <br>
             {{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }} {{ entity.starttime|date('H:i') }}
@@ -32,3 +51,4 @@
         </div>
     </div>
 </div>
+#}

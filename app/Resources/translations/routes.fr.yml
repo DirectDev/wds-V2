@@ -395,6 +395,9 @@ front_eventdate_new: '/dateevenement/{id}/nouveau'
 # Desc: /eventdate/{id}/show
 front_eventdate_show: '/dateevenement/{id}/afficher'
 
+# Desc: /eventdate/{id}/show_tagbox
+front_eventdate_show_tagbox: '/dateevenement/{id}/afficher_tagbox'
+
 # Desc: /eventdate/{id}/update
 front_eventdate_update: '/dateevenement/{id}/mettre_a_jour'
 
