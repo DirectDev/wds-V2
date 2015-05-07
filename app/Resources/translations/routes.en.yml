@@ -214,9 +214,6 @@ admin_userfile_update: '/admin/userfile/{id}/update'
 # Desc: /calendar/{searchcity}
 calendarpage: '/calendar/{searchcity}'
 
-# Desc: /city/{searchcity}
-citypage: '/city/{searchcity}'
-
 # Desc: /contact
 contact_contact_contact: /contact/en
 

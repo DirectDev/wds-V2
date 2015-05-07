@@ -76,7 +76,7 @@
                                 </div> 
                                 <ul class="social-icons pull-right">
                                     <li><a class="rounded-x social_facebook {% if not user.facebookLink %}disabled{% endif %}" data-original-title="Facebook" href="{{ user.facebookLink }}" target="_blank"></a></li>
-                                    <li><a class="rounded-x social_twitter {% if not user.twitterLink %}disabled{% endif %}" data-original-title="Twitter" href="test{{ user.twitterLink }}" target="_blank"></a></li>
+                                    <li><a class="rounded-x social_twitter {% if not user.twitterLink %}disabled{% endif %}" data-original-title="Twitter" href="{{ user.twitterLink }}" target="_blank"></a></li>
                                     <li><a class="rounded-x social_googleplus {% if not user.googleLink %}disabled{% endif %}" data-original-title="Google Plus" href="{{ user.googleLink }}" target="_blank"></a></li>
                                     <li><a class="rounded-x social_linkedin {% if not user.instagramLink %}disabled{% endif %}" data-original-title="Linkedin" href="{{ user.instagramLink }}" target="_blank"></a></li>
                                 </ul>

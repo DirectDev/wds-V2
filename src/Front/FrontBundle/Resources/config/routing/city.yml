@@ -1,30 +1,38 @@
-front_city:
-    path:     /
-    defaults: { _controller: "FrontFrontBundle:City:index" }
+city_dancers:
+    path:      /city/dancers/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:dancers }    
+    requirements:
+      _method: GET
 
-front_city_show:
-    path:     /{id}/show
-    defaults: { _controller: "FrontFrontBundle:City:show" }
-
-front_city_new:
-    path:     /new
-    defaults: { _controller: "FrontFrontBundle:City:new" }
-
-front_city_create:
-    path:     /create
-    defaults: { _controller: "FrontFrontBundle:City:create" }
-    requirements: { _method: post }
-
-front_city_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "FrontFrontBundle:City:edit" }
-
-front_city_update:
-    path:     /{id}/update
-    defaults: { _controller: "FrontFrontBundle:City:update" }
-    requirements: { _method: post|put }
-
-front_city_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "FrontFrontBundle:City:delete" }
-    requirements: { _method: post|delete }
+#front_city:
+#    path:     /
+#    defaults: { _controller: "FrontFrontBundle:City:index" }
+#
+#front_city_show:
+#    path:     /{id}/show
+#    defaults: { _controller: "FrontFrontBundle:City:show" }
+#
+#front_city_new:
+#    path:     /new
+#    defaults: { _controller: "FrontFrontBundle:City:new" }
+#
+#front_city_create:
+#    path:     /create
+#    defaults: { _controller: "FrontFrontBundle:City:create" }
+#    requirements: { _method: post }
+#
+#front_city_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "FrontFrontBundle:City:edit" }
+#
+#front_city_update:
+#    path:     /{id}/update
+#    defaults: { _controller: "FrontFrontBundle:City:update" }
+#    requirements: { _method: post|put }
+#
+#front_city_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "FrontFrontBundle:City:delete" }
+#    requirements: { _method: post|delete }
+#    
+    

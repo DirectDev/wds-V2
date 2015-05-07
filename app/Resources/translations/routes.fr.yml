@@ -214,9 +214,6 @@ admin_userfile_update: '/admin/fichier_utilisateur/{id}/mettre_a_jour'
 # Desc: /calendar/{searchcity}
 calendarpage: '/calendrier/{searchcity}'
 
-# Desc: /city/{searchcity}
-citypage: '/ville/{searchcity}'
-
 # Desc: /contact
 contact_contact_contact: /contact/fr
 
