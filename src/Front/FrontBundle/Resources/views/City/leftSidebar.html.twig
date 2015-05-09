@@ -34,12 +34,13 @@
             <a href="{{ path('city_festivals', { 'searchcity': app.session.get('city') }) }}">
                 <i class="fa fa-group"></i> festivals</a>
         </li> 
+        <li class="list-group-item {% if active == 'photos' %}active{% endif %}">
+            <a href="{{ path('city_photos', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> photos</a>
+        </li> 
         <li class="list-group-item">
             <a href="page_profile_comments.html"><i class="fa fa-comments"></i> Lieux</a>
-        </li>                                        
-        <li class="list-group-item">
-            <a href="page_profile_settings.html"><i class="fa fa-cog"></i> photos</a>
-        </li> 
+        </li>                                   
         <li class="list-group-item">
             <a href="page_profile_settings.html"><i class="fa fa-cog"></i> musiques</a>
         </li>

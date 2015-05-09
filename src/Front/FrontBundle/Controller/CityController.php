@@ -257,6 +257,28 @@ class CityController extends Controller {
                     'startdate' => $this->startdate,
         ));
     }
+    
+    public function photosAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('photos');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $photos = $this->getPhotos($em, 6, $city->getLatitude(), $city->getLongitude());
+        
+        return $this->render('FrontFrontBundle:City:photos.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'photos' => $photos,
+        ));
+    }
 
     public function to_deleteAction(Request $request) {
 
@@ -328,8 +350,20 @@ class CityController extends Controller {
 
         $userFiles = $em->getRepository('UserUserBundle:UserFile')
                 ->findPhotosByLocation($limit, $latitude, $longitude, $distance);
+        $eventFiles = $em->getRepository('FrontFrontBundle:EventFile')
+                ->findPhotosByLocation($limit, $latitude, $longitude, $distance);
+        
+        var_dump(count($userFiles));
+        var_dump(count($eventFiles));
+        
+        $photos = array_merge($userFiles, $eventFiles);
+        shuffle($photos);
 
-        return $userFiles;
+//        var_dump($photos[0]);
+//        var_dump($photos[1]);
+        var_dump(count($photos));
+        
+        return $photos;
     }
 
     private function getCity($request) {

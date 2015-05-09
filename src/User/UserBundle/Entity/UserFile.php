@@ -2,7 +2,6 @@
 
 namespace User\UserBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -12,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="User\UserBundle\Entity\UserFileRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class UserFile   {
+class UserFile {
 
     /**
      * @ORM\Id
@@ -20,7 +19,7 @@ class UserFile   {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var string
      *
@@ -33,101 +32,106 @@ class UserFile   {
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
-    
-    public function getGeneralPath(){
+
+    public function getGeneralPath() {
         $entityName = substr(get_class($this), (strrpos(get_class($this), "\\", -1)) + 1);
-        $path = __DIR__ . "/../../../../www/uploadedFiles/".$entityName.'/'.$this->getUser()->getId().'/';
+        $path = __DIR__ . "/../../../../www/uploadedFiles/" . $entityName . '/' . $this->getUser()->getId() . '/';
         return $path;
     }
-    
-    public function getGeneralUri(){
+
+    public function getGeneralUri() {
         $entityName = substr(get_class($this), (strrpos(get_class($this), "\\", -1)) + 1);
-        return "uploadedFiles/".$entityName.'/'.$this->getUser()->getId().'/';
+        return "uploadedFiles/" . $entityName . '/' . $this->getUser()->getId() . '/';
     }
-    
-    public function getLargePathFile(){
-        return $this->getGeneralPath().'large/'.$this->name;
+
+    public function getLargePathFile() {
+        return $this->getGeneralPath() . 'large/' . $this->name;
     }
-    
-    public function getMediumPathFile(){
-        return $this->getGeneralPath().'medium/'.$this->name;
+
+    public function getMediumPathFile() {
+        return $this->getGeneralPath() . 'medium/' . $this->name;
     }
-    
-    public function getOriginalsPathFile(){
-        return $this->getGeneralPath().'originals/'.$this->name;
+
+    public function getOriginalsPathFile() {
+        return $this->getGeneralPath() . 'originals/' . $this->name;
     }
-    
-    public function getSmallPathFile(){
-        return $this->getGeneralPath().'small/'.$this->name;
+
+    public function getSmallPathFile() {
+        return $this->getGeneralPath() . 'small/' . $this->name;
     }
-    
-    public function getThumbnailsPathFile(){
-        return $this->getGeneralPath().'thumbnails/'.$this->name;
+
+    public function getThumbnailsPathFile() {
+        return $this->getGeneralPath() . 'thumbnails/' . $this->name;
     }
-    
-    public function getLargePathUri(){
-        return $this->getGeneralUri().'large/'.$this->name;
+
+    public function getLargePathUri() {
+        return $this->getGeneralUri() . 'large/' . $this->name;
     }
-    public function getMediumPathUri(){
-        return $this->getGeneralUri().'medium/'.$this->name;
+
+    public function getMediumPathUri() {
+        return $this->getGeneralUri() . 'medium/' . $this->name;
     }
-    public function getOriginalsPathUri(){
-        return $this->getGeneralUri().'originals/'.$this->name;
+
+    public function getOriginalsPathUri() {
+        return $this->getGeneralUri() . 'originals/' . $this->name;
     }
-    public function getSmallPathUri(){
-        return $this->getGeneralUri().'small/'.$this->name;
+
+    public function getSmallPathUri() {
+        return $this->getGeneralUri() . 'small/' . $this->name;
     }
-    public function getThumbnailsPathUri(){
-        return $this->getGeneralUri().'thumbnails/'.$this->name;
+
+    public function getThumbnailsPathUri() {
+        return $this->getGeneralUri() . 'thumbnails/' . $this->name;
     }
-    
+
     /**
-    * @ORM\PreRemove
-    */
-    public function deleteImage()
-    {
+     * @ORM\PreRemove
+     */
+    public function deleteImage() {
         try {
-            if(file_exists($this->getLargePathFile()))
+            if (file_exists($this->getLargePathFile()))
                 unlink($this->getLargePathFile());
-            if(file_exists($this->getMediumPathFile()))
+            if (file_exists($this->getMediumPathFile()))
                 unlink($this->getMediumPathFile());
-            if(file_exists($this->getOriginalsPathFile()))
+            if (file_exists($this->getOriginalsPathFile()))
                 unlink($this->getOriginalsPathFile());
-            if(file_exists($this->getSmallPathFile()))
+            if (file_exists($this->getSmallPathFile()))
                 unlink($this->getSmallPathFile());
-            if(file_exists($this->getThumbnailsPathFile()))
+            if (file_exists($this->getThumbnailsPathFile()))
                 unlink($this->getThumbnailsPathFile());
+        } catch (\Exception $e) {
+            
         }
-        catch (\Exception $e){}
     }
-    
-    public function isValid(){
-        if(!file_exists($this->getLargePathFile()))
+
+    public function isValid() {
+        if (!file_exists($this->getLargePathFile()))
             return false;
-        if(!file_exists($this->getMediumPathFile()))
+        if (!file_exists($this->getMediumPathFile()))
             return false;
-        if(!file_exists($this->getSmallPathFile()))
+        if (!file_exists($this->getSmallPathFile()))
             return false;
-        if(!file_exists($this->getThumbnailsPathFile()))
+        if (!file_exists($this->getThumbnailsPathFile()))
             return false;
-        return true;       
+        return true;
     }
-    
-    public function isImage(){
+
+    public function isImage() {
         if (!preg_match('/(gif|jpg|png)$/i', $this->name))
             return false;
         return true;
     }
 
-
+    public function getTitle() {
+        return $this->getUser()->getUsername();
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -137,8 +141,7 @@ class UserFile   {
      * @param string $name
      * @return UserFile
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -149,8 +152,7 @@ class UserFile   {
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -160,8 +162,7 @@ class UserFile   {
      * @param \User\UserBundle\Entity\User $user
      * @return UserFile
      */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
-    {
+    public function setUser(\User\UserBundle\Entity\User $user = null) {
         $this->user = $user;
 
         return $this;
@@ -172,10 +173,8 @@ class UserFile   {
      *
      * @return \User\UserBundle\Entity\User 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
-    
-   
+
 }

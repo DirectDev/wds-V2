@@ -39,3 +39,9 @@ city_festivals:
     defaults:  { _controller: FrontFrontBundle:City:festivals }    
     requirements:
       _method: GET       
+
+city_photos:
+    path:      /city/photos/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:photos }    
+    requirements:
+      _method: GET  
