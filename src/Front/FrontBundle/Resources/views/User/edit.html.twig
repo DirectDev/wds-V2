@@ -42,6 +42,7 @@
                         <li><a data-toggle="tab" href="#description">Change Descriptions</a></li>
                         <li><a data-toggle="tab" href="#link">Manage Links</a></li>
                         <li><a data-toggle="tab" href="#picture">Add Pictures</a></li>
+                        <li><a data-toggle="tab" href="#music">Add Musics</a></li>
                     </ul>          
                     <div class="tab-content">
 
@@ -118,6 +119,18 @@
                                                     entity: entity,
                                             } %}
 
+
+                        </div>
+
+                        <div id="music" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Add Musics</h2>
+                            <p>{% trans %}user.musics_title{% endtrans %}</p>
+                            <br>
+                            {% render(path('front_music_new', { id : entity.id } )) %}
+
+                            {% for music in entity.musics %}
+                                {{ music.url }}<br>
+                            {% endfor %}
 
                         </div>
                     </div>

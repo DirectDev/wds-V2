@@ -38,12 +38,13 @@
             <a href="{{ path('city_photos', { 'searchcity': app.session.get('city') }) }}">
                 <i class="fa fa-group"></i> photos</a>
         </li> 
+        <li class="list-group-item {% if active == 'musics' %}active{% endif %}">
+            <a href="{{ path('city_musics', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> musics</a>
+        </li> 
         <li class="list-group-item">
             <a href="page_profile_comments.html"><i class="fa fa-comments"></i> Lieux</a>
-        </li>                                   
-        <li class="list-group-item">
-            <a href="page_profile_settings.html"><i class="fa fa-cog"></i> musiques</a>
-        </li>
+        </li>                             
         <li class="list-group-item">
             <a href="page_profile_settings.html"><i class="fa fa-cog"></i> vidéos</a>
         </li> 

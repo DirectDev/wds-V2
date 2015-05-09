@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Front\FrontBundle\Entity\Event;
 use Front\FrontBundle\Entity\Address;
 use Front\FrontBundle\Entity\MusicType;
+use Front\FrontBundle\Entity\Music;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
 
 /**
  * @ORM\Entity
@@ -18,7 +18,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity(repositoryClass="User\UserBundle\Entity\UserRepository")
  */
 class User extends BaseUser {
-    
+
     use ORMBehaviors\Translatable\Translatable;
 
     /**
@@ -27,34 +27,34 @@ class User extends BaseUser {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
     protected $facebook_link;
-    
+
     /** @ORM\Column(name="google_link", type="string", length=255, nullable=true) */
     protected $google_link;
-    
+
     /** @ORM\Column(name="twitter_link", type="string", length=255, nullable=true) */
     protected $twitter_link;
-    
+
     /** @ORM\Column(name="linkedin_link", type="string", length=255, nullable=true) */
     protected $linkedin_link;
-    
+
     /** @ORM\Column(name="flickr_link", type="string", length=255, nullable=true) */
     protected $flickr_link;
-    
+
     /** @ORM\Column(name="tumblr_link", type="string", length=255, nullable=true) */
     protected $tumblr_link;
-    
+
     /** @ORM\Column(name="instagram_link", type="string", length=255, nullable=true) */
     protected $instagram_link;
-    
+
     /** @ORM\Column(name="vimeo_link", type="string", length=255, nullable=true) */
     protected $vimeo_link;
-    
+
     /** @ORM\Column(name="youtube_link", type="string", length=255, nullable=true) */
     protected $youtube_link;
-    
+
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) 
      * @Assert\Length(
      *      min = 7
@@ -70,24 +70,23 @@ class User extends BaseUser {
 
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $google_access_token;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="UserFile", mappedBy="user")
      */
     protected $userFiles;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="user")
      * @ORM\OrderBy({"id" = "DESC"})
-     **/
+     * */
     private $events;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Address", mappedBy="users", cascade={"persist"})
      */
     protected $addresses;
-    
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\MusicType", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="user_musictype",
@@ -96,7 +95,7 @@ class User extends BaseUser {
      * )
      */
     protected $musicTypes;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="UserType", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="user_usertype",
@@ -105,7 +104,12 @@ class User extends BaseUser {
      * )
      */
     protected $userTypes;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Music", mappedBy="user")
+     */
+    protected $musics;
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -119,87 +123,86 @@ class User extends BaseUser {
         }
     }
 
-
     public function __construct() {
         parent::__construct();
-        
+
         $this->userFiles = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->addresses = new ArrayCollection();
         $this->musicTypes = new ArrayCollection();
         $this->userTypes = new ArrayCollection();
+        $this->musics = new ArrayCollection();
     }
-    
-    
-   public function isFacebookUser(){
-       if($this->facebook_id)
-           return true;
-       return false;
-   }
-   
-   public function isGoolgeUser(){
-       if($this->google_id)
-           return true;
-       return false;
-   }
-   
-   public function getProfilePicture(){
-       foreach ($this->getUserFiles() as $UserFile) 
-           if($UserFile->isImage())
-               return $UserFile;           
-   }
-   
-   public function getProfilePictureUrl(){
-       if($this->isFacebookUser())
-           return 'https://graph.facebook.com/'.$this->getFacebookId().'/picture?type=large';
-       
-       if($this->getProfilePicture())
-        return $this->getProfilePicture()->getMediumPathUri();
-   }
-   
-   public function getAddress(){
-       foreach($this->addresses as $address)
-           return $address;
-   }
-   
-   public function getUserType(){
-       foreach($this->userTypes as $userType)
-           return $userType;
-   }
-   
-   public function getMusicType(){
-       foreach($this->musicTypes as $musicType)
-           return $musicType;
-   }
-   
-   public function getMusicTypesText(){
+
+    public function isFacebookUser() {
+        if ($this->facebook_id)
+            return true;
+        return false;
+    }
+
+    public function isGoolgeUser() {
+        if ($this->google_id)
+            return true;
+        return false;
+    }
+
+    public function getProfilePicture() {
+        foreach ($this->getUserFiles() as $UserFile)
+            if ($UserFile->isImage())
+                return $UserFile;
+    }
+
+    public function getProfilePictureUrl() {
+        if ($this->isFacebookUser())
+            return 'https://graph.facebook.com/' . $this->getFacebookId() . '/picture?type=large';
+
+        if ($this->getProfilePicture())
+            return $this->getProfilePicture()->getMediumPathUri();
+    }
+
+    public function getAddress() {
+        foreach ($this->addresses as $address)
+            return $address;
+    }
+
+    public function getUserType() {
+        foreach ($this->userTypes as $userType)
+            return $userType;
+    }
+
+    public function getMusicType() {
+        foreach ($this->musicTypes as $musicType)
+            return $musicType;
+    }
+
+    public function getMusicTypesText() {
         $array = array();
-        foreach($this->getMusicTypes() as $musicType)
+        foreach ($this->getMusicTypes() as $musicType)
             $array[] = ucfirst($musicType->getTitle());
         return implode(' - ', $array);
     }
-    
-    public function getUserTypesText(){
+
+    public function getUserTypesText() {
         $array = array();
-        foreach($this->getUserTypes() as $userType)
+        foreach ($this->getUserTypes() as $userType)
             $array[] = ucfirst($userType->getTitle());
         return implode(' - ', $array);
     }
-    
+
     public function isDancer() {
         foreach ($this->userTypes as $userType)
             if ($userType->getName() == 'dancer')
                 return true;
         return false;
     }
-    
+
     public function isTeacher() {
         foreach ($this->userTypes as $userType)
             if ($userType->getName() == 'teacher')
                 return true;
         return false;
     }
-    
+
     public function isArtist() {
         foreach ($this->userTypes as $userType)
             if ($userType->getName() == 'artist')
@@ -212,8 +215,7 @@ class User extends BaseUser {
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -223,8 +225,7 @@ class User extends BaseUser {
      * @param string $facebookId
      * @return User
      */
-    public function setFacebookId($facebookId)
-    {
+    public function setFacebookId($facebookId) {
         $this->facebook_id = $facebookId;
 
         return $this;
@@ -235,8 +236,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getFacebookId()
-    {
+    public function getFacebookId() {
         return $this->facebook_id;
     }
 
@@ -246,8 +246,7 @@ class User extends BaseUser {
      * @param string $facebookAccessToken
      * @return User
      */
-    public function setFacebookAccessToken($facebookAccessToken)
-    {
+    public function setFacebookAccessToken($facebookAccessToken) {
         $this->facebook_access_token = $facebookAccessToken;
 
         return $this;
@@ -258,8 +257,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getFacebookAccessToken()
-    {
+    public function getFacebookAccessToken() {
         return $this->facebook_access_token;
     }
 
@@ -269,8 +267,7 @@ class User extends BaseUser {
      * @param string $googleId
      * @return User
      */
-    public function setGoogleId($googleId)
-    {
+    public function setGoogleId($googleId) {
         $this->google_id = $googleId;
 
         return $this;
@@ -281,8 +278,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getGoogleId()
-    {
+    public function getGoogleId() {
         return $this->google_id;
     }
 
@@ -292,8 +288,7 @@ class User extends BaseUser {
      * @param string $googleAccessToken
      * @return User
      */
-    public function setGoogleAccessToken($googleAccessToken)
-    {
+    public function setGoogleAccessToken($googleAccessToken) {
         $this->google_access_token = $googleAccessToken;
 
         return $this;
@@ -304,8 +299,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getGoogleAccessToken()
-    {
+    public function getGoogleAccessToken() {
         return $this->google_access_token;
     }
 
@@ -315,8 +309,7 @@ class User extends BaseUser {
      * @param \User\UserBundle\Entity\UserFile $userFiles
      * @return User
      */
-    public function addUserFile(\User\UserBundle\Entity\UserFile $userFiles)
-    {
+    public function addUserFile(\User\UserBundle\Entity\UserFile $userFiles) {
         $userFiles->addUser($this);
         $this->userFiles[] = $userFiles;
 
@@ -328,8 +321,7 @@ class User extends BaseUser {
      *
      * @param \User\UserBundle\Entity\UserFile $userFiles
      */
-    public function removeUserFile(\User\UserBundle\Entity\UserFile $userFiles)
-    {
+    public function removeUserFile(\User\UserBundle\Entity\UserFile $userFiles) {
         $this->userFiles->removeElement($userFiles);
     }
 
@@ -338,12 +330,9 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUserFiles()
-    {
+    public function getUserFiles() {
         return $this->userFiles;
     }
-
-
 
     /**
      * Add events
@@ -351,8 +340,7 @@ class User extends BaseUser {
      * @param \Front\FrontBundle\Entity\Event $events
      * @return User
      */
-    public function addEvent(\Front\FrontBundle\Entity\Event $events)
-    {
+    public function addEvent(\Front\FrontBundle\Entity\Event $events) {
         $this->events[] = $events;
 
         return $this;
@@ -363,8 +351,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Event $events
      */
-    public function removeEvent(\Front\FrontBundle\Entity\Event $events)
-    {
+    public function removeEvent(\Front\FrontBundle\Entity\Event $events) {
         $this->events->removeElement($events);
     }
 
@@ -373,8 +360,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getEvents()
-    {
+    public function getEvents() {
         return $this->events;
     }
 
@@ -384,8 +370,7 @@ class User extends BaseUser {
      * @param string $facebookLink
      * @return User
      */
-    public function setFacebookLink($facebookLink)
-    {
+    public function setFacebookLink($facebookLink) {
         $this->facebook_link = $facebookLink;
 
         return $this;
@@ -396,8 +381,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getFacebookLink()
-    {
+    public function getFacebookLink() {
         return $this->facebook_link;
     }
 
@@ -407,8 +391,7 @@ class User extends BaseUser {
      * @param string $googleLink
      * @return User
      */
-    public function setGoogleLink($googleLink)
-    {
+    public function setGoogleLink($googleLink) {
         $this->google_link = $googleLink;
 
         return $this;
@@ -419,8 +402,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getGoogleLink()
-    {
+    public function getGoogleLink() {
         return $this->google_link;
     }
 
@@ -430,8 +412,7 @@ class User extends BaseUser {
      * @param string $twitterLink
      * @return User
      */
-    public function setTwitterLink($twitterLink)
-    {
+    public function setTwitterLink($twitterLink) {
         $this->twitter_link = $twitterLink;
 
         return $this;
@@ -442,8 +423,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getTwitterLink()
-    {
+    public function getTwitterLink() {
         return $this->twitter_link;
     }
 
@@ -453,8 +433,7 @@ class User extends BaseUser {
      * @param string $linkedinLink
      * @return User
      */
-    public function setLinkedinLink($linkedinLink)
-    {
+    public function setLinkedinLink($linkedinLink) {
         $this->linkedin_link = $linkedinLink;
 
         return $this;
@@ -465,8 +444,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getLinkedinLink()
-    {
+    public function getLinkedinLink() {
         return $this->linkedin_link;
     }
 
@@ -476,8 +454,7 @@ class User extends BaseUser {
      * @param string $flickrLink
      * @return User
      */
-    public function setFlickrLink($flickrLink)
-    {
+    public function setFlickrLink($flickrLink) {
         $this->flickr_link = $flickrLink;
 
         return $this;
@@ -488,11 +465,9 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getFlickrLink()
-    {
+    public function getFlickrLink() {
         return $this->flickr_link;
     }
-
 
     /**
      * Add addresses
@@ -500,8 +475,7 @@ class User extends BaseUser {
      * @param \Front\FrontBundle\Entity\Address $addresses
      * @return User
      */
-    public function addAddress(\Front\FrontBundle\Entity\Address $addresses)
-    {
+    public function addAddress(\Front\FrontBundle\Entity\Address $addresses) {
         $addresses->addUser($this);
         $this->addresses[] = $addresses;
 
@@ -513,8 +487,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Address $addresses
      */
-    public function removeAddress(\Front\FrontBundle\Entity\Address $addresses)
-    {
+    public function removeAddress(\Front\FrontBundle\Entity\Address $addresses) {
         $this->addresses->removeElement($addresses);
     }
 
@@ -523,8 +496,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAddresses()
-    {
+    public function getAddresses() {
         return $this->addresses;
     }
 
@@ -534,8 +506,7 @@ class User extends BaseUser {
      * @param \Front\FrontBundle\Entity\MusicType $musicTypes
      * @return User
      */
-    public function addMusicType(\Front\FrontBundle\Entity\MusicType $musicTypes)
-    {
+    public function addMusicType(\Front\FrontBundle\Entity\MusicType $musicTypes) {
         $this->musicTypes[] = $musicTypes;
 
         return $this;
@@ -546,8 +517,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\MusicType $musicTypes
      */
-    public function removeMusicType(\Front\FrontBundle\Entity\MusicType $musicTypes)
-    {
+    public function removeMusicType(\Front\FrontBundle\Entity\MusicType $musicTypes) {
         $this->musicTypes->removeElement($musicTypes);
     }
 
@@ -556,8 +526,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getMusicTypes()
-    {
+    public function getMusicTypes() {
         return $this->musicTypes;
     }
 
@@ -567,8 +536,7 @@ class User extends BaseUser {
      * @param \User\UserBundle\Entity\UserType $userTypes
      * @return User
      */
-    public function addUserType(\User\UserBundle\Entity\UserType $userTypes)
-    {
+    public function addUserType(\User\UserBundle\Entity\UserType $userTypes) {
         $this->userTypes[] = $userTypes;
 
         return $this;
@@ -579,8 +547,7 @@ class User extends BaseUser {
      *
      * @param \User\UserBundle\Entity\UserType $userTypes
      */
-    public function removeUserType(\User\UserBundle\Entity\UserType $userTypes)
-    {
+    public function removeUserType(\User\UserBundle\Entity\UserType $userTypes) {
         $this->userTypes->removeElement($userTypes);
     }
 
@@ -589,8 +556,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUserTypes()
-    {
+    public function getUserTypes() {
         return $this->userTypes;
     }
 
@@ -600,8 +566,7 @@ class User extends BaseUser {
      * @param string $tumblrLink
      * @return User
      */
-    public function setTumblrLink($tumblrLink)
-    {
+    public function setTumblrLink($tumblrLink) {
         $this->tumblr_link = $tumblrLink;
 
         return $this;
@@ -612,8 +577,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getTumblrLink()
-    {
+    public function getTumblrLink() {
         return $this->tumblr_link;
     }
 
@@ -623,8 +587,7 @@ class User extends BaseUser {
      * @param string $instagramLink
      * @return User
      */
-    public function setInstagramLink($instagramLink)
-    {
+    public function setInstagramLink($instagramLink) {
         $this->instagram_link = $instagramLink;
 
         return $this;
@@ -635,8 +598,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getInstagramLink()
-    {
+    public function getInstagramLink() {
         return $this->instagram_link;
     }
 
@@ -646,8 +608,7 @@ class User extends BaseUser {
      * @param string $vimeoLink
      * @return User
      */
-    public function setVimeoLink($vimeoLink)
-    {
+    public function setVimeoLink($vimeoLink) {
         $this->vimeo_link = $vimeoLink;
 
         return $this;
@@ -658,8 +619,7 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getVimeoLink()
-    {
+    public function getVimeoLink() {
         return $this->vimeo_link;
     }
 
@@ -669,8 +629,7 @@ class User extends BaseUser {
      * @param string $youtubeLink
      * @return User
      */
-    public function setYoutubeLink($youtubeLink)
-    {
+    public function setYoutubeLink($youtubeLink) {
         $this->youtube_link = $youtubeLink;
 
         return $this;
@@ -681,8 +640,39 @@ class User extends BaseUser {
      *
      * @return string 
      */
-    public function getYoutubeLink()
-    {
+    public function getYoutubeLink() {
         return $this->youtube_link;
     }
+
+    /**
+     * Add musics
+     *
+     * @param \Front\FrontBundle\Entity\Music $musics
+     * @return User
+     */
+    public function addMusic(\Front\FrontBundle\Entity\Music $musics) {
+        $musics->addUser($this);
+        $this->musics[] = $musics;
+
+        return $this;
+    }
+
+    /**
+     * Remove musics
+     *
+     * @param \Front\FrontBundle\Entity\Music $musics
+     */
+    public function removeMusic(\Front\FrontBundle\Entity\Music $musics) {
+        $this->musics->removeElement($musics);
+    }
+
+    /**
+     * Get musics
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMusics() {
+        return $this->musics;
+    }
+
 }

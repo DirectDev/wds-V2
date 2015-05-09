@@ -257,7 +257,7 @@ class CityController extends Controller {
                     'startdate' => $this->startdate,
         ));
     }
-    
+
     public function photosAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
@@ -272,7 +272,7 @@ class CityController extends Controller {
         $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
 
         $photos = $this->getPhotos($em, 6, $city->getLatitude(), $city->getLongitude());
-        
+
         return $this->render('FrontFrontBundle:City:photos.html.twig', array(
                     'page' => $page,
                     'user' => $user,
@@ -280,12 +280,12 @@ class CityController extends Controller {
         ));
     }
 
-    public function to_deleteAction(Request $request) {
+    public function musicsAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('dancers');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('musics');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -293,48 +293,12 @@ class CityController extends Controller {
 
         $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
 
-        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude());
+        $musics = $this->getMusics($em, 6, $city->getLatitude(), $city->getLongitude());
 
-//        $eventTypeIntroductions = $em->getRepository('FrontFrontBundle:EventType')->findById(array(4));
-//        $eventTypeWorkshops = $em->getRepository('FrontFrontBundle:EventType')->findById(array(3,7));
-//        $eventTypeConcerts = $em->getRepository('FrontFrontBundle:EventType')->findById(array(6));
-//        $eventTypeFestivals = $em->getRepository('FrontFrontBundle:EventType')->findById(array(2));
-//        
-//        $introductions = $em->getRepository('FrontFrontBundle:Event')
-//                ->findForCitypage(6, $eventTypeIntroductions, $startdate, $session->get('stopdate'), $city->getLatitude(), $city->getLongitude(), 20);
-//        $workshops = $em->getRepository('FrontFrontBundle:Event')
-//                ->findForCitypage(6, $eventTypeWorkshops, $startdate, $session->get('stopdate'), $city->getLatitude(), $city->getLongitude(), 20);
-//        
-//        $next2month = new \DateTime($startdate);
-//        $next2month->add(new \DateInterval('P2M'));
-//        
-//        $concerts = $em->getRepository('FrontFrontBundle:Event')
-//                ->findForCitypage(6, $eventTypeConcerts, $startdate, $next2month, $city->getLatitude(), $city->getLongitude(), 20);
-//        
-//        $nextyear = new \DateTime($startdate);
-//        $nextyear->add(new \DateInterval('P1Y'));
-//        
-//        $festivals = $em->getRepository('FrontFrontBundle:Event')
-//                ->findForCitypage(6, $eventTypeFestivals, $startdate, $nextyear, $city->getLatitude(), $city->getLongitude(), 20);
-//
-//        
-//        $photos = $this->getPhotos($em, 6, $city->getLatitude(), $city->getLongitude());
-//        $musics = array();
-//        $videos = array();
-
-        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
+        return $this->render('FrontFrontBundle:City:musics.html.twig', array(
                     'page' => $page,
                     'user' => $user,
-                    'people' => $People,
-//                    'places' => $places,
-//                    'introductions' => $introductions,
-//                    'workshops' => $workshops,
-//                    'concerts' => $concerts,
-//                    'festivals' => $festivals,
-//                    'photos' => $photos,
-//                    'musics' => $musics,
-//                    'photos' => $photos,
-//                    'videos' => $videos,
+                    'musics' => $musics,
         ));
     }
 
@@ -352,18 +316,21 @@ class CityController extends Controller {
                 ->findPhotosByLocation($limit, $latitude, $longitude, $distance);
         $eventFiles = $em->getRepository('FrontFrontBundle:EventFile')
                 ->findPhotosByLocation($limit, $latitude, $longitude, $distance);
-        
-        var_dump(count($userFiles));
-        var_dump(count($eventFiles));
-        
+
         $photos = array_merge($userFiles, $eventFiles);
         shuffle($photos);
 
-//        var_dump($photos[0]);
-//        var_dump($photos[1]);
-        var_dump(count($photos));
-        
         return $photos;
+    }
+
+    private function getMusics($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20) {
+
+        $musics = $em->getRepository('FrontFrontBundle:Music')
+                ->findMusicsByLocation($limit, $latitude, $longitude, $distance);
+
+        shuffle($musics);
+
+        return $musics;
     }
 
     private function getCity($request) {
