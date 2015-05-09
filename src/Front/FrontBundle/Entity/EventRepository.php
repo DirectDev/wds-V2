@@ -13,7 +13,7 @@ use Front\FrontBundle\Entity\EventType;
  */
 class EventRepository extends EntityRepository {
 
-    public function findForHomepage($startdate_only = true, $limit = 6, $eventTypes = null, $musicTypes = null,
+    public function findForCitypages($startdate_only = true, $limit = 6, $eventTypes = null, $musicTypes = null,
             $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20, $excludedEvents = array()) {
 
         if (!$startdate)
@@ -91,50 +91,5 @@ class EventRepository extends EntityRepository {
         ;
     }
     
-    public function findForCitypage($limit = 6, $eventTypes = null,
-            $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20) {
-
-        if (!$startdate)
-            $startdate = date('Y-m-d');
-        if (!$stopdate)
-            $stopdate = date('Y-m-d', strtotime('+7 days'));
-        
-        $arrayEventType = array();
-
-        $query = $this->createQueryBuilder('e')
-                ->leftJoin('e.eventType', 'et')
-                ->leftJoin('e.eventDates', 'ed')
-                ->leftJoin('e.addresses', 'a')
-                ->setParameter('startdate', $startdate)
-                ->setParameter('stopdate', $stopdate)
-                ->orderBy('ed.startdate', 'ASC');
-        
-        
-            $query->where('((
-                    (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
-                    OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
-                    OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
-                    )
-                    OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
-        
-        if ($eventTypes && count($eventTypes)) {
-            foreach ($eventTypes as $eventType)
-                $arrayEventType [] = $eventType->getId();
-            
-            $query->andWhere($query->expr()->in('et.id', $arrayEventType));
-        }
-
-        /* Geocode */
-        $query->andWhere("(3958*3.1415926*sqrt((a.latitude - :latitude)*(a.latitude - :latitude)
-                + cos(a.latitude/57.29578)*cos(:latitude/57.29578)*(a.longitude - :longitude)*(a.longitude-:longitude))/180)
-                <= :distance")
-                ->setParameter('latitude', $latitude)
-                ->setParameter('longitude', $longitude)
-                ->setParameter('distance', $distance);
-        /* Geocode */
-
-        return $query->getQuery()->getResult();
-
-    }
 
 }

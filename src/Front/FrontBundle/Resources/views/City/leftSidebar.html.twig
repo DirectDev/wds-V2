@@ -10,27 +10,33 @@
             <a href="{{ path('city_dancers', { 'searchcity': app.session.get('city') }) }}">
                 <i class="fa fa-group"></i> Danseurs</a>
         </li> 
-        <li class="list-group-item">
-            <a href="page_profile_me.html"><i class="fa fa-user"></i> Associations</a>
-        </li>                            
-        <li class="list-group-item">
-            <a href="page_profile_projects.html"><i class="fa fa-cubes"></i> Artistes</a>
-        </li>
+        <li class="list-group-item {% if active == 'teachers' %}active{% endif %}">
+            <a href="{{ path('city_teachers', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> Teachers</a>
+        </li> 
+        <li class="list-group-item {% if active == 'artits' %}active{% endif %}">
+            <a href="{{ path('city_artits', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> Artits</a>
+        </li> 
+        <li class="list-group-item {% if active == 'introductions' %}active{% endif %}">
+            <a href="{{ path('city_introductions', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> introductions</a>
+        </li> 
+        <li class="list-group-item {% if active == 'workshops' %}active{% endif %}">
+            <a href="{{ path('city_workshops', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> workshops</a>
+        </li> 
+        <li class="list-group-item {% if active == 'concerts' %}active{% endif %}">
+            <a href="{{ path('city_concerts', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> concerts</a>
+        </li> 
+        <li class="list-group-item {% if active == 'festivals' %}active{% endif %}">
+            <a href="{{ path('city_festivals', { 'searchcity': app.session.get('city') }) }}">
+                <i class="fa fa-group"></i> festivals</a>
+        </li> 
         <li class="list-group-item">
             <a href="page_profile_comments.html"><i class="fa fa-comments"></i> Lieux</a>
         </li>                                        
-        <li class="list-group-item">
-            <a href="page_profile_history.html"><i class="fa fa-history"></i> Initiations</a>
-        </li>                                       
-        <li class="list-group-item">
-            <a href="page_profile_settings.html"><i class="fa fa-cog"></i> Apprendre</a>
-        </li>
-        <li class="list-group-item">
-            <a href="page_profile_settings.html"><i class="fa fa-cog"></i> concerts</a>
-        </li> 
-        <li class="list-group-item">
-            <a href="page_profile_settings.html"><i class="fa fa-cog"></i> festivals</a>
-        </li> 
         <li class="list-group-item">
             <a href="page_profile_settings.html"><i class="fa fa-cog"></i> photos</a>
         </li> 

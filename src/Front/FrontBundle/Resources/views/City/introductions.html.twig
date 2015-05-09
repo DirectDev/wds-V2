@@ -48,7 +48,7 @@
     <div class="container content profile">
         <div class="row">
             <!--Left Sidebar-->
-            {% include 'FrontFrontBundle:City:leftSidebar.html.twig' with { active : 'calendar' } %}
+            {% include 'FrontFrontBundle:City:leftSidebar.html.twig' with { active : 'introductions' } %}
             <!--End Left Sidebar-->
 
             <!-- Profile Content -->            
@@ -73,18 +73,13 @@
                             <li class="filter" data-filter="category_2">Bachata</li>
                             <li class="filter" data-filter="category_3">Kizomba</li>
                             <li><- filtres (voir home portfolio) -></li>
-                            <li class="filter" data-filter="all">All</li>
-                            <li class="filter" data-filter="category_1">Soirées</li>
-                            <li class="filter" data-filter="category_2">Cours</li>
-                            <li class="filter" data-filter="category_3">Concerts</li>
-                            <li class="filter" data-filter="category_3 category_1">Soirée et cours</li>
                         </ul>
 
 
                         <!-- Easy Blocks v1 -->                
                         <div class="row high-rated margin-bottom-20">
 
-                            {% include 'FrontFrontBundle:Home:list.html.twig' %}
+                            {% include 'FrontFrontBundle:Event:list.html.twig' %}
 
                             <!-- Easy Block -->                
                             <div class="col-md-6 col-sm-12 md-margin-bottom-40 category_1"  data-cat="1">
@@ -288,7 +283,7 @@
     
                 <div class="row row-table panel panel-default" id="event-list">
                     <div class="panel-body">
-                        {% include 'FrontFrontBundle:Home:list.html.twig' %}
+                        {% include 'FrontFrontBundle:Event:list.html.twig' %}
                     </div>        
                 </div>   
     

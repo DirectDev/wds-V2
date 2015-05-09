@@ -4,7 +4,6 @@ namespace Front\FrontBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Front\FrontBundle\Entity\City;
 use Front\FrontBundle\Form\CityType;
 
@@ -12,28 +11,65 @@ use Front\FrontBundle\Form\CityType;
  * City controller.
  *
  */
-class CityController extends Controller
-{
+class CityController extends Controller {
 
-    /**
-     * Lists all City entities.
-     *
-     */
-    public function indexAction()
-    {
-        
-        return $this->redirect($this->generateUrl('home'));
-        
+    private $max_results = 6;
+    private $add_days = 'P8D';
+    private $startdate = null;
+    private $stopdate = null;
+    private $tomorrow = null;
+
+    private function setDates($request) {
+        $session = $this->getRequest()->getSession();
+        $startdate = $request->get('searcheventdate', '', true);
+        if (!$startdate)
+            $startdate = $session->get('startdate');
+        if (!$startdate)
+            $startdate = date('Y-m-d');
+        $tomorrowDateTime = new \DateTime($startdate);
+        $tomorrowDateTime->add(new \DateInterval('P1D'));
+        $tomorrow = $tomorrowDateTime->format('Y-m-d');
+        $stopDateTime = new \DateTime($startdate);
+        $stopDateTime->add(new \DateInterval($this->add_days));
+        $stopdate = $stopDateTime->format('Y-m-d');
+        $session->set('startdate', $startdate);
+        $session->set('tomorrow', $tomorrow);
+        $session->set('stopdate', $stopdate);
+        $this->startdate = $startdate;
+        $this->stopdate = $stopdate;
+        $this->tomorrow = $tomorrow;
+    }
+
+    public function calendarAction(Request $request) {
+
         $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
 
-        $entities = $em->getRepository('FrontFrontBundle:City')->findAll();
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('calendar');
+        if (!$page)
+            throw new \Exception('Page not found!');
 
-        return $this->render('FrontFrontBundle:City:index.html.twig', array(
-            'entities' => $entities,
+        $city = $this->getCity($request);
+        $this->setDates($request);
+
+        $musicTypes = $em->getRepository('FrontFrontBundle:MusicType')->findById($session->get('musicTypes'));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById($session->get('eventTypes'));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, $musicTypes, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, $musicTypes, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        return $this->render('FrontFrontBundle:City:calendar.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
         ));
     }
-    
-    public function DancersAction(Request $request) {  
+
+    public function dancersAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
@@ -41,13 +77,202 @@ class CityController extends Controller
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('dancers');
         if (!$page)
             throw new \Exception('Page not found!');
-        
+
         $city = $this->getCity($request);
 
         $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
-        
-        $people = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude());
-        
+
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->find(1);
+
+        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+
+        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'people' => $People,
+        ));
+    }
+
+    public function teachersAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('teachers');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->find(2);
+
+        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+
+        return $this->render('FrontFrontBundle:City:teachers.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'people' => $People,
+        ));
+    }
+
+    public function artitsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('artits');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->find(3);
+
+        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+
+        return $this->render('FrontFrontBundle:City:artits.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'people' => $People,
+        ));
+    }
+
+    public function introductionsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('introductions');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $this->setDates($request);
+
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(4));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        return $this->render('FrontFrontBundle:City:introductions.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
+    public function workshopsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('introductions');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $this->setDates($request);
+
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(3, 7));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        return $this->render('FrontFrontBundle:City:workshops.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
+    public function concertsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('introductions');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $this->setDates($request);
+
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(6));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        return $this->render('FrontFrontBundle:City:concerts.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
+    public function festivalsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('introductions');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $this->add_days = 'P1Y';
+        $this->setDates($request);
+
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(2));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        return $this->render('FrontFrontBundle:City:festivals.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
+    public function to_deleteAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('dancers');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude());
+
 //        $eventTypeIntroductions = $em->getRepository('FrontFrontBundle:EventType')->findById(array(4));
 //        $eventTypeWorkshops = $em->getRepository('FrontFrontBundle:EventType')->findById(array(3,7));
 //        $eventTypeConcerts = $em->getRepository('FrontFrontBundle:EventType')->findById(array(6));
@@ -78,7 +303,7 @@ class CityController extends Controller
         return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
                     'user' => $user,
-                    'people' => $people,
+                    'people' => $People,
 //                    'places' => $places,
 //                    'introductions' => $introductions,
 //                    'workshops' => $workshops,
@@ -90,30 +315,28 @@ class CityController extends Controller
 //                    'videos' => $videos,
         ));
     }
-    
-    private function getUsers($em, $limit = 6,  $latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
+
+    private function getUsers($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
 
         $users = $em->getRepository('UserUserBundle:User')
                 ->findUserByLocation($limit, $latitude, $longitude, $distance, $userTypes);
-        
+
         return $users;
     }
-    
-    private function getPhotos($em, $limit = 6,  $latitude = null, $longitude = null, $distance = 20) {
+
+    private function getPhotos($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20) {
 
         $userFiles = $em->getRepository('UserUserBundle:UserFile')
                 ->findPhotosByLocation($limit, $latitude, $longitude, $distance);
-        
+
         return $userFiles;
     }
-    
-    
-    // FAIRE UN SERVICE !!!! IDENTIQUE DANS PLUSIEURS CONTROLLERS
-    private function getCity($request){
-        
+
+    private function getCity($request) {
+
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
-        
+
         $searchcity = $request->get('searchcity', '', true);
         if (!$searchcity)
             $searchcity = $session->get('city');
@@ -145,232 +368,30 @@ class CityController extends Controller
                 
             }
         }
-        
+
         return $city;
     }
-    
-//    /**
-//     * Creates a new City entity.
-//     *
-//     */
-//    public function createAction(Request $request)
-//    {
-//        $entity = new City();
-//        $form = $this->createCreateForm($entity);
-//        $form->handleRequest($request);
-//
-//        if ($form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($entity);
-//            $em->flush();
-//            
-//            try {
-//                $em->refresh($entity);
-//                $this->setLatitudeAndLongitude($entity);
-//                $em->persist($entity);
-//                $em->flush();
-//            } catch (\Exception $e) {
-//                
-//            }
-//
-//            return $this->redirect($this->generateUrl('front_city_show', array('id' => $entity->getId())));
-//        }
-//
-//        return $this->render('FrontFrontBundle:City:new.html.twig', array(
-//            'entity' => $entity,
-//            'form'   => $form->createView(),
-//        ));
-//    }
-//
-//    /**
-//     * Creates a form to create a City entity.
-//     *
-//     * @param City $entity The entity
-//     *
-//     * @return \Symfony\Component\Form\Form The form
-//     */
-//    private function createCreateForm(City $entity)
-//    {
-//        $form = $this->createForm(new CityType(), $entity, array(
-//            'action' => $this->generateUrl('front_city_create'),
-//            'method' => 'POST',
-//        ));
-//
-//        $form->add('submit', 'submit', array('label' => 'Create'));
-//
-//        return $form;
-//    }
-//
-//    /**
-//     * Displays a form to create a new City entity.
-//     *
-//     */
-//    public function newAction()
-//    {
-//        $entity = new City();
-//        $form   = $this->createCreateForm($entity);
-//
-//        return $this->render('FrontFrontBundle:City:new.html.twig', array(
-//            'entity' => $entity,
-//            'form'   => $form->createView(),
-//        ));
-//    }
-//
-//    /**
-//     * Finds and displays a City entity.
-//     *
-//     */
-//    public function showAction($id)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('FrontFrontBundle:City')->find($id);
-//
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find City entity.');
-//        }
-//
-//        $deleteForm = $this->createDeleteForm($id);
-//
-//        return $this->render('FrontFrontBundle:City:show.html.twig', array(
-//            'entity'      => $entity,
-//            'delete_form' => $deleteForm->createView(),
-//        ));
-//    }
-//
-//    /**
-//     * Displays a form to edit an existing City entity.
-//     *
-//     */
-//    public function editAction($id)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('FrontFrontBundle:City')->find($id);
-//
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find City entity.');
-//        }
-//
-//        $editForm = $this->createEditForm($entity);
-//        $deleteForm = $this->createDeleteForm($id);
-//
-//        return $this->render('FrontFrontBundle:City:edit.html.twig', array(
-//            'entity'      => $entity,
-//            'edit_form'   => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
-//        ));
-//    }
-//
-//    /**
-//    * Creates a form to edit a City entity.
-//    *
-//    * @param City $entity The entity
-//    *
-//    * @return \Symfony\Component\Form\Form The form
-//    */
-//    private function createEditForm(City $entity)
-//    {
-//        $form = $this->createForm(new CityType(), $entity, array(
-//            'action' => $this->generateUrl('front_city_update', array('id' => $entity->getId())),
-//            'method' => 'PUT',
-//        ));
-//
-//        $form->add('submit', 'submit', array('label' => 'Update'));
-//
-//        return $form;
-//    }
-//    /**
-//     * Edits an existing City entity.
-//     *
-//     */
-//    public function updateAction(Request $request, $id)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('FrontFrontBundle:City')->find($id);
-//
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find City entity.');
-//        }
-//
-//        $deleteForm = $this->createDeleteForm($id);
-//        $editForm = $this->createEditForm($entity);
-//        $editForm->handleRequest($request);
-//
-//        if ($editForm->isValid()) {
-//            
-//            try {
-//                $this->setLatitudeAndLongitude($entity);
-//                $em->persist($entity);
-//                $em->flush();
-//            } catch (\Exception $e) {
-//                
-//            }
-//            
-//
-//            return $this->redirect($this->generateUrl('front_city_edit', array('id' => $id)));
-//        }
-//
-//        return $this->render('FrontFrontBundle:City:edit.html.twig', array(
-//            'entity'      => $entity,
-//            'edit_form'   => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
-//        ));
-//    }
-//    /**
-//     * Deletes a City entity.
-//     *
-//     */
-//    public function deleteAction(Request $request, $id)
-//    {
-//        $form = $this->createDeleteForm($id);
-//        $form->handleRequest($request);
-//
-//        if ($form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $entity = $em->getRepository('FrontFrontBundle:City')->find($id);
-//
-//            if (!$entity) {
-//                throw $this->createNotFoundException('Unable to find City entity.');
-//            }
-//
-//            $em->remove($entity);
-//            $em->flush();
-//        }
-//
-//        return $this->redirect($this->generateUrl('front_city'));
-//    }
-//
-//    /**
-//     * Creates a form to delete a City entity by id.
-//     *
-//     * @param mixed $id The entity id
-//     *
-//     * @return \Symfony\Component\Form\Form The form
-//     */
-//    private function createDeleteForm($id)
-//    {
-//        return $this->createFormBuilder()
-//            ->setAction($this->generateUrl('front_city_delete', array('id' => $id)))
-//            ->setMethod('DELETE')
-//            ->add('submit', 'submit', array('label' => 'Delete'))
-//            ->getForm()
-//        ;
-//    }
-//    
-//    private function setLatitudeAndLongitude($entity) {
-//        try {
-//            $geocode = $this->container
-//                    ->get('bazinga_geocoder.geocoder')
-//                    ->using('google_maps')
-//                    ->geocode($entity->stringForGoogleMaps());
-//
-//            $entity->setLatitude($geocode['latitude']);
-//            $entity->setLongitude($geocode['longitude']);
-//            
-//        } catch (\Exception $e) {
-//            throw $e;
-//        }
-//    }
+
+    private function getEvents($em, $startdate_only = true, $limit = 6, $eventTypes = null, $musicTypes = null, $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20, $excludedEvents = array()) {
+
+        $events = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages($startdate_only, $limit, $eventTypes, $musicTypes, $startdate, $stopdate, $latitude, $longitude, 20, $excludedEvents);
+
+        return $events;
+    }
+
+    private function setLatitudeAndLongitude($city) {
+        try {
+            $geocode = $this->container
+                    ->get('bazinga_geocoder.geocoder')
+                    ->using('google_maps')
+                    ->geocode($city->getSearchcity());
+
+            $city->setLatitude($geocode['latitude']);
+            $city->setLongitude($geocode['longitude']);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }

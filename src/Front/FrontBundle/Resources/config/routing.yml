@@ -1,16 +1,10 @@
 homepage:
     path:      /
     defaults:  { _controller: FrontFrontBundle:Default:index }
-    
-#citypage:
-#    path:      /city/{searchcity}
-#    defaults:  { _controller: FrontFrontBundle:Default:city }    
-#    requirements:
-#      _method: GET
-   
+
 calendarpage:
     path:      /calendar/{searchcity}
-    defaults:  { _controller: FrontFrontBundle:Default:calendar }    
+    defaults:  { _controller: FrontFrontBundle:City:calendar }    
     requirements:
       _method: GET      
       
