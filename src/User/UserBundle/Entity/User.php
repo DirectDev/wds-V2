@@ -10,6 +10,7 @@ use Front\FrontBundle\Entity\Event;
 use Front\FrontBundle\Entity\Address;
 use Front\FrontBundle\Entity\MusicType;
 use Front\FrontBundle\Entity\Music;
+use Front\FrontBundle\Entity\Video;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
@@ -109,6 +110,11 @@ class User extends BaseUser {
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Music", mappedBy="user")
      */
     protected $musics;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Video", mappedBy="user")
+     */
+    protected $videos;
 
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
@@ -132,6 +138,7 @@ class User extends BaseUser {
         $this->musicTypes = new ArrayCollection();
         $this->userTypes = new ArrayCollection();
         $this->musics = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function isFacebookUser() {
@@ -674,5 +681,37 @@ class User extends BaseUser {
     public function getMusics() {
         return $this->musics;
     }
+    
+    /**
+     * Add videos
+     *
+     * @param \Front\FrontBundle\Entity\Video $videos
+     * @return User
+     */
+    public function addVideo(\Front\FrontBundle\Entity\Video $videos) {
+        $videos->addUser($this);
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Front\FrontBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Front\FrontBundle\Entity\Video $videos) {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos() {
+        return $this->videos;
+    }
+
 
 }

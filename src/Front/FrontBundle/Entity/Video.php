@@ -3,15 +3,14 @@
 namespace Front\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use User\UserBundle\Entity\User;
 
 /**
- * Music
+ * Video
  *
- * @ORM\Table(name="music")
- * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\MusicRepository")
+ * @ORM\Table(name="video")
+ * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\VideoRepository")
  */
-class Music {
+class Video {
 
     /**
      * @var integer
@@ -30,32 +29,60 @@ class Music {
     private $url;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="musics")
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="videos")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
-    public function isSoundCloud() {
-        if (stripos($this->getUrl(), 'soundcloud') !== false)
+    public function isVimeo() {
+        if (stripos($this->getUrl(), 'vimeo') !== false)
             return true;
         return false;
     }
 
-    public function isSpotify() {
-        if (stripos($this->getUrl(), 'spotify') !== false)
+    public function isDailymotion() {
+        if (stripos($this->getUrl(), 'dailymotion') !== false)
             return true;
         return false;
     }
 
-    public function getSpotifyURI() {
-        if (!$this->isSpotify())
+    public function isYoutube() {
+        if (stripos($this->getUrl(), 'youtube') !== false)
+            return true;
+        return false;
+    }
+
+    public function getYoutubeURI() {
+        if (!$this->isYoutube())
             return;
 
-        $pos = stripos($this->getUrl(), 'spotify.com') + 12;
+        $pos = stripos($this->getUrl(), 'youtube.com') + 12;
         $str = substr($this->getUrl(), $pos);
         $tab = explode('/', $str);
 
-        return 'spotify:' . $tab[0] . ':' . $tab[1];
+        return $tab[1];
+    }
+
+    public function getDailymotionURI() {
+        if (!$this->isYoutube())
+            return;
+
+        $pos = stripos($this->getUrl(), 'dailymotion.com') + 16;
+        $str = substr($this->getUrl(), $pos);
+        $tab = explode('/', $str);
+
+        return $tab[1];
+    }
+
+    public function getVimeoURI() {
+        if (!$this->isYoutube())
+            return;
+
+        $pos = stripos($this->getUrl(), 'vimeo.com') + 10;
+        $str = substr($this->getUrl(), $pos);
+        $tab = explode('/', $str);
+
+        return $tab[1];
     }
 
     /**
@@ -71,7 +98,7 @@ class Music {
      * Set url
      *
      * @param string $url
-     * @return Music
+     * @return Video
      */
     public function setUrl($url) {
         $this->url = $url;

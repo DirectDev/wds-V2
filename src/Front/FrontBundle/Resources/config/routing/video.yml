@@ -1,0 +1,30 @@
+front_video:
+    path:     /
+    defaults: { _controller: "FrontFrontBundle:Video:index" }
+
+front_video_show:
+    path:     /{id}/show
+    defaults: { _controller: "FrontFrontBundle:Video:show" }
+
+front_video_new:
+    path:     /new
+    defaults: { _controller: "FrontFrontBundle:Video:new" }
+
+front_video_create:
+    path:     /create
+    defaults: { _controller: "FrontFrontBundle:Video:create" }
+    requirements: { _method: post }
+
+front_video_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FrontFrontBundle:Video:edit" }
+
+front_video_update:
+    path:     /{id}/update
+    defaults: { _controller: "FrontFrontBundle:Video:update" }
+    requirements: { _method: post|put }
+
+front_video_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FrontFrontBundle:Video:delete" }
+    requirements: { _method: post|delete }
