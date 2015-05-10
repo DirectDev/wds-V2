@@ -4,7 +4,6 @@ namespace Front\FrontBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Front\FrontBundle\Entity\Video;
 use Front\FrontBundle\Form\VideoType;
 
@@ -12,31 +11,44 @@ use Front\FrontBundle\Form\VideoType;
  * Video controller.
  *
  */
-class VideoController extends Controller
-{
+class VideoController extends Controller {
+
+    private function findUser($id) {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('UserUserBundle:User')->find($id);
+        if (!$user)
+            throw $this->createNotFoundException('Unable to find User entity.');
+        return $user;
+    }
 
     /**
      * Lists all Video entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('FrontFrontBundle:Video')->findAll();
 
         return $this->render('FrontFrontBundle:Video:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Video entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $user = $this->findUser($id);
+
         $entity = new Video();
-        $form = $this->createCreateForm($entity);
+        $entity->setUser($user);
+        $form = $this->createCreateForm($entity, $id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -44,12 +56,14 @@ class VideoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_video_show', array('id' => $entity->getId())));
+            $user = $entity->getUser();
+            if ($user)
+                return $this->redirect($this->generateUrl('front_user_edit', array('id' => $user->getId())));
         }
 
         return $this->render('FrontFrontBundle:Video:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -60,14 +74,13 @@ class VideoController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Video $entity)
-    {
+    private function createCreateForm(Video $entity, $id) {
         $form = $this->createForm(new VideoType(), $entity, array(
-            'action' => $this->generateUrl('front_video_create'),
+            'action' => $this->generateUrl('front_video_create', array('id' => $id)),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
 
         return $form;
     }
@@ -76,14 +89,20 @@ class VideoController extends Controller
      * Displays a form to create a new Video entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction($id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $user = $this->findUser($id);
+
         $entity = new Video();
-        $form   = $this->createCreateForm($entity);
+        $entity->setUser($user);
+        $form = $this->createCreateForm($entity, $user->getId());
 
         return $this->render('FrontFrontBundle:Video:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,8 +110,7 @@ class VideoController extends Controller
      * Finds and displays a Video entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
@@ -104,8 +122,8 @@ class VideoController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Video:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +131,7 @@ class VideoController extends Controller
      * Displays a form to edit an existing Video entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
@@ -127,21 +144,20 @@ class VideoController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Video entity.
-    *
-    * @param Video $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Video $entity)
-    {
+     * Creates a form to edit a Video entity.
+     *
+     * @param Video $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Video $entity) {
         $form = $this->createForm(new VideoType(), $entity, array(
             'action' => $this->generateUrl('front_video_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -151,12 +167,12 @@ class VideoController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Video entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
@@ -176,17 +192,17 @@ class VideoController extends Controller
         }
 
         return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Video entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -212,13 +228,13 @@ class VideoController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('front_video_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('front_video_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }

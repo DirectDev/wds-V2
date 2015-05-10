@@ -7,11 +7,11 @@ front_video_show:
     defaults: { _controller: "FrontFrontBundle:Video:show" }
 
 front_video_new:
-    path:     /new
+    path:     /{id}/new
     defaults: { _controller: "FrontFrontBundle:Video:new" }
 
 front_video_create:
-    path:     /create
+    path:     /{id}/create
     defaults: { _controller: "FrontFrontBundle:Video:create" }
     requirements: { _method: post }
 

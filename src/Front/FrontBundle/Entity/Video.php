@@ -56,33 +56,31 @@ class Video {
         if (!$this->isYoutube())
             return;
 
-        $pos = stripos($this->getUrl(), 'youtube.com') + 12;
-        $str = substr($this->getUrl(), $pos);
-        $tab = explode('/', $str);
+        $pos = strrpos($this->getUrl(), 'watch?v=') + 8;
+        if ($pos !== false)
+            return substr($this->getUrl(), $pos);
 
-        return $tab[1];
+        $pos = strrpos($this->getUrl(), '/') + 1;
+        if ($pos !== false)
+            return substr($this->getUrl(), $pos);
     }
 
     public function getDailymotionURI() {
-        if (!$this->isYoutube())
+        if (!$this->isDailymotion())
             return;
 
-        $pos = stripos($this->getUrl(), 'dailymotion.com') + 16;
-        $str = substr($this->getUrl(), $pos);
-        $tab = explode('/', $str);
-
-        return $tab[1];
+        $pos = strrpos($this->getUrl(), '/') + 1;
+        if ($pos !== false)
+            return substr($this->getUrl(), $pos);
     }
 
     public function getVimeoURI() {
-        if (!$this->isYoutube())
+        if (!$this->isVimeo())
             return;
 
-        $pos = stripos($this->getUrl(), 'vimeo.com') + 10;
-        $str = substr($this->getUrl(), $pos);
-        $tab = explode('/', $str);
-
-        return $tab[1];
+        $pos = strrpos($this->getUrl(), '/') + 1;
+        if ($pos !== false)
+            return substr($this->getUrl(), $pos);
     }
 
     /**

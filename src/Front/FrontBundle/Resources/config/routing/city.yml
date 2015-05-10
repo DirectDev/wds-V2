@@ -51,4 +51,9 @@ city_musics:
     defaults:  { _controller: FrontFrontBundle:City:musics }    
     requirements:
       _method: GET        
-      
+  
+city_videos:
+    path:      /city/videos/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:videos }    
+    requirements:
+      _method: GET            

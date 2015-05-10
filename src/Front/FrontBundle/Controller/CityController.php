@@ -302,6 +302,28 @@ class CityController extends Controller {
         ));
     }
 
+    public function videosAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('videos');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+
+        $videos = $this->getVideos($em, 6, $city->getLatitude(), $city->getLongitude());
+
+        return $this->render('FrontFrontBundle:City:videos.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'videos' => $videos,
+        ));
+    }
+
     private function getUsers($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
 
         $users = $em->getRepository('UserUserBundle:User')
@@ -331,6 +353,16 @@ class CityController extends Controller {
         shuffle($musics);
 
         return $musics;
+    }
+
+    private function getVideos($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20) {
+
+        $videos = $em->getRepository('FrontFrontBundle:Video')
+                ->findVideosByLocation($limit, $latitude, $longitude, $distance);
+
+        shuffle($videos);
+
+        return $videos;
     }
 
     private function getCity($request) {
