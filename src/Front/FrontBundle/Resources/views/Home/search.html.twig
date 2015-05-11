@@ -7,7 +7,7 @@
 
     {% set placeholder_date = app.session.get('startdate')|capitalize %}
     {% if not placeholder_date %}
-        {% set placeholder_date = "now"|date("d m Y") %}
+        {% set placeholder_date = "now"|date("Y-m-d") %}
     {% endif  %}
 
     <div class="job-img-inputs">

@@ -261,18 +261,25 @@
                 <!-- End Left Inner -->
 
                 <!-- Right Inner -->
+                {% set user = event.getUser %}
                 <div class="col-md-5"> 
                     <div class="right-inner">
                         <h3>Posted by</h3>     
-                        <img src="{{ asset("assets/img/testimonials/img1.jpg") }}" alt="">
+                        {% if user.isFacebookUser %}
+                            <img width="90px" src='{{ user.profilePictureUrl }}' />
+                        {% elseif user.profilePictureUrl %}
+                            <img width="90px" src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' />
+                        {% endif %}
                         <div class="overflow-h">
-                            <span class="font-s">Steve Andersson</span>
-                            <p class="color-green">Position: <span class="hex">Manager, Accounter</span></p>
+                            <span class="font-s">{{ user.username|capitalize }}</span>
+                            {% if user.getMusicType %}
+                                <p class="color-green">Position: <span class="hex">{{ user.getMusicTypesText }}</span></p>
+                                {% endif %}
                             <ul class="social-icons">
-                                <li><a class="social_facebook" data-original-title="Facebook" href="#"></a></li>
-                                <li><a class="social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+                                <li><a class="social_facebook {% if not user.facebookLink %}disabled{% endif %}" data-original-title="Facebook" href="{{ user.facebookLink }}"></a></li>
+                                <li><a class="social_googleplus {% if not user.googleLink %}disabled{% endif %}" data-original-title="Google Plus" href="{{ user.googleLink }}"></a></li>
                                 <li><a class="social_tumblr" data-original-title="Tumblr" href="#"></a></li>
-                                <li><a class="social_twitter" data-original-title="Twitter" href="#"></a></li>
+                                <li><a class="social_twitter {% if not user.twitterLink %}disabled{% endif %}" data-original-title="Twitter" href="{{ user.twitterLink }}"></a></li>
                             </ul>
                         </div>    
 
