@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{{ asset("front/css/pages/page_job_inner1.css") }}">
     <link rel="stylesheet" href="{{ asset("front/css/pages/shortcode_timeline2.css") }}">
 
-    <link rel="stylesheet" href="{{ asset("front/css/pages/z_feature_google_map.css") }}">
     <link rel="stylesheet" href="{{ asset("front/plugins/owl-carousel/owl-carousel/owl.carousel.css") }}">
     <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v1.css") }}">
 
@@ -417,7 +416,11 @@
 <!--=== End Job Description ===-->
 
 <!-- Basic Map -->
-<div id="map" class="map margin-bottom-50"></div>
+{% if event.getAddress and event.getAddress().isValid() %}    
+    <div id="map" class="map margin-bottom-50">
+        {% include 'FrontFrontBundle:Event:map.html.twig' %}
+    </div>
+{% endif %}
 <!-- End Basic Map -->
 
 {#   <div class="page-banner">
