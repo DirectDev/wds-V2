@@ -17,6 +17,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     private $container;
     private $password = 1234;
     private $array_locale = array('en', 'fr');
+    private $array_musictype = array('salsa', 'bachata', 'tango', 'kizomba', 'merengue', 'zouk');
     private $array_baseline = array(
         'Maecenas porta nulla quis tempor hendrerit.',
         'Vestibulum sit amet lorem a urna iaculis ornare non eu lacus.',
@@ -79,6 +80,14 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->loadBars($manager);
     }
 
+    private function addMusicType($User) {
+        $count = rand(0, count($this->array_musictype) - 1);
+        for ($i = 0; $i < $count; $i++) {
+            if (rand(0, 1))
+                $User->addMusicType($this->getReference('musictype-' . $this->array_musictype[$i]));
+        }
+    }
+
     public function loadDancers(ObjectManager $manager) {
 
         $arrays = array(
@@ -103,6 +112,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                     ->getEncoder($User);
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
             $User->addUserType($this->getReference('usertype-dancer'));
+            $this->addMusicType($User);
             $manager->persist($User);
             $this->addReference('user-dancer-' . $value, $User);
         }
@@ -143,6 +153,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
 
             $User->addUserType($this->getReference('usertype-teacher'));
+            $this->addMusicType($User);
             $manager->persist($User);
             $User->mergeNewTranslations();
 
@@ -185,6 +196,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
 
             $User->addUserType($this->getReference('usertype-artist'));
+            $this->addMusicType($User);
             $manager->persist($User);
             $User->mergeNewTranslations();
 
@@ -227,6 +239,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
 
             $User->addUserType($this->getReference('usertype-bar'));
+            $this->addMusicType($User);
             $manager->persist($User);
             $User->mergeNewTranslations();
 

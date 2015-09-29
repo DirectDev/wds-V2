@@ -148,10 +148,10 @@ class MusicType
     /**
      * Add users
      *
-     * @param \Front\FrontBundle\Entity\User $users
+     * @param \User\UserBundle\Entity\User $users
      * @return MusicType
      */
-    public function addUser(\Front\FrontBundle\Entity\User $users)
+    public function addUser(\User\UserBundle\Entity\User $users)
     {
         $this->users[] = $users;
 
@@ -161,9 +161,9 @@ class MusicType
     /**
      * Remove users
      *
-     * @param \Front\FrontBundle\Entity\User $users
+     * @param \User\UserBundle\Entity\User $users
      */
-    public function removeUser(\Front\FrontBundle\Entity\User $users)
+    public function removeUser(\User\UserBundle\Entity\User $users)
     {
         $this->users->removeElement($users);
     }
