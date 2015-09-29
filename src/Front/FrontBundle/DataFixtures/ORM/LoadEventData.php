@@ -1,23 +1,57 @@
 <?php
 
-namespace User\UserBundle\DataFixtures\ORM;
+namespace Front\FrontBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use User\UserBundle\Entity\User;
+use Front\FrontBundle\Entity\Event;
+use Front\FrontBundle\Entity\MusicType;
+use Front\FrontBundle\Form\EventType;
 
-class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
+class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
 
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-    private $password = 1234;
     private $array_locale = array('en', 'fr');
     private $array_musictype = array('salsa', 'bachata', 'tango', 'kizomba', 'merengue', 'zouk');
+    private $array_eventtype = array('party', 'festival', 'workshop', 'lesson', 'show', 'concert', 'workshop_party');
+    private $array_user = array(
+        'salsa y passion',
+        'salsa loca',
+        'amor de salsa',
+        'los bailadores',
+        'Salsa de la calle',
+        'rythmes latins',
+        'sensualité et danse',
+        'africasalsa',
+        'dance & fun',
+        'bests salsa teachers',
+        'learn to dance',
+        "latino's rythms",
+        "john & miranda",
+        "marc et sophie",
+        "passionSalsa",
+        "salsa y tu",
+        "gente Loca",
+        "los tamborinos",
+        "the salsa players",
+        "Mr Salsa",
+        "dadee cuba",
+        "los cubatoneros",
+        "love salsa",
+        "los cantadores",
+        "El rojo",
+        "B-sky",
+        "Mac",
+        "le Rezo",
+        "Les quais",
+        "Fishwarf",
+        "The marina bar",
+        "le Chateau",
+        "The latino",
+        "La salle des fêtes",
+        "Drink's",
+        "Champagne bar",
+    );
     private $array_baseline = array(
         'Maecenas porta nulla quis tempor hendrerit.',
         'Vestibulum sit amet lorem a urna iaculis ornare non eu lacus.',
@@ -66,193 +100,59 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     /**
      * {@inheritDoc}
      */
-    public function setContainer(ContainerInterface $container = null) {
-        $this->container = $container;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function load(ObjectManager $manager) {
-        $this->loadDancers($manager);
-        $this->loadTeachers($manager);
-        $this->loadArtits($manager);
-        $this->loadBars($manager);
+
+        $arrays = array(
+            "Carnaval",
+            "City Salsa Party",
+            "Salsa Birthday",
+            "Love night bachata",
+            "Nuits latines",
+            "la Clave",
+            "Salsa Eve",
+            "The kiz & kiss",
+            "Salsa for you",
+            "National Salsa days",
+            "Time To Salsa",
+            "Dance salsa for ever event",
+        );
+
+        foreach ($arrays as $value) {
+
+            $Event = new Event();
+            $Event->setName($value);
+
+            $this->addMusicType($Event);
+            $Event->setEventType($this->getReference('eventtype-' . $this->array_eventtype[rand(0, count($this->array_eventtype) - 1)]));
+
+            $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+            $Event->setUser($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+
+
+            $locale = $this->array_locale[rand(0, 1)];
+            $Event->translate($locale)->setTitle($value);
+            $Event->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
+
+            $manager->persist($Event);
+            $this->addReference('event-' . $value, $Event);
+        }
+
+        $manager->flush();
     }
 
-    private function addMusicType(User $User) {
+    private function addMusicType(Event $Event) {
         $count = rand(0, count($this->array_musictype) - 1);
         for ($i = 0; $i < $count; $i++) {
             if (rand(0, 1))
-                $User->addMusicType($this->getReference('musictype-' . $this->array_musictype[$i]));
+                $Event->addMusicType($this->getReference('musictype-' . $this->array_musictype[$i]));
         }
-    }
-
-    public function loadDancers(ObjectManager $manager) {
-
-        $arrays = array(
-            'marie',
-            'john',
-            'marc',
-            'paul',
-            'rebecca',
-            'alex',
-            'tchen',
-            'beth',
-        );
-
-        foreach ($arrays as $value) {
-            $User = new User();
-            $User->setUsername($value);
-            $User->setPassword($this->password);
-            $User->setEmail($value . '@yopmail.com');
-            $User->addRole('ROLE_USER');
-            $encoder = $this->container
-                    ->get('security.encoder_factory')
-                    ->getEncoder($User);
-            $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
-            $User->addUserType($this->getReference('usertype-dancer'));
-            $this->addMusicType($User);
-            $manager->persist($User);
-            $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
-        }
-        $manager->flush();
-    }
-
-    public function loadTeachers(ObjectManager $manager) {
-
-        $arrays = array(
-            'salsa y passion',
-            'salsa loca',
-            'amor de salsa',
-            'los bailadores',
-            'Salsa de la calle',
-            'rythmes latins',
-            'sensualité et danse',
-            'africasalsa',
-            'dance & fun',
-            'bests salsa teachers',
-            'learn to dance',
-            "latino's rythms",
-        );
-
-        foreach ($arrays as $value) {
-            $User = new User();
-            $User->setUsername($value);
-            $User->setPassword($this->password);
-            $User->setEmail(rand(0, 1000) . rand(0, 1000) . '@yopmail.com');
-            $User->addRole('ROLE_USER');
-            $encoder = $this->container
-                    ->get('security.encoder_factory')
-                    ->getEncoder($User);
-            $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
-
-            $locale = $this->array_locale[rand(0, 1)];
-            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
-            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
-
-            $User->addUserType($this->getReference('usertype-teacher'));
-            $this->addMusicType($User);
-            $manager->persist($User);
-            $User->mergeNewTranslations();
-
-            $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
-        }
-        $manager->flush();
-    }
-
-    public function loadArtits(ObjectManager $manager) {
-
-        $arrays = array(
-            "john & miranda",
-            "marc et sophie",
-            "passionSalsa",
-            "salsa y tu",
-            "gente Loca",
-            "los tamborinos",
-            "the salsa players",
-            "Mr Salsa",
-            "dadee cuba",
-            "los cubatoneros",
-            "love salsa",
-            "los cantadores",
-        );
-
-        foreach ($arrays as $value) {
-            $User = new User();
-            $User->setUsername($value);
-            $User->setPassword($this->password);
-            $User->setEmail(rand(0, 1000) . rand(0, 1000) . '@yopmail.com');
-            $User->addRole('ROLE_USER');
-            $encoder = $this->container
-                    ->get('security.encoder_factory')
-                    ->getEncoder($User);
-            $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
-
-            $locale = $this->array_locale[rand(0, 1)];
-            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
-            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
-
-            $User->addUserType($this->getReference('usertype-artist'));
-            $this->addMusicType($User);
-            $manager->persist($User);
-            $User->mergeNewTranslations();
-
-            $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
-        }
-        $manager->flush();
-    }
-
-    public function loadBars(ObjectManager $manager) {
-
-        $arrays = array(
-            "El rojo",
-            "B-sky",
-            "Mac",
-            "le Rezo",
-            "Les quais",
-            "Fishwarf",
-            "The marina bar",
-            "le Chateau",
-            "The latino",
-            "La salle des fêtes",
-            "Drink's",
-            "Champagne bar",
-        );
-
-        foreach ($arrays as $value) {
-            $User = new User();
-            $User->setUsername($value);
-            $User->setPassword($this->password);
-            $User->setEmail(rand(0, 1000) . rand(0, 1000) . '@yopmail.com');
-            $User->addRole('ROLE_USER');
-            $encoder = $this->container
-                    ->get('security.encoder_factory')
-                    ->getEncoder($User);
-            $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
-
-            $locale = $this->array_locale[rand(0, 1)];
-            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
-            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
-
-            $User->addUserType($this->getReference('usertype-bar'));
-            $this->addMusicType($User);
-            $manager->persist($User);
-            $User->mergeNewTranslations();
-
-            $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
-        }
-        $manager->flush();
     }
 
     /**
      * {@inheritDoc}
      */
     public function getOrder() {
-        return 20;
+        return 30;
     }
 
 }
