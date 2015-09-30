@@ -48,7 +48,7 @@ class LoadEventDateData extends AbstractFixture implements OrderedFixtureInterfa
 
     private function loadEventDate(ObjectManager $manager) {
 
-        $add_start = rand(0, 100);
+        $add_start = rand(0, 30);
         $add_stop = rand(0, 5);
         $add_time = rand(0, 4);
 

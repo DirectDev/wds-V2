@@ -58,7 +58,7 @@ class CityController extends Controller {
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, $musicTypes, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, $musicTypes, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         return $this->render('FrontFrontBundle:City:calendar.html.twig', array(
                     'page' => $page,
@@ -80,9 +80,9 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
-        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->find(1);
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('dancer');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
@@ -104,9 +104,9 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
-        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->find(2);
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
@@ -128,9 +128,9 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
-        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->find(3);
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
@@ -152,7 +152,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $this->setDates($request);
 
@@ -181,7 +181,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $this->setDates($request);
 
@@ -210,7 +210,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $this->setDates($request);
 
@@ -239,7 +239,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $this->add_days = 'P1Y';
         $this->setDates($request);
@@ -269,7 +269,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $photos = $this->getPhotos($em, 6, $city->getLatitude(), $city->getLongitude());
 
@@ -291,7 +291,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $musics = $this->getMusics($em, 6, $city->getLatitude(), $city->getLongitude());
 
@@ -313,7 +313,7 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
 
-        $user = $this->getDoctrine()->getRepository('UserUserBundle:User')->find(1);
+        $user = $this->getUser();
 
         $videos = $this->getVideos($em, 6, $city->getLatitude(), $city->getLongitude());
 
