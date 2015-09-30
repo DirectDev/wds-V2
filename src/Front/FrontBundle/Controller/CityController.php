@@ -14,7 +14,7 @@ use Front\FrontBundle\Form\CityType;
 class CityController extends Controller {
 
     private $max_results = 6;
-    private $add_days = 'P8D';
+    private $add_days = 'P30D';
     private $startdate = null;
     private $stopdate = null;
     private $tomorrow = null;
@@ -117,12 +117,12 @@ class CityController extends Controller {
         ));
     }
 
-    public function artitsAction(Request $request) {
+    public function artistsAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('artits');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('artists');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -134,7 +134,7 @@ class CityController extends Controller {
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
-        return $this->render('FrontFrontBundle:City:artits.html.twig', array(
+        return $this->render('FrontFrontBundle:City:artists.html.twig', array(
                     'page' => $page,
                     'user' => $user,
                     'people' => $People,

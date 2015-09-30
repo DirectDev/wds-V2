@@ -6,27 +6,16 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Front\FrontBundle\Entity\EventDate;
+use Front\FrontBundle\DataFixtures\ORM\FixturesDataTrait;
 
 class LoadEventDateData extends AbstractFixture implements OrderedFixtureInterface {
+
+    use FixturesDataTrait;
 
     /**
      * @var ContainerInterface
      */
     private $container;
-    private $array_event = array(
-        "Carnaval",
-        "City Salsa Party",
-        "Salsa Birthday",
-        "Love night bachata",
-        "Nuits latines",
-        "la Clave",
-        "Salsa Eve",
-        "The kiz & kiss",
-        "Salsa for you",
-        "National Salsa days",
-        "Time To Salsa",
-        "Dance salsa for ever event",
-    );
 
     /**
      * {@inheritDoc}
@@ -40,7 +29,7 @@ class LoadEventDateData extends AbstractFixture implements OrderedFixtureInterfa
      */
     public function load(ObjectManager $manager) {
 
-        for ($i = 0; $i <= 40; $i++)
+        for ($i = 0; $i <= 80; $i++)
             $this->loadEventDate($manager);
 
         $manager->flush();

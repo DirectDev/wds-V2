@@ -6,59 +6,16 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use User\UserBundle\Entity\UserFile;
+use Front\FrontBundle\DataFixtures\ORM\FixturesDataTrait;
 
 class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterface {
+
+    use FixturesDataTrait;
 
     /**
      * @var ContainerInterface
      */
     private $container;
-    private $array_user = array(
-        'salsa y passion',
-        'salsa loca',
-        'amor de salsa',
-        'los bailadores',
-        'Salsa de la calle',
-        'rythmes latins',
-        'sensualité et danse',
-        'africasalsa',
-        'dance & fun',
-        'bests salsa teachers',
-        'learn to dance',
-        "latino's rythms",
-        "john & miranda",
-        "marc et sophie",
-        "passionSalsa",
-        "salsa y tu",
-        "gente Loca",
-        "los tamborinos",
-        "the salsa players",
-        "Mr Salsa",
-        "dadee cuba",
-        "los cubatoneros",
-        "love salsa",
-        "los cantadores",
-        "El rojo",
-        "B-sky",
-        "Mac",
-        "le Rezo",
-        "Les quais",
-        "Fishwarf",
-        "The marina bar",
-        "le Chateau",
-        "The latino",
-        "La salle des fêtes",
-        "Drink's",
-        "Champagne bar",
-    );
-    private $array_userfile = array(
-        1 => 'Koala.jpg',
-        2 => 'Jellyfish.jpg',
-        3 => 'Jellyfish.jpg',
-        4 => 'Koala.jpg',
-        5 => 'Penguins.jpg',
-        6 => 'Penguins.jpg',
-    );
 
     /**
      * {@inheritDoc}

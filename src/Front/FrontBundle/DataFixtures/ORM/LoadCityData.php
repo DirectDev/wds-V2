@@ -27,13 +27,6 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
     public function load(ObjectManager $manager) {
 
         $City = new City();
-        $City->setSearchcity('nice');
-        $City->setLatitude(43.7101728);
-        $City->setLongitude(7.2619532);
-        $manager->persist($City);
-        $this->addReference('city-nice', $City);
-
-        $City = new City();
         $City->setSearchcity('paris');
         $City->setLatitude(48.856614);
         $City->setLongitude(2.3522219);
@@ -46,13 +39,6 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setLongitude(3.057256);
         $manager->persist($City);
         $this->addReference('city-lille', $City);
-
-        $City = new City();
-        $City->setSearchcity('marseille');
-        $City->setLatitude(43.296482);
-        $City->setLongitude(5.36978);
-        $manager->persist($City);
-        $this->addReference('city-marseille', $City);
 
         $City = new City();
         $City->setSearchcity('singapore');

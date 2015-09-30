@@ -212,7 +212,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-artits', $Page);
+        $this->addReference('page-artists', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();

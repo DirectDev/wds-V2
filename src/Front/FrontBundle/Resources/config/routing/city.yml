@@ -10,9 +10,9 @@ city_teachers:
     requirements:
       _method: GET
       
-city_artits:
-    path:      /city/artits/{searchcity}
-    defaults:  { _controller: FrontFrontBundle:City:artits }    
+city_artists:
+    path:      /city/artists/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:artists }    
     requirements:
       _method: GET      
 
