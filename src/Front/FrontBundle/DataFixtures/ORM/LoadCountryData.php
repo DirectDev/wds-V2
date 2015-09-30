@@ -280,6 +280,7 @@ ZW|Zimbabwe';
             $country->translate('fr')->setTitle($array[1]);
             $country->translate('en')->setTitle($array[1]);
             $manager->persist($country);
+            $this->addReference('country-' . trim($array[0]), $country);
 
             $country->mergeNewTranslations();
         }

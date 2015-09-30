@@ -134,6 +134,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
             $Event->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
 
             $manager->persist($Event);
+            $Event->mergeNewTranslations();
             $this->addReference('event-' . $value, $Event);
         }
 
