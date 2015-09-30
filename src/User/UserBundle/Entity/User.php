@@ -317,7 +317,7 @@ class User extends BaseUser {
      * @return User
      */
     public function addUserFile(\User\UserBundle\Entity\UserFile $userFiles) {
-        $userFiles->addUser($this);
+        $userFiles->setUser($this);
         $this->userFiles[] = $userFiles;
 
         return $this;

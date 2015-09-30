@@ -28,6 +28,7 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
         "Dance salsa for ever event",
     );
     private $array_eventfile = array(
+        1 => 'latin_sensation.jpg',
         2 => 'latin_sensation.jpg',
         3 => 'festival_cubano_orange.jpg',
         4 => 'latin_coktail.jpg',
@@ -73,7 +74,7 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
             $EventFile = new EventFile();
             $Event = $this->getReference('event-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
 
-            $file_number = rand(2, 27);
+            $file_number = rand(1, count($this->array_eventfile));
             $EventFile->setName($this->array_eventfile[$file_number]);
 
             $path_src = __DIR__ . "/../../../../../www/fixturesFiles/EventFile/" . $file_number;
