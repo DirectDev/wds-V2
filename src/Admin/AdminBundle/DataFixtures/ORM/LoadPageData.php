@@ -204,7 +204,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->mergeNewTranslations();
 
         $Page = new Page();
-        $Page->setName('artits');
+        $Page->setName('artists');
         $Page->translate('en')->setTitle('WeDanceSalsa');
         $Page->translate('fr')->setTitle('WeDanceSalsa');
         $Page->translate('en')->setContent(null);
