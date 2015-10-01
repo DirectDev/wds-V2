@@ -40,15 +40,15 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('home')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('policy')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('calendar')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dancers')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('teachers')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('artists')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('introductions')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festivals')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('photos')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('videos')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('musics')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_calendar')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_dancers')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_teachers')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_artists')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_introductions')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_festivals')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_photos')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_videos')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_musics')));
     }
 
 }

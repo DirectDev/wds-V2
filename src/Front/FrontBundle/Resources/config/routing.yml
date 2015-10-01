@@ -9,12 +9,6 @@ front_front_front_music:
 homepage:
     path:      /
     defaults:  { _controller: FrontFrontBundle:Default:index }
-
-calendarpage:
-    path:      /calendar/{searchcity}
-    defaults:  { _controller: FrontFrontBundle:City:calendar }    
-    requirements:
-      _method: GET      
       
 policy:
     path:      /policy

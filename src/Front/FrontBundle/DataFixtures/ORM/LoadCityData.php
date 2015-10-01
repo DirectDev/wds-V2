@@ -27,49 +27,49 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
     public function load(ObjectManager $manager) {
 
         $City = new City();
-        $City->setSearchcity('paris');
+        $City->setName('paris');
         $City->setLatitude(48.856614);
         $City->setLongitude(2.3522219);
         $manager->persist($City);
         $this->addReference('city-paris', $City);
 
         $City = new City();
-        $City->setSearchcity('lille');
+        $City->setName('lille');
         $City->setLatitude(50.62925);
         $City->setLongitude(3.057256);
         $manager->persist($City);
         $this->addReference('city-lille', $City);
 
         $City = new City();
-        $City->setSearchcity('singapore');
+        $City->setName('singapore');
         $City->setLatitude(1.352083);
         $City->setLongitude(103.819836);
         $manager->persist($City);
         $this->addReference('city-singapore', $City);
 
         $City = new City();
-        $City->setSearchcity('pékin');
+        $City->setName('pékin');
         $City->setLatitude(39.904211);
         $City->setLongitude(116.407395);
         $manager->persist($City);
         $this->addReference('city-pekin', $City);
 
         $City = new City();
-        $City->setSearchcity('san francisco');
+        $City->setName('san francisco');
         $City->setLatitude(37.779276);
         $City->setLongitude(-122.419232);
         $manager->persist($City);
         $this->addReference('city-san_francisco', $City);
 
         $City = new City();
-        $City->setSearchcity('new york');
+        $City->setName('new york');
         $City->setLatitude(40.714353);
         $City->setLongitude(-74.005973);
         $manager->persist($City);
         $this->addReference('city-new_york', $City);
 
         $City = new City();
-        $City->setSearchcity('budapest');
+        $City->setName('budapest');
         $City->setLatitude(47.4980100);
         $City->setLongitude(19.0399100);
         $manager->persist($City);

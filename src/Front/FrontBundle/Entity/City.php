@@ -24,9 +24,9 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="searchcity", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $searchcity;
+    private $name;
 
     /**
      * @var float
@@ -54,26 +54,26 @@ class City
     }
 
     /**
-     * Set searchcity
+     * Set name
      *
-     * @param string $searchcity
+     * @param string $name
      * @return City
      */
-    public function setSearchcity($searchcity)
+    public function setName($name)
     {
-        $this->searchcity = $searchcity;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get searchcity
+     * Get name
      *
      * @return string 
      */
-    public function getSearchcity()
+    public function getName()
     {
-        return $this->searchcity;
+        return $this->name;
     }
 
     /**

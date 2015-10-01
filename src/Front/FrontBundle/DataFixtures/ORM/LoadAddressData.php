@@ -43,7 +43,7 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
         $latitude = $City->getLatitude() + rand(-100, 100) / 10000;
         $longitude = $City->getLongitude() + rand(-100, 100) / 10000;
 
-        $Address->setCity($City->getSearchcity());
+        $Address->setCity($City->getName());
         $Address->setLatitude($latitude);
         $Address->setLongitude($longitude);
 

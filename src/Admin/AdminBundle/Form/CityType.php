@@ -15,7 +15,7 @@ class CityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('searchcity')
+            ->add('name')
             ->add('latitude')
             ->add('longitude')
         ;

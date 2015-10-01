@@ -23,7 +23,7 @@
         {% for entity in entities %}
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <a href="{{ path('admin_city_show', { 'id': entity.id }) }}">{{ entity.searchcity }}</a> 
+                    <a href="{{ path('admin_city_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
                     <a class='pull-right' href="{{ path('admin_city_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
                 </div>
                 <div class="panel-body">

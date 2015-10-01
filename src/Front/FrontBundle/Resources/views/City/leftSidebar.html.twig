@@ -3,7 +3,7 @@
 
     <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item {% if active == 'calendar' %}active{% endif %}">
-            <a href="{{ path('calendarpage', { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">
+            <a href="{{ path('city_calendar', { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">
                 <i class="fa fa-bar-chart-o"></i> Calendrier</a>
         </li>
         <li class="list-group-item {% if active == 'dancers' %}active{% endif %}">
