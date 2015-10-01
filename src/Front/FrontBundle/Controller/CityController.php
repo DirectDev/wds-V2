@@ -156,7 +156,7 @@ class CityController extends Controller {
 
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(4));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Lesson'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
@@ -185,7 +185,7 @@ class CityController extends Controller {
 
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(3, 7));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Workshop', 'Workshop_Party'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
@@ -214,7 +214,7 @@ class CityController extends Controller {
 
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(6));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Concert'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
@@ -233,7 +233,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('introductions');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('festivals');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -244,7 +244,7 @@ class CityController extends Controller {
         $this->add_days = 'P1Y';
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById(array(2));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Festival'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);

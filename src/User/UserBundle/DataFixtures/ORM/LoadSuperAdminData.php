@@ -27,6 +27,7 @@ class LoadSuperAdminData implements FixtureInterface, ContainerAwareInterface {
      */
     public function load(ObjectManager $manager) {
         $User = new User();
+        $User->setEnabled(true);
         $User->setUsername('Jerome');
         $User->setPassword('1234');
         $User->setEmail('serviceclient@directdev.fr');

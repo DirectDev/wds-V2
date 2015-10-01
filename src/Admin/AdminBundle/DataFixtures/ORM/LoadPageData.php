@@ -228,6 +228,18 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->mergeNewTranslations();
 
         $Page = new Page();
+        $Page->setName('festivals');
+        $Page->translate('en')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festivals', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
         $Page->setName('photos');
         $Page->translate('en')->setTitle('WeDanceSalsa');
         $Page->translate('fr')->setTitle('WeDanceSalsa');

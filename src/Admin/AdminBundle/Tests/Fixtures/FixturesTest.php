@@ -45,6 +45,7 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('teachers')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('artists')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('introductions')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festivals')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('photos')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('videos')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('musics')));

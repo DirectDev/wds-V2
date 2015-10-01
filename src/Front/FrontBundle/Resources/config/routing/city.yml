@@ -1,59 +1,59 @@
 city_dancers:
-    path:      /city/dancers/{searchcity}
+    path:      /dancers/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:dancers }    
     requirements:
       _method: GET
       
 city_teachers:
-    path:      /city/teachers/{searchcity}
+    path:      /teachers/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:teachers }    
     requirements:
       _method: GET
       
 city_artists:
-    path:      /city/artists/{searchcity}
+    path:      /artists/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:artists }    
     requirements:
       _method: GET      
 
 city_introductions:
-    path:      /city/introductions/{searchcity}
+    path:      /introductions/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:introductions }    
     requirements:
       _method: GET 
 
 city_workshops:
-    path:      /city/workshops/{searchcity}
+    path:      /workshops/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:workshops }    
     requirements:
       _method: GET 
       
 city_concerts:
-    path:      /city/concerts/{searchcity}
+    path:      /concerts/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:concerts }    
     requirements:
       _method: GET 
       
 city_festivals:
-    path:      /city/festivals/{searchcity}
+    path:      /festivals/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:festivals }    
     requirements:
       _method: GET       
 
 city_photos:
-    path:      /city/photos/{searchcity}
+    path:      /photos/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:photos }    
     requirements:
       _method: GET  
       
 city_musics:
-    path:      /city/musics/{searchcity}
+    path:      /musics/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:musics }    
     requirements:
       _method: GET        
   
 city_videos:
-    path:      /city/videos/{searchcity}
+    path:      /videos/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:videos }    
     requirements:
       _method: GET            

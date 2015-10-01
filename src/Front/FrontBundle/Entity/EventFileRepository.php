@@ -16,7 +16,8 @@ class EventFileRepository extends EntityRepository {
 
         $query = $this->createQueryBuilder('ef')
                 ->leftJoin('ef.event', 'e')
-                ->leftJoin('e.addresses', 'a');
+                ->leftJoin('e.addresses', 'a')
+                ->setMaxResults($limit)
         ;
 
         /* Geocode */

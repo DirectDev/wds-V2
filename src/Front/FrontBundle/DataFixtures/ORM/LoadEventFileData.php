@@ -44,7 +44,8 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
 
             $manager->persist($EventFile);
 
-            $Event->addEventFile($EventFile);
+//            $Event->addEventFile($EventFile);
+            $EventFile->setEvent($Event);
             $manager->persist($Event);
         }
 

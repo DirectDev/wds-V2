@@ -13,14 +13,13 @@ use Front\FrontBundle\Entity\EventType;
  */
 class EventRepository extends EntityRepository {
 
-    public function findForCitypages($startdate_only = true, $limit = 6, $eventTypes = null, $musicTypes = null,
-            $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20, $excludedEvents = array()) {
+    public function findForCitypages($startdate_only = true, $limit = 6, $eventTypes = null, $musicTypes = null, $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20, $excludedEvents = array()) {
 
         if (!$startdate)
             $startdate = date('Y-m-d');
         if (!$stopdate)
             $stopdate = date('Y-m-d', strtotime('+7 days'));
-        
+
         $arrayEventType = array();
         $arraymusicTypes = array();
 
@@ -31,9 +30,10 @@ class EventRepository extends EntityRepository {
                 ->leftJoin('e.addresses', 'a')
                 ->setParameter('startdate', $startdate)
                 ->setParameter('stopdate', $stopdate)
-                ->orderBy('ed.startdate', 'ASC');
-        
-        if($startdate_only)
+                ->orderBy('ed.startdate', 'ASC')
+                ->setMaxResults($limit);
+
+        if ($startdate_only)
             $query->where('((
                     (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
                     OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
@@ -47,27 +47,26 @@ class EventRepository extends EntityRepository {
                     OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
                     )
                     OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
-        
+
         if ($eventTypes && count($eventTypes)) {
             foreach ($eventTypes as $eventType)
                 $arrayEventType [] = $eventType->getId();
-            
+
             $query->andWhere($query->expr()->in('et.id', $arrayEventType));
         }
-        
-         if ($musicTypes && count($musicTypes)) {
+
+        if ($musicTypes && count($musicTypes)) {
             foreach ($musicTypes as $musicType)
                 $arraymusicTypes [] = $musicType->getId();
-            
+
             $query->andWhere($query->expr()->in('mt.id', $arraymusicTypes));
         }
-        
-        if(count($excludedEvents)){
+
+        if (count($excludedEvents)) {
             $toExclude = array();
-            foreach ($excludedEvents as $event) 
+            foreach ($excludedEvents as $event)
                 $toExclude[] = $event->getId();
             $query->andWhere($query->expr()->notIn('e.id', $toExclude));
-            
         }
 
         /* Geocode */
@@ -78,18 +77,17 @@ class EventRepository extends EntityRepository {
                 ->setParameter('longitude', $longitude)
                 ->setParameter('distance', $distance);
         /* Geocode */
-        
-        
-        /* dev*/
+
+
+        /* dev */
 //        $query = $this->createQueryBuilder('e')
 //                ->setMaxResults(6);
-        
+
         return $query->getQuery()->getResult();
 
 
 
         ;
     }
-    
 
 }

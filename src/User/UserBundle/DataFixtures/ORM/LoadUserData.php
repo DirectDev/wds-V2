@@ -49,6 +49,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
         foreach ($this->array_user_dancer as $value) {
             $User = new User();
+            $User->setEnabled(true);
             $User->setUsername($value);
             $User->setPassword($this->password);
             $User->setEmail($value . '@yopmail.com');
@@ -70,6 +71,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
         foreach ($this->array_user_teacher as $value) {
             $User = new User();
+            $User->setEnabled(true);
             $User->setUsername($value);
             $User->setPassword($this->password);
             $User->setEmail(rand(0, 1000) . rand(0, 1000) . '@yopmail.com');
@@ -99,6 +101,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
         foreach ($this->array_user_artist as $value) {
             $User = new User();
+            $User->setEnabled(true);
             $User->setUsername($value);
             $User->setPassword($this->password);
             $User->setEmail(rand(0, 1000) . rand(0, 1000) . '@yopmail.com');
@@ -127,6 +130,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
         foreach ($this->array_user_bar as $value) {
             $User = new User();
+            $User->setEnabled(true);
             $User->setUsername($value);
             $User->setPassword($this->password);
             $User->setEmail(rand(0, 1000) . rand(0, 1000) . '@yopmail.com');

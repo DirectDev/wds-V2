@@ -16,7 +16,8 @@ class VideoRepository extends EntityRepository {
 
         $query = $this->createQueryBuilder('v')
                 ->leftJoin('v.user', 'u')
-                ->leftJoin('u.addresses', 'a');
+                ->leftJoin('u.addresses', 'a')
+                ->setMaxResults($limit);
 
         /* Geocode */
         $query->andWhere("(3958*3.1415926*sqrt((a.latitude - :latitude)*(a.latitude - :latitude)
