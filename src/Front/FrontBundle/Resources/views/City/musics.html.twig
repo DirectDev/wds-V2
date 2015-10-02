@@ -1,53 +1,16 @@
-{% extends 'FrontFrontBundle::layout.html.twig' %}
-
-{% set city = app.session.get('city')|capitalize %}
-
-{% block title %}
-    {{ app.session.get('city')|capitalize}} - {{ page.getTitle }} {{ app.session.get('city')|capitalize}}
-{% endblock %}
-{% block head %}
-    {{ parent() }}
-    <meta name="description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
-    <!-- partage facebook -->
-    <meta property="og:title" content="{{ app.session.get('city')|capitalize}} - {{ page.getTitle }} : {{ app.session.get('city')|capitalize}}" />
-    <meta property="og:description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
-    <!--<meta property="og:image" content="URL_image" />-->
-    <!-- partage facebook -->
-{% endblock %}
+{% extends 'FrontFrontBundle:City:cityLayout.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
-
     <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css") }}">    
     <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css") }}">
 {% endblock %}
 
-{% block topJavascripts %}   
-    {{ parent() }}
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
-    </script>
-{% endblock %}    
 
 {% block content %}
 
+    {% include 'FrontFrontBundle:City:cityBreadcrumb.html.twig' with { active : 'musics' } %}
 
-    <!--=== Breadcrumbs ===-->
-    <div class="breadcrumbs">
-        <div class="container">
-            <h1 class="pull-left">Salsa in {{ city }}, calendar ({{ app.session.get('startdate')|localizeddate('full', 'none', app.request.locale )|capitalize }})</h1>
-            <ul class="pull-right breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">Page</a></li>
-                <li class="active">salsa event</li>
-            </ul>
-        </div>
-    </div><!--/breadcrumbs-->
-    <!--=== End Breadcrumbs ===-->
-
-    <!--=== Profile ===-->
     <div class="container content profile">
         <div class="row">
             <!--Left Sidebar-->
@@ -75,61 +38,10 @@
     </div><!--/container-->    
     <!--=== End Profile ===-->
 
-
-    {#<div class="page-container">
-        <div class="row">
-    
-            <div class="col-md-4 home-map">
-                {% include 'FrontFrontBundle:Home:map.html.twig' %}
-            </div>
-    
-    
-            <div class="col-md-8 home-list">
-    
-                <div class="row row-table panel panel-default filter-section" id="search_form">
-    
-                    {% include 'FrontFrontBundle:Home:search.html.twig' %}   
-    
-                </div>
-    
-    
-                {% include 'FrontFrontBundle:Home:filters.html.twig' with { 'musicTypeFrontFilterForm' : musicTypeFrontFilterForm } %}
-    
-    
-                <div class="row row-table panel panel-default" id="event-list">
-                    <div class="panel-body">
-                        {% include 'FrontFrontBundle:Event:list.html.twig' %}
-                    </div>        
-                </div>   
-    
-                {% include 'FrontFrontBundle:Home:alerts.html.twig' %}
-    
-            </div>
-    
-        </div>
-    
-        {% include 'FrontFrontBundle:Home:more.html.twig' %}
-    
-    </div>#}
-
-
-
 {% endblock %}
 
 {% block bottomJavascripts %}
     {{ parent() }}    
-    <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
     <script type="text/javascript" src="{{ asset("front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
-
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            App.init();
-            App.initCounter();
-            App.initScrollBar();
-            Datepicker.initDatepicker();
-            ContactPage.initMap();
-        });
-    </script>
-
 {% endblock %}   

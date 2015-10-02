@@ -1,0 +1,49 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% set city = app.session.get('city')|capitalize %}
+
+{% block title %}
+    {{ app.session.get('city')|capitalize}} - {{ page.getTitle }} {{ app.session.get('city')|capitalize}}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
+    <!-- partage facebook -->
+    <meta property="og:title" content="{{ app.session.get('city')|capitalize}} - {{ page.getTitle }} : {{ app.session.get('city')|capitalize}}" />
+    <meta property="og:description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
+    <!--<meta property="og:image" content="URL_image" />-->
+    <!-- partage facebook -->
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
+{% endblock %}
+
+{% block topJavascripts %}   
+    {{ parent() }}
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+    </script>
+{% endblock %}    
+
+{% block content %}
+
+{% endblock %}
+
+{% block bottomJavascripts %}
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initCounter();
+            App.initScrollBar();
+            Datepicker.initDatepicker();
+            ContactPage.initMap();
+        });
+    </script>
+
+{% endblock %}   
