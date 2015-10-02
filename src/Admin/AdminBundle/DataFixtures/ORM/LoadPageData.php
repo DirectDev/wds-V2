@@ -216,6 +216,18 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->mergeNewTranslations();
 
         $Page = new Page();
+        $Page->setName('city_bars');
+        $Page->translate('en')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-bars', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
         $Page->setName('city_introductions');
         $Page->translate('en')->setTitle('WeDanceSalsa');
         $Page->translate('fr')->setTitle('WeDanceSalsa');
@@ -225,6 +237,30 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
         $this->addReference('page-introductions', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
+        $Page->setName('city_shows');
+        $Page->translate('en')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-shows', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
+        $Page->setName('city_parties');
+        $Page->translate('en')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-parties', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();

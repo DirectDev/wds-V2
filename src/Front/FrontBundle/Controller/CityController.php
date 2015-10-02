@@ -140,6 +140,30 @@ class CityController extends Controller {
                     'people' => $People,
         ));
     }
+    
+    public function barsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_bars');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getUser();
+
+        $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
+
+        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+
+        return $this->render('FrontFrontBundle:City:bars.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'people' => $People,
+        ));
+    }
 
     public function introductionsAction(Request $request) {
 
@@ -156,7 +180,7 @@ class CityController extends Controller {
 
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Lesson'));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Introduction'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
@@ -185,12 +209,70 @@ class CityController extends Controller {
 
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Workshop', 'Workshop_Party'));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Workshop'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
 
         return $this->render('FrontFrontBundle:City:workshops.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
+    public function partiesAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_parties');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getUser();
+
+        $this->setDates($request);
+
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Party'));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        return $this->render('FrontFrontBundle:City:parties.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
+    public function showsAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_shows');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+
+        $user = $this->getUser();
+
+        $this->setDates($request);
+
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Show'));
+
+        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        return $this->render('FrontFrontBundle:City:shows.html.twig', array(
                     'page' => $page,
                     'user' => $user,
                     'events' => $events,

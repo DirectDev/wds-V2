@@ -24,7 +24,7 @@ class EventRepository extends EntityRepository {
         $arraymusicTypes = array();
 
         $query = $this->createQueryBuilder('e')
-                ->leftJoin('e.eventType', 'et')
+                ->leftJoin('e.eventTypes', 'et')
                 ->leftJoin('e.musicTypes', 'mt')
                 ->leftJoin('e.eventDates', 'ed')
                 ->leftJoin('e.addresses', 'a')

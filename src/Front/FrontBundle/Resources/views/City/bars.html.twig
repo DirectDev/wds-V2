@@ -1,0 +1,347 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% set city = app.session.get('city')|capitalize %}
+
+{% block title %}
+    {{ app.session.get('city')|capitalize}} - {{ page.getTitle }} {{ app.session.get('city')|capitalize}}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
+    <!-- partage facebook -->
+    <meta property="og:title" content="{{ app.session.get('city')|capitalize}} - {{ page.getTitle }} : {{ app.session.get('city')|capitalize}}" />
+    <meta property="og:description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
+    <!--<meta property="og:image" content="URL_image" />-->
+    <!-- partage facebook -->
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
+{% endblock %}
+
+{% block topJavascripts %}   
+    {{ parent() }}
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+    </script>
+{% endblock %}    
+
+{% block content %}
+
+
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Salsa in {{ city }}, calendar ({{ app.session.get('startdate')|localizeddate('full', 'none', app.request.locale )|capitalize }})</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Page</a></li>
+                <li>{{ city }}</li>
+                <li class="active">Bars</li>
+            </ul>
+        </div>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Profile ===-->
+    <div class="container content profile">
+        <div class="row">
+            <!--Left Sidebar-->
+            {% include 'FrontFrontBundle:City:leftSidebar.html.twig' with { active : 'bars' } %}
+            <!--End Left Sidebar-->
+
+            <!-- Profile Content -->            
+            <div class="col-md-9">
+
+
+                <div class="profile-body">
+
+
+
+                    <!-- Begin Table Search v2 -->
+                    <div class="table-search-v2">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>User Image</th>
+                                        <th class="hidden-sm">About</th>
+                                        <th>Status</th>
+                                        <th>Contacts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for person in people %}
+                                        
+                                        <tr>
+                                            <td>
+                                                {% if person.isFacebookUser %}
+                                                <img src='{{ person.profilePictureUrl }}' class="rounded-x"/> 
+                                            {% elseif person.profilePictureUrl %}
+                                                <img src='{{ asset(person.profilePictureUrl)| imagine_filter('city_thumb') }}' class="rounded-x" /> 
+                                            {% endif %}
+                                            </td>
+                                            <td class="td-width">
+                                                <h3><a href="#">{{ person.username|capitalize }}</a></h3>
+                                                <p>{{ person.getDescriptionShort|raw }}</p>
+                                                <small class="hex">{{ person.getBaseline|capitalize }}</small>
+                                            </td>
+                                            <td>
+                                                <span class="label label-success">Success</span>
+                                            </td>
+                                            <td>
+                                                <ul class="list-inline s-icons">
+                                                    <li>
+                                                        <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="{{ person.facebookLink }}">
+                                                            <i class="fa fa-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="{{ person.twitterLink }}">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                            <i class="fa fa-dropbox"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                            <i class="fa fa-linkedin"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <span><a href="#">info@example.com</a></span>
+                                                <span><a href="#">www.htmlstream.com</a></span>
+                                            </td>
+                                        </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>
+                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+                                    </td>
+                                    <td class="td-width">
+                                        <h3><a href="#">Sed nec elit arcu</a></h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                        <small class="hex">Joined February 28, 2014</small>
+                                    </td>
+                                    <td>
+                                        <span class="label label-success">Success</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline s-icons">
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <span><a href="#">info@example.com</a></span>
+                                        <span><a href="#">www.htmlstream.com</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
+                                    </td>
+                                    <td>
+                                        <h3><a href="#">Donec at aliquam est, a mattis mauris</a></h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                        <small class="hex">Joined March 2, 2014</small>
+                                    </td>
+                                    <td>
+                                        <span class="label label-info"> Pending</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline s-icons">
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <span><a href="#">info@example.com</a></span>
+                                        <span><a href="#">www.htmlstream.com</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-x" src="assets/img/testimonials/img3.jpg" alt="">
+                                    </td>
+                                    <td>
+                                        <h3><a href="#">Pellentesque semper tempus vehicula</a></h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                        <small class="hex">Joined March 3, 2014</small>
+                                    </td>
+                                    <td>
+                                        <span class="label label-warning">Expiring</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline s-icons">
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <span><a href="#">info@example.com</a></span>
+                                        <span><a href="#">www.htmlstream.com</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-x" src="assets/img/testimonials/img4.jpg" alt="">
+                                    </td>
+                                    <td>
+                                        <h3><a href="#">Alesuada fames ac turpis egestas</a></h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                        <small class="hex">Joined March 4, 2014</small>
+                                    </td>
+                                    <td>
+                                        <span class="label label-danger">Error!</span>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline s-icons">
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <span><a href="#">info@example.com</a></span>
+                                        <span><a href="#">www.htmlstream.com</a></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!-- End Table Search v2 -->
+
+
+                </div>
+            </div>
+            <!-- End Profile Content -->            
+        </div>
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+
+
+    {#<div class="page-container">
+        <div class="row">
+    
+            <div class="col-md-4 home-map">
+                {% include 'FrontFrontBundle:Home:map.html.twig' %}
+            </div>
+    
+    
+            <div class="col-md-8 home-list">
+    
+                <div class="row row-table panel panel-default filter-section" id="search_form">
+    
+                    {% include 'FrontFrontBundle:Home:search.html.twig' %}   
+    
+                </div>
+    
+    
+                {% include 'FrontFrontBundle:Home:filters.html.twig' with { 'musicTypeFrontFilterForm' : musicTypeFrontFilterForm } %}
+    
+    
+                <div class="row row-table panel panel-default" id="event-list">
+                    <div class="panel-body">
+                        {% include 'FrontFrontBundle:Event:list.html.twig' %}
+                    </div>        
+                </div>   
+    
+                {% include 'FrontFrontBundle:Home:alerts.html.twig' %}
+    
+            </div>
+    
+        </div>
+    
+        {% include 'FrontFrontBundle:Home:more.html.twig' %}
+    
+    </div>#}
+
+
+
+{% endblock %}
+
+{% block bottomJavascripts %}
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initCounter();
+            App.initScrollBar();
+            Datepicker.initDatepicker();
+            ContactPage.initMap();
+        });
+    </script>
+
+{% endblock %}   

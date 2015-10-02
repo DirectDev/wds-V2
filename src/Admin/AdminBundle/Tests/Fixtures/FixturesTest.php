@@ -30,10 +30,9 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Party')));
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Festival')));
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Workshop')));
-        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Lesson')));
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Introduction')));
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Show')));
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Concert')));
-        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findByName('Workshop_Party')));
     }
 
     public function testPage() {

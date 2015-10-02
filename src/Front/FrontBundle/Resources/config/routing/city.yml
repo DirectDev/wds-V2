@@ -21,6 +21,24 @@ city_artists:
     defaults:  { _controller: FrontFrontBundle:City:artists }    
     requirements:
       _method: GET      
+      
+city_bars:
+    path:      /bars/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:bars }    
+    requirements:
+      _method: GET      
+
+city_parties:
+    path:      /parties/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:parties }    
+    requirements:
+      _method: GET 
+
+city_shows:
+    path:      /shows/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:shows }    
+    requirements:
+      _method: GET 
 
 city_introductions:
     path:      /introductions/{searchcity}

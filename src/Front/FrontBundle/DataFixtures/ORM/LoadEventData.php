@@ -25,7 +25,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
             $Event->setName($value);
 
             $this->addMusicType($Event);
-            $Event->setEventType($this->getReference('eventtype-' . $this->array_eventtype[rand(0, count($this->array_eventtype) - 1)]));
+            $this->addEventType($Event);
 
             $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
             $Event->setUser($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
@@ -48,6 +48,14 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
         for ($i = 0; $i < $count; $i++) {
             if (rand(0, 1))
                 $Event->addMusicType($this->getReference('musictype-' . $this->array_musictype[$i]));
+        }
+    }
+
+    private function addEventType(Event $Event) {
+        $count = rand(0, count($this->array_eventtype) - 1);
+        for ($i = 0; $i < $count; $i++) {
+            if (rand(0, 1))
+                $Event->addEventType($this->getReference('eventtype-' . $this->array_eventtype[$i]));
         }
     }
 

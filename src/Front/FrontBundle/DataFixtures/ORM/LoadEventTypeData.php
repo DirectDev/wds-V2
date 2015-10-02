@@ -45,15 +45,15 @@ class LoadEventTypeData extends AbstractFixture implements OrderedFixtureInterfa
         $EventType = new EventType();
         $EventType->setName('Workshop');
         $EventType->translate('en')->setTitle('Workshop');
-        $EventType->translate('fr')->setTitle('Workshop');
+        $EventType->translate('fr')->setTitle('Cours');
         $manager->persist($EventType);
         $this->addReference('eventtype-workshop', $EventType);
         $EventType->mergeNewTranslations();
 
         $EventType = new EventType();
-        $EventType->setName('Lesson');
-        $EventType->translate('en')->setTitle('Lesson');
-        $EventType->translate('fr')->setTitle('Cours');
+        $EventType->setName('Introduction');
+        $EventType->translate('en')->setTitle('Introduction');
+        $EventType->translate('fr')->setTitle('Initiation');
         $manager->persist($EventType);
         $this->addReference('eventtype-lesson', $EventType);
         $EventType->mergeNewTranslations();
@@ -72,14 +72,6 @@ class LoadEventTypeData extends AbstractFixture implements OrderedFixtureInterfa
         $EventType->translate('fr')->setTitle('Concert');
         $manager->persist($EventType);
         $this->addReference('eventtype-concert', $EventType);
-        $EventType->mergeNewTranslations();
-
-        $EventType = new EventType();
-        $EventType->setName('Workshop_Party');
-        $EventType->translate('en')->setTitle('Workshop & Party');
-        $EventType->translate('fr')->setTitle('Cours & Soirée');
-        $manager->persist($EventType);
-        $this->addReference('eventtype-workshop_party', $EventType);
         $EventType->mergeNewTranslations();
 
         $manager->flush();

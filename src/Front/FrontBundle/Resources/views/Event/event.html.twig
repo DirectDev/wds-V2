@@ -42,7 +42,7 @@
                     </div>
                 </div>     
                 <ul class="list-unstyled">
-                    <li><span class="color-green">Type:</span> {{ event.getEventType }}</li>
+                    <li><span class="color-green">Type:</span> {{ event.getEventTypesText }}</li>
                     <li><span class="color-green">Music:</span> {{ event.getMusicTypesText }}</li>
                 </ul>    
             </div>  
@@ -87,7 +87,7 @@
                     <div class="h5 listing-name text-truncate row-space-top-1" title="{{ event.getTitle()|capitalize }}">{{ event.getTitle()|capitalize }}</div>
                 </a>
                 <div class="text-muted listing-location text-truncate">
-                    <a class="text-normal link-reset" href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}">{{ event.getEventType }} / {{ event.getMusicTypesText }}</a>
+                    <a class="text-normal link-reset" href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}">{{ event.getEventTypesText }} / {{ event.getMusicTypesText }}</a>
                 </div>
             </div>
         </div>

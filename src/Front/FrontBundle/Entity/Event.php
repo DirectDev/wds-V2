@@ -61,11 +61,13 @@ class Event {
     protected $eventDates;
 
     /**
-     * @ORM\ManyToOne(targetEntity="EventType", inversedBy="events")
-     * @ORM\JoinColumn(name="eventType_id", referencedColumnName="id")
-     * 
-     * */
-    protected $eventType;
+     * @ORM\ManyToMany(targetEntity="EventType", inversedBy="events", cascade={"persist"})
+     * @ORM\JoinTable(name="event_eventtype",
+     * joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")},
+     * inverseJoinColumns={@ORM\JoinColumn(name="eventType_id", referencedColumnName="id")}
+     * )
+     */
+    protected $eventTypes;
 
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="events")
@@ -90,6 +92,7 @@ class Event {
     public function __construct() {
         $this->musicTypes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventDates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventTypes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventFiles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -106,6 +109,13 @@ class Event {
         $array = array();
         foreach ($this->getMusicTypes() as $musicType)
             $array[] = ucfirst($musicType->getTitle());
+        return implode(' - ', $array);
+    }
+
+    public function getEventTypesText() {
+        $array = array();
+        foreach ($this->getEventTypes() as $eventType)
+            $array[] = ucfirst($eventType->getTitle());
         return implode(' - ', $array);
     }
 
@@ -152,7 +162,10 @@ class Event {
             $uri .= '-' . $musicType;
             break;
         }
-        $uri .= '-' . $this->getEventType();
+        foreach ($this->getEventTypes() as $eventType) {
+            $uri .= '-' . $eventType;
+            break;
+        }
         return $this->cleanURI($uri);
     }
 
@@ -161,7 +174,7 @@ class Event {
         $clean = strtolower(trim($clean, '-'));
         $clean = preg_replace("/[\/_|+ -]+/", '-', $clean);
         $clean = urlencode($clean);
-        
+
         return $clean;
     }
 
@@ -238,27 +251,6 @@ class Event {
      */
     public function getName() {
         return $this->name;
-    }
-
-    /**
-     * Set eventType
-     *
-     * @param \Front\FrontBundle\Entity\EventType $eventType
-     * @return Event
-     */
-    public function setEventType(\Front\FrontBundle\Entity\EventType $eventType = null) {
-        $this->eventType = $eventType;
-
-        return $this;
-    }
-
-    /**
-     * Get eventType
-     *
-     * @return \Front\FrontBundle\Entity\EventType 
-     */
-    public function getEventType() {
-        return $this->eventType;
     }
 
     /**
@@ -419,6 +411,37 @@ class Event {
      */
     public function getEventFiles() {
         return $this->eventFiles;
+    }
+
+    /**
+     * Add eventType
+     *
+     * @param \Front\FrontBundle\Entity\EventType $eventType
+     *
+     * @return Event
+     */
+    public function addEventType(\Front\FrontBundle\Entity\EventType $eventType) {
+        $this->eventTypes[] = $eventType;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventType
+     *
+     * @param \Front\FrontBundle\Entity\EventType $eventType
+     */
+    public function removeEventType(\Front\FrontBundle\Entity\EventType $eventType) {
+        $this->eventTypes->removeElement($eventType);
+    }
+
+    /**
+     * Get eventTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventTypes() {
+        return $this->eventTypes;
     }
 
 }

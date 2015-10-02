@@ -13,11 +13,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="eventtype")
  * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\EventTypeRepository")
  */
-class EventType
-{
-    
+class EventType {
+
     use ORMBehaviors\Translatable\Translatable;
-    
+
     /**
      * @var integer
      *
@@ -26,12 +25,23 @@ class EventType
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-     /**
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="eventType")
-     **/
-    private $events;
-    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50)
+     */
+    private $name;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Event", mappedBy="eventTypes", cascade={"persist"})
+     */
+    protected $events;
+
+    public function __construct() {
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -44,32 +54,23 @@ class EventType
                 return $value;
         }
     }
-    
-    public function getTitle(){
+
+    public function getTitle() {
         return $this->__call('getTitle', array());
     }
-    
-    public function __toString(){
-        if($this->getTitle())
+
+    public function __toString() {
+        if ($this->getTitle())
             return $this->getTitle();
         return $this->getName();
     }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=50)
-     */
-    private $name;
-
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -79,8 +80,7 @@ class EventType
      * @param string $name
      * @return EventType
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -91,48 +91,39 @@ class EventType
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add events
+     * Add event
      *
-     * @param \Front\FrontBundle\Entity\Event $events
+     * @param \Front\FrontBundle\Entity\Event $event
+     *
      * @return EventType
      */
-    public function addEvent(\Front\FrontBundle\Entity\Event $events)
-    {
-        $this->events[] = $events;
+    public function addEvent(\Front\FrontBundle\Entity\Event $event) {
+        $this->events[] = $event;
 
         return $this;
     }
 
     /**
-     * Remove events
+     * Remove event
      *
-     * @param \Front\FrontBundle\Entity\Event $events
+     * @param \Front\FrontBundle\Entity\Event $event
      */
-    public function removeEvent(\Front\FrontBundle\Entity\Event $events)
-    {
-        $this->events->removeElement($events);
+    public function removeEvent(\Front\FrontBundle\Entity\Event $event) {
+        $this->events->removeElement($event);
     }
 
     /**
      * Get events
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEvents()
-    {
+    public function getEvents() {
         return $this->events;
     }
+
 }

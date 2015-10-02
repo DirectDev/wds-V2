@@ -41,8 +41,8 @@
             <h1 class="pull-left">{{ event.getTitle|capitalize }}</h1>
             <ul class="pull-right breadcrumb">
                 <li><a href="{{ path('home')}}">{% trans %}link.home{% endtrans %}</a></li>
-                    {% if event.getEventType %}
-                    <li><a href="#">{{ event.getEventType }}</a></li>
+                    {% if event.getEventTypesText %}
+                    <li><a href="#">{{ event.getEventTypesText }}</a></li>
                     {% endif %}
                     {% if event.getMusicTypesText %}
                     <li><a href="#">{{ event.getMusicTypesText }}</a></li>
@@ -445,8 +445,8 @@
                    {% else %}
                        <ul class="breadcrumbs">
                            <li><a href="{{ path('home')}}">{% trans %}link.home{% endtrans %}</a></li>
-                               {% if event.getEventType %}
-                               <li><a href="#">{{ event.getEventType }}</a></li>
+                               {% if event.getEventTypesText %}
+                               <li><a href="#">{{ event.getEventTypesText }}</a></li>
                                {% endif %}
                                {% if event.getMusicTypesText %}
                                <li><a href="#">{{ event.getMusicTypesText }}</a></li>

@@ -89,6 +89,33 @@ class CityControllerTest extends WebTestCase {
         }
     }
 
+    public function testShows() {
+        foreach ($this->findCities() as $City) {
+            $crawler = $this->client->request('GET', '/city/shows/' . $City->getName());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+            $crawler = $this->clientLogged->request('GET', '/city/shows/' . $City->getName());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
+    public function testParties() {
+        foreach ($this->findCities() as $City) {
+            $crawler = $this->client->request('GET', '/city/parties/' . $City->getName());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+            $crawler = $this->clientLogged->request('GET', '/city/parties/' . $City->getName());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
+    public function testBars() {
+        foreach ($this->findCities() as $City) {
+            $crawler = $this->client->request('GET', '/city/bars/' . $City->getName());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+            $crawler = $this->clientLogged->request('GET', '/city/bars/' . $City->getName());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
     public function testConcerts() {
         foreach ($this->findCities() as $City) {
             $crawler = $this->client->request('GET', '/city/concerts/' . $City->getName());
