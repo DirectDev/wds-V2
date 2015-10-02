@@ -170,7 +170,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page = new Page();
         $Page->setName('city_calendar');
         $Page->translate('en')->setTitle('calendar');
-        $Page->translate('fr')->setTitle('calendar');
+        $Page->translate('fr')->setTitle('calendier');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription('calendar');
@@ -182,7 +182,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page = new Page();
         $Page->setName('city_dancers');
         $Page->translate('en')->setTitle('dancers');
-        $Page->translate('fr')->setTitle('dancers');
+        $Page->translate('fr')->setTitle('danceurs/danseuses');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription('dancers');
@@ -194,7 +194,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page = new Page();
         $Page->setName('city_teachers');
         $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('professeurs');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -205,8 +205,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_artists');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('artists');
+        $Page->translate('fr')->setTitle('professionnels');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -217,8 +217,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_bars');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('places');
+        $Page->translate('fr')->setTitle('lieux');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -229,8 +229,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_introductions');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('Introductions');
+        $Page->translate('fr')->setTitle('Initiations');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -238,11 +238,11 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-city-introductions', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('city_concerts');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('concerts');
+        $Page->translate('fr')->setTitle('concerts');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -250,11 +250,11 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-city-concerts', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('city_workshops');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('workshops');
+        $Page->translate('fr')->setTitle('cours');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -265,8 +265,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_shows');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('shows');
+        $Page->translate('fr')->setTitle('shows');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -277,8 +277,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_parties');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('parties');
+        $Page->translate('fr')->setTitle('soirées');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -289,8 +289,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_festivals');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('festivals');
+        $Page->translate('fr')->setTitle('festivals');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -301,8 +301,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_photos');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('photos');
+        $Page->translate('fr')->setTitle('photos');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -313,8 +313,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_musics');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('musics');
+        $Page->translate('fr')->setTitle('musiques');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
@@ -325,8 +325,8 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 
         $Page = new Page();
         $Page->setName('city_videos');
-        $Page->translate('en')->setTitle('WeDanceSalsa');
-        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setTitle('videos');
+        $Page->translate('fr')->setTitle('videos');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);

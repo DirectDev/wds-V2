@@ -3,14 +3,14 @@
 {% set city = app.session.get('city')|capitalize %}
 
 {% block title %}
-    {{ app.session.get('city')|capitalize}} - {{ page.getTitle }} {{ app.session.get('city')|capitalize}}
+    {{ city}} - {{ page.getTitle }}
 {% endblock %}
 {% block head %}
     {{ parent() }}
-    <meta name="description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
+    <meta name="description" content="{{ city}} {{ page.getDescription }}" />
     <!-- partage facebook -->
-    <meta property="og:title" content="{{ app.session.get('city')|capitalize}} - {{ page.getTitle }} : {{ app.session.get('city')|capitalize}}" />
-    <meta property="og:description" content="{{ page.getDescription }} : {{ app.session.get('city')|capitalize}}" />
+    <meta property="og:title" content="{{ city}} - {{ page.getTitle }}" />
+    <meta property="og:description" content="{{ page.getDescription }}" />
     <!--<meta property="og:image" content="URL_image" />-->
     <!-- partage facebook -->
 {% endblock %}
