@@ -31,22 +31,25 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
 
         foreach ($this->array_event as $value) {
 
-            $EventFile = new EventFile();
             $Event = $this->getReference('event-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
 
-            $file_number = rand(1, count($this->array_eventfile));
-            $EventFile->setName($this->array_eventfile[$file_number]);
+            for ($i = 0; $i <= 3; $i++) {
 
-            $path_src = __DIR__ . "/../../../../../www/fixturesFiles/EventFile/" . $file_number;
-            $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId();
-            exec('mkdir "' . $path_dest . '" ');
-            exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e');
+                $EventFile = new EventFile();
 
-            $manager->persist($EventFile);
+                $file_number = rand(1, count($this->array_eventfile));
+                $EventFile->setName($this->array_eventfile[$file_number]);
 
-//            $Event->addEventFile($EventFile);
-            $EventFile->setEvent($Event);
-            $manager->persist($Event);
+                $path_src = __DIR__ . "/../../../../../www/fixturesFiles/EventFile/" . $file_number;
+                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId();
+                exec('mkdir "' . $path_dest . '" ');
+                exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+
+                $manager->persist($EventFile);
+
+                $EventFile->setEvent($Event);
+                $manager->persist($Event);
+            }
         }
 
 

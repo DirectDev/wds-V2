@@ -31,21 +31,25 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
 
         foreach ($this->array_user as $value) {
 
-            $UserFile = new UserFile();
             $User = $this->getReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
 
-            $file_number = rand(1, count($this->array_userfile));
-            $UserFile->setName($this->array_userfile[$file_number]);
+            for ($i = 0; $i <= 3; $i++) {
 
-            $path_src = __DIR__ . "/../../../../../www/fixturesFiles/UserFile/" . $file_number;
-            $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId();
-            exec('mkdir "' . $path_dest . '" ');
-            exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e');
+                $UserFile = new UserFile();
 
-            $manager->persist($UserFile);
+                $file_number = rand(1, count($this->array_userfile));
+                $UserFile->setName($this->array_userfile[$file_number]);
 
-            $User->addUserFile($UserFile);
-            $manager->persist($User);
+                $path_src = __DIR__ . "/../../../../../www/fixturesFiles/UserFile/" . $file_number;
+                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId();
+                exec('mkdir "' . $path_dest . '" ');
+                exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+
+                $manager->persist($UserFile);
+
+                $User->addUserFile($UserFile);
+                $manager->persist($User);
+            }
         }
 
 
