@@ -176,7 +176,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription('calendar');
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-calendar', $Page);
+        $this->addReference('page-city-calendar', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -188,7 +188,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription('dancers');
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-dancers', $Page);
+        $this->addReference('page-city-dancers', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -200,7 +200,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-teachers', $Page);
+        $this->addReference('page-city-teachers', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -212,7 +212,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-artists', $Page);
+        $this->addReference('page-city-artists', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -224,7 +224,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-bars', $Page);
+        $this->addReference('page-city-bars', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -236,7 +236,31 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-introductions', $Page);
+        $this->addReference('page-city-introductions', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('city_concerts');
+        $Page->translate('en')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-city-concerts', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('city_workshops');
+        $Page->translate('en')->setTitle('WeDanceSalsa');
+        $Page->translate('fr')->setTitle('WeDanceSalsa');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-city-workshops', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -248,7 +272,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-shows', $Page);
+        $this->addReference('page-city-shows', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -260,7 +284,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-parties', $Page);
+        $this->addReference('page-city-parties', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -272,7 +296,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-festivals', $Page);
+        $this->addReference('page-city-festivals', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -284,7 +308,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-photos', $Page);
+        $this->addReference('page-city-photos', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -296,7 +320,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-musics', $Page);
+        $this->addReference('page-city-musics', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
@@ -308,7 +332,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-videos', $Page);
+        $this->addReference('page-city-videos', $Page);
         $Page->mergeNewTranslations();
 
         $manager->flush();

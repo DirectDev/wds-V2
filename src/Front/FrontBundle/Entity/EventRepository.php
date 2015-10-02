@@ -31,6 +31,7 @@ class EventRepository extends EntityRepository {
                 ->setParameter('startdate', $startdate)
                 ->setParameter('stopdate', $stopdate)
                 ->orderBy('ed.startdate', 'ASC')
+                ->groupBy('e.id')
                 ->setMaxResults($limit);
 
         if ($startdate_only)

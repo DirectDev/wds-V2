@@ -37,9 +37,9 @@ class CityControllerTest extends WebTestCase {
 
     public function testCalendar() {
         foreach ($this->findCities() as $City) {
-            $crawler = $this->client->request('GET', '/calendar/' . $City->getName());
+            $crawler = $this->client->request('GET', '/city/calendar/' . $City->getName());
             $this->assertTrue($this->client->getResponse()->isSuccessful());
-            $crawler = $this->clientLogged->request('GET', '/calendar/' . $City->getName());
+            $crawler = $this->clientLogged->request('GET', '/city/calendar/' . $City->getName());
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         }
     }
@@ -119,6 +119,7 @@ class CityControllerTest extends WebTestCase {
     public function testConcerts() {
         foreach ($this->findCities() as $City) {
             $crawler = $this->client->request('GET', '/city/concerts/' . $City->getName());
+            var_dump($this->client->getResponse()->getContent());
             $this->assertTrue($this->client->getResponse()->isSuccessful());
             $crawler = $this->clientLogged->request('GET', '/city/concerts/' . $City->getName());
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
