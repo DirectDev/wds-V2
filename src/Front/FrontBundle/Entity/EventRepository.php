@@ -31,7 +31,7 @@ class EventRepository extends EntityRepository {
                 ->setParameter('startdate', $startdate)
                 ->setParameter('stopdate', $stopdate)
                 ->orderBy('ed.startdate', 'ASC')
-                ->groupBy('e.id')
+                ->groupBy('e.id, ed.startdate')
                 ->setMaxResults($limit);
 
         if ($startdate_only)
@@ -85,6 +85,36 @@ class EventRepository extends EntityRepository {
 //                ->setMaxResults(6);
 
         return $query->getQuery()->getResult();
+
+
+
+        ;
+    }
+
+    public function countForCitypages($startdate = null, $latitude = null, $longitude = null, $distance = 20) {
+
+        if (!$startdate)
+            $startdate = date('Y-m-d');
+
+        $query = $this->createQueryBuilder('e')
+                ->select('COUNT(e.id)')
+                ->leftJoin('e.eventDates', 'ed')
+                ->leftJoin('e.addresses', 'a')
+                ->setParameter('startdate', $startdate)
+                ->orderBy('ed.startdate', 'ASC')
+                ->where('ed.startdate >= :startdate');
+
+
+        /* Geocode */
+        $query->andWhere("(3958*3.1415926*sqrt((a.latitude - :latitude)*(a.latitude - :latitude)
+                + cos(a.latitude/57.29578)*cos(:latitude/57.29578)*(a.longitude - :longitude)*(a.longitude-:longitude))/180)
+                <= :distance")
+                ->setParameter('latitude', $latitude)
+                ->setParameter('longitude', $longitude)
+                ->setParameter('distance', $distance);
+        /* Geocode */
+
+        return $query->getQuery()->getSingleScalarResult();
 
 
 

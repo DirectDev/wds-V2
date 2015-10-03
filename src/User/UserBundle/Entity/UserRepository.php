@@ -45,4 +45,31 @@ class UserRepository extends EntityRepository {
         ;
     }
 
+    public function countUserByLocation($latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
+
+        $query = $this->createQueryBuilder('u')
+                ->select('COUNT(u.id)')
+                ->leftJoin('u.userTypes', 'ut')
+                ->leftJoin('u.addresses', 'a')
+        ;
+
+        if ($userTypes && count($userTypes)) {
+            foreach ($userTypes as $userType)
+                $arrayUserType [] = $userType->getId();
+
+            $query->andWhere($query->expr()->in('ut.id', $arrayUserType));
+        }
+
+        /* Geocode */
+        $query->andWhere("(3958*3.1415926*sqrt((a.latitude - :latitude)*(a.latitude - :latitude)
+                + cos(a.latitude/57.29578)*cos(:latitude/57.29578)*(a.longitude - :longitude)*(a.longitude-:longitude))/180)
+                <= :distance")
+                ->setParameter('latitude', $latitude)
+                ->setParameter('longitude', $longitude)
+                ->setParameter('distance', $distance);
+        /* Geocode */
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

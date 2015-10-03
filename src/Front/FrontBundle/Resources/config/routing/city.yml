@@ -80,4 +80,11 @@ city_videos:
     path:      /videos/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:videos }    
     requirements:
-      _method: GET            
+      _method: GET
+      
+city_numbers:
+    path:      /numbers/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:numbers }    
+    requirements:
+      _method: GET      
+      

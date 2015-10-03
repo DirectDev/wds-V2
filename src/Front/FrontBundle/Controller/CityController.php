@@ -140,7 +140,7 @@ class CityController extends Controller {
                     'people' => $People,
         ));
     }
-    
+
     public function barsAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
@@ -507,6 +507,31 @@ class CityController extends Controller {
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    public function numbersAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $city = $this->getCity($request);
+
+        $this->setDates($request);
+        $count_events = $em->getRepository('FrontFrontBundle:Event')->countForCitypages($this->startdate, $city->getLatitude(), $city->getLongitude());
+
+        $UserTypeBar = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
+        $count_bars = $em->getRepository('UserUserBundle:User')->countUserByLocation($city->getLatitude(), $city->getLongitude(), 20, array($UserTypeBar));
+        $UserTypeDancer = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('dancer');
+        $count_dancers = $em->getRepository('UserUserBundle:User')->countUserByLocation($city->getLatitude(), $city->getLongitude(), 20, array($UserTypeDancer));
+        $UserTypeTeacher = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
+        $count_teachers = $em->getRepository('UserUserBundle:User')->countUserByLocation($city->getLatitude(), $city->getLongitude(), 20, array($UserTypeTeacher));
+
+        return $this->render('FrontFrontBundle:City:numbers.html.twig', array(
+                    'count_events' => $count_events,
+                    'count_bars' => $count_bars,
+                    'count_dancers' => $count_dancers,
+                    'count_teachers' => $count_teachers,
+        ));
     }
 
 }
