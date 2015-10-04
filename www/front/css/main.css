@@ -508,6 +508,13 @@ a.disabled {
     height: 100px;
 }
 
+.easy-block-v1-badge-blue{
+    background-color: rgba(138,230,226, 0.85);
+}
+.easy-block-v1-badge-red{
+    background-color: rgba(181,64,56, 0.90);
+}
+
 
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */

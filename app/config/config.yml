@@ -184,6 +184,17 @@ liip_imagine:
             default_image:        null
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }         
+        event:        
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                # min size
+                upscale: { min: [389, 246] } 
+                thumbnail: { size: [389, 246], mode: outbound }         
 
 # Services
 services:
