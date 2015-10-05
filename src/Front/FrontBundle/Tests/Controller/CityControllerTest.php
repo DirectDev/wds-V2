@@ -161,5 +161,14 @@ class CityControllerTest extends WebTestCase {
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         }
     }
+    
+    public function testNumbers() {
+        foreach ($this->findCities() as $City) {
+            $crawler = $this->client->request('GET', '/city/numbers/' . $City->getName());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+            $crawler = $this->clientLogged->request('GET', '/city/numbers/' . $City->getName());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
 
 }
