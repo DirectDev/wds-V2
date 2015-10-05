@@ -28,3 +28,7 @@ front_musictype_delete:
     path:     /{id}/delete
     defaults: { _controller: "FrontFrontBundle:MusicType:delete" }
     requirements: { _method: post|delete }
+    
+front_musictype_filters:
+    path:     /filters
+    defaults: { _controller: "FrontFrontBundle:MusicType:filters" }    

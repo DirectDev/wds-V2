@@ -39,7 +39,7 @@
 
 
             <!-- CSS Page Style -->    
-{#            <link rel="stylesheet" href="{{ asset("front/css/pages/page_job.css") }}">#}
+            {#            <link rel="stylesheet" href="{{ asset("front/css/pages/page_job.css") }}">#}
 
         {% endblock %}
 
@@ -113,13 +113,13 @@
             });
         </script>
         <script src="{{ asset('front/plugins/ckeditor/ckeditor.js') }}"></script>
-        <script>
+
+    {% endblock %}
+
+    <script>
             $(document).ready(function () {
                 CKEDITOR.replace('.ckeditor');
             });
-        </script>
-
-
-    {% endblock %}
+    </script>
 </body>
 </html>

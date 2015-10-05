@@ -109,14 +109,21 @@ class Event {
         $array = array();
         foreach ($this->getMusicTypes() as $musicType)
             $array[] = ucfirst($musicType->getTitle());
-        return implode(' - ', $array);
+        return trim(implode(' - ', $array));
+    }
+
+    public function getMusicTypesClasses() {
+        $array = array();
+        foreach ($this->getMusicTypes() as $musicType)
+            $array[] = strtolower($musicType->getTitle());
+        return trim(implode(' ', $array));
     }
 
     public function getEventTypesText() {
         $array = array();
         foreach ($this->getEventTypes() as $eventType)
             $array[] = ucfirst($eventType->getTitle());
-        return implode(' - ', $array);
+        return trim(implode(' - ', $array));
     }
 
     public function getDefaultImageUrl() {

@@ -24,10 +24,10 @@
 
                     <!-- Portfolio Sorting Blocks -->
                     <div class="sorting-block">
-                        {% include 'FrontFrontBundle:City:cityFilters.html.twig' %}
+                        {% render(path('front_musictype_filters')) %}
 
                         <!-- Easy Blocks v1 -->                
-                        <div class="row high-rated margin-bottom-20">
+                        <div class="row high-rated margin-bottom-20 sorting-grid">
                             {% include 'FrontFrontBundle:Event:list.html.twig' %}
                         </div>
                         <!-- End Easy Blocks v1 --> 

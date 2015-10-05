@@ -34,15 +34,16 @@
 
 {% block bottomJavascripts %}
     {{ parent() }}    
+
+    <script type="text/javascript" src="{{ asset("front/plugins/jquery.mixitup.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/pages/page_portfolio.js") }}"></script>
     <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
             App.initCounter();
-            App.initScrollBar();
-            Datepicker.initDatepicker();
-            ContactPage.initMap();
+            PortfolioPage.init();
         });
     </script>
 
