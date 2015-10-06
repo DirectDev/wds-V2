@@ -1,0 +1,9 @@
+<a href="{{ path('front_user_show_public', { username : person.username, id : person.id } ) }}">
+
+    {% if person.isFacebookUser %}
+        <img src='{{ person.profilePictureUrl }}' class="rounded-x"/> 
+    {% elseif person.profilePictureUrl %}
+        <img src='{{ asset(person.profilePictureUrl)| imagine_filter('city_thumb') }}' class="rounded-x" /> 
+    {% endif %}
+
+</a>

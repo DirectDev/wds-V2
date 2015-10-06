@@ -58,9 +58,13 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                     ->get('security.encoder_factory')
                     ->getEncoder($User);
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
+
+            $this->setDetails($User, $value);
+
             $User->addUserType($this->getReference('usertype-dancer'));
             $this->addMusicType($User);
             $manager->persist($User);
+            $User->mergeNewTranslations();
             $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
         }
         $manager->flush();
@@ -81,10 +85,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                     ->getEncoder($User);
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
-            $locale = $this->array_locale[rand(0, 1)];
-            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
-            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
+            $this->setDetails($User, $value);
 
             $User->addUserType($this->getReference('usertype-teacher'));
             $this->addMusicType($User);
@@ -111,10 +112,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                     ->getEncoder($User);
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
-            $locale = $this->array_locale[rand(0, 1)];
-            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
-            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
+            $this->setDetails($User, $value);
 
             $User->addUserType($this->getReference('usertype-artist'));
             $this->addMusicType($User);
@@ -140,10 +138,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                     ->getEncoder($User);
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
-            $locale = $this->array_locale[rand(0, 1)];
-            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
-            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
+            $this->setDetails($User, $value);
 
             $User->addUserType($this->getReference('usertype-bar'));
             $this->addMusicType($User);
@@ -153,6 +148,35 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
         }
         $manager->flush();
+    }
+
+    private function setDetails(User $User, $value = null) {
+        $locale = $this->array_locale[rand(0, 1)];
+        if (rand(0, 1))
+            $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
+        if (rand(0, 1))
+            $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
+        if (rand(0, 1))
+            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
+
+        if (rand(0, 1))
+            $User->setFacebookLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setTwitterLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setLinkedinLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setGoogleLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setFlickrLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setTumblrLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setInstagramLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setYoutubeLink('http://link-to-' . $value);
+        if (rand(0, 1))
+            $User->setVimeoLink('http://link-to-' . $value);
     }
 
     /**

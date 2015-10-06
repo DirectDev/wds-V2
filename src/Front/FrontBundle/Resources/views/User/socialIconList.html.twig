@@ -1,0 +1,66 @@
+
+<ul class="list-inline s-icons">
+    {% if person.facebookLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="{{ person.facebookLink }}">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.twitterLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="{{ person.twitterLink }}">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.linkedinLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="{{ person.linkedinLink }}">
+                <i class="fa fa-linkedin"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.googleLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Google" href="{{ person.googleLink }}">
+                <i class="fa fa-google"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.flickrLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Flickr" href="{{ person.flickrLink }}">
+                <i class="fa fa-flickr"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.tumblrLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Tumblr" href="{{ person.tumblrLink }}">
+                <i class="fa fa-tumblr"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.instagramLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Instagram" href="{{ person.instagramLink }}">
+                <i class="fa fa-instagram"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.youtubeLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Youtube" href="{{ person.youtubeLink }}">
+                <i class="fa fa-youtube"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.vimeoLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Vimeo" href="{{ person.vimeoLink }}">
+                <i class="fa fa-vimeo"></i>
+            </a>
+        </li>
+    {% endif %}
+</ul>

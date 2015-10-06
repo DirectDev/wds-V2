@@ -1,0 +1,5 @@
+{% for musicType in person.musicTypes %}
+    <p>
+        <span class="label label-{{ musicType|lower }} ">{{ musicType|capitalize }}</span>
+    </p>
+{% endfor %}

@@ -515,6 +515,25 @@ a.disabled {
     background-color: rgba(181,64,56, 0.90);
 }
 
+.label-tango {
+  background-color: #5cb85c;
+}
+.label-zouk {
+  background-color: #337ab7;
+}
+.label-merengue {
+  background-color: #777;
+}
+.label-bachata {
+  background-color: #5bc0de;
+}
+.label-salsa {
+  background-color: #f0ad4e;
+}
+.label-kizomba {
+  background-color: #d9534f;
+}
+
 
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
