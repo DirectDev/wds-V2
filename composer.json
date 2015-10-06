@@ -27,7 +27,6 @@
         "knplabs/doctrine-behaviors": "1.0.*@dev",
         "a2lix/translation-form-bundle": "dev-master",
         "punkave/symfony2-file-uploader-bundle": "1.0.*@dev",
-        "elao/form-translation-bundle": "1.0.*",
         "phpunit/phpunit": "4.0.*",
         "willdurand/geocoder-bundle": "@stable",
         "beberlei/DoctrineExtensions": "dev-master",

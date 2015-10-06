@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2980d026021674b8486ea5ef15e2788d",
-    "content-hash": "da5148abff3aec1bdb8a23263598c973",
+    "hash": "120006edf425888c9325536ec9b1f77b",
+    "content-hash": "2bb2ff1c5ed111811fe1685bc11c5238",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1010,61 +1010,6 @@
                 "orm"
             ],
             "time": "2015-08-31 12:59:39"
-        },
-        {
-            "name": "elao/form-translation-bundle",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Elao/ElaoFormTranslationBundle.git",
-                "reference": "95bc32baa4450af5701b318322f2d013fdaf002b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Elao/ElaoFormTranslationBundle/zipball/95bc32baa4450af5701b318322f2d013fdaf002b",
-                "reference": "95bc32baa4450af5701b318322f2d013fdaf002b",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/form": "~2.3",
-                "symfony/framework-bundle": "~2.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Elao\\Bundle\\FormTranslationBundle\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Elao",
-                    "homepage": "http://www.elao.com"
-                },
-                {
-                    "name": "Thomas Jarrand",
-                    "homepage": "https://github.com/Tom32i"
-                }
-            ],
-            "description": "Generate translation key for forms",
-            "homepage": "https://github.com/Elao/ElaoFormTranslationBundle",
-            "keywords": [
-                "elao",
-                "form",
-                "translation"
-            ],
-            "time": "2014-03-19 10:10:55"
         },
         {
             "name": "facebook/php-sdk-v4",
@@ -3132,34 +3077,34 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v2.7.1",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
+                "reference": "7117b9a145722e3c5768db4585f6ad0643ed5c4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
-                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/7117b9a145722e3c5768db4585f6ad0643ed5c4a",
+                "reference": "7117b9a145722e3c5768db4585f6ad0643ed5c4a",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "~1.8",
                 "php": ">=5.3.2",
-                "symfony/config": "~2.3",
-                "symfony/dependency-injection": "~2.3",
-                "symfony/http-kernel": "~2.3",
-                "symfony/monolog-bridge": "~2.3"
+                "symfony/config": "~2.3|3.*",
+                "symfony/dependency-injection": "~2.3|3.*",
+                "symfony/http-kernel": "~2.3|3.*",
+                "symfony/monolog-bridge": "~2.3|3.*"
             },
             "require-dev": {
-                "symfony/console": "~2.3",
+                "symfony/console": "~2.3|3.*",
                 "symfony/yaml": "~2.3"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7.x-dev"
+                    "dev-master": "2.8.x-dev"
                 }
             },
             "autoload": {
@@ -3187,7 +3132,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-01-04 20:21:17"
+            "time": "2015-10-02 11:51:59"
         },
         {
             "name": "symfony/swiftmailer-bundle",

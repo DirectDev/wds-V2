@@ -34,5 +34,5 @@ a2lix_translation_form:
     templating: "A2lixTranslationFormBundle::default.html.twig"      #  The default template is Twitter Bootstrap compatible        
     
 # form label translations    
-elao_form_translation:
-    auto_generate: true    
+#elao_form_translation:
+#    auto_generate: true    
