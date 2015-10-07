@@ -31,6 +31,8 @@ class UserController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
+        
+        $this->get('displayCounters.services')->updateUserDisplayCounter($entity);
 
         return $this->render('FrontFrontBundle:User:showPrivate.html.twig', array(
                     'user' => $entity,
@@ -183,7 +185,6 @@ class UserController extends Controller {
      * Edits an existing User entity.
      *
      */
-    
     public function updateProfileAction(Request $request, $id) {
 
         if (!$this->getUser())
@@ -214,7 +215,7 @@ class UserController extends Controller {
                     'edit_link_form' => $editLinkForm->createView(),
         ));
     }
-    
+
     public function updateDescriptionAction(Request $request, $id) {
 
         if (!$this->getUser())
@@ -245,7 +246,7 @@ class UserController extends Controller {
                     'edit_link_form' => $editLinkForm->createView(),
         ));
     }
-    
+
     public function updateLinkAction(Request $request, $id) {
 
         if (!$this->getUser())
@@ -350,6 +351,30 @@ class UserController extends Controller {
         $facebookServices->importEvents();
 
         return new Response();
+    }
+
+    public function showOverviewsAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('UserUserBundle:User')->findOneById($id);
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+        
+        $this->get('displayCounters.services')->updateUserDisplayCounter($user);
+
+        $count_events = $em->getRepository('FrontFrontBundle:Event')->countByUser($user);
+        $count_videos = $em->getRepository('FrontFrontBundle:Video')->countByUser($user);
+        $count_musics = $em->getRepository('FrontFrontBundle:Music')->countByUser($user);
+        $count_photos = $em->getRepository('UserUserBundle:UserFile')->countByUser($user);
+
+        return $this->render('FrontFrontBundle:User:showOverviews.html.twig', array(
+                    'user' => $user,
+                    'count_events' => $count_events,
+                    'count_videos' => $count_videos,
+                    'count_musics' => $count_musics,
+                    'count_photos' => $count_photos,
+        ));
     }
 
 }

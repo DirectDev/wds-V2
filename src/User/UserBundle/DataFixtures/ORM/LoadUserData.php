@@ -177,6 +177,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->setYoutubeLink('http://link-to-' . $value);
         if (rand(0, 1))
             $User->setVimeoLink('http://link-to-' . $value);
+        
+        
+        if (rand(0, 4))
+            $User->setDisplayCounter(rand(100, 10000));
     }
 
     /**

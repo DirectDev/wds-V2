@@ -27,10 +27,15 @@ class UserFileRepository extends EntityRepository {
         $result = $query->getQuery()->getResult();
         shuffle($result);
         return $result;
+    }
 
-
-
-        ;
+    public function countByUser(\User\UserBundle\Entity\User $User) {
+        $query = $this->createQueryBuilder('uf')
+                ->select('COUNT(uf.id)')
+                ->leftJoin('uf.user', 'u')
+                ->where('u.id = :id')
+                ->setParameter('id', $User->getId());
+        return $query->getQuery()->getSingleScalarResult();
     }
 
 }

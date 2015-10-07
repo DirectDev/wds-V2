@@ -32,3 +32,7 @@ front_user_show_public:
 callback_username:
     path:      /callback_username/
     defaults:  { _controller: UserUserBundle:User:callbackUsername }      
+
+front_user_show_overviews:
+    path:     /overviews/{id}
+    defaults: { _controller: "FrontFrontBundle:User:showOverviews" }

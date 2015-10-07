@@ -115,10 +115,15 @@ class EventRepository extends EntityRepository {
         /* Geocode */
 
         return $query->getQuery()->getSingleScalarResult();
+    }
 
-
-
-        ;
+    public function countByUser(\User\UserBundle\Entity\User $User) {
+        $query = $this->createQueryBuilder('e')
+                ->select('COUNT(e.id)')
+                ->leftJoin('e.user', 'u')
+                ->where('u.id = :id')
+                ->setParameter('id', $User->getId());
+        return $query->getQuery()->getSingleScalarResult();
     }
 
 }

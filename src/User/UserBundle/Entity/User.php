@@ -72,6 +72,9 @@ class User extends BaseUser {
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $google_access_token;
 
+    /** @ORM\Column(name="display_counter", type="integer") */
+    protected $display_counter;
+
     /**
      * @ORM\OneToMany(targetEntity="UserFile", mappedBy="user")
      */
@@ -215,6 +218,10 @@ class User extends BaseUser {
             if ($userType->getName() == 'artist')
                 return true;
         return false;
+    }
+    
+    public function incrementDisplayCounter(){
+        $this->display_counter++;
     }
 
     /**
@@ -714,4 +721,28 @@ class User extends BaseUser {
     }
 
 
+
+    /**
+     * Set displayCounter
+     *
+     * @param integer $displayCounter
+     *
+     * @return User
+     */
+    public function setDisplayCounter($displayCounter)
+    {
+        $this->display_counter = $displayCounter;
+
+        return $this;
+    }
+
+    /**
+     * Get displayCounter
+     *
+     * @return integer
+     */
+    public function getDisplayCounter()
+    {
+        return $this->display_counter;
+    }
 }

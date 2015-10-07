@@ -1,0 +1,75 @@
+{% set user = event.getUser %}
+<h3>Posted by</h3>  
+
+<a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}">
+
+    {% if user.isFacebookUser %}
+        <img src='{{ user.profilePictureUrl }}' width="90px" /> 
+    {% elseif user.profilePictureUrl %}
+        <img src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' width="90px" /> 
+    {% endif %}
+
+</a>
+
+<div class="overflow-h">
+    <span class="font-s">{{ user.username|capitalize }}</span>
+    <p class="color-green">
+        {% if user.getUserType %}
+            {{ user.getUserTypesText }}
+        {% endif %}
+        {% if user.getMusicType %}
+            / <span class="hex">{{ user.getMusicTypesText }}</span>
+        {% endif %}
+    </p>
+    <ul class="social-icons">
+        {% if user.facebookLink %}
+            <li>
+                <a class="social_facebook" data-original-title="Facebook" href="{{ user.facebookLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.googleLink %}
+            <li>
+                <a class="social_googleplus" data-original-title="Google Plus" href="{{ user.googleLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.tumblrLink %}
+            <li>
+                <a class="social_tumblr" data-original-title="Tumblr" href="{{ user.tumblrLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.twitterLink %}
+            <li>
+                <a class="social_twitter" data-original-title="Twitter" href="{{ user.twitterLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.linkedinLink %}
+            <li>
+                <a class="social_linkedin" data-original-title="Twitter" href="{{ user.linkedinLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.flickrLink %}
+            <li>
+                <a class="social_flickr" data-original-title="Twitter" href="{{ user.flickrLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.instagramLink %}
+            <li>
+                <a class="social_instagram" data-original-title="Twitter" href="{{ user.instagramLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.vimeoLink %}
+            <li>
+                <a class="social_vimeo" data-original-title="Twitter" href="{{ user.vimeoLink }}"></a>
+            </li>
+        {% endif %}
+        {% if user.youtubeLink %}
+            <li>
+                <a class="social_youtube" data-original-title="Twitter" href="{{ user.youtubeLink }}"></a>
+            </li>
+        {% endif %}
+    </ul>
+</div>    
+
+<hr>
+
+{% render path('front_user_show_overviews', { id : user.id } ) %}

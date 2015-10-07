@@ -16,12 +16,10 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            
             # users bundle
             new FOS\UserBundle\FOSUserBundle(),
             new User\UserBundle\UserUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-                        
             # translations
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
@@ -29,22 +27,22 @@ class AppKernel extends Kernel {
             new JMS\AopBundle\JMSAopBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
 //            new Elao\Bundle\FormTranslationBundle\ElaoFormTranslationBundle(),
-            
             # images
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
-            
             # geocode
             new Bazinga\Bundle\GeocoderBundle\BazingaGeocoderBundle(),
-            
             # application bundle
             new Front\FrontBundle\FrontFrontBundle(),
             new Admin\AdminBundle\AdminAdminBundle(),
             new File\FileBundle\FileFileBundle(),
             new Search\SearchBundle\SearchSearchBundle(),
             new Contact\ContactBundle\ContactContactBundle(),
-            );
+        );
 
+        if (in_array($this->getEnvironment(), array('dev'))) {
+            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
+        }
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();

@@ -85,6 +85,7 @@ class CityController extends Controller {
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('dancer');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+        $this->incrementDisplayCountersForPeople($People);
 
         return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
@@ -109,6 +110,7 @@ class CityController extends Controller {
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+        $this->incrementDisplayCountersForPeople($People);
 
         return $this->render('FrontFrontBundle:City:teachers.html.twig', array(
                     'page' => $page,
@@ -133,6 +135,7 @@ class CityController extends Controller {
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+        $this->incrementDisplayCountersForPeople($People);
 
         return $this->render('FrontFrontBundle:City:artists.html.twig', array(
                     'page' => $page,
@@ -157,6 +160,7 @@ class CityController extends Controller {
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
 
         $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+        $this->incrementDisplayCountersForPeople($People);
 
         return $this->render('FrontFrontBundle:City:bars.html.twig', array(
                     'page' => $page,
@@ -532,6 +536,12 @@ class CityController extends Controller {
                     'count_dancers' => $count_dancers,
                     'count_teachers' => $count_teachers,
         ));
+    }
+
+    private function incrementDisplayCountersForPeople($people) {
+        $displayCountersServices = $this->get('displayCounters.services');
+        foreach ($people as $user)
+            $displayCountersServices->updateUserDisplayCounter($user);
     }
 
 }

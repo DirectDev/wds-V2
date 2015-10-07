@@ -33,4 +33,13 @@ class VideoRepository extends EntityRepository {
         return $result;
     }
 
+    public function countByUser(\User\UserBundle\Entity\User $User) {
+        $query = $this->createQueryBuilder('v')
+                ->select('COUNT(v.id)')
+                ->leftJoin('v.user', 'u')
+                ->where('u.id = :id')
+                ->setParameter('id', $User->getId());
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }
