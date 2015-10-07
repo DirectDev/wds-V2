@@ -81,4 +81,17 @@ class UserRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function getUsersLoveEvent(\Front\FrontBundle\Entity\Event $Event, $max = null) {
+        $query = $this->createQueryBuilder('u')
+                ->leftJoin('u.eventloves', 'e')
+                ->where('e.id = :id')
+                ->setParameter('id', $Event->getId())
+                ->addSelect('RAND() as HIDDEN rand')
+                ->orderBy('rand');
+
+        if ($max > 0)
+            $query->setMaxResults($max);
+        return $query->getQuery()->getResult();
+    }
+
 }

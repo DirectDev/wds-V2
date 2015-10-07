@@ -1,15 +1,7 @@
 {% set user = event.getUser %}
 <h3>Posted by</h3>  
 
-<a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}">
-
-    {% if user.isFacebookUser %}
-        <img src='{{ user.profilePictureUrl }}' width="90px" /> 
-    {% elseif user.profilePictureUrl %}
-        <img src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' width="90px" /> 
-    {% endif %}
-
-</a>
+{% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
 
 <div class="overflow-h">
     <span class="font-s">{{ user.username|capitalize }}</span>

@@ -77,6 +77,7 @@ doctrine:
         auto_mapping: true
         dql:
           string_functions:
+            rand: DoctrineExtensions\Query\Mysql\Rand
             acos: DoctrineExtensions\Query\Mysql\Acos
             asin: DoctrineExtensions\Query\Mysql\Asin
             atan2: DoctrineExtensions\Query\Mysql\Atan2

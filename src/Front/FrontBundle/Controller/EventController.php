@@ -21,9 +21,9 @@ class EventController extends Controller {
      *
      */
     public function indexAction() {
-        
+
         return new Response('', 404);
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('FrontFrontBundle:Event')->findAll();
@@ -124,8 +124,11 @@ class EventController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
 
+        $usersLoveEvent = $em->getRepository('UserUserBundle:User')->getUsersLoveEvent($event, 8);
+
         return $this->render('FrontFrontBundle:Event:show.html.twig', array(
                     'event' => $event,
+                    'usersLoveEvent' => $usersLoveEvent,
                     'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -287,9 +290,9 @@ class EventController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        
+
         return new Response('', 404);
-        
+
         if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
@@ -310,16 +313,16 @@ class EventController extends Controller {
 
         return $this->redirect($this->generateUrl('front_event'));
     }
-    
+
     /**
      * get event alerts.
      *
      */
     public function alertsAction($id) {
-                                
+
         if (!$this->getUser())
             return new Response();
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('FrontFrontBundle:Event')->findOneBy(array('id' => $id));

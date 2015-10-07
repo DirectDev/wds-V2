@@ -76,6 +76,11 @@ class Event {
      * */
     protected $user;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="eventloves")     
+     * */
+    private $lovesMe;
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -95,6 +100,7 @@ class Event {
         $this->eventTypes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventFiles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lovesMe = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getTitle() {
@@ -449,6 +455,38 @@ class Event {
      */
     public function getEventTypes() {
         return $this->eventTypes;
+    }
+
+    /**
+     * Add lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     *
+     * @return Event
+     */
+    public function addLovesMe(\User\UserBundle\Entity\User $lovesMe) {
+        $lovesMe->addEventlove($this);
+        $this->lovesMe[] = $lovesMe;
+
+        return $this;
+    }
+
+    /**
+     * Remove lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     */
+    public function removeLovesMe(\User\UserBundle\Entity\User $lovesMe) {
+        $this->lovesMe->removeElement($lovesMe);
+    }
+
+    /**
+     * Get lovesMe
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLovesMe() {
+        return $this->lovesMe;
     }
 
 }

@@ -132,6 +132,15 @@ class User extends BaseUser {
      *      )
      **/
     private $loves;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Event", inversedBy="lovesMe")
+     * @ORM\JoinTable(name="event_love",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="love_event_id", referencedColumnName="id")}
+     *      )
+     **/
+    private $eventloves;
 
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
@@ -156,6 +165,7 @@ class User extends BaseUser {
         $this->userTypes = new ArrayCollection();
         $this->musics = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->eventloves = new ArrayCollection();
         $this->loves = new ArrayCollection();
         $this->lovesMe = new ArrayCollection();
     }
@@ -829,5 +839,39 @@ class User extends BaseUser {
     public function getLoves()
     {
         return $this->loves;
+    }
+
+    /**
+     * Add eventlove
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventlove
+     *
+     * @return User
+     */
+    public function addEventlove(\Front\FrontBundle\Entity\Event $eventlove)
+    {
+        $this->eventloves[] = $eventlove;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventlove
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventlove
+     */
+    public function removeEventlove(\Front\FrontBundle\Entity\Event $eventlove)
+    {
+        $this->eventloves->removeElement($eventlove);
+    }
+
+    /**
+     * Get eventloves
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventloves()
+    {
+        return $this->eventloves;
     }
 }
