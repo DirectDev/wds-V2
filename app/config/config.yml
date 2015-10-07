@@ -177,6 +177,16 @@ liip_imagine:
             filters:
                 upscale: { min: [200, 200] } 
                 thumbnail: { size: [200, 200], mode: inbound }
+        event_carrousel:        
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                upscale: { min: [973, 615] } 
+                thumbnail: { size: [973, 615], mode: inbound }
         city_thumb:        
             quality:              100
             animated:             false
