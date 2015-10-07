@@ -34,5 +34,5 @@ callback_username:
     defaults:  { _controller: UserUserBundle:User:callbackUsername }      
 
 front_user_show_overviews:
-    path:     /overviews/{id}
+    path:     /pofile/overviews/{id}
     defaults: { _controller: "FrontFrontBundle:User:showOverviews" }

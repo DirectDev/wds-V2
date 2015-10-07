@@ -53,6 +53,10 @@ class UserControllerTest extends WebTestCase {
         );
     }
 
+    private function findAllUsers() {
+        return $this->em->getRepository('UserUserBundle:User')->findAll();
+    }
+
     private function findUser() {
         return $this->em->getRepository('UserUserBundle:User')->findOneBy(
                         array(
@@ -63,11 +67,25 @@ class UserControllerTest extends WebTestCase {
     }
 
     public function testShowPublic() {
-        $crawler = $this->client->request('GET', '/profile/Jerome/1');
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $users = $this->findAllUsers();
+        foreach ($users as $user) {
+            $crawler = $this->client->request('GET', '/profile/' . $user->getUsername() . '/' . $user->getId());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
 
-        $crawler = $this->clientLogged->request('GET', '/profile/Jerome/1');
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+            $crawler = $this->clientLogged->request('GET', '/profile/' . $user->getUsername() . '/' . $user->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
+    public function testShowOverviews() {
+        $users = $this->findAllUsers();
+        foreach ($users as $user) {
+            $crawler = $this->client->request('GET', '/profile/overviews/' . $user->getId());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+            $crawler = $this->clientLogged->request('GET', '/profile/overviews/' . $user->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testShowPrivate() {
@@ -134,7 +152,7 @@ class UserControllerTest extends WebTestCase {
     public function testCallbackUsernameTest() {
 
         // registration
-        
+
         $crawler = $this->client->request('GET', '/callback_username/en/?fos_user_registration_form%5Busername%5D=Jerome');
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertEquals(1, $crawler->filter('html:contains("false")')->count());
@@ -154,9 +172,9 @@ class UserControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', '/callback_username/en/?fos_user_registration_form%5Busername%5D=jeje');
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         $this->assertEquals(1, $crawler->filter('html:contains("false")')->count());
-        
+
         // edit user        
-        
+
         $crawler = $this->client->request('GET', '/callback_username/en/?front_frontbundle_user%5Busername%5D=Jerome');
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertEquals(1, $crawler->filter('html:contains("false")')->count());
@@ -176,7 +194,6 @@ class UserControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', '/callback_username/en/?front_frontbundle_user%5Busername%5D=jeje');
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         $this->assertEquals(1, $crawler->filter('html:contains("false")')->count());
-
     }
 
 }
