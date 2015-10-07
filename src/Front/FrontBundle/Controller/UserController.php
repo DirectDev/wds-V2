@@ -367,6 +367,7 @@ class UserController extends Controller {
         $count_videos = $em->getRepository('FrontFrontBundle:Video')->countByUser($user);
         $count_musics = $em->getRepository('FrontFrontBundle:Music')->countByUser($user);
         $count_photos = $em->getRepository('UserUserBundle:UserFile')->countByUser($user);
+        $count_lovesme = $em->getRepository('UserUserBundle:User')->countLovesMeByUser($user);
 
         return $this->render('FrontFrontBundle:User:showOverviews.html.twig', array(
                     'user' => $user,
@@ -374,6 +375,7 @@ class UserController extends Controller {
                     'count_videos' => $count_videos,
                     'count_musics' => $count_musics,
                     'count_photos' => $count_photos,
+                    'count_lovesme' => $count_lovesme,
         ));
     }
 

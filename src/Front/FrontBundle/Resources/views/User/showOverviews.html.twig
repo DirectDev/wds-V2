@@ -1,10 +1,120 @@
-
 <div class="row margin-bottom-20">
-    <!-- Begin Overview -->
 
-    <!-- overview possible : -->
-    <!-- nbre views -->
-    <!-- nbre like -->
+    {% set max_lovesme = 100 %}
+    {% if count_lovesme < max_lovesme %}
+        {% set ratio_lovesme = (count_lovesme/max_lovesme*100) %}
+    {% else %}
+        {% set ratio_lovesme = max_lovesme %}
+    {% endif %}
+    {% if count_lovesme %}
+        <div class="col-sm-6">
+            <div class="overview">
+                <i class="fa fa-thumbs-up"></i>
+                <div class="overflow-h">
+                    <small>Likes</small>
+                    <small>
+                        {% if count_lovesme > 1000 %}
+                            {{ (count_lovesme/1000)|round(1) }}k
+                        {% else %}
+                            {{ count_lovesme }}
+                        {% endif %}
+                    </small>
+                    <div class="progress progress-u progress-xxs">
+                        <div style="width: {{ ratio_lovesme }}%" aria-valuemax="{{ max_lovesme }}" aria-valuemin="0" aria-valuenow="{{ ratio_lovesme }}" role="progressbar" class="progress-bar progress-bar-u">
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
+
+    {% set max_events = 20 %}
+    {% if count_events < max_events %}
+        {% set ratio_events = (count_events/max_events*100) %}
+    {% else %}
+        {% set ratio_events = max_events %}
+    {% endif %}
+    {% if count_events %}
+        <div class="col-sm-6">
+            <div class="overview">
+                <i class="fa fa-calendar-o"></i>
+                <div class="overflow-h">
+                    <small>Events</small>
+                    <small>{{ count_events }}</small>
+                    <div class="progress progress-u progress-xxs">
+                        <div style="width: {{ ratio_events }}%" aria-valuemax="{{ max_events }}" aria-valuemin="0" aria-valuenow="{{ ratio_events }}" role="progressbar" class="progress-bar progress-bar-u">
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
+
+    {% set max_videos = 20 %}
+    {% if count_videos < max_videos %}
+        {% set ratio_videos = (count_videos/max_videos*100) %}
+    {% else %}
+        {% set ratio_videos = max_videos %}
+    {% endif %}
+    {% if count_videos %}
+        <div class="col-sm-6">
+            <div class="overview">
+                <i class="fa fa-youtube-play"></i>
+                <div class="overflow-h">
+                    <small>Videos</small>
+                    <small>{{ count_videos }}</small>
+                    <div class="progress progress-u progress-xxs">
+                        <div style="width: {{ ratio_videos }}%" aria-valuemax="{{ max_videos }}" aria-valuemin="0" aria-valuenow="{{ ratio_videos }}" role="progressbar" class="progress-bar progress-bar-u">
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
+
+    {% set max_photos = 20 %}
+    {% if count_photos < max_photos %}
+        {% set ratio_photos = (count_photos/max_photos*100) %}
+    {% else %}
+        {% set ratio_photos = max_photos %}
+    {% endif %}
+    {% if count_photos %}
+        <div class="col-sm-6">
+            <div class="overview">
+                <i class="fa fa-camera"></i>
+                <div class="overflow-h">
+                    <small>Photos</small>
+                    <small>{{ count_photos }}</small>
+                    <div class="progress progress-u progress-xxs">
+                        <div style="width: {{ ratio_photos }}%" aria-valuemax="{{ max_photos }}" aria-valuemin="0" aria-valuenow="{{ ratio_photos }}" role="progressbar" class="progress-bar progress-bar-u">
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
+
+    {% set max_musics = 20 %}
+    {% if count_musics < max_musics %}
+        {% set ratio_musics = (count_musics/max_musics*100) %}
+    {% else %}
+        {% set ratio_musics = max_musics %}
+    {% endif %}
+    {% if count_musics %}
+        <div class="col-sm-6">
+            <div class="overview">
+                <i class="fa fa-music"></i>
+                <div class="overflow-h">
+                    <small>Musics</small>
+                    <small>{{ count_musics }}</small>
+                    <div class="progress progress-u progress-xxs">
+                        <div style="width: {{ ratio_musics }}%" aria-valuemax="{{ max_musics }}" aria-valuemin="0" aria-valuenow="{{ ratio_musics }}" role="progressbar" class="progress-bar progress-bar-u">
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
 
     {% set max_views = 10000 %}
     {% set count_views = user.getDisplayCounter %}
@@ -35,154 +145,4 @@
         </div>
     {% endif %}
 
-    {% set max_videos = 20 %}
-    {% if count_videos < max_videos %}
-        {% set ratio_videos = (count_videos/max_videos*100) %}
-    {% else %}
-        {% set ratio_videos = max_videos %}
-    {% endif %}
-    {% if count_videos %}
-        <div class="col-sm-6">
-            <div class="overview">
-                <i class="fa fa-user"></i>
-                <div class="overflow-h">
-                    <small>Videos</small>
-                    <small>{{ count_videos }}</small>
-                    <div class="progress progress-u progress-xxs">
-                        <div style="width: {{ ratio_videos }}%" aria-valuemax="{{ max_videos }}" aria-valuemin="0" aria-valuenow="{{ ratio_videos }}" role="progressbar" class="progress-bar progress-bar-u">
-                        </div>
-                    </div>
-                </div>    
-            </div>
-        </div>
-    {% endif %}
-
-    {% set max_events = 20 %}
-    {% if count_events < max_events %}
-        {% set ratio_events = (count_events/max_events*100) %}
-    {% else %}
-        {% set ratio_events = max_events %}
-    {% endif %}
-    {% if count_events %}
-        <div class="col-sm-6">
-            <div class="overview">
-                <i class="fa fa-user"></i>
-                <div class="overflow-h">
-                    <small>Events</small>
-                    <small>{{ count_events }}</small>
-                    <div class="progress progress-u progress-xxs">
-                        <div style="width: {{ ratio_events }}%" aria-valuemax="{{ max_events }}" aria-valuemin="0" aria-valuenow="{{ ratio_events }}" role="progressbar" class="progress-bar progress-bar-u">
-                        </div>
-                    </div>
-                </div>    
-            </div>
-        </div>
-    {% endif %}
-
-    {% set max_musics = 20 %}
-    {% if count_musics < max_musics %}
-        {% set ratio_musics = (count_musics/max_musics*100) %}
-    {% else %}
-        {% set ratio_musics = max_musics %}
-    {% endif %}
-    {% if count_musics %}
-        <div class="col-sm-6">
-            <div class="overview">
-                <i class="fa fa-user"></i>
-                <div class="overflow-h">
-                    <small>Musics</small>
-                    <small>{{ count_musics }}</small>
-                    <div class="progress progress-u progress-xxs">
-                        <div style="width: {{ ratio_musics }}%" aria-valuemax="{{ max_musics }}" aria-valuemin="0" aria-valuenow="{{ ratio_musics }}" role="progressbar" class="progress-bar progress-bar-u">
-                        </div>
-                    </div>
-                </div>    
-            </div>
-        </div>
-    {% endif %}
-
-    {% set max_photos = 20 %}
-    {% if count_photos < max_photos %}
-        {% set ratio_photos = (count_photos/max_photos*100) %}
-    {% else %}
-        {% set ratio_photos = max_photos %}
-    {% endif %}
-    {% if count_photos %}
-        <div class="col-sm-6">
-            <div class="overview">
-                <i class="fa fa-user"></i>
-                <div class="overflow-h">
-                    <small>Photos</small>
-                    <small>{{ count_photos }}</small>
-                    <div class="progress progress-u progress-xxs">
-                        <div style="width: {{ ratio_photos }}%" aria-valuemax="{{ max_photos }}" aria-valuemin="0" aria-valuenow="{{ ratio_photos }}" role="progressbar" class="progress-bar progress-bar-u">
-                        </div>
-                    </div>
-                </div>    
-            </div>
-        </div>
-    {% endif %}
-
-    <div class="col-sm-6">
-        <div class="overview">
-            <i class="fa fa-user"></i>
-            <div class="overflow-h">
-                <small>Followers</small>
-                <small>2,1k</small>
-                <div class="progress progress-u progress-xxs">
-                    <div style="width: 92%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="92" role="progressbar" class="progress-bar progress-bar-u">
-                    </div>
-                </div>
-            </div>    
-        </div>
-    </div>
-    <!-- End Overview -->
-
-    <!-- Begin Overview -->
-    <div class="col-sm-6">
-        <div class="overview">
-            <i class="fa fa-share"></i>
-            <div class="overflow-h">
-                <small>VieSharews</small>
-                <small>749k</small>
-                <div class="progress progress-u progress-xxs">
-                    <div style="width: 77%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="77" role="progressbar" class="progress-bar progress-bar-u">
-                    </div>
-                </div>
-            </div>    
-        </div>
-    </div>
-    <!-- End Overview -->
-
-    <!-- Begin Overview -->
-    <div class="col-sm-6">
-        <div class="overview">
-            <i class="fa fa-eye"></i>
-            <div class="overflow-h">
-                <small>Views</small>
-                <small>15,7k</small>
-                <div class="progress progress-u progress-xxs">
-                    <div style="width: 88%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="88" role="progressbar" class="progress-bar progress-bar-u">
-                    </div>
-                </div>
-            </div>    
-        </div>
-    </div>
-    <!-- End Overview -->
-
-    <!-- Begin Overview -->
-    <div class="col-sm-6">
-        <div class="overview">
-            <i class="fa fa-group"></i>
-            <div class="overflow-h">
-                <small>Opportunity Views</small>
-                <small>202,8k</small>
-                <div class="progress progress-u progress-xxs">
-                    <div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-u">
-                    </div>
-                </div>
-            </div>    
-        </div>
-    </div>
-    <!-- End Overview -->
 </div>

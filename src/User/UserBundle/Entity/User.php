@@ -72,7 +72,7 @@ class User extends BaseUser {
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $google_access_token;
 
-    /** @ORM\Column(name="display_counter", type="integer") */
+    /** @ORM\Column(name="display_counter", type="integer", nullable=true) */
     protected $display_counter;
 
     /**
@@ -118,6 +118,20 @@ class User extends BaseUser {
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Video", mappedBy="user")
      */
     protected $videos;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="loves")
+     **/
+    private $lovesMe;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="lovesMe")
+     * @ORM\JoinTable(name="love",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="love_user_id", referencedColumnName="id")}
+     *      )
+     **/
+    private $loves;
 
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
@@ -142,6 +156,8 @@ class User extends BaseUser {
         $this->userTypes = new ArrayCollection();
         $this->musics = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->loves = new ArrayCollection();
+        $this->lovesMe = new ArrayCollection();
     }
 
     public function isFacebookUser() {
@@ -744,5 +760,74 @@ class User extends BaseUser {
     public function getDisplayCounter()
     {
         return $this->display_counter;
+    }
+
+    /**
+     * Add lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     *
+     * @return User
+     */
+    public function addLovesMe(\User\UserBundle\Entity\User $lovesMe)
+    {
+        $lovesMe->addLove($this);
+        $this->lovesMe[] = $lovesMe;
+
+        return $this;
+    }
+
+    /**
+     * Remove lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     */
+    public function removeLovesMe(\User\UserBundle\Entity\User $lovesMe)
+    {
+        $this->lovesMe->removeElement($lovesMe);
+    }
+
+    /**
+     * Get lovesMe
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLovesMe()
+    {
+        return $this->lovesMe;
+    }
+
+    /**
+     * Add love
+     *
+     * @param \User\UserBundle\Entity\User $love
+     *
+     * @return User
+     */
+    public function addLove(\User\UserBundle\Entity\User $love)
+    {
+        $this->loves[] = $love;
+
+        return $this;
+    }
+
+    /**
+     * Remove love
+     *
+     * @param \User\UserBundle\Entity\User $love
+     */
+    public function removeLove(\User\UserBundle\Entity\User $love)
+    {
+        $this->loves->removeElement($love);
+    }
+
+    /**
+     * Get loves
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLoves()
+    {
+        return $this->loves;
     }
 }
