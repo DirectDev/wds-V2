@@ -3,15 +3,11 @@
 {% endif %}
 
 {% if user %}
-
     <a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}">
-
         {% if user.isFacebookUser %}
             <img src='{{ user.profilePictureUrl }}' class="{{ class }}" /> 
         {% elseif user.profilePictureUrl %}
             <img src='{{ asset(user.profilePictureUrl)| imagine_filter('member_photo') }}' class="{{ class }}" /> 
         {% endif %}
-
-    </a>
-
+    </a>    
 {% endif %}

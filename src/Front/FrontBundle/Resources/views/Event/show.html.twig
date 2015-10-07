@@ -280,18 +280,7 @@
 
                         <hr> 
 
-
-                        <h3>Ils aiment </h3>
-
-                        <ul class="list-unstyled blog-photos margin-bottom-30">
-                            {% for userLoveEvent in usersLoveEvent %}
-                                <li>
-                                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : userLoveEvent } %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-
-                        <button type="button" class="btn-u btn-block"> J'aime</button>
+                        {% render(path('front_event_loves', { id : event.id } )) %}
 
                         <hr> 
 

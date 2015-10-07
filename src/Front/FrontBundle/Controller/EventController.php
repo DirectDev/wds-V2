@@ -122,14 +122,11 @@ class EventController extends Controller {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
-        $usersLoveEvent = $em->getRepository('UserUserBundle:User')->getUsersLoveEvent($event, 8);
+//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Event:show.html.twig', array(
                     'event' => $event,
-                    'usersLoveEvent' => $usersLoveEvent,
-                    'delete_form' => $deleteForm->createView(),
+//                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -418,6 +415,107 @@ class EventController extends Controller {
             return 'n-a';
 
         return $text;
+    }
+
+    private function createLoveForm($id) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('front_event_love', array('id' => $id)))
+                        ->setMethod('POST')
+                        ->add('submit', 'submit', array(
+                            'label' => $this->get('translator')->trans('I Like'),
+                            'attr' => array(
+                                'class' => 'btn-u btn-block love_button'
+                            )
+                        ))
+                        ->getForm()
+        ;
+    }
+
+    private function createUnLoveForm($id) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('front_event_unlove', array('id' => $id)))
+                        ->setMethod('POST')
+                        ->add('submit', 'submit', array(
+                            'label' => $this->get('translator')->trans("I don't like"),
+                            'attr' => array(
+                                'class' => 'btn-u btn-block love_button'
+                            )
+                        ))
+                        ->getForm()
+        ;
+    }
+
+    public function loveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $form = $this->createLoveForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Event entity.');
+            }
+            if (!$entity->getLovesMe()->contains($this->getUser()))
+                $entity->addLovesMe($this->getUser());
+
+            $em->persist($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('front_event_loves', array('id' => $entity->getId())));
+    }
+
+    public function unLoveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $form = $this->createUnLoveForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Event entity.');
+            }
+            
+            $User = $this->getUser();
+            if ($User->getEventloves()->contains($entity))
+                $User->removeEventlove($entity);
+
+            $em->persist($User);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('front_event_loves', array('id' => $entity->getId())));
+    }
+
+    public function lovesAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('FrontFrontBundle:Event')->find(array('id' => $id));
+        if (!$event) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        $loveForm = $this->createLoveForm($id);
+        $unLoveForm = $this->createUnLoveForm($id);
+
+        $usersLoveEvent = $em->getRepository('UserUserBundle:User')->getUsersLoveEvent($event, 8);
+
+        return $this->render('FrontFrontBundle:Event:loves.html.twig', array(
+                    'event' => $event,
+                    'usersLoveEvent' => $usersLoveEvent,
+                    'love_form' => $loveForm->createView(),
+                    'unlove_form' => $unLoveForm->createView(),
+        ));
     }
 
 }
