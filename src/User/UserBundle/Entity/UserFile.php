@@ -48,41 +48,16 @@ class UserFile {
         return $this->getGeneralPath() . 'large/' . $this->name;
     }
 
-    public function getMediumPathFile() {
-        return $this->getGeneralPath() . 'medium/' . $this->name;
-    }
-
-    public function getOriginalsPathFile() {
-        return $this->getGeneralPath() . 'originals/' . $this->name;
-    }
-
-    public function getSmallPathFile() {
-        return $this->getGeneralPath() . 'small/' . $this->name;
-    }
-
-    public function getThumbnailsPathFile() {
-        return $this->getGeneralPath() . 'thumbnails/' . $this->name;
-    }
+//    public function getOriginalsPathFile() {
+//        return $this->getGeneralPath() . 'originals/' . $this->name;
+//    }
 
     public function getLargePathUri() {
         return $this->getGeneralUri() . 'large/' . $this->name;
     }
-
-    public function getMediumPathUri() {
-        return $this->getGeneralUri() . 'medium/' . $this->name;
-    }
-
-    public function getOriginalsPathUri() {
-        return $this->getGeneralUri() . 'originals/' . $this->name;
-    }
-
-    public function getSmallPathUri() {
-        return $this->getGeneralUri() . 'small/' . $this->name;
-    }
-
-    public function getThumbnailsPathUri() {
-        return $this->getGeneralUri() . 'thumbnails/' . $this->name;
-    }
+//    public function getOriginalsPathUri() {
+//        return $this->getGeneralUri() . 'originals/' . $this->name;
+//    }
 
     /**
      * @ORM\PreRemove
@@ -91,14 +66,8 @@ class UserFile {
         try {
             if (file_exists($this->getLargePathFile()))
                 unlink($this->getLargePathFile());
-            if (file_exists($this->getMediumPathFile()))
-                unlink($this->getMediumPathFile());
-            if (file_exists($this->getOriginalsPathFile()))
-                unlink($this->getOriginalsPathFile());
-            if (file_exists($this->getSmallPathFile()))
-                unlink($this->getSmallPathFile());
-            if (file_exists($this->getThumbnailsPathFile()))
-                unlink($this->getThumbnailsPathFile());
+//            if (file_exists($this->getOriginalsPathFile()))
+//                unlink($this->getOriginalsPathFile());
         } catch (\Exception $e) {
             
         }
@@ -106,12 +75,6 @@ class UserFile {
 
     public function isValid() {
         if (!file_exists($this->getLargePathFile()))
-            return false;
-        if (!file_exists($this->getMediumPathFile()))
-            return false;
-        if (!file_exists($this->getSmallPathFile()))
-            return false;
-        if (!file_exists($this->getThumbnailsPathFile()))
             return false;
         return true;
     }

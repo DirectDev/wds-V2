@@ -193,7 +193,7 @@ class User extends BaseUser {
             return 'https://graph.facebook.com/' . $this->getFacebookId() . '/picture?type=large';
 
         if ($this->getProfilePicture())
-            return $this->getProfilePicture()->getMediumPathUri();
+            return $this->getProfilePicture()->getLargePathUri();
     }
 
     public function getAddress() {

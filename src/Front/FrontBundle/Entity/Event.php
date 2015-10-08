@@ -151,7 +151,7 @@ class Event {
 
     public function getProfilePictureUrl() {
         if ($this->getProfilePicture())
-            return $this->getProfilePicture()->getMediumPathUri();
+            return $this->getProfilePicture()->getLargePathUri();
     }
 
     public function getAddress() {

@@ -50,18 +50,18 @@ parameters:
     #
     # You need not specify any sizes if you don't want FileUploader to scale images for you
     file_uploader.sizes:
-      thumbnail:
-        folder: thumbnails
-        max_width: 80
-        max_height: 80
-      small:
-        folder: small
-        max_width: 320
-        max_height: 480
-      medium:
-        folder: medium
-        max_width: 640
-        max_height: 960
+#      thumbnail:
+#        folder: thumbnails
+#        max_width: 80
+#        max_height: 80
+#      small:
+#        folder: small
+#        max_width: 320
+#        max_height: 480
+#      medium:
+#        folder: medium
+#        max_width: 640
+#        max_height: 960
       large:
         folder: large
         max_width: 1140
