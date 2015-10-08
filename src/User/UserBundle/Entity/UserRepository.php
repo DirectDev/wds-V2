@@ -94,4 +94,17 @@ class UserRepository extends EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function getUsersLoveUser(User $User, $max = null) {
+        $query = $this->createQueryBuilder('u')
+                ->leftJoin('u.loves', 'l')
+                ->where('l.id = :id')
+                ->setParameter('id', $User->getId())
+                ->addSelect('RAND() as HIDDEN rand')
+                ->orderBy('rand');
+
+        if ($max > 0)
+            $query->setMaxResults($max);
+        return $query->getQuery()->getResult();
+    }
+
 }

@@ -31,7 +31,7 @@ class UserController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-        
+
         $this->get('displayCounters.services')->updateUserDisplayCounter($entity);
 
         return $this->render('FrontFrontBundle:User:showPublic.html.twig', array(
@@ -360,7 +360,7 @@ class UserController extends Controller {
         if (!$user) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-        
+
         $this->get('displayCounters.services')->updateUserDisplayCounter($user);
 
         $count_events = $em->getRepository('FrontFrontBundle:Event')->countByUser($user);
@@ -376,6 +376,133 @@ class UserController extends Controller {
                     'count_musics' => $count_musics,
                     'count_photos' => $count_photos,
                     'count_lovesme' => $count_lovesme,
+        ));
+    }
+    
+    public function showOverviewsProfileAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('UserUserBundle:User')->findOneById($id);
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $this->get('displayCounters.services')->updateUserDisplayCounter($user);
+
+        $count_events = $em->getRepository('FrontFrontBundle:Event')->countByUser($user);
+        $count_videos = $em->getRepository('FrontFrontBundle:Video')->countByUser($user);
+        $count_musics = $em->getRepository('FrontFrontBundle:Music')->countByUser($user);
+        $count_photos = $em->getRepository('UserUserBundle:UserFile')->countByUser($user);
+        $count_lovesme = $em->getRepository('UserUserBundle:User')->countLovesMeByUser($user);
+
+        return $this->render('FrontFrontBundle:User:showOverviewsProfile.html.twig', array(
+                    'user' => $user,
+                    'count_events' => $count_events,
+                    'count_videos' => $count_videos,
+                    'count_musics' => $count_musics,
+                    'count_photos' => $count_photos,
+                    'count_lovesme' => $count_lovesme,
+        ));
+    }
+
+    private function createLoveForm($id) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('front_user_love', array('id' => $id)))
+                        ->setMethod('POST')
+                        ->add('submit', 'submit', array(
+                            'label' => $this->get('translator')->trans('I Like'),
+                            'attr' => array(
+                                'class' => 'btn-u btn-block love_button'
+                            )
+                        ))
+                        ->getForm()
+        ;
+    }
+
+    private function createUnLoveForm($id) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('front_user_unlove', array('id' => $id)))
+                        ->setMethod('POST')
+                        ->add('submit', 'submit', array(
+                            'label' => $this->get('translator')->trans("I don't like"),
+                            'attr' => array(
+                                'class' => 'btn-u btn-block love_button'
+                            )
+                        ))
+                        ->getForm()
+        ;
+    }
+
+    public function loveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $form = $this->createLoveForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find User entity.');
+            }
+            if (!$entity->getLovesMe()->contains($this->getUser()))
+                $entity->addLovesMe($this->getUser());
+
+            $em->persist($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('front_user_loves', array('id' => $entity->getId())));
+    }
+
+    public function unLoveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $form = $this->createUnLoveForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find User entity.');
+            }
+
+            $User = $this->getUser();
+            if ($User->getEventloves()->contains($entity))
+                $User->removeEventlove($entity);
+
+            $em->persist($User);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('front_user_loves', array('id' => $entity->getId())));
+    }
+
+    public function lovesAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('UserUserBundle:User')->find(array('id' => $id));
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $loveForm = $this->createLoveForm($id);
+        $unLoveForm = $this->createUnLoveForm($id);
+
+        $usersLoveUser = $em->getRepository('UserUserBundle:User')->getUsersLoveUser($user, 8);
+
+        return $this->render('FrontFrontBundle:User:loves.html.twig', array(
+                    'user' => $user,
+                    'usersLoveUser' => $usersLoveUser,
+                    'love_form' => $loveForm->createView(),
+                    'unlove_form' => $unLoveForm->createView(),
         ));
     }
 

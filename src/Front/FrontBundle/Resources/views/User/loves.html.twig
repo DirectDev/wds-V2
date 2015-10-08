@@ -1,22 +1,30 @@
-<div id='loves_div'>
-    {% if usersLoveEvent|length > 0 %}
-        <h3>Ils aiment </h3>
-        <ul class="list-unstyled blog-photos margin-bottom-30">
-            {% for userLoveEvent in usersLoveEvent %}
-                <li>
-                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : userLoveEvent } %}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<div class="col-sm-6 sm-margin-bottom-30"  id='loves_div'>
+    <div class="panel panel-profile">
+        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-pencil"></i>Ils aiment</h2>
+        </div>
+        <div class="panel-body">
 
-    {% if app.user %}
-        {% if app.user not in usersLoveEvent %}
-            {{ form_start(love_form, {'attr' : { 'class' : 'no_validation'} }) }}
-            {{ form_end(love_form) }}
-        {% else %}
-            {{ form_start(unlove_form, {'attr' : { 'class' : 'no_validation'} }) }}
-            {{ form_end(unlove_form) }}
-        {% endif %}
-    {% endif %}
+            {% if usersLoveUser|length > 0 %}
+                <ul class="list-unstyled  margin-bottom-30 list-inline">
+                    {% for userLoveUser in usersLoveUser %}
+                        <li class='float-left margin-bottom-10 margin-right-10 no-padding'>
+                            {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : userLoveUser } %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if app.user %}
+                {% if app.user not in usersLoveUser %}
+                    {{ form_start(love_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                    {{ form_end(love_form) }}
+                {% else %}
+                    {{ form_start(unlove_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                    {{ form_end(unlove_form) }}
+                {% endif %}
+            {% endif %}
+            
+        </div>       
+    </div>
 </div>

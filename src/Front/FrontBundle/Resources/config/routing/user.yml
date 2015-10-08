@@ -24,6 +24,28 @@ front_user_update_link:
 front_user_import_facebook_event:
     path:     /import_facebook_event/
     defaults: { _controller: "FrontFrontBundle:User:importFacebookEvent" }    
+
+front_user_show_overviews:
+    path:     /pofile/overviews/{id}
+    defaults: { _controller: "FrontFrontBundle:User:showOverviews" }
+    
+front_user_show_overviews_profile:
+    path:     /pofile/overviews_profile/{id}
+    defaults: { _controller: "FrontFrontBundle:User:showOverviewsProfile" }
+    
+front_user_loves:
+    path:     /profile/loves/{id}
+    defaults: { _controller: "FrontFrontBundle:User:loves" }    
+
+front_user_love:
+    path:     /profile/love/{id}
+    defaults: { _controller: "FrontFrontBundle:User:love" }
+    requirements: { _method: post }
+
+front_user_unlove:
+    path:     /profile/unlove/{id}
+    defaults: { _controller: "FrontFrontBundle:User:unLove" }
+    requirements: { _method: post }        
     
 front_user_show_public:
     path:      /profile/{username}/{id}
@@ -31,8 +53,4 @@ front_user_show_public:
     
 callback_username:
     path:      /callback_username/
-    defaults:  { _controller: UserUserBundle:User:callbackUsername }      
-
-front_user_show_overviews:
-    path:     /pofile/overviews/{id}
-    defaults: { _controller: "FrontFrontBundle:User:showOverviews" }
+    defaults:  { _controller: UserUserBundle:User:callbackUsername }

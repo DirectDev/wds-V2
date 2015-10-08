@@ -1,16 +1,18 @@
+{% set width = '' %}
 {% if class is not defined %}
     {% set class = '' %}
 {% endif %}
 {% if filter is not defined %}
     {% set filter = 'member_photo' %}
+    {% set width = '90px' %}
 {% endif %}
 
 {% if user %}
     <a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}">
         {% if user.isFacebookUser %}
-            <img src='{{ user.profilePictureUrl }}' class="{{ class }}" /> 
+            <img src='{{ user.profilePictureUrl }}' class="{{ class }}" width="{{ width }}"  /> 
         {% elseif user.profilePictureUrl %}
-            <img src='{{ asset(user.profilePictureUrl)| imagine_filter(filter) }}' class="{{ class }}" /> 
+            <img src='{{ asset(user.profilePictureUrl)| imagine_filter(filter) }}' class="{{ class }}" width="{{ width }}" /> 
         {% endif %}
     </a>    
 {% endif %}
