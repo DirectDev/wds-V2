@@ -4,85 +4,85 @@ city_calendar:
     requirements:
       _method: GET      
 
-city_dancers:
+city_dancer:
     path:      /dancers/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:dancers }    
     requirements:
       _method: GET
       
-city_teachers:
+city_teacher:
     path:      /teachers/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:teachers }    
     requirements:
       _method: GET
       
-city_artists:
+city_artist:
     path:      /artists/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:artists }    
     requirements:
       _method: GET      
       
-city_bars:
+city_bar:
     path:      /bars/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:bars }    
     requirements:
       _method: GET      
 
-city_parties:
+city_party:
     path:      /parties/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:parties }    
     requirements:
       _method: GET 
 
-city_shows:
+city_show:
     path:      /shows/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:shows }    
     requirements:
       _method: GET 
 
-city_introductions:
+city_introduction:
     path:      /introductions/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:introductions }    
     requirements:
       _method: GET 
 
-city_workshops:
+city_workshop:
     path:      /workshops/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:workshops }    
     requirements:
       _method: GET 
       
-city_concerts:
+city_concert:
     path:      /concerts/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:concerts }    
     requirements:
       _method: GET 
       
-city_festivals:
+city_festival:
     path:      /festivals/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:festivals }    
     requirements:
       _method: GET       
 
-city_photos:
+city_photo:
     path:      /photos/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:photos }    
     requirements:
       _method: GET  
       
-city_musics:
+city_music:
     path:      /musics/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:musics }    
     requirements:
       _method: GET        
   
-city_videos:
+city_video:
     path:      /videos/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:videos }    
     requirements:
       _method: GET
       
-city_numbers:
+city_number:
     path:      /numbers/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:numbers }    
     requirements:

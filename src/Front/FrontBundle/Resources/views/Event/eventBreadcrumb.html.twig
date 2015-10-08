@@ -1,0 +1,25 @@
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">{{ event.getTitle|capitalize }}
+        </h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a></li>
+            <li><a href="{{ path('city_calendar', { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">{{ app.session.get('city')|capitalize}}</a></li>
+
+            {% if event.eventTypes|length > 0 %}
+                <li>
+                    {% for eventType in event.eventTypes %}
+                        <a href="{{ path('city_'~eventType|lower, { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">{{ eventType|capitalize}}</a>&nbsp;
+                    {% endfor %}
+                </li>
+            {% endif %}
+
+            <li class="active">
+                {{ event.getTitle|capitalize }}
+            </li>
+
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->

@@ -74,7 +74,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_dancers');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_dancer');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -99,7 +99,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_teachers');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_teacher');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -124,7 +124,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_artists');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_artist');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -149,7 +149,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_bars');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_bar');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -174,7 +174,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_introductions');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_introduction');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -203,7 +203,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_workshops');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_workshop');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -232,7 +232,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_parties');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_party');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -261,7 +261,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_shows');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_show');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -290,7 +290,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_concerts');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_concert');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -319,7 +319,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_festivals');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_festival');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -349,7 +349,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_photos');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_photo');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -371,7 +371,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_musics');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_music');
         if (!$page)
             throw new \Exception('Page not found!');
 
@@ -393,7 +393,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_videos');
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_video');
         if (!$page)
             throw new \Exception('Page not found!');
 
