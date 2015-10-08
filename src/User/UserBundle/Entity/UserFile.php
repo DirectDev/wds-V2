@@ -88,6 +88,14 @@ class UserFile {
     public function getTitle() {
         return $this->getUser()->getUsername();
     }
+    
+    public function isRelatedToEvent() {
+        return false;
+    }
+
+    public function isRelatedToUser() {
+        return true;
+    }
 
     /**
      * Get id

@@ -1,0 +1,42 @@
+{% if nextEvents|length %}
+    <div class="panel panel-profile">
+        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> {% trans %}user.events_title{% endtrans %}</h2>
+        </div>
+        <div class="panel-body margin-bottom-40">
+            <ul class="timeline-v2 timeline-me">
+                {% for event in nextEvents %}
+                    {% if event.isValid %}
+                        {% set eventDate = event.getNextEventDate %}
+
+                        <li>
+                            <time datetime="" class="cbp_tmtime">
+                                <span>{{ eventDate.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }}</span> 
+                                <span>{{ eventDate.startdate|localizeddate('medium', 'none', app.request.locale, null, 'LLL Y')|capitalize }}</span>
+                            </time>
+                            <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                            <div class="cbp_tmlabel">
+                                <h2><a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" >{{ event.getTitle|capitalize }}</a></h2>
+                                <p> 
+                                    <b>Horaires :</b> {{ eventDate.starttime|date('H:i') }}
+                                    {% if eventDate.stopdate and eventDate.stoptime %}
+                                        {% trans %}event.to{% endtrans %} {{ eventDate.stoptime|date('H:i') }}
+                                    {% endif %}
+                                </p>
+                                {% if event.getAddress and event.getAddress().isValid() %}  
+                                    <p>
+                                        <b>Adresse :</b> {{ event.getAddress() }}
+                                    </p>
+                                {% endif %}
+                                <p>{{ event.getEventTypesText }} </p> 
+                                <p>{{ event.getMusicTypesText }} </p> 
+                            </div>
+                        </li>
+
+                    {% endif%}
+                {% endfor%}
+            </ul>
+        </div>    
+    </div>
+{% endif%}
+

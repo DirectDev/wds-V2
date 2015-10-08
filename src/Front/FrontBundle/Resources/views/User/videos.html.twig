@@ -1,0 +1,28 @@
+{% if user.videos|length %}
+    <div class="panel panel-profile">
+        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Mes vidéos</h2>
+            <a href="#"><i class="fa fa-cog pull-right"></i></a>
+        </div>
+
+        <div class="row margin-bottom-60">
+
+            {% for video in user.videos %}
+
+                {% if video.isYoutube %}
+                    {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
+                {% endif %}
+
+                {% if video.isVimeo %}
+                    {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
+                {% endif %}
+
+                {% if video.isDailymotion %}
+                    {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endif%}
+

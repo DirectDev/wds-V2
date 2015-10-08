@@ -34,8 +34,11 @@ class UserController extends Controller {
 
         $this->get('displayCounters.services')->updateUserDisplayCounter($entity);
 
+        $nextEvents = $em->getRepository('FrontFrontBundle:Event')->getNextEventByUser($entity, $limit = 10);
+
         return $this->render('FrontFrontBundle:User:showPublic.html.twig', array(
                     'user' => $entity,
+                    'nextEvents' => $nextEvents,
         ));
     }
 
@@ -378,7 +381,7 @@ class UserController extends Controller {
                     'count_lovesme' => $count_lovesme,
         ));
     }
-    
+
     public function showOverviewsProfileAction($id) {
         $em = $this->getDoctrine()->getManager();
 

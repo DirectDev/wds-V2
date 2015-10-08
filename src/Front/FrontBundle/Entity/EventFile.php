@@ -93,6 +93,14 @@ class EventFile {
         return $this->getEvent()->getTitle();
     }
 
+    public function isRelatedToEvent() {
+        return true;
+    }
+
+    public function isRelatedToUser() {
+        return false;
+    }
+
     /**
      * Get id
      *

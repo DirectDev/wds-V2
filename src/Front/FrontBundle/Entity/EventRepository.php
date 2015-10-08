@@ -4,6 +4,7 @@ namespace Front\FrontBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Front\FrontBundle\Entity\EventType;
+use User\UserBundle\Entity\User;
 
 /**
  * EventRepository
@@ -124,6 +125,32 @@ class EventRepository extends EntityRepository {
                 ->where('u.id = :id')
                 ->setParameter('id', $User->getId());
         return $query->getQuery()->getSingleScalarResult();
+    }
+
+    public function getNextEventByUser(User $user, $limit = 6, $startdate = null, $stopdate = null) {
+
+        if (!$startdate)
+            $startdate = date('Y-m-d');
+        if (!$stopdate)
+            $stopdate = date('Y-m-d', strtotime('+365 days'));
+
+        $query = $this->createQueryBuilder('e')
+                        ->leftJoin('e.user', 'u')
+                        ->leftJoin('e.eventDates', 'ed')
+                        ->setParameter('startdate', $startdate)
+                        ->setParameter('stopdate', $stopdate)
+                        ->setParameter('id', $user->getId())
+                        ->orderBy('ed.startdate', 'ASC')
+                        ->groupBy('e.id, ed.startdate')
+                        ->setMaxResults($limit)
+                        ->where('u.id = :id')->andWhere('((
+                    (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
+                    OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
+                    OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
+                    )
+                    OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
+
+        return $query->getQuery()->getResult();
     }
 
 }

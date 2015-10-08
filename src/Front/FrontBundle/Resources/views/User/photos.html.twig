@@ -1,0 +1,22 @@
+{% if user.userFiles|length %}
+    <div class="panel panel-profile">
+        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Mes photos</h2>
+            <a href="#"><i class="fa fa-cog pull-right"></i></a>
+        </div>
+        <div class="cube-portfolio margin-bottom-20">
+
+
+
+            <div id="grid-container" class="cbp-l-grid-fullWidth">
+
+                {% for photo in user.userFiles %}
+                    {% include 'FrontFrontBundle:Photo:photo.html.twig'  %}
+                {% endfor%}
+
+            </div><!--/end Grid Container-->
+        </div>
+        <!--=== End Cube-Portfdlio ===-->
+    </div>
+{% endif%}
+

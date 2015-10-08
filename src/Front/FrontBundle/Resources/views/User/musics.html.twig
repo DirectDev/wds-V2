@@ -1,0 +1,23 @@
+{% if user.musics|length %}
+    <div class="panel panel-profile">
+        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Mes musiques</h2>
+            <a href="#"><i class="fa fa-cog pull-right"></i></a>
+        </div>
+
+        <div class="row margin-bottom-20">
+            {% for music in user.musics %}
+
+                {% if music.isSoundCloud %}
+                    {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
+                {% endif %}
+
+                {% if music.isSpotify %}
+                    {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
+                {% endif %}
+
+            {% endfor %}                   
+        </div>
+    </div>
+{% endif%}
+

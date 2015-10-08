@@ -26,30 +26,12 @@
                     <div id="grid-container" class="cbp-l-grid-fullWidth">
 
                         {% for photo in photos %}
-                            {% if photo.isImage %}
-                                <div class="cbp-item graphic">
-                                    <div class="cbp-caption">
-                                        <div class="cbp-caption-defaultWrap">
-                                            <img src="{{ asset(photo.getLargePathUri()) }}" alt="">
-                                        </div>
-                                        <div class="cbp-caption-activeWrap">
-                                            <div class="cbp-l-caption-alignCenter">
-                                                <div class="cbp-l-caption-body">
-                                                    <ul class="link-captions">
-                                                        <li><a href="assets/img/main/img26.jpg" class="cbp-lightbox" data-title="{{ photo.getTitle|capitalize }}"><i class="rounded-x fa fa-search"></i></a></li>
-                                                    </ul>
-                                                    <div class="cbp-l-grid-agency-title">{{ photo.getTitle|capitalize }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
+                            {% include 'FrontFrontBundle:Photo:photo.html.twig'  %}
                         {% endfor %}
 
                     </div>
                 </div>
-                        
+
             </div>
             <!-- End Profile Content -->            
         </div>
