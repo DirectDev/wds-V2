@@ -34,7 +34,7 @@ class UserController extends Controller {
         
         $this->get('displayCounters.services')->updateUserDisplayCounter($entity);
 
-        return $this->render('FrontFrontBundle:User:showPrivate.html.twig', array(
+        return $this->render('FrontFrontBundle:User:showPublic.html.twig', array(
                     'user' => $entity,
         ));
     }

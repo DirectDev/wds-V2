@@ -1,0 +1,22 @@
+<div id='loves_div'>
+    {% if usersLoveEvent|length > 0 %}
+        <h3>Ils aiment </h3>
+        <ul class="list-unstyled blog-photos margin-bottom-30">
+            {% for userLoveEvent in usersLoveEvent %}
+                <li>
+                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : userLoveEvent } %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if app.user %}
+        {% if app.user not in usersLoveEvent %}
+            {{ form_start(love_form, {'attr' : { 'class' : 'no_validation'} }) }}
+            {{ form_end(love_form) }}
+        {% else %}
+            {{ form_start(unlove_form, {'attr' : { 'class' : 'no_validation'} }) }}
+            {{ form_end(unlove_form) }}
+        {% endif %}
+    {% endif %}
+</div>

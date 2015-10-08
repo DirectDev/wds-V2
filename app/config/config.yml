@@ -167,6 +167,16 @@ liip_imagine:
             default_image:        null
             filters:
                 thumbnail: { size: [55, 55], mode: outbound }  
+        profile_photo:        
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                upscale: { min: [320, 320] } 
+                thumbnail: { size: [320, 320], mode: inbound }
         member_photo:        
             quality:              100
             animated:             false
