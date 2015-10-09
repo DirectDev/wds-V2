@@ -10,6 +10,10 @@ homepage:
     path:      /
     defaults:  { _controller: FrontFrontBundle:Default:index }
       
+footer:
+    path:      /footer
+    defaults:  { _controller: FrontFrontBundle:Default:footer }      
+
 policy:
     path:      /policy
     defaults:  { _controller: FrontFrontBundle:Default:policy }      

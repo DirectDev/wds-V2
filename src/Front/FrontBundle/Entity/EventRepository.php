@@ -153,4 +153,22 @@ class EventRepository extends EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function findForFooter($limit = 6, $eventTypes = null) {
+
+        $arrayEventType = array();
+
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.eventTypes', 'et')
+                ->setMaxResults($limit);
+
+        if ($eventTypes && count($eventTypes)) {
+            foreach ($eventTypes as $eventType)
+                $arrayEventType [] = $eventType->getId();
+
+            $query->andWhere($query->expr()->in('et.id', $arrayEventType));
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 }

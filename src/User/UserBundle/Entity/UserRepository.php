@@ -106,5 +106,23 @@ class UserRepository extends EntityRepository {
             $query->setMaxResults($max);
         return $query->getQuery()->getResult();
     }
+    
+    public function findForFooter($limit = 6, $userTypes = null) {
+
+        $arrayEventType = array();
+
+        $query = $this->createQueryBuilder('u')
+                ->leftJoin('u.userTypes', 'ut')
+                ->setMaxResults($limit);
+
+        if ($userTypes && count($userTypes)) {
+            foreach ($userTypes as $userType)
+                $arrayEventType [] = $userType->getId();
+
+            $query->andWhere($query->expr()->in('ut.id', $arrayEventType));
+        }
+
+        return $query->getQuery()->getResult();
+    }
 
 }

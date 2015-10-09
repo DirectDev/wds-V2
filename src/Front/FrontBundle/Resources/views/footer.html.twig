@@ -15,36 +15,39 @@
                 <div class="col-md-3 md-margin-bottom-40">
                     <div class="thumb-headline"><h2>Cities</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
-                        <li><a href="#">Paris</a></li>
-                        <li><a href="#">Lille</a></li>
-                        <li><a href="#">London</a></li>
-                        <li><a href="#">New York</a></li>
-                        <li><a href="#">Tokyo</a></li>
-                        <li><a href="#">Havana</a></li>
+                        {% for city in cities %}
+                            <li>
+                                <a href="{{ path('city_calendar', { 'searchcity':  city.getName }) }}">
+                                    {{ city.getName|capitalize }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
 
                 <div class="col-md-3">
                     <div class="thumb-headline"><h2>Festivals</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
-                        <li><a href="#">Festival 1</a></li>
-                        <li><a href="#">Festival 2</a></li>
-                        <li><a href="#">Festival 3</a></li>
-                        <li><a href="#">Festival 4</a></li>
-                        <li><a href="#">Festival 5</a></li>
-                        <li><a href="#">Festival 6</a></li>
+                        {% for event in festivals %}
+                            <li>
+                                <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}">
+                                    {{ event.getTitle|capitalize }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
 
                 <div class="col-md-3">
                     <div class="thumb-headline"><h2>Artits</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
-                        <li><a href="#">Artist 1</a></li>
-                        <li><a href="#">Artist 2</a></li>
-                        <li><a href="#">Artist 3</a></li>
-                        <li><a href="#">Artist 4</a></li>
-                        <li><a href="#">Artist 5</a></li>
-                        <li><a href="#">Artist 6</a></li>
+                        {% for user in artists %}
+                            <li>
+                                <a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}">
+                                    {{ user.username|capitalize }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

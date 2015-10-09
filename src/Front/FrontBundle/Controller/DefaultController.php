@@ -14,14 +14,11 @@ use Front\FrontBundle\Form\MusicTypeFrontFilterType;
 use Front\FrontBundle\Form\EventTypeFrontFilterType;
 
 class DefaultController extends Controller {
+
 //
 //    private $max_results = 6;
 //    private $add_days = 'P8D';
 
-    /**
-     * @Route("/")
-     * @Template()
-     */
     public function indexAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
@@ -286,6 +283,24 @@ class DefaultController extends Controller {
 
         return $this->render('FrontFrontBundle:Home:policy.html.twig', array(
                     'page' => $page,
+        ));
+    }
+
+    public function footerAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $cities = $this->getDoctrine()->getRepository('FrontFrontBundle:City')->findAll();
+        $eventTypeFestival = $this->getDoctrine()->getRepository('FrontFrontBundle:EventType')->findOneByName('Festival');
+        $festivals = $this->getDoctrine()->getRepository('FrontFrontBundle:Event')->findForFooter(6, array($eventTypeFestival));
+        $userTypeArtist = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
+        $artists = $this->getDoctrine()->getRepository('UserUserBundle:User')->findForFooter(6, array($userTypeArtist));
+
+
+        return $this->render('FrontFrontBundle::footer.html.twig', array(
+                    'cities' => $cities,
+                    'festivals' => $festivals,
+                    'artists' => $artists,
         ));
     }
 
