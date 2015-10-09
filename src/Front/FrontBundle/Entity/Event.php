@@ -80,6 +80,11 @@ class Event {
      * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="eventloves")     
      * */
     private $lovesMe;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaFestival", mappedBy="event")
+     * */
+    private $meaFestival;
 
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
@@ -489,4 +494,28 @@ class Event {
         return $this->lovesMe;
     }
 
+
+    /**
+     * Set meaFestival
+     *
+     * @param \Front\FrontBundle\Entity\MeaFestival $meaFestival
+     *
+     * @return Event
+     */
+    public function setMeaFestival(\Front\FrontBundle\Entity\MeaFestival $meaFestival = null)
+    {
+        $this->meaFestival = $meaFestival;
+
+        return $this;
+    }
+
+    /**
+     * Get meaFestival
+     *
+     * @return \Front\FrontBundle\Entity\MeaFestival
+     */
+    public function getMeaFestival()
+    {
+        return $this->meaFestival;
+    }
 }

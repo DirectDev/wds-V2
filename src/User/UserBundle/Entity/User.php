@@ -141,6 +141,11 @@ class User extends BaseUser {
      *      )
      **/
     private $eventloves;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaUser", mappedBy="user")
+     * */
+    private $meaUser;
 
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
@@ -873,5 +878,29 @@ class User extends BaseUser {
     public function getEventloves()
     {
         return $this->eventloves;
+    }
+
+    /**
+     * Set meaUser
+     *
+     * @param \Front\FrontBundle\Entity\MeaUser $meaUser
+     *
+     * @return User
+     */
+    public function setMeaUser(\Front\FrontBundle\Entity\MeaUser $meaUser = null)
+    {
+        $this->meaUser = $meaUser;
+
+        return $this;
+    }
+
+    /**
+     * Get meaUser
+     *
+     * @return \Front\FrontBundle\Entity\MeaUser
+     */
+    public function getMeaUser()
+    {
+        return $this->meaUser;
     }
 }

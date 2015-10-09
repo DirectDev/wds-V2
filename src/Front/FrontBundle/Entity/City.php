@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="city")
  * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\CityRepository")
  */
-class City
-{
+class City {
+
     /**
      * @var integer
      *
@@ -42,14 +42,17 @@ class City
      */
     private $longitude;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaCity", mappedBy="city")
+     * */
+    private $meaCity;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,8 +62,7 @@ class City
      * @param string $name
      * @return City
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -71,8 +73,7 @@ class City
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -82,8 +83,7 @@ class City
      * @param float $latitude
      * @return City
      */
-    public function setLatitude($latitude)
-    {
+    public function setLatitude($latitude) {
         $this->latitude = $latitude;
 
         return $this;
@@ -94,8 +94,7 @@ class City
      *
      * @return float 
      */
-    public function getLatitude()
-    {
+    public function getLatitude() {
         return $this->latitude;
     }
 
@@ -105,8 +104,7 @@ class City
      * @param float $longitude
      * @return City
      */
-    public function setLongitude($longitude)
-    {
+    public function setLongitude($longitude) {
         $this->longitude = $longitude;
 
         return $this;
@@ -117,8 +115,32 @@ class City
      *
      * @return float 
      */
-    public function getLongitude()
-    {
+    public function getLongitude() {
         return $this->longitude;
+    }
+
+
+    /**
+     * Set meaCity
+     *
+     * @param \Front\FrontBundle\Entity\MeaCity $meaCity
+     *
+     * @return City
+     */
+    public function setMeaCity(\Front\FrontBundle\Entity\MeaCity $meaCity = null)
+    {
+        $this->meaCity = $meaCity;
+
+        return $this;
+    }
+
+    /**
+     * Get meaCity
+     *
+     * @return \Front\FrontBundle\Entity\MeaCity
+     */
+    public function getMeaCity()
+    {
+        return $this->meaCity;
     }
 }
