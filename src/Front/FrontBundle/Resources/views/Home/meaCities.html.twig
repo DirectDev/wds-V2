@@ -1,0 +1,19 @@
+{% for meaCity in MeaCities %}
+    <div class="col-sm-4">
+        <div class="thumbnails-v1">
+            <div class="thumbnail-img">
+                <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}">
+                    <img class="img-responsive" src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('home_city') }}" alt="">    
+                </a>
+            </div>
+            <div class="caption">
+                <h3>
+                    <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}">
+                        {{ meaCity.getName|capitalize }}
+                    </a>
+                </h3>
+                <p>{{ meaCity.getDescription| truncate(200, true) }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}

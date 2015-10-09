@@ -30,8 +30,18 @@ class DefaultController extends Controller {
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('home');
         if (!$page)
             throw new \Exception('Page not found!');
-        
-        return $this->render('FrontFrontBundle:Home:index.html.twig', array(    'page' => $page,      ));
+
+        $MeaCities = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForHomePage();
+        $MeaFestivals = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaFestival')->findForHomePage();
+        $MeaUsers = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForHomePage();
+
+
+        return $this->render('FrontFrontBundle:Home:index.html.twig', array(
+                    'page' => $page,
+                    'MeaCities' => $MeaCities,
+                    'MeaFestivals' => $MeaFestivals,
+                    'MeaUsers' => $MeaUsers,
+        ));
 
 //        try {
 //        // bug reponse de free_geo_ip trop longue
@@ -100,7 +110,6 @@ class DefaultController extends Controller {
 //        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('calendar');
 //        if (!$page)
 //            throw new \Exception('Page not found!');
-
 //        $searchcity = $request->get('searchcity', '', true);
 //        if (!$searchcity)
 //            $searchcity = $session->get('city');
@@ -164,7 +173,6 @@ class DefaultController extends Controller {
 //
 //        return $events;
 //    }
-
 //    private function setLatitudeAndLongitude($city) {
 //        try {
 //            $geocode = $this->container
@@ -280,7 +288,7 @@ class DefaultController extends Controller {
                     'page' => $page,
         ));
     }
-    
+
 //    public function cityAction(Request $request) {  
 //
 //        $em = $this->getDoctrine()->getManager();
@@ -340,10 +348,6 @@ class DefaultController extends Controller {
 //                    'videos' => $videos,
 //        ));
 //    }
-    
-    
-    
-    
     // FAIRE UN SERVICE !!!! IDENTIQUE DANS PLUSIEURS CONTROLLERS
 //    private function getCity($request){
 //        
@@ -384,6 +388,4 @@ class DefaultController extends Controller {
 //        
 //        return $city;
 //    }
-
-
 }

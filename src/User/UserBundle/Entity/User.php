@@ -205,6 +205,18 @@ class User extends BaseUser {
         foreach ($this->addresses as $address)
             return $address;
     }
+    
+    public function getCity(){
+        if($this->getAddress())
+            return $this->getAddress()->getCity();
+        return '';
+    }
+    
+    public function getCountry(){
+        if($this->getAddress())
+            return $this->getAddress()->getCountry();
+        return '';
+    }
 
     public function getUserType() {
         foreach ($this->userTypes as $userType)

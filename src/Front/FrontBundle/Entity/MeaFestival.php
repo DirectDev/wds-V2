@@ -55,6 +55,10 @@ class MeaFestival
                 return $value;
         }
     }
+    
+    public function getDefaultImageUrl() {
+        return $this->getEvent()->getDefaultImageUrl();
+    }
 
 
     /**

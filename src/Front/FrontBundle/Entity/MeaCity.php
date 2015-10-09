@@ -61,6 +61,10 @@ class MeaCity {
                 return $value;
         }
     }
+    
+    public function getName() {
+        return $this->getCity()->getName();        
+    }
 
     /**
      * Get id
