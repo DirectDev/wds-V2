@@ -29,7 +29,33 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
      */
     public function load(ObjectManager $manager) {
 
+        foreach ($this->array_user_bar as $value) {
+
+            $User = $this->getReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
+
+            for ($i = 0; $i <= 3; $i++) {
+
+                $UserFile = new UserFile();
+
+                $file_number = rand(1, count($this->array_userfile_bar));
+                $UserFile->setName($this->array_userfile_bar[$file_number]);
+
+                $path_src = __DIR__ . "/../../../../../www/fixturesFiles/UserFile/bar/" . $file_number;
+                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . '/large';
+                exec('mkdir "' . $path_dest . '" ');
+                exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+
+                $manager->persist($UserFile);
+
+                $User->addUserFile($UserFile);
+                $manager->persist($User);
+            }
+        }
+
         foreach ($this->array_user as $value) {
+
+            if (in_array($value, $this->array_userfile_bar))
+                continue;
 
             $User = $this->getReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
 
@@ -41,7 +67,7 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
                 $UserFile->setName($this->array_userfile[$file_number]);
 
                 $path_src = __DIR__ . "/../../../../../www/fixturesFiles/UserFile/" . $file_number;
-                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId();
+                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . '/large';
                 exec('mkdir "' . $path_dest . '" ');
                 exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
 

@@ -41,7 +41,7 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
                 $EventFile->setName($this->array_eventfile[$file_number]);
 
                 $path_src = __DIR__ . "/../../../../../www/fixturesFiles/EventFile/" . $file_number;
-                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId();
+                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId()."/large";
                 exec('mkdir "' . $path_dest . '" ');
                 exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
 
