@@ -19,6 +19,11 @@ front_user_update_description:
 front_user_update_link:
     path:     /profile/{id}/update_link
     defaults: { _controller: "FrontFrontBundle:User:updateLink" }
+    requirements: { _method: post|put }  
+    
+front_user_update:
+    path:     /profile/{id}/update
+    defaults: { _controller: "FrontFrontBundle:User:update" }
     requirements: { _method: post|put }    
     
 front_user_import_facebook_event:

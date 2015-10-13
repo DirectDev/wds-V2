@@ -15,7 +15,8 @@ class UploadController extends Controller {
         $this->get('punk_ave.file_uploader')->handleFileUpload(
                 array(
                     'folder' => $this->container->getParameter('upload_folder') . $editId,
-                    'web_base_path' =>  $this->getRequest()->getBasePath().$this->container->getParameter('upload_web_base_path')
+                    'web_base_path' =>  $this->getRequest()->getBasePath().$this->container->getParameter('upload_web_base_path'),
+                    'max_file_size' =>  10000000
                     )
                 );
     }
