@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Music;
 use Front\FrontBundle\Form\MusicType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Music controller.
@@ -22,20 +23,6 @@ class MusicController extends Controller {
     }
 
     /**
-     * Lists all Music entities.
-     *
-     */
-    public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('FrontFrontBundle:Music')->findAll();
-
-        return $this->render('FrontFrontBundle:Music:index.html.twig', array(
-                    'entities' => $entities,
-        ));
-    }
-
-    /**
      * Creates a new Music entity.
      *
      */
@@ -46,23 +33,23 @@ class MusicController extends Controller {
 
         $user = $this->findUser($id);
 
-        $entity = new Music();
-        $entity->setUser($user);
-        $form = $this->createCreateForm($entity, $id);
+        $music = new Music();
+        $music->setUser($user);
+        $form = $this->createCreateForm($music, $id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($music);
             $em->flush();
 
-            $user = $entity->getUser();
+            $user = $music->getUser();
             if ($user)
-                return $this->redirect($this->generateUrl('front_user_edit', array('id' => $user->getId())));
+                return $this->redirect($this->generateUrl('front_music_show', array('id' => $music->getId())));
         }
 
         return $this->render('FrontFrontBundle:Music:new.html.twig', array(
-                    'entity' => $entity,
+                    'music' => $music,
                     'form' => $form->createView(),
         ));
     }
@@ -70,12 +57,12 @@ class MusicController extends Controller {
     /**
      * Creates a form to create a Music entity.
      *
-     * @param Music $entity The entity
+     * @param Music $music The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Music $entity, $id) {
-        $form = $this->createForm(new MusicType(), $entity, array(
+    private function createCreateForm(Music $music, $id) {
+        $form = $this->createForm(new MusicType(), $music, array(
             'action' => $this->generateUrl('front_music_create', array('id' => $id)),
             'method' => 'POST',
         ));
@@ -96,12 +83,12 @@ class MusicController extends Controller {
 
         $user = $this->findUser($id);
 
-        $entity = new Music();
-        $entity->setUser($user);
-        $form = $this->createCreateForm($entity, $user->getId());
+        $music = new Music();
+        $music->setUser($user);
+        $form = $this->createCreateForm($music, $user->getId());
 
         return $this->render('FrontFrontBundle:Music:new.html.twig', array(
-                    'entity' => $entity,
+                    'music' => $music,
                     'form' => $form->createView(),
         ));
     }
@@ -113,16 +100,16 @@ class MusicController extends Controller {
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Music')->find($id);
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
-        if (!$entity) {
+        if (!$music) {
             throw $this->createNotFoundException('Unable to find Music entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Music:show.html.twig', array(
-                    'entity' => $entity,
+                    'music' => $music,
                     'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -134,32 +121,30 @@ class MusicController extends Controller {
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Music')->find($id);
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
-        if (!$entity) {
+        if (!$music) {
             throw $this->createNotFoundException('Unable to find Music entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($music);
 
         return $this->render('FrontFrontBundle:Music:edit.html.twig', array(
-                    'entity' => $entity,
+                    'music' => $music,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Creates a form to edit a Music entity.
      *
-     * @param Music $entity The entity
+     * @param Music $music The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Music $entity) {
-        $form = $this->createForm(new MusicType(), $entity, array(
-            'action' => $this->generateUrl('front_music_update', array('id' => $entity->getId())),
+    private function createEditForm(Music $music) {
+        $form = $this->createForm(new MusicType(), $music, array(
+            'action' => $this->generateUrl('front_music_update', array('id' => $music->getId())),
             'method' => 'PUT',
         ));
 
@@ -175,26 +160,24 @@ class MusicController extends Controller {
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Music')->find($id);
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
-        if (!$entity) {
+        if (!$music) {
             throw $this->createNotFoundException('Unable to find Music entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($music);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_music_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_music_show', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Music:edit.html.twig', array(
-                    'entity' => $entity,
+                    'music' => $music,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -208,17 +191,17 @@ class MusicController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FrontFrontBundle:Music')->find($id);
+            $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
-            if (!$entity) {
+            if (!$music) {
                 throw $this->createNotFoundException('Unable to find Music entity.');
             }
 
-            $em->remove($entity);
+            $em->remove($music);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('front_music'));
+        return new Response('', 200);
     }
 
     /**

@@ -56,9 +56,9 @@ class UserController extends Controller {
             return new Response('', 404);
 
         return $this->redirect($this->generateUrl('front_user_show_public', array(
-                    'id' => $entity->getId(),
-                    'username' => $entity->getUsername()
-                        )
+                            'id' => $entity->getId(),
+                            'username' => $entity->getUsername()
+                                )
         ));
     }
 
@@ -183,9 +183,6 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-
-        $editLinkForm = $this->createEditLinkForm($entity);
-        $editDescriptionForm = $this->createEditDescriptionForm($entity);
         $editProfileForm = $this->createEditProfileForm($entity);
         $editProfileForm->handleRequest($request);
 
@@ -193,11 +190,9 @@ class UserController extends Controller {
             $em->flush();
         }
 
-        return $this->render('FrontFrontBundle:User:edit.html.twig', array(
+        return $this->render('FrontFrontBundle:User:profileForm.html.twig', array(
                     'entity' => $entity,
                     'edit_profile_form' => $editProfileForm->createView(),
-                    'edit_description_form' => $editDescriptionForm->createView(),
-                    'edit_link_form' => $editLinkForm->createView(),
         ));
     }
 
@@ -214,21 +209,16 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-
-        $editLinkForm = $this->createEditLinkForm($entity);
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
-        $editProfileForm = $this->createEditProfileForm($entity);
         $editDescriptionForm->handleRequest($request);
 
         if ($editDescriptionForm->isValid()) {
             $em->flush();
         }
 
-        return $this->render('FrontFrontBundle:User:edit.html.twig', array(
+        return $this->render('FrontFrontBundle:User:descriptionForm.html.twig', array(
                     'entity' => $entity,
-                    'edit_profile_form' => $editProfileForm->createView(),
                     'edit_description_form' => $editDescriptionForm->createView(),
-                    'edit_link_form' => $editLinkForm->createView(),
         ));
     }
 
@@ -245,20 +235,15 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-
         $editLinkForm = $this->createEditLinkForm($entity);
-        $editDescriptionForm = $this->createEditDescriptionForm($entity);
-        $editProfileForm = $this->createEditProfileForm($entity);
         $editLinkForm->handleRequest($request);
 
         if ($editLinkForm->isValid()) {
             $em->flush();
         }
 
-        return $this->render('FrontFrontBundle:User:edit.html.twig', array(
+        return $this->render('FrontFrontBundle:User:linkForm.html.twig', array(
                     'entity' => $entity,
-                    'edit_profile_form' => $editProfileForm->createView(),
-                    'edit_description_form' => $editDescriptionForm->createView(),
                     'edit_link_form' => $editLinkForm->createView(),
         ));
     }

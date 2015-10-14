@@ -1,10 +1,10 @@
 front_front_front_video:
     resource: "@FrontFrontBundle/Resources/config/routing/video.yml"
-    prefix:   /front/video
+    prefix:   /video
 
 front_front_front_music:
     resource: "@FrontFrontBundle/Resources/config/routing/music.yml"
-    prefix:   /front/music
+    prefix:   /music
 
 homepage:
     path:      /

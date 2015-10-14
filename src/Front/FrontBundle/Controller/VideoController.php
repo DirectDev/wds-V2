@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Video;
 use Front\FrontBundle\Form\VideoType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Video controller.
@@ -21,20 +22,7 @@ class VideoController extends Controller {
         return $user;
     }
 
-    /**
-     * Lists all Video entities.
-     *
-     */
-    public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('FrontFrontBundle:Video')->findAll();
-
-        return $this->render('FrontFrontBundle:Video:index.html.twig', array(
-                    'entities' => $entities,
-        ));
-    }
-
+    
     /**
      * Creates a new Video entity.
      *
@@ -46,23 +34,23 @@ class VideoController extends Controller {
 
         $user = $this->findUser($id);
 
-        $entity = new Video();
-        $entity->setUser($user);
-        $form = $this->createCreateForm($entity, $id);
+        $video = new Video();
+        $video->setUser($user);
+        $form = $this->createCreateForm($video, $id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($video);
             $em->flush();
 
-            $user = $entity->getUser();
+            $user = $video->getUser();
             if ($user)
-                return $this->redirect($this->generateUrl('front_user_edit', array('id' => $user->getId())));
+                return $this->redirect($this->generateUrl('front_video_show', array('id' => $video->getId())));
         }
 
         return $this->render('FrontFrontBundle:Video:new.html.twig', array(
-                    'entity' => $entity,
+                    'video' => $video,
                     'form' => $form->createView(),
         ));
     }
@@ -70,12 +58,12 @@ class VideoController extends Controller {
     /**
      * Creates a form to create a Video entity.
      *
-     * @param Video $entity The entity
+     * @param Video $video The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Video $entity, $id) {
-        $form = $this->createForm(new VideoType(), $entity, array(
+    private function createCreateForm(Video $video, $id) {
+        $form = $this->createForm(new VideoType(), $video, array(
             'action' => $this->generateUrl('front_video_create', array('id' => $id)),
             'method' => 'POST',
         ));
@@ -96,12 +84,12 @@ class VideoController extends Controller {
 
         $user = $this->findUser($id);
 
-        $entity = new Video();
-        $entity->setUser($user);
-        $form = $this->createCreateForm($entity, $user->getId());
+        $video = new Video();
+        $video->setUser($user);
+        $form = $this->createCreateForm($video, $user->getId());
 
         return $this->render('FrontFrontBundle:Video:new.html.twig', array(
-                    'entity' => $entity,
+                    'video' => $video,
                     'form' => $form->createView(),
         ));
     }
@@ -113,16 +101,16 @@ class VideoController extends Controller {
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
 
-        if (!$entity) {
+        if (!$video) {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Video:show.html.twig', array(
-                    'entity' => $entity,
+                    'video' => $video,
                     'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -134,32 +122,30 @@ class VideoController extends Controller {
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
 
-        if (!$entity) {
+        if (!$video) {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($video);
 
         return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
-                    'entity' => $entity,
+                    'video' => $video,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Creates a form to edit a Video entity.
      *
-     * @param Video $entity The entity
+     * @param Video $video The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Video $entity) {
-        $form = $this->createForm(new VideoType(), $entity, array(
-            'action' => $this->generateUrl('front_video_update', array('id' => $entity->getId())),
+    private function createEditForm(Video $video) {
+        $form = $this->createForm(new VideoType(), $video, array(
+            'action' => $this->generateUrl('front_video_update', array('id' => $video->getId())),
             'method' => 'PUT',
         ));
 
@@ -175,26 +161,24 @@ class VideoController extends Controller {
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
 
-        if (!$entity) {
+        if (!$video) {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($video);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_video_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_video_show', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
-                    'entity' => $entity,
+                    'video' => $video,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -208,17 +192,17 @@ class VideoController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FrontFrontBundle:Video')->find($id);
+            $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
 
-            if (!$entity) {
+            if (!$video) {
                 throw $this->createNotFoundException('Unable to find Video entity.');
             }
 
-            $em->remove($entity);
+            $em->remove($video);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('front_video'));
+        return new Response('', 200);
     }
 
     /**

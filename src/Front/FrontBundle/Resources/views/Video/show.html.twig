@@ -1,32 +1,26 @@
-{% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Video</h1>
+<div id="video_{{ video.id }}">
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ entity.url }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {% if video.isYoutube %}
+        {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
+    {% endif %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('front_video') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('front_video_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+    {% if video.isVimeo %}
+        {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
+    {% endif %}
+
+    {% if video.isDailymotion %}
+        {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
+    {% endif %}
+
+    <ul class="">
+        <li>
+            <button class="modifyVideo" data-video-id="{{ video.id }}" href="{{ path('front_video_edit', { 'id': video.id }) }}">Modifier</button>    
+        </li>
+        <li>
+            {{ form_start(delete_form,  { 'attr' : { 'class' : 'deleteVideo', 'data-video-id' : video.id } } ) }}
+            {{ form_row(delete_form.submit) }}
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,10 @@
+
+{% form_theme edit_description_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
+{{ form_start(edit_description_form) }}
+{{ form_errors(edit_description_form) }}
+
+{{ form_row(edit_description_form.translations) }}
+
+{{ form_row(edit_description_form.submit) }}
+
+{{ form_end(edit_description_form) }}

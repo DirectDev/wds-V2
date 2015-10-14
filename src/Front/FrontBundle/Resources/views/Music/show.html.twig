@@ -1,32 +1,22 @@
-{% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Music</h1>
+<div id="music_{{ music.id }}">
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ entity.url }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {% if music.isSoundCloud %}
+        {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
+    {% endif %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('front_music') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('front_music_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+    {% if music.isSpotify %}
+        {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
+    {% endif %}
+
+    <ul class="">
+        <li>
+            <button class="modifyMusic" data-music-id="{{ music.id }}" href="{{ path('front_music_edit', { 'id': music.id }) }}">Modifier</button>    
+        </li>
+        <li>
+            {{ form_start(delete_form,  { 'attr' : { 'class' : 'deleteMusic', 'data-music-id' : music.id } } ) }}
+            {{ form_row(delete_form.submit) }}
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>

@@ -107,10 +107,10 @@ trait FixturesDataTrait {
         "The latino",
         "La salle des fetes",
         "La salle de danse",
-        "Drink's",
+        "Drinks",
         "Champagne bar",
         "Vodka bar",
-        "Beer's bar",
+        "Beers bar",
         "Casino bar",
         "French club",
         "Cuba bar",
@@ -129,7 +129,7 @@ trait FixturesDataTrait {
         "Le Peruano",
         "Casino fever",
         "Irsh club",
-        "L'opéra club",
+        "Lopéra club",
         "El Toro",
     );
     protected $array_user = array();

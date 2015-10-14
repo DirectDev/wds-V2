@@ -1,0 +1,17 @@
+
+{% form_theme edit_link_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
+{{ form_start(edit_link_form) }}
+{{ form_errors(edit_link_form) }}
+
+{{ form_row(edit_link_form.facebook_link) }}
+{{ form_row(edit_link_form.google_link) }}
+{{ form_row(edit_link_form.linkedin_link) }}
+{{ form_row(edit_link_form.twitter_link) }}
+{{ form_row(edit_link_form.flickr_link) }}
+{{ form_row(edit_link_form.tumblr_link) }}
+{{ form_row(edit_link_form.vimeo_link) }}
+{{ form_row(edit_link_form.instagram_link) }}
+
+{{ form_row(edit_link_form.submit) }}
+
+{{ form_end(edit_link_form) }}

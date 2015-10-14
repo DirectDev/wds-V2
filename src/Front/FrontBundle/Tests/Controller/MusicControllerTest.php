@@ -4,52 +4,74 @@ namespace Front\FrontBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MusicControllerTest extends WebTestCase
-{
-    /*
-    public function testCompleteScenario()
-    {
-        // Create a new client to browse the application
-        $client = static::createClient();
+class MusicControllerTest extends WebTestCase {
 
-        // Create a new entry in the database
-        $crawler = $client->request('GET', '/front/music/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /front/music/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $em;
+    private $client;
+    private $clientLogged;
+    private $username = 'Jerome';
+    private $email = 'serviceclient@directdev.fr';
+    private $PHP_AUTH_USER = 'Jerome';
+    private $PHP_AUTH_PW = '1234';
 
-        // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'front_frontbundle_music[field_name]'  => 'Test',
-            // ... other fields to fill
+    public function __construct() {
+        static::$kernel = static::createKernel();
+        static::$kernel->boot();
+        $this->em = static::$kernel->getContainer()
+                ->get('doctrine')
+                ->getManager();
+
+        $this->client = static::createClient();
+        $this->client->followRedirects();
+
+        $this->clientLogged = static::createClient(array(), array(
+                    'PHP_AUTH_USER' => $this->PHP_AUTH_USER,
+                    'PHP_AUTH_PW' => $this->PHP_AUTH_PW
         ));
-
-        $client->submit($form);
-        $crawler = $client->followRedirect();
-
-        // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
-
-        // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
-
-        $form = $crawler->selectButton('Update')->form(array(
-            'front_frontbundle_music[field_name]'  => 'Foo',
-            // ... other fields to fill
-        ));
-
-        $client->submit($form);
-        $crawler = $client->followRedirect();
-
-        // Check the element contains an attribute with value equals "Foo"
-        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
-
-        // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
-        $crawler = $client->followRedirect();
-
-        // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
 
-    */
+    private function findUser() {
+        return $this->em->getRepository('UserUserBundle:User')->findOneBy(
+                        array(
+                            'username' => $this->username,
+                            'email' => $this->email,
+                        )
+        );
+    }
+
+    private function findAllMusics() {
+        return $this->em->getRepository('FrontFrontBundle:Music')->findAll();
+    }
+
+    public function testNew() {
+        $user = $this->findUser();
+        $crawler = $this->clientLogged->request('GET', '/music/new/' . $user->getId());
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testShow() {
+        $musics = $this->findAllMusics();
+        foreach ($musics as $music) {
+            $crawler = $this->client->request('GET', '/music/show/' . $music->getId());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+            $crawler = $this->clientLogged->request('GET', '/music/show/' . $music->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
+    public function testEdit() {
+        $musics = $this->findAllMusics();
+        foreach ($musics as $music) {
+            $crawler = $this->client->request('GET', '/music/edit/' . $music->getId());
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+            $crawler = $this->clientLogged->request('GET', '/music/edit/' . $music->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
 }

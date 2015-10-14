@@ -53,32 +53,19 @@
                             <h2 class="heading-md">Manage your name and details.</h2>
                             <br>
 
-                            {% form_theme edit_profile_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
-                            {{ form_start(edit_profile_form) }}
-                            {{ form_errors(edit_profile_form) }}
+                            <div id="profilForm">
+                                {% include 'FrontFrontBundle:User:profileForm.html.twig' %}
+                            </div>
 
-                            {{ form_row(edit_profile_form.username) }}
-                            {{ form_row(edit_profile_form.userTypes) }}
-                            {{ form_row(edit_profile_form.musicTypes) }}
-
-                            {{ form_row(edit_profile_form.submit) }}
-
-                            {{ form_end(edit_profile_form) }}
                         </div>
 
                         <div id="description" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">Manage your descriptions</h2>
                             <br>
 
-                            {% form_theme edit_description_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
-                            {{ form_start(edit_description_form) }}
-                            {{ form_errors(edit_description_form) }}
-
-                            {{ form_row(edit_description_form.translations) }}
-
-                            {{ form_row(edit_description_form.submit) }}
-
-                            {{ form_end(edit_description_form) }}
+                            <div id="descriptionForm">
+                                {% include 'FrontFrontBundle:User:descriptionForm.html.twig' %}
+                            </div>
 
                         </div>
 
@@ -86,22 +73,11 @@
                             <h2 class="heading-md">Manage your links</h2>
                             <p>Link your profile to social networks.</p>
                             <br>
-                            {% form_theme edit_link_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
-                            {{ form_start(edit_link_form) }}
-                            {{ form_errors(edit_link_form) }}
 
-                            {{ form_row(edit_link_form.facebook_link) }}
-                            {{ form_row(edit_link_form.google_link) }}
-                            {{ form_row(edit_link_form.linkedin_link) }}
-                            {{ form_row(edit_link_form.twitter_link) }}
-                            {{ form_row(edit_link_form.flickr_link) }}
-                            {{ form_row(edit_link_form.tumblr_link) }}
-                            {{ form_row(edit_link_form.vimeo_link) }}
-                            {{ form_row(edit_link_form.instagram_link) }}
+                            <div id="linkForm">
+                                {% include 'FrontFrontBundle:User:linkForm.html.twig' %}
+                            </div>
 
-                            {{ form_row(edit_link_form.submit) }}
-
-                            {{ form_end(edit_link_form) }}
                         </div>
 
                         <div id="picture" class="profile-edit tab-pane fade">
@@ -127,23 +103,35 @@
                             <h2 class="heading-md">Add Musics</h2>
                             <p>{% trans %}user.musics_title{% endtrans %}</p>
                             <br>
-                            {% render(path('front_music_new', { id : entity.id } )) %}
 
-                            {% for music in entity.musics %}
-                                {{ music.url }}<br>
-                            {% endfor %}
+                            <button id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">{% trans %}user.add_music_button{% endtrans %}</button>
+
+                            <ul id="userMusicList">
+                                {% for music in entity.musics %}
+                                    <li>
+                                        {% render(path('front_music_show', { id : music.id } )) %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+
 
                         </div>
-                            
-                            <div id="video" class="profile-edit tab-pane fade">
+
+                        <div id="video" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">Add Videos</h2>
                             <p>{% trans %}user.videos_title{% endtrans %}</p>
                             <br>
-                            {% render(path('front_video_new', { id : entity.id } )) %}
+                            
+                            <button id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">{% trans %}user.add_video_button{% endtrans %}</button>
 
-                            {% for video in entity.videos %}
-                                {{ video.url }}<br>
-                            {% endfor %}
+                            <ul id="userVideoList">
+                                {% for video in entity.videos %}
+                                    <li>
+                                        {% render(path('front_video_show', { id : video.id } )) %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
 
                         </div>
                     </div>

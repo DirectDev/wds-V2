@@ -1,0 +1,12 @@
+
+{% form_theme edit_profile_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
+{{ form_start(edit_profile_form, { 'attr' : { 'id' : 'userProfilForm' } } ) }}
+{{ form_errors(edit_profile_form) }}
+
+{{ form_row(edit_profile_form.username) }}
+{{ form_row(edit_profile_form.userTypes) }}
+{{ form_row(edit_profile_form.musicTypes) }}
+
+{{ form_row(edit_profile_form.submit) }}
+
+{{ form_end(edit_profile_form) }}
