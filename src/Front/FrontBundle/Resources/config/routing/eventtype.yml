@@ -3,11 +3,11 @@ front_eventtype:
     defaults: { _controller: "FrontFrontBundle:EventType:index" }
 
 front_eventtype_show:
-    path:     /{id}/show
+    path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:EventType:show" }
 
 front_eventtype_new:
-    path:     /new
+    path:     /new/{id}
     defaults: { _controller: "FrontFrontBundle:EventType:new" }
 
 front_eventtype_create:
@@ -16,15 +16,15 @@ front_eventtype_create:
     requirements: { _method: post }
 
 front_eventtype_edit:
-    path:     /{id}/edit
+    path:     /edit/{id}
     defaults: { _controller: "FrontFrontBundle:EventType:edit" }
 
 front_eventtype_update:
-    path:     /{id}/update
+    path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:EventType:update" }
     requirements: { _method: post|put }
 
 front_eventtype_delete:
-    path:     /{id}/delete
+    path:     /delete/{id}
     defaults: { _controller: "FrontFrontBundle:EventType:delete" }
     requirements: { _method: post|delete }

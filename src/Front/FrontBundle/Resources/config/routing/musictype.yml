@@ -3,7 +3,7 @@ front_musictype:
     defaults: { _controller: "FrontFrontBundle:MusicType:index" }
 
 front_musictype_show:
-    path:     /{id}/show
+    path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:MusicType:show" }
 
 front_musictype_new:
@@ -11,21 +11,21 @@ front_musictype_new:
     defaults: { _controller: "FrontFrontBundle:MusicType:new" }
 
 front_musictype_create:
-    path:     /create
+    path:     /create/{id}
     defaults: { _controller: "FrontFrontBundle:MusicType:create" }
     requirements: { _method: post }
 
 front_musictype_edit:
-    path:     /{id}/edit
+    path:     /edit/{id}
     defaults: { _controller: "FrontFrontBundle:MusicType:edit" }
 
 front_musictype_update:
-    path:     /{id}/update
+    path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:MusicType:update" }
     requirements: { _method: post|put }
 
 front_musictype_delete:
-    path:     /{id}/delete
+    path:     /delete/{id}
     defaults: { _controller: "FrontFrontBundle:MusicType:delete" }
     requirements: { _method: post|delete }
     

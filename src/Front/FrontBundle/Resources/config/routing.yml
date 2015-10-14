@@ -18,29 +18,29 @@ policy:
     path:      /policy
     defaults:  { _controller: FrontFrontBundle:Default:policy }      
       
-front_musictype_filter_list:
-  pattern: /filter/musictypelist
-  defaults: { _controller: FrontFrontBundle:Default:filterListByMusicType }
-  requirements:
-    _method: POST      
-  
-front_musictype_filter_map:
-  pattern: /filter/musictypemap
-  defaults: { _controller: FrontFrontBundle:Default:filterMapByMusicType }
-  requirements:
-    _method: POST      
-    
-front_eventtype_filter_list:
-  pattern: /filter/eventtypelist
-  defaults: { _controller: FrontFrontBundle:Default:filterListByEventType }
-  requirements:
-    _method: POST      
-  
-front_eventtype_filter_map:
-  pattern: /filter/eventtypemap
-  defaults: { _controller: FrontFrontBundle:Default:filterMapByEventType }
-  requirements:
-    _method: POST        
+#front_musictype_filter_list:
+#  pattern: /filter/musictypelist
+#  defaults: { _controller: FrontFrontBundle:Default:filterListByMusicType }
+#  requirements:
+#    _method: POST      
+#  
+#front_musictype_filter_map:
+#  pattern: /filter/musictypemap
+#  defaults: { _controller: FrontFrontBundle:Default:filterMapByMusicType }
+#  requirements:
+#    _method: POST      
+#    
+#front_eventtype_filter_list:
+#  pattern: /filter/eventtypelist
+#  defaults: { _controller: FrontFrontBundle:Default:filterListByEventType }
+#  requirements:
+#    _method: POST      
+#  
+#front_eventtype_filter_map:
+#  pattern: /filter/eventtypemap
+#  defaults: { _controller: FrontFrontBundle:Default:filterMapByEventType }
+#  requirements:
+#    _method: POST        
       
 FrontFrontBundle_user:
     resource: "@FrontFrontBundle/Resources/config/routing/user.yml"

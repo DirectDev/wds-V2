@@ -3,7 +3,7 @@ front_country:
     defaults: { _controller: "FrontFrontBundle:Country:index" }
 
 front_country_show:
-    path:     /{id}/show
+    path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:Country:show" }
 
 front_country_new:
@@ -16,15 +16,15 @@ front_country_create:
     requirements: { _method: post }
 
 front_country_edit:
-    path:     /{id}/edit
+    path:     /edit/{id}
     defaults: { _controller: "FrontFrontBundle:Country:edit" }
 
 front_country_update:
-    path:     /{id}/update
+    path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:Country:update" }
     requirements: { _method: post|put }
 
 front_country_delete:
-    path:     /{id}/delete
+    path:     /delete/{id}
     defaults: { _controller: "FrontFrontBundle:Country:delete" }
     requirements: { _method: post|delete }

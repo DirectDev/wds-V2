@@ -3,36 +3,36 @@ front_eventdate:
     defaults: { _controller: "FrontFrontBundle:EventDate:index" }
 
 front_eventdate_show:
-    path:     /{id}/show
+    path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:show" }
     
 front_eventdate_show_tagbox:
-    path:     /{id}/show_tagbox
+    path:     /show_tagbox/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:showTagbox" }    
 
 front_eventdate_new:
-    path:     /{id}/new
+    path:     /new/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:new" }
 
 front_eventdate_create:
-    path:     /{id}/create
+    path:     /create/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:create" }
     requirements: { _method: post }
 
 front_eventdate_edit:
-    path:     /{id}/edit
+    path:     /edit/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:edit" }
 
 front_eventdate_update:
-    path:     /{id}/update
+    path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:update" }
     requirements: { _method: post|put }
 
 front_eventdate_delete:
-    path:     /{id}/delete
+    path:     /delete/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:delete" }
     requirements: { _method: post|delete }
     
 front_eventdate_add_by_weekday:
-    path:     /{id}/add_by_weekday
+    path:     /add_by_weekday
     defaults: { _controller: "FrontFrontBundle:EventDate:addByWeekday" }
