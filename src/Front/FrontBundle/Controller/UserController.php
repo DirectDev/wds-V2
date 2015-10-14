@@ -55,28 +55,10 @@ class UserController extends Controller {
         if (!$entity)
             return new Response('', 404);
 
-        /*
-         * UPLOAD FILE FORM
-         * remplacer le User par entite souhaitee
-         * ajouter au render  
-          'editId' => $editId,
-          'existingFiles' => $existingFiles,
-         * ajouter fonction handleFiles
-         * 
-         */
-        $editId = $this->getRequest()->get('editId');
-        $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
-        $editId = $arrayFile ['editId'];
-        $existingFiles = $arrayFile ['existingFiles'];
-        /*
-         * UPLOAD FILE FORM END
-         */
-
-
-        return $this->render('FrontFrontBundle:User:showPrivate.html.twig', array(
-                    'user' => $entity,
-                    'editId' => $editId,
-                    'existingFiles' => $existingFiles,
+        return $this->redirect($this->generateUrl('front_user_show_public', array(
+                    'id' => $entity->getId(),
+                    'username' => $entity->getUsername()
+                        )
         ));
     }
 
