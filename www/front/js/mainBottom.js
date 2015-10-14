@@ -269,3 +269,104 @@ $(document).on('submit', 'form.editVideo', function (e) {
             });
     e.preventDefault();
 });
+
+
+$(document).on('click', '#userAddAddress', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#userAddressList').append('<li>' + html + '</li>');
+        }
+    });
+    return false;
+});
+
+$(document).on('submit', 'form.newAddress', function (e) {
+    e.preventDefault();
+
+    var div = $(this).parent();
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    div.replaceWith(html);
+                },
+                error: function (html)
+                {
+                }
+            });
+    e.preventDefault();
+});
+
+$(document).on('click', 'button.modifyAddress', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var addressId = $(this).data('address-id');
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#address_' + addressId).replaceWith(html);
+        }
+    });
+    return false;
+});
+
+$(document).on('submit', 'form.deleteAddress', function (e) {
+    e.preventDefault();
+
+    var addressId = $(this).data('address-id')
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    $('#address_' + addressId).remove();
+                },
+                error: function (html)
+                {
+                }
+            });
+    e.preventDefault();
+});
+
+$(document).on('submit', 'form.editAddress', function (e) {
+    e.preventDefault();
+
+    var addressId = $(this).data('address-id')
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    $('#address_' + addressId).replaceWith(html);
+                    reloadBootstrapValidator();
+                },
+                error: function (html)
+                {
+                }
+            });
+    e.preventDefault();
+});

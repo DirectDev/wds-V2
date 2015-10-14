@@ -121,24 +121,6 @@ function reloadBootstrapValidator() {
     });
 }
 
-
-$(document).on('click focus', 'a.address_edit', function () {
-    if (xhr && xhr.readystate != 4) {
-        xhr.abort();
-    }
-    xhr_map = $.ajax({
-        type: "POST",
-        url: $(this).attr("href"),
-        success: function (html)
-        {
-            $('#address').empty().html(html);
-            reloadEventAlerts();
-            reloadBootstrapValidator();
-        }
-    });
-    return false;
-});
-
 $(document).on('click focus', 'a.eventdate_edit', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();

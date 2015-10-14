@@ -111,24 +111,6 @@ class UserController extends Controller {
         ));
     }
 
-    /**
-     * Creates a form to edit a User entity.
-     *
-     * @param User $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(User $entity) {
-        $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('front_user_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-            'attr' => array('locale' => $this->get('request')->getLocale())
-        ));
-
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-lg pull-right')));
-
-        return $form;
-    }
 
     private function createEditProfileForm(User $entity) {
         $form = $this->createForm(new UserProfileType(), $entity, array(

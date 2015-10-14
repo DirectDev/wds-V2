@@ -1,29 +1,34 @@
-{% if form.vars.value.event %}
-    {% set target_user = form.vars.value.event.user %}
-{% endif %}
-{% if form.vars.value.user %}
-    {% set target_user = form.vars.value.user %}
-{% endif %}
+<div>
 
-{% if app.user is not null and app.user == target_user and is_granted('ROLE_USER') %} 
-    {% form_theme form with ['FrontFrontBundle:Form:bootstrap_form_override.html.twig'] %}
+    {% if form.vars.value.event %}
+        {% set target_user = form.vars.value.event.user %}
+    {% endif %}
+    {% if form.vars.value.user %}
+        {% set target_user = form.vars.value.user %}
+    {% endif %}
 
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
+    {% if app.user is not null and app.user == target_user and is_granted('ROLE_USER') %} 
+        
+{#        {% form_theme form with ['FrontFrontBundle:Form:bootstrap_form_override.html.twig'] %}#}
+
+        {{ form_start(form, { 'attr' : { 'class' : 'newAddress' } } ) }}
+        {{ form_errors(form) }}
 
 
-    {{ form_row(form.name) }}
-    {{ form_row(form.street) }}
-    {{ form_row(form.streetComplement) }}
-    {{ form_row(form.postcode) }}
-    {{ form_row(form.city) }}                                    
-    {{ form_row(form.country) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.street) }}
+        {{ form_row(form.streetComplement) }}
+        {{ form_row(form.postcode) }}
+        {{ form_row(form.city) }}                                    
+        {{ form_row(form.country) }}
 
-    <div class='row'>
-        <div class='col-md-1 pull-right'>
-            {{ form_row(form.submit) }}
+        <div class='row'>
+            <div class='col-md-1 pull-right'>
+                {{ form_row(form.submit) }}
+            </div>
         </div>
-    </div>
 
-    {{ form_end(form) }}
-{% endif %}
+        {{ form_end(form) }}
+    {% endif %}
+
+</div>

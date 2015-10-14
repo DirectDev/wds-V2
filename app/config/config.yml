@@ -45,6 +45,8 @@ twig:
         upload_folder: "%upload_folder%"
         upload_web_base_path: "%upload_web_base_path%"
         max_event_list : 9
+    form:
+        resources: ['bootstrap_3_horizontal_layout.html.twig']    
 
 # Assetic Configuration
 assetic:

@@ -44,6 +44,7 @@
                         <li><a data-toggle="tab" href="#picture">Add Pictures</a></li>
                         <li><a data-toggle="tab" href="#music">Add Musics</a></li>
                         <li><a data-toggle="tab" href="#video">Add Videos</a></li>
+                        <li><a data-toggle="tab" href="#address">Addresses</a></li>
                     </ul>          
                     <div class="tab-content">
 
@@ -122,7 +123,7 @@
                             <h2 class="heading-md">Add Videos</h2>
                             <p>{% trans %}user.videos_title{% endtrans %}</p>
                             <br>
-                            
+
                             <button id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">{% trans %}user.add_video_button{% endtrans %}</button>
 
                             <ul id="userVideoList">
@@ -132,6 +133,24 @@
                                     </li>
                                 {% endfor %}
                             </ul>
+
+                        </div>
+
+                        <div id="address" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Address</h2>
+                            <p>{% trans %}user.address_title{% endtrans %}</p>
+                            <br>
+                            
+                            <button id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">{% trans %}user.add_address_button{% endtrans %}</button>
+
+                            <ul id="userAddressList">
+                                {% for address in entity.addresses %}
+                                    <li>
+                                        {% render(path('front_address_show', { id : address.id } )) %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
 
                         </div>
                     </div>

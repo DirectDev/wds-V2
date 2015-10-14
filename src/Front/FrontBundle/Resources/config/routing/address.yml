@@ -1,42 +1,39 @@
-front_address:
-    path:     /
-    defaults: { _controller: "FrontFrontBundle:Address:index" }
 
 front_address_show:
-    path:     /{id}/show
+    path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:Address:show" }
 
 
 front_address_event_new:
-    path:     /event/{id}/new/
+    path:     /event/new/{id}
     defaults: { _controller: "FrontFrontBundle:Address:newByEvent" }
 
 front_address_event_create:
-    path:     /event/{id}/create
+    path:     /event/create/{id}
     defaults: { _controller: "FrontFrontBundle:Address:createByEvent" }
     requirements: { _method: post }
     
     
 front_address_user_new:
-    path:     /user/{id}/new/
+    path:     /user/new/{id}
     defaults: { _controller: "FrontFrontBundle:Address:newByUser" }
 
 front_address_user_create:
-    path:     /user/{id}/create
+    path:     /user/create/{id}
     defaults: { _controller: "FrontFrontBundle:Address:createByUser" }
     requirements: { _method: post }
 
 front_address_edit:
-    path:     /{id}/edit
+    path:     /edit/{id}
     defaults: { _controller: "FrontFrontBundle:Address:edit" }
 
 front_address_update:
-    path:     /{id}/update
+    path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:Address:update" }
     requirements: { _method: post|put }
 
 
 front_address_delete:
-    path:     /{id}/delete
+    path:     /delete/{id}
     defaults: { _controller: "FrontFrontBundle:Address:delete" }
     requirements: { _method: post|delete }

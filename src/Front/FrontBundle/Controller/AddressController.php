@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Address;
 use Front\FrontBundle\Form\AddressType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Address controller.
@@ -39,34 +40,34 @@ class AddressController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $event = $this->findEvent($id);
-        $entity = new Address();
-        $entity->addEvent($event);
-        $form = $this->createCreateFormByEvent($entity, $event->getId());
+        $address = new Address();
+        $address->addEvent($event);
+        $form = $this->createCreateFormByEvent($address, $event->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($address);
             $em->flush();
 
             try {
-                $em->refresh($entity);
-                $this->setLatitudeAndLongitude($entity);
-                $em->persist($entity);
+                $em->refresh($address);
+                $this->setLatitudeAndLongitude($address);
+                $em->persist($address);
                 $em->flush();
             } catch (\Exception $e) {
                 
             }
 
-            $event = $entity->getEvent();
+            $event = $address->getEvent();
             if ($event)
                 return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
 
-            return $this->redirect($this->generateUrl('front_address_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('front_address_show', array('id' => $address->getId())));
         }
 
         return $this->render('FrontFrontBundle:Address:new.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'form' => $form->createView(),
         ));
     }
@@ -74,12 +75,12 @@ class AddressController extends Controller {
     /**
      * Creates a form to create a Address entity.
      *
-     * @param Address $entity The entity
+     * @param Address $address The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateFormByEvent(Address $entity, $id) {
-        $form = $this->createForm(new AddressType(), $entity, array(
+    private function createCreateFormByEvent(Address $address, $id) {
+        $form = $this->createForm(new AddressType(), $address, array(
             'action' => $this->generateUrl('front_address_event_create', array('id' => $id)),
             'method' => 'POST',
         ));
@@ -100,12 +101,12 @@ class AddressController extends Controller {
 
         $event = $this->findEvent($id);
 
-        $entity = new Address();
-        $entity->addEvent($event);
-        $form = $this->createCreateFormByEvent($entity, $event->getId());
+        $address = new Address();
+        $address->addEvent($event);
+        $form = $this->createCreateFormByEvent($address, $event->getId());
 
         return $this->render('FrontFrontBundle:Address:new.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'form' => $form->createView(),
         ));
     }
@@ -120,34 +121,30 @@ class AddressController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $user = $this->findUser($id);
-        $entity = new Address();
-        $entity->addUser($user);
-        $form = $this->createCreateFormByUser($entity, $user->getId());
+        $address = new Address();
+        $address->addUser($user);
+        $form = $this->createCreateFormByUser($address, $user->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($address);
             $em->flush();
 
             try {
-                $em->refresh($entity);
-                $this->setLatitudeAndLongitude($entity);
-                $em->persist($entity);
+                $em->refresh($address);
+                $this->setLatitudeAndLongitude($address);
+                $em->persist($address);
                 $em->flush();
             } catch (\Exception $e) {
                 
             }
 
-            $user = $entity->getUser();
-            if ($user)
-                return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
-
-            return $this->redirect($this->generateUrl('front_address_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('front_address_show', array('id' => $address->getId())));
         }
 
         return $this->render('FrontFrontBundle:Address:new.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'form' => $form->createView(),
         ));
     }
@@ -155,12 +152,12 @@ class AddressController extends Controller {
     /**
      * Creates a form to create a Address entity.
      *
-     * @param Address $entity The entity
+     * @param Address $address The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateFormByUser(Address $entity, $id) {
-        $form = $this->createForm(new AddressType(), $entity, array(
+    private function createCreateFormByUser(Address $address, $id) {
+        $form = $this->createForm(new AddressType(), $address, array(
             'action' => $this->generateUrl('front_address_user_create', array('id' => $id)),
             'method' => 'POST',
         ));
@@ -181,12 +178,12 @@ class AddressController extends Controller {
 
         $user = $this->findUser($id);
 
-        $entity = new Address();
-        $entity->addUser($user);
-        $form = $this->createCreateFormByUser($entity, $user->getId());
+        $address = new Address();
+        $address->addUser($user);
+        $form = $this->createCreateFormByUser($address, $user->getId());
 
         return $this->render('FrontFrontBundle:Address:new.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'form' => $form->createView(),
         ));
     }
@@ -198,16 +195,16 @@ class AddressController extends Controller {
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
+        $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
 
-        if (!$entity) {
+        if (!$address) {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Address:show.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -219,17 +216,17 @@ class AddressController extends Controller {
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
+        $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
 
-        if (!$entity) {
+        if (!$address) {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($address);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Address:edit.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -238,13 +235,13 @@ class AddressController extends Controller {
     /**
      * Creates a form to edit a Address entity.
      *
-     * @param Address $entity The entity
+     * @param Address $address The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Address $entity) {
-        $form = $this->createForm(new AddressType(), $entity, array(
-            'action' => $this->generateUrl('front_address_update', array('id' => $entity->getId())),
+    private function createEditForm(Address $address) {
+        $form = $this->createForm(new AddressType(), $address, array(
+            'action' => $this->generateUrl('front_address_update', array('id' => $address->getId())),
             'method' => 'PUT',
         ));
 
@@ -264,21 +261,21 @@ class AddressController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
+        $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
 
-        if (!$entity) {
+        if (!$address) {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($address);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
 
             try {
-                $this->setLatitudeAndLongitude($entity);
-                $em->persist($entity);
+                $this->setLatitudeAndLongitude($address);
+                $em->persist($address);
                 $em->flush();
             } catch (\Exception $e) {
                 
@@ -286,19 +283,19 @@ class AddressController extends Controller {
 
             $em->flush();
 
-            $event = $entity->getEvent();
-            if ($event)
-                return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
+//            $event = $address->getEvent();
+//            if ($event)
+//                return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
+//
+//            $user = $address->getUser();
+//            if ($user)
+//                return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
 
-            $user = $entity->getUser();
-            if ($user)
-                return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
-
-            return $this->redirect($this->generateUrl('front_address_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_address_show', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Address:edit.html.twig', array(
-                    'entity' => $entity,
+                    'address' => $address,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -318,26 +315,28 @@ class AddressController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
+            $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
 
-            if (!$entity) {
+            if (!$address) {
                 throw $this->createNotFoundException('Unable to find Address entity.');
             }
 
-            $event = $entity->getEvent();
-            $user = $entity->getUser();
+            $event = $address->getEvent();
+            $user = $address->getUser();
 
-            $em->remove($entity);
+            $em->remove($address);
             $em->flush();
         }
+        
+        return new Response('', 200);
 
-        if ($event)
-            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
-
-        if ($user)
-            return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
-
-        return $this->redirect($this->generateUrl('front_address'));
+//        if ($event)
+//            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
+//
+//        if ($user)
+//            return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
+//
+//        return $this->redirect($this->generateUrl('front_address'));
     }
 
     /**
@@ -356,19 +355,19 @@ class AddressController extends Controller {
         ;
     }
 
-    private function setLatitudeAndLongitude($entity) {
+    private function setLatitudeAndLongitude($address) {
         try {
 
-            if (!$entity OR ! $entity->stringForGoogleMaps())
+            if (!$address OR ! $address->stringForGoogleMaps())
                 return;
 
             $geocode = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
-                    ->geocode($entity->stringForGoogleMaps());
+                    ->geocode($address->stringForGoogleMaps());
 
-            $entity->setLatitude($geocode['latitude']);
-            $entity->setLongitude($geocode['longitude']);
+            $address->setLatitude($geocode['latitude']);
+            $address->setLongitude($geocode['longitude']);
         } catch (\Exception $e) {
             throw $e;
         }
