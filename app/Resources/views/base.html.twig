@@ -94,11 +94,7 @@
         <script src="{{ asset('front/js/mainBottom.js') }}" type="text/javascript"></script>
         <script  src="{{ asset('front/plugins/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
         <script  src="{{ asset('front/plugins/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                reloadBootstrapValidator();
-            });
-        </script>
+        <script  src="{{ asset('front/js/formValidation') }}" type="text/javascript"></script>
 
         <script>
             $(document).on('click focus', 'form input.datepicker', function () {
@@ -108,9 +104,6 @@
                     autoclose: true,
                     language: "{{ app.request.locale }}"
                 });
-            });
-            $('form:not(.navbar-form):not(.no_validation) input.datepicker').on('change show', function (e) {
-                $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator('revalidateField', $(this));
             });
         </script>
         <script src="{{ asset('front/plugins/ckeditor/ckeditor.js') }}"></script>

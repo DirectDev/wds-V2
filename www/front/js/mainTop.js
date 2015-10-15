@@ -105,22 +105,6 @@ function reloadEventAlerts() {
     });
 }
 
-function reloadBootstrapValidator() {
-    $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator({
-        message: 'This value is not valid',
-        submitButtons: 'button[type="submit"]',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {}
-    });
-    $('form:not(.navbar-form):not(.no_validation) input.datepicker').on('change show', function (e) {
-        $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator('revalidateField', $(this));
-    });
-}
-
 $(document).on('click focus', 'a.eventdate_edit', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();

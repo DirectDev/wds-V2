@@ -2,7 +2,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_profile"]', function
     e.preventDefault();
     var $form = $(e.target);
     // Get the BootstrapValidator instance
-    var bv = $form.data('bootstrapValidator');
+//    var bv = $form.data('bootstrapValidator');
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
@@ -14,6 +14,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_profile"]', function
                 success: function (html)
                 {
                     $('#profilFormDiv').empty().html(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -38,6 +39,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_description"]', func
                 success: function (html)
                 {
                     $('#descriptionFormDiv').empty().html(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -62,6 +64,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_link"]', function (e
                 success: function (html)
                 {
                     $('#linkFormDiv').empty().html(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -81,6 +84,7 @@ $(document).on('click', '#userAddMusic', function () {
         success: function (html)
         {
             $('#userMusicList').append('<li>' + html + '</li>');
+            loadBootstrapValidator();
         }
     });
     return false;
@@ -100,6 +104,7 @@ $(document).on('submit', 'form.newMusic', function (e) {
                 success: function (html)
                 {
                     div.replaceWith(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -121,6 +126,7 @@ $(document).on('click', 'button.modifyMusic', function () {
         success: function (html)
         {
             $('#music_' + musicId).replaceWith(html);
+            loadBootstrapValidator();
         }
     });
     return false;
@@ -140,6 +146,7 @@ $(document).on('submit', 'form.deleteMusic', function (e) {
                 success: function (html)
                 {
                     $('#music_' + musicId).remove();
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -162,6 +169,7 @@ $(document).on('submit', 'form.editMusic', function (e) {
                 success: function (html)
                 {
                     $('#music_' + musicId).replaceWith(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -181,6 +189,7 @@ $(document).on('click', '#userAddVideo', function () {
         success: function (html)
         {
             $('#userVideoList').append('<li>' + html + '</li>');
+            loadBootstrapValidator();
         }
     });
     return false;
@@ -200,6 +209,7 @@ $(document).on('submit', 'form.newVideo', function (e) {
                 success: function (html)
                 {
                     div.replaceWith(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -221,6 +231,7 @@ $(document).on('click', 'button.modifyVideo', function () {
         success: function (html)
         {
             $('#video_' + videoId).replaceWith(html);
+            loadBootstrapValidator();
         }
     });
     return false;
@@ -240,6 +251,7 @@ $(document).on('submit', 'form.deleteVideo', function (e) {
                 success: function (html)
                 {
                     $('#video_' + videoId).remove();
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -262,6 +274,7 @@ $(document).on('submit', 'form.editVideo', function (e) {
                 success: function (html)
                 {
                     $('#video_' + videoId).replaceWith(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -281,6 +294,7 @@ $(document).on('click', '#userAddAddress', function () {
         success: function (html)
         {
             $('#userAddressList').append('<li>' + html + '</li>');
+            loadBootstrapValidator();
         }
     });
     return false;
@@ -300,6 +314,7 @@ $(document).on('submit', 'form.newAddress', function (e) {
                 success: function (html)
                 {
                     div.replaceWith(html);
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -321,6 +336,7 @@ $(document).on('click', 'button.modifyAddress', function () {
         success: function (html)
         {
             $('#address_' + addressId).replaceWith(html);
+            loadBootstrapValidator();
         }
     });
     return false;
@@ -340,6 +356,7 @@ $(document).on('submit', 'form.deleteAddress', function (e) {
                 success: function (html)
                 {
                     $('#address_' + addressId).remove();
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {
@@ -362,7 +379,7 @@ $(document).on('submit', 'form.editAddress', function (e) {
                 success: function (html)
                 {
                     $('#address_' + addressId).replaceWith(html);
-                    reloadBootstrapValidator();
+                    loadBootstrapValidator();
                 },
                 error: function (html)
                 {

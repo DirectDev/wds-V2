@@ -22,7 +22,7 @@ class EventType extends AbstractType {
         
         $builder
                 //->add('name')
-                ->add('eventType')
+                ->add('eventTypes')
                 ->add('musicTypes', 'entity', array(
                     'class' => 'FrontFrontBundle:MusicType',
                     'property' => 'name',
