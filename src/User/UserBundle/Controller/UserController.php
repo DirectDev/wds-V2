@@ -285,22 +285,23 @@ class UserController extends Controller {
     public function callbackUsernameAction(Request $request) {
         $username = $request->query->get('fos_user_registration_form')['username'];
         if (!$username)
-            $username = $request->query->get('front_frontbundle_user')['username'];
+            $username = $request->query->get('front_frontbundle_user_profile')['username'];
 
+        $username = trim($username);
+        
         if (!$username)
             return $this->returnJsonFalse();
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('UserUserBundle:User')->findOneBy(array('username' => $username));
         
-        
-        if($this->getUser() and $this->getUser() == $user)
-            return $this->returnJsonTrue();        
-        
-        if (count($user))
-            return $this->returnJsonFalse();
+        if (!count($user))
+            return $this->returnJsonTrue();
 
-        return $this->returnJsonTrue();
+        if ($this->getUser() and $this->getUser()->getId() == $user->getId())
+            return $this->returnJsonTrue();
+
+        return $this->returnJsonFalse();
     }
 
     private function returnJsonFalse() {

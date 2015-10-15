@@ -447,9 +447,6 @@ footer a{
 .radio label, .checkbox label {
     padding-right: 20px;
 }
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-    margin-left: 0px !important;
-}
 
 #eventdate_new_edit, #eventdate_add_by_weekday{
     min-height: 280px
