@@ -101,11 +101,11 @@
                         </div>
 
                         <div id="music" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Add Musics</h2>
-                            <p>{% trans %}user.musics_title{% endtrans %}</p>
-                            <br>
+                            <h2 class="heading-md">{% trans %}user.musics_title{% endtrans %}</h2>
 
-                            <button id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">{% trans %}user.add_music_button{% endtrans %}</button>
+                            <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
+                                {% trans %}user.add_music_button{% endtrans %}
+                            </button>
 
                             <div class="row margin-bottom-20" id="userMusicList">
                                 {% for music in entity.musics %}
@@ -118,11 +118,11 @@
                         </div>
 
                         <div id="video" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Add Videos</h2>
-                            <p>{% trans %}user.videos_title{% endtrans %}</p>
-                            <br>
+                            <h2 class="heading-md">{% trans %}user.videos_title{% endtrans %}</h2>
 
-                            <button id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">{% trans %}user.add_video_button{% endtrans %}</button>
+                            <button class='btn btn-success margin-bottom-30 pull-left' id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">
+                                {% trans %}user.add_video_button{% endtrans %}
+                            </button>
 
                             <div  class="row margin-bottom-20"  id="userVideoList">
                                 {% for video in entity.videos %}
@@ -133,11 +133,11 @@
                         </div>
 
                         <div id="address" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Address</h2>
-                            <p>{% trans %}user.address_title{% endtrans %}</p>
-                            <br>
+                            <h2 class="heading-md">{% trans %}user.address_title{% endtrans %}</h2>
 
-                            <button id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">{% trans %}user.add_address_button{% endtrans %}</button>
+                            <button class='btn btn-success margin-bottom-30 pull-left' id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">
+                                {% trans %}user.add_address_button{% endtrans %}
+                            </button>
 
                             <div  class="row margin-bottom-20" id="userAddressList">
                                 {% for address in entity.addresses %}

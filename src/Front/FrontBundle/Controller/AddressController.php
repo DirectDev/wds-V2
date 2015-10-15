@@ -85,7 +85,7 @@ class AddressController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -162,7 +162,7 @@ class AddressController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -254,7 +254,7 @@ class AddressController extends Controller {
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update')));
 
         return $form;
     }

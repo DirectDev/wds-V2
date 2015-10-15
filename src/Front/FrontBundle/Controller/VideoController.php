@@ -67,7 +67,7 @@ class VideoController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
 
         return $form;
     }

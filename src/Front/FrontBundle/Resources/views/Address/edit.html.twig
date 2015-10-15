@@ -1,29 +1,28 @@
-<div id="address_{{ address.id }}">
-
-{#    {% form_theme edit_form with ['FrontFrontBundle:Form:bootstrap_form_override.html.twig'] %}#}
+<div id="address_{{ address.id }}"  class="margin-bottom-30">
 
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editAddress', 'data-address-id' : address.id } } ) }}
-    {{ form_errors(edit_form) }}
 
+    <div class="col-md-10">
 
-    {{ form_row(edit_form.name) }}
-    {{ form_row(edit_form.street) }}
-    {{ form_row(edit_form.streetComplement) }}
-    {{ form_row(edit_form.postcode) }}
-    {{ form_row(edit_form.city) }}                                    
-    {{ form_row(edit_form.country) }}
+        {{ form_errors(edit_form) }}
 
-    {{ form_row(edit_form.submit) }}
+        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.street) }}
+        {{ form_row(edit_form.streetComplement) }}
+        {{ form_row(edit_form.postcode) }}
+        {{ form_row(edit_form.city) }}                                    
+        {{ form_row(edit_form.country) }}
+    </div>
+
+    <div class="col-md-2">
+        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left  margin-bottom-10 clear-both' } } ) }}
+
+        <button class="cancelAddress btn btn-warning btn-sm pull-left margin-bottom-10 clear-both"  data-address-id="{{ address.id }}"  href="{{ path('front_address_show_with_buttons', { 'id': address.id }) }}">
+            {% trans %}front.cancel{% endtrans %}
+        </button>
+    </div>
+
 
     {{ form_end(edit_form) }}
 
-    <div class='row'>
-        <div class='col-sm-1'>
-            <a class="btn btn-warning btn-sm pull-left address_edit" href="{{ path('front_address_show', { id : address.id }) }}">
-                <span>{% trans %}front.cancel{% endtrans %}</span>
-            </a>
-        </div>
-    </div>
-
 </div>
-

@@ -1,4 +1,17 @@
-<div id="video_{{ video.id }}">
+<div id="video_{{ video.id }}"  class="margin-bottom-30">
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editVideo', 'data-video-id' : video.id } } ) }}
+
+    <div class="col-md-10">
+        {{ form_row(edit_form.url) }}
+    </div>
+
+    <div class="col-md-2">
+        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left  margin-bottom-10 clear-both' } } ) }}
+
+        <button class="cancelVideo btn btn-warning btn-sm pull-left  margin-bottom-10 clear-both"  data-video-id="{{ video.id }}"  href="{{ path('front_video_show_with_buttons', { 'id': video.id }) }}">
+            {% trans %}front.cancel{% endtrans %}
+        </button>
+    </div>
+
     {{ form_end(edit_form) }}
 </div>

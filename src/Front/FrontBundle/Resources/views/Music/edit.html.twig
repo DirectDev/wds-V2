@@ -1,4 +1,17 @@
-<div id="music_{{ music.id }}">
+<div id="music_{{ music.id }}" class="margin-bottom-30">
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editMusic', 'data-music-id' : music.id } } ) }}
+
+    <div class="col-md-10">
+        {{ form_row(edit_form.url) }}
+    </div>
+
+    <div class="col-md-2">
+        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left margin-bottom-10 clear-both' } } ) }}
+
+        <button class="cancelMusic btn btn-warning btn-sm pull-left clear-both margin-bottom-10"  data-music-id="{{ music.id }}"  href="{{ path('front_music_show_with_buttons', { 'id': music.id }) }}">
+            {% trans %}front.cancel{% endtrans %}
+        </button>
+    </div>
+
     {{ form_end(edit_form) }}
 </div>

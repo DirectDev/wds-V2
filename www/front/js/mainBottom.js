@@ -113,7 +113,7 @@ $(document).on('submit', 'form.newMusic', function (e) {
     e.preventDefault();
 });
 
-$(document).on('click', 'button.modifyMusic', function () {
+$(document).on('click', 'button.modifyMusic, button.cancelMusic', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
@@ -214,7 +214,7 @@ $(document).on('submit', 'form.newVideo', function (e) {
     e.preventDefault();
 });
 
-$(document).on('click', 'button.modifyVideo', function () {
+$(document).on('click', 'button.modifyVideo, button.cancelVideo', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
@@ -317,7 +317,7 @@ $(document).on('submit', 'form.newAddress', function (e) {
     e.preventDefault();
 });
 
-$(document).on('click', 'button.modifyAddress', function () {
+$(document).on('click', 'button.modifyAddress, button.cancelAddress', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
