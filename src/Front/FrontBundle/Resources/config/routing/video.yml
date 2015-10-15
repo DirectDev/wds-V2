@@ -2,6 +2,10 @@
 front_video_show:
     path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:Video:show" }
+    
+front_video_show_with_buttons:
+    path:     /show_with_buttons/{id}
+    defaults: { _controller: "FrontFrontBundle:Video:showWithButtons" }
 
 front_video_new:
     path:     /new/{id}

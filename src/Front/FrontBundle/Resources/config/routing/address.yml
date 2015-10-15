@@ -2,6 +2,10 @@
 front_address_show:
     path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:Address:show" }
+    
+front_address_show_with_buttons:
+    path:     /show_with_buttons/{id}
+    defaults: { _controller: "FrontFrontBundle:Address:showWithButtons" }
 
 
 front_address_event_new:

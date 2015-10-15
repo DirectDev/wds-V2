@@ -1,22 +1,12 @@
-
 <div id="music_{{ music.id }}">
 
-    {% if music.isSoundCloud %}
-        {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
-    {% endif %}
+    <div class="col-md-6 md-margin-bottom-20">
+        {% if music.isSoundCloud %}
+            {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
+        {% endif %}
+        {% if music.isSpotify %}
+            {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
+        {% endif %}
+    </div>
 
-    {% if music.isSpotify %}
-        {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
-    {% endif %}
-
-    <ul class="">
-        <li>
-            <button class="modifyMusic" data-music-id="{{ music.id }}" href="{{ path('front_music_edit', { 'id': music.id }) }}">Modifier</button>    
-        </li>
-        <li>
-            {{ form_start(delete_form,  { 'attr' : { 'class' : 'deleteMusic', 'data-music-id' : music.id } } ) }}
-            {{ form_row(delete_form.submit) }}
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 </div>

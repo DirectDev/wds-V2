@@ -140,7 +140,7 @@ class AddressController extends Controller {
                 
             }
 
-            return $this->redirect($this->generateUrl('front_address_show', array('id' => $address->getId())));
+            return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $address->getId())));
         }
 
         return $this->render('FrontFrontBundle:Address:new.html.twig', array(
@@ -201,11 +201,22 @@ class AddressController extends Controller {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('FrontFrontBundle:Address:show.html.twig', array(
                     'address' => $address,
-                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    public function showWithButtonsAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
+
+        if (!$address) {
+            throw $this->createNotFoundException('Unable to find Address entity.');
+        }
+
+        return $this->render('FrontFrontBundle:Address:showWithButtons.html.twig', array(
+                    'address' => $address,
         ));
     }
 
@@ -223,12 +234,10 @@ class AddressController extends Controller {
         }
 
         $editForm = $this->createEditForm($address);
-        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Address:edit.html.twig', array(
                     'address' => $address,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -267,7 +276,6 @@ class AddressController extends Controller {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($address);
         $editForm->handleRequest($request);
 
@@ -291,13 +299,12 @@ class AddressController extends Controller {
 //            if ($user)
 //                return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
 
-            return $this->redirect($this->generateUrl('front_address_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Address:edit.html.twig', array(
                     'address' => $address,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -310,24 +317,23 @@ class AddressController extends Controller {
         if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $address = $em->getRepository('FrontFrontBundle:Address')->find($id);
-
-            if (!$address) {
-                throw $this->createNotFoundException('Unable to find Address entity.');
-            }
-
-            $event = $address->getEvent();
-            $user = $address->getUser();
-
-            $em->remove($address);
-            $em->flush();
+        if (!$address) {
+            throw $this->createNotFoundException('Unable to find Address entity.');
         }
-        
+
+        if (!$this->getUser()->getAdresses()->contains($address)) {
+            throw $this->createNotFoundException('Error : not yours.');
+        }
+
+        $event = $address->getEvent();
+        $user = $address->getUser();
+
+        $em->remove($address);
+        $em->flush();
+
         return new Response('', 200);
 
 //        if ($event)
@@ -337,22 +343,6 @@ class AddressController extends Controller {
 //            return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
 //
 //        return $this->redirect($this->generateUrl('front_address'));
-    }
-
-    /**
-     * Creates a form to delete a Address entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id) {
-        return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('front_address_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete'), 'attr' => array('class' => 'btn btn-danger btn-sm pull-left')))
-                        ->getForm()
-        ;
     }
 
     private function setLatitudeAndLongitude($address) {

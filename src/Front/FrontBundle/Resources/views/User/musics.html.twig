@@ -7,15 +7,7 @@
 
         <div class="row margin-bottom-20">
             {% for music in user.musics %}
-
-                {% if music.isSoundCloud %}
-                    {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
-                {% endif %}
-
-                {% if music.isSpotify %}
-                    {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
-                {% endif %}
-
+                {% render(path('front_music_show', { id : music.id } )) %}
             {% endfor %}                   
         </div>
     </div>

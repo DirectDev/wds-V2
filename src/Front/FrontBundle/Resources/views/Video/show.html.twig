@@ -1,26 +1,13 @@
-
-<div id="video_{{ video.id }}">
-
-    {% if video.isYoutube %}
-        {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
-    {% endif %}
-
-    {% if video.isVimeo %}
-        {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
-    {% endif %}
-
-    {% if video.isDailymotion %}
-        {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
-    {% endif %}
-
-    <ul class="">
-        <li>
-            <button class="modifyVideo" data-video-id="{{ video.id }}" href="{{ path('front_video_edit', { 'id': video.id }) }}">Modifier</button>    
-        </li>
-        <li>
-            {{ form_start(delete_form,  { 'attr' : { 'class' : 'deleteVideo', 'data-video-id' : video.id } } ) }}
-            {{ form_row(delete_form.submit) }}
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<div id="video_{{ video.id }}">  
+    <div class="col-md-6 md-margin-bottom-20">
+        {% if video.isYoutube %}
+            {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
+        {% endif %}
+        {% if video.isVimeo %}
+            {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
+        {% endif %}
+        {% if video.isDailymotion %}
+            {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
+        {% endif %}   
+    </div>
 </div>

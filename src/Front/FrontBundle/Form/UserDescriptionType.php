@@ -21,9 +21,9 @@ class UserDescriptionType extends AbstractType {
         $builder->add('translations', 'a2lix_translations', array(
             'locales' => $locales,
             'fields' => array(
+                'baseline' => array(),
                 'description_short' => array('attr' => array('class' => 'ckeditor form-control')),
                 'description' => array('attr' => array('class' => 'ckeditor form-control')),
-                'baseline' => array(),
     )))
         ;
     }

@@ -45,7 +45,7 @@ class MusicController extends Controller {
 
             $user = $music->getUser();
             if ($user)
-                return $this->redirect($this->generateUrl('front_music_show', array('id' => $music->getId())));
+                return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $music->getId())));
         }
 
         return $this->render('FrontFrontBundle:Music:new.html.twig', array(
@@ -106,11 +106,22 @@ class MusicController extends Controller {
             throw $this->createNotFoundException('Unable to find Music entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('FrontFrontBundle:Music:show.html.twig', array(
                     'music' => $music,
-                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    public function showWithButtonsAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
+
+        if (!$music) {
+            throw $this->createNotFoundException('Unable to find Music entity.');
+        }
+
+        return $this->render('FrontFrontBundle:Music:showWithButtons.html.twig', array(
+                    'music' => $music,
         ));
     }
 
@@ -172,7 +183,7 @@ class MusicController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_music_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Music:edit.html.twig', array(
@@ -186,38 +197,24 @@ class MusicController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
-            if (!$music) {
-                throw $this->createNotFoundException('Unable to find Music entity.');
-            }
-
-            $em->remove($music);
-            $em->flush();
+        if (!$music) {
+            throw $this->createNotFoundException('Unable to find Music entity.');
         }
+        
+        if(!$this->getUser()->getMusics()->contains($music)){
+            throw $this->createNotFoundException('Error : not yours.');
+        }
+
+        $em->remove($music);
+        $em->flush();
+
 
         return new Response('', 200);
     }
-
-    /**
-     * Creates a form to delete a Music entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id) {
-        return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('front_music_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
-                        ->getForm()
-        ;
-    }
-
 }

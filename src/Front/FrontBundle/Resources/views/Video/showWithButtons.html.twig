@@ -1,0 +1,31 @@
+<div id="video_{{ video.id }}">
+
+    <div class="col-md-10 md-margin-bottom-20">
+        {% if video.isYoutube %}
+            {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
+        {% endif %}
+        {% if video.isVimeo %}
+            {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
+        {% endif %}
+        {% if video.isDailymotion %}
+            {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
+        {% endif %}  
+
+    </div>
+
+    <div class="col-md-2 md-margin-bottom-20">
+        {% if app.user is not null and app.user == video.getUser() and is_granted('ROLE_USER') %} 
+            <p> 
+                <button class="modifyVideo btn-u btn-u-green" data-video-id="{{ video.id }}" href="{{ path('front_video_edit', { 'id': video.id }) }}">
+                    <i class='fa fa-pencil'></i>
+                </button> 
+            </p>
+            <p>
+                <button class="deleteVideo btn-u btn-u-red"  data-video-id="{{ video.id }}"  href="{{ path('front_video_delete', { 'id': video.id }) }}">
+                    <i class='fa fa-times'></i>
+                </button>
+            </p>
+        {% endif %}   
+    </div>
+
+</div>

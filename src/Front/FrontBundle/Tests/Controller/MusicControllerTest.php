@@ -62,6 +62,14 @@ class MusicControllerTest extends WebTestCase {
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         }
     }
+    
+    public function testShowWithButtons() {
+        $musics = $this->findAllMusics();
+        foreach ($musics as $music) {
+            $crawler = $this->clientLogged->request('GET', '/music/show_with_buttons/' . $music->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
 
     public function testEdit() {
         $musics = $this->findAllMusics();

@@ -21,19 +21,7 @@
             <div class="col-md-9">
 
                 {% for video in videos %}
-
-                    {% if video.isYoutube %}
-                        {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
-                    {% endif %}
-
-                    {% if video.isVimeo %}
-                        {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
-                    {% endif %}
-
-                    {% if video.isDailymotion %}
-                        {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
-                    {% endif %}
-
+                    {% render(path('front_video_show', { id : video.id } )) %}
                 {% endfor %}
 
             </div>

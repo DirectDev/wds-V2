@@ -46,6 +46,10 @@ class AddressControllerTest extends WebTestCase {
     private function findUser() {
         $this->user = $this->em->getRepository('UserUserBundle:User')->find($this->id_user);
     }
+    
+    private function findAllAddresses() {
+        return $this->em->getRepository('FrontFrontBundle:Address')->findAll();
+    }
 
     private function deleteData() {
 
@@ -245,6 +249,14 @@ class AddressControllerTest extends WebTestCase {
 
         $this->em->refresh($this->event);
         $this->assertEquals(0, count($this->event->getAddresses()));
+    }
+    
+    public function testShowWithButtons() {
+        $adresses = $this->findAllAdresses();
+        foreach ($adresses as $adress) {
+            $crawler = $this->clientLogged->request('GET', '/adress/show_with_buttons/' . $adress->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
 }

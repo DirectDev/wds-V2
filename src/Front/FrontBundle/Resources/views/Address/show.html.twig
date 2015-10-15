@@ -1,48 +1,7 @@
 <div id="address_{{ address.id }}">
 
-    {% if address.name %}
-        <strong>{% trans %}address.name{% endtrans %}</strong> : {{ address.name|capitalize }}</br>
-    {% endif %}
-    {% if address.street %}
-        <strong>{% trans %}address.street{% endtrans %}</strong> : {{ address.street|capitalize }}</br>
-    {% endif %}
-    {% if address.streetComplement %}
-        <strong>{% trans %}address.streetComplement{% endtrans %}</strong> : {{ address.streetComplement|capitalize }}</br>
-    {% endif %}
-    {% if address.city %}
-        <strong>{% trans %}address.city{% endtrans %}</strong> : {{ address.city|capitalize }}</br>
-    {% endif %}
-    {% if address.postcode %}
-        <strong>{% trans %}address.postcode{% endtrans %}</strong> : {{ address.postcode|capitalize }}</br>
-    {% endif %}
-    {% if address.country %}
-        <strong>{% trans %}address.country{% endtrans %}</strong> : {{ address.country|capitalize }}</br>
-    {% endif %}
-    </br>
+    <div class="col-md-6 md-margin-bottom-20">
+        {% include 'FrontFrontBundle:Address:template.html.twig' %}
+    </div>
 
-    {#{% if app.user is not null and app.user == address.getUser() and is_granted('ROLE_USER') %} 
-        <div class='row'>
-            <div class='col-sm-1'>
-                <a class="btn btn-success btn-sm pull-left address_edit" href="{{ path('front_address_edit', { 'id': address.id }) }}">
-                    <span>{% trans %}front.edit{% endtrans %}</span>
-                </a>
-            </div>
-            <div class='col-sm-1'>
-                {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
-                {{ form_end(delete_form) }}
-
-            </div>
-        </div>
-    {% endif %}#}
-    
-    <ul class="">
-        <li>
-            <button class="modifyAddress" data-address-id="{{ address.id }}" href="{{ path('front_address_edit', { 'id': address.id }) }}">Modifier</button>    
-        </li>
-        <li>
-            {{ form_start(delete_form,  { 'attr' : { 'class' : 'deleteAddress', 'data-address-id' : address.id } } ) }}
-            {{ form_row(delete_form.submit) }}
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 </div>

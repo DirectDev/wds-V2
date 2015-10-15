@@ -83,7 +83,7 @@ $(document).on('click', '#userAddMusic', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#userMusicList').append('<li>' + html + '</li>');
+            $('#userMusicList').prepend(html);
             loadBootstrapValidator();
         }
     });
@@ -132,27 +132,23 @@ $(document).on('click', 'button.modifyMusic', function () {
     return false;
 });
 
-$(document).on('submit', 'form.deleteMusic', function (e) {
-    e.preventDefault();
+$(document).on('click', 'button.deleteMusic', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
 
-    var musicId = $(this).data('music-id')
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax(
-            {
-                url: formURL,
-                type: "POST",
-                data: postData,
-                success: function (html)
-                {
-                    $('#music_' + musicId).remove();
-                    loadBootstrapValidator();
-                },
-                error: function (html)
-                {
-                }
-            });
-    e.preventDefault();
+    var musicId = $(this).data('music-id');
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#music_' + musicId).remove();
+            loadBootstrapValidator();
+        }
+    });
+    return false;
 });
 
 $(document).on('submit', 'form.editMusic', function (e) {
@@ -188,7 +184,7 @@ $(document).on('click', '#userAddVideo', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#userVideoList').append('<li>' + html + '</li>');
+            $('#userVideoList').prepend(html);
             loadBootstrapValidator();
         }
     });
@@ -237,27 +233,25 @@ $(document).on('click', 'button.modifyVideo', function () {
     return false;
 });
 
-$(document).on('submit', 'form.deleteVideo', function (e) {
-    e.preventDefault();
 
-    var videoId = $(this).data('video-id')
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax(
-            {
-                url: formURL,
-                type: "POST",
-                data: postData,
-                success: function (html)
-                {
-                    $('#video_' + videoId).remove();
-                    loadBootstrapValidator();
-                },
-                error: function (html)
-                {
-                }
-            });
-    e.preventDefault();
+
+$(document).on('click', 'button.deleteVideo', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var videoId = $(this).data('video-id');
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#video_' + videoId).remove();
+            loadBootstrapValidator();
+        }
+    });
+    return false;
 });
 
 $(document).on('submit', 'form.editVideo', function (e) {
@@ -293,7 +287,7 @@ $(document).on('click', '#userAddAddress', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#userAddressList').append('<li>' + html + '</li>');
+            $('#userAddressList').prepend(html);
             loadBootstrapValidator();
         }
     });
@@ -342,27 +336,24 @@ $(document).on('click', 'button.modifyAddress', function () {
     return false;
 });
 
-$(document).on('submit', 'form.deleteAddress', function (e) {
-    e.preventDefault();
 
-    var addressId = $(this).data('address-id')
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax(
-            {
-                url: formURL,
-                type: "POST",
-                data: postData,
-                success: function (html)
-                {
-                    $('#address_' + addressId).remove();
-                    loadBootstrapValidator();
-                },
-                error: function (html)
-                {
-                }
-            });
-    e.preventDefault();
+$(document).on('click', 'button.deleteAddress', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var addressId = $(this).data('address-id');
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#address_' + addressId).remove();
+            loadBootstrapValidator();
+        }
+    });
+    return false;
 });
 
 $(document).on('submit', 'form.editAddress', function (e) {

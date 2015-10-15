@@ -107,13 +107,11 @@
 
                             <button id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">{% trans %}user.add_music_button{% endtrans %}</button>
 
-                            <ul id="userMusicList">
+                            <div class="row margin-bottom-20" id="userMusicList">
                                 {% for music in entity.musics %}
-                                    <li>
-                                        {% render(path('front_music_show', { id : music.id } )) %}
-                                    </li>
+                                    {% render(path('front_music_show_with_buttons', { id : music.id } )) %}
                                 {% endfor %}
-                            </ul>
+                            </div>
 
 
 
@@ -126,13 +124,11 @@
 
                             <button id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">{% trans %}user.add_video_button{% endtrans %}</button>
 
-                            <ul id="userVideoList">
+                            <div  class="row margin-bottom-20"  id="userVideoList">
                                 {% for video in entity.videos %}
-                                    <li>
-                                        {% render(path('front_video_show', { id : video.id } )) %}
-                                    </li>
+                                    {% render(path('front_video_show_with_buttons', { id : video.id } )) %}
                                 {% endfor %}
-                            </ul>
+                            </div>
 
                         </div>
 
@@ -140,16 +136,14 @@
                             <h2 class="heading-md">Address</h2>
                             <p>{% trans %}user.address_title{% endtrans %}</p>
                             <br>
-                            
+
                             <button id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">{% trans %}user.add_address_button{% endtrans %}</button>
 
-                            <ul id="userAddressList">
+                            <div  class="row margin-bottom-20" id="userAddressList">
                                 {% for address in entity.addresses %}
-                                    <li>
-                                        {% render(path('front_address_show', { id : address.id } )) %}
-                                    </li>
+                                    {% render(path('front_address_show_with_buttons', { id : address.id } )) %}
                                 {% endfor %}
-                            </ul>
+                            </div>
 
 
                         </div>
@@ -179,11 +173,11 @@
     <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script>  
 
     <script type="text/javascript">
-    jQuery(document).ready(function () {
-        App.init();
-        PortfolioPage.init();
+        jQuery(document).ready(function () {
+            App.init();
+            PortfolioPage.init();
 
-    });
+        });
     </script>
 
 {% endblock %}    

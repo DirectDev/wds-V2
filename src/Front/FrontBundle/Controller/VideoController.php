@@ -22,7 +22,6 @@ class VideoController extends Controller {
         return $user;
     }
 
-    
     /**
      * Creates a new Video entity.
      *
@@ -46,7 +45,7 @@ class VideoController extends Controller {
 
             $user = $video->getUser();
             if ($user)
-                return $this->redirect($this->generateUrl('front_video_show', array('id' => $video->getId())));
+                return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $video->getId())));
         }
 
         return $this->render('FrontFrontBundle:Video:new.html.twig', array(
@@ -107,11 +106,22 @@ class VideoController extends Controller {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('FrontFrontBundle:Video:show.html.twig', array(
                     'video' => $video,
-                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    public function showWithButtonsAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
+
+        if (!$video) {
+            throw $this->createNotFoundException('Unable to find Video entity.');
+        }
+
+        return $this->render('FrontFrontBundle:Video:showWithButtons.html.twig', array(
+                    'video' => $video,
         ));
     }
 
@@ -173,7 +183,7 @@ class VideoController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_video_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
@@ -187,38 +197,24 @@ class VideoController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
 
-            if (!$video) {
-                throw $this->createNotFoundException('Unable to find Video entity.');
-            }
-
-            $em->remove($video);
-            $em->flush();
+        if (!$video) {
+            throw $this->createNotFoundException('Unable to find Video entity.');
+        }
+        
+        if(!$this->getUser()->getVideos()->contains($video)){
+            throw $this->createNotFoundException('Error : not yours.');
         }
 
-        return new Response('', 200);
-    }
+        $em->remove($video);
+        $em->flush();
 
-    /**
-     * Creates a form to delete a Video entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id) {
-        return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('front_video_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
-                        ->getForm()
-        ;
+        return new Response('', 200);
     }
 
 }

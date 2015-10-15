@@ -63,6 +63,14 @@ class VideoControllerTest extends WebTestCase {
         }
     }
 
+    public function testShowWithButtons() {
+        $videos = $this->findAllVideos();
+        foreach ($videos as $video) {
+            $crawler = $this->clientLogged->request('GET', '/video/show_with_buttons/' . $video->getId());
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+
     public function testEdit() {
         $videos = $this->findAllVideos();
         foreach ($videos as $video) {

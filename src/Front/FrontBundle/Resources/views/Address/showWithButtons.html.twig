@@ -1,0 +1,22 @@
+<div id="address_{{ address.id }}">
+
+    <div class="col-md-10 md-margin-bottom-20">
+        {% include 'FrontFrontBundle:Address:template.html.twig' %}
+    </div>
+
+    <div class="col-md-2 md-margin-bottom-20">
+        {% if app.user is not null and app.user == address.getUser() and is_granted('ROLE_USER') %} 
+            <p> 
+                <button class="modifyAddress btn-u btn-u-green" data-address-id="{{ address.id }}" href="{{ path('front_address_edit', { 'id': address.id }) }}">
+                    <i class='fa fa-pencil'></i>
+                </button> 
+            </p>
+            <p>
+                <button class="deleteAddress btn-u btn-u-red"  data-address-id="{{ address.id }}"  href="{{ path('front_address_delete', { 'id': address.id }) }}">
+                    <i class='fa fa-times'></i>
+                </button>
+            </p>
+        {% endif %}   
+    </div>
+
+</div>

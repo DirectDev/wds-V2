@@ -1,0 +1,28 @@
+<div id="music_{{ music.id }}">
+
+    <div class="col-md-10 md-margin-bottom-20">
+        {% if music.isSoundCloud %}
+            {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
+        {% endif %}
+        {% if music.isSpotify %}
+            {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
+        {% endif %}
+
+    </div>
+
+    <div class="col-md-2 md-margin-bottom-20">
+        {% if app.user is not null and app.user == music.getUser() and is_granted('ROLE_USER') %} 
+            <p> 
+                <button class="modifyMusic btn-u btn-u-green" data-music-id="{{ music.id }}" href="{{ path('front_music_edit', { 'id': music.id }) }}">
+                    <i class='fa fa-pencil'></i>
+                </button> 
+            </p>
+            <p>
+                <button class="deleteMusic btn-u btn-u-red"  data-music-id="{{ music.id }}"  href="{{ path('front_music_delete', { 'id': music.id }) }}">
+                    <i class='fa fa-times'></i>
+                </button>
+            </p>
+        {% endif %}   
+    </div>
+
+</div>
