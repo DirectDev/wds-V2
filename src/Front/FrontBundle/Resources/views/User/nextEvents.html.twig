@@ -1,0 +1,80 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    My Next Events 
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
+{% endblock %}    
+
+
+
+{% block content %}
+
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">My Next Events </h1>
+
+        </div>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container content profile">
+
+        <div class="row">
+            <!-- Profile Content -->            
+            <div class="col-md-12">
+
+                <div class="profile-body">
+
+                    <!-- Portfolio Sorting Blocks -->
+                    <div class="sorting-block">
+                        {% render(path('front_musictype_filters')) %}
+
+                        <!-- Easy Blocks v1 -->                
+                        <div class="row high-rated margin-bottom-20 sorting-grid">
+
+                            {% for event in events %}
+                                {% include 'FrontFrontBundle:Event:eventWithButtons.html.twig' %}
+                            {% endfor %}
+
+                        </div>
+                        <!-- End Easy Blocks v1 --> 
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- End Portfolio Sorting Blocks -->   
+
+                </div>
+            </div>
+            <!-- End Profile Content -->            
+        </div>
+    </div>
+    <!-- End Profile Content -->
+
+
+
+</div><!--/container-->	 	
+<!--=== End Content Part ===-->
+
+{% endblock %}
+
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("front/plugins/jquery.mixitup.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/pages/page_portfolio.js") }}"></script> 
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            PortfolioPage.init();
+
+        });
+    </script>
+
+{% endblock %}    

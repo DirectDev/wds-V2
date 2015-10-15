@@ -52,6 +52,14 @@ front_user_unlove:
     defaults: { _controller: "FrontFrontBundle:User:unLove" }
     requirements: { _method: post }        
     
+front_user_passed_events:
+    path:      /profile/passed_events
+    defaults:  { _controller: FrontFrontBundle:User:passedEvents }  
+    
+front_user_next_events:
+    path:      /profile/next_events
+    defaults:  { _controller: FrontFrontBundle:User:nextEvents }  
+    
 front_user_show_public:
     path:      /profile/{username}/{id}
     defaults:  { _controller: FrontFrontBundle:User:showPublic }  

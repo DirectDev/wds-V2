@@ -111,7 +111,6 @@ class UserController extends Controller {
         ));
     }
 
-
     private function createEditProfileForm(User $entity) {
         $form = $this->createForm(new UserProfileType(), $entity, array(
             'action' => $this->generateUrl('front_user_update_profile', array('id' => $entity->getId())),
@@ -455,6 +454,46 @@ class UserController extends Controller {
                     'usersLoveUser' => $usersLoveUser,
                     'love_form' => $loveForm->createView(),
                     'unlove_form' => $unLoveForm->createView(),
+        ));
+    }
+
+    public function passedEventsAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $entity = $this->get('security.context')->getToken()->getUser();
+        if (!$entity)
+            return new Response('', 404);
+        
+        $startdate = date('Y-m-d');
+        $passedEvents = $em->getRepository('FrontFrontBundle:Event')->getPassedEventByUser($entity, $limit = 10);
+
+        return $this->render('FrontFrontBundle:User:passedEvents.html.twig', array(
+                    'user' => $entity,
+                    'events' => $passedEvents,
+                    'startdate' => $startdate
+        ));
+    }
+
+    public function nextEventsAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $entity = $this->get('security.context')->getToken()->getUser();
+        if (!$entity)
+            return new Response('', 404);
+
+        $startdate = date('Y-m-d');
+        $nextEvents = $em->getRepository('FrontFrontBundle:Event')->getNextEventByUser($entity, $limit = 10);
+
+        return $this->render('FrontFrontBundle:User:nextEvents.html.twig', array(
+                    'user' => $entity,
+                    'events' => $nextEvents,
+                    'startdate' => $startdate
         ));
     }
 

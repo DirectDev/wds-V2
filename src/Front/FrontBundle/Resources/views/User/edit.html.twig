@@ -16,22 +16,17 @@
 
 
 {% block content %}
+    
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Edit My Profil </h1>
+        </div>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
 
     <!--=== Content Part ===-->
     <div class="container content profile">
-
-
-        <!--=== Breadcrumbs ===-->
-        <div class="breadcrumbs">
-            <div class="container">
-                <h1 class="pull-left">{{ entity.username|capitalize }}</h1>
-                <a href="{{ path('front_user_show_private') }}" class="btn btn-warning btn-sm pull-right">
-                    <i class="glyphicon glyphicon-arrow-left"></i>
-                    <span> {% trans %}front.back{% endtrans %}</span>
-                </a>
-            </div><!--/container-->
-        </div><!--/breadcrumbs-->
-        <!--=== End Breadcrumbs ===-->
 
         <!-- Profile Content -->
         <div class="col-md-12">

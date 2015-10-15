@@ -34,5 +34,5 @@ front_eventdate_delete:
     requirements: { _method: post|delete }
     
 front_eventdate_add_by_weekday:
-    path:     /add_by_weekday
+    path:     /add_by_weekday/{id}
     defaults: { _controller: "FrontFrontBundle:EventDate:addByWeekday" }

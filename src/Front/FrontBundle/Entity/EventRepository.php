@@ -135,20 +135,39 @@ class EventRepository extends EntityRepository {
             $stopdate = date('Y-m-d', strtotime('+365 days'));
 
         $query = $this->createQueryBuilder('e')
-                        ->leftJoin('e.user', 'u')
-                        ->leftJoin('e.eventDates', 'ed')
-                        ->setParameter('startdate', $startdate)
-                        ->setParameter('stopdate', $stopdate)
-                        ->setParameter('id', $user->getId())
-                        ->orderBy('ed.startdate', 'ASC')
-                        ->groupBy('e.id, ed.startdate')
-                        ->setMaxResults($limit)
-                        ->where('u.id = :id')->andWhere('((
+                ->leftJoin('e.user', 'u')
+                ->leftJoin('e.eventDates', 'ed')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('stopdate', $stopdate)
+                ->setParameter('id', $user->getId())
+                ->orderBy('ed.startdate', 'ASC')
+                ->groupBy('e.id, ed.startdate')
+                ->setMaxResults($limit)
+                ->where('u.id = :id')
+                ->andWhere('((
                     (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
                     OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
                     OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
                     )
                     OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function getPassedEventByUser(User $user, $limit = 6) {
+
+        $startdate = date('Y-m-d');
+
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.user', 'u')
+                ->leftJoin('e.eventDates', 'ed')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('id', $user->getId())
+                ->orderBy('ed.startdate', 'DESC')
+                ->groupBy('e.id, ed.startdate')
+                ->setMaxResults($limit)
+                ->where('u.id = :id')
+                ->andWhere('ed.startdate <= :startdate');
 
         return $query->getQuery()->getResult();
     }

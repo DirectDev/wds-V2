@@ -1,0 +1,69 @@
+
+{% set image_default_uri = 'images/wds_750x340_rose.png' %}
+
+<div class="col-md-4 col-sm-12 md-margin-bottom-40 mix {{ event.getMusicTypesClasses }}" data-cat="{{ event.getMusicTypesClasses }}">
+
+    <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" target='_blank'>
+
+        <div class="easy-block-v1">    
+            <div class="easy-block-v1-badge easy-block-v1-badge-red">
+                Modifier
+            </div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for eventFile in event.eventFiles %}
+                        {% if eventFile.isValid %}
+                            <li class="rounded-x {{ loop.index == 1  ? 'active' : '' }}" data-target="#carousel-example-generic" data-slide-to="{{ loop.index }}">
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for eventFile in event.eventFiles %}
+                        {% if eventFile.isValid %}
+                            <div class="item {{ loop.index == 1  ? 'active' : '' }}">
+                                <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(eventFile.getLargePathUri()|imagine_filter('event')) }}">
+                            </div>
+                        {% else %}
+                            <div class="item {{ loop.index == 1  ? 'active' : '' }}">
+                                <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(image_default_uri)|imagine_filter('event') }}">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% if event.eventFiles|length == 0 %}
+                        <div class="item active">
+                            <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(image_default_uri)|imagine_filter('event') }}">
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="overflow-h">
+                <h3>{{ event.getTitle()|capitalize }}</h3>
+            </div>     
+            <ul class="list-unstyled">
+                {% if event.getEventTypesText %}
+                    <li>
+                        <span class="color-green">Type:</span> {{ event.getEventTypesText }}
+                    </li>
+                {% endif %}
+                {% if event.getMusicTypesText %}
+                    <li>
+                        <span class="color-green">Music:</span> {{ event.getMusicTypesText }}
+                    </li>
+                {% endif %}
+                {% if not event.getEventTypesText %}
+                    <li>
+                        &nbsp;
+                    </li>
+                {% endif %}
+                {% if not event.getMusicTypesText %}
+                    <li>
+                        &nbsp;
+                    </li>
+                {% endif %}
+            </ul>    
+        </div>  
+    </a>
+</div>
+
