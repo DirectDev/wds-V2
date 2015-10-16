@@ -118,7 +118,7 @@ class UserController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
 
         return $form;
     }
@@ -130,7 +130,7 @@ class UserController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
 
         return $form;
     }
@@ -142,7 +142,7 @@ class UserController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn-u pull-right')));
 
         return $form;
     }
@@ -361,7 +361,7 @@ class UserController extends Controller {
                         ->setAction($this->generateUrl('front_user_love', array('id' => $id)))
                         ->setMethod('POST')
                         ->add('submit', 'submit', array(
-                            'label' => $this->get('translator')->trans('I Like'),
+                            'label' => /** @Ignore */ $this->get('translator')->trans('I Like'),
                             'attr' => array(
                                 'class' => 'btn-u btn-block love_button'
                             )
@@ -375,7 +375,7 @@ class UserController extends Controller {
                         ->setAction($this->generateUrl('front_user_unlove', array('id' => $id)))
                         ->setMethod('POST')
                         ->add('submit', 'submit', array(
-                            'label' => $this->get('translator')->trans("I don't like"),
+                            'label' => /** @Ignore */ $this->get('translator')->trans("I don't like"),
                             'attr' => array(
                                 'class' => 'btn-u btn-block love_button'
                             )

@@ -1,6 +1,6 @@
 <div id='loves_div'>
     {% if usersLoveEvent|length > 0 %}
-        <h3>Ils aiment </h3>
+        <h3>{% trans %}event.they_like{% endtrans %}</h3>
         <ul class="list-unstyled blog-photos margin-bottom-30">
             {% for userLoveEvent in usersLoveEvent %}
                 <li>

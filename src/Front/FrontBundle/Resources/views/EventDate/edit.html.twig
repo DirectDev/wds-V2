@@ -1,6 +1,5 @@
 <div class="panel-body">
     <h3>{% trans %}event.eventdates_edit_form_title{% endtrans %}</h3>
-    {% form_theme edit_form with ['FrontFrontBundle:Form:bootstrap_form_override_eventdates.html.twig'] %}
 
     {{ form_start(edit_form, { 'attr' : {'id': 'form_eventdate_edit'} } ) }}
     {{ form_errors(edit_form) }}

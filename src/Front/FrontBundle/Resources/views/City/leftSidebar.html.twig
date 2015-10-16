@@ -4,66 +4,95 @@
     <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item {% if active == 'calendar' %}active{% endif %}">
             <a href="{{ path('city_calendar', { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">
-                <i class="fa fa-bar-chart-o"></i> Calendrier</a>
+                <i class="fa fa-bar-chart-o"></i>
+                {% trans %}city.calendar{% endtrans %}
+            </a>
         </li>      
 
 
         <li class="list-group-item {% if active == 'parties' %}active{% endif %}">
             <a href="{{ path('city_party', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Soirées</a>
+                <i class="fa fa-group"></i>
+                {% trans %}city.parties{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'workshops' %}active{% endif %}">
             <a href="{{ path('city_workshop', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Cours</a>
+                <i class="fa fa-group"></i>
+                {% trans %}city.lessons{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'introductions' %}active{% endif %}">
             <a href="{{ path('city_introduction', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Initiations</a>
-        </li> <li class="list-group-item {% if active == 'concerts' %}active{% endif %}">
+                <i class="fa fa-group"></i>
+                {% trans %}city.introductions{% endtrans %}
+            </a>
+        </li>
+        <li class="list-group-item {% if active == 'concerts' %}active{% endif %}">
             <a href="{{ path('city_concert', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Concerts</a>
+                <i class="fa fa-group"></i>
+                {% trans %}city.concerts{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'festivals' %}active{% endif %}">
             <a href="{{ path('city_festival', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Festivals</a>
+                <i class="fa fa-group"></i>
+                {% trans %}city.festivals{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'shows' %}active{% endif %}">
             <a href="{{ path('city_show', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Shows</a>
+                <i class="fa fa-group"></i>
+                {% trans %}city.shows{% endtrans %}
+            </a>
         </li> 
 
 
 
         <li class="list-group-item {% if active == 'artists' %}active{% endif %}">
             <a href="{{ path('city_artist', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Artistes</a>
+                <i class="fa fa-group"></i> 
+                {% trans %}city.artits{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'teachers' %}active{% endif %}">
             <a href="{{ path('city_teacher', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Professeurs</a>
+                <i class="fa fa-group"></i> 
+                {% trans %}city.teachers{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'bars' %}active{% endif %}">
             <a href="{{ path('city_bar', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-comments"></i> Bars</a>
+                <i class="fa fa-comments"></i> 
+                {% trans %}city.places{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'dancers' %}active{% endif %}">
             <a href="{{ path('city_dancer', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Danseurs</a>
+                <i class="fa fa-group"></i> 
+                {% trans %}city.dancers{% endtrans %}
+            </a>
         </li> 
 
 
 
         <li class="list-group-item {% if active == 'photos' %}active{% endif %}">
             <a href="{{ path('city_photo', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Photos</a>
+                <i class="fa fa-group"></i> 
+                {% trans %}city.photos{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'musics' %}active{% endif %}">
             <a href="{{ path('city_music', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Musiques</a>
+                <i class="fa fa-group"></i> 
+                {% trans %}city.musics{% endtrans %}
+            </a>
         </li> 
         <li class="list-group-item {% if active == 'videos' %}active{% endif %}">
             <a href="{{ path('city_video', { 'searchcity': app.session.get('city') }) }}">
-                <i class="fa fa-group"></i> Videos</a>
+                <i class="fa fa-group"></i> 
+                {% trans %}city.videos{% endtrans %}
+            </a>
         </li>                         
 
     </ul>   

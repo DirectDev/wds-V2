@@ -2,7 +2,6 @@
     <div class="container">
         <!-- Logo -->
         <a class="logo"  href="{{ path('home')}}">
-            {#            <img src="{{ asset('images/wedancesalsa_logo_v2.png')}}" title="WeDanceSalsa" class='image-responsive'/>#}
         </a>
         <!-- End Logo -->
 
@@ -39,7 +38,7 @@
 
         <!-- Toggle get grouped for better mobile display -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">{% trans %}navbar.toogle_navigation{% endtrans %}</span>
             <span class="fa fa-bars"></span>
         </button>
         <!-- End Toggle -->
@@ -52,49 +51,49 @@
                 <!-- Home -->
                 <li class="active">
                     <a href="{{ path('home')}}" >
-                        Home
+                        {% trans %}navbar.home{% endtrans %}
                     </a>
                 </li>
                 <!-- End Home -->
 
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                        Festivals
+                        {% trans %}navbar.festivals{% endtrans %}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Calendar</a></li>
-                        <li><a href="">Europe</a></li>
-                        <li><a href="">North America</a></li>
-                        <li><a href="">South America</a></li>
-                        <li><a href="">Africa</a></li>
-                        <li><a href="">Asia</a></li>
-                        <li><a href="">Australia</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.calendar{% endtrans %}</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.europe{% endtrans %}</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.north_america{% endtrans %}</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.south_america{% endtrans %}</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.africa{% endtrans %}</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.asia{% endtrans %}</a></li>
+                        <li><a href="">{% trans %}navbar.festivals.australia{% endtrans %}</a></li>
                     </ul>
                 </li>                    
 
                 <li>
                     <a href="{{ path('home')}}" >
-                        Artits
+                        {% trans %}navbar.artits{% endtrans %}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('home')}}" >
-                        Bands
+                        {% trans %}navbar.bands{% endtrans %}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('home')}}" >
-                        Learn
+                        {% trans %}navbar.learn{% endtrans %}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('home')}}" >
-                        Videos
+                        {% trans %}navbar.videos{% endtrans %}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('home')}}" >
-                        Musics
+                        {% trans %}navbar.musics{% endtrans %}
                     </a>
                 </li>
 
@@ -105,19 +104,29 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ path('front_user_show_public', { id : app.user.id, username : app.user.username } ) }}">ma page</a>
+                                <a href="{{ path('front_user_show_public', { id : app.user.id, username : app.user.username } ) }}">
+                                    {% trans %}navbar.user.my_page{% endtrans %}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('front_user_edit', { id : app.user.id } ) }}">mon profil</a>
+                                <a href="{{ path('front_user_edit', { id : app.user.id } ) }}">
+                                    {% trans %}navbar.user.my_profile{% endtrans %}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('front_user_next_events') }}">mes évenements à venir</a>
+                                <a href="{{ path('front_user_next_events') }}">
+                                    {% trans %}navbar.user.next_events{% endtrans %}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('front_user_passed_events') }}">mes évenements passés</a>
+                                <a href="{{ path('front_user_passed_events') }}">
+                                    {% trans %}navbar.user.passed_events{% endtrans %}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('front_event_new') }}">Ajouter un événement</a>
+                                <a href="{{ path('front_event_new') }}">
+                                    {% trans %}navbar.user.add_event{% endtrans %}
+                                </a>
                             </li>
                         </ul>
                     </li> 

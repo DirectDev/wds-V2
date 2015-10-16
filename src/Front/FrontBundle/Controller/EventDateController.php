@@ -73,7 +73,7 @@ class EventDateController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('front.add_date'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('front.add_date'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
 
         return $form;
     }
@@ -186,7 +186,7 @@ class EventDateController extends Controller {
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-md pull-right')));
 
         return $form;
     }
@@ -276,7 +276,7 @@ class EventDateController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('front_eventdate_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete')))
+                        ->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('delete')))
                         ->getForm()
         ;
     }

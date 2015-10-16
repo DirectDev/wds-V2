@@ -1,7 +1,7 @@
 {% extends 'FrontFrontBundle::layout.html.twig' %}
 
 {% block title %}
-    My Next Events 
+    {% trans %}user.next_events{% endtrans %} 
 {% endblock %}
 
 {% block stylesheets %}
@@ -17,7 +17,7 @@
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
         <div class="container">
-            <h1 class="pull-left">My Next Events </h1>
+            <h1 class="pull-left">{% trans %}user.next_events{% endtrans %}</h1>
 
         </div>
     </div><!--/breadcrumbs-->

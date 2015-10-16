@@ -40,18 +40,18 @@
             <div class="profile-body margin-bottom-20">
                 <div class="tab-v1">
                     <ul class="nav nav-justified nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#description">Edit Event</a></li>
-                        <li><a data-toggle="tab" href="#address">Address</a></li>
-                        <li><a data-toggle="tab" href="#eventdate">Dates</a></li>
-                        <li><a data-toggle="tab" href="#link">Manage Links</a></li>
-                        <li><a data-toggle="tab" href="#picture">Add Pictures</a></li>
+                        <li class="active"><a data-toggle="tab" href="#description">{% trans %}event.edit.description{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#address">{% trans %}event.edit.addresses{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#eventdate">{% trans %}event.edit.dates{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#link">{% trans %}event.edit.links{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#picture">{% trans %}event.edit.pictures{% endtrans %}</a></li>
                     </ul>          
                     <div class="tab-content">
 
 
 
                         <div id="description" class="profile-edit tab-pane fade in active">
-                            <h2 class="heading-md">Manage your name and details.</h2>
+                            <h2 class="heading-md">{% trans %}event.edit.description.h2{% endtrans %}</h2>
 
                             <div id="descriptionForm">
                                 {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
@@ -60,7 +60,7 @@
 
 
                         <div id="link" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Manage your links</h2>
+                            <h2 class="heading-md">{% trans %}event.edit.links.h2{% endtrans %}</h2>
 
                             <div id="linkForm">
                                 {% include 'FrontFrontBundle:Event:linkForm.html.twig' %}
@@ -69,8 +69,7 @@
                         </div>
 
                         <div id="picture" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Add Pictures</h2>
-                            <p>{% trans %}event.images_title{% endtrans %}</p>
+                            <h2 class="heading-md">{% trans %}event.edit.pictures.h2{% endtrans %}</h2>
                             <br>
 
                             {% set action_path = path('front_event_edit' , { id: event.id, editId: editId }) %}
@@ -88,7 +87,7 @@
                         </div>
 
                         <div id="address" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">{% trans %}event.address_title{% endtrans %}</h2>
+                            <h2 class="heading-md">{% trans %}event.edit.addresses.h2{% endtrans %}</h2>
 
                             <button class='btn btn-success margin-bottom-30 pull-left' id="eventAddAddress" href="{{ path('front_address_event_new', { id : event.id } ) }}">
                                 {% trans %}event.add_address_button{% endtrans %}
@@ -105,7 +104,7 @@
 
 
                         <div id="eventdate" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Manage your dates</h2>
+                            <h2 class="heading-md">{% trans %}event.edit.dates.h2{% endtrans %}</h2>
                             <br>
 
                             <div id='eventdates_form' class="panel-body col-sm-6">

@@ -16,11 +16,11 @@
 
 
 {% block content %}
-    
+
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
         <div class="container">
-            <h1 class="pull-left">Edit My Profil </h1>
+            <h1 class="pull-left">{% trans %}user.edit_profil{% endtrans %}</h1>
         </div>
     </div><!--/breadcrumbs-->
     <!--=== End Breadcrumbs ===-->
@@ -33,13 +33,13 @@
             <div class="profile-body margin-bottom-20">
                 <div class="tab-v1">
                     <ul class="nav nav-justified nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#profile">Edit Profile</a></li>
-                        <li><a data-toggle="tab" href="#description">Change Descriptions</a></li>
-                        <li><a data-toggle="tab" href="#link">Manage Links</a></li>
-                        <li><a data-toggle="tab" href="#picture">Add Pictures</a></li>
-                        <li><a data-toggle="tab" href="#music">Add Musics</a></li>
-                        <li><a data-toggle="tab" href="#video">Add Videos</a></li>
-                        <li><a data-toggle="tab" href="#address">Addresses</a></li>
+                        <li class="active"><a data-toggle="tab" href="#profile">{% trans %}user.edit.profil{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#description">{% trans %}user.edit.descriptions{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#link">{% trans %}user.edit.links{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#picture">{% trans %}user.edit.pictures{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#music">{% trans %}user.edit.musics{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#video">{% trans %}user.edit.videos{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#address">{% trans %}user.edit.adresses{% endtrans %}</a></li>
                     </ul>          
                     <div class="tab-content">
 
@@ -47,6 +47,7 @@
 
                         <div id="profile" class="profile-edit tab-pane fade in active">
                             <h2 class="heading-md">Manage your name and details.</h2>
+                            <h2 class="heading-md">{% trans %}user.edit.profil.h2{% endtrans %}</h2>
                             <br>
 
                             <div id="profilForm">
@@ -57,6 +58,7 @@
 
                         <div id="description" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">Manage your descriptions</h2>
+                            <h2 class="heading-md">{% trans %}user.edit.descriptions.h2{% endtrans %}</h2>
                             <br>
 
                             <div id="descriptionForm">
@@ -66,7 +68,7 @@
                         </div>
 
                         <div id="link" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Manage your links</h2>
+                            <h2 class="heading-md">{% trans %}user.edit.links.h2{% endtrans %}</h2>
                             <p>Link your profile to social networks.</p>
                             <br>
 
@@ -77,8 +79,7 @@
                         </div>
 
                         <div id="picture" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Add Pictures</h2>
-                            <p>{% trans %}user.images_title{% endtrans %}</p>
+                            <h2 class="heading-md">{% trans %}user.edit.photos.h2{% endtrans %}</h2>
                             <br>
 
                             {% set action_path = path('front_user_edit' , { id: entity.id, editId: editId }) %}
@@ -96,7 +97,7 @@
                         </div>
 
                         <div id="music" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">{% trans %}user.musics_title{% endtrans %}</h2>
+                            <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
 
                             <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
                                 {% trans %}user.add_music_button{% endtrans %}
@@ -113,7 +114,7 @@
                         </div>
 
                         <div id="video" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">{% trans %}user.videos_title{% endtrans %}</h2>
+                            <h2 class="heading-md">{% trans %}user.edit.videos.h2{% endtrans %}</h2>
 
                             <button class='btn btn-success margin-bottom-30 pull-left' id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">
                                 {% trans %}user.add_video_button{% endtrans %}
@@ -128,7 +129,7 @@
                         </div>
 
                         <div id="address" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">{% trans %}user.address_title{% endtrans %}</h2>
+                            <h2 class="heading-md">{% trans %}user.edit.addresses.h2{% endtrans %}</h2>
 
                             <button class='btn btn-success margin-bottom-30 pull-left' id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">
                                 {% trans %}user.add_address_button{% endtrans %}

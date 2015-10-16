@@ -76,7 +76,7 @@ class MusicTypeController extends Controller {
 //            'method' => 'POST',
 //        ));
 //
-//        $form->add('submit', 'submit', array('label' => 'Create'));
+//        $form->add('submit', 'submit', array('label' => /** @Ignore */ 'Create'));
 //
 //        return $form;
 //    }
@@ -156,7 +156,7 @@ class MusicTypeController extends Controller {
 //            'method' => 'PUT',
 //        ));
 //
-//        $form->add('submit', 'submit', array('label' => 'Update'));
+//        $form->add('submit', 'submit', array('label' => /** @Ignore */ 'Update'));
 //
 //        return $form;
 //    }
@@ -226,7 +226,7 @@ class MusicTypeController extends Controller {
 //        return $this->createFormBuilder()
 //            ->setAction($this->generateUrl('front_musictype_delete', array('id' => $id)))
 //            ->setMethod('DELETE')
-//            ->add('submit', 'submit', array('label' => 'Delete'))
+//            ->add('submit', 'submit', array('label' => /** @Ignore */ 'Delete'))
 //            ->getForm()
 //        ;
 //    }

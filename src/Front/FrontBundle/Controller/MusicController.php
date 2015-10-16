@@ -67,7 +67,7 @@ class MusicController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-md pull-left')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-md pull-left')));
 
         return $form;
     }
@@ -159,7 +159,7 @@ class MusicController extends Controller {
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ 'Update'));
 
         return $form;
     }

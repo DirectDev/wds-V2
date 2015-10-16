@@ -1,5 +1,5 @@
 {% set user = event.getUser %}
-<h3>Posted by</h3>  
+<h3>{% trans %}user.posted_by{% endtrans %}</h3>  
 
 {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
 

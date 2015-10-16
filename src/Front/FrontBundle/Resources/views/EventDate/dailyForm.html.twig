@@ -1,8 +1,7 @@
 <div  id='eventdate_add_by_weekday' class="panel panel-default">
     <div class="panel-body">
         <h3>{% trans %}event.eventdates_repeat_form_title{% endtrans %}</h3>
-{#        {% form_theme form with ['FrontFrontBundle:Form:bootstrap_form_override_eventdates.html.twig'] %}
-#}        {{ form_start(form, { 'attr' : {'id': 'form_eventdate_daily'} } ) }}
+        {{ form_start(form, { 'attr' : {'id': 'form_eventdate_daily'} } ) }}
         {{ form_errors(form) }}
 
         {{ form_row(form.weekday, { 'label_attr' : {'class' : 'checkbox-inline' } } ) }}

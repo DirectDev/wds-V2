@@ -4,14 +4,14 @@
     <div class="cbp_tmlabel">
         <h2>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }}</h2>    
         <p> 
-            <b>Horaires :</b> {{ entity.starttime|date('H:i') }}
+            <b>{% trans %}event.hours{% endtrans %} :</b> {{ entity.starttime|date('H:i') }}
             {% if entity.stopdate and entity.stoptime %}
                 {% trans %}event.to{% endtrans %} {{ entity.stoptime|date('H:i') }}
             {% endif %}
         </p>
         {% if entity.getAddress and entity.getAddress().isValid() %}  
             <p>
-                <b>Adresse :</b> {{ entity.getAddress() }}
+                <b>{% trans %}event.address{% endtrans %} :</b> {{ entity.getAddress() }}
             </p>
         {% endif %}
     </div>

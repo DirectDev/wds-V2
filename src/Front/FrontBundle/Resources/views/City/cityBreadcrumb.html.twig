@@ -7,7 +7,7 @@
             {% endif %}
         </h1>
         <ul class="pull-right breadcrumb">
-            <li><a href="{{ path('home') }}">Home</a></li>
+            <li><a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a></li>
             <li><a href="{{ path('city_calendar', { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">{{ app.session.get('city')|capitalize}}</a></li>
 
             <li class="active">

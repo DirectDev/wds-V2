@@ -18,14 +18,14 @@
                             <div class="cbp_tmlabel">
                                 <h2><a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" >{{ event.getTitle|capitalize }}</a></h2>
                                 <p> 
-                                    <b>Horaires :</b> {{ eventDate.starttime|date('H:i') }}
+                                    <b>{% trans %}timeline.hours{% endtrans %} :</b> {{ eventDate.starttime|date('H:i') }}
                                     {% if eventDate.stopdate and eventDate.stoptime %}
                                         {% trans %}event.to{% endtrans %} {{ eventDate.stoptime|date('H:i') }}
                                     {% endif %}
                                 </p>
                                 {% if event.getAddress and event.getAddress().isValid() %}  
                                     <p>
-                                        <b>Adresse :</b> {{ event.getAddress() }}
+                                        <b>{% trans %}timeline.address{% endtrans %} :</b> {{ event.getAddress() }}
                                     </p>
                                 {% endif %}
                                 <p>{{ event.getEventTypesText }} </p> 

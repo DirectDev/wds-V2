@@ -11,7 +11,7 @@
             <div class="overview">
                 <i class="fa fa-thumbs-up"></i>
                 <div class="overflow-h">
-                    <small>Likes</small>
+                    <small>{% trans %}overviews.likes{% endtrans %}</small>
                     <small>
                         {% if count_lovesme > 1000 %}
                             {{ (count_lovesme/1000)|round(1) }}k
@@ -39,7 +39,7 @@
             <div class="overview">
                 <i class="fa fa-calendar-o"></i>
                 <div class="overflow-h">
-                    <small>Events</small>
+                    <small>{% trans %}overviews.events{% endtrans %}</small>
                     <small>{{ count_events }}</small>
                     <div class="progress progress-u progress-xxs">
                         <div style="width: {{ ratio_events }}%" aria-valuemax="{{ max_events }}" aria-valuemin="0" aria-valuenow="{{ ratio_events }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -61,7 +61,7 @@
             <div class="overview">
                 <i class="fa fa-youtube-play"></i>
                 <div class="overflow-h">
-                    <small>Videos</small>
+                    <small>{% trans %}overviews.videos{% endtrans %}</small>
                     <small>{{ count_videos }}</small>
                     <div class="progress progress-u progress-xxs">
                         <div style="width: {{ ratio_videos }}%" aria-valuemax="{{ max_videos }}" aria-valuemin="0" aria-valuenow="{{ ratio_videos }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -83,7 +83,7 @@
             <div class="overview">
                 <i class="fa fa-camera"></i>
                 <div class="overflow-h">
-                    <small>Photos</small>
+                    <small>{% trans %}overviews.photos{% endtrans %}</small>
                     <small>{{ count_photos }}</small>
                     <div class="progress progress-u progress-xxs">
                         <div style="width: {{ ratio_photos }}%" aria-valuemax="{{ max_photos }}" aria-valuemin="0" aria-valuenow="{{ ratio_photos }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -105,7 +105,7 @@
             <div class="overview">
                 <i class="fa fa-music"></i>
                 <div class="overflow-h">
-                    <small>Musics</small>
+                    <small>{% trans %}overviews.musics{% endtrans %}</small>
                     <small>{{ count_musics }}</small>
                     <div class="progress progress-u progress-xxs">
                         <div style="width: {{ ratio_musics }}%" aria-valuemax="{{ max_musics }}" aria-valuemin="0" aria-valuenow="{{ ratio_musics }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -128,7 +128,7 @@
             <div class="overview">
                 <i class="fa fa-eye"></i>
                 <div class="overflow-h">
-                    <small>Views</small>
+                    <small>{% trans %}overviews.views{% endtrans %}</small>
                     <small>
                         {% if count_views > 1000 %}
                             {{ (count_views/1000)|round(1) }}k

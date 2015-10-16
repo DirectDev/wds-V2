@@ -81,7 +81,7 @@ class AddressController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -158,7 +158,7 @@ class AddressController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -250,7 +250,7 @@ class AddressController extends Controller {
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update')));
 
         return $form;
     }

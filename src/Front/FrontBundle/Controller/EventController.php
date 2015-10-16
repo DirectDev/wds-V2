@@ -89,7 +89,7 @@ class EventController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -193,7 +193,7 @@ class EventController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-lg pull-right')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update'), 'attr' => array('class' => 'btn btn-success btn-lg pull-right')));
 
         return $form;
     }
@@ -377,7 +377,7 @@ class EventController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('front_event_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete')))
+                        ->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('delete')))
                         ->getForm()
         ;
     }
@@ -455,7 +455,7 @@ class EventController extends Controller {
                         ->setAction($this->generateUrl('front_event_love', array('id' => $id)))
                         ->setMethod('POST')
                         ->add('submit', 'submit', array(
-                            'label' => $this->get('translator')->trans('I Like'),
+                            'label' => /** @Ignore */ $this->get('translator')->trans('I Like'),
                             'attr' => array(
                                 'class' => 'btn-u btn-block love_button'
                             )
@@ -469,7 +469,7 @@ class EventController extends Controller {
                         ->setAction($this->generateUrl('front_event_unlove', array('id' => $id)))
                         ->setMethod('POST')
                         ->add('submit', 'submit', array(
-                            'label' => $this->get('translator')->trans("I don't like"),
+                            'label' => /** @Ignore */ $this->get('translator')->trans("I don't like"),
                             'attr' => array(
                                 'class' => 'btn-u btn-block love_button'
                             )
@@ -558,7 +558,7 @@ class EventController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update')));
 
         return $form;
     }
@@ -570,7 +570,7 @@ class EventController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('update')));
 
         return $form;
     }

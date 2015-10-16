@@ -1,7 +1,7 @@
 <div class="col-sm-6 sm-margin-bottom-30">
     <div class="panel panel-profile">
         <div class="panel-heading overflow-h">
-            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-lightbulb-o"></i> Skills</h2>
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-lightbulb-o"></i>{% trans %}overviews.skills{% endtrans %}</h2>
         </div>
         <div class="panel-body">
             
@@ -11,7 +11,7 @@
             {% else %}
                 {% set ratio_lovesme = max_lovesme %}
             {% endif %}
-            <small>Likes</small>
+            <small>{% trans %}overviews.likes{% endtrans %}</small>
             <small>
                 {% if count_lovesme > 1000 %}
                     {{ (count_lovesme/1000)|round(1) }}k
@@ -31,7 +31,7 @@
             {% else %}
                 {% set ratio_events = max_events %}
             {% endif %}
-            <small>Events</small>
+            <small>{% trans %}overviews.events{% endtrans %}</small>
             <small>{{ count_events }}</small>
             <div class="progress progress-u progress-xxs">
                 <div style="width: {{ ratio_events }}%" aria-valuemax="{{ max_events }}" aria-valuemin="0" aria-valuenow="{{ ratio_events }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -44,7 +44,7 @@
             {% else %}
                 {% set ratio_videos = max_videos %}
             {% endif %}
-            <small>Videos</small>
+            <small>{% trans %}overviews.videos{% endtrans %}</small>
             <small>{{ count_videos }}</small>
             <div class="progress progress-u progress-xxs">
                 <div style="width: {{ ratio_videos }}%" aria-valuemax="{{ max_videos }}" aria-valuemin="0" aria-valuenow="{{ ratio_videos }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -57,7 +57,7 @@
             {% else %}
                 {% set ratio_photos = max_photos %}
             {% endif %}
-            <small>Photos</small>
+            <small>{% trans %}overviews.photos{% endtrans %}</small>
             <small>{{ count_photos }}</small>
             <div class="progress progress-u progress-xxs">
                 <div style="width: {{ ratio_photos }}%" aria-valuemax="{{ max_photos }}" aria-valuemin="0" aria-valuenow="{{ ratio_photos }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -70,7 +70,7 @@
             {% else %}
                 {% set ratio_musics = max_musics %}
             {% endif %}
-            <small>Musics</small>
+            <small>{% trans %}overviews.musics{% endtrans %}</small>
             <small>{{ count_musics }}</small>
             <div class="progress progress-u progress-xxs">
                 <div style="width: {{ ratio_musics }}%" aria-valuemax="{{ max_musics }}" aria-valuemin="0" aria-valuenow="{{ ratio_musics }}" role="progressbar" class="progress-bar progress-bar-u">
@@ -85,7 +85,7 @@
             {% else %}
                 {% set ratio_views = max_views %}
             {% endif %}
-            <small>Views</small>
+            <small>{% trans %}overviews.views{% endtrans %}</small>
             <small>
                 {% if count_views > 1000 %}
                     {{ (count_views/1000)|round(1) }}k

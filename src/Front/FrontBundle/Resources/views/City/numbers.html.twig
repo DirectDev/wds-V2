@@ -1,7 +1,7 @@
 <div class="panel-heading-v2 overflow-h">
-    <h2 class="heading-xs pull-left"><i class="fa fa-bar-chart-o"></i> Chiffres</h2>
+    <h2 class="heading-xs pull-left"><i class="fa fa-bar-chart-o"></i>{% trans %}overviews.numbers{% endtrans %}</h2>
 </div>
-<h3 class="heading-xs">Events <span class="pull-right">{{ count_events }}</span></h3>
+<h3 class="heading-xs">{% trans %}overviews.events{% endtrans %} <span class="pull-right">{{ count_events }}</span></h3>
     {% set max_events = 100 %}
     {% if count_events < max_events %}
         {% set ratio_events = (count_events/max_events*100) %}
@@ -18,7 +18,7 @@
 {% else %}
     {% set ratio_teachers = max_teachers %}
 {% endif %}
-<h3 class="heading-xs">Teachers <span class="pull-right">{{ count_teachers }}</span></h3>
+<h3 class="heading-xs">{% trans %}overviews.teachers{% endtrans %} <span class="pull-right">{{ count_teachers }}</span></h3>
 <div class="progress progress-u progress-xxs">
     <div style="width: {{ ratio_teachers }}%" aria-valuemax="{{ max_teachers }}" aria-valuemin="0" aria-valuenow="{{ ratio_teachers }}" role="progressbar" class="progress-bar progress-bar-blue">
     </div>
@@ -29,7 +29,7 @@
 {% else %}
     {% set ratio_bars = max_bars %}
 {% endif %}
-<h3 class="heading-xs">Lieux <span class="pull-right">{{ count_bars }}</span></h3>
+<h3 class="heading-xs">{% trans %}overviews.places{% endtrans %} <span class="pull-right">{{ count_bars }}</span></h3>
 <div class="progress progress-u progress-xxs">
     <div style="width: {{ ratio_bars }}%" aria-valuemax="{{ max_bars }}" aria-valuemin="0" aria-valuenow="{{ ratio_bars }}" role="progressbar" class="progress-bar progress-bar-green">
     </div>
@@ -40,7 +40,7 @@
 {% else %}
     {% set ratio_dancers = max_dancers %}
 {% endif %}
-<h3 class="heading-xs">Dancers <span class="pull-right">{{ count_dancers }}</span></h3>
+<h3 class="heading-xs">{% trans %}overviews.dancers{% endtrans %} <span class="pull-right">{{ count_dancers }}</span></h3>
 <div class="progress progress-u progress-xxs margin-bottom-40">
     <div style="width: {{ ratio_dancers }}%" aria-valuemax="{{ max_dancers }}" aria-valuemin="0" aria-valuenow="{{ ratio_dancers }}" role="progressbar" class="progress-bar progress-bar-dark">
     </div>

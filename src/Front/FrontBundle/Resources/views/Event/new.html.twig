@@ -35,18 +35,18 @@
             <div class="profile-body margin-bottom-20">
                 <div class="tab-v1">
                     <ul class="nav nav-justified nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#description">Edit Event</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">Address</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">Dates</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">Manage Links</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">Add Pictures</a></li>
+                        <li class="active"><a data-toggle="tab" href="#description">{% trans %}event.edit.description{% endtrans %}</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.addresses{% endtrans %}</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.dates{% endtrans %}</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.links{% endtrans %}</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.pictures{% endtrans %}</a></li>
                     </ul>          
                     <div class="tab-content">
 
 
 
                         <div id="profile" class="profile-edit tab-pane fade in active">
-                            <h2 class="heading-md">Manage your name and details.</h2>
+                            <h2 class="heading-md">{% trans %}event.edit.description.h2{% endtrans %}</h2>
                             <div id="descriptionForm">
                                 {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
                             </div>

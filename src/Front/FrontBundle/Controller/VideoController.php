@@ -67,7 +67,7 @@ class VideoController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -159,7 +159,7 @@ class VideoController extends Controller {
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ 'Update'));
 
         return $form;
     }
