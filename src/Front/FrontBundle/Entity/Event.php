@@ -190,6 +190,11 @@ class Event {
         foreach ($this->addresses as $address)
             return $address;
     }
+    
+    public function getCity() {
+        if($this->getAddress())
+            return $this->getCity ();
+    }
 
     public function getLatitude() {
         if ($this->getAddress())

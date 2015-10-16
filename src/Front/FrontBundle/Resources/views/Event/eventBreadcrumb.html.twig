@@ -5,12 +5,25 @@
         </h1>
         <ul class="pull-right breadcrumb">
             <li><a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a></li>
-            <li><a href="{{ path('city_calendar', { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">{{ app.session.get('city')|capitalize}}</a></li>
 
-            {% if event.eventTypes|length > 0 %}
+            {% if event.getCity() %}
+                {% set city = event.getCity() %}
+            {% endif %}
+            {% if app.session.get('city') %}
+                {% set city = app.session.get('city') %}
+            {% endif %}
+            {% if city is defined %}
+                <li>
+                    <a href="{{ path('city_calendar', { 'searchcity': city, 'searcheventdate': app.session.get('startdate') }) }}">
+                        {{ city|capitalize}}
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if event.eventTypes|length > 0 and city is defined %}
                 <li>
                     {% for eventType in event.eventTypes %}
-                        <a href="{{ path('city_'~eventType|lower, { 'searchcity': app.session.get('city'), 'searcheventdate': app.session.get('startdate') }) }}">{{ eventType|capitalize}}</a>&nbsp;
+                        <a href="{{ path('city_'~eventType|lower, { 'searchcity': city, 'searcheventdate': app.session.get('startdate') }) }}">{{ eventType|capitalize}}</a>&nbsp;
                     {% endfor %}
                 </li>
             {% endif %}
