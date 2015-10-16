@@ -1,7 +1,9 @@
-
-create: Créer
-delete: Effacer
-update: 'Mettre à jour'
+'': ''
+Create: Créer
+Delete: Supprimer
+'I Like': "J'aime"
+'I don''t like': "Je n'aime plus"
+Update: Mettre à jour
 
 address:
     city: Ville
@@ -69,6 +71,22 @@ admin:
     user_show_title: Utilisateur
     users: Utilisateurs
 
+city:
+    artits: Artistes   
+    calendar: Calendrier   
+    concerts: Concerts   
+    dancers: Danseurs   
+    festivals: Festivals   
+    introductions: Initiations   
+    lessons: Cours   
+    musics: Musiques   
+    parties: Soirées   
+    photos: Photos   
+    places: Lieux   
+    shows: Shows   
+    teachers: Professeurs   
+    videos: Videos   
+
 contact:
     contact_alert_success: 'Votre message a été envoyé avec succès. Merci !'
     contact_alert_warning: 'Votre message n''a pas été envoyé. Merci de réessayer.'
@@ -81,34 +99,53 @@ contact:
     testimonial_p2: 'Merci de nous contacter en cas de question ou de suggestion. Nous nous efforcerons de vous répondre le plus rapidement possible.'
     testimonial_p3: 'Merci de l''intérêt que vous portez à ce projet.'
 
+create: Créer
 delete: Effacer
 en: English
 
 event:
+    add_address_button: Ajouter une adresse
+    address: Addresses   
     address_title: Adresse
     addresses_title: Adresses
 
     alert:
         invalid_address: 'Merci d''indiquer une adresse correcte'
         missing_address: 'Merci d''indiquer une adresse'
-        no_next_date: 'Il n''y a pas de date à venir pour cet évenement'
-        no_profile_picture: 'Il n''y a pas d''image pour cet évenement'
         new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''évenement.'
         new_info2: 'Vous pourrez ajouter l''adresse, les dates et des images sur la page suivante.'
+        no_next_date: 'Il n''y a pas de date à venir pour cet évenement'
+        no_profile_picture: 'Il n''y a pas d''image pour cet évenement'
         valid: 'Cet événement apparaît maintenant dans les résultats de recherche.'
 
+    calendar: Calendrier   
     date: Date
     description_title: Description
     details_title: Détails
+
+    edit:
+        addresses: Adresses   
+        addresses.h2: Indiquez ici la ou les adresses de cet événement   
+        dates: Dates   
+        dates.h2: Indiquez ici à quelles dates aura lieu cet événement   
+        description: Description   
+        description.h2: "Décrivez l'évenement"   
+        links: Liens   
+        links.h2: Liez votre évenement aux réseaux sociaux   
+        pictures: Photos   
+        pictures.h2: Ajoutez des photos   
+
     event_title: Evenement
+    eventdates_add_form_title: 'Ajouter une date unique : '
+    eventdates_edit_form_title: 'Modifier la date'
+    eventdates_repeat_form_title: 'Ajouter une date hebdomadaire : '
     eventdates_title: Dates
-    eventdates_add_form_title: "Ajouter une date unique : "
-    eventdates_edit_form_title: Modifier la date
-    eventdates_repeat_form_title: "Ajouter une date hebdomadaire : "
     from: Du
+    hours: Horaires   
     images_title: Images
     music: Musique
     share_this: Partager
+    they_like: Ils aiment   
     to: Au
     type: 'Type d''évenement'
 
@@ -117,12 +154,17 @@ file:
     cancel: Annuler
     delete_file: Effacer
     drag_drop_message: 'ou glissez-déposez vos fichiers ici'
-    save: Enregistrer les images
+    save: 'Enregistrer les images'
     start_upload: Uploader
     uploading: Chargement
 
 footer:
-    contact: 'Contactez-nous'
+    artits: Artistes   
+    baseline: "Trouvez les événements Salsa, Bachata, Kizomba and Tango, n'importe où dans le monde."   
+    cities: Villes   
+    contact: Contactez-nous
+    contact_us: Contactez-nous   
+    festivals: Festivals   
     policy: 'Mentions Légales'
 
 form:
@@ -598,31 +640,35 @@ fr: Français
 
 front:
     add: Ajouter
-    add_date: Ajouter la date
-    add_weekly_date: Ajouter les dates
+    add_date: 'Ajouter la date'
+    add_weekly_date: 'Ajouter les dates'
     addresses_title: Adresses
 
     alert:
-        warning: 'Attention ! '
         info: 'Info : '
         success: 'Félicitations ! '
+        warning: 'Attention ! '
 
     back: Retour
     back_to_list: 'Retour à la liste'
+    baseline: "La Salsa près de chez soi, en vacances, et n'importe où dans le monde."
     cancel: Annuler
     edit: Modifier
+
+    event:
+        see_event: "Voir"
+
     event_new_title: 'Nouvel évenement'
     eventdates_title: Dates
     link_add_address: 'Ajouter une adresse'
     link_add_eventdate: 'Ajouter une date'
     link_delete_address: 'Effacer l''adresse'
     link_delete_eventdate: 'Effacer la date'
+    map_title: Carte
+    search_event_button: 'Recherchez les événements'
     today: 'Aujourd''hui'
     user_edit_title: 'Modifier l''utilisateur'
     user_show_title: 'Afficher l''utilisateur'
-    map_title: 'Carte'
-    search_event_button: Recherchez les événements
-    baseline: La Salsa près de chez soi, en vacances, et n'importe où dans le monde.
 
 home:
     about_us_benefit_1: 'Une carte montrant les soirées/cours/festival... du jour.'
@@ -637,29 +683,120 @@ home:
     about_us_title_desc: '<strong>WeDanceSalsa</strong> est une idée venant de danseurs de Salsa'
 
     alert:
-        success_contact_button: 'Contactez-nous'
+        success_contact_button: Contactez-nous
         success_contribute: 'Si ce projet vous intéresse, vous pouvez contribuer en : partageant sur Facebook, en parlant à vos amis, traduisant le site, faisant des suggestions de nouvelles fonctionnalités, aidant pour le design ou la communication/SEO, etc. '
         success_events: 'Cette page indique les évenements Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>. Ajoutez votre évenement.'
         warning: 'Attention !'
         warning_no_events: 'Il n''y a pas encore d''évenement Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>.  Ajoutez votre évenement.'
 
+    banner: "Trouvez les événements Salsa, Bachata, Kizomba and Tango, n'importe où dans le monde."   
+
+    cities:
+        h2: Découvrez la salsa dans ces villes   
+
+    festivals:
+        h2: Les festivals salsas à travers le monde   
+
+    users:
+        h2: Les acteurs de la sals   
+
 link:
     home: Accueil
 
+modify: Modifier   
+
 navbar:
+    artits: Artistes   
+    bands: Musiciens   
+    festivals: Festivals   
+    festivals.africa: Afrique   
+    festivals.asia: Asie   
+    festivals.australia: Australie   
+    festivals.calendar: Calendier  
+    festivals.europe: Europe   
+    festivals.north_america: Amérique du Nord   
+    festivals.south_america: Amérique du Sud   
     help: Aide
+    home: Accueil   
+    learn: Apprendre   
     login: Connexion
     logout: Déconnexion
+    musics: Musiques   
     publish_button: 'Ajouter un évenement'
     register: Inscription
+    toogle_navigation: Naviguer   
+
+    user:
+        add_event: Ajouter un événement   
+        my_page: Ma page   
+        my_profile: Mon profil   
+        next_events: Mes prochains événements   
+        passed_events: Mes événements précédents   
+
+    videos: Vidéos   
+
+overviews:
+    dancers: Danseurs   
+    events: évenenents   
+    likes: J'aime   
+    musics: Musiques   
+    numbers: Chiffres   
+    photos: Photos   
+    places: Lieux   
+    skills: Détails   
+    teachers: Professeurs   
+    videos: Vidéos   
+    views: Vues   
+
+timeline:
+    address: Adresse   
+    hours: Horaires   
+
+update: 'Mettre à jour'
 
 user:
+    add_address_button: Ajouter une adresse
+    add_music_button: Ajouter une musique
+    add_video_button: Ajouter une vidéo
+    address_title: Adresse
     addresses_title: 'Mon Adresse'
     description_title: 'Ma Description'
+
+    edit:
+        addresses:
+            h2: Indiquez votre ou vos adresses   
+
+        adresses: Adresses   
+        descriptions: Descriptions   
+        descriptions.h2: Décrivez-vous ici   
+        links: Liens   
+        links.h2: Liez votre profil aux réseaux sociaux   
+        musics: Musiques   
+        musics.h2: Partagez vous musiques préfèrées   
+
+        photos:
+            h2: Partagez vos photos   
+
+        pictures: Photos   
+        profil: Profil   
+        profil.h2: Indiquez votre nom et vos préférences   
+        videos: Vidéos   
+        videos.h2: Partagez vos vidéos préfèrées   
+
+    edit_profil: Modifier mon profil   
     events_title: 'Mes Prochains Evenements'
     images_title: 'Mes Images'
+    musics_title: Musiques
+    my_musics: Mes musiques   
+    my_photos: Mes photos   
+    my_videos: Mes vidéos   
+    next_events: Mes prochains événements   
+    passed_events: Mes précédents événements   
+    posted_by: Publié par   
     profile_title: 'Mon Profil'
+    they_like: Ils aiment   
     user_title: 'Mon Profil'
+    videos_title: Vidéos
 
 user_bundle:
     login: Connexion

@@ -34,7 +34,7 @@ registration:
         message: Message
         subject: Sujet
 
-    submit: M'inscrire
+    submit: 'M''inscrire'
 
 resetting:
     check_email: 'Vérification de l''email'
@@ -57,5 +57,5 @@ security:
     login:
         password: Password
         remember_me: 'Rester connecté'
-        submit: Me connecter
+        submit: 'Me connecter'
         username: Nom

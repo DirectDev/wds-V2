@@ -1,7 +1,9 @@
-
-create: Create
-delete: Delete
-update: Update
+'': ''
+Create: Create
+Delete: Delete
+'I Like': 'I Like'
+'I don''t like': 'I don''t like'
+Update: Update
 
 address:
     city: City
@@ -69,6 +71,22 @@ admin:
     user_show_title: User
     users: Users
 
+city:
+    artits: Artits   
+    calendar: Calendar   
+    concerts: Concerts   
+    dancers: Dancers   
+    festivals: Festivals   
+    introductions: Introductions   
+    lessons: Lessons   
+    musics: Musics   
+    parties: Parties   
+    photos: Photos   
+    places: Places   
+    shows: Shows   
+    teachers: Teachers   
+    videos: Videos   
+
 contact:
     contact_alert_success: 'Your contact enquiry was successfully sent. Thank you!'
     contact_alert_warning: 'Your contact enquiry was NOT sent. Please try again.'
@@ -81,34 +99,53 @@ contact:
     testimonial_p2: 'Please contact us about any question or suggestion you have. We''ll do our best to answer you as fast as possible.'
     testimonial_p3: 'Thanks for the interest you show to our project.'
 
+create: Create
 delete: Delete
 en: English
 
 event:
+    add_address_button: Add Address
+    address: Address   
     address_title: Address
     addresses_title: Addresses
 
     alert:
         invalid_address: 'Please add a correct address'
         missing_address: 'Please add an address'
-        no_next_date: 'There are no future dates for this event'
-        no_profile_picture: 'There is no picture for this event'
         new_info: 'First, add a title, a description, a type and the music types.'
         new_info2: 'You may add an address, dates, and pictures on the next page.'
+        no_next_date: 'There are no future dates for this event'
+        no_profile_picture: 'There is no picture for this event'
         valid: 'This event is valid and shows in search results.'
 
+    calendar: Calendar   
     date: Date
     description_title: Description
     details_title: Details
+
+    edit:
+        addresses: Addresses   
+        addresses.h2: Manage event addresses   
+        dates: Dates   
+        dates.h2: Manage event dates   
+        description: Description   
+        description.h2: Manage your descriptions   
+        links: Links   
+        links.h2: Link your profile to social networks.   
+        pictures: Pictures   
+        pictures.h2: Show your favorite pictures   
+
     event_title: Event
+    eventdates_add_form_title: 'Add a single date : '
+    eventdates_edit_form_title: 'Edit date'
+    eventdates_repeat_form_title: 'Add a weekly date : '
     eventdates_title: Dates
-    eventdates_add_form_title: "Add a single date : "
-    eventdates_edit_form_title: Edit date
-    eventdates_repeat_form_title: "Add a weekly date : "
     from: From
+    hours: Hours   
     images_title: Images
     music: Music
     share_this: 'Share this'
+    they_like: Likes   
     to: To
     type: 'Event type'
 
@@ -117,12 +154,17 @@ file:
     cancel: Cancel
     delete_file: 'Delete image'
     drag_drop_message: 'Or drag and drop your images here'
-    save: Save images
+    save: 'Save images'
     start_upload: 'Start upload'
     uploading: Uploading
 
 footer:
+    artits: Artits   
+    baseline: Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.   
+    cities: Cities   
     contact: 'Contact Us'
+    contact_us: Contact Us   
+    festivals: Festivals   
     policy: 'Privacy Policy'
 
 form:
@@ -598,31 +640,35 @@ fr: Français
 
 front:
     add: Add
-    add_date: Add date
-    add_weekly_date: Add dates
+    add_date: 'Add date'
+    add_weekly_date: 'Add dates'
     addresses_title: Addresses
 
     alert:
-        warning: 'Warning ! '
         info: 'Info : '
         success: 'Well done ! '
+        warning: 'Warning ! '
 
     back: Back
     back_to_list: 'Back to list'
+    baseline: 'Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.'
     cancel: Cancel
     edit: Edit
+
+    event:
+        see_event: See Event
+
     event_new_title: 'New event'
     eventdates_title: Dates
     link_add_address: 'Add address'
     link_add_eventdate: 'Add event date'
     link_delete_address: 'Delete address'
     link_delete_eventdate: 'Delete event date'
+    map_title: Map
+    search_event_button: 'Search for events'
     today: Today
     user_edit_title: 'User edit'
     user_show_title: 'User show'
-    map_title: 'Map'
-    search_event_button: Search for events
-    baseline: Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.
 
 home:
     about_us_benefit_1: 'A map showing today''s events/lessons/shows...'
@@ -643,23 +689,114 @@ home:
         warning: 'Warning !'
         warning_no_events: 'There are no events around <strong>%city%</strong> on <strong>%date%</strong>.  Feel free to add your event'
 
+    banner: Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.   
+
+    cities:
+        h2: Discover Salsa in those cities   
+
+    festivals:
+        h2: Festivals around the world   
+
+    users:
+        h2: Salsa People   
+
 link:
     home: Home
 
+modify: modify   
+
 navbar:
+    artits: Artits   
+    bands: Bands   
+    festivals: Festivals   
+    festivals.africa: Africa   
+    festivals.asia: Asia   
+    festivals.australia: Australia   
+    festivals.calendar: Calendar   
+    festivals.europe: Europe   
+    festivals.north_america: North America   
+    festivals.south_america: South America   
     help: Help
+    home: Home   
+    learn: Learn   
     login: Login
     logout: Logout
+    musics: Musics   
     publish_button: 'Add Event'
     register: Register
+    toogle_navigation: Toogle Navigation   
+
+    user:
+        add_event: Add Event   
+        my_page: My Page   
+        my_profile: My Profile   
+        next_events: My Next Events   
+        passed_events: My Previous Events   
+
+    videos: Videos   
+
+overviews:
+    dancers: Dancers   
+    events: Events   
+    likes: Likes   
+    musics: Musics   
+    numbers: Numbers   
+    photos: Photos   
+    places: Places   
+    skills: Skills   
+    teachers: Teachers   
+    videos: Videos   
+    views: Views   
+
+timeline:
+    address: Address   
+    hours: Hours   
+
+update: Update
 
 user:
+    add_address_button: user.add_address_button
+    add_music_button: user.add_music_button
+    add_video_button: user.add_video_button
+    address_title: user.address_title
     addresses_title: 'My Address'
     description_title: 'My Description'
+
+    edit:
+        addresses:
+            h2: Manage your addresses   
+
+        adresses: Adresses   
+        descriptions: Descriptions   
+        descriptions.h2: Manage your descriptions   
+        links: Links   
+        links.h2: Link your profile to social networks.   
+        musics: Musics   
+        musics.h2: Share your favorite musics   
+
+        photos:
+            h2: Share your favorite photos   
+
+        pictures: Photos   
+        profil: Profile   
+        profil.h2: Manage your name and details.   
+        videos: Videos   
+        videos.h2: Share your favorite videos   
+
+    edit_profil: Edit Profil   
     events_title: 'My Next Events'
     images_title: 'My Pictures'
+    musics_title: My Musics
+    my_musics: My Musics   
+    my_photos: My Photos   
+    my_videos: My Videos   
+    next_events: My Next Events   
+    passed_events: My Previous Events   
+    posted_by: Posted By   
     profile_title: 'My Profile'
+    they_like: Likes   
     user_title: 'My Profile'
+    videos_title: Videos
 
 user_bundle:
     login: Login
