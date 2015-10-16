@@ -22,6 +22,7 @@
     </a>
 
     {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
+    {{ form_widget(delete_form.submit, {'attr' : { 'class' : 'btn btn-danger btn-sm pull-right margin-right-10'} }) }}
     {{ form_end(delete_form) }}
 </div>
 

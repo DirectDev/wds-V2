@@ -22,7 +22,7 @@
         </div><!--/breadcrumbs-->
         <!--=== End Breadcrumbs ===-->
 
-        <div class="alert alert-info fade in">
+        {#<div class="alert alert-info fade in">
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info{% endtrans %}
@@ -32,17 +32,18 @@
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info2{% endtrans %}
-        </div>
+        </div>#}
 
         <!-- Profile Content -->
         <div class="col-md-12">
             <div class="profile-body margin-bottom-20">
                 <div class="tab-v1">
                     <ul class="nav nav-justified nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#profile">Edit Event</a></li>
-                        <li><a data-toggle="tab" href="#profile">Address</a></li>
-                        <li><a data-toggle="tab" href="#profile">Dates</a></li>
-                        <li><a data-toggle="tab" href="#profile">Pictures</a></li>
+                        <li class="active"><a data-toggle="tab" href="#description">Edit Event</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">Address</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">Dates</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">Manage Links</a></li>
+                        <li class="disabled"><a data-toggle="tab" href="#description">Add Pictures</a></li>
                     </ul>          
                     <div class="tab-content">
 
@@ -50,23 +51,12 @@
 
                         <div id="profile" class="profile-edit tab-pane fade in active">
                             <h2 class="heading-md">Manage your name and details.</h2>
-                            <br>
-
-                            {% form_theme form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
-
-                            {{ form_start(form) }}
-                            {{ form_errors(form) }}
-
-                            {{ form_row(form.musicTypes) }}
-                            {{ form_row(form.eventTypes) }}
-                            {{ form_row(form.translations) }}
-
-                            {{ form_row(form.submit) }}
-
-                            {{ form_end(form) }}
+                            <div id="descriptionForm">
+                                {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
+                            </div>
                         </div>
 
-                       
+
                     </div>
                 </div>    
             </div>

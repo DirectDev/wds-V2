@@ -118,15 +118,14 @@ class EventDateController extends Controller {
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        
+
         return $this->render('FrontFrontBundle:EventDate:show.html.twig', array(
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),
                         )
         );
-
     }
-    
+
     /**
      * Finds and displays a EventDate entity.
      */
@@ -140,13 +139,12 @@ class EventDateController extends Controller {
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        
+
         return $this->render('FrontFrontBundle:EventDate:show_tagbox.html.twig', array(
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),
                         )
         );
-        
     }
 
     /**
@@ -278,7 +276,7 @@ class EventDateController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('front_eventdate_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete'), 'attr' => array('class' => 'btn btn-danger btn-sm pull-right')))
+                        ->add('submit', 'submit', array('label' => $this->get('translator')->trans('delete')))
                         ->getForm()
         ;
     }

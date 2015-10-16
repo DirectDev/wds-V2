@@ -89,7 +89,7 @@ class EventController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create'), 'attr' => array('class' => 'btn btn-success btn-lg pull-right')));
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('create')));
 
         return $form;
     }
@@ -108,7 +108,7 @@ class EventController extends Controller {
 
         return $this->render('FrontFrontBundle:Event:new.html.twig', array(
                     'entity' => $entity,
-                    'form' => $form->createView(),
+                    'edit_description_form' => $form->createView(),
         ));
     }
 
@@ -288,7 +288,7 @@ class EventController extends Controller {
                     'edit_link_form' => $editLinkForm->createView(),
         ));
     }
-    
+
     public function updateDescriptionAction(Request $request, $id) {
         if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
@@ -562,7 +562,7 @@ class EventController extends Controller {
 
         return $form;
     }
-    
+
     private function createEditDescriptionForm(Event $entity) {
         $form = $this->createForm(new EventDescriptionType(), $entity, array(
             'action' => $this->generateUrl('front_event_update_description', array('id' => $entity->getId())),
