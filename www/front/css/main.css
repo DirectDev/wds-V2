@@ -535,6 +535,14 @@ a.disabled {
     width: 100% !important;
 }
 
+.header .logo {
+    height: 80px !important;
+    width: 225px !important;
+    display: table-cell;
+    vertical-align: middle;
+    background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important; 
+}
+
 
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
@@ -601,6 +609,18 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
         border: none;
     }
 
+    .header .logo {
+        height: 80px !important;
+        width: 176px !important;
+        display: table-cell;
+        vertical-align: middle;
+        background: url('../../images/wds_logo_small.png')  center no-repeat !important; 
+    }
+
+    .header .topbar ul.loginbar {
+        text-align: right;
+    }
+
 
 }
 
@@ -610,6 +630,20 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
     .panel-list-homepage-image-container img
     {
         max-width: 300px;
+    }
+
+    .header .topbar ul.loginbar li.topbar-devider {
+        top: -1px;
+        padding: 0px;
+        font-size: 8px;
+        position: relative;
+        margin: 0px 0px 0px 5px;
+        font-family: Tahoma;
+    }
+
+    .header .topbar ul.languages {
+        z-index: 1;
+        top: 15px !important;
     }
 
 

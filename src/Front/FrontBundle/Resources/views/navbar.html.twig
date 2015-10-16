@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Logo -->
         <a class="logo"  href="{{ path('home')}}">
-            <img src="{{ asset('images/wedancesalsa_logo_v2.png')}}" title="WeDanceSalsa" />
+            {#            <img src="{{ asset('images/wedancesalsa_logo_v2.png')}}" title="WeDanceSalsa" class='image-responsive'/>#}
         </a>
         <!-- End Logo -->
 
@@ -11,16 +11,28 @@
             <ul class="loginbar pull-right">
 
                 {% include 'FrontFrontBundle::languageSwitcher.html.twig' %}  
-                <li class="topbar-devider"></li>   
-                    {% if is_granted("ROLE_USER") %}
-                    <li><a href="{{ path('front_user_show_private') }}">{{ app.user.username|capitalize }}</a></li>
-                    <li class="topbar-devider"></li>   
-                    <li><a href="{{ path('fos_user_security_logout') }}">{% trans %}navbar.logout{% endtrans %}</a></li>
-                    {% else %}
-                    <li><a href="{{ path('fos_user_registration_register') }}">{% trans %}navbar.register{% endtrans %}</a></li>
-                    <li class="topbar-devider"></li>   
-                    <li><a href="{{ path('fos_user_security_login') }}">{% trans %}navbar.login{% endtrans %}</a></li>
-                    {% endif %}
+                <li class="topbar-devider">
+                </li>   
+                {% if is_granted("ROLE_USER") %}
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {% trans %}navbar.logout{% endtrans %}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('fos_user_registration_register') }}">
+                            {% trans %}navbar.register{% endtrans %}
+                        </a>
+                    </li>
+                    <li class="topbar-devider">                        
+                    </li>   
+                    <li>
+                        <a href="{{ path('fos_user_security_login') }}">
+                            {% trans %}navbar.login{% endtrans %}
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         <!-- End Topbar -->
@@ -89,7 +101,7 @@
                 {% if is_granted("ROLE_USER") %}
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ app.user.username|capitalize }}
+                            <strong>{{ app.user.username|capitalize }}</strong>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
