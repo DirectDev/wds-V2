@@ -9,7 +9,7 @@
             {% if event.getCity() %}
                 {% set city = event.getCity() %}
             {% endif %}
-            {% if app.session.get('city') %}
+            {% if city is not defined and app.session.get('city') %}
                 {% set city = app.session.get('city') %}
             {% endif %}
             {% if city is defined %}

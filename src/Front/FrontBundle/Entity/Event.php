@@ -190,10 +190,10 @@ class Event {
         foreach ($this->addresses as $address)
             return $address;
     }
-    
+
     public function getCity() {
-        if($this->getAddress())
-            return $this->getCity ();
+        if ($this->getAddress())
+            return $this->getAddress()->getCity();
     }
 
     public function getLatitude() {
@@ -548,7 +548,6 @@ class Event {
         return $this->meaFestival;
     }
 
-
     /**
      * Set facebookLink
      *
@@ -556,8 +555,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFacebookLink($facebookLink)
-    {
+    public function setFacebookLink($facebookLink) {
         $this->facebook_link = $facebookLink;
 
         return $this;
@@ -568,8 +566,7 @@ class Event {
      *
      * @return string
      */
-    public function getFacebookLink()
-    {
+    public function getFacebookLink() {
         return $this->facebook_link;
     }
 
@@ -580,8 +577,7 @@ class Event {
      *
      * @return Event
      */
-    public function setGoogleLink($googleLink)
-    {
+    public function setGoogleLink($googleLink) {
         $this->google_link = $googleLink;
 
         return $this;
@@ -592,8 +588,7 @@ class Event {
      *
      * @return string
      */
-    public function getGoogleLink()
-    {
+    public function getGoogleLink() {
         return $this->google_link;
     }
 
@@ -604,8 +599,7 @@ class Event {
      *
      * @return Event
      */
-    public function setTwitterLink($twitterLink)
-    {
+    public function setTwitterLink($twitterLink) {
         $this->twitter_link = $twitterLink;
 
         return $this;
@@ -616,8 +610,7 @@ class Event {
      *
      * @return string
      */
-    public function getTwitterLink()
-    {
+    public function getTwitterLink() {
         return $this->twitter_link;
     }
 
@@ -628,8 +621,7 @@ class Event {
      *
      * @return Event
      */
-    public function setLinkedinLink($linkedinLink)
-    {
+    public function setLinkedinLink($linkedinLink) {
         $this->linkedin_link = $linkedinLink;
 
         return $this;
@@ -640,8 +632,7 @@ class Event {
      *
      * @return string
      */
-    public function getLinkedinLink()
-    {
+    public function getLinkedinLink() {
         return $this->linkedin_link;
     }
 
@@ -652,8 +643,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFlickrLink($flickrLink)
-    {
+    public function setFlickrLink($flickrLink) {
         $this->flickr_link = $flickrLink;
 
         return $this;
@@ -664,8 +654,7 @@ class Event {
      *
      * @return string
      */
-    public function getFlickrLink()
-    {
+    public function getFlickrLink() {
         return $this->flickr_link;
     }
 
@@ -676,8 +665,7 @@ class Event {
      *
      * @return Event
      */
-    public function setTumblrLink($tumblrLink)
-    {
+    public function setTumblrLink($tumblrLink) {
         $this->tumblr_link = $tumblrLink;
 
         return $this;
@@ -688,8 +676,7 @@ class Event {
      *
      * @return string
      */
-    public function getTumblrLink()
-    {
+    public function getTumblrLink() {
         return $this->tumblr_link;
     }
 
@@ -700,8 +687,7 @@ class Event {
      *
      * @return Event
      */
-    public function setInstagramLink($instagramLink)
-    {
+    public function setInstagramLink($instagramLink) {
         $this->instagram_link = $instagramLink;
 
         return $this;
@@ -712,8 +698,7 @@ class Event {
      *
      * @return string
      */
-    public function getInstagramLink()
-    {
+    public function getInstagramLink() {
         return $this->instagram_link;
     }
 
@@ -724,8 +709,7 @@ class Event {
      *
      * @return Event
      */
-    public function setVimeoLink($vimeoLink)
-    {
+    public function setVimeoLink($vimeoLink) {
         $this->vimeo_link = $vimeoLink;
 
         return $this;
@@ -736,8 +720,7 @@ class Event {
      *
      * @return string
      */
-    public function getVimeoLink()
-    {
+    public function getVimeoLink() {
         return $this->vimeo_link;
     }
 
@@ -748,8 +731,7 @@ class Event {
      *
      * @return Event
      */
-    public function setYoutubeLink($youtubeLink)
-    {
+    public function setYoutubeLink($youtubeLink) {
         $this->youtube_link = $youtubeLink;
 
         return $this;
@@ -760,8 +742,8 @@ class Event {
      *
      * @return string
      */
-    public function getYoutubeLink()
-    {
+    public function getYoutubeLink() {
         return $this->youtube_link;
     }
+
 }

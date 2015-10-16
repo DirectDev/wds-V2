@@ -124,11 +124,8 @@ class EventController extends Controller {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-//        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('FrontFrontBundle:Event:show.html.twig', array(
                     'event' => $event,
-//                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
