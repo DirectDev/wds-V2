@@ -19,6 +19,16 @@ front_event_update:
     path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:Event:update" }
     requirements: { _method: post|put }
+    
+front_event_update_link:
+    path:     /update_link/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:updateLink" }
+    requirements: { _method: post|put }      
+    
+front_event_update_description:
+    path:     /update_description/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:updateDescription" }
+    requirements: { _method: post|put }      
 
 front_event_delete:
     path:     /delete/{id}

@@ -35,6 +35,33 @@ class Event {
      */
     private $name;
 
+    /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
+    protected $facebook_link;
+
+    /** @ORM\Column(name="google_link", type="string", length=255, nullable=true) */
+    protected $google_link;
+
+    /** @ORM\Column(name="twitter_link", type="string", length=255, nullable=true) */
+    protected $twitter_link;
+
+    /** @ORM\Column(name="linkedin_link", type="string", length=255, nullable=true) */
+    protected $linkedin_link;
+
+    /** @ORM\Column(name="flickr_link", type="string", length=255, nullable=true) */
+    protected $flickr_link;
+
+    /** @ORM\Column(name="tumblr_link", type="string", length=255, nullable=true) */
+    protected $tumblr_link;
+
+    /** @ORM\Column(name="instagram_link", type="string", length=255, nullable=true) */
+    protected $instagram_link;
+
+    /** @ORM\Column(name="vimeo_link", type="string", length=255, nullable=true) */
+    protected $vimeo_link;
+
+    /** @ORM\Column(name="youtube_link", type="string", length=255, nullable=true) */
+    protected $youtube_link;
+
     /**
      * @ORM\OneToMany(targetEntity="EventFile", mappedBy="event", cascade={"persist", "remove"})
      */
@@ -80,7 +107,7 @@ class Event {
      * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="eventloves")     
      * */
     private $lovesMe;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaFestival", mappedBy="event")
      * */
@@ -494,7 +521,6 @@ class Event {
         return $this->lovesMe;
     }
 
-
     /**
      * Set meaFestival
      *
@@ -502,8 +528,7 @@ class Event {
      *
      * @return Event
      */
-    public function setMeaFestival(\Front\FrontBundle\Entity\MeaFestival $meaFestival = null)
-    {
+    public function setMeaFestival(\Front\FrontBundle\Entity\MeaFestival $meaFestival = null) {
         $this->meaFestival = $meaFestival;
 
         return $this;
@@ -514,8 +539,224 @@ class Event {
      *
      * @return \Front\FrontBundle\Entity\MeaFestival
      */
-    public function getMeaFestival()
-    {
+    public function getMeaFestival() {
         return $this->meaFestival;
+    }
+
+
+    /**
+     * Set facebookLink
+     *
+     * @param string $facebookLink
+     *
+     * @return Event
+     */
+    public function setFacebookLink($facebookLink)
+    {
+        $this->facebook_link = $facebookLink;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookLink
+     *
+     * @return string
+     */
+    public function getFacebookLink()
+    {
+        return $this->facebook_link;
+    }
+
+    /**
+     * Set googleLink
+     *
+     * @param string $googleLink
+     *
+     * @return Event
+     */
+    public function setGoogleLink($googleLink)
+    {
+        $this->google_link = $googleLink;
+
+        return $this;
+    }
+
+    /**
+     * Get googleLink
+     *
+     * @return string
+     */
+    public function getGoogleLink()
+    {
+        return $this->google_link;
+    }
+
+    /**
+     * Set twitterLink
+     *
+     * @param string $twitterLink
+     *
+     * @return Event
+     */
+    public function setTwitterLink($twitterLink)
+    {
+        $this->twitter_link = $twitterLink;
+
+        return $this;
+    }
+
+    /**
+     * Get twitterLink
+     *
+     * @return string
+     */
+    public function getTwitterLink()
+    {
+        return $this->twitter_link;
+    }
+
+    /**
+     * Set linkedinLink
+     *
+     * @param string $linkedinLink
+     *
+     * @return Event
+     */
+    public function setLinkedinLink($linkedinLink)
+    {
+        $this->linkedin_link = $linkedinLink;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinLink
+     *
+     * @return string
+     */
+    public function getLinkedinLink()
+    {
+        return $this->linkedin_link;
+    }
+
+    /**
+     * Set flickrLink
+     *
+     * @param string $flickrLink
+     *
+     * @return Event
+     */
+    public function setFlickrLink($flickrLink)
+    {
+        $this->flickr_link = $flickrLink;
+
+        return $this;
+    }
+
+    /**
+     * Get flickrLink
+     *
+     * @return string
+     */
+    public function getFlickrLink()
+    {
+        return $this->flickr_link;
+    }
+
+    /**
+     * Set tumblrLink
+     *
+     * @param string $tumblrLink
+     *
+     * @return Event
+     */
+    public function setTumblrLink($tumblrLink)
+    {
+        $this->tumblr_link = $tumblrLink;
+
+        return $this;
+    }
+
+    /**
+     * Get tumblrLink
+     *
+     * @return string
+     */
+    public function getTumblrLink()
+    {
+        return $this->tumblr_link;
+    }
+
+    /**
+     * Set instagramLink
+     *
+     * @param string $instagramLink
+     *
+     * @return Event
+     */
+    public function setInstagramLink($instagramLink)
+    {
+        $this->instagram_link = $instagramLink;
+
+        return $this;
+    }
+
+    /**
+     * Get instagramLink
+     *
+     * @return string
+     */
+    public function getInstagramLink()
+    {
+        return $this->instagram_link;
+    }
+
+    /**
+     * Set vimeoLink
+     *
+     * @param string $vimeoLink
+     *
+     * @return Event
+     */
+    public function setVimeoLink($vimeoLink)
+    {
+        $this->vimeo_link = $vimeoLink;
+
+        return $this;
+    }
+
+    /**
+     * Get vimeoLink
+     *
+     * @return string
+     */
+    public function getVimeoLink()
+    {
+        return $this->vimeo_link;
+    }
+
+    /**
+     * Set youtubeLink
+     *
+     * @param string $youtubeLink
+     *
+     * @return Event
+     */
+    public function setYoutubeLink($youtubeLink)
+    {
+        $this->youtube_link = $youtubeLink;
+
+        return $this;
+    }
+
+    /**
+     * Get youtubeLink
+     *
+     * @return string
+     */
+    public function getYoutubeLink()
+    {
+        return $this->youtube_link;
     }
 }

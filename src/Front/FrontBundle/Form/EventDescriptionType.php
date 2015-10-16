@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Front\FrontBundle\Entity\Address;
 use Doctrine\ORM\EntityRepository;
 
-class EventType extends AbstractType {
+class EventDescriptionType extends AbstractType {
 
     /**
      * @param FormBuilderInterface $builder
@@ -58,7 +58,7 @@ class EventType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_event';
+        return 'front_frontbundle_event_description';
     }
 
 }

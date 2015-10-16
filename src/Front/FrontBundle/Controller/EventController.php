@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Event;
 use Front\FrontBundle\Entity\EventFile;
 use Front\FrontBundle\Form\EventType;
+use Front\FrontBundle\Form\EventLinkType;
+use Front\FrontBundle\Form\EventDescriptionType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -147,7 +149,8 @@ class EventController extends Controller {
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editLinkForm = $this->createEditLinkForm($entity);
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
 
         /*
          * UPLOAD FILE FORM
@@ -167,9 +170,10 @@ class EventController extends Controller {
          */
 
         return $this->render('FrontFrontBundle:Event:edit.html.twig', array(
-                    'entity' => $entity,
+                    'event' => $entity,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
+                    'edit_link_form' => $editLinkForm->createView(),
+                    'edit_description_form' => $editDescriptionForm->createView(),
                     'editId' => $editId,
                     'existingFiles' => $existingFiles,
         ));
@@ -210,36 +214,13 @@ class EventController extends Controller {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-        $originalAddresses = new ArrayCollection();
-        foreach ($entity->getAddresses() as $address)
-            $originalAddresses->add($address);
-
         $originalEventDates = new ArrayCollection();
         foreach ($entity->getEventDates() as $eventDate)
             $originalEventDates->add($eventDate);
 
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
-        /*
-         * UPLOAD FILE FORM
-         * remplacer le User par entite souhaitee
-         * ajouter au render  
-          'editId' => $editId,
-          'existingFiles' => $existingFiles,
-         * ajouter fonction handleFiles
-         * 
-         */
-        $editId = $this->getRequest()->get('editId');
-        $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
-        $editId = $arrayFile ['editId'];
-        $existingFiles = $arrayFile ['existingFiles'];
-        /*
-         * UPLOAD FILE FORM END
-         */
-
 
 
         if ($editForm->isValid()) {
@@ -279,6 +260,58 @@ class EventController extends Controller {
                     'delete_form' => $deleteForm->createView(),
                     'editId' => $editId,
                     'existingFiles' => $existingFiles,
+        ));
+    }
+
+    public function updateLinkAction(Request $request, $id) {
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        $editLinkForm = $this->createEditLinkForm($entity);
+        $editLinkForm->handleRequest($request);
+
+
+        if ($editLinkForm->isValid()) {
+            $em->flush();
+        }
+
+        return $this->render('FrontFrontBundle:Event:linkForm.html.twig', array(
+                    'entity' => $entity,
+                    'edit_link_form' => $editLinkForm->createView(),
+        ));
+    }
+    
+    public function updateDescriptionAction(Request $request, $id) {
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+        $editDescriptionForm->handleRequest($request);
+
+
+        if ($editDescriptionForm->isValid()) {
+            $em->flush();
+        }
+
+        return $this->render('FrontFrontBundle:Event:DescriptionForm.html.twig', array(
+                    'entity' => $entity,
+                    'edit_description_form' => $editDescriptionForm->createView(),
         ));
     }
 
@@ -485,7 +518,7 @@ class EventController extends Controller {
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Event entity.');
             }
-            
+
             $User = $this->getUser();
             if ($User->getEventloves()->contains($entity))
                 $User->removeEventlove($entity);
@@ -516,6 +549,30 @@ class EventController extends Controller {
                     'love_form' => $loveForm->createView(),
                     'unlove_form' => $unLoveForm->createView(),
         ));
+    }
+
+    private function createEditLinkForm(Event $entity) {
+        $form = $this->createForm(new EventLinkType(), $entity, array(
+            'action' => $this->generateUrl('front_event_update_link', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            'attr' => array('locale' => $this->get('request')->getLocale())
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update')));
+
+        return $form;
+    }
+    
+    private function createEditDescriptionForm(Event $entity) {
+        $form = $this->createForm(new EventDescriptionType(), $entity, array(
+            'action' => $this->generateUrl('front_event_update_description', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            'attr' => array('locale' => $this->get('request')->getLocale())
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans('update')));
+
+        return $form;
     }
 
 }

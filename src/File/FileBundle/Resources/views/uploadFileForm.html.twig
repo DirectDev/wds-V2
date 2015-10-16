@@ -2,7 +2,7 @@
 {% include "FileFileBundle::fileUploadTemplate.html.twig" %}
 
 <form class="edit-form" action="{{ action_path }}" method="post" enctype="multipart/form-data">      
-                
+
     {% set isNew = true %}
     {% if entity.id %}
         {% set isNew = false %}
@@ -12,29 +12,31 @@
     <div class="file-uploader"></div>
 
     <button class="btn btn-success" type="submit">{% trans %}file.save{% endtrans %}</button>
-    <a class="btn" href="{{ path(cancel_path) }}">{% trans %}file.cancel{% endtrans %}</a>
+    {% if cancel_path %}
+        <a class="btn" href="{{ path(cancel_path) }}">{% trans %}file.cancel{% endtrans %}</a>
+    {%  endif %}
     <!--{% if not isNew and delete_path %}
         <a class="btn btn-danger" href="{{ path(delete_path, { id: entity.id } ) }}">{% trans %}delete{% endtrans %}</a>
     {% endif %}-->
 
-</form>
+    </form>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    // Enable the file uploader
+        // Enable the file uploader
 
-    $(function() {
-        new PunkAveFileUploader({
-            'uploadUrl': "{{ path(upload_url, { editId: editId }) | raw }}",
-            'viewUrl': "{{ asset(upload_view_url ~ editId | raw) }}",
-            'el': '.file-uploader',
-            'existingFiles': {{ punkave_get_files(upload_folder ~ editId) | json_encode | raw }},
-            'delaySubmitWhileUploading': '.edit-form',
-            'errorCallback': function(errorObj) {
-                if (errorObj.error == 'maxNumberOfFiles') {
-                    alert("Maximum uploaded files exceeded!");
+        $(function () {
+            new PunkAveFileUploader({
+                'uploadUrl': "{{ path(upload_url, { editId: editId }) | raw }}",
+                'viewUrl': "{{ asset(upload_view_url ~ editId | raw) }}",
+                'el': '.file-uploader',
+                'existingFiles':{{ punkave_get_files(upload_folder ~ editId) | json_encode | raw }},
+                        'delaySubmitWhileUploading': '.edit-form',
+                'errorCallback': function (errorObj) {
+                    if (errorObj.error == 'maxNumberOfFiles') {
+                        alert("Maximum uploaded files exceeded!");
+                    }
                 }
-            }
+            });
         });
-    });
-</script>
+    </script>

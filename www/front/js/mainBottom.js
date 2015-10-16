@@ -38,7 +38,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_description"]', func
                 data: postData,
                 success: function (html)
                 {
-                    $('#descriptionFormDiv').empty().html(html);
+                    $('#descriptionForm').empty().html(html);
                     loadBootstrapValidator();
                 },
                 error: function (html)
@@ -63,7 +63,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_link"]', function (e
                 data: postData,
                 success: function (html)
                 {
-                    $('#linkFormDiv').empty().html(html);
+                    $('#linkForm').empty().html(html);
                     loadBootstrapValidator();
                 },
                 error: function (html)
@@ -377,4 +377,72 @@ $(document).on('submit', 'form.editAddress', function (e) {
                 }
             });
     e.preventDefault();
+});
+
+
+$(document).on('submit', 'form[name="front_frontbundle_event_description"]', function (e) {
+    e.preventDefault();
+    var $form = $(e.target);
+    // Get the BootstrapValidator instance
+    var bv = $form.data('bootstrapValidator');
+
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    $('#descriptionFormDiv').empty().html(html);
+                    loadBootstrapValidator();
+                },
+                error: function (html)
+                {
+                }
+            });
+    e.preventDefault();
+});
+
+$(document).on('submit', 'form[name="front_frontbundle_event_link"]', function (e) {
+    e.preventDefault();
+    var $form = $(e.target);
+    // Get the BootstrapValidator instance
+    var bv = $form.data('bootstrapValidator');
+
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    $('#linkFormDiv').empty().html(html);
+                    loadBootstrapValidator();
+                },
+                error: function (html)
+                {
+                }
+            });
+    e.preventDefault();
+});
+
+
+$(document).on('click', '#eventAddAddress', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#eventAddressList').prepend(html);
+            loadBootstrapValidator();
+        }
+    });
+    return false;
 });

@@ -59,11 +59,7 @@ class AddressController extends Controller {
                 
             }
 
-            $event = $address->getEvent();
-            if ($event)
-                return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
-
-            return $this->redirect($this->generateUrl('front_address_show', array('id' => $address->getId())));
+            return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $address->getId())));
         }
 
         return $this->render('FrontFrontBundle:Address:new.html.twig', array(
@@ -290,15 +286,7 @@ class AddressController extends Controller {
             }
 
             $em->flush();
-
-//            $event = $address->getEvent();
-//            if ($event)
-//                return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
-//
-//            $user = $address->getUser();
-//            if ($user)
-//                return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
-
+            
             return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $id)));
         }
 

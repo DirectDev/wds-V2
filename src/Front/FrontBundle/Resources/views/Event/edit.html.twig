@@ -1,12 +1,11 @@
 {% extends 'FrontFrontBundle::layout.html.twig' %}
 
 {% block title %}
-    {{ entity.getTitle|capitalize }}
+    {{ event.getTitle|capitalize }}
 {% endblock %}
 
 {% block content %}
 
-    {% set event =  edit_form.vars.value  %}
 
     <!--=== Content Part ===-->
     <div class="container content profile">
@@ -15,7 +14,7 @@
         <!--=== Breadcrumbs ===-->
         <div class="breadcrumbs">
             <div class="container">
-                <h1 class="pull-left">{{ entity.getTitle }}</h1>
+                <h1 class="pull-left">{{ event.getTitle }}</h1>
                 <a href="{{ path('front_event_show', {id : event.id, uri : event.getURI }) }}" class="btn btn-warning btn-sm pull-right">
                     <i class="glyphicon glyphicon-arrow-left"></i>
                     <span> {% trans %}front.back{% endtrans %}</span>
@@ -24,7 +23,7 @@
         </div><!--/breadcrumbs-->
         <!--=== End Breadcrumbs ===-->
 
-        <div class="alert alert-info fade in">
+        {#<div class="alert alert-info fade in">
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info{% endtrans %}
@@ -34,58 +33,79 @@
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info2{% endtrans %}
-        </div>
+        </div>#}
 
         <!-- Profile Content -->
         <div class="col-md-12">
             <div class="profile-body margin-bottom-20">
                 <div class="tab-v1">
                     <ul class="nav nav-justified nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#profile">Edit Event</a></li>
-                        <li><a data-toggle="tab" href="#description">Address</a></li>
-                        <li><a data-toggle="tab" href="#link">Dates</a></li>
-                        <li><a data-toggle="tab" href="#picture">Pictures</a></li>
+                        <li class="active"><a data-toggle="tab" href="#description">Edit Event</a></li>
+                        <li><a data-toggle="tab" href="#address">Address</a></li>
+                        <li><a data-toggle="tab" href="#eventdate">Dates</a></li>
+                        <li><a data-toggle="tab" href="#link">Manage Links</a></li>
+                        <li><a data-toggle="tab" href="#picture">Add Pictures</a></li>
                     </ul>          
                     <div class="tab-content">
 
 
 
-                        <div id="profile" class="profile-edit tab-pane fade in active">
+                        <div id="description" class="profile-edit tab-pane fade in active">
                             <h2 class="heading-md">Manage your name and details.</h2>
-                            <br>
 
-                            {% form_theme edit_form with ['::bootstrap_3_horizontal_layout.html.twig'] %}
-
-                            {{ form_start(edit_form) }}
-                            {{ form_errors(edit_form) }}
-
-                            {{ form_row(edit_form.musicTypes) }}
-                            {{ form_row(edit_form.eventTypes) }}
-                            {{ form_row(edit_form.translations) }}
-
-                            {{ form_row(edit_form.submit) }}
-
-                            {{ form_end(edit_form) }}
+                            <div id="descriptionForm">
+                            {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
+                        </div>
                         </div>
 
-                        <div id="description" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Manage your descriptions</h2>
-                            <br>
-                            {% if not event.getAddress %}
-                                {% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
-                                    {% render(path('front_address_event_new', { id : event.id } )) %}
-                                {% endif %}
-                            {% else %}
-                                {% render(path('front_address_edit', { id : event.getAddress().id } )) %}
-                            {% endif %}
-
-
-
-                        </div>
 
                         <div id="link" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">Manage your links</h2>
-                            <p>Link your profile to social networks.</p>
+
+                            <div id="linkForm">
+                                {% include 'FrontFrontBundle:Event:linkForm.html.twig' %}
+                            </div>
+
+                        </div>
+
+                        <div id="picture" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Add Pictures</h2>
+                            <p>{% trans %}event.images_title{% endtrans %}</p>
+                            <br>
+
+                            {% set action_path = path('front_event_edit' , { id: event.id, editId: editId }) %}
+                            {% include 'FileFileBundle::uploadFileForm.html.twig' with {
+                                                    action_path: action_path,
+                                                    cancel_path: null,
+                                                    delete_path: '',
+                                                    id: event.id, 
+                                                    editId: editId, 
+                                                    existingFiles: existingFiles,
+                                                    entity: event,
+                                            } %}
+
+
+                        </div>
+
+                        <div id="address" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">{% trans %}event.address_title{% endtrans %}</h2>
+
+                            <button class='btn btn-success margin-bottom-30 pull-left' id="eventAddAddress" href="{{ path('front_address_event_new', { id : event.id } ) }}">
+                                {% trans %}event.add_address_button{% endtrans %}
+                            </button>
+
+                            <div  class="row margin-bottom-20" id="eventAddressList">
+                                {% for address in event.addresses %}
+                                    {% render(path('front_address_show_with_buttons', { id : address.id } )) %}
+                                {% endfor %}
+                            </div>
+
+
+                        </div>
+
+
+                        <div id="eventdate" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">Manage your dates</h2>
                             <br>
 
                             <div id='eventdates_form' class="panel-body col-sm-6">
@@ -103,29 +123,14 @@
 
                         </div>
 
-                        <div id="picture" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md">Add Pictures</h2>
-                            <p>{% trans %}user.images_title{% endtrans %}</p>
-                            <br>
-                            {% set action_path = path('front_event_edit' , { id: entity.id, editId: editId }) %}
-                            {% include 'FileFileBundle::uploadFileForm.html.twig' with {
-                                    action_path: action_path,
-                                    cancel_path: 'front_event',
-                                    delete_path: 'front_event_delete',
-                                    id: entity.id, 
-                                    editId: editId, 
-                                    existingFiles: existingFiles,
-                                    entity: entity,
-                            } %}
 
-
-                        </div>
                     </div>
-                </div>    
-            </div>
+                </div>
+            </div>    
         </div>
     </div>
-    <!-- End Profile Content -->
+</div>
+<!-- End Profile Content -->
 
 
 
@@ -148,8 +153,9 @@
 
 {% block bottomJavascripts %}
     {{ parent() }}
+
     <script src="{{ asset('front/js/underscore-min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/jquery.fileupload.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script> 
+    <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script>  
 {% endblock %}          
