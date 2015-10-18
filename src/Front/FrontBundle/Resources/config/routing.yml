@@ -64,7 +64,11 @@ FrontFrontBundle_eventdate:
 
 FrontFrontBundle_eventtype:
     resource: "@FrontFrontBundle/Resources/config/routing/eventtype.yml"
-    prefix:   /eventtype      
+    prefix:   /eventtype 
+    
+FrontFrontBundle_festival:
+    resource: "@FrontFrontBundle/Resources/config/routing/festival.yml"
+    prefix:   /festival      
 
 FrontFrontBundle_musictype:
     resource: "@FrontFrontBundle/Resources/config/routing/musictype.yml"

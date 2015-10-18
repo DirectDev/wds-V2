@@ -81,15 +81,7 @@ class EventRepository extends EntityRepository {
         /* Geocode */
 
 
-        /* dev */
-//        $query = $this->createQueryBuilder('e')
-//                ->setMaxResults(6);
-
         return $query->getQuery()->getResult();
-
-
-
-        ;
     }
 
     public function countForCitypages($startdate = null, $latitude = null, $longitude = null, $distance = 20) {
@@ -185,6 +177,70 @@ class EventRepository extends EntityRepository {
                 $arrayEventType [] = $eventType->getId();
 
             $query->andWhere($query->expr()->in('et.id', $arrayEventType));
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findByContinent($limit = 30, $eventTypes = null, $musicTypes = null, $startdate = null, $stopdate = null, $array_coordinates = array()) {
+
+        if (!$startdate)
+            $startdate = date('Y-m-d');
+        if (!$stopdate)
+            $stopdate = date('Y-m-d', strtotime('+365 days'));
+
+        $arrayEventType = array();
+        $arraymusicTypes = array();
+
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.eventTypes', 'et')
+                ->leftJoin('e.musicTypes', 'mt')
+                ->leftJoin('e.eventDates', 'ed')
+                ->leftJoin('e.addresses', 'a')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('stopdate', $stopdate)
+                ->orderBy('ed.startdate', 'ASC')
+                ->groupBy('e.id, ed.startdate')
+                ->setMaxResults($limit);
+
+        $query->where('((
+                    (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
+                    OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
+                    OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
+                    )
+                    OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
+
+        if ($eventTypes && count($eventTypes)) {
+            foreach ($eventTypes as $eventType)
+                $arrayEventType [] = $eventType->getId();
+
+            $query->andWhere($query->expr()->in('et.id', $arrayEventType));
+        }
+
+        if ($musicTypes && count($musicTypes)) {
+            foreach ($musicTypes as $musicType)
+                $arraymusicTypes [] = $musicType->getId();
+
+            $query->andWhere($query->expr()->in('mt.id', $arraymusicTypes));
+        }
+
+
+        if (count($array_coordinates)) {
+            $i = 0;
+            $array_sub_query_coordinate = array();
+            foreach ($array_coordinates as $coordinates) {
+                $array_sub_query_coordinate[] = "((3958*3.1415926*sqrt((a.latitude - :latitude" . $i . ")*(a.latitude - :latitude" . $i . ")
+                + cos(a.latitude/57.29578)*cos(:latitude" . $i . "/57.29578)*(a.longitude - :longitude" . $i . ")*(a.longitude-:longitude" . $i . "))/180)
+                <= :distance" . $i . ")";
+
+                $query->setParameter('latitude' . $i, $coordinates['latitude'])
+                        ->setParameter('longitude' . $i, $coordinates['longitude'])
+                        ->setParameter('distance' . $i, $coordinates['distance']);
+
+                $i++;
+            }
+            $sub_query_coordinate = implode(' OR ', $array_sub_query_coordinate);
+            $query->andWhere($sub_query_coordinate);
         }
 
         return $query->getQuery()->getResult();

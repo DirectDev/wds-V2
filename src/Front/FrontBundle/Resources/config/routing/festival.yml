@@ -1,0 +1,11 @@
+festival_calendar:
+    path:      /calendar/{searchfestival}
+    defaults:  { _controller: FrontFrontBundle:Festival:calendar }    
+    requirements:
+      _method: GET      
+
+festival_europe:
+    path:      /europe
+    defaults:  { _controller: FrontFrontBundle:Festival:europe }    
+    requirements:
+      _method: GET

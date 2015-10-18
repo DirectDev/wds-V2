@@ -334,6 +334,19 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-city-videos', $Page);
         $Page->mergeNewTranslations();
+        
+        
+        $Page = new Page();
+        $Page->setName('festival_europe');
+        $Page->translate('en')->setTitle('European Festivals');
+        $Page->translate('fr')->setTitle('Festivals Européens');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-europe', $Page);
+        $Page->mergeNewTranslations();
 
         $manager->flush();
     }

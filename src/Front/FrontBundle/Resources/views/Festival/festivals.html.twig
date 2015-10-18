@@ -1,0 +1,40 @@
+{% extends 'FrontFrontBundle:Festival:festivalLayout.html.twig' %}
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:Festival:festivalBreadcrumb.html.twig' with { active : 'festivals' } %}
+
+    <!--=== Profile ===-->
+    <div class="container content profile">
+        <div class="row">
+
+            <!-- Profile Content -->            
+            <div class="col-md-12">
+
+                <!-- Basic Map -->
+                <div class="home-map">
+                    {% include 'FrontFrontBundle:Festival:map.html.twig' %}
+                </div>
+                <!-- End Basic Map -->
+
+                <div class="profile-body">
+
+                    <!-- Portfolio Sorting Blocks -->
+                    <div class="sorting-block">
+                        {% render(path('front_musictype_filters')) %}
+
+                        <!-- Easy Blocks v1 -->                
+                        <div class="row high-rated margin-bottom-20">
+                            {% include 'FrontFrontBundle:Event:list.html.twig' %}
+                        </div>
+                        <!-- End Easy Blocks v1 --> 
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- End Portfolio Sorting Blocks -->   
+
+                </div>
+            </div>
+            <!-- End Profile Content -->            
+        </div>
+    </div><!--/container-->    
+{% endblock %}
