@@ -72,20 +72,20 @@ admin:
     users: Users
 
 city:
-    artits: Artits   
-    calendar: Calendar   
-    concerts: Concerts   
-    dancers: Dancers   
-    festivals: Festivals   
-    introductions: Introductions   
-    lessons: Lessons   
-    musics: Musics   
-    parties: Parties   
-    photos: Photos   
-    places: Places   
-    shows: Shows   
-    teachers: Teachers   
-    videos: Videos   
+    artits: Artits
+    calendar: Calendar
+    concerts: Concerts
+    dancers: Dancers
+    festivals: Festivals
+    introductions: Introductions
+    lessons: Lessons
+    musics: Musics
+    parties: Parties
+    photos: Photos
+    places: Places
+    shows: Shows
+    teachers: Teachers
+    videos: Videos
 
 contact:
     contact_alert_success: 'Your contact enquiry was successfully sent. Thank you!'
@@ -104,8 +104,8 @@ delete: Delete
 en: English
 
 event:
-    add_address_button: Add Address
-    address: Address   
+    add_address_button: 'Add Address'
+    address: Address
     address_title: Address
     addresses_title: Addresses
 
@@ -118,22 +118,22 @@ event:
         no_profile_picture: 'There is no picture for this event'
         valid: 'This event is valid and shows in search results.'
 
-    calendar: Calendar   
+    calendar: Calendar
     date: Date
     description_title: Description
     details_title: Details
 
     edit:
-        addresses: Addresses   
-        addresses.h2: Manage event addresses   
-        dates: Dates   
-        dates.h2: Manage event dates   
-        description: Description   
-        description.h2: Manage your descriptions   
-        links: Links   
-        links.h2: Link your profile to social networks.   
-        pictures: Pictures   
-        pictures.h2: Show your favorite pictures   
+        addresses: Addresses
+        addresses.h2: 'Manage event addresses'
+        dates: Dates
+        dates.h2: 'Manage event dates'
+        description: Description
+        description.h2: 'Manage your descriptions'
+        links: Links
+        links.h2: 'Link your profile to social networks.'
+        pictures: Pictures
+        pictures.h2: 'Show your favorite pictures'
 
     event_title: Event
     eventdates_add_form_title: 'Add a single date : '
@@ -141,11 +141,11 @@ event:
     eventdates_repeat_form_title: 'Add a weekly date : '
     eventdates_title: Dates
     from: From
-    hours: Hours   
+    hours: Hours
     images_title: Images
     music: Music
     share_this: 'Share this'
-    they_like: Likes   
+    they_like: Likes
     to: To
     type: 'Event type'
 
@@ -159,12 +159,12 @@ file:
     uploading: Uploading
 
 footer:
-    artits: Artits   
-    baseline: Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.   
-    cities: Cities   
+    artits: Artits
+    baseline: 'Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.'
+    cities: Cities
     contact: 'Contact Us'
-    contact_us: Contact Us   
-    festivals: Festivals   
+    contact_us: 'Contact Us'
+    festivals: Festivals
     policy: 'Privacy Policy'
 
 form:
@@ -656,7 +656,7 @@ front:
     edit: Edit
 
     event:
-        see_event: See Event
+        see_event: 'See Event'
 
     event_new_title: 'New event'
     eventdates_title: Dates
@@ -689,68 +689,78 @@ home:
         warning: 'Warning !'
         warning_no_events: 'There are no events around <strong>%city%</strong> on <strong>%date%</strong>.  Feel free to add your event'
 
-    banner: Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.   
+    banner: 'Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.'
 
     cities:
-        h2: Discover Salsa in those cities   
+        h2: 'Discover Salsa in those cities'
 
     festivals:
-        h2: Festivals around the world   
+        h2: 'Festivals around the world'
 
     users:
-        h2: Salsa People   
+        h2: 'Salsa People'
 
 link:
     home: Home
 
-modify: modify   
+modify: modify
 
 navbar:
-    artits: Artits   
-    bands: Bands   
-    festivals: Festivals   
-    festivals.africa: Africa   
-    festivals.asia: Asia   
-    festivals.australia: Australia   
-    festivals.calendar: Calendar   
-    festivals.europe: Europe   
-    festivals.north_america: North America   
-    festivals.south_america: South America   
+    artits: Artits
+    bands: Bands
+    festivals: Festivals
+    festivals.africa: Africa
+    festivals.america: America   
+    festivals.asia: Asia
+    festivals.australia: Australia
+    festivals.calendar: Calendar
+    festivals.central_africa: Central Africa   
+    festivals.central_america: Central America   
+    festivals.europe: Europe
+    festivals.india: India   
+    festivals.middle_east: Middle East   
+    festivals.north_africa: North Africa   
+    festivals.north_america: 'North America'
+    festivals.north_asia: North Asia   
+    festivals.indonesia: Indonesia   
+    festivals.south_africa: South Africa   
+    festivals.south_america: 'South America'
+    festivals.south_asia: South Asia   
     help: Help
-    home: Home   
-    learn: Learn   
+    home: Home
+    learn: Learn
     login: Login
     logout: Logout
-    musics: Musics   
+    musics: Musics
     publish_button: 'Add Event'
     register: Register
-    toogle_navigation: Toogle Navigation   
+    toogle_navigation: 'Toogle Navigation'
 
     user:
-        add_event: Add Event   
-        my_page: My Page   
-        my_profile: My Profile   
-        next_events: My Next Events   
-        passed_events: My Previous Events   
+        add_event: 'Add Event'
+        my_page: 'My Page'
+        my_profile: 'My Profile'
+        next_events: 'My Next Events'
+        passed_events: 'My Previous Events'
 
-    videos: Videos   
+    videos: Videos
 
 overviews:
-    dancers: Dancers   
-    events: Events   
-    likes: Likes   
-    musics: Musics   
-    numbers: Numbers   
-    photos: Photos   
-    places: Places   
-    skills: Skills   
-    teachers: Teachers   
-    videos: Videos   
-    views: Views   
+    dancers: Dancers
+    events: Events
+    likes: Likes
+    musics: Musics
+    numbers: Numbers
+    photos: Photos
+    places: Places
+    skills: Skills
+    teachers: Teachers
+    videos: Videos
+    views: Views
 
 timeline:
-    address: Address   
-    hours: Hours   
+    address: Address
+    hours: Hours
 
 update: Update
 
@@ -764,37 +774,37 @@ user:
 
     edit:
         addresses:
-            h2: Manage your addresses   
+            h2: 'Manage your addresses'
 
-        adresses: Adresses   
-        descriptions: Descriptions   
-        descriptions.h2: Manage your descriptions   
-        links: Links   
-        links.h2: Link your profile to social networks.   
-        musics: Musics   
-        musics.h2: Share your favorite musics   
+        adresses: Adresses
+        descriptions: Descriptions
+        descriptions.h2: 'Manage your descriptions'
+        links: Links
+        links.h2: 'Link your profile to social networks.'
+        musics: Musics
+        musics.h2: 'Share your favorite musics'
 
         photos:
-            h2: Share your favorite photos   
+            h2: 'Share your favorite photos'
 
-        pictures: Photos   
-        profil: Profile   
-        profil.h2: Manage your name and details.   
-        videos: Videos   
-        videos.h2: Share your favorite videos   
+        pictures: Photos
+        profil: Profile
+        profil.h2: 'Manage your name and details.'
+        videos: Videos
+        videos.h2: 'Share your favorite videos'
 
-    edit_profil: Edit Profil   
+    edit_profil: 'Edit Profil'
     events_title: 'My Next Events'
     images_title: 'My Pictures'
-    musics_title: My Musics
-    my_musics: My Musics   
-    my_photos: My Photos   
-    my_videos: My Videos   
-    next_events: My Next Events   
-    passed_events: My Previous Events   
-    posted_by: Posted By   
+    musics_title: 'My Musics'
+    my_musics: 'My Musics'
+    my_photos: 'My Photos'
+    my_videos: 'My Videos'
+    next_events: 'My Next Events'
+    passed_events: 'My Previous Events'
+    posted_by: 'Posted By'
     profile_title: 'My Profile'
-    they_like: Likes   
+    they_like: Likes
     user_title: 'My Profile'
     videos_title: Videos
 

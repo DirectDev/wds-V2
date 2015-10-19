@@ -86,7 +86,7 @@ class FestivalController extends Controller {
         array('name' => 'tasmania', 'latitude' => '-42.241533', 'longitude' => '147.076171', 'distance' => 1300,),
         array('name' => 'auckland', 'latitude' => '-37.034128', 'longitude' => '174.849609', 'distance' => 1300,),
     );
-    private $array_coordinates_oceania = array(
+    private $array_coordinates_indonesia = array(
         array('name' => 'jakarta', 'latitude' => '-6.188615', 'longitude' => '106.817872', 'distance' => 1300,),
         array('name' => 'samarinda', 'latitude' => '-0.531731', 'longitude' => '117.123047', 'distance' => 900,),
         array('name' => 'manile', 'latitude' => '14.426169', 'longitude' => '121.04297', 'distance' => 1000,),
@@ -177,9 +177,9 @@ class FestivalController extends Controller {
         return $this->continent('festival_india', $this->array_coordinates_india, 4, '21.420345', '77.589843');
     }
 
-    public function oceaniaAction(Request $request) {
+    public function indonesiaAction(Request $request) {
         $this->setDates($request);
-        return $this->continent('festival_oceania', $this->array_coordinates_oceania, 4, '-1.616972', '126.105468');
+        return $this->continent('festival_indonesia', $this->array_coordinates_indonesia, 4, '-1.616972', '126.105468');
     }
 
     public function middleEastAction(Request $request) {

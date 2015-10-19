@@ -70,9 +70,9 @@ festival_australia:
     requirements:
       _method: GET
 
-festival_oceania:
-    path:      /oceania
-    defaults:  { _controller: FrontFrontBundle:Festival:oceania }    
+festival_indonesia:
+    path:      /indonesia
+    defaults:  { _controller: FrontFrontBundle:Festival:indonesia }    
     requirements:
       _method: GET
 

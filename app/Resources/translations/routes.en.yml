@@ -1,402 +1,444 @@
 
 # Desc: /callback_username/
-callback_username: /callback_username/en/   
+callback_username: /callback_username/en/
 
 # Desc: /city/artists/{searchcity}
-city_artist: '/city/artists/{searchcity}'   
+city_artist: '/city/artists/{searchcity}'
 
 # Desc: /city/bars/{searchcity}
-city_bar: '/city/bars/{searchcity}'   
+city_bar: '/city/bars/{searchcity}'
 
 # Desc: /city/calendar/{searchcity}
-city_calendar: '/city/calendar/{searchcity}'   
+city_calendar: '/city/calendar/{searchcity}'
 
 # Desc: /city/concerts/{searchcity}
-city_concert: '/city/concerts/{searchcity}'   
+city_concert: '/city/concerts/{searchcity}'
 
 # Desc: /city/dancers/{searchcity}
-city_dancer: '/city/dancers/{searchcity}'   
+city_dancer: '/city/dancers/{searchcity}'
 
 # Desc: /city/festivals/{searchcity}
-city_festival: '/city/festivals/{searchcity}'   
+city_festival: '/city/festivals/{searchcity}'
 
 # Desc: /city/introductions/{searchcity}
-city_introduction: '/city/introductions/{searchcity}'   
+city_introduction: '/city/introductions/{searchcity}'
 
 # Desc: /city/musics/{searchcity}
-city_music: '/city/musics/{searchcity}'   
+city_music: '/city/musics/{searchcity}'
 
 # Desc: /city/numbers/{searchcity}
-city_number: '/city/numbers/{searchcity}'   
+city_number: '/city/numbers/{searchcity}'
 
 # Desc: /city/parties/{searchcity}
-city_party: '/city/parties/{searchcity}'   
+city_party: '/city/parties/{searchcity}'
 
 # Desc: /city/photos/{searchcity}
-city_photo: '/city/photos/{searchcity}'   
+city_photo: '/city/photos/{searchcity}'
 
 # Desc: /city/shows/{searchcity}
-city_show: '/city/shows/{searchcity}'   
+city_show: '/city/shows/{searchcity}'
 
 # Desc: /city/teachers/{searchcity}
-city_teacher: '/city/teachers/{searchcity}'   
+city_teacher: '/city/teachers/{searchcity}'
 
 # Desc: /city/videos/{searchcity}
-city_video: '/city/videos/{searchcity}'   
+city_video: '/city/videos/{searchcity}'
 
 # Desc: /city/workshops/{searchcity}
-city_workshop: '/city/workshops/{searchcity}'   
+city_workshop: '/city/workshops/{searchcity}'
 
 # Desc: /contact
-contact_contact_contact: /contact/en/   
+contact_contact_contact: /contact/en/
 
 # Desc: /login/check-facebook
-facebook_login: /login/check-facebook   
+facebook_login: /login/check-facebook
+
+# Desc: /festival/australia
+festival_australia: /festival/australia   
+
+# Desc: /festival/calendar
+festival_calendar: /festival/calendar   
+
+# Desc: /festival/central_africa
+festival_central_africa: /festival/central_africa   
+
+# Desc: /festival/central_america
+festival_central_america: /festival/central_america   
+
+# Desc: /festival/europe
+festival_europe: /festival/europe_en  
+
+# Desc: /festival/india
+festival_india: /festival/india   
+
+# Desc: /festival/middle_east
+festival_middle_east: /festival/middle_east   
+
+# Desc: /festival/north_africa
+festival_north_africa: /festival/north_africa   
+
+# Desc: /festival/north_america
+festival_north_america: /festival/north_america   
+
+# Desc: /festival/north_asia
+festival_north_asia: /festival/north_asia   
+
+# Desc: /festival/indonesia
+festival_indonesia: /festival/indonesia   
+
+# Desc: /festival/south_africa
+festival_south_africa: /festival/south_africa   
+
+# Desc: /festival/south_america
+festival_south_america: /festival/south_america   
+
+# Desc: /festival/south_asia
+festival_south_asia: /festival/south_asia   
 
 # Desc: /footer
-footer: /footer/en/   
+footer: /footer/en/
 
 # Desc: /profile/change-password
-fos_user_change_password: /profile/change-password   
+fos_user_change_password: /profile/change-password
 
 # Desc: /group/{groupName}/delete
-fos_user_group_delete: '/group/{groupName}/delete'   
+fos_user_group_delete: '/group/{groupName}/delete'
 
 # Desc: /group/{groupName}/edit
-fos_user_group_edit: '/group/{groupName}/edit'   
+fos_user_group_edit: '/group/{groupName}/edit'
 
 # Desc: /group/list
-fos_user_group_list: /group/list   
+fos_user_group_list: /group/list
 
 # Desc: /group/new
-fos_user_group_new: /group/new   
+fos_user_group_new: /group/new
 
 # Desc: /group/{groupName}
-fos_user_group_show: '/group/{groupName}'   
+fos_user_group_show: '/group/{groupName}'
 
 # Desc: /profile/edit
-fos_user_profile_edit: /profile/edit   
+fos_user_profile_edit: /profile/edit
 
 # Desc: /profile/
-fos_user_profile_show: /profile/   
+fos_user_profile_show: /profile/
 
 # Desc: /register/check-email
-fos_user_registration_check_email: /register/check-email   
+fos_user_registration_check_email: /register/check-email
 
 # Desc: /register/confirm/{token}
-fos_user_registration_confirm: '/register/confirm/{token}'   
+fos_user_registration_confirm: '/register/confirm/{token}'
 
 # Desc: /register/confirmed
-fos_user_registration_confirmed: /register/confirmed   
+fos_user_registration_confirmed: /register/confirmed
 
 # Desc: /register/
-fos_user_registration_register: /register/   
+fos_user_registration_register: /register/
 
 # Desc: /resetting/check-email
-fos_user_resetting_check_email: /resetting/check-email   
+fos_user_resetting_check_email: /resetting/check-email
 
 # Desc: /resetting/request
-fos_user_resetting_request: /resetting/request   
+fos_user_resetting_request: /resetting/request
 
 # Desc: /resetting/reset/{token}
-fos_user_resetting_reset: '/resetting/reset/{token}'   
+fos_user_resetting_reset: '/resetting/reset/{token}'
 
 # Desc: /resetting/send-email
-fos_user_resetting_send_email: /resetting/send-email   
+fos_user_resetting_send_email: /resetting/send-email
 
 # Desc: /login_check
-fos_user_security_check: /login_check   
+fos_user_security_check: /login_check
 
 # Desc: /login
-fos_user_security_login: /login   
+fos_user_security_login: /login
 
 # Desc: /logout
-fos_user_security_logout: /logout   
+fos_user_security_logout: /logout
 
 # Desc: /address/delete/{id}
-front_address_delete: '/address/delete/{id}'   
+front_address_delete: '/address/delete/{id}'
 
 # Desc: /address/edit/{id}
-front_address_edit: '/address/edit/{id}'   
+front_address_edit: '/address/edit/{id}'
 
 # Desc: /address/event/create/{id}
-front_address_event_create: '/address/event/create/{id}'   
+front_address_event_create: '/address/event/create/{id}'
 
 # Desc: /address/event/new/{id}
-front_address_event_new: '/address/event/new/{id}'   
+front_address_event_new: '/address/event/new/{id}'
 
 # Desc: /address/show/{id}
-front_address_show: '/address/show/{id}'   
+front_address_show: '/address/show/{id}'
 
 # Desc: /address/show_with_buttons/{id}
-front_address_show_with_buttons: '/address/show_with_buttons/{id}'   
+front_address_show_with_buttons: '/address/show_with_buttons/{id}'
 
 # Desc: /address/update/{id}
-front_address_update: '/address/update/{id}'   
+front_address_update: '/address/update/{id}'
 
 # Desc: /address/user/create/{id}
-front_address_user_create: '/address/user/create/{id}'   
+front_address_user_create: '/address/user/create/{id}'
 
 # Desc: /address/user/new/{id}
-front_address_user_new: '/address/user/new/{id}'   
+front_address_user_new: '/address/user/new/{id}'
 
 # Desc: /country/
-front_country: /country/   
+front_country: /country/
 
 # Desc: /country/create
-front_country_create: /country/create   
+front_country_create: /country/create
 
 # Desc: /country/delete/{id}
-front_country_delete: '/country/delete/{id}'   
+front_country_delete: '/country/delete/{id}'
 
 # Desc: /country/edit/{id}
-front_country_edit: '/country/edit/{id}'   
+front_country_edit: '/country/edit/{id}'
 
 # Desc: /country/new
-front_country_new: /country/new   
+front_country_new: /country/new
 
 # Desc: /country/show/{id}
-front_country_show: '/country/show/{id}'   
+front_country_show: '/country/show/{id}'
 
 # Desc: /country/update/{id}
-front_country_update: '/country/update/{id}'   
+front_country_update: '/country/update/{id}'
 
 # Desc: /event/
-front_event: /event/   
+front_event: /event/
 
 # Desc: /event/alerts/{id}
-front_event_alerts: '/event/alerts/{id}'   
+front_event_alerts: '/event/alerts/{id}'
 
 # Desc: /event/create
-front_event_create: /event/create   
+front_event_create: /event/create
 
 # Desc: /event/delete/{id}
-front_event_delete: '/event/delete/{id}'   
+front_event_delete: '/event/delete/{id}'
 
 # Desc: /event/edit/{id}
-front_event_edit: '/event/edit/{id}'   
+front_event_edit: '/event/edit/{id}'
 
 # Desc: /event/love/{id}
-front_event_love: '/event/love/{id}'   
+front_event_love: '/event/love/{id}'
 
 # Desc: /event/loves/{id}
-front_event_loves: '/event/loves/{id}'   
+front_event_loves: '/event/loves/{id}'
 
 # Desc: /event/new
-front_event_new: /event/new   
+front_event_new: /event/new
 
 # Desc: /event/{uri}/{id}
-front_event_show: '/event/{uri}/{id}'   
+front_event_show: '/event/{uri}/{id}'
 
 # Desc: /event/unlove/{id}
-front_event_unlove: '/event/unlove/{id}'   
+front_event_unlove: '/event/unlove/{id}'
 
 # Desc: /event/update/{id}
-front_event_update: '/event/update/{id}'   
+front_event_update: '/event/update/{id}'
 
 # Desc: /event/update_description/{id}
-front_event_update_description: '/event/update_description/{id}'   
+front_event_update_description: '/event/update_description/{id}'
 
 # Desc: /event/update_link/{id}
-front_event_update_link: '/event/update_link/{id}'   
+front_event_update_link: '/event/update_link/{id}'
 
 # Desc: /eventdate/
-front_eventdate: /eventdate/   
+front_eventdate: /eventdate/
 
 # Desc: /eventdate/add_by_weekday/{id}
-front_eventdate_add_by_weekday: '/eventdate/add_by_weekday/{id}'   
+front_eventdate_add_by_weekday: '/eventdate/add_by_weekday/{id}'
 
 # Desc: /eventdate/create/{id}
-front_eventdate_create: '/eventdate/create/{id}'   
+front_eventdate_create: '/eventdate/create/{id}'
 
 # Desc: /eventdate/delete/{id}
-front_eventdate_delete: '/eventdate/delete/{id}'   
+front_eventdate_delete: '/eventdate/delete/{id}'
 
 # Desc: /eventdate/edit/{id}
-front_eventdate_edit: '/eventdate/edit/{id}'   
+front_eventdate_edit: '/eventdate/edit/{id}'
 
 # Desc: /eventdate/new/{id}
-front_eventdate_new: '/eventdate/new/{id}'   
+front_eventdate_new: '/eventdate/new/{id}'
 
 # Desc: /eventdate/show/{id}
-front_eventdate_show: '/eventdate/show/{id}'   
+front_eventdate_show: '/eventdate/show/{id}'
 
 # Desc: /eventdate/show_tagbox/{id}
-front_eventdate_show_tagbox: '/eventdate/show_tagbox/{id}'   
+front_eventdate_show_tagbox: '/eventdate/show_tagbox/{id}'
 
 # Desc: /eventdate/update/{id}
-front_eventdate_update: '/eventdate/update/{id}'   
+front_eventdate_update: '/eventdate/update/{id}'
 
 # Desc: /eventtype/
-front_eventtype: /eventtype/   
+front_eventtype: /eventtype/
 
 # Desc: /eventtype/create
-front_eventtype_create: /eventtype/create   
+front_eventtype_create: /eventtype/create
 
 # Desc: /eventtype/delete/{id}
-front_eventtype_delete: '/eventtype/delete/{id}'   
+front_eventtype_delete: '/eventtype/delete/{id}'
 
 # Desc: /eventtype/edit/{id}
-front_eventtype_edit: '/eventtype/edit/{id}'   
+front_eventtype_edit: '/eventtype/edit/{id}'
 
 # Desc: /eventtype/new/{id}
-front_eventtype_new: '/eventtype/new/{id}'   
+front_eventtype_new: '/eventtype/new/{id}'
 
 # Desc: /eventtype/show/{id}
-front_eventtype_show: '/eventtype/show/{id}'   
+front_eventtype_show: '/eventtype/show/{id}'
 
 # Desc: /eventtype/update/{id}
-front_eventtype_update: '/eventtype/update/{id}'   
+front_eventtype_update: '/eventtype/update/{id}'
 
 # Desc: /music/create/{id}
-front_music_create: '/music/create/{id}'   
+front_music_create: '/music/create/{id}'
 
 # Desc: /music/delete/{id}
-front_music_delete: '/music/delete/{id}'   
+front_music_delete: '/music/delete/{id}'
 
 # Desc: /music/edit/{id}
-front_music_edit: '/music/edit/{id}'   
+front_music_edit: '/music/edit/{id}'
 
 # Desc: /music/new/{id}
-front_music_new: '/music/new/{id}'   
+front_music_new: '/music/new/{id}'
 
 # Desc: /music/show/{id}
-front_music_show: '/music/show/{id}'   
+front_music_show: '/music/show/{id}'
 
 # Desc: /music/show_with_buttons/{id}
-front_music_show_with_buttons: '/music/show_with_buttons/{id}'   
+front_music_show_with_buttons: '/music/show_with_buttons/{id}'
 
 # Desc: /music/update/{id}
-front_music_update: '/music/update/{id}'   
+front_music_update: '/music/update/{id}'
 
 # Desc: /musictype/
-front_musictype: /musictype/   
+front_musictype: /musictype/
 
 # Desc: /musictype/create/{id}
-front_musictype_create: '/musictype/create/{id}'   
+front_musictype_create: '/musictype/create/{id}'
 
 # Desc: /musictype/delete/{id}
-front_musictype_delete: '/musictype/delete/{id}'   
+front_musictype_delete: '/musictype/delete/{id}'
 
 # Desc: /musictype/edit/{id}
-front_musictype_edit: '/musictype/edit/{id}'   
+front_musictype_edit: '/musictype/edit/{id}'
 
 # Desc: /musictype/filters
-front_musictype_filters: /musictype/filters   
+front_musictype_filters: /musictype/filters
 
 # Desc: /musictype/new
-front_musictype_new: /musictype/new   
+front_musictype_new: /musictype/new
 
 # Desc: /musictype/show/{id}
-front_musictype_show: '/musictype/show/{id}'   
+front_musictype_show: '/musictype/show/{id}'
 
 # Desc: /musictype/update/{id}
-front_musictype_update: '/musictype/update/{id}'   
+front_musictype_update: '/musictype/update/{id}'
 
 # Desc: /profile/edit/{id}
-front_user_edit: '/profile/edit/{id}'   
+front_user_edit: '/profile/edit/{id}'
 
 # Desc: /import_facebook_event/
-front_user_import_facebook_event: /import_facebook_event/   
+front_user_import_facebook_event: /import_facebook_event/
 
 # Desc: /profile/love/{id}
-front_user_love: '/profile/love/{id}'   
+front_user_love: '/profile/love/{id}'
 
 # Desc: /profile/loves/{id}
-front_user_loves: '/profile/loves/{id}'   
+front_user_loves: '/profile/loves/{id}'
 
 # Desc: /profile/next_events
-front_user_next_events: /profile/next_events   
+front_user_next_events: /profile/next_events
 
 # Desc: /profile/passed_events
-front_user_passed_events: /profile/passed_events   
+front_user_passed_events: /profile/passed_events
 
 # Desc: /pofile/overviews/{id}
-front_user_show_overviews: '/pofile/overviews/{id}'   
+front_user_show_overviews: '/pofile/overviews/{id}'
 
 # Desc: /pofile/overviews_profile/{id}
-front_user_show_overviews_profile: '/pofile/overviews_profile/{id}'   
+front_user_show_overviews_profile: '/pofile/overviews_profile/{id}'
 
 # Desc: /my-profile/
-front_user_show_private: /my-profile/   
+front_user_show_private: /my-profile/
 
 # Desc: /profile/{username}/{id}
-front_user_show_public: '/profile/{username}/{id}'   
+front_user_show_public: '/profile/{username}/{id}'
 
 # Desc: /profile/unlove/{id}
-front_user_unlove: '/profile/unlove/{id}'   
+front_user_unlove: '/profile/unlove/{id}'
 
 # Desc: /profile/update/{id}
-front_user_update: '/profile/update/{id}'   
+front_user_update: '/profile/update/{id}'
 
 # Desc: /profile/update_description/{id}
-front_user_update_description: '/profile/update_description/{id}'   
+front_user_update_description: '/profile/update_description/{id}'
 
 # Desc: /profile/update_link/{id}
-front_user_update_link: '/profile/update_link/{id}'   
+front_user_update_link: '/profile/update_link/{id}'
 
 # Desc: /profile/update_profile/{id}
-front_user_update_profile: '/profile/update_profile/{id}'   
+front_user_update_profile: '/profile/update_profile/{id}'
 
 # Desc: /video/create/{id}
-front_video_create: '/video/create/{id}'   
+front_video_create: '/video/create/{id}'
 
 # Desc: /video/delete/{id}
-front_video_delete: '/video/delete/{id}'   
+front_video_delete: '/video/delete/{id}'
 
 # Desc: /video/edit/{id}
-front_video_edit: '/video/edit/{id}'   
+front_video_edit: '/video/edit/{id}'
 
 # Desc: /video/new/{id}
-front_video_new: '/video/new/{id}'   
+front_video_new: '/video/new/{id}'
 
 # Desc: /video/show/{id}
-front_video_show: '/video/show/{id}'   
+front_video_show: '/video/show/{id}'
 
 # Desc: /video/show_with_buttons/{id}
-front_video_show_with_buttons: '/video/show_with_buttons/{id}'   
+front_video_show_with_buttons: '/video/show_with_buttons/{id}'
 
 # Desc: /video/update/{id}
-front_video_update: '/video/update/{id}'   
+front_video_update: '/video/update/{id}'
 
 # Desc: /login/check-google
-google_login: /login/check-google   
+google_login: /login/check-google
 
 # Desc: /{_locale}/
-home: '/language/{_locale}/'   
+home: '/language/{_locale}/'
 
 # Desc: /
-homepage: /   
+homepage: /
 
 # Desc: /login/
-hwi_oauth_connect: /login/   
+hwi_oauth_connect: /login/
 
 # Desc: /connect/registration/{key}
-hwi_oauth_connect_registration: '/connect/registration/{key}'   
+hwi_oauth_connect_registration: '/connect/registration/{key}'
 
 # Desc: /connect/service/{service}
-hwi_oauth_connect_service: '/connect/service/{service}'   
+hwi_oauth_connect_service: '/connect/service/{service}'
 
 # Desc: /connect/{service}
-hwi_oauth_service_redirect: '/connect/{service}'   
+hwi_oauth_service_redirect: '/connect/{service}'
 
 # Desc: /media/cache/resolve/{filter}/{path}
-liip_imagine_filter: '/media/cache/resolve/{filter}/{path}'   
+liip_imagine_filter: '/media/cache/resolve/{filter}/{path}'
 
 # Desc: /media/cache/resolve/{filter}/rc/{hash}/{path}
-liip_imagine_filter_runtime: '/media/cache/resolve/{filter}/rc/{hash}/{path}'   
+liip_imagine_filter_runtime: '/media/cache/resolve/{filter}/rc/{hash}/{path}'
 
 # Desc: /policy
-policy: /policy   
+policy: /policy
 
 # Desc: /admin/search/user
-search_search_admin_user: /admin/search/user   
+search_search_admin_user: /admin/search/user
 
 # Desc: /front/search/event
-search_search_front_event: /front/search/event   
+search_search_front_event: /front/search/event
 
 # Desc: /front/search/user
-search_search_front_user: /front/search/user   
+search_search_front_user: /front/search/user
 
 # Desc: /file/upload
-upload: /file/upload   
+upload: /file/upload

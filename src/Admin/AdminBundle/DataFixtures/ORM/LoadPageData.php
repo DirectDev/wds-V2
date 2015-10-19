@@ -481,15 +481,15 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $Page->mergeNewTranslations();
 
         $Page = new Page();
-        $Page->setName('festival_oceania');
-        $Page->translate('en')->setTitle('Oceanian Festivals');
-        $Page->translate('fr')->setTitle('Festivals Océanie');
+        $Page->setName('festival_indonesia');
+        $Page->translate('en')->setTitle('Indonesian Festivals');
+        $Page->translate('fr')->setTitle('Festivals Indonésie');
         $Page->translate('en')->setContent(null);
         $Page->translate('fr')->setContent(null);
         $Page->translate('en')->setDescription(null);
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
-        $this->addReference('page-festival-oceania', $Page);
+        $this->addReference('page-festival-indonesia', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
