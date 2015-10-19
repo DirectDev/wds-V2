@@ -9,3 +9,75 @@ festival_europe:
     defaults:  { _controller: FrontFrontBundle:Festival:europe }    
     requirements:
       _method: GET
+
+festival_north_america:
+    path:      /north_america
+    defaults:  { _controller: FrontFrontBundle:Festival:northAmerica }    
+    requirements:
+      _method: GET
+
+festival_central_america:
+    path:      /central_america
+    defaults:  { _controller: FrontFrontBundle:Festival:centralAmerica }    
+    requirements:
+      _method: GET
+
+festival_south_america:
+    path:      /south_america
+    defaults:  { _controller: FrontFrontBundle:Festival:southAmerica }    
+    requirements:
+      _method: GET
+
+festival_north_africa:
+    path:      /north_africa
+    defaults:  { _controller: FrontFrontBundle:Festival:northAfrica }    
+    requirements:
+      _method: GET
+
+festival_central_africa:
+    path:      /central_africa
+    defaults:  { _controller: FrontFrontBundle:Festival:centralAfrica }    
+    requirements:
+      _method: GET
+
+festival_south_africa:
+    path:      /south_africa
+    defaults:  { _controller: FrontFrontBundle:Festival:southAfrica }    
+    requirements:
+      _method: GET
+
+festival_north_asia:
+    path:      /north_asia
+    defaults:  { _controller: FrontFrontBundle:Festival:northAsia }    
+    requirements:
+      _method: GET
+
+festival_south_asia:
+    path:      /south_asia
+    defaults:  { _controller: FrontFrontBundle:Festival:southAsia }    
+    requirements:
+      _method: GET
+
+festival_india:
+    path:      /india
+    defaults:  { _controller: FrontFrontBundle:Festival:india }    
+    requirements:
+      _method: GET
+
+festival_australia:
+    path:      /australia
+    defaults:  { _controller: FrontFrontBundle:Festival:australia }    
+    requirements:
+      _method: GET
+
+festival_oceania:
+    path:      /oceania
+    defaults:  { _controller: FrontFrontBundle:Festival:oceania }    
+    requirements:
+      _method: GET
+
+festival_middle_east:
+    path:      /middle_east
+    defaults:  { _controller: FrontFrontBundle:Festival:middleEast }    
+    requirements:
+      _method: GET

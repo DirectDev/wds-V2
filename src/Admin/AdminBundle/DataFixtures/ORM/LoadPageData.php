@@ -347,6 +347,150 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-europe', $Page);
         $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_north_america');
+        $Page->translate('en')->setTitle('North American Festivals');
+        $Page->translate('fr')->setTitle('Festivals Nord Américains');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-north-america', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_central_america');
+        $Page->translate('en')->setTitle('Central American Festivals');
+        $Page->translate('fr')->setTitle('Festivals Centre Américains');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-centre-america', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_south_america');
+        $Page->translate('en')->setTitle('South American Festivals');
+        $Page->translate('fr')->setTitle('Festivals Sud Américains');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-south-america', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_north_africa');
+        $Page->translate('en')->setTitle('North African Festivals');
+        $Page->translate('fr')->setTitle('Festivals Nord Africains');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-north-africa', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_central_africa');
+        $Page->translate('en')->setTitle('Central African Festivals');
+        $Page->translate('fr')->setTitle('Festivals Centre Africains');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-centre-africa', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_south_africa');
+        $Page->translate('en')->setTitle('South African Festivals');
+        $Page->translate('fr')->setTitle('Festivals Sud Africains');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-south-africa', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_north_asia');
+        $Page->translate('en')->setTitle('North Asian Festivals');
+        $Page->translate('fr')->setTitle('Festivals Nord Asie');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-north-asia', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_south_asia');
+        $Page->translate('en')->setTitle('South Asian Festivals');
+        $Page->translate('fr')->setTitle('Festivals Sud Asie');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-south-asia', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_india');
+        $Page->translate('en')->setTitle('Indian Festivals');
+        $Page->translate('fr')->setTitle('Festivals Indiens');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-india', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_australia');
+        $Page->translate('en')->setTitle('Australian Festivals');
+        $Page->translate('fr')->setTitle('Festivals Australiens');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-australia', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_oceania');
+        $Page->translate('en')->setTitle('Oceanian Festivals');
+        $Page->translate('fr')->setTitle('Festivals Océanie');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-oceania', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('festival_middle_east');
+        $Page->translate('en')->setTitle('Middle Eastern Festivals');
+        $Page->translate('fr')->setTitle('Festivals Moyen Orient');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-middle-east', $Page);
+        $Page->mergeNewTranslations();
 
         $manager->flush();
     }

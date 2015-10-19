@@ -63,13 +63,52 @@
                     <ul class="dropdown-menu">
                         <li><a href="">{% trans %}navbar.festivals.calendar{% endtrans %}</a></li>
                         <li><a href="{{ path('festival_europe') }}">{% trans %}navbar.festivals.europe{% endtrans %}</a></li>
-                        <li><a href="">{% trans %}navbar.festivals.north_america{% endtrans %}</a></li>
-                        <li><a href="">{% trans %}navbar.festivals.south_america{% endtrans %}</a></li>
-                        <li><a href="">{% trans %}navbar.festivals.africa{% endtrans %}</a></li>
-                        <li><a href="">{% trans %}navbar.festivals.asia{% endtrans %}</a></li>
-                        <li><a href="">{% trans %}navbar.festivals.australia{% endtrans %}</a></li>
+                        <li class="dropdown-submenu">
+                            <a href="javascript:void(0);">{% trans %}navbar.festivals.america{% endtrans %}</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('festival_north_america') }}">{% trans %}navbar.festivals.north_america{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_central_america') }}">{% trans %}navbar.festivals.central_america{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_south_america') }}">{% trans %}navbar.festivals.south_america{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="javascript:void(0);">{% trans %}navbar.festivals.africa{% endtrans %}</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('festival_north_africa') }}">{% trans %}navbar.festivals.north_africa{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_central_africa') }}">{% trans %}navbar.festivals.central_africa{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_south_africa') }}">{% trans %}navbar.festivals.south_africa{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="javascript:void(0);">{% trans %}navbar.festivals.asia{% endtrans %}</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('festival_north_asia') }}">{% trans %}navbar.festivals.north_asia{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_south_asia') }}">{% trans %}navbar.festivals.south_asia{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="{{ path('festival_india') }}">{% trans %}navbar.festivals.india{% endtrans %}</a></li>
+                        <li><a href="{{ path('festival_oceania') }}">{% trans %}navbar.festivals.oceania{% endtrans %}</a></li>
+                        <li><a href="{{ path('festival_australia') }}">{% trans %}navbar.festivals.australia{% endtrans %}</a></li>
+                        <li><a href="{{ path('festival_middle_east') }}">{% trans %}navbar.festivals.middle_east{% endtrans %}</a></li>
                     </ul>
-                </li>                    
+                </li> 
 
                 <li>
                     <a href="{{ path('home')}}" >
