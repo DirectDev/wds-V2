@@ -214,5 +214,30 @@ class FestivalController extends Controller {
                     'array_coordinates' => $array_coordinates
         ));
     }
+    
+    public function calendarAction(Request $request) {
+        $this->setDates($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('festival_calendar');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $eventTypeFestival = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Festival');
+
+        $nextEvents = $em->getRepository('FrontFrontBundle:Event')
+                ->findByContinent(50, array($eventTypeFestival), null, $this->startdate, $this->stopdate);
+
+        $user = $this->getUser();
+
+        return $this->render('FrontFrontBundle:Festival:calendar.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
 
 }

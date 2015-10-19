@@ -61,7 +61,7 @@
                         {% trans %}navbar.festivals{% endtrans %}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="">{% trans %}navbar.festivals.calendar{% endtrans %}</a></li>
+                        <li><a href="{{ path('festival_calendar') }}">{% trans %}navbar.festivals.calendar{% endtrans %}</a></li>
                         <li><a href="{{ path('festival_europe') }}">{% trans %}navbar.festivals.europe{% endtrans %}</a></li>
                         <li class="dropdown-submenu">
                             <a href="javascript:void(0);">{% trans %}navbar.festivals.america{% endtrans %}</a>

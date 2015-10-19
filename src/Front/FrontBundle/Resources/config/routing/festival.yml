@@ -1,5 +1,5 @@
 festival_calendar:
-    path:      /calendar/{searchfestival}
+    path:      /calendar
     defaults:  { _controller: FrontFrontBundle:Festival:calendar }    
     requirements:
       _method: GET      

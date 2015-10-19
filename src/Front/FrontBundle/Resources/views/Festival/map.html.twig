@@ -27,6 +27,7 @@
                 {% endfor %}
             {% endif %}
                 
+                {# Cercles des perimetres de recherche
                 {% for array_coordinate in array_coordinates %}
                     var cityCircle{{ loop.index }} = new google.maps.Circle({
                         strokeColor: '#FF0000',
@@ -38,7 +39,7 @@
                         center: {lat: {{ array_coordinate['latitude'] }}, lng: {{ array_coordinate['longitude'] }} },
                         radius: {{ array_coordinate['distance'] * 1000 }}
                       });
-              {% endfor %}
+              {% endfor %}#}
 
                
 

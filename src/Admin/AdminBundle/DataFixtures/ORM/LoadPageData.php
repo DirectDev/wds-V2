@@ -334,8 +334,20 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-city-videos', $Page);
         $Page->mergeNewTranslations();
-        
-        
+
+
+        $Page = new Page();
+        $Page->setName('festival_calendar');
+        $Page->translate('en')->setTitle('Festivals Calendar');
+        $Page->translate('fr')->setTitle('Calendrier des Festivals');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-festival-calendar', $Page);
+        $Page->mergeNewTranslations();
+
         $Page = new Page();
         $Page->setName('festival_europe');
         $Page->translate('en')->setTitle('European Festivals');
@@ -347,7 +359,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-europe', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_north_america');
         $Page->translate('en')->setTitle('North American Festivals');
@@ -359,7 +371,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-north-america', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_central_america');
         $Page->translate('en')->setTitle('Central American Festivals');
@@ -371,7 +383,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-centre-america', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_south_america');
         $Page->translate('en')->setTitle('South American Festivals');
@@ -383,7 +395,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-south-america', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_north_africa');
         $Page->translate('en')->setTitle('North African Festivals');
@@ -395,7 +407,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-north-africa', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_central_africa');
         $Page->translate('en')->setTitle('Central African Festivals');
@@ -407,7 +419,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-centre-africa', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_south_africa');
         $Page->translate('en')->setTitle('South African Festivals');
@@ -419,7 +431,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-south-africa', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_north_asia');
         $Page->translate('en')->setTitle('North Asian Festivals');
@@ -431,7 +443,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-north-asia', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_south_asia');
         $Page->translate('en')->setTitle('South Asian Festivals');
@@ -443,7 +455,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-south-asia', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_india');
         $Page->translate('en')->setTitle('Indian Festivals');
@@ -455,7 +467,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-india', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_australia');
         $Page->translate('en')->setTitle('Australian Festivals');
@@ -467,7 +479,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-australia', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_oceania');
         $Page->translate('en')->setTitle('Oceanian Festivals');
@@ -479,7 +491,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-oceania', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('festival_middle_east');
         $Page->translate('en')->setTitle('Middle Eastern Festivals');
