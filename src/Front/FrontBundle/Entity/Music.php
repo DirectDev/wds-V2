@@ -3,6 +3,7 @@
 namespace Front\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use User\UserBundle\Entity\User;
 
 /**
@@ -26,6 +27,7 @@ class Music {
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\NotNull()
      */
     private $url;
 

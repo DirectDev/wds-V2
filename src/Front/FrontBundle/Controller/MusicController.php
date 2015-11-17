@@ -113,6 +113,9 @@ class MusicController extends Controller {
     
     public function showWithButtonsAction($id) {
         $em = $this->getDoctrine()->getManager();
+        
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
@@ -131,6 +134,9 @@ class MusicController extends Controller {
      */
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
+        
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
@@ -170,6 +176,9 @@ class MusicController extends Controller {
      */
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
+        
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
 
