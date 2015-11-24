@@ -45,7 +45,7 @@ class Move {
     protected $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Video", inversedBy="move")
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Video", inversedBy="move", cascade={"persist"})
      * @ORM\JoinColumn(name="video_id", referencedColumnName="id")
      * 
      * */

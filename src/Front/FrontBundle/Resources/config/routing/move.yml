@@ -5,6 +5,11 @@ front_move:
 front_move_show:
     path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:Move:show" }
+    
+front_move_show_with_buttons:
+    path:     /show_with_buttons/{id}
+    defaults: { _controller: "FrontFrontBundle:Move:showWithButtons" }
+    
 
 front_move_new:
     path:     /new

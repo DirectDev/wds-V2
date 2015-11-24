@@ -3,6 +3,7 @@
 namespace Front\FrontBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Move;
 use Front\FrontBundle\Form\MoveType;
@@ -32,16 +33,23 @@ class MoveController extends Controller {
      *
      */
     public function createAction(Request $request) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
         $move = new Move();
         $form = $this->createCreateForm($move);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $move->setUser($this->getUser());
             $em->persist($move);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_move_show', array('id' => $move->getId())));
+            $user = $move->getUser();
+            if ($user)
+                return $this->redirect($this->generateUrl('front_move_show_with_buttons', array('id' => $move->getId())));
         }
 
         return $this->render('FrontFrontBundle:Move:new.html.twig', array(
@@ -95,11 +103,23 @@ class MoveController extends Controller {
             throw $this->createNotFoundException('Unable to find Move entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('FrontFrontBundle:Move:show.html.twig', array(
                     'move' => $move,
-                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    public function showWithButtonsAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $move = $em->getRepository('FrontFrontBundle:Move')->find($id);
+
+        if (!$move) {
+            throw $this->createNotFoundException('Unable to find Move entity.');
+        }
+
+
+        return $this->render('FrontFrontBundle:Move:showWithButtons.html.twig', array(
+                    'move' => $move,
         ));
     }
 
@@ -117,12 +137,10 @@ class MoveController extends Controller {
         }
 
         $editForm = $this->createEditForm($move);
-        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('FrontFrontBundle:Move:edit.html.twig', array(
                     'move' => $move,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -149,6 +167,10 @@ class MoveController extends Controller {
      *
      */
     public function updateAction(Request $request, $id) {
+              
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        
         $em = $this->getDoctrine()->getManager();
 
         $move = $em->getRepository('FrontFrontBundle:Move')->find($id);
@@ -157,20 +179,18 @@ class MoveController extends Controller {
             throw $this->createNotFoundException('Unable to find Move entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($move);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_move_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('front_move_show_with_buttons', array('id' => $id)));
         }
 
         return $this->render('FrontFrontBundle:Move:edit.html.twig', array(
                     'move' => $move,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -179,38 +199,24 @@ class MoveController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $move = $em->getRepository('FrontFrontBundle:Move')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $move = $em->getRepository('FrontFrontBundle:Move')->find($id);
 
-            if (!$move) {
-                throw $this->createNotFoundException('Unable to find Move entity.');
-            }
-
-            $em->remove($move);
-            $em->flush();
+        if (!$move) {
+            throw $this->createNotFoundException('Unable to find Move entity.');
         }
 
-        return $this->redirect($this->generateUrl('front_move'));
-    }
+        if (!$this->getUser()->getMoves()->contains($move)) {
+            throw $this->createNotFoundException('Error : not yours.');
+        }
 
-    /**
-     * Creates a form to delete a Move entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id) {
-        return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('front_move_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => /** @Ignore */ 'Delete'))
-                        ->getForm()
-        ;
+        $em->remove($move);
+        $em->flush();
+
+        return new Response('', 200);
     }
 
 }

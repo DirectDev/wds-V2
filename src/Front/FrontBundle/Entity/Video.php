@@ -43,7 +43,7 @@ class Video {
     protected $tags;
 
     /**
-     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Move", mappedBy="video")
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Move", mappedBy="video", cascade={"persist"})
      * */
     private $move;
 

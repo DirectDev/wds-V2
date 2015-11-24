@@ -1,5 +1,7 @@
-{% set video = move.getVideo() %}
-{% if video %}
-    {% include 'FrontFrontBundle:Video:show.html.twig' with { video : video } %}
-{% endif %}
-<span>{{ move.getTitle() }}</span>
+<div id="move_{{ move.id }}">
+    {% set video = move.getVideo() %}
+    {% if video %}
+        {% include 'FrontFrontBundle:Video:show.html.twig' with { video : video } %}
+    {% endif %}
+    <span>{{ move.getTitle() }}</span>
+</div>

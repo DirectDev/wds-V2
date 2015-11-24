@@ -39,6 +39,7 @@
                         <li><a data-toggle="tab" href="#picture">{% trans %}user.edit.pictures{% endtrans %}</a></li>
                         <li><a data-toggle="tab" href="#music">{% trans %}user.edit.musics{% endtrans %}</a></li>
                         <li><a data-toggle="tab" href="#video">{% trans %}user.edit.videos{% endtrans %}</a></li>
+                        <li><a data-toggle="tab" href="#move">{% trans %}user.edit.moves{% endtrans %}</a></li>
                         <li><a data-toggle="tab" href="#address">{% trans %}user.edit.adresses{% endtrans %}</a></li>
                     </ul>          
                     <div class="tab-content">
@@ -120,6 +121,21 @@
                             <div  class="row margin-bottom-20"  id="userVideoList">
                                 {% for video in entity.videos %}
                                     {% render(path('front_video_show_with_buttons', { id : video.id } )) %}
+                                {% endfor %}
+                            </div>
+
+                        </div>
+
+                        <div id="move" class="profile-edit tab-pane fade">
+                            <h2 class="heading-md">{% trans %}user.edit.moves.h2{% endtrans %}</h2>
+
+                            <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMove" href="{{ path('front_move_new', { id : entity.id } ) }}">
+                                {% trans %}user.add_move_button{% endtrans %}
+                            </button>
+
+                            <div  class="row margin-bottom-20"  id="userMoveList">
+                                {% for move in entity.moves %}
+                                    {% render(path('front_move_show_with_buttons', { id : move.id } )) %}
                                 {% endfor %}
                             </div>
 

@@ -110,7 +110,7 @@ class VideoController extends Controller {
                     'video' => $video,
         ));
     }
-    
+
     public function showWithButtonsAction($id) {
         $em = $this->getDoctrine()->getManager();
 
@@ -169,6 +169,10 @@ class VideoController extends Controller {
      *
      */
     public function updateAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
         $em = $this->getDoctrine()->getManager();
 
         $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
@@ -206,8 +210,8 @@ class VideoController extends Controller {
         if (!$video) {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
-        
-        if(!$this->getUser()->getVideos()->contains($video)){
+
+        if (!$this->getUser()->getVideos()->contains($video)) {
             throw $this->createNotFoundException('Error : not yours.');
         }
 
