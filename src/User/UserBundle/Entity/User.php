@@ -113,15 +113,20 @@ class User extends BaseUser {
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Music", mappedBy="user")
      */
     protected $musics;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Video", mappedBy="user")
      */
     protected $videos;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Move", mappedBy="user")
+     */
+    protected $moves;
+
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="loves")
-     **/
+     * */
     private $lovesMe;
 
     /**
@@ -130,18 +135,18 @@ class User extends BaseUser {
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="love_user_id", referencedColumnName="id")}
      *      )
-     **/
+     * */
     private $loves;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Event", inversedBy="lovesMe")
      * @ORM\JoinTable(name="event_love",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="love_event_id", referencedColumnName="id")}
      *      )
-     **/
+     * */
     private $eventloves;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaUser", mappedBy="user")
      * */
@@ -170,6 +175,7 @@ class User extends BaseUser {
         $this->userTypes = new ArrayCollection();
         $this->musics = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->moves = new ArrayCollection();
         $this->eventloves = new ArrayCollection();
         $this->loves = new ArrayCollection();
         $this->lovesMe = new ArrayCollection();
@@ -205,15 +211,15 @@ class User extends BaseUser {
         foreach ($this->addresses as $address)
             return $address;
     }
-    
-    public function getCity(){
-        if($this->getAddress())
+
+    public function getCity() {
+        if ($this->getAddress())
             return $this->getAddress()->getCity();
         return '';
     }
-    
-    public function getCountry(){
-        if($this->getAddress())
+
+    public function getCountry() {
+        if ($this->getAddress())
             return $this->getAddress()->getCountry();
         return '';
     }
@@ -262,8 +268,8 @@ class User extends BaseUser {
                 return true;
         return false;
     }
-    
-    public function incrementDisplayCounter(){
+
+    public function incrementDisplayCounter() {
         $this->display_counter++;
     }
 
@@ -731,7 +737,7 @@ class User extends BaseUser {
     public function getMusics() {
         return $this->musics;
     }
-    
+
     /**
      * Add videos
      *
@@ -763,8 +769,6 @@ class User extends BaseUser {
         return $this->videos;
     }
 
-
-
     /**
      * Set displayCounter
      *
@@ -772,8 +776,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setDisplayCounter($displayCounter)
-    {
+    public function setDisplayCounter($displayCounter) {
         $this->display_counter = $displayCounter;
 
         return $this;
@@ -784,8 +787,7 @@ class User extends BaseUser {
      *
      * @return integer
      */
-    public function getDisplayCounter()
-    {
+    public function getDisplayCounter() {
         return $this->display_counter;
     }
 
@@ -796,8 +798,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addLovesMe(\User\UserBundle\Entity\User $lovesMe)
-    {
+    public function addLovesMe(\User\UserBundle\Entity\User $lovesMe) {
         $lovesMe->addLove($this);
         $this->lovesMe[] = $lovesMe;
 
@@ -809,8 +810,7 @@ class User extends BaseUser {
      *
      * @param \User\UserBundle\Entity\User $lovesMe
      */
-    public function removeLovesMe(\User\UserBundle\Entity\User $lovesMe)
-    {
+    public function removeLovesMe(\User\UserBundle\Entity\User $lovesMe) {
         $this->lovesMe->removeElement($lovesMe);
     }
 
@@ -819,8 +819,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLovesMe()
-    {
+    public function getLovesMe() {
         return $this->lovesMe;
     }
 
@@ -831,8 +830,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addLove(\User\UserBundle\Entity\User $love)
-    {
+    public function addLove(\User\UserBundle\Entity\User $love) {
         $this->loves[] = $love;
 
         return $this;
@@ -843,8 +841,7 @@ class User extends BaseUser {
      *
      * @param \User\UserBundle\Entity\User $love
      */
-    public function removeLove(\User\UserBundle\Entity\User $love)
-    {
+    public function removeLove(\User\UserBundle\Entity\User $love) {
         $this->loves->removeElement($love);
     }
 
@@ -853,8 +850,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLoves()
-    {
+    public function getLoves() {
         return $this->loves;
     }
 
@@ -865,8 +861,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addEventlove(\Front\FrontBundle\Entity\Event $eventlove)
-    {
+    public function addEventlove(\Front\FrontBundle\Entity\Event $eventlove) {
         $this->eventloves[] = $eventlove;
 
         return $this;
@@ -877,8 +872,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Event $eventlove
      */
-    public function removeEventlove(\Front\FrontBundle\Entity\Event $eventlove)
-    {
+    public function removeEventlove(\Front\FrontBundle\Entity\Event $eventlove) {
         $this->eventloves->removeElement($eventlove);
     }
 
@@ -887,8 +881,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEventloves()
-    {
+    public function getEventloves() {
         return $this->eventloves;
     }
 
@@ -899,8 +892,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setMeaUser(\Front\FrontBundle\Entity\MeaUser $meaUser = null)
-    {
+    public function setMeaUser(\Front\FrontBundle\Entity\MeaUser $meaUser = null) {
         $this->meaUser = $meaUser;
 
         return $this;
@@ -911,8 +903,42 @@ class User extends BaseUser {
      *
      * @return \Front\FrontBundle\Entity\MeaUser
      */
-    public function getMeaUser()
-    {
+    public function getMeaUser() {
         return $this->meaUser;
+    }
+
+
+    /**
+     * Add move
+     *
+     * @param \Front\FrontBundle\Entity\Move $move
+     *
+     * @return User
+     */
+    public function addMove(\Front\FrontBundle\Entity\Move $move)
+    {
+        $this->moves[] = $move;
+
+        return $this;
+    }
+
+    /**
+     * Remove move
+     *
+     * @param \Front\FrontBundle\Entity\Move $move
+     */
+    public function removeMove(\Front\FrontBundle\Entity\Move $move)
+    {
+        $this->moves->removeElement($move);
+    }
+
+    /**
+     * Get moves
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoves()
+    {
+        return $this->moves;
     }
 }

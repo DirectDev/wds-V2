@@ -3,6 +3,9 @@
 namespace Front\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Video
@@ -33,6 +36,20 @@ class Video {
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Tag", mappedBy="videos", cascade={"persist"})
+     */
+    protected $tags;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Move", mappedBy="video")
+     * */
+    private $move;
+
+    public function __construct() {
+        $this->tags = new ArrayCollection();
+    }
 
     public function isVimeo() {
         if (stripos($this->getUrl(), 'vimeo') !== false)
@@ -81,6 +98,13 @@ class Video {
         $pos = strrpos($this->getUrl(), '/') + 1;
         if ($pos !== false)
             return substr($this->getUrl(), $pos);
+    }
+
+    public function hasTag($Tag) {
+        foreach ($this->getTags() as $videoTag)
+            if ($Tag == $videoTag)
+                return true;
+        return false;
     }
 
     /**
@@ -132,6 +156,60 @@ class Video {
      */
     public function getUser() {
         return $this->user;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Front\FrontBundle\Entity\Tag $tag
+     *
+     * @return Video
+     */
+    public function addTag(\Front\FrontBundle\Entity\Tag $tag) {
+        $this->tags[] = $tag;
+        $tag->addVideo($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Front\FrontBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Front\FrontBundle\Entity\Tag $tag) {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags() {
+        return $this->tags;
+    }
+
+    /**
+     * Set move
+     *
+     * @param \Front\FrontBundle\Entity\Move $move
+     *
+     * @return Video
+     */
+    public function setMove(\Front\FrontBundle\Entity\Move $move = null) {
+        $this->move = $move;
+
+        return $this;
+    }
+
+    /**
+     * Get move
+     *
+     * @return \Front\FrontBundle\Entity\Move
+     */
+    public function getMove() {
+        return $this->move;
     }
 
 }

@@ -46,7 +46,7 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
         }
 
         $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . $user_reference1));
+        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
         $MeaUser->setOrdre(rand(0, 100));
         $locale = $this->array_locale[rand(0, 1)];
         $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
@@ -55,7 +55,7 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('meauser-' . filter_var($user_reference1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
 
         $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . $user_reference2));
+        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
         $MeaUser->setOrdre(rand(0, 100));
         $locale = $this->array_locale[rand(0, 1)];
         $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
@@ -64,7 +64,7 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('meauser-' . filter_var($user_reference2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
 
         $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . $user_reference3));
+        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
         $MeaUser->setOrdre(rand(0, 100));
         $locale = $this->array_locale[rand(0, 1)];
         $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
@@ -73,7 +73,7 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('meauser-' . filter_var($user_reference3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
 
         $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . $user_reference4));
+        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference4, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
         $MeaUser->setOrdre(rand(0, 100));
         $locale = $this->array_locale[rand(0, 1)];
         $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);

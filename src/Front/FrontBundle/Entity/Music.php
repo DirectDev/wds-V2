@@ -5,6 +5,8 @@ namespace Front\FrontBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use User\UserBundle\Entity\User;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Music
@@ -37,6 +39,15 @@ class Music {
      */
     protected $user;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Tag", mappedBy="musics", cascade={"persist"})
+     */
+    protected $tags;
+
+    public function __construct() {
+        $this->tags = new ArrayCollection();
+    }
+
     public function isSoundCloud() {
         if (stripos($this->getUrl(), 'soundcloud') !== false)
             return true;
@@ -58,6 +69,13 @@ class Music {
         $tab = explode('/', $str);
 
         return 'spotify:' . $tab[0] . ':' . $tab[1];
+    }
+
+    public function hasTag($Tag) {
+        foreach ($this->getTags() as $musicTag)
+            if ($Tag == $musicTag)
+                return true;
+        return false;
     }
 
     /**
@@ -109,6 +127,38 @@ class Music {
      */
     public function getUser() {
         return $this->user;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Front\FrontBundle\Entity\Tag $tag
+     *
+     * @return Music
+     */
+    public function addTag(\Front\FrontBundle\Entity\Tag $tag) {
+        $this->tags[] = $tag;
+        $tag->addMusic($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Front\FrontBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Front\FrontBundle\Entity\Tag $tag) {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags() {
+        return $this->tags;
     }
 
 }

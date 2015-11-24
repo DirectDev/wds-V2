@@ -356,6 +356,30 @@ trait FixturesDataTrait {
         'https://vimeo.com/127828813',
         'https://www.youtube.com/watch?v=AiUlNbF6-Ok',
     );
+    protected $array_video_move = array(
+        'https://www.youtube.com/watch?v=jLXolVen-d4', 
+        'https://www.youtube.com/watch?v=60NPGi6hSZQ', 
+        'https://www.youtube.com/watch?v=aA4j-bYYzN8', 
+        'https://www.youtube.com/watch?v=d2JAODXZO9U', 
+    );
+    protected $array_move = array(
+        'Setenta / 70', 
+        'Open beak', 
+        'Frisbee turn', 
+        'Kizomba 3 pas de base', 
+    );
+    protected $array_tag = array(
+        'Salsa',
+        'Bachata',
+        'Merengue',
+        'Kizomba',
+        'On1',
+        'On2',
+        'Cubana',
+        'Dominicana',
+        'Beginner',
+        'Advanced',
+    );
 
     public function __construct() {
         $this->array_user = array_merge(
