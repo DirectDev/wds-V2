@@ -39,6 +39,8 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface {
             $Tag->translate('fr')->setTitle($name);
 
             $manager->persist($Tag);
+
+            $Tag->mergeNewTranslations();
             $this->addReference('tag-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Tag);
         }
 

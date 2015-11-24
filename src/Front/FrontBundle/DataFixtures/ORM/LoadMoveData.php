@@ -48,6 +48,7 @@ class LoadMoveData extends AbstractFixture implements OrderedFixtureInterface {
             }
 
             $manager->persist($Move);
+            $Move->mergeNewTranslations();
         }
 
         $manager->flush();

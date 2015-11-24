@@ -76,4 +76,8 @@ FrontFrontBundle_musictype:
     
 FrontFrontBundle_city:
     resource: "@FrontFrontBundle/Resources/config/routing/city.yml"
-    prefix:   /city         
+    prefix:   /city        
+
+FrontFrontBundle_move:
+    resource: "@FrontFrontBundle/Resources/config/routing/move.yml"
+    prefix:   /move         

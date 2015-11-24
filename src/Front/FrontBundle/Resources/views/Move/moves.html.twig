@@ -1,0 +1,23 @@
+{% extends 'FrontFrontBundle:Move:moveLayout.html.twig' %}
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:Move:moveBreadcrumb.html.twig' with { active : 'moves' } %}
+
+    <!--=== Profile ===-->
+    <div class="container content profile">
+        <div class="row">
+
+            <!-- Profile Content -->            
+            <div class="col-md-12">
+
+
+                {% for move in moves %}
+                    {% render(path('front_move_show', { id : move.id } )) %}
+                {% endfor %}
+
+            </div>
+            <!-- End Profile Content -->            
+        </div>
+    </div><!--/container-->    
+{% endblock %}

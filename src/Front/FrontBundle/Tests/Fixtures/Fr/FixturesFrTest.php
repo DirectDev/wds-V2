@@ -75,5 +75,48 @@ class FixturesFrTest extends WebTestCase {
         $this->assertNotEmpty($eventType->translate($this->locale)->getTitle());
 
     }
+    
+    public function testTags() {
+
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Salsa")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Salsa");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Bachata")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Bachata");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Merengue")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Merengue");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Kizomba")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Kizomba");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("On1")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("On1");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("On2")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("On2");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+        
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Cubana")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Cubana");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+        
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Dominicana")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Dominicana");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+        
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Beginner")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Beginner");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+        
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Advanced")));
+        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Advanced");
+        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
+    }
 
 }
