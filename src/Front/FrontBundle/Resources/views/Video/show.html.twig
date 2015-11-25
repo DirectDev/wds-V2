@@ -1,13 +1,10 @@
 <div id="video_{{ video.id }}">  
     <div class="col-md-6 md-margin-bottom-20">
-        {% if video.isYoutube %}
-            {% include 'FrontFrontBundle:Video:youtube.html.twig' with { video : video } %}
-        {% endif %}
-        {% if video.isVimeo %}
-            {% include 'FrontFrontBundle:Video:vimeo.html.twig' with { video : video } %}
-        {% endif %}
-        {% if video.isDailymotion %}
-            {% include 'FrontFrontBundle:Video:dailymotion.html.twig' with { video : video } %}
-        {% endif %}   
+        {% include 'FrontFrontBundle:Video:player.html.twig' with { video : video } %} 
+    </div>
+
+    <div class="margin-bottom-40">
+        <h3>Project Two</h3>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>                    
     </div>
 </div>

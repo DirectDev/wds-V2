@@ -3,17 +3,17 @@
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editMove' , 'data-move-id' : move.id } } ) }}
 
     <div class="col-md-10">
-        {{ form_row(edit_form.name) }}
-        {{ form_row(edit_form.video) }}
-        {{ form_row(edit_form.tags) }}
-    </div>
-    
-    <div class="col-md-10">
         {{ form_row(edit_form.translations) }}
     </div>
 
     <div class="col-md-10">
-        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left margin-bottom-10' } } ) }}
+        {{ form_widget(edit_form.video, { 'label' : false } ) }}
+        {{ form_row(edit_form.tags) }}
+    </div>
+
+
+    <div class="col-md-10">
+        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-right margin-bottom-10' } } ) }}
     </div>
 
     {{ form_end(edit_form) }}

@@ -19,7 +19,7 @@ class MoveType extends AbstractType {
             $locales[] = $options['attr']['locale'];
 
         $builder
-                ->add('name')
+//                ->add('name')
                 ->add('translations', 'a2lix_translations', array(
                     'locales' => $locales,
                     'fields' => array(
@@ -27,7 +27,9 @@ class MoveType extends AbstractType {
                     )
                 ))
                 ->add('video', new VideoType(), array(
-                    'data_class' => 'Front\FrontBundle\Entity\Video')
+                    'data_class' => 'Front\FrontBundle\Entity\Video',
+                    'label' => false,
+                        )
                 )
                 ->add('tags', 'entity', array(
                     'class' => 'FrontFrontBundle:Tag',
@@ -35,6 +37,7 @@ class MoveType extends AbstractType {
                     'multiple' => true,
                     'expanded' => true,
                     'by_reference' => false,
+                    'label_attr' => array('class' => 'checkbox-inline')
                 ))
         ;
     }

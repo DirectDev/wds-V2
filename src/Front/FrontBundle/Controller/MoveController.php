@@ -44,6 +44,7 @@ class MoveController extends Controller {
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $move->setUser($this->getUser());
+            $move->setName($move->getTitle());
             $em->persist($move);
             $em->flush();
 
@@ -183,6 +184,7 @@ class MoveController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $move->setName($move->getTitle());
             $em->flush();
 
             return $this->redirect($this->generateUrl('front_move_show_with_buttons', array('id' => $id)));
