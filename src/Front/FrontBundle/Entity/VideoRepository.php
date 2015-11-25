@@ -42,4 +42,45 @@ class VideoRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function filter($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('v')
+                ->leftJoin('v.translations', 'vt', 'WITH', 'vt.locale = :locale')
+                ->leftJoin('v.user', 'u')
+                ->leftJoin('v.tags', 't')
+                ->leftJoin('t.translations', 'tt', 'WITH', 'tt.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("v.name", ":search"));
+            $orQuery->add($query->expr()->like("vt.title", ":search"));
+            $orQuery->add($query->expr()->like("t.name", ":search"));
+            $orQuery->add($query->expr()->like("tt.title", ":search"));
+            $orQuery->add($query->expr()->like("u.username", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        if (isset($data["tag"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("t.name", ":tag"));
+            $orQuery->add($query->expr()->like("tt.title", ":tag"));
+            $query->andWhere($orQuery);
+            $query->setParameter('tag', '%' . $data["tag"] . '%');
+        }
+
+        if (isset($data["user"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.username", ":user"));
+            $orQuery->add($query->expr()->like("u.id", ":user"));
+            $query->andWhere($orQuery);
+            $query->setParameter('user', '%' . $data["user"] . '%');
+        }
+
+        // order by count loves
+
+        return $query->getQuery();
+    }
+
 }

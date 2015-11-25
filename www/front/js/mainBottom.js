@@ -446,3 +446,24 @@ $(document).on('click', '#eventAddAddress', function () {
     });
     return false;
 });
+
+$(document).on('click', 'a.search-video-tag-link', function (e) {
+    e.preventDefault();
+    $('#video_filter_search').val(null);
+    $('#video_filter_user').val(null);
+    $('#video_filter_tag').val($(this).text().trim());
+    $('#video_filter_form').submit();
+});
+$(document).on('click', 'a.search-video-user-link', function (e) {
+    e.preventDefault();
+    $('#video_filter_search').val(null);
+    $('#video_filter_tag').val(null);
+    $('#video_filter_user').val($(this).data('user-id'));
+    $('#video_filter_form').submit();
+});
+$(document).on('change keyup', '#video_filter_search', function (e) {
+    e.preventDefault();
+    $('#video_filter_tag').val(null);
+    $('#video_filter_user').val(null);
+    $('#video_filter_form').submit();
+});

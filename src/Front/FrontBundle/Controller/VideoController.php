@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Video;
 use Front\FrontBundle\Form\VideoType;
+use Front\FrontBundle\Form\VideoFilterType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -28,16 +29,73 @@ class VideoController extends Controller {
         ));
     }
 
-    public function movesAction() {
+    public function movesAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
         $videos = $em->getRepository('FrontFrontBundle:Video')->findAll();
         $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
+        
+        // trouver avec des passes
+        $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
+
+        $query = $em->getRepository('FrontFrontBundle:Video')->findAll();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
-                    'videos' => $videos,
+                    'pagination' => $pagination,
                     'tags' => $tags,
+                    'users' => $users,
+                    'filterForm' => $filterForm->createView(),
         ));
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Video')->filter($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
+        // trouver avec des passes
+        $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
+
+
+        return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
+                    'pagination' => $pagination,
+                    'tags' => $tags,
+                    'users' => $users,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
+    private function createFilterForm() {
+        $form = $this->createForm(new VideoFilterType(), null, array(
+            'action' => $this->generateUrl('front_video_filter'),
+            'method' => 'GET',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Rechercher'));
+
+        return $form;
     }
 
     private function findUser($id) {
