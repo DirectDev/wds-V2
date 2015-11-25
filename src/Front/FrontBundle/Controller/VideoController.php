@@ -32,9 +32,11 @@ class VideoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $videos = $em->getRepository('FrontFrontBundle:Video')->findAll();
+        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
 
         return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
                     'videos' => $videos,
+                    'tags' => $tags,
         ));
     }
 

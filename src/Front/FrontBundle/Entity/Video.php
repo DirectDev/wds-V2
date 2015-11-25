@@ -32,7 +32,7 @@ class Video {
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
-    
+
     /**
      * @var string
      *
@@ -68,7 +68,7 @@ class Video {
     public function __construct() {
         $this->tags = new ArrayCollection();
     }
-    
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -140,6 +140,13 @@ class Video {
             if ($Tag == $videoTag)
                 return true;
         return false;
+    }
+
+    public function getTagsText() {
+        $text = '';
+        foreach ($this->getTags() as $videoTag)
+            $text .= ' ' . $videoTag->getTitle();
+        return $text;
     }
 
     /**
@@ -225,7 +232,6 @@ class Video {
         return $this->tags;
     }
 
-
     /**
      * Set name
      *
@@ -233,8 +239,7 @@ class Video {
      *
      * @return Video
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -245,8 +250,7 @@ class Video {
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -257,8 +261,7 @@ class Video {
      *
      * @return Video
      */
-    public function setMove($move)
-    {
+    public function setMove($move) {
         $this->move = $move;
 
         return $this;
@@ -269,8 +272,7 @@ class Video {
      *
      * @return boolean
      */
-    public function getMove()
-    {
+    public function getMove() {
         return $this->move;
     }
 
@@ -281,8 +283,7 @@ class Video {
      *
      * @return Video
      */
-    public function setShine($shine)
-    {
+    public function setShine($shine) {
         $this->shine = $shine;
 
         return $this;
@@ -293,8 +294,8 @@ class Video {
      *
      * @return boolean
      */
-    public function getShine()
-    {
+    public function getShine() {
         return $this->shine;
     }
+
 }
