@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
- * Move
+ * Video
  *
- * @ORM\Table(name="movetranslation")
- * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\MoveRepository")
+ * @ORM\Table(name="videotranslation")
+ * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\VideoRepository")
  */
-class MoveTranslation
+class VideoTranslation
 {
     
     use ORMBehaviors\Translatable\Translation;
@@ -30,7 +30,7 @@ class MoveTranslation
      * Set title
      *
      * @param string $title
-     * @return Move
+     * @return Video
      */
     public function setTitle($title)
     {
@@ -53,7 +53,7 @@ class MoveTranslation
      * Set locale
      *
      * @param string $locale
-     * @return MoveTranslation
+     * @return VideoTranslation
      */
     public function setLocale($locale)
     {

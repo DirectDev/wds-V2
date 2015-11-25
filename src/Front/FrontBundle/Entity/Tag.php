@@ -34,15 +34,6 @@ class Tag {
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Move", inversedBy="tags", cascade={"persist"})
-     * @ORM\JoinTable(name="move_tag",
-     * joinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")},
-     * inverseJoinColumns={@ORM\JoinColumn(name="move_id", referencedColumnName="id")}
-     * )
-     */
-    protected $moves;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Music", inversedBy="tags", cascade={"persist"})
      * @ORM\JoinTable(name="music_tag",
      * joinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")},
@@ -113,41 +104,6 @@ class Tag {
         return $this->name;
     }
 
-
-    /**
-     * Add move
-     *
-     * @param \Front\FrontBundle\Entity\Move $move
-     *
-     * @return Tag
-     */
-    public function addMove(\Front\FrontBundle\Entity\Move $move)
-    {
-        $this->moves[] = $move;
-
-        return $this;
-    }
-
-    /**
-     * Remove move
-     *
-     * @param \Front\FrontBundle\Entity\Move $move
-     */
-    public function removeMove(\Front\FrontBundle\Entity\Move $move)
-    {
-        $this->moves->removeElement($move);
-    }
-
-    /**
-     * Get moves
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMoves()
-    {
-        return $this->moves;
-    }
-
     /**
      * Add music
      *
@@ -155,8 +111,7 @@ class Tag {
      *
      * @return Tag
      */
-    public function addMusic(\Front\FrontBundle\Entity\Music $music)
-    {
+    public function addMusic(\Front\FrontBundle\Entity\Music $music) {
         $this->musics[] = $music;
 
         return $this;
@@ -167,8 +122,7 @@ class Tag {
      *
      * @param \Front\FrontBundle\Entity\Music $music
      */
-    public function removeMusic(\Front\FrontBundle\Entity\Music $music)
-    {
+    public function removeMusic(\Front\FrontBundle\Entity\Music $music) {
         $this->musics->removeElement($music);
     }
 
@@ -177,8 +131,7 @@ class Tag {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMusics()
-    {
+    public function getMusics() {
         return $this->musics;
     }
 
@@ -189,8 +142,7 @@ class Tag {
      *
      * @return Tag
      */
-    public function addVideo(\Front\FrontBundle\Entity\Video $video)
-    {
+    public function addVideo(\Front\FrontBundle\Entity\Video $video) {
         $this->videos[] = $video;
 
         return $this;
@@ -201,8 +153,7 @@ class Tag {
      *
      * @param \Front\FrontBundle\Entity\Video $video
      */
-    public function removeVideo(\Front\FrontBundle\Entity\Video $video)
-    {
+    public function removeVideo(\Front\FrontBundle\Entity\Video $video) {
         $this->videos->removeElement($video);
     }
 
@@ -211,8 +162,8 @@ class Tag {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getVideos()
-    {
+    public function getVideos() {
         return $this->videos;
     }
+
 }

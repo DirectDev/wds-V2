@@ -14,6 +14,30 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class VideoController extends Controller {
 
+    /**
+     * Lists all Video entities.
+     *
+     */
+    public function indexAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $videos = $em->getRepository('FrontFrontBundle:Video')->findAll();
+
+        return $this->render('FrontFrontBundle:Video:index.html.twig', array(
+                    'videos' => $videos,
+        ));
+    }
+
+    public function movesAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $videos = $em->getRepository('FrontFrontBundle:Video')->findAll();
+
+        return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
+                    'videos' => $videos,
+        ));
+    }
+
     private function findUser($id) {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('UserUserBundle:User')->find($id);
@@ -40,6 +64,7 @@ class VideoController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $video->setName($video->getTitle());
             $em->persist($video);
             $em->flush();
 
@@ -185,6 +210,7 @@ class VideoController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $video->setName($video->getTitle());
             $em->flush();
 
             return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $id)));

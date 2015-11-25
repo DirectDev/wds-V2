@@ -2,7 +2,15 @@
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editVideo', 'data-video-id' : video.id } } ) }}
 
     <div class="col-md-10">
+        {{ form_row(edit_form.translations) }}
+    </div>
+
+    
+    <div class="col-md-10">
         {{ form_row(edit_form.url) }}
+        {{ form_row(edit_form.move) }}
+        {{ form_row(edit_form.shine) }}
+        {{ form_row(edit_form.tags) }}
     </div>
 
     <div class="col-md-2">

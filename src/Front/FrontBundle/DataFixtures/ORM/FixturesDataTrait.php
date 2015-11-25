@@ -357,16 +357,10 @@ trait FixturesDataTrait {
         'https://www.youtube.com/watch?v=AiUlNbF6-Ok',
     );
     protected $array_video_move = array(
-        'https://www.youtube.com/watch?v=jLXolVen-d4', 
-        'https://www.youtube.com/watch?v=60NPGi6hSZQ', 
-        'https://www.youtube.com/watch?v=aA4j-bYYzN8', 
-        'https://www.youtube.com/watch?v=d2JAODXZO9U', 
-    );
-    protected $array_move = array(
-        'Setenta / 70', 
-        'Open beak', 
-        'Frisbee turn', 
-        'Kizomba 3 pas de base', 
+        'Setenta / 70' => 'https://www.youtube.com/watch?v=jLXolVen-d4',
+        'Open beak' => 'https://www.youtube.com/watch?v=60NPGi6hSZQ',
+        'Frisbee turn' => 'https://www.youtube.com/watch?v=aA4j-bYYzN8',
+        'Kizomba 3 pas de base' => 'https://www.youtube.com/watch?v=d2JAODXZO9U',
     );
     protected $array_tag = array(
         'Salsa',

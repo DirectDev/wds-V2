@@ -120,11 +120,6 @@ class User extends BaseUser {
     protected $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Move", mappedBy="user")
-     */
-    protected $moves;
-
-    /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="loves")
      * */
     private $lovesMe;
@@ -175,7 +170,6 @@ class User extends BaseUser {
         $this->userTypes = new ArrayCollection();
         $this->musics = new ArrayCollection();
         $this->videos = new ArrayCollection();
-        $this->moves = new ArrayCollection();
         $this->eventloves = new ArrayCollection();
         $this->loves = new ArrayCollection();
         $this->lovesMe = new ArrayCollection();
@@ -907,38 +901,4 @@ class User extends BaseUser {
         return $this->meaUser;
     }
 
-
-    /**
-     * Add move
-     *
-     * @param \Front\FrontBundle\Entity\Move $move
-     *
-     * @return User
-     */
-    public function addMove(\Front\FrontBundle\Entity\Move $move)
-    {
-        $this->moves[] = $move;
-
-        return $this;
-    }
-
-    /**
-     * Remove move
-     *
-     * @param \Front\FrontBundle\Entity\Move $move
-     */
-    public function removeMove(\Front\FrontBundle\Entity\Move $move)
-    {
-        $this->moves->removeElement($move);
-    }
-
-    /**
-     * Get moves
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMoves()
-    {
-        return $this->moves;
-    }
 }

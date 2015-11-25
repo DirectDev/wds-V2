@@ -3,7 +3,14 @@
     {{ form_start(form, { 'attr' : { 'class' : 'newVideo' } } ) }}
 
     <div class="col-md-10">
+        {{ form_row(form.translations) }}
+    </div>
+
+    <div class="col-md-10">
         {{ form_row(form.url) }}
+        {{ form_row(form.move) }}
+        {{ form_row(form.shine) }}
+        {{ form_row(form.tags) }}
     </div>
 
     <div class="col-md-2">

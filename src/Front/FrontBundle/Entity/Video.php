@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Video {
 
+    use ORMBehaviors\Translatable\Translatable;
+
     /**
      * @var integer
      *
@@ -30,6 +32,27 @@ class Video {
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="move", type="boolean", nullable=true)
+     */
+    private $move;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="shine", type="boolean", nullable=true)
+     */
+    private $shine;
 
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="videos")
@@ -42,13 +65,25 @@ class Video {
      */
     protected $tags;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Move", mappedBy="video", cascade={"persist"})
-     * */
-    private $move;
-
     public function __construct() {
         $this->tags = new ArrayCollection();
+    }
+    
+    public function __call($method, $arguments) {
+        $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
+        if ($current)
+            return $current;
+        foreach ($this->getTranslations() as $transation) {
+            $value = call_user_func_array(
+                    [$this->translate('fr'), $method], $arguments
+            );
+            if ($value)
+                return $value;
+        }
+    }
+
+    public function __toString() {
+        return $this->getTitle();
     }
 
     public function isVimeo() {
@@ -190,14 +225,40 @@ class Video {
         return $this->tags;
     }
 
+
     /**
-     * Set move
+     * Set name
      *
-     * @param \Front\FrontBundle\Entity\Move $move
+     * @param string $name
      *
      * @return Video
      */
-    public function setMove(\Front\FrontBundle\Entity\Move $move = null) {
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set move
+     *
+     * @param boolean $move
+     *
+     * @return Video
+     */
+    public function setMove($move)
+    {
         $this->move = $move;
 
         return $this;
@@ -206,10 +267,34 @@ class Video {
     /**
      * Get move
      *
-     * @return \Front\FrontBundle\Entity\Move
+     * @return boolean
      */
-    public function getMove() {
+    public function getMove()
+    {
         return $this->move;
     }
 
+    /**
+     * Set shine
+     *
+     * @param boolean $shine
+     *
+     * @return Video
+     */
+    public function setShine($shine)
+    {
+        $this->shine = $shine;
+
+        return $this;
+    }
+
+    /**
+     * Get shine
+     *
+     * @return boolean
+     */
+    public function getShine()
+    {
+        return $this->shine;
+    }
 }

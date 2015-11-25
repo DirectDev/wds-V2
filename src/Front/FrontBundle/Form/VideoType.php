@@ -6,25 +6,42 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class VideoType extends AbstractType
-{
+class VideoType extends AbstractType {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+        $locales = array('en');
+        if (isset($options['attr']['locale']))
+            $locales[] = $options['attr']['locale'];
+
         $builder
-            ->add('url')
-//            ->add('user')
+                ->add('translations', 'a2lix_translations', array(
+                    'locales' => $locales,
+                    'fields' => array(
+                        'title' => array('attr' => array('required' => true)),
+                    )
+                ))
+                ->add('url')
+                ->add('move')
+                ->add('shine')
+                ->add('tags', 'entity', array(
+                    'class' => 'FrontFrontBundle:Tag',
+                    'property' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'label_attr' => array('class' => 'checkbox-inline')
+                ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Front\FrontBundle\Entity\Video'
         ));
@@ -33,8 +50,8 @@ class VideoType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'front_frontbundle_video';
     }
+
 }

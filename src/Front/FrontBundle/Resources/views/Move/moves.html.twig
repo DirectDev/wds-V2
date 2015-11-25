@@ -12,8 +12,8 @@
             <div class="col-md-12">
 
 
-                {% for move in moves %}
-                    {% render(path('front_move_show', { id : move.id } )) %}
+                {% for video in videos %}
+                    {% render(path('front_video_show', { id : video.id } )) %}
                 {% endfor %}
 
             </div>
