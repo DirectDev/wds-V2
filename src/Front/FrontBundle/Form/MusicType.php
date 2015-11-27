@@ -13,9 +13,25 @@ class MusicType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $locales = array('en');
+        if (isset($options['attr']['locale']))
+            $locales[] = $options['attr']['locale'];
+
         $builder
-                ->add('url', 'text', array(
-                    'required' => true
+                ->add('translations', 'a2lix_translations', array(
+                    'locales' => $locales,
+                    'fields' => array(
+                        'title' => array('attr' => array('required' => true)),
+                    )
+                ))
+                ->add('url')
+                ->add('tags', 'entity', array(
+                    'class' => 'FrontFrontBundle:Tag',
+                    'property' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'label_attr' => array('class' => 'checkbox-inline')
                 ))
         ;
     }

@@ -2,7 +2,13 @@
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editMusic', 'data-music-id' : music.id } } ) }}
 
     <div class="col-md-10">
+        {{ form_row(edit_form.translations) }}
+    </div>
+
+    
+    <div class="col-md-10">
         {{ form_row(edit_form.url) }}
+        {{ form_row(edit_form.tags) }}
     </div>
 
     <div class="col-md-2">

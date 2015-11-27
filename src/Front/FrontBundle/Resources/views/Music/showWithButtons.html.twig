@@ -1,12 +1,18 @@
 <div id="music_{{ music.id }}">
 
     <div class="col-md-10 md-margin-bottom-20">
-        {% if music.isSoundCloud %}
-            {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
-        {% endif %}
-        {% if music.isSpotify %}
-            {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
-        {% endif %}
+        <div class="bg-color-light">
+            {% include 'FrontFrontBundle:Music:player.html.twig' with { music : music } %}
+        </div>
+
+        <div class="margin-bottom-40">
+            <h3>{{ music.getTitle() }}</h3>
+            <p>{% trans %}tags.label{% endtrans %} :
+                {% for tag in music.getTags() %}
+                    {{ tag.getTitle() }}              
+                {% endfor %}
+            </p>                  
+        </div>
 
     </div>
 
