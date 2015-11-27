@@ -10,6 +10,13 @@ use Front\FrontBundle\Entity\Video;
 
 class VideoFilterType extends AbstractType {
 
+    private $move = null;
+
+    public function __construct($move = null) {
+        if ($move)
+            $this->move = true;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -22,11 +29,13 @@ class VideoFilterType extends AbstractType {
                 ))
                 ->add('tag', 'hidden', array(
                     'required' => false,
-                    'attr' => array('placeholder' => "tag",)
                 ))
                 ->add('user', 'hidden', array(
                     'required' => false,
-                    'attr' => array('placeholder' => "user",)
+                ))
+                ->add('move', 'hidden', array(
+                    'required' => false,
+                    'data' => $this->move,
                 ))
 
         ;

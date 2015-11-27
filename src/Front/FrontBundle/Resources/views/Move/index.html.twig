@@ -1,0 +1,61 @@
+{% extends 'FrontFrontBundle:Move:moveLayout.html.twig' %}
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:Move:moveBreadcrumb.html.twig' with { active : 'videos' } %}
+
+    <!--=== Search Block Version 2 ===-->
+    <div class="search-block-v2">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h2>Search Moves</h2>
+
+                {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'video_filter_form' } } ) }}
+                <div class="input-group">
+                    {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : 'Search words with regular expressions ...' } } ) }}
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                    {{ form_row(filterForm.tag) }}
+                    {{ form_row(filterForm.user) }}
+                </div>
+                {{ form_end(filterForm) }}
+
+            </div>
+        </div>    
+    </div><!--/container-->     
+    <!--=== End Search Block Version 2 ===-->
+
+    <!--=== Search Results ===-->
+    <div class="container s-results margin-bottom-50">
+        <div class="row">
+            <div class="col-md-2 hidden-xs related-search">
+                <div class="row">
+
+                    <div class="col-md-12 col-sm-4">
+                        {% render(path('front_tag_list_for_video_search')) %}
+                    </div> 
+
+                    <div class="col-md-12 col-sm-4">
+                        {% render(path('front_user_list_for_video_search')) %}
+                    </div>    
+
+                </div>        
+            </div><!--/col-md-2-->
+
+            <div class="col-md-10" id="video_list">
+
+                {% for video in pagination %}
+                    {% render(path('front_video_show', { id : video.id } )) %}
+                {% endfor %}
+
+                <div class="margin-bottom-30"></div>
+
+                {{ knp_pagination_render(pagination) }}
+
+            </div><!--/col-md-10-->
+        </div>        
+    </div><!--/container-->     
+    <!--=== End Search Results ===-->
+{% endblock %}

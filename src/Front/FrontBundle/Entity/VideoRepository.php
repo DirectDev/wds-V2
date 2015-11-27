@@ -78,6 +78,31 @@ class VideoRepository extends EntityRepository {
             $query->setParameter('user', '%' . $data["user"] . '%');
         }
 
+        if (isset($data["move"]) && $data["move"])
+            $query->andWhere('v.move = 1');
+        else
+            $query->andWhere('(v.move = 0 OR v.move IS NULL)');
+
+        // order by count loves
+
+        return $query->getQuery();
+    }
+
+    public function findForVideoIndex() {
+        $query = $this->createQueryBuilder('v')
+                ->leftJoin('v.user', 'u')
+                ->leftJoin('v.tags', 't')
+                ->where("(v.move = 0 OR v.move IS NULL)");
+        // order by count loves
+
+        return $query->getQuery();
+    }
+
+    public function findForMoveIndex() {
+        $query = $this->createQueryBuilder('v')
+                ->leftJoin('v.user', 'u')
+                ->leftJoin('v.tags', 't')
+                ->where("v.move = 1");
         // order by count loves
 
         return $query->getQuery();
