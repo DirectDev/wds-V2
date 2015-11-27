@@ -803,6 +803,7 @@ user:
     next_events: 'Mes prochains événements'
     passed_events: 'Mes précédents événements'
     posted_by: 'Publié par'
+    by: 'Par'
     profile_title: 'Mon Profil'
     they_like: 'Ils aiment'
     user_title: 'Mon Profil'

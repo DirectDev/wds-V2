@@ -1,0 +1,15 @@
+{% if app.user %}
+    {% if  app.user.loveVideo(video) %}
+        {% set href =  path('front_video_unlove', { id : video.id }) %}
+    {% else %}
+        {% set href =  path('front_video_love', { id : video.id }) %}
+    {% endif %}
+    <a href="{{ href }}" class='link-love-video'>
+        <i class="fa fa-thumbs-o-up"></i> 
+        {{ video.countLoves > 0 ? video.countLoves : '' }}
+    </a>
+{% else %}
+    <i class="fa fa-thumbs-o-up"></i> 
+    {{ video.countLoves > 0 ? video.countLoves : '' }}
+{% endif %}
+

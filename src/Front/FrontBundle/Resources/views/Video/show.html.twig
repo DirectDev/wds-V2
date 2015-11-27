@@ -9,7 +9,7 @@
             </p>            
             <ul class="list-inline news-v1-info no-margin-bottom">
                 <li>
-                    <span>By</span>&nbsp;
+                    <span>{% trans %}user.by{% endtrans %}</span>&nbsp;
                     {% if video.user %}
                         <a href="{{ path('front_user_show_public', { username : video.user.username, id : video.user.id } ) }}">
                             {{  video.user.username|capitalize|truncate(10) }}
@@ -22,7 +22,9 @@
                     {{  video.createdAt|localizeddate('medium', 'none', app.request.locale)|capitalize }}
                 </li>
                 <li>|</li>
-                <li class="pull-right"><a href="#"><i class="fa fa-thumbs-o-up"></i> {{ video.countLoves > 0 ? video.countLoves : '' }}</a></li>
+                <li class="pull-right">
+                    {% include 'FrontFrontBundle:Video:linkLoveVideo.html.twig' with { video : video } %} 
+                </li>
             </ul>   
         </div>
     </div>

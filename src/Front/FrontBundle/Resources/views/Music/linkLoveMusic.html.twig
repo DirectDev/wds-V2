@@ -1,0 +1,15 @@
+{% if app.user %}
+    {% if  app.user.loveMusic(music) %}
+        {% set href =  path('front_music_unlove', { id : music.id }) %}
+    {% else %}
+        {% set href =  path('front_music_love', { id : music.id }) %}
+    {% endif %}
+    <a href="{{ href }}" class='link-love-music'>
+        <i class="fa fa-thumbs-o-up"></i> 
+        {{ music.countLoves > 0 ? music.countLoves : '' }}
+    </a>
+{% else %}
+    <i class="fa fa-thumbs-o-up"></i> 
+    {{ music.countLoves > 0 ? music.countLoves : '' }}
+{% endif %}
+

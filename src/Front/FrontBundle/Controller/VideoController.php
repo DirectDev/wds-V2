@@ -21,7 +21,7 @@ class VideoController extends Controller {
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        
+
         $query = $em->getRepository('FrontFrontBundle:Video')->findAll(); // avec move = 0
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -311,6 +311,54 @@ class VideoController extends Controller {
         $em->flush();
 
         return new Response('', 200);
+    }
+
+    public function loveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
+
+        if (!$video) {
+            throw $this->createNotFoundException('Unable to find Video entity.');
+        }
+        if (!$video->getLovesMe()->contains($this->getUser()))
+            $video->addLovesMe($this->getUser());
+
+        $em->persist($video);
+        $em->flush();
+        $em->refresh($video);
+
+        return $this->render('FrontFrontBundle:Video:linkLoveVideo.html.twig', array(
+                    'video' => $video,
+        ));
+    }
+
+    public function unloveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
+
+        if (!$video) {
+            throw $this->createNotFoundException('Unable to find Video entity.');
+        }
+
+        $User = $this->getUser();
+        if ($User->getVideoloves()->contains($video))
+            $User->removeVideolove($video);
+
+        $em->persist($User);
+        $em->flush();
+        $em->refresh($video);
+
+        return $this->render('FrontFrontBundle:Video:linkLoveVideo.html.twig', array(
+                    'video' => $video,
+        ));
     }
 
 }

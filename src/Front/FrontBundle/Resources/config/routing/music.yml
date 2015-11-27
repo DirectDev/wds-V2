@@ -29,3 +29,13 @@ front_music_delete:
     path:     /delete/{id}
     defaults: { _controller: "FrontFrontBundle:Music:delete" }
     requirements: { _method: post|delete }
+    
+front_music_love:
+    path:     /love/{id}
+    defaults: { _controller: "FrontFrontBundle:Music:love" }
+    requirements: { _method: post }
+
+front_music_unlove:
+    path:     /unlove/{id}
+    defaults: { _controller: "FrontFrontBundle:Music:unLove" }
+    requirements: { _method: post }    

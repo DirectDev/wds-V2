@@ -5,15 +5,15 @@
 {% if a_class is not defined %}
     {% set a_class = '' %}
 {% endif %}
-{% if filter == 'member_min_thumb' %}
-    {% set width = '34px' %}
+{% if href is not defined %}
+    {% set href = path('front_user_show_public', { username : user.username, id : user.id } ) %}
 {% endif %}
 {% if filter is not defined %}
     {% set filter = 'member_photo' %}
     {% set width = '90px' %}
 {% endif %}
-{% if href is not defined %}
-    {% set href = path('front_user_show_public', { username : user.username, id : user.id } ) %}
+{% if filter == 'member_min_thumb' %}
+    {% set width = '34px' %}
 {% endif %}
 
 {% if user %}

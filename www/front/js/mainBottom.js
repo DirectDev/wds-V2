@@ -466,3 +466,39 @@ $(document).on('change', '#video_filter_search', function (e) {
     $('#video_filter_tag').val(null);
     $('#video_filter_user').val(null);
 });
+
+$(document).on('click', 'a.link-love-video', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var li = $(this).parent();
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            li.html(html);
+        }
+    });
+    return false;
+});
+
+$(document).on('click', 'a.link-love-music', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var li = $(this).parent();
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            li.html(html);
+        }
+    });
+    return false;
+});

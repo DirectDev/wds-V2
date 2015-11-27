@@ -227,4 +227,54 @@ class MusicController extends Controller {
 
         return new Response('', 200);
     }
+    
+    
+    public function loveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
+
+        if (!$music) {
+            throw $this->createNotFoundException('Unable to find Music entity.');
+        }
+        if (!$music->getLovesMe()->contains($this->getUser()))
+            $music->addLovesMe($this->getUser());
+
+        $em->persist($music);
+        $em->flush();
+        $em->refresh($music);
+
+        return $this->render('FrontFrontBundle:Music:linkLoveMusic.html.twig', array(
+                    'music' => $music,
+        ));
+    }
+
+    public function unloveAction(Request $request, $id) {
+
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+        $music = $em->getRepository('FrontFrontBundle:Music')->find($id);
+
+        if (!$music) {
+            throw $this->createNotFoundException('Unable to find Music entity.');
+        }
+
+        $User = $this->getUser();
+        if ($User->getMusicloves()->contains($music))
+            $User->removeMusiclove($music);
+
+        $em->persist($User);
+        $em->flush();
+        $em->refresh($music);
+
+        return $this->render('FrontFrontBundle:Music:linkLoveMusic.html.twig', array(
+                    'music' => $music,
+        ));
+    }
+
 }

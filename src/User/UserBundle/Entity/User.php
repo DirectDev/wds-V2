@@ -287,6 +287,30 @@ class User extends BaseUser {
         $this->display_counter++;
     }
 
+    public function loveVideo(Video $video) {
+        if ($this->getVideoloves()->contains($video))
+            return true;
+        return false;
+    }
+
+    public function loveMusic(Music $music) {
+        if ($this->getMusicloves()->contains($music))
+            return true;
+        return false;
+    }
+
+    public function loveEvent(Event $event) {
+        if ($this->getEventloves()->contains($event))
+            return true;
+        return false;
+    }
+
+    public function loveUser(User $user) {
+        if ($this->getLoves()->contains($user))
+            return true;
+        return false;
+    }
+
     /**
      * Get id
      *
@@ -921,7 +945,6 @@ class User extends BaseUser {
         return $this->meaUser;
     }
 
-
     /**
      * Add videolove
      *
@@ -929,8 +952,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addVideolove(\Front\FrontBundle\Entity\Video $videolove)
-    {
+    public function addVideolove(\Front\FrontBundle\Entity\Video $videolove) {
         $this->videoloves[] = $videolove;
 
         return $this;
@@ -941,8 +963,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Video $videolove
      */
-    public function removeVideolove(\Front\FrontBundle\Entity\Video $videolove)
-    {
+    public function removeVideolove(\Front\FrontBundle\Entity\Video $videolove) {
         $this->videoloves->removeElement($videolove);
     }
 
@@ -951,8 +972,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getVideoloves()
-    {
+    public function getVideoloves() {
         return $this->videoloves;
     }
 
@@ -963,8 +983,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addMusiclove(\Front\FrontBundle\Entity\Music $musiclove)
-    {
+    public function addMusiclove(\Front\FrontBundle\Entity\Music $musiclove) {
         $this->musicloves[] = $musiclove;
 
         return $this;
@@ -975,8 +994,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Music $musiclove
      */
-    public function removeMusiclove(\Front\FrontBundle\Entity\Music $musiclove)
-    {
+    public function removeMusiclove(\Front\FrontBundle\Entity\Music $musiclove) {
         $this->musicloves->removeElement($musiclove);
     }
 
@@ -985,8 +1003,8 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMusicloves()
-    {
+    public function getMusicloves() {
         return $this->musicloves;
     }
+
 }
