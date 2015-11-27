@@ -48,11 +48,11 @@ class Video {
     private $move;
 
     /**
-     * @var boolean
+     * @var \DateTime
      *
-     * @ORM\Column(name="shine", type="boolean", nullable=true)
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
-    private $shine;
+    private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="videos")
@@ -65,8 +65,14 @@ class Video {
      */
     protected $tags;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="videoloves")     
+     * */
+    private $lovesMe;
+
     public function __construct() {
         $this->tags = new ArrayCollection();
+        $this->lovesMe = new ArrayCollection();
     }
 
     public function __call($method, $arguments) {
@@ -147,6 +153,10 @@ class Video {
         foreach ($this->getTags() as $videoTag)
             $text .= ' ' . $videoTag->getTitle();
         return $text;
+    }
+    
+    public function countLoves(){
+        return count($this->lovesMe);
     }
 
     /**
@@ -277,25 +287,58 @@ class Video {
     }
 
     /**
-     * Set shine
+     * Set createdAt
      *
-     * @param boolean $shine
+     * @param \DateTime $createdAt
      *
      * @return Video
      */
-    public function setShine($shine) {
-        $this->shine = $shine;
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * Get shine
+     * Get createdAt
      *
-     * @return boolean
+     * @return \DateTime
      */
-    public function getShine() {
-        return $this->shine;
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    /**
+     * Add lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     *
+     * @return Video
+     */
+    public function addLovesMe(\User\UserBundle\Entity\User $lovesMe) {
+        $this->lovesMe[] = $lovesMe;
+        $lovesMe->addVideolove($this);
+
+
+        return $this;
+    }
+
+    /**
+     * Remove lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     */
+    public function removeLovesMe(\User\UserBundle\Entity\User $lovesMe) {
+        $this->lovesMe->removeElement($lovesMe);
+    }
+
+    /**
+     * Get lovesMe
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLovesMe() {
+        return $this->lovesMe;
     }
 
 }

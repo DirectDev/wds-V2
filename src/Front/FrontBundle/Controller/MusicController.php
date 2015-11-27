@@ -35,6 +35,7 @@ class MusicController extends Controller {
 
         $music = new Music();
         $music->setUser($user);
+        $music->setCreatedAt(new \DateTime());
         $form = $this->createCreateForm($music, $id);
         $form->handleRequest($request);
 

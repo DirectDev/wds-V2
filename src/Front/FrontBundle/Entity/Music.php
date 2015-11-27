@@ -34,6 +34,13 @@ class Music {
     private $url;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="musics")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -44,8 +51,14 @@ class Music {
      */
     protected $tags;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="musicloves")     
+     * */
+    private $lovesMe;
+
     public function __construct() {
         $this->tags = new ArrayCollection();
+        $this->lovesMe = new ArrayCollection();
     }
 
     public function isSoundCloud() {
@@ -76,6 +89,10 @@ class Music {
             if ($Tag == $musicTag)
                 return true;
         return false;
+    }
+    
+    public function countLoves(){
+        return count($this->lovesMe);
     }
 
     /**
@@ -159,6 +176,60 @@ class Music {
      */
     public function getTags() {
         return $this->tags;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Music
+     */
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    /**
+     * Add lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     *
+     * @return Music
+     */
+    public function addLovesMe(\User\UserBundle\Entity\User $lovesMe) {
+        $lovesMe->addMusiclove($this);
+        $this->lovesMe[] = $lovesMe;
+
+        return $this;
+    }
+
+    /**
+     * Remove lovesMe
+     *
+     * @param \User\UserBundle\Entity\User $lovesMe
+     */
+    public function removeLovesMe(\User\UserBundle\Entity\User $lovesMe) {
+        $this->lovesMe->removeElement($lovesMe);
+    }
+
+    /**
+     * Get lovesMe
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLovesMe() {
+        return $this->lovesMe;
     }
 
 }

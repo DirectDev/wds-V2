@@ -143,6 +143,24 @@ class User extends BaseUser {
     private $eventloves;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Video", inversedBy="lovesMe")
+     * @ORM\JoinTable(name="video_love",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="love_video_id", referencedColumnName="id")}
+     *      )
+     * */
+    private $videoloves;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Music", inversedBy="lovesMe")
+     * @ORM\JoinTable(name="music_love",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="love_music_id", referencedColumnName="id")}
+     *      )
+     * */
+    private $musicloves;
+
+    /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaUser", mappedBy="user")
      * */
     private $meaUser;
@@ -171,6 +189,8 @@ class User extends BaseUser {
         $this->musics = new ArrayCollection();
         $this->videos = new ArrayCollection();
         $this->eventloves = new ArrayCollection();
+        $this->videoloves = new ArrayCollection();
+        $this->musicloves = new ArrayCollection();
         $this->loves = new ArrayCollection();
         $this->lovesMe = new ArrayCollection();
     }
@@ -901,4 +921,72 @@ class User extends BaseUser {
         return $this->meaUser;
     }
 
+
+    /**
+     * Add videolove
+     *
+     * @param \Front\FrontBundle\Entity\Video $videolove
+     *
+     * @return User
+     */
+    public function addVideolove(\Front\FrontBundle\Entity\Video $videolove)
+    {
+        $this->videoloves[] = $videolove;
+
+        return $this;
+    }
+
+    /**
+     * Remove videolove
+     *
+     * @param \Front\FrontBundle\Entity\Video $videolove
+     */
+    public function removeVideolove(\Front\FrontBundle\Entity\Video $videolove)
+    {
+        $this->videoloves->removeElement($videolove);
+    }
+
+    /**
+     * Get videoloves
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideoloves()
+    {
+        return $this->videoloves;
+    }
+
+    /**
+     * Add musiclove
+     *
+     * @param \Front\FrontBundle\Entity\Music $musiclove
+     *
+     * @return User
+     */
+    public function addMusiclove(\Front\FrontBundle\Entity\Music $musiclove)
+    {
+        $this->musicloves[] = $musiclove;
+
+        return $this;
+    }
+
+    /**
+     * Remove musiclove
+     *
+     * @param \Front\FrontBundle\Entity\Music $musiclove
+     */
+    public function removeMusiclove(\Front\FrontBundle\Entity\Music $musiclove)
+    {
+        $this->musicloves->removeElement($musiclove);
+    }
+
+    /**
+     * Get musicloves
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMusicloves()
+    {
+        return $this->musicloves;
+    }
 }

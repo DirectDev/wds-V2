@@ -124,6 +124,7 @@ class VideoController extends Controller {
 
         $video = new Video();
         $video->setUser($user);
+        $video->setCreatedAt(new \DateTime());
         $form = $this->createCreateForm($video, $id);
         $form->handleRequest($request);
 

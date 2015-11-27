@@ -26,7 +26,6 @@ class VideoType extends AbstractType {
                 ))
                 ->add('url')
                 ->add('move')
-                ->add('shine')
                 ->add('tags', 'entity', array(
                     'class' => 'FrontFrontBundle:Tag',
                     'property' => 'name',
