@@ -503,6 +503,42 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-festival-middle-east', $Page);
         $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('musics');
+        $Page->translate('en')->setTitle('Musics');
+        $Page->translate('fr')->setTitle('Musiques');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-musics', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('videos');
+        $Page->translate('en')->setTitle('Videos');
+        $Page->translate('fr')->setTitle('Vidéos');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-videos', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('moves');
+        $Page->translate('en')->setTitle('Moves & Shines');
+        $Page->translate('fr')->setTitle('Passes & Shines');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-moves', $Page);
+        $Page->mergeNewTranslations();
 
         $manager->flush();
     }

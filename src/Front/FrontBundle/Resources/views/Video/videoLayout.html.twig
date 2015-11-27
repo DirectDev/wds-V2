@@ -1,17 +1,17 @@
 {% extends 'FrontFrontBundle::layout.html.twig' %}
 
-{#{% block title %}
-    {{ continent|capitalize }} - {{ page.getTitle }}
+{% block title %}
+    {{ page.getTitle }}
 {% endblock %}
 {% block head %}
     {{ parent() }}
-    <meta name="description" content="{{ continent|capitalize }} {{ page.getDescription }}" />
+    <meta name="description" content="{{ page.getDescription }}" />
     <!-- partage facebook -->
-    <meta property="og:title" content="{{ continent|capitalize }} - {{ page.getTitle }}" />
+    <meta property="og:title" content="{{ page.getTitle }}" />
     <meta property="og:description" content="{{ page.getDescription }}" />
     <!--<meta property="og:image" content="URL_image" />-->
     <!-- partage facebook -->
-{% endblock %}#}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}

@@ -500,10 +500,29 @@ class UserController extends Controller {
     public function listForVideoSearchAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        // trouver avec des videos
-        $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
+        $users = $em->getRepository('UserUserBundle:User')->findWithVideo();
 
         return $this->render('FrontFrontBundle:User:listForVideoSearch.html.twig', array(
+                    'users' => $users,
+        ));
+    }
+
+    public function listForMoveSearchAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('UserUserBundle:User')->findWithMove();
+
+        return $this->render('FrontFrontBundle:User:listForVideoSearch.html.twig', array(
+                    'users' => $users,
+        ));
+    }
+
+    public function listForMusicSearchAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('UserUserBundle:User')->findWithMusic();
+
+        return $this->render('FrontFrontBundle:User:listForMusicSearch.html.twig', array(
                     'users' => $users,
         ));
     }

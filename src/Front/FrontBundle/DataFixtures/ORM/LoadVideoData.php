@@ -33,6 +33,9 @@ class LoadVideoData extends AbstractFixture implements OrderedFixtureInterface {
 
             $Video = new Video();
             $Video->setUrl($url);
+            $Video->setName($name);
+            $Video->translate('en')->setTitle($name);
+            $Video->translate('fr')->setTitle($name);
             $Video->setCreatedAt(new \DateTime());
 
             $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];

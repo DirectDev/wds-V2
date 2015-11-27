@@ -1,12 +1,41 @@
 <div id="music_{{ music.id }}">
 
-    <div class="col-md-6 md-margin-bottom-20">
-        {% if music.isSoundCloud %}
-            {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
-        {% endif %}
-        {% if music.isSpotify %}
-            {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
-        {% endif %}
+    <div class="col-md-6 col-lg-4 md-margin-bottom-20">
+        <div class="bg-color-light">
+            {% if music.isSoundCloud %}
+                {% include 'FrontFrontBundle:Music:soundcloud.html.twig' with { music : music } %}
+            {% endif %}
+            {% if music.isSpotify %}
+                {% include 'FrontFrontBundle:Music:spotify.html.twig' with { music : music } %}
+            {% endif %}
+        </div>
+        <div class="news-v1 margin-bottom-40 bg-color-white">
+
+            <h3 class="font-normal">{{ music.getTitle() }}</h3>
+            <p>{% trans %}tags.label{% endtrans %} :
+                {{ music.getTagsText()|truncate(20) }}              
+            </p>            
+            <ul class="list-inline news-v1-info no-margin-bottom">
+                <li>
+                    <span>{% trans %}user.by{% endtrans %}</span>&nbsp;
+                    {% if music.user %}
+                        <a href="{{ path('front_user_show_public', { username : music.user.username, id : music.user.id } ) }}">
+                            {{  music.user.username|capitalize|truncate(10) }}
+                        </a>
+                    {% endif %}
+                </li>
+                <li>|</li>
+                <li>
+                    <i class="fa fa-clock-o"></i> 
+                    {{  music.createdAt|localizeddate('medium', 'none', app.request.locale)|capitalize }}
+                </li>
+                <li>|</li>
+                <li class="pull-right">
+                    {% include 'FrontFrontBundle:Music:linkLoveMusic.html.twig' with { music : music } %} 
+                </li>
+            </ul>   
+        </div>
+
     </div>
 
 </div>

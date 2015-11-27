@@ -467,6 +467,26 @@ $(document).on('change', '#video_filter_search', function (e) {
     $('#video_filter_user').val(null);
 });
 
+$(document).on('click', 'a.search-music-tag-link', function (e) {
+    e.preventDefault();
+    $('#music_filter_search').val(null);
+    $('#music_filter_user').val(null);
+    $('#music_filter_tag').val($(this).text().trim());
+    $('#music_filter_form').submit();
+});
+$(document).on('click', 'a.search-music-user-link', function (e) {
+    e.preventDefault();
+    $('#music_filter_search').val(null);
+    $('#music_filter_tag').val(null);
+    $('#music_filter_user').val($(this).data('user-id'));
+    $('#music_filter_form').submit();
+});
+$(document).on('change', '#music_filter_search', function (e) {
+    e.preventDefault();
+    $('#music_filter_tag').val(null);
+    $('#music_filter_user').val(null);
+});
+
 $(document).on('click', 'a.link-love-video', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();

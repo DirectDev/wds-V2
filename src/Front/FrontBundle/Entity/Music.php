@@ -16,6 +16,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Music {
 
+    use ORMBehaviors\Translatable\Translatable;
+
     /**
      * @var integer
      *
@@ -32,6 +34,13 @@ class Music {
      * @Assert\NotNull()
      */
     private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
 
     /**
      * @var \DateTime
@@ -59,6 +68,23 @@ class Music {
     public function __construct() {
         $this->tags = new ArrayCollection();
         $this->lovesMe = new ArrayCollection();
+    }
+
+    public function __call($method, $arguments) {
+        $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
+        if ($current)
+            return $current;
+        foreach ($this->getTranslations() as $transation) {
+            $value = call_user_func_array(
+                    [$this->translate('fr'), $method], $arguments
+            );
+            if ($value)
+                return $value;
+        }
+    }
+
+    public function __toString() {
+        return $this->getTitle();
     }
 
     public function isSoundCloud() {
@@ -89,6 +115,13 @@ class Music {
             if ($Tag == $musicTag)
                 return true;
         return false;
+    }
+
+    public function getTagsText() {
+        $text = '';
+        foreach ($this->getTags() as $musicTag)
+            $text .= ' ' . $musicTag->getTitle();
+        return $text;
     }
     
     public function countLoves(){
@@ -232,4 +265,28 @@ class Music {
         return $this->lovesMe;
     }
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Music
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

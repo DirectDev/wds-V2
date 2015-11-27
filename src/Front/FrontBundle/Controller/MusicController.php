@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Music;
 use Front\FrontBundle\Form\MusicType;
+use Front\FrontBundle\Form\MusicFilterType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -13,6 +14,72 @@ use Symfony\Component\HttpFoundation\Response;
  *
  */
 class MusicController extends Controller {
+    
+    /**
+     * Lists all Music entities.
+     *
+     */
+    public function indexAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('musics');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $query = $em->getRepository('FrontFrontBundle:Music')->findForMusicIndex(); 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterMusicForm();
+        $filterForm->handleRequest($request);
+
+        return $this->render('FrontFrontBundle:Music:index.html.twig', array(
+                    'page' => $page,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
+    public function filterMusicAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('musics');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $filterForm = $this->createFilterMusicForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Music')->filter($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        return $this->render('FrontFrontBundle:Music:index.html.twig', array(
+                    'page' => $page,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+    
+    private function createFilterMusicForm() {
+        $form = $this->createForm(new MusicFilterType(), null, array(
+            'action' => $this->generateUrl('front_music_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
 
     private function findUser($id) {
         $em = $this->getDoctrine()->getManager();

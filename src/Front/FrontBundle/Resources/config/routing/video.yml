@@ -2,6 +2,10 @@ front_video:
     path:     /
     defaults: { _controller: "FrontFrontBundle:Video:index" }
     
+front_move:
+    path:     /move
+    defaults: { _controller: "FrontFrontBundle:Video:moves" }
+
 front_video_filter_video:
     path:     /filter_video
     defaults: { _controller: "FrontFrontBundle:Video:filterVideo" }

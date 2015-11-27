@@ -17,9 +17,19 @@ class TagController extends Controller {
     public function listForVideoSearchAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll(); 
+        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
 
         return $this->render('FrontFrontBundle:Tag:listForVideoSearch.html.twig', array(
+                    'tags' => $tags,
+        ));
+    }
+
+    public function listForMusicSearchAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
+
+        return $this->render('FrontFrontBundle:Tag:listForMusicSearch.html.twig', array(
                     'tags' => $tags,
         ));
     }

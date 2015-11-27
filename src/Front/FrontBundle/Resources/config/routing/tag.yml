@@ -2,3 +2,7 @@
 front_tag_list_for_video_search:
     path:     /list_for_video_search/
     defaults: { _controller: "FrontFrontBundle:Tag:listForVideoSearch" }    
+  
+front_tag_list_for_music_search:
+    path:     /list_for_music_search/
+    defaults: { _controller: "FrontFrontBundle:Tag:listForMusicSearch" }    

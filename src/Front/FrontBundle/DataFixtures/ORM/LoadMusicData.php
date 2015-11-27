@@ -33,6 +33,9 @@ class LoadMusicData extends AbstractFixture implements OrderedFixtureInterface {
 
             $Music = new Music();
             $Music->setUrl($url);
+            $Music->setName($name);
+            $Music->translate('en')->setTitle($name);
+            $Music->translate('fr')->setTitle($name);
             $Music->setCreatedAt(new \DateTime());
 
             $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
@@ -44,7 +47,7 @@ class LoadMusicData extends AbstractFixture implements OrderedFixtureInterface {
             }
 
             $manager->persist($Music);
-//                $Music->mergeNewTranslations();
+            $Music->mergeNewTranslations();
             $this->addReference('music-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Music);
         }
 

@@ -22,7 +22,11 @@ class VideoController extends Controller {
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('FrontFrontBundle:Video')->findForVideoIndex(); 
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('videos');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $query = $em->getRepository('FrontFrontBundle:Video')->findForVideoIndex();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
@@ -32,6 +36,7 @@ class VideoController extends Controller {
         $filterForm->handleRequest($request);
 
         return $this->render('FrontFrontBundle:Video:index.html.twig', array(
+                    'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
         ));
@@ -40,7 +45,11 @@ class VideoController extends Controller {
     public function movesAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('FrontFrontBundle:Video')->findForMoveIndex(); 
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('moves');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $query = $em->getRepository('FrontFrontBundle:Video')->findForMoveIndex();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
@@ -50,6 +59,7 @@ class VideoController extends Controller {
         $filterForm->handleRequest($request);
 
         return $this->render('FrontFrontBundle:Move:index.html.twig', array(
+                    'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
         ));
@@ -57,6 +67,10 @@ class VideoController extends Controller {
 
     public function filterVideoAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('videos');
+        if (!$page)
+            throw new \Exception('Page not found!');
 
         $filterForm = $this->createFilterVideoForm();
         $filterForm->handleRequest($request);
@@ -75,13 +89,18 @@ class VideoController extends Controller {
         );
 
         return $this->render('FrontFrontBundle:Video:index.html.twig', array(
+                    'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
         ));
     }
-    
+
     public function filterMoveAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('moves');
+        if (!$page)
+            throw new \Exception('Page not found!');
 
         $filterForm = $this->createFilterMoveForm();
         $filterForm->handleRequest($request);
@@ -100,6 +119,7 @@ class VideoController extends Controller {
         );
 
         return $this->render('FrontFrontBundle:Move:index.html.twig', array(
+                    'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
         ));
@@ -113,6 +133,7 @@ class VideoController extends Controller {
 
         return $form;
     }
+
     private function createFilterMoveForm() {
         $form = $this->createForm(new VideoFilterType(true), null, array(
             'action' => $this->generateUrl('front_video_filter_move'),

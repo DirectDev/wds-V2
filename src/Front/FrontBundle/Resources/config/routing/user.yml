@@ -71,3 +71,11 @@ callback_username:
 front_user_list_for_video_search:
     path:     /list_for_video_search/
     defaults: { _controller: "FrontFrontBundle:User:listForVideoSearch" }    
+    
+front_user_list_for_move_search:
+    path:     /list_for_move_search/
+    defaults: { _controller: "FrontFrontBundle:User:listForMoveSearch" }    
+    
+front_user_list_for_music_search:
+    path:     /list_for_music_search/
+    defaults: { _controller: "FrontFrontBundle:User:listForMusicSearch" }    

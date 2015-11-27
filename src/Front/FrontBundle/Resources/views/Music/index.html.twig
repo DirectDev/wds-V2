@@ -1,20 +1,20 @@
-{% extends 'FrontFrontBundle:Move:moveLayout.html.twig' %}
+{% extends 'FrontFrontBundle:Music:musicLayout.html.twig' %}
 
 {% block content %}
 
-    {% include 'FrontFrontBundle:Move:moveBreadcrumb.html.twig' with { active : 'videos' } %}
+    {% include 'FrontFrontBundle:Music:musicBreadcrumb.html.twig' with { active : 'musics' } %}
 
     <!--=== Search Block Version 2 ===-->
     <div class="search-block-v2">
         <div class="container">
             <div class="col-md-6 col-md-offset-3">
 
-                <h2>{% trans %}move.search_title{% endtrans %}</h2>
+                <h2>{% trans %}music.search_title{% endtrans %}</h2>
 
-                {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'video_filter_form' } } ) }}
+                {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'music_filter_form' } } ) }}
                 <div class="input-group">
                     {% set placeholder %}
-                        {% trans %}move.search_imput_placeholder{% endtrans %}
+                        {% trans %}music.search_imput_placeholder{% endtrans %}
                     {% endset %}
                     {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : placeholder|trim } } ) }}
                     <span class="input-group-btn">
@@ -37,20 +37,20 @@
                 <div class="row">
 
                     <div class="col-md-12 col-sm-4">
-                        {% render(path('front_tag_list_for_video_search')) %}
+                        {% render(path('front_tag_list_for_music_search')) %}
                     </div> 
 
                     <div class="col-md-12 col-sm-4">
-                        {% render(path('front_user_list_for_move_search')) %}
+                        {% render(path('front_user_list_for_music_search')) %}
                     </div>    
 
                 </div>        
             </div><!--/col-md-2-->
 
-            <div class="col-md-10" id="video_list">
+            <div class="col-md-10" id="music_list">
 
-                {% for video in pagination %}
-                    {% render(path('front_video_show', { id : video.id } )) %}
+                {% for music in pagination %}
+                    {% render(path('front_music_show', { id : music.id } )) %}
                 {% endfor %}
 
                 <div class="margin-bottom-30"></div>

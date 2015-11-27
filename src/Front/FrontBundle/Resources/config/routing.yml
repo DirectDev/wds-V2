@@ -78,10 +78,6 @@ FrontFrontBundle_city:
     resource: "@FrontFrontBundle/Resources/config/routing/city.yml"
     prefix:   /city        
 
-FrontFrontBundle_move:
-    resource: "@FrontFrontBundle/Resources/config/routing/move.yml"
-    prefix:   /move         
-
 FrontFrontBundle_tag:
     resource: "@FrontFrontBundle/Resources/config/routing/tag.yml"
     prefix:   /tag         

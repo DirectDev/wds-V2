@@ -102,7 +102,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li><a href="{{ path('festival_india') }}">{% trans %}navbar.festivals.india{% endtrans %}</a></li>
                         <li><a href="{{ path('festival_indonesia') }}">{% trans %}navbar.festivals.indonesia{% endtrans %}</a></li>
                         <li><a href="{{ path('festival_australia') }}">{% trans %}navbar.festivals.australia{% endtrans %}</a></li>
@@ -112,28 +112,26 @@
 
                 <li>
                     <a href="{{ path('home')}}" >
-                        {% trans %}navbar.artits{% endtrans %}
+                        {#                        {% trans %}navbar.artits{% endtrans %}#}
+                        Danse
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('home')}}" >
-                        {% trans %}navbar.bands{% endtrans %}
+                        {#                        {% trans %}navbar.bands{% endtrans %}#}
+                        Apprendre
                     </a>
                 </li>
-                <li>
-                    <a href="{{ path('home')}}" >
-                        {% trans %}navbar.learn{% endtrans %}
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        {#                        {% trans %}navbar.festivals{% endtrans %}#}
+                        Medias
                     </a>
-                </li>
-                <li>
-                    <a href="{{ path('home')}}" >
-                        {% trans %}navbar.videos{% endtrans %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('home')}}" >
-                        {% trans %}navbar.musics{% endtrans %}
-                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('front_video') }}">{% trans %}navbar.videos{% endtrans %}</a></li>
+                        <li><a href="{{ path('front_move') }}">{% trans %}navbar.moves{% endtrans %}</a></li>
+                        <li><a href="{{ path('front_music') }}">{% trans %}navbar.musics{% endtrans %}</a></li>
+                    </ul>
                 </li>
 
                 {% if is_granted("ROLE_USER") %}
@@ -170,6 +168,20 @@
                         </ul>
                     </li> 
                 {% endif %}
+
+                <li>
+
+
+                    <i class="search fa search-btn fa-search"></i><div style="display: none;" class="search-open">
+                        {#<div class="input-group animated fadeInDown">
+                            <input class="form-control" placeholder="Search" type="text">
+                            <span class="input-group-btn">
+                                <button class="btn-u" type="button">Go</button>
+                            </span>
+                        </div>#}
+                    </div>    
+
+                </li>
 
 
             </ul>

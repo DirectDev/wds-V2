@@ -1,4 +1,12 @@
-
+front_music:
+    path:     /
+    defaults: { _controller: "FrontFrontBundle:Music:index" }
+    
+front_music_filter:
+    path:     /filter_music
+    defaults: { _controller: "FrontFrontBundle:Music:filterMusic" }
+    methods:  GET    
+    
 front_music_show:
     path:     /show/{id}
     defaults: { _controller: "FrontFrontBundle:Music:show" }

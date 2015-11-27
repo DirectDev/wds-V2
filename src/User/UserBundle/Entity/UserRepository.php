@@ -106,7 +106,7 @@ class UserRepository extends EntityRepository {
             $query->setMaxResults($max);
         return $query->getQuery()->getResult();
     }
-    
+
     public function findForFooter($limit = 6, $userTypes = null) {
 
         $arrayEventType = array();
@@ -121,6 +121,32 @@ class UserRepository extends EntityRepository {
 
             $query->andWhere($query->expr()->in('ut.id', $arrayEventType));
         }
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithMusic($limit = 12) {
+        $query = $this->createQueryBuilder('u')
+                ->innerJoin('u.musics', 'm')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithVideo($limit = 12) {
+        $query = $this->createQueryBuilder('u')
+                ->innerJoin('u.videos', 'v')
+                ->where('(v.move = 0 OR v.move IS NULL)')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+    
+    public function findWithMove($limit = 12) {
+        $query = $this->createQueryBuilder('u')
+                ->innerJoin('u.videos', 'v')
+                ->where('v.move = 1')
+                ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
     }

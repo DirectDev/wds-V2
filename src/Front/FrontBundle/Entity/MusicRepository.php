@@ -42,4 +42,54 @@ class MusicRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function findForMusicIndex() {
+        $query = $this->createQueryBuilder('m')
+                ->leftJoin('m.user', 'u')
+                ->leftJoin('m.tags', 't');
+        // order by count loves
+
+        return $query->getQuery();
+    }
+
+    public function filter($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('m')
+                ->leftJoin('m.translations', 'mt', 'WITH', 'mt.locale = :locale')
+                ->leftJoin('m.user', 'u')
+                ->leftJoin('m.tags', 't')
+                ->leftJoin('t.translations', 'tt', 'WITH', 'tt.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("m.name", ":search"));
+            $orQuery->add($query->expr()->like("mt.title", ":search"));
+            $orQuery->add($query->expr()->like("t.name", ":search"));
+            $orQuery->add($query->expr()->like("tt.title", ":search"));
+            $orQuery->add($query->expr()->like("u.username", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        if (isset($data["tag"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("t.name", ":tag"));
+            $orQuery->add($query->expr()->like("tt.title", ":tag"));
+            $query->andWhere($orQuery);
+            $query->setParameter('tag', '%' . $data["tag"] . '%');
+        }
+
+        if (isset($data["user"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.username", ":user"));
+            $orQuery->add($query->expr()->like("u.id", ":user"));
+            $query->andWhere($orQuery);
+            $query->setParameter('user', '%' . $data["user"] . '%');
+        }
+
+        // order by count loves
+
+        return $query->getQuery();
+    }
+
 }
