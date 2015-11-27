@@ -539,6 +539,18 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($Page);
         $this->addReference('page-moves', $Page);
         $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('users');
+        $Page->translate('en')->setTitle('Dancers');
+        $Page->translate('fr')->setTitle('Salseros');
+        $Page->translate('en')->setContent(null);
+        $Page->translate('fr')->setContent(null);
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-users', $Page);
+        $Page->mergeNewTranslations();
 
         $manager->flush();
     }

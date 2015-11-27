@@ -1,0 +1,4 @@
+    
+front_usertype_list_for_user_search:
+    path:     /list_for_user_search/
+    defaults: { _controller: "FrontFrontBundle:UserType:listForUserSearch" }    

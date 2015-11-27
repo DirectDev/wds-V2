@@ -1,0 +1,11 @@
+<h3>{% trans %}user.search_by_usertype{% endtrans %}</h3>
+<ul class="list-unstyled">
+    {% for userType in userTypes %}
+        <li>
+            <a href="#" class="search-user-usertype-link">
+                {{ userType.getTitle() }}
+            </a>
+        </li>     
+    {% endfor %}   
+</ul>
+<hr>

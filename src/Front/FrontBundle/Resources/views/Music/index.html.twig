@@ -14,7 +14,7 @@
                 {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'music_filter_form' } } ) }}
                 <div class="input-group">
                     {% set placeholder %}
-                        {% trans %}music.search_imput_placeholder{% endtrans %}
+                        {% trans %}music.search_input_placeholder{% endtrans %}
                     {% endset %}
                     {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : placeholder|trim } } ) }}
                     <span class="input-group-btn">

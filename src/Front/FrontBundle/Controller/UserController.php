@@ -10,6 +10,7 @@ use Front\FrontBundle\Form\UserDescriptionType;
 use Front\FrontBundle\Form\UserProfileType;
 use Front\FrontBundle\Form\UserLinkType;
 use User\UserBundle\Entity\UserFile;
+use Front\FrontBundle\Form\UserFilterType;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -19,6 +20,73 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class UserController extends Controller {
 
+    /**
+     * Lists all User entities.
+     *
+     */
+    public function indexAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('users');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $query = $em->getRepository('UserUserBundle:User')->findForUserIndex(); 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterUserForm();
+        $filterForm->handleRequest($request);
+
+        return $this->render('FrontFrontBundle:User:index.html.twig', array(
+                    'page' => $page,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('users');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $filterForm = $this->createFilterUserForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('UserUserBundle:User')->filter($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        return $this->render('FrontFrontBundle:User:index.html.twig', array(
+                    'page' => $page,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+    
+    private function createFilterUserForm() {
+        $form = $this->createForm(new UserFilterType(), null, array(
+            'action' => $this->generateUrl('front_user_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+
+    
     /**
      * Finds and displays a User entity.
      *

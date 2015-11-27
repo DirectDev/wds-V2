@@ -1,3 +1,12 @@
+front_user_index:
+    path:     /index
+    defaults: { _controller: "FrontFrontBundle:User:index" }
+    
+front_user_filter:
+    path:     /filter
+    defaults: { _controller: "FrontFrontBundle:User:filter" }
+    methods:  GET
+    
 front_user_show_private:
     path:     /my-profile/
     defaults: { _controller: "FrontFrontBundle:User:showPrivate" }

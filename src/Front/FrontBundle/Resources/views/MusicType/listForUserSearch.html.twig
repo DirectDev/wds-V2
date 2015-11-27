@@ -1,0 +1,11 @@
+<h3>{% trans %}user.search_by_musictype{% endtrans %}</h3>
+<ul class="list-unstyled">
+    {% for musicType in musicTypes %}
+        <li>
+            <a href="#" class="search-user-musictype-link">
+                {{ musicType.getTitle() }}
+            </a>
+        </li>     
+    {% endfor %}   
+</ul>
+<hr>

@@ -282,6 +282,13 @@ class User extends BaseUser {
                 return true;
         return false;
     }
+    
+    public function isBar() {
+        foreach ($this->userTypes as $userType)
+            if ($userType->getName() == 'bar')
+                return true;
+        return false;
+    }
 
     public function incrementDisplayCounter() {
         $this->display_counter++;

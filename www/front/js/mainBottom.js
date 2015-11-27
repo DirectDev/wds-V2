@@ -487,6 +487,26 @@ $(document).on('change', '#music_filter_search', function (e) {
     $('#music_filter_user').val(null);
 });
 
+$(document).on('click', 'a.search-user-usertype-link', function (e) {
+    e.preventDefault();
+    $('#user_filter_search').val(null);
+    $('#user_filter_musictype').val(null);
+    $('#user_filter_usertype').val($(this).text().trim());
+    $('#user_filter_form').submit();
+});
+$(document).on('click', 'a.search-user-musictype-link', function (e) {
+    e.preventDefault();
+    $('#user_filter_search').val(null);
+    $('#user_filter_usertype').val(null);
+    $('#user_filter_musictype').val($(this).text().trim());
+    $('#user_filter_form').submit();
+});
+$(document).on('change', '#user_filter_search', function (e) {
+    e.preventDefault();
+    $('#user_filter_musictype').val(null);
+    $('#user_filter_usertype').val(null);
+});
+
 $(document).on('click', 'a.link-love-video', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();

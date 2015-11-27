@@ -141,7 +141,7 @@ class UserRepository extends EntityRepository {
 
         return $query->getQuery()->getResult();
     }
-    
+
     public function findWithMove($limit = 12) {
         $query = $this->createQueryBuilder('u')
                 ->innerJoin('u.videos', 'v')
@@ -149,6 +149,60 @@ class UserRepository extends EntityRepository {
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
+    }
+
+    public function findForUserIndex() {
+        $query = $this->createQueryBuilder('u');
+        // order by count loves
+
+        return $query->getQuery();
+    }
+
+    public function filter($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('u')
+                ->leftJoin('u.userTypes', 'ut')
+                ->leftJoin('ut.translations', 'utt', 'WITH', 'utt.locale = :locale')
+                ->leftJoin('u.musicTypes', 'mt')
+                ->leftJoin('mt.translations', 'mtt', 'WITH', 'mtt.locale = :locale')
+                ->leftJoin('u.addresses', 'a')
+                ->leftJoin('a.country', 'co')
+                ->leftJoin('co.translations', 'cot', 'WITH', 'cot.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.username", ":search"));
+            $orQuery->add($query->expr()->like("ut.name", ":search"));
+            $orQuery->add($query->expr()->like("utt.title", ":search"));
+            $orQuery->add($query->expr()->like("mt.name", ":search"));
+            $orQuery->add($query->expr()->like("mtt.title", ":search"));
+            $orQuery->add($query->expr()->like("a.city", ":search"));
+            $orQuery->add($query->expr()->like("a.postcode", ":search"));
+            $orQuery->add($query->expr()->like("cot.title", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        if (isset($data["usertype"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("ut.name", ":usertype"));
+            $orQuery->add($query->expr()->like("utt.title", ":usertype"));
+            $query->andWhere($orQuery);
+            $query->setParameter('usertype', '%' . $data["usertype"] . '%');
+        }
+
+        if (isset($data["musictype"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("mt.name", ":musictype"));
+            $orQuery->add($query->expr()->like("mtt.title", ":musictype"));
+            $query->andWhere($orQuery);
+            $query->setParameter('musictype', '%' . $data["musictype"] . '%');
+        }
+
+        // order by count loves
+
+        return $query->getQuery();
     }
 
 }

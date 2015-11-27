@@ -44,7 +44,7 @@ policy:
       
 FrontFrontBundle_user:
     resource: "@FrontFrontBundle/Resources/config/routing/user.yml"
-    prefix:   /      
+    prefix:   /user      
     
 FrontFrontBundle_address:
     resource: "@FrontFrontBundle/Resources/config/routing/address.yml"
@@ -81,3 +81,7 @@ FrontFrontBundle_city:
 FrontFrontBundle_tag:
     resource: "@FrontFrontBundle/Resources/config/routing/tag.yml"
     prefix:   /tag         
+
+FrontFrontBundle_usertype:
+    resource: "@FrontFrontBundle/Resources/config/routing/usertype.yml"
+    prefix:   /usertype         
