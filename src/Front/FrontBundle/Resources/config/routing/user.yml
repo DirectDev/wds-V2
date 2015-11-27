@@ -67,3 +67,7 @@ front_user_show_public:
 callback_username:
     path:      /callback_username/
     defaults:  { _controller: UserUserBundle:User:callbackUsername }
+    
+front_user_list_for_video_search:
+    path:     /list_for_video_search/
+    defaults: { _controller: "FrontFrontBundle:User:listForVideoSearch" }    

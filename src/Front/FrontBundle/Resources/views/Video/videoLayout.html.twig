@@ -1,0 +1,47 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{#{% block title %}
+    {{ continent|capitalize }} - {{ page.getTitle }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ continent|capitalize }} {{ page.getDescription }}" />
+    <!-- partage facebook -->
+    <meta property="og:title" content="{{ continent|capitalize }} - {{ page.getTitle }}" />
+    <meta property="og:description" content="{{ page.getDescription }}" />
+    <!--<meta property="og:image" content="URL_image" />-->
+    <!-- partage facebook -->
+{% endblock %}#}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/page_search_inner.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/pages/blocks.css") }}">
+{% endblock %}
+
+{% block topJavascripts %}   
+    {{ parent() }}
+{% endblock %}    
+
+{% block content %}
+
+{% endblock %}
+
+{% block bottomJavascripts %}
+    {{ parent() }}    
+
+    <script type="text/javascript" src="{{ asset("front/plugins/jquery.mixitup.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/pages/page_portfolio.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initCounter();
+            PortfolioPage.init();
+        });
+    </script>
+
+{% endblock %}   

@@ -19,26 +19,10 @@ class VideoController extends Controller {
      * Lists all Video entities.
      *
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-
-        $videos = $em->getRepository('FrontFrontBundle:Video')->findAll();
-
-        return $this->render('FrontFrontBundle:Video:index.html.twig', array(
-                    'videos' => $videos,
-        ));
-    }
-
-    public function movesAction(Request $request) {
-        $em = $this->getDoctrine()->getManager();
-
-        $videos = $em->getRepository('FrontFrontBundle:Video')->findAll();
-        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
         
-        // trouver avec des passes
-        $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
-
-        $query = $em->getRepository('FrontFrontBundle:Video')->findAll();
+        $query = $em->getRepository('FrontFrontBundle:Video')->findAll(); // avec move = 0
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
@@ -47,12 +31,35 @@ class VideoController extends Controller {
         $filterForm = $this->createFilterForm();
         $filterForm->handleRequest($request);
 
-        return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
+        return $this->render('FrontFrontBundle:Video:index.html.twig', array(
                     'pagination' => $pagination,
-                    'tags' => $tags,
-                    'users' => $users,
                     'filterForm' => $filterForm->createView(),
         ));
+    }
+
+    public function movesAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+//        $tags = $em->getRepository('FrontFrontBundle:Tag')->findAll();
+//        
+//        // trouver avec des passes
+//        $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
+//
+//        $query = $em->getRepository('FrontFrontBundle:Video')->findAll();
+//        $paginator = $this->get('knp_paginator');
+//        $pagination = $paginator->paginate(
+//                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+//        );
+//
+//        $filterForm = $this->createFilterForm();
+//        $filterForm->handleRequest($request);
+//
+//        return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
+//                    'pagination' => $pagination,
+//                    'tags' => $tags,
+//                    'users' => $users,
+//                    'filterForm' => $filterForm->createView(),
+//        ));
     }
 
     public function filterAction(Request $request) {
@@ -79,7 +86,7 @@ class VideoController extends Controller {
         $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
 
 
-        return $this->render('FrontFrontBundle:Move:moves.html.twig', array(
+        return $this->render('FrontFrontBundle:Video:index.html.twig', array(
                     'pagination' => $pagination,
                     'tags' => $tags,
                     'users' => $users,
@@ -92,8 +99,6 @@ class VideoController extends Controller {
             'action' => $this->generateUrl('front_video_filter'),
             'method' => 'GET',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Rechercher'));
 
         return $form;
     }

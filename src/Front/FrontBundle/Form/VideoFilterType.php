@@ -20,11 +20,11 @@ class VideoFilterType extends AbstractType {
                     'required' => false,
                     'attr' => array('placeholder' => "Texte",)
                 ))
-                ->add('tag', 'text', array(
+                ->add('tag', 'hidden', array(
                     'required' => false,
                     'attr' => array('placeholder' => "tag",)
                 ))
-                ->add('user', 'text', array(
+                ->add('user', 'hidden', array(
                     'required' => false,
                     'attr' => array('placeholder' => "user",)
                 ))

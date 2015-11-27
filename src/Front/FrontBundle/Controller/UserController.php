@@ -466,7 +466,7 @@ class UserController extends Controller {
         $entity = $this->get('security.context')->getToken()->getUser();
         if (!$entity)
             return new Response('', 404);
-        
+
         $startdate = date('Y-m-d');
         $passedEvents = $em->getRepository('FrontFrontBundle:Event')->getPassedEventByUser($entity, $limit = 10);
 
@@ -494,6 +494,17 @@ class UserController extends Controller {
                     'user' => $entity,
                     'events' => $nextEvents,
                     'startdate' => $startdate
+        ));
+    }
+
+    public function listForVideoSearchAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        // trouver avec des videos
+        $users = $em->getRepository('UserUserBundle:User')->findForFooter(10); //!!!!!
+
+        return $this->render('FrontFrontBundle:User:listForVideoSearch.html.twig', array(
+                    'users' => $users,
         ));
     }
 

@@ -8,18 +8,20 @@
     <div class="search-block-v2">
         <div class="container">
             <div class="col-md-6 col-md-offset-3">
-                <h2>Search again</h2>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search words with regular expressions ...">
-                    <span class="input-group-btn">
-                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
+
+                <h2>Search Moves</h2>
+                
                 {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'video_filter_form' } } ) }}
-                {{ form_row(filterForm.search) }}
-                {{ form_row(filterForm.tag) }}
-                {{ form_row(filterForm.user) }}
+                <div class="input-group">
+                    {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : 'Search words with regular expressions ...' } } ) }}
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                    {{ form_row(filterForm.tag) }}
+                    {{ form_row(filterForm.user) }}
+                </div>
                 {{ form_end(filterForm) }}
+
             </div>
         </div>    
     </div><!--/container-->     

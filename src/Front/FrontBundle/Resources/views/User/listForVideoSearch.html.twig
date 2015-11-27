@@ -1,0 +1,15 @@
+
+<h3>Search by People</h3>
+<ul class="list-unstyled blog-photos margin-bottom-30">
+    {% for user in users %}
+        <li>
+            {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { 
+                user : user, 
+                class : 'hover-effect', 
+                filter : 'member_min_thumb',
+                a_class : 'search-video-user-link',
+                href : '#',
+                 } %}
+        </li>
+    {% endfor %}
+</ul>

@@ -461,9 +461,8 @@ $(document).on('click', 'a.search-video-user-link', function (e) {
     $('#video_filter_user').val($(this).data('user-id'));
     $('#video_filter_form').submit();
 });
-$(document).on('change keyup', '#video_filter_search', function (e) {
+$(document).on('change', '#video_filter_search', function (e) {
     e.preventDefault();
     $('#video_filter_tag').val(null);
     $('#video_filter_user').val(null);
-    $('#video_filter_form').submit();
 });

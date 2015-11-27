@@ -85,6 +85,16 @@ liip_imagine:
             filters:
                 upscale: { min: [90, 90] } 
                 thumbnail: { size: [90, 90], mode: inbound }
+        member_min_thumb:        
+            quality:              80
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                upscale: { min: [34, 34] } 
+                thumbnail: { size: [34, 34], mode: inbound }
         event_carrousel:        
             quality:              100
             animated:             false
