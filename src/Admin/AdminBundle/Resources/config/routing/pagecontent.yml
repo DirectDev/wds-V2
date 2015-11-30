@@ -1,0 +1,30 @@
+admin_pagecontent:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:PageContent:index" }
+
+admin_pagecontent_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:PageContent:show" }
+
+admin_pagecontent_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:PageContent:new" }
+
+admin_pagecontent_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:PageContent:create" }
+    requirements: { _method: post }
+
+admin_pagecontent_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:PageContent:edit" }
+
+admin_pagecontent_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:PageContent:update" }
+    requirements: { _method: post|put }
+
+admin_pagecontent_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:PageContent:delete" }
+    requirements: { _method: post|delete }

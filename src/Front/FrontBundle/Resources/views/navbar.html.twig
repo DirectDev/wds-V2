@@ -110,15 +110,60 @@
                     </ul>
                 </li> 
 
-                <li>
-                    <a href="{{ path('home')}}" >
-                        {#                        {% trans %}navbar.artits{% endtrans %}#}
-                        Danse
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        {% trans %}navbar.dances{% endtrans %}
                     </a>
-                </li>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="javascript:void(0);">{% trans %}navbar.dances.salsa{% endtrans %}</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('dance_salsa') }}">{% trans %}navbar.dances.salsa{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_cubana') }}">{% trans %}navbar.dances.salsa_cubana{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_on1') }}">{% trans %}navbar.dances.salsa_on1{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_on2') }}">{% trans %}navbar.dances.salsa_on2{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_dominicana') }}">{% trans %}navbar.dances.salsa_dominicana{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_rueda') }}">{% trans %}navbar.dances.salsa_rueda{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="javascript:void(0);">{% trans %}navbar.dances.bachata{% endtrans %}</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('dance_bachata') }}">{% trans %}navbar.dances.bachata{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_bachata_moderna') }}">{% trans %}navbar.dances.bachata_moderna{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_bachata_dominicana') }}">{% trans %}navbar.dances.bachata_dominicana{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_bachata_sensual') }}">{% trans %}navbar.dances.bachata_sensual{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="{{ path('dance_kizomba') }}">{% trans %}navbar.dances.kizomba{% endtrans %}</a></li>
+                        <li><a href="{{ path('dance_merengue') }}">{% trans %}navbar.dances.merengue{% endtrans %}</a></li>
+                        <li><a href="{{ path('dance_tango') }}">{% trans %}navbar.dances.tango{% endtrans %}</a></li>
+                    </ul>
+                </li> 
                 <li>
                     <a href="{{ path('front_user_index')}}" >
-                                                {% trans %}navbar.user{% endtrans %}
+                        {% trans %}navbar.user{% endtrans %}
                     </a>
                 </li>
                 <li>

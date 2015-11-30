@@ -6,6 +6,10 @@ AdminAdminBundle_page:
     resource: "@AdminAdminBundle/Resources/config/routing/page.yml"
     prefix: /page
     
+AdminAdminBundle_pagecontent:
+    resource: "@AdminAdminBundle/Resources/config/routing/pagecontent.yml"
+    prefix: /pagecontent
+    
 AdminAdminBundle_address:
     resource: "@AdminAdminBundle/Resources/config/routing/address.yml"
     prefix:   /address            

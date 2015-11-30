@@ -1,0 +1,52 @@
+
+dance_salsa:
+    path:     /dance_salsa
+    defaults: { _controller: "FrontFrontBundle:Dance:danceSalsa" }
+
+dance_salsa_cubana:
+    path:     /dance_salsa_cubana
+    defaults: { _controller: "FrontFrontBundle:Dance:danceSalsaCubana" }
+
+dance_salsa_on1:
+    path:     /dance_salsa_on1
+    defaults: { _controller: "FrontFrontBundle:Dance:danceSalsaOn1" }
+
+dance_salsa_on2:
+    path:     /dance_salsa_on2
+    defaults: { _controller: "FrontFrontBundle:Dance:danceSalsaOn2" }
+
+dance_salsa_dominicana:
+    path:     /dance_salsa_dominicana
+    defaults: { _controller: "FrontFrontBundle:Dance:danceSalsaDominicana" }
+
+dance_salsa_rueda:
+    path:     /dance_salsa_rueda
+    defaults: { _controller: "FrontFrontBundle:Dance:danceSalsaRueda" }
+
+dance_bachata:
+    path:     /dance_bachata
+    defaults: { _controller: "FrontFrontBundle:Dance:danceBachata" }
+
+dance_bachata_moderna:
+    path:     /dance_bachata_moderna
+    defaults: { _controller: "FrontFrontBundle:Dance:danceBachataModerna" }
+
+dance_bachata_dominicana:
+    path:     /dance_bachata_dominicana
+    defaults: { _controller: "FrontFrontBundle:Dance:danceBachataDominicana" }
+
+dance_bachata_sensual:
+    path:     /dance_bachata_sensual
+    defaults: { _controller: "FrontFrontBundle:Dance:danceBachataSensual" }
+
+dance_kizomba:
+    path:     /dance_kizomba
+    defaults: { _controller: "FrontFrontBundle:Dance:danceKizomba" }
+    
+dance_merengue:
+    path:     /dance_merengue
+    defaults: { _controller: "FrontFrontBundle:Dance:danceMerengue" }
+    
+dance_tango:
+    path:     /dance_tango
+    defaults: { _controller: "FrontFrontBundle:Dance:danceTango" }
