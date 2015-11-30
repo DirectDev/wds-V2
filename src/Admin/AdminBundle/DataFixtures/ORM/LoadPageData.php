@@ -508,6 +508,56 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-dance-tango', $Page);
         $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('learn-salsa');
+        $Page->translate('en')->setTitle('Learn Salsa');
+        $Page->translate('fr')->setTitle('Apprendre la Salsa');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-learn-salsa', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('learn-bachata');
+        $Page->translate('en')->setTitle('Learn Bachata');
+        $Page->translate('fr')->setTitle('Apprendre la Bachata');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-learn-bachata', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('learn-kizomba');
+        $Page->translate('en')->setTitle('Learn Kizomba');
+        $Page->translate('fr')->setTitle('Apprendre la Kizomba');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-learn-kizomba', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
+        $Page->setName('learn-merengue');
+        $Page->translate('en')->setTitle('Learn Merengue');
+        $Page->translate('fr')->setTitle('Apprendre le Merengue');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-learn-merengue', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
+        $Page->setName('learn-tango');
+        $Page->translate('en')->setTitle('Learn Tango');
+        $Page->translate('fr')->setTitle('Apprendre le Tango');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-learn-tango', $Page);
+        $Page->mergeNewTranslations();
 
         $manager->flush();
     }

@@ -140,6 +140,52 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
         $manager->persist($PageContent);
         $PageContent->mergeNewTranslations();
 
+        $salsa_h1_en = 'The Salsa';
+        $salsa_h1_fr = 'La Salsa';
+        $salsa_en = 'Salsa music is a general term referring to a genre that is essentially Cuban and Puerto Rican popular dance music. The term salsa was initially promoted and marketed in New York City during the 1970s. Salsa comprises various musical genres including the Cuban son montuno, guaracha, chachachá, mambo, and to a certain extent bolero. Salsa is the product of genres such as the Puerto Rican bomba and plena. Latin jazz, which was also developed in New York City, has had a significant influence on salsa arrangers, piano guajeos, and instrumental soloists.';
+        $salsa_fr = 'La salsa (mot espagnol qui signifie « sauce » et, au sens figuré, charme, piquant) désigne à la fois un genre musical et une danse ayant des racines cubaines. Cette musique de danse au tempo vif est popularisée dans le monde entier.Les instruments utilisés dans la salsa sont le résultat de plusieurs siècles d’innovation et de développement. Comme les cultures autochtones ont été virtuellement détruites par les colonisateurs européens, il reste peu de preuves de leurs contributions musicales. Certains termes et instruments ont cependant survécu.
+Un musicien (ou chanteur) ou bien danseur de salsa est appelé salsero (salsera au féminin).';
+
+        $PageContent = new PageContent();
+        $PageContent->setPage($this->getReference('page-dance_salsa'));
+        $PageContent->setPosition(1);
+        $PageContent->translate('en')->setContent($salsa_h1_en);
+        $PageContent->translate('fr')->setContent($salsa_h1_fr);
+        $manager->persist($PageContent);
+        $PageContent->mergeNewTranslations();
+
+        $PageContent = new PageContent();
+        $PageContent->setPage($this->getReference('page-dance_salsa'));
+        $PageContent->setPosition(2);
+        $PageContent->translate('en')->setContent($salsa_en);
+        $PageContent->translate('fr')->setContent($salsa_fr);
+        $manager->persist($PageContent);
+        $PageContent->mergeNewTranslations();
+
+        $salsa_cubana_h1_en = 'The Salsa';
+        $salsa_cubana_h1_fr = 'La Salsa';
+        $salsa_cubana_en = "In Cuba, a popular dance known as Casino was marketed as Cuban-style salsa or Salsa Cubana abroad to distinguish it from other salsa styles when the name was popularized in the 70's. Casino is popular in many places around the world, including in Europe, Latin America, North America, and even in some countries in the Middle East such as Israel. Dancing Casino is an expression of popular social culture; Cubans consider casino as part of social and cultural activities centering on their popular music. The name Casino is derived from the Spanish term for the dance halls, 'Casinos Deportivos' where a lot of social dancing was done among the better off, white Cubans during the mid-20th century and onward.
+Hzstorically, Casino traces its origin as a partner dance from Cuban Son, Cha Cha Cha, Danzon and Guaracha. Traditionally, Casino is danced 'a contratiempo'. This means that, distinct from subsequent forms of salsa, no step is taken on the first and fifth beats in each clave pattern and the fourth and eighth beat are emphasised. In this way, rather than following a beat, the dancers themselves contribute in their movement, to the polyrythmic pattern of the music. At the same time, it is often danced 'a tiempo', although both 'on3' (originally) and 'on1' (nowadays).
+What gives the dance its life, however, is not its mechanical technique, but understanding and spontaneous use of the rich Afro-Cuban dance vocabulary within a 'Casino' dance. In the same way that a 'sonero' (lead singer in Son and salsa bands) will 'quote' other, older songs in their own, a 'casino' dancer will frequently improvise references to other dances, integrating movements, gestures and extended passages from the folkloric and popular heritage. This is particularly true of African descended Cubans. Such improvisations might include extracts of rumba, dances for African deities, the older popular dances such as Cha Cha Cha and Danzon as well as anything the dancer may feel.";
+        $salsa_cubana_fr = "Le style cubain vient de la danse casino des années 1950, telle que pratiquée dans les chorégraphies du Tropicana, fameux club de La Havane, et prend ses racines dans le son cubain : très africain, « dans le sol », les gestes sont économisés -- on peut le danser dans des endroits bondés --, les passes épurées, il ny a pas de jeux de jambes. Le couple se déplace essentiellement en décrivant des cercles successifs. C'est avant tout une danse de la rue, populaire, sociale. Il se danse normalement sur le temps « 1 », , au contraire du son cubain traditionnel où le « 1 », est suggéré par une mise en suspension du corps.
+La rueda de casino, une variante de ce style, consiste en des rondes (rueda) de couples où un meneur (la madre) annonce les passes à venir. Tous les danseurs effectuent ces passes en même temps, de sorte que les danseurs changent fréquemment de partenaire.";
+
+        $PageContent = new PageContent();
+        $PageContent->setPage($this->getReference('page-dance_salsa-cubana'));
+        $PageContent->setPosition(1);
+        $PageContent->translate('en')->setContent($salsa_cubana_h1_en);
+        $PageContent->translate('fr')->setContent($salsa_cubana_h1_fr);
+        $manager->persist($PageContent);
+        $PageContent->mergeNewTranslations();
+
+        $PageContent = new PageContent();
+        $PageContent->setPage($this->getReference('page-dance_salsa-cubana'));
+        $PageContent->setPosition(2);
+        $PageContent->translate('en')->setContent($salsa_cubana_en);
+        $PageContent->translate('fr')->setContent($salsa_cubana_fr);
+        $manager->persist($PageContent);
+        $PageContent->mergeNewTranslations();
+
         $manager->flush();
     }
 

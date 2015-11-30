@@ -1,0 +1,20 @@
+
+learn_salsa:
+    path:     /learn_salsa
+    defaults: { _controller: "FrontFrontBundle:Learn:learnSalsa" }
+
+learn_bachata:
+    path:     /learn_bachata
+    defaults: { _controller: "FrontFrontBundle:Learn:learnBachata" }
+
+learn_kizomba:
+    path:     /learn_kizomba
+    defaults: { _controller: "FrontFrontBundle:Learn:learnKizomba" }
+    
+learn_merengue:
+    path:     /learn_merengue
+    defaults: { _controller: "FrontFrontBundle:Learn:learnMerengue" }
+    
+learn_tango:
+    path:     /learn_tango
+    defaults: { _controller: "FrontFrontBundle:Learn:learnTango" }

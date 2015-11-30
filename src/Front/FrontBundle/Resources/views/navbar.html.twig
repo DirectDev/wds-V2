@@ -166,16 +166,24 @@
                         {% trans %}navbar.user{% endtrans %}
                     </a>
                 </li>
-                <li>
-                    <a href="{{ path('home')}}" >
-                        {#                        {% trans %}navbar.bands{% endtrans %}#}
-                        Apprendre
-                    </a>
-                </li>
+
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                        {#                        {% trans %}navbar.festivals{% endtrans %}#}
-                        Medias
+                        {% trans %}navbar.learn{% endtrans %}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('learn_salsa') }}">{% trans %}navbar.learn.salsa{% endtrans %}</a></li>
+                        <li><a href="{{ path('learn_bachata') }}">{% trans %}navbar.learn.bachata{% endtrans %}</a></li>
+                        <li><a href="{{ path('learn_kizomba') }}">{% trans %}navbar.learn.kizomba{% endtrans %}</a></li>
+                        <li><a href="{{ path('learn_merengue') }}">{% trans %}navbar.learn.merengue{% endtrans %}</a></li>
+                        <li><a href="{{ path('learn_tango') }}">{% trans %}navbar.learn.tango{% endtrans %}</a></li>
+                    </ul>
+                </li> 
+
+
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        {% trans %}navbar.medias{% endtrans %}
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('front_video') }}">{% trans %}navbar.videos{% endtrans %}</a></li>
