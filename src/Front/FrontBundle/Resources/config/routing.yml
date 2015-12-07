@@ -50,6 +50,10 @@ FrontFrontBundle_festival:
     resource: "@FrontFrontBundle/Resources/config/routing/festival.yml"
     prefix:   /festival      
 
+FrontFrontBundle_landing:
+    resource: "@FrontFrontBundle/Resources/config/routing/landing.yml"
+    prefix:   /landing  
+    
 FrontFrontBundle_learn:
     resource: "@FrontFrontBundle/Resources/config/routing/learn.yml"
     prefix:   /learn  

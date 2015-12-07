@@ -39,6 +39,7 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('home')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('policy')));
+
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_calendar')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_dancer')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_teacher')));
@@ -48,6 +49,49 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_photo')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_video')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_music')));
+
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_calendar')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_europe')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_north_america')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_central_america')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_south_america')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_north_africa')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_central_africa')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_south_africa')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_north_asia')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_south_asia')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_india')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_australia')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_indonesia')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('festival_middle_east')));
+
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('musics')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('videos')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('moves')));
+
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-salsa')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-salsa-cubana')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-salsa-on1')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-salsa-on2')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-salsa-dominicana')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-salsa-rueda')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-bachata')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-bachata-moderna')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-bachata-dominicana')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-bachata-sensual')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-kizomba')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-merengue')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('dance-tango')));
+
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-salsa')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-bachata')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-kizomba')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-merengue')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-tango')));
+
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-dancer')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-pro')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-pub')));
     }
 
 }

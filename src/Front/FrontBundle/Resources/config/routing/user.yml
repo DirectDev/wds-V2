@@ -70,7 +70,7 @@ front_user_next_events:
     defaults:  { _controller: FrontFrontBundle:User:nextEvents }  
     
 front_user_show_public:
-    path:      /profile/{username}/{id}
+    path:      /person/{username}/{id}
     defaults:  { _controller: FrontFrontBundle:User:showPublic }  
     
 callback_username:

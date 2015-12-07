@@ -1,0 +1,13 @@
+
+landing_dancer:
+    path:     /landing_dancer
+    defaults: { _controller: "FrontFrontBundle:Landing:landingDancer" }
+
+landing_pro:
+    path:     /landing_pro
+    defaults: { _controller: "FrontFrontBundle:Landing:landingPro" }
+
+landing_pub:
+    path:     /landing_pub
+    defaults: { _controller: "FrontFrontBundle:Landing:landingPub" }
+    

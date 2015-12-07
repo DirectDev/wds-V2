@@ -26,12 +26,12 @@ class UserController extends Controller {
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        
+
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('users');
         if (!$page)
             throw new \Exception('Page not found!');
 
-        $query = $em->getRepository('UserUserBundle:User')->findForUserIndex(); 
+        $query = $em->getRepository('UserUserBundle:User')->findForUserIndex();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
@@ -49,7 +49,7 @@ class UserController extends Controller {
 
     public function filterAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        
+
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('users');
         if (!$page)
             throw new \Exception('Page not found!');
@@ -76,7 +76,7 @@ class UserController extends Controller {
                     'filterForm' => $filterForm->createView(),
         ));
     }
-    
+
     private function createFilterUserForm() {
         $form = $this->createForm(new UserFilterType(), null, array(
             'action' => $this->generateUrl('front_user_filter'),
@@ -86,7 +86,6 @@ class UserController extends Controller {
         return $form;
     }
 
-    
     /**
      * Finds and displays a User entity.
      *
@@ -474,7 +473,7 @@ class UserController extends Controller {
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('front_user_loves', array('id' => $entity->getId())));
+        return $this->redirect($this->generateUrl('front_user_loves', array('id' => $id)));
     }
 
     public function unLoveAction(Request $request, $id) {
@@ -494,14 +493,14 @@ class UserController extends Controller {
             }
 
             $User = $this->getUser();
-            if ($User->getEventloves()->contains($entity))
-                $User->removeEventlove($entity);
+            if ($User->getLoves()->contains($entity))
+                $User->removeLove($entity);
 
             $em->persist($User);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('front_user_loves', array('id' => $entity->getId())));
+        return $this->redirect($this->generateUrl('front_user_loves', array('id' => $id)));
     }
 
     public function lovesAction($id) {

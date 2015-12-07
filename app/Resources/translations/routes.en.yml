@@ -363,7 +363,7 @@ front_user_show_overviews_profile: '/pofile/overviews_profile/{id}'
 front_user_show_private: /my-profile/
 
 # Desc: /profile/{username}/{id}
-front_user_show_public: '/profile/{username}/{id}'
+front_user_show_public: '/person/{username}/{id}'
 
 # Desc: /profile/unlove/{id}
 front_user_unlove: '/profile/unlove/{id}'

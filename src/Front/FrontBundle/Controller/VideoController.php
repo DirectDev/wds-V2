@@ -262,6 +262,9 @@ class VideoController extends Controller {
      */
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
+        
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $video = $em->getRepository('FrontFrontBundle:Video')->find($id);
 

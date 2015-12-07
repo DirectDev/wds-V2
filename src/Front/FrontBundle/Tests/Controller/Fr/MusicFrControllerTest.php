@@ -38,7 +38,7 @@ class MusicFrControllerTest extends WebTestCase {
                     'PHP_AUTH_USER' => $this->PHP_AUTH_USER,
                     'PHP_AUTH_PW' => $this->PHP_AUTH_PW
         ));
-        
+
         $this->deleteData();
     }
 
@@ -60,6 +60,16 @@ class MusicFrControllerTest extends WebTestCase {
             return $music;
     }
 
+    private function findOneTag() {
+        return $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName('salsa');
+    }
+
+    private function findOneUserWithMusic() {
+        $users = $this->em->getRepository('UserUserBundle:User')->findWithMusic(1);
+        foreach ($users as $user)
+            return $user;
+    }
+
     private function deleteData() {
 
         $music = $this->em->getRepository('FrontFrontBundle:Music')->findOneBy(
@@ -67,13 +77,18 @@ class MusicFrControllerTest extends WebTestCase {
         );
         if ($music)
             $this->em->remove($music);
-        
+
         $music = $this->em->getRepository('FrontFrontBundle:Music')->findOneBy(
                 array('url' => "https://open.spotify.com/track/testupdate" . $this->locale)
         );
         if ($music)
             $this->em->remove($music);
 
+        $this->em->flush();
+
+        $music = $this->findOneMusic();
+        foreach ($music->getLovesMe() as $love)
+            $this->em->remove($love);
         $this->em->flush();
     }
 
@@ -223,6 +238,89 @@ class MusicFrControllerTest extends WebTestCase {
             ));
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         }
+    }
+
+    public function testIndex() {
+        $crawler = $this->client->request('GET', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testFilterAnonymous() {
+
+        $crawler = $this->client->request('POST', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $form = $crawler->filter('#music_filter_form button[type=submit]')->form();
+        $form['music_filter[search]'] = 'salsa';
+        $crawler = $this->client->submit($form);
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+
+        $Tag = $this->findOneTag();
+        $crawler = $this->client->request('POST', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $form = $crawler->filter('#music_filter_form button[type=submit]')->form();
+        $form['music_filter[tag]'] = $Tag->getTitle();
+        $crawler = $this->client->submit($form);
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $user = $this->findOneUserWithMusic();
+        $crawler = $this->client->request('POST', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $form = $crawler->filter('#music_filter_form button[type=submit]')->form();
+        $form['music_filter[user]'] = $user->getUsername();
+        $crawler = $this->client->submit($form);
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
+
+    public function testFilterLoggued() {
+
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#music_filter_form button[type=submit]')->form();
+        $form['music_filter[search]'] = 'salsa';
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $Tag = $this->findOneTag();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#music_filter_form button[type=submit]')->form();
+        $form['music_filter[tag]'] = $Tag->getTitle();
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findOneUserWithMusic();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#music_filter_form button[type=submit]')->form();
+        $form['music_filter[user]'] = $user->getUsername();
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testLove() {
+        $music = $this->findOneMusic();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music_love', array(
+                    'id' => $music->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $this->em->refresh($music);
+        $this->assertEquals(1, count($music->getLovesMe()));
+    }
+
+    public function testUnlove() {
+        $music = $this->findOneMusic();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music_unlove', array(
+                    'id' => $music->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $this->em->refresh($music);
+        $this->assertEquals(0, count($music->getLovesMe()));
     }
 
 }

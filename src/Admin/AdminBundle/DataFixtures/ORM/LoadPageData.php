@@ -559,6 +559,36 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $this->addReference('page-learn-tango', $Page);
         $Page->mergeNewTranslations();
 
+        $Page = new Page();
+        $Page->setName('landing-dancer');
+        $Page->translate('en')->setTitle('Landing Page Dancer');
+        $Page->translate('fr')->setTitle('Landing Page Dancer');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-landing-dancer', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
+        $Page->setName('landing-pro');
+        $Page->translate('en')->setTitle('Landing Page Pro');
+        $Page->translate('fr')->setTitle('Landing Page Pro');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-landing-pro', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
+        $Page->setName('landing-pub');
+        $Page->translate('en')->setTitle('Landing Page Pub');
+        $Page->translate('fr')->setTitle('Landing Page Pub');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-landing-pub', $Page);
+        $Page->mergeNewTranslations();
+
         $manager->flush();
     }
 

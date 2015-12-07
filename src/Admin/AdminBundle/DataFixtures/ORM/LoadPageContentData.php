@@ -147,7 +147,7 @@ Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de
 Un musicien (ou chanteur) ou bien danseur de salsa est appelé salsero (salsera au féminin).';
 
         $PageContent = new PageContent();
-        $PageContent->setPage($this->getReference('page-dance_salsa'));
+        $PageContent->setPage($this->getReference('page-dance-salsa'));
         $PageContent->setPosition(1);
         $PageContent->translate('en')->setContent($salsa_h1_en);
         $PageContent->translate('fr')->setContent($salsa_h1_fr);
@@ -155,7 +155,7 @@ Un musicien (ou chanteur) ou bien danseur de salsa est appelé salsero (salsera 
         $PageContent->mergeNewTranslations();
 
         $PageContent = new PageContent();
-        $PageContent->setPage($this->getReference('page-dance_salsa'));
+        $PageContent->setPage($this->getReference('page-dance-salsa'));
         $PageContent->setPosition(2);
         $PageContent->translate('en')->setContent($salsa_en);
         $PageContent->translate('fr')->setContent($salsa_fr);
@@ -171,7 +171,7 @@ What gives the dance its life, however, is not its mechanical technique, but und
 La rueda de casino, une variante de ce style, consiste en des rondes (rueda) de couples où un meneur (la madre) annonce les passes à venir. Tous les danseurs effectuent ces passes en même temps, de sorte que les danseurs changent fréquemment de partenaire.";
 
         $PageContent = new PageContent();
-        $PageContent->setPage($this->getReference('page-dance_salsa-cubana'));
+        $PageContent->setPage($this->getReference('page-dance-salsa-cubana'));
         $PageContent->setPosition(1);
         $PageContent->translate('en')->setContent($salsa_cubana_h1_en);
         $PageContent->translate('fr')->setContent($salsa_cubana_h1_fr);
@@ -179,7 +179,7 @@ La rueda de casino, une variante de ce style, consiste en des rondes (rueda) de 
         $PageContent->mergeNewTranslations();
 
         $PageContent = new PageContent();
-        $PageContent->setPage($this->getReference('page-dance_salsa-cubana'));
+        $PageContent->setPage($this->getReference('page-dance-salsa-cubana'));
         $PageContent->setPosition(2);
         $PageContent->translate('en')->setContent($salsa_cubana_en);
         $PageContent->translate('fr')->setContent($salsa_cubana_fr);
