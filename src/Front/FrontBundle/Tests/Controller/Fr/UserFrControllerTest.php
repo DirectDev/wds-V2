@@ -55,14 +55,6 @@ class UserFrControllerTest extends WebTestCase {
         );
     }
 
-    private function findLoggedUser() {
-        return $this->em->getRepository('UserUserBundle:User')->findOneBy(
-                        array(
-                            'username' => $this->PHP_AUTH_USER,
-                        )
-        );
-    }
-
     private function findAllUsers() {
         return $this->em->getRepository('UserUserBundle:User')->findAll();
     }

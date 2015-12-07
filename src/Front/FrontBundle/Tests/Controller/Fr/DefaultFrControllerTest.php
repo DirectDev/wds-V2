@@ -4,7 +4,7 @@ namespace Front\FrontBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MusicTypeFrControllerTest extends WebTestCase {
+class DefaultFrControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -26,7 +26,6 @@ class MusicTypeFrControllerTest extends WebTestCase {
                 ->getManager();
 
         $this->client = static::createClient();
-        $this->client->followRedirects();
 
         $this->router = $this->client->getContainer()->get('router');
         $this->translator = $this->client->getContainer()->get('translator');
@@ -37,17 +36,27 @@ class MusicTypeFrControllerTest extends WebTestCase {
         ));
     }
 
-    public function testFilters() {
-        $crawler = $this->client->request('GET', $this->router->generate('front_musictype_filters', array('_locale' => $this->locale)));
+    public function testIndex() {
+        $crawler = $this->client->request('GET', $this->router->generate('homepage', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_musictype_filters', array('_locale' => $this->locale)));
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('homepage', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
-    
-    public function testListForUserSearch() {
-        $crawler = $this->client->request('GET', $this->router->generate('front_musictype_list_for_user_search', array('_locale' => $this->locale)));
+
+    public function testPolicy() {
+        $crawler = $this->client->request('GET', $this->router->generate('policy', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_musictype_list_for_user_search', array('_locale' => $this->locale)));
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('policy', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testFooter() {
+        $crawler = $this->client->request('GET', $this->router->generate('footer', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('footer', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 

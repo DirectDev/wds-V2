@@ -18,22 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class EventController extends Controller {
 
-    /**
-     * Lists all Event entities.
-     *
-     */
-    public function indexAction() {
-
-        return new Response('', 404);
-
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('FrontFrontBundle:Event')->findAll();
-
-        return $this->render('FrontFrontBundle:Event:index.html.twig', array(
-                    'entities' => $entities,
-        ));
-    }
 
     /**
      * Creates a new Event entity.
