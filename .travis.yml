@@ -1,6 +1,6 @@
 language: php
 php:
-    - 5.4
+    - 5.5
 
 before_script:
   - cp app/config/parameters.travis.yml app/config/parameters.yml
