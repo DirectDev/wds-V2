@@ -1,9 +1,4 @@
-search_search_front_user:
-  pattern: /search/user
-  defaults: { _controller: SearchSearchBundle:FrontSearch:userFrontSearch }
-  requirements:
-    _method: POST
- 
+
 search_search_front_event:
   pattern: /search/event
   defaults: { _controller: SearchSearchBundle:FrontSearch:eventFrontSearch }
