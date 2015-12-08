@@ -18,7 +18,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
-
+        $i = 0;
         foreach ($this->array_event as $value) {
 
             $Event = new Event();
@@ -27,7 +27,10 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
             $this->addMusicType($Event);
             $this->addEventType($Event);
 
-            $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+            if ($i == 0)
+                $user_selected = $this->array_user[0];
+            else
+                $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
             $Event->setUser($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
 
 
@@ -38,6 +41,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
             $manager->persist($Event);
             $Event->mergeNewTranslations();
             $this->addReference('event-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Event);
+            $i++;
         }
 
         $manager->flush();

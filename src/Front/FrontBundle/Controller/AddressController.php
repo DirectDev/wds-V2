@@ -286,7 +286,7 @@ class AddressController extends Controller {
             }
 
             $em->flush();
-            
+
             return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $id)));
         }
 
@@ -312,25 +312,20 @@ class AddressController extends Controller {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
-        if (!$this->getUser()->getAdresses()->contains($address)) {
-            throw $this->createNotFoundException('Error : not yours.');
-        }
-
         $event = $address->getEvent();
         $user = $address->getUser();
+
+        if ($user && $user != $this->getUser()) {
+            throw $this->createNotFoundException('Error : not yours.');
+        }
+        if ($event && $event->getUser() != $this->getUser()) {
+            throw $this->createNotFoundException('Error : not yours.');
+        }
 
         $em->remove($address);
         $em->flush();
 
         return new Response('', 200);
-
-//        if ($event)
-//            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId(), 'uri' => $event->getURI())));
-//
-//        if ($user)
-//            return $this->redirect($this->generateUrl('front_user_show_private', array('id' => $user->getId())));
-//
-//        return $this->redirect($this->generateUrl('front_address'));
     }
 
     private function setLatitudeAndLongitude($address) {
