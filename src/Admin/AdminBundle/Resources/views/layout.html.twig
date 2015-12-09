@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block stylesheets %}
-{{ parent() }}
+    {{ parent() }}
 {% endblock %}
 
 {% block topJavascripts %}
@@ -15,38 +15,40 @@
 
 {% block body %}
 
-    
-<div class="topbar">
-    <div class="topbar-inner">
-        <div class="container">
-            <h3>
-                <a class="logo" href="{{ path('admin_admin_homepage') }}">{% trans %}admin.general_title{% endtrans %}</a>
-            </h3>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+
+        {% include 'AdminAdminBundle::header.html.twig' %}
+
+        {% include 'AdminAdminBundle::sidebar.html.twig' %}
+
+        <!-- begin #content -->
+        <div id="content" class="content">
+            {% block content %}
+            {% endblock %}
         </div>
+        <!-- end #content -->
+
+        <!-- begin scroll to top btn -->
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+        <!-- end scroll to top btn -->
     </div>
-</div>
-
-
-
-<div class="container">
-    <div class='row'>
-            
-        <div class='col-sm-12'>
-            
-            {% include 'AdminAdminBundle:Admin:navbar.html.twig' %}
-            
-            {% block content %}{% endblock %}
-            
-        </div>     
-            
-    </div>
-
-  
-</div>  
+    <!-- end page container -->
 
 {% endblock %}
 
 
 {% block bottomJavascripts %}
     {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            App.init();
+            Dashboard.init();
+            FormWysihtml5.init();
+        });
+    </script>
 {% endblock %}    

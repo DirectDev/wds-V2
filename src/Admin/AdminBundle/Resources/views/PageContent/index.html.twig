@@ -21,16 +21,9 @@
     <div class="panel-body">  
         
         {% for entity in entities %}
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <a href="{{ path('admin_pagecontent_show', { 'id': entity.id }) }}">{{ entity.position }}</a> 
-                    <a class='pull-right' href="{{ path('admin_pagecontent_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
-                </div>
-                <div class="panel-body">
+            
+                       {{ render(controller('AdminAdminBundle:PageContent:edit', { id : entity.id } )) }}
 
-
-                </div>
-            </div>
         {% endfor %}
         
      </div>   

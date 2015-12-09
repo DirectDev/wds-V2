@@ -19,14 +19,20 @@ class PageContentController extends Controller
      * Lists all PageContent entities.
      *
      */
-    public function indexAction()
+    public function indexAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+       
+        $page = $em->getRepository('AdminAdminBundle:Page')->find($id);
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
 
-        $entities = $em->getRepository('AdminAdminBundle:PageContent')->findAll();
+        $entities = $em->getRepository('AdminAdminBundle:PageContent')->findByPage($page);
 
         return $this->render('AdminAdminBundle:PageContent:index.html.twig', array(
             'entities' => $entities,
+            'page' => $page,
         ));
     }
     /**
@@ -171,7 +177,7 @@ class PageContentController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_pagecontent_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_pagecontent_index', array('id' => $entity->getPage()->getId())));
         }
 
         return $this->render('AdminAdminBundle:PageContent:edit.html.twig', array(

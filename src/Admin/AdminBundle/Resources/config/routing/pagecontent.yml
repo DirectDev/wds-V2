@@ -1,5 +1,5 @@
-admin_pagecontent:
-    path:     /
+admin_pagecontent_index:
+    path:     /{id}/index
     defaults: { _controller: "AdminAdminBundle:PageContent:index" }
 
 admin_pagecontent_show:

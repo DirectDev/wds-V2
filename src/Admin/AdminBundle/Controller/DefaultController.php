@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AdminAdminBundle:Admin:index.html.twig', array('name' => 'jeje'));
+        return $this->render('AdminAdminBundle:Admin:index.html.twig');
     }
 }

@@ -6,74 +6,107 @@
         <meta name="robots" content="noindex, nofollow" />
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-                
+
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/admin/main.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/admin/bootstrap-theme.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/admin/bootstrap.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/admin/font-awesome.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/admin/bootstrap-validator/bootstrapValidator.css') }}"/>
-            
-            <!-- <link rel="stylesheet" href="{{ asset('datetimepicker/css/datetimepicker.css') }}" />-->
-            <link rel="stylesheet" href="{{ asset('datepicker/css/datepicker.css') }}" />
+
+
+            <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+            <link href="{{ asset('admin/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/css/animate.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/css/style.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/css/style-responsive.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/css/theme/default.css') }}" rel="stylesheet" id="theme" />
+
+            <link href="{{ asset('admin/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/plugins/bootstrap-datepicker/css/datepicker.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet" />
+            <link href="{{ asset('admin/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
         {% endblock %}
-            
+
         {% block topJavascripts %}
-        
-            <script src="{{ asset('js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('js/jquery-ui-1.11.1/jquery-ui.min.js') }}" type="text/javascript"></script>
+
+            <script src="{{ asset('admin/plugins/jquery/jquery-1.9.1.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/jquery/jquery-migrate-1.1.0.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}"></script>
             <script src="{{ asset('js/admin/mainTop.js') }}" type="text/javascript"></script>
 
+            <script src="{{ asset('admin/plugins/pace/pace.min.js') }}"></script>
+
         {% endblock %}    
-        
+
+
+
     </head>
     <body>
-        
+
         {% block body %}
         {% endblock %}
-        
+
         {% block bottomJavascripts %}
-        
-            <script src="{{ asset('js/admin/mainBottom.js') }}" type="text/javascript"></script>
-             <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('datepicker/js/locales/bootstrap-datepicker.fr.js') }}" type="text/javascript"></script>
-            
-            <script src="{{ asset('js/admin/bootstrap.js') }}" type="text/javascript"></script> 
-            <script  src="{{ asset('js/admin/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
-            <script  src="{{ asset('js/admin/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $('form').bootstrapValidator({
-                        message: 'This value is not valid',
-                        feedbackIcons: {
-                            valid: 'glyphicon glyphicon-ok',
-                            invalid: 'glyphicon glyphicon-remove',
-                            validating: 'glyphicon glyphicon-refresh'
-                        },
-                        fields: {}
-                    });
-                });
-            </script>
-            <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+            <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+            <!--[if lt IE 9]>
+                    <script src="{{ asset('admin/crossbrowserjs/html5shiv.js') }}"></script>
+                    <script src="{{ asset('admin/crossbrowserjs/respond.min.js') }}"></script>
+                    <script src="{{ asset('admin/crossbrowserjs/excanvas.min.js') }}"></script>
+            <![endif]-->
+            <script src="{{ asset('admin/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/jquery-cookie/jquery.cookie.js') }}"></script>
+            <!-- ================== END BASE JS ================== -->
+
+            <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+            {#            <script src="{{ asset('admin/plugins/gritter/js/jquery.gritter.js') }}"></script>#}
+            <script src="{{ asset('admin/plugins/flot/jquery.flot.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/flot/jquery.flot.time.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/flot/jquery.flot.resize.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/flot/jquery.flot.pie.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/sparkline/jquery.sparkline.js') }}"></script>
+            <script src="{{ asset('admin/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+            <script src="{{ asset('admin/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+            <script src="{{ asset('admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+            <script src="{{ asset('admin/js/dashboard.min.js') }}"></script>
+            <script src="{{ asset('admin//plugins/ckeditor/ckeditor.js') }}"></script>
+            <script src="{{ asset('admin//plugins/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.js') }}"></script>
+            <script src="{{ asset('admin//plugins/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js') }}"></script>
+            <script src="{{ asset('admin/js/apps.min.js') }}"></script>
+
+            {#   <script  src="{{ asset('js/admin/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
+               <script  src="{{ asset('js/admin/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
+               <script type="text/javascript">
+                   $(document).ready(function () {
+                       $('form').bootstrapValidator({
+                           message: 'This value is not valid',
+                           feedbackIcons: {
+                               valid: 'glyphicon glyphicon-ok',
+                               invalid: 'glyphicon glyphicon-remove',
+                               validating: 'glyphicon glyphicon-refresh'
+                           },
+                           fields: {}
+                       });
+                   });
+               </script>
+               <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+               <script>
+                   $(document).ready(function () {
+                       CKEDITOR.replace('.ckeditor');
+                   });
+               </script>#}
+
             <script>
-                $( document ).ready(function() {
-                    CKEDITOR.replace( '.ckeditor' );
-                });
-            </script>
-                    
-            <script>       
                 $(document).on('click focus', 'form input.datepicker', function () {
 
                     $("form input.datepicker").datepicker({
                         format: "yyyy-mm-dd", // bug avec les heures
                         autoclose: true,
-                        language:"{{ app.request.locale }}"
+                        language: "{{ app.request.locale }}"
                     });
                 });
             </script>
 
-            
+
         {% endblock %}
-        
+
     </body>
 </html>
