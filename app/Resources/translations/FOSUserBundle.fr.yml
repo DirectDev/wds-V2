@@ -34,7 +34,7 @@ registration:
         message: Message
         subject: Sujet
 
-    submit: "M'inscrire"
+    submit: 'M''inscrire'
 
 resetting:
     check_email: 'Vérification de l''email'

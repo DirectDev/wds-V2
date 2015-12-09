@@ -1,5 +1,238 @@
+# Desc: /admin/address/
+admin_address: /admin/address/   # FIXME
 
-# Desc: /callback_username/
+# Desc: /admin/address/create
+admin_address_create: /admin/address/create   # FIXME
+
+# Desc: /admin/address/{id}/delete
+admin_address_delete: '/admin/address/{id}/delete'   # FIXME
+
+# Desc: /admin/address/{id}/edit
+admin_address_edit: '/admin/address/{id}/edit'   # FIXME
+
+# Desc: /admin/address/new
+admin_address_new: /admin/address/new   # FIXME
+
+# Desc: /admin/address/{id}/show
+admin_address_show: '/admin/address/{id}/show'   # FIXME
+
+# Desc: /admin/address/{id}/update
+admin_address_update: '/admin/address/{id}/update'   # FIXME
+
+# Desc: /admin/
+admin_admin_homepage: /admin/   # FIXME
+
+# Desc: /admin/city/
+admin_city: /admin/city/   # FIXME
+
+# Desc: /admin/city/create
+admin_city_create: /admin/city/create   # FIXME
+
+# Desc: /admin/city/{id}/delete
+admin_city_delete: '/admin/city/{id}/delete'   # FIXME
+
+# Desc: /admin/city/{id}/edit
+admin_city_edit: '/admin/city/{id}/edit'   # FIXME
+
+# Desc: /admin/city/new
+admin_city_new: /admin/city/new   # FIXME
+
+# Desc: /admin/city/{id}/show
+admin_city_show: '/admin/city/{id}/show'   # FIXME
+
+# Desc: /admin/city/{id}/update
+admin_city_update: '/admin/city/{id}/update'   # FIXME
+
+# Desc: /admin/country/
+admin_country: /admin/country/   # FIXME
+
+# Desc: /admin/country/create
+admin_country_create: /admin/country/create   # FIXME
+
+# Desc: /admin/country/{id}/delete
+admin_country_delete: '/admin/country/{id}/delete'   # FIXME
+
+# Desc: /admin/country/{id}/edit
+admin_country_edit: '/admin/country/{id}/edit'   # FIXME
+
+# Desc: /admin/country/new
+admin_country_new: /admin/country/new   # FIXME
+
+# Desc: /admin/country/{id}/show
+admin_country_show: '/admin/country/{id}/show'   # FIXME
+
+# Desc: /admin/country/{id}/update
+admin_country_update: '/admin/country/{id}/update'   # FIXME
+
+# Desc: /admin/event/
+admin_event: /admin/event/   # FIXME
+
+# Desc: /admin/event/create
+admin_event_create: /admin/event/create   # FIXME
+
+# Desc: /admin/event/{id}/delete
+admin_event_delete: '/admin/event/{id}/delete'   # FIXME
+
+# Desc: /admin/event/{id}/edit
+admin_event_edit: '/admin/event/{id}/edit'   # FIXME
+
+# Desc: /admin/event/new
+admin_event_new: /admin/event/new   # FIXME
+
+# Desc: /admin/event/{id}/show
+admin_event_show: '/admin/event/{id}/show'   # FIXME
+
+# Desc: /admin/event/{id}/update
+admin_event_update: '/admin/event/{id}/update'   # FIXME
+
+# Desc: /admin/eventdate/
+admin_eventdate: /admin/eventdate/   # FIXME
+
+# Desc: /admin/eventdate/create
+admin_eventdate_create: /admin/eventdate/create   # FIXME
+
+# Desc: /admin/eventdate/{id}/delete
+admin_eventdate_delete: '/admin/eventdate/{id}/delete'   # FIXME
+
+# Desc: /admin/eventdate/{id}/edit
+admin_eventdate_edit: '/admin/eventdate/{id}/edit'   # FIXME
+
+# Desc: /admin/eventdate/new
+admin_eventdate_new: /admin/eventdate/new   # FIXME
+
+# Desc: /admin/eventdate/{id}/show
+admin_eventdate_show: '/admin/eventdate/{id}/show'   # FIXME
+
+# Desc: /admin/eventdate/{id}/update
+admin_eventdate_update: '/admin/eventdate/{id}/update'   # FIXME
+
+# Desc: /admin/eventtype/
+admin_eventtype: /admin/eventtype/   # FIXME
+
+# Desc: /admin/eventtype/create
+admin_eventtype_create: /admin/eventtype/create   # FIXME
+
+# Desc: /admin/eventtype/{id}/delete
+admin_eventtype_delete: '/admin/eventtype/{id}/delete'   # FIXME
+
+# Desc: /admin/eventtype/{id}/edit
+admin_eventtype_edit: '/admin/eventtype/{id}/edit'   # FIXME
+
+# Desc: /admin/eventtype/new
+admin_eventtype_new: /admin/eventtype/new   # FIXME
+
+# Desc: /admin/eventtype/{id}/show
+admin_eventtype_show: '/admin/eventtype/{id}/show'   # FIXME
+
+# Desc: /admin/eventtype/{id}/update
+admin_eventtype_update: '/admin/eventtype/{id}/update'   # FIXME
+
+# Desc: /admin/musictype/
+admin_musictype: /admin/musictype/   # FIXME
+
+# Desc: /admin/musictype/create
+admin_musictype_create: /admin/musictype/create   # FIXME
+
+# Desc: /admin/musictype/{id}/delete
+admin_musictype_delete: '/admin/musictype/{id}/delete'   # FIXME
+
+# Desc: /admin/musictype/{id}/edit
+admin_musictype_edit: '/admin/musictype/{id}/edit'   # FIXME
+
+# Desc: /admin/musictype/new
+admin_musictype_new: /admin/musictype/new   # FIXME
+
+# Desc: /admin/musictype/{id}/show
+admin_musictype_show: '/admin/musictype/{id}/show'   # FIXME
+
+# Desc: /admin/musictype/{id}/update
+admin_musictype_update: '/admin/musictype/{id}/update'   # FIXME
+
+# Desc: /admin/page/
+admin_page: /admin/page/   # FIXME
+
+# Desc: /admin/page/create
+admin_page_create: /admin/page/create   # FIXME
+
+# Desc: /admin/page/{id}/delete
+admin_page_delete: '/admin/page/{id}/delete'   # FIXME
+
+# Desc: /admin/page/{id}/edit
+admin_page_edit: '/admin/page/{id}/edit'   # FIXME
+
+# Desc: /admin/page/new
+admin_page_new: /admin/page/new   # FIXME
+
+# Desc: /admin/page/{id}/show
+admin_page_show: '/admin/page/{id}/show'   # FIXME
+
+# Desc: /admin/page/{id}/update
+admin_page_update: '/admin/page/{id}/update'   # FIXME
+
+# Desc: /admin/pagecontent/
+admin_pagecontent: /admin/pagecontent/   # FIXME
+
+# Desc: /admin/pagecontent/create
+admin_pagecontent_create: /admin/pagecontent/create   # FIXME
+
+# Desc: /admin/pagecontent/{id}/delete
+admin_pagecontent_delete: '/admin/pagecontent/{id}/delete'   # FIXME
+
+# Desc: /admin/pagecontent/{id}/edit
+admin_pagecontent_edit: '/admin/pagecontent/{id}/edit'   # FIXME
+
+# Desc: /admin/pagecontent/new
+admin_pagecontent_new: /admin/pagecontent/new   # FIXME
+
+# Desc: /admin/pagecontent/{id}/show
+admin_pagecontent_show: '/admin/pagecontent/{id}/show'   # FIXME
+
+# Desc: /admin/pagecontent/{id}/update
+admin_pagecontent_update: '/admin/pagecontent/{id}/update'   # FIXME
+
+# Desc: /admin/user/
+admin_user: /admin/user/   # FIXME
+
+# Desc: /admin/user/create
+admin_user_create: /admin/user/create   # FIXME
+
+# Desc: /admin/user/{id}/delete
+admin_user_delete: '/admin/user/{id}/delete'   # FIXME
+
+# Desc: /admin/user/{id}/edit
+admin_user_edit: '/admin/user/{id}/edit'   # FIXME
+
+# Desc: /admin/user/new
+admin_user_new: /admin/user/new   # FIXME
+
+# Desc: /admin/user/{id}/show
+admin_user_show: '/admin/user/{id}/show'   # FIXME
+
+# Desc: /admin/user/{id}/update
+admin_user_update: '/admin/user/{id}/update'   # FIXME
+
+# Desc: /admin/userfile/
+admin_userfile: /admin/userfile/   # FIXME
+
+# Desc: /admin/userfile/create
+admin_userfile_create: /admin/userfile/create   # FIXME
+
+# Desc: /admin/userfile/{id}/delete
+admin_userfile_delete: '/admin/userfile/{id}/delete'   # FIXME
+
+# Desc: /admin/userfile/{id}/edit
+admin_userfile_edit: '/admin/userfile/{id}/edit'   # FIXME
+
+# Desc: /admin/userfile/new
+admin_userfile_new: /admin/userfile/new   # FIXME
+
+# Desc: /admin/userfile/{id}/show
+admin_userfile_show: '/admin/userfile/{id}/show'   # FIXME
+
+# Desc: /admin/userfile/{id}/update
+admin_userfile_update: '/admin/userfile/{id}/update'   # FIXME
+
+# Desc: /user/callback_username/
 callback_username: /callback_username/fr/
 
 # Desc: /city/artists/{searchcity}
@@ -50,50 +283,89 @@ city_workshop: '/ville/workshops/{searchcity}'
 # Desc: /contact
 contact_contact_contact: /contact/fr/
 
+# Desc: /dance/dance_bachata
+dance_bachata: /dance/dance_bachata   # FIXME
+
+# Desc: /dance/dance_bachata_dominicana
+dance_bachata_dominicana: /dance/dance_bachata_dominicana   # FIXME
+
+# Desc: /dance/dance_bachata_moderna
+dance_bachata_moderna: /dance/dance_bachata_moderna   # FIXME
+
+# Desc: /dance/dance_bachata_sensual
+dance_bachata_sensual: /dance/dance_bachata_sensual   # FIXME
+
+# Desc: /dance/dance_kizomba
+dance_kizomba: /dance/dance_kizomba   # FIXME
+
+# Desc: /dance/dance_merengue
+dance_merengue: /dance/dance_merengue   # FIXME
+
+# Desc: /dance/dance_salsa
+dance_salsa: /dance/dance_salsa   # FIXME
+
+# Desc: /dance/dance_salsa_cubana
+dance_salsa_cubana: /dance/dance_salsa_cubana   # FIXME
+
+# Desc: /dance/dance_salsa_dominicana
+dance_salsa_dominicana: /dance/dance_salsa_dominicana   # FIXME
+
+# Desc: /dance/dance_salsa_on1
+dance_salsa_on1: /dance/dance_salsa_on1   # FIXME
+
+# Desc: /dance/dance_salsa_on2
+dance_salsa_on2: /dance/dance_salsa_on2   # FIXME
+
+# Desc: /dance/dance_salsa_rueda
+dance_salsa_rueda: /dance/dance_salsa_rueda   # FIXME
+
+# Desc: /dance/dance_tango
+dance_tango: /dance/dance_tango   # FIXME
+
 # Desc: /login/check-facebook
 facebook_login: /connexion/check-facebook
 
 # Desc: /festival/australia
-festival_australia: /festival/australie   
+festival_australia: /festival/australie
 
 # Desc: /festival/calendar
-festival_calendar: /festival/calendrier   
+festival_calendar: /festival/calendrier
 
 # Desc: /festival/central_africa
-festival_central_africa: /festival/afrique_centrale   
+festival_central_africa: /festival/afrique_centrale
 
 # Desc: /festival/central_america
-festival_central_america: /festival/amerique_centrale   
+festival_central_america: /festival/amerique_centrale
 
 # Desc: /festival/europe
-festival_europe: /festival/europe_fr   
+festival_europe: /festival/europe_fr
 
 # Desc: /festival/india
-festival_india: /festival/india   
-
-# Desc: /festival/middle_east
-festival_middle_east: /festival/moyen_orient   
-
-# Desc: /festival/north_africa
-festival_north_africa: /festival/afrique_nord   
-
-# Desc: /festival/north_america
-festival_north_america: /festival/amerique_nord   
-
-# Desc: /festival/north_asia
-festival_north_asia: /festival/asie_nord   
+festival_india: /festival/india
 
 # Desc: /festival/indonesia
-festival_indonesia: /festival/oceanie   
+festival_indonesia: /festival/oceanie
+
+# Desc: /festival/middle_east
+festival_middle_east: /festival/moyen_orient
+
+# Desc: /festival/north_africa
+festival_north_africa: /festival/afrique_nord
+
+# Desc: /festival/north_america
+festival_north_america: /festival/amerique_nord
+
+# Desc: /festival/north_asia
+festival_north_asia: /festival/asie_nord
 
 # Desc: /festival/south_africa
-festival_south_africa: /festival/afrique_sud   
+festival_south_africa: /festival/afrique_sud
 
 # Desc: /festival/south_america
-festival_south_america: /festival/amerique_sud   
+festival_south_america: /festival/amerique_sud
 
 # Desc: /festival/south_asia
-festival_south_asia: /festival/asie_sud   
+festival_south_asia: /festival/asie_sud
 
 # Desc: /footer
 footer: /footer/fr/
@@ -101,10 +373,10 @@ footer: /footer/fr/
 # Desc: /profile/change-password
 fos_user_change_password: /profil/change-password
 
-# Desc: /group/{groupName}/delete
+# Desc: /group/{groupname}/delete
 fos_user_group_delete: '/group/{groupName}/effacer'
 
-# Desc: /group/{groupName}/edit
+# Desc: /group/{groupname}/edit
 fos_user_group_edit: '/group/{groupName}/editer'
 
 # Desc: /group/list
@@ -113,7 +385,7 @@ fos_user_group_list: /group/list
 # Desc: /group/new
 fos_user_group_new: /group/nouveau
 
-# Desc: /group/{groupName}
+# Desc: /group/{groupname}
 fos_user_group_show: '/group/{groupName}'
 
 # Desc: /profile/edit
@@ -181,29 +453,13 @@ front_address_user_create: '/adresse/utilisateur/creer/{id}'
 
 # Desc: /address/user/new/{id}
 front_address_user_new: '/adresse/utilisateur/nouveau/{id}'
-
-# Desc: /country/
 front_country: /pays/
-
-# Desc: /country/create
 front_country_create: /pays/creer
-
-# Desc: /country/delete/{id}
 front_country_delete: '/pays/effacer/{id}'
-
-# Desc: /country/edit/{id}
 front_country_edit: '/pays/editer/{id}'
-
-# Desc: /country/new
 front_country_new: /pays/nouveau
-
-# Desc: /country/show/{id}
 front_country_show: '/pays/montrer/{id}'
-
-# Desc: /country/update/{id}
 front_country_update: '/pays/mettre_a_jour/{id}'
-
-# Desc: /event/
 front_event: /evenement/
 
 # Desc: /event/alerts/{id}
@@ -241,8 +497,6 @@ front_event_update_description: '/evenement/mettre_a_jour_description/{id}'
 
 # Desc: /event/update_link/{id}
 front_event_update_link: '/evenement/mettre_a_jour_link/{id}'
-
-# Desc: /eventdate/
 front_eventdate: /evenementdate/
 
 # Desc: /eventdate/add_by_weekday/{id}
@@ -268,27 +522,19 @@ front_eventdate_show_tagbox: '/evenementdate/montrer_tagbox/{id}'
 
 # Desc: /eventdate/update/{id}
 front_eventdate_update: '/evenementdate/mettre_a_jour/{id}'
-
-# Desc: /eventtype/
 front_eventtype: /evenementtype/
-
-# Desc: /eventtype/create
 front_eventtype_create: /evenementtype/creer
-
-# Desc: /eventtype/delete/{id}
 front_eventtype_delete: '/evenementtype/effacer/{id}'
-
-# Desc: /eventtype/edit/{id}
 front_eventtype_edit: '/evenementtype/editer/{id}'
-
-# Desc: /eventtype/new/{id}
 front_eventtype_new: '/evenementtype/nouveau/{id}'
-
-# Desc: /eventtype/show/{id}
 front_eventtype_show: '/evenementtype/montrer/{id}'
-
-# Desc: /eventtype/update/{id}
 front_eventtype_update: '/evenementtype/mettre_a_jour/{id}'
+
+# Desc: /video/move
+front_move: /video/move   # FIXME
+
+# Desc: /music/
+front_music: /music/   # FIXME
 
 # Desc: /music/create/{id}
 front_music_create: '/musique/creer/{id}'
@@ -299,6 +545,12 @@ front_music_delete: '/musique/effacer/{id}'
 # Desc: /music/edit/{id}
 front_music_edit: '/musique/editer/{id}'
 
+# Desc: /music/filter_music
+front_music_filter: /music/filter_music   # FIXME
+
+# Desc: /music/love/{id}
+front_music_love: '/music/love/{id}'   # FIXME
+
 # Desc: /music/new/{id}
 front_music_new: '/musique/nouveau/{id}'
 
@@ -308,77 +560,96 @@ front_music_show: '/musique/montrer/{id}'
 # Desc: /music/show_with_buttons/{id}
 front_music_show_with_buttons: '/musique/montrer_with_buttons/{id}'
 
+# Desc: /music/unlove/{id}
+front_music_unlove: '/music/unlove/{id}'   # FIXME
+
 # Desc: /music/update/{id}
 front_music_update: '/musique/mettre_a_jour/{id}'
-
-# Desc: /musictype/
 front_musictype: /musiquetype/
-
-# Desc: /musictype/create/{id}
 front_musictype_create: '/musiquetype/creer/{id}'
-
-# Desc: /musictype/delete/{id}
 front_musictype_delete: '/musiquetype/effacer/{id}'
-
-# Desc: /musictype/edit/{id}
 front_musictype_edit: '/musiquetype/editer/{id}'
 
 # Desc: /musictype/filters
 front_musictype_filters: /musiquetype/filters
 
-# Desc: /musictype/new
+# Desc: /musictype/list_for_user_search/
+front_musictype_list_for_user_search: /musictype/list_for_user_search/   # FIXME
 front_musictype_new: /musiquetype/nouveau
-
-# Desc: /musictype/show/{id}
 front_musictype_show: '/musiquetype/montrer/{id}'
-
-# Desc: /musictype/update/{id}
 front_musictype_update: '/musiquetype/mettre_a_jour/{id}'
 
-# Desc: /profile/edit/{id}
+# Desc: /tag/list_for_music_search/
+front_tag_list_for_music_search: /tag/list_for_music_search/   # FIXME
+
+# Desc: /tag/list_for_video_search/
+front_tag_list_for_video_search: /tag/list_for_video_search/   # FIXME
+
+# Desc: /user/profile/edit/{id}
 front_user_edit: '/profil/editer/{id}'
 
-# Desc: /import_facebook_event/
+# Desc: /user/filter
+front_user_filter: /user/filter   # FIXME
+
+# Desc: /user/import_facebook_event/
 front_user_import_facebook_event: /import_facebook_event/
 
-# Desc: /profile/love/{id}
+# Desc: /user/index
+front_user_index: /user/index   # FIXME
+
+# Desc: /user/list_for_move_search/
+front_user_list_for_move_search: /user/list_for_move_search/   # FIXME
+
+# Desc: /user/list_for_music_search/
+front_user_list_for_music_search: /user/list_for_music_search/   # FIXME
+
+# Desc: /user/list_for_video_search/
+front_user_list_for_video_search: /user/list_for_video_search/   # FIXME
+
+# Desc: /user/profile/love/{id}
 front_user_love: '/profil/love/{id}'
 
-# Desc: /profile/loves/{id}
+# Desc: /user/profile/loves/{id}
 front_user_loves: '/profil/loves/{id}'
 
-# Desc: /profile/next_events
+# Desc: /user/profile/next_events
 front_user_next_events: /profil/next_events
 
-# Desc: /profile/passed_events
+# Desc: /user/profile/passed_events
 front_user_passed_events: /profil/passed_events
 
-# Desc: /pofile/overviews/{id}
+# Desc: /user/pofile/overviews/{id}
 front_user_show_overviews: '/pofile/overviews/{id}'
 
-# Desc: /pofile/overviews_profile/{id}
+# Desc: /user/pofile/overviews_profile/{id}
 front_user_show_overviews_profile: '/pofile/overviews_profil/{id}'
 
-# Desc: /my-profile/
+# Desc: /user/my-profile/
 front_user_show_private: /mon-profil/
 
-# Desc: /profile/{username}/{id}
+# Desc: /user/person/{username}/{id}
 front_user_show_public: '/personne/{username}/{id}'
 
-# Desc: /profile/unlove/{id}
+# Desc: /user/profile/unlove/{id}
 front_user_unlove: '/profil/unlove/{id}'
 
-# Desc: /profile/update/{id}
+# Desc: /user/profile/update/{id}
 front_user_update: '/profil/mettre_a_jour/{id}'
 
-# Desc: /profile/update_description/{id}
+# Desc: /user/profile/update_description/{id}
 front_user_update_description: '/profil/mettre_a_jour_description/{id}'
 
-# Desc: /profile/update_link/{id}
+# Desc: /user/profile/update_link/{id}
 front_user_update_link: '/profil/mettre_a_jour_link/{id}'
 
-# Desc: /profile/update_profile/{id}
+# Desc: /user/profile/update_profile/{id}
 front_user_update_profile: '/profil/mettre_a_jour_profil/{id}'
+
+# Desc: /usertype/list_for_user_search/
+front_usertype_list_for_user_search: /usertype/list_for_user_search/   # FIXME
+
+# Desc: /video/
+front_video: /video/   # FIXME
 
 # Desc: /video/create/{id}
 front_video_create: '/video/creer/{id}'
@@ -389,6 +660,15 @@ front_video_delete: '/video/effacer/{id}'
 # Desc: /video/edit/{id}
 front_video_edit: '/video/editer/{id}'
 
+# Desc: /video/filter_move
+front_video_filter_move: /video/filter_move   # FIXME
+
+# Desc: /video/filter_video
+front_video_filter_video: /video/filter_video   # FIXME
+
+# Desc: /video/love/{id}
+front_video_love: '/video/love/{id}'   # FIXME
+
 # Desc: /video/new/{id}
 front_video_new: '/video/nouveau/{id}'
 
@@ -397,6 +677,9 @@ front_video_show: '/video/montrer/{id}'
 
 # Desc: /video/show_with_buttons/{id}
 front_video_show_with_buttons: '/video/montrer_with_buttons/{id}'
+
+# Desc: /video/unlove/{id}
+front_video_unlove: '/video/unlove/{id}'   # FIXME
 
 # Desc: /video/update/{id}
 front_video_update: '/video/mettre_a_jour/{id}'
@@ -422,6 +705,30 @@ hwi_oauth_connect_service: '/connecter/service/{service}'
 # Desc: /connect/{service}
 hwi_oauth_service_redirect: '/connecter/{service}'
 
+# Desc: /landing/landing_dancer
+landing_dancer: /landing/landing_dancer   # FIXME
+
+# Desc: /landing/landing_pro
+landing_pro: /landing/landing_pro   # FIXME
+
+# Desc: /landing/landing_pub
+landing_pub: /landing/landing_pub   # FIXME
+
+# Desc: /learn/learn_bachata
+learn_bachata: /learn/learn_bachata   # FIXME
+
+# Desc: /learn/learn_kizomba
+learn_kizomba: /learn/learn_kizomba   # FIXME
+
+# Desc: /learn/learn_merengue
+learn_merengue: /learn/learn_merengue   # FIXME
+
+# Desc: /learn/learn_salsa
+learn_salsa: /learn/learn_salsa   # FIXME
+
+# Desc: /learn/learn_tango
+learn_tango: /learn/learn_tango   # FIXME
+
 # Desc: /media/cache/resolve/{filter}/{path}
 liip_imagine_filter: '/media/cache/resoudre/{filter}/{path}'
 
@@ -436,8 +743,6 @@ search_search_admin_user: /admin/rechercher/utilisateur
 
 # Desc: /front/search/event
 search_search_front_event: /front/rechercher/evenement
-
-# Desc: /front/search/user
 search_search_front_user: /front/rechercher/utilisateur
 
 # Desc: /file/upload

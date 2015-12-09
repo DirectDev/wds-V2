@@ -62,6 +62,11 @@ admin:
     page_list_title: 'Page list'
     page_new_title: 'New page'
     page_show_title: Page
+    pagecontent: admin.pagecontent
+    pagecontent_edit_title: admin.pagecontent_edit_title
+    pagecontent_list_title: admin.pagecontent_list_title
+    pagecontent_new_title: admin.pagecontent_new_title
+    pagecontent_show_title: admin.pagecontent_show_title
     pages: Pages
     translations: Translations
     update: Update
@@ -705,44 +710,71 @@ link:
 
 modify: modify
 
+move:
+    search_input_placeholder: move.search_input_placeholder
+    search_title: move.search_title
+
+music:
+    search_input_placeholder: music.search_input_placeholder
+    search_title: music.search_title
+
 navbar:
     artits: Artits
     bands: Bands
+    dances: navbar.dances
+    dances.bachata: navbar.dances.bachata
+    dances.bachata_dominicana: navbar.dances.bachata_dominicana
+    dances.bachata_moderna: navbar.dances.bachata_moderna
+    dances.bachata_sensual: navbar.dances.bachata_sensual
+    dances.kizomba: navbar.dances.kizomba
+    dances.merengue: navbar.dances.merengue
+    dances.salsa: navbar.dances.salsa
+    dances.salsa_cubana: navbar.dances.salsa_cubana
+    dances.salsa_dominicana: navbar.dances.salsa_dominicana
+    dances.salsa_on1: navbar.dances.salsa_on1
+    dances.salsa_on2: navbar.dances.salsa_on2
+    dances.salsa_rueda: navbar.dances.salsa_rueda
+    dances.tango: navbar.dances.tango
     festivals: Festivals
     festivals.africa: Africa
-    festivals.america: America   
+    festivals.america: America
     festivals.asia: Asia
     festivals.australia: Australia
     festivals.calendar: Calendar
-    festivals.central_africa: Central Africa   
-    festivals.central_america: Central America   
+    festivals.central_africa: 'Central Africa'
+    festivals.central_america: 'Central America'
     festivals.europe: Europe
-    festivals.india: India   
-    festivals.middle_east: Middle East   
-    festivals.north_africa: North Africa   
+    festivals.india: India
+    festivals.indonesia: Indonesia
+    festivals.middle_east: 'Middle East'
+    festivals.north_africa: 'North Africa'
     festivals.north_america: 'North America'
-    festivals.north_asia: North Asia   
-    festivals.indonesia: Indonesia   
-    festivals.south_africa: South Africa   
+    festivals.north_asia: 'North Asia'
+    festivals.south_africa: 'South Africa'
     festivals.south_america: 'South America'
-    festivals.south_asia: South Asia   
+    festivals.south_asia: 'South Asia'
     help: Help
     home: Home
     learn: Learn
+    learn.bachata: navbar.learn.bachata
+    learn.kizomba: navbar.learn.kizomba
+    learn.merengue: navbar.learn.merengue
+    learn.salsa: navbar.learn.salsa
+    learn.tango: navbar.learn.tango
     login: Login
     logout: Logout
+    medias: navbar.medias
+    moves: navbar.moves
     musics: Musics
     publish_button: 'Add Event'
     register: Register
     toogle_navigation: 'Toogle Navigation'
-
-    user:
-        add_event: 'Add Event'
-        my_page: 'My Page'
-        my_profile: 'My Profile'
-        next_events: 'My Next Events'
-        passed_events: 'My Previous Events'
-
+    user: navbar.user
+    user.add_event: 'Add Event'
+    user.my_page: 'My Page'
+    user.my_profile: 'My Profile'
+    user.next_events: 'My Next Events'
+    user.passed_events: 'My Previous Events'
     videos: Videos
 
 overviews:
@@ -758,6 +790,12 @@ overviews:
     videos: Videos
     views: Views
 
+tag:
+    search_by_tag: tag.search_by_tag
+
+tags:
+    label: tags.label
+
 timeline:
     address: Address
     hours: Hours
@@ -770,6 +808,7 @@ user:
     add_video_button: user.add_video_button
     address_title: user.address_title
     addresses_title: 'My Address'
+    by: By
     description_title: 'My Description'
 
     edit:
@@ -803,8 +842,12 @@ user:
     next_events: 'My Next Events'
     passed_events: 'My Previous Events'
     posted_by: 'Posted By'
-    by: 'By'
     profile_title: 'My Profile'
+    search_by_musictype: user.search_by_musictype
+    search_by_user: user.search_by_user
+    search_by_usertype: user.search_by_usertype
+    search_input_placeholder: user.search_input_placeholder
+    search_title: user.search_title
     they_like: Likes
     user_title: 'My Profile'
     videos_title: Videos
@@ -820,3 +863,7 @@ user_bundle:
         or: or
         signin_facebook: 'Signin with facebook'
         signin_google: 'Signin with google'
+
+video:
+    search_input_placeholder: video.search_input_placeholder
+    search_title: video.search_title
