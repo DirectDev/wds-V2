@@ -5,7 +5,7 @@ namespace Front\FrontBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Translation\Translator;
 
-class VideoFrControllerTest extends WebTestCase {
+class VideoEnControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -13,7 +13,7 @@ class VideoFrControllerTest extends WebTestCase {
     private $em;
     private $router;
     private $translator;
-    private $locale = 'fr';
+    private $locale = 'en';
     private $client;
     private $clientLogged;
     private $username = 'Jerome';

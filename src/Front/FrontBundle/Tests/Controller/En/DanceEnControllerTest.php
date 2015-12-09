@@ -5,7 +5,7 @@ namespace Front\FrontBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Translation\Translator;
 
-class DanceFrControllerTest extends WebTestCase {
+class DanceEnControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager

@@ -3,9 +3,8 @@
 namespace Front\FrontBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\Translation\Translator;
 
-class LandingEnControllerTest extends WebTestCase {
+class MusicTypeEnControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -16,8 +15,6 @@ class LandingEnControllerTest extends WebTestCase {
     private $locale = 'en';
     private $client;
     private $clientLogged;
-    private $username = 'Jerome';
-    private $email = 'serviceclient@directdev.fr';
     private $PHP_AUTH_USER = 'Jerome';
     private $PHP_AUTH_PW = '1234';
 
@@ -29,7 +26,7 @@ class LandingEnControllerTest extends WebTestCase {
                 ->getManager();
 
         $this->client = static::createClient();
-//        $this->client->followRedirects();
+        $this->client->followRedirects();
 
         $this->router = $this->client->getContainer()->get('router');
         $this->translator = $this->client->getContainer()->get('translator');
@@ -40,27 +37,17 @@ class LandingEnControllerTest extends WebTestCase {
         ));
     }
 
-    public function testLandingDancer() {
-        $crawler = $this->client->request('GET', $this->router->generate('landing_dancer', array('_locale' => $this->locale)));
+    public function testFilters() {
+        $crawler = $this->client->request('GET', $this->router->generate('front_musictype_filters', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('landing_dancer', array('_locale' => $this->locale)));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_musictype_filters', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
-
-    public function testLandingPro() {
-        $crawler = $this->client->request('GET', $this->router->generate('landing_pro', array('_locale' => $this->locale)));
+    
+    public function testListForUserSearch() {
+        $crawler = $this->client->request('GET', $this->router->generate('front_musictype_list_for_user_search', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('landing_pro', array('_locale' => $this->locale)));
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
-    public function testLandingPub() {
-        $crawler = $this->client->request('GET', $this->router->generate('landing_pub', array('_locale' => $this->locale)));
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('landing_pub', array('_locale' => $this->locale)));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_musictype_list_for_user_search', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
