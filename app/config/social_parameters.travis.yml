@@ -1,0 +1,6 @@
+parameters:
+    facebook_app_id: fb_id
+    facebook_app_secret: fb_secret
+    google_app_id: google_id
+    google_app_secret:  google_secret
+    google_map_api_key: api_key
