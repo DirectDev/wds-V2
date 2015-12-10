@@ -12,8 +12,38 @@ before_script:
     - php app/console doctrine:fixtures:load -n --env=test 
 
 script:
-    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En
-    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/AddressEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/CityEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/DanceEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/DefaultEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/EventEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/EventDateEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/FestivalEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/LandingEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/LearnEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/MusicEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/MusicTypeEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/TagEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/UserEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/UserTypeEnControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En/VideoEnControllerTest.php
+
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/AddressFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/CityFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/DanceFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/DefaultFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/EventFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/EventDateFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/FestivalFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/LandingFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/LearnFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/MusicFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/MusicTypeFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/TagFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/UserFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/UserTypeFrControllerTest.php
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr/VideoFrControllerTest.php
+
     - phpunit -v -c app/ src/Front/FrontBundle/Tests/Fixtures
     - phpunit -v -c app/ src/Front/FrontBundle/Tests/Form
     - phpunit -v -c app/ src/Admin/AdminBundle/Tests
