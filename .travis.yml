@@ -3,24 +3,24 @@ php:
     - 5.5
 
 before_script:
-  - cp app/config/parameters.travis.yml app/config/parameters.yml
-  - cp app/config/parameters.travis.yml.dist app/config/parameters.yml.dist
-  - cp app/config/social_parameters.travis.yml app/config/social_parameters.yml
-  - composer install 
-  - php app/console doctrine:database:create --env=test 
-  - php app/console doctrine:schema:create --env=test 
-  - php app/console doctrine:fixtures:load -n --env=test 
+    - cp app/config/parameters.travis.yml app/config/parameters.yml
+    - cp app/config/parameters.travis.yml.dist app/config/parameters.yml.dist
+    - cp app/config/social_parameters.travis.yml app/config/social_parameters.yml
+    - composer install 
+    - php app/console doctrine:database:create --env=test 
+    - php app/console doctrine:schema:create --env=test 
+    - php app/console doctrine:fixtures:load -n --env=test 
 
 script:
-  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En
-  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr
-  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Fixtures
-  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Form
-  - phpunit -v -c app/ src/Admin/AdminBundle/Tests
-  - phpunit -v -c app/ src/Contact/ContactBundle/Tests
-  - phpunit -v -c app/ src/Search/SearchBundle/Tests
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Fixtures
+    - phpunit -v -c app/ src/Front/FrontBundle/Tests/Form
+    - phpunit -v -c app/ src/Admin/AdminBundle/Tests
+    - phpunit -v -c app/ src/Contact/ContactBundle/Tests
+    - phpunit -v -c app/ src/Search/SearchBundle/Tests
 	  
 
 notifications:
-  email:
-    -  serviceclient@directdev.fr
+    email:
+        - serviceclient@directdev.fr
