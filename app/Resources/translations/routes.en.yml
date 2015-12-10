@@ -168,8 +168,6 @@ admin_page_show: '/admin/page/{id}/show'
 
 # Desc: /admin/page/{id}/update
 admin_page_update: '/admin/page/{id}/update'
-
-# Desc: /admin/pagecontent/
 admin_pagecontent: /admin/pagecontent/
 
 # Desc: /admin/pagecontent/create
@@ -180,6 +178,9 @@ admin_pagecontent_delete: '/admin/pagecontent/{id}/delete'
 
 # Desc: /admin/pagecontent/{id}/edit
 admin_pagecontent_edit: '/admin/pagecontent/{id}/edit'
+
+# Desc: /admin/pagecontent/{id}/index
+admin_pagecontent_index: '/admin/pagecontent/{id}/index'   # FIXME
 
 # Desc: /admin/pagecontent/new
 admin_pagecontent_new: /admin/pagecontent/new

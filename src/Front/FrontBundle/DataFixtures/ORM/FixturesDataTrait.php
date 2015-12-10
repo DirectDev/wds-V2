@@ -424,7 +424,7 @@ trait FixturesDataTrait {
 
     public function __construct() {
         $this->array_user = array_merge(
-                $this->array_user_artist, $this->array_user_teacher, $this->array_user_dancer, $this->array_user_bar
+                $this->array_user_dancer, $this->array_user_artist, $this->array_user_teacher,  $this->array_user_bar
         );
     }
 

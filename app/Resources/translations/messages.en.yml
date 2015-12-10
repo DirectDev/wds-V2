@@ -58,6 +58,10 @@ admin:
     musictype_new_title: 'New music type'
     musictype_show_title: 'Music type'
     musictypes: 'Music types'
+
+    page:
+        see_pagecontent: admin.page.see_pagecontent   # FIXME
+
     page_edit_title: 'Page edit'
     page_list_title: 'Page list'
     page_new_title: 'New page'
@@ -711,30 +715,30 @@ link:
 modify: modify
 
 move:
-    search_input_placeholder: move.search_input_placeholder
-    search_title: move.search_title
+    search_input_placeholder: search move or shine
+    search_title: Moves & Shines
 
 music:
-    search_input_placeholder: music.search_input_placeholder
-    search_title: music.search_title
+    search_input_placeholder: Search Music
+    search_title: Musics
 
 navbar:
     artits: Artits
     bands: Bands
-    dances: navbar.dances
-    dances.bachata: navbar.dances.bachata
-    dances.bachata_dominicana: navbar.dances.bachata_dominicana
-    dances.bachata_moderna: navbar.dances.bachata_moderna
-    dances.bachata_sensual: navbar.dances.bachata_sensual
-    dances.kizomba: navbar.dances.kizomba
-    dances.merengue: navbar.dances.merengue
-    dances.salsa: navbar.dances.salsa
-    dances.salsa_cubana: navbar.dances.salsa_cubana
-    dances.salsa_dominicana: navbar.dances.salsa_dominicana
-    dances.salsa_on1: navbar.dances.salsa_on1
-    dances.salsa_on2: navbar.dances.salsa_on2
-    dances.salsa_rueda: navbar.dances.salsa_rueda
-    dances.tango: navbar.dances.tango
+    dances: Dances
+    dances.bachata: Bachata
+    dances.bachata_dominicana: Bachata Dominicana
+    dances.bachata_moderna: Bachata Moderna
+    dances.bachata_sensual: Bachata Sensual
+    dances.kizomba: Kizomba
+    dances.merengue: Merengue
+    dances.salsa: Salsa
+    dances.salsa_cubana: Salsa Cubana
+    dances.salsa_dominicana: Salsa Dominicana
+    dances.salsa_on1: Salsa On1
+    dances.salsa_on2: Salsa On2
+    dances.salsa_rueda: Salsa Rueda
+    dances.tango: Tango
     festivals: Festivals
     festivals.africa: Africa
     festivals.america: America
@@ -756,20 +760,20 @@ navbar:
     help: Help
     home: Home
     learn: Learn
-    learn.bachata: navbar.learn.bachata
-    learn.kizomba: navbar.learn.kizomba
-    learn.merengue: navbar.learn.merengue
-    learn.salsa: navbar.learn.salsa
-    learn.tango: navbar.learn.tango
+    learn.bachata: Learn Bachata
+    learn.kizomba: Learn Kizomba
+    learn.merengue: Learn Merengue
+    learn.salsa: Learn Salsa
+    learn.tango: Learn Tango
     login: Login
     logout: Logout
-    medias: navbar.medias
-    moves: navbar.moves
+    medias: Medias
+    moves: Moves & Shines
     musics: Musics
     publish_button: 'Add Event'
     register: Register
     toogle_navigation: 'Toogle Navigation'
-    user: navbar.user
+    user: Dancers
     user.add_event: 'Add Event'
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
@@ -791,10 +795,10 @@ overviews:
     views: Views
 
 tag:
-    search_by_tag: tag.search_by_tag
+    search_by_tag: Filter by tag
 
 tags:
-    label: tags.label
+    label: Tags
 
 timeline:
     address: Address
@@ -843,11 +847,11 @@ user:
     passed_events: 'My Previous Events'
     posted_by: 'Posted By'
     profile_title: 'My Profile'
-    search_by_musictype: user.search_by_musictype
-    search_by_user: user.search_by_user
-    search_by_usertype: user.search_by_usertype
-    search_input_placeholder: user.search_input_placeholder
-    search_title: user.search_title
+    search_by_musictype: Filter by music 
+    search_by_user: Filter by dancer
+    search_by_usertype: Filter by dancer
+    search_input_placeholder: Search dancer
+    search_title: Dancers
     they_like: Likes
     user_title: 'My Profile'
     videos_title: Videos
@@ -865,5 +869,5 @@ user_bundle:
         signin_google: 'Signin with google'
 
 video:
-    search_input_placeholder: video.search_input_placeholder
-    search_title: video.search_title
+    search_input_placeholder: Search video
+    search_title: Videos

@@ -58,15 +58,19 @@ admin:
     musictype_new_title: 'Nouvelle musique'
     musictype_show_title: Musique
     musictypes: Musiques
+
+    page:
+        see_pagecontent: admin.page.see_pagecontent   # FIXME
+
     page_edit_title: 'Modifier la page'
     page_list_title: 'Liste des pages'
     page_new_title: 'Nouvelle page'
     page_show_title: Page
-    pagecontent: admin.pagecontent   # FIXME
-    pagecontent_edit_title: admin.pagecontent_edit_title   # FIXME
-    pagecontent_list_title: admin.pagecontent_list_title   # FIXME
-    pagecontent_new_title: admin.pagecontent_new_title   # FIXME
-    pagecontent_show_title: admin.pagecontent_show_title   # FIXME
+    pagecontent: admin.pagecontent
+    pagecontent_edit_title: admin.pagecontent_edit_title
+    pagecontent_list_title: admin.pagecontent_list_title
+    pagecontent_new_title: admin.pagecontent_new_title
+    pagecontent_show_title: admin.pagecontent_show_title
     pages: Pages
     translations: Traductions
     update: 'Mise à jour'
@@ -711,30 +715,30 @@ link:
 modify: Modifier
 
 move:
-    search_input_placeholder: move.search_input_placeholder   # FIXME
-    search_title: move.search_title   # FIXME
+    search_input_placeholder: Recherchez une passe ou un shine
+    search_title: Passes et Shines
 
 music:
-    search_input_placeholder: music.search_input_placeholder   # FIXME
-    search_title: music.search_title   # FIXME
+    search_input_placeholder: Recherchez une musique
+    search_title: Musiques
 
 navbar:
     artits: Artistes
     bands: Musiciens
-    dances: navbar.dances   # FIXME
-    dances.bachata: navbar.dances.bachata   # FIXME
-    dances.bachata_dominicana: navbar.dances.bachata_dominicana   # FIXME
-    dances.bachata_moderna: navbar.dances.bachata_moderna   # FIXME
-    dances.bachata_sensual: navbar.dances.bachata_sensual   # FIXME
-    dances.kizomba: navbar.dances.kizomba   # FIXME
-    dances.merengue: navbar.dances.merengue   # FIXME
-    dances.salsa: navbar.dances.salsa   # FIXME
-    dances.salsa_cubana: navbar.dances.salsa_cubana   # FIXME
-    dances.salsa_dominicana: navbar.dances.salsa_dominicana   # FIXME
-    dances.salsa_on1: navbar.dances.salsa_on1   # FIXME
-    dances.salsa_on2: navbar.dances.salsa_on2   # FIXME
-    dances.salsa_rueda: navbar.dances.salsa_rueda   # FIXME
-    dances.tango: navbar.dances.tango   # FIXME
+    dances: Danses
+    dances.bachata: Bachata
+    dances.bachata_dominicana: Bachata Dominicana
+    dances.bachata_moderna: Bachata Moderna
+    dances.bachata_sensual: Bachata Sensual
+    dances.kizomba: Kizomba
+    dances.merengue: Merengue
+    dances.salsa: Salsa
+    dances.salsa_cubana: Salsa Cubana
+    dances.salsa_dominicana: Salsa Dominicana
+    dances.salsa_on1: Salsa On1
+    dances.salsa_on2: Salsa On2
+    dances.salsa_rueda: Salsa Rueda
+    dances.tango: Tango
     festivals: Festivals
     festivals.africa: Afrique
     festivals.america: Amérique
@@ -756,20 +760,20 @@ navbar:
     help: Aide
     home: Accueil
     learn: Apprendre
-    learn.bachata: navbar.learn.bachata   # FIXME
-    learn.kizomba: navbar.learn.kizomba   # FIXME
-    learn.merengue: navbar.learn.merengue   # FIXME
-    learn.salsa: navbar.learn.salsa   # FIXME
-    learn.tango: navbar.learn.tango   # FIXME
+    learn.bachata: Apprendre la Bachata
+    learn.kizomba: Apprendre la Kizomba
+    learn.merengue: Apprendre le Merengue
+    learn.salsa: Apprendre la Salsa
+    learn.tango: Apprendre le Tango
     login: Connexion
     logout: Déconnexion
-    medias: navbar.medias   # FIXME
-    moves: navbar.moves   # FIXME
+    medias: Médias
+    moves: Passes & Shines
     musics: Musiques
     publish_button: 'Ajouter un évenement'
     register: Inscription
     toogle_navigation: Naviguer
-    user: navbar.user   # FIXME
+    user: Danseurs
     user.add_event: 'Ajouter un événement'
     user.my_page: 'Ma page'
     user.my_profile: 'Mon profil'
@@ -791,10 +795,10 @@ overviews:
     views: Vues
 
 tag:
-    search_by_tag: tag.search_by_tag   # FIXME
+    search_by_tag: Filtrer par tag
 
 tags:
-    label: tags.label   # FIXME
+    label: Tags
 
 timeline:
     address: Adresse
@@ -843,11 +847,11 @@ user:
     passed_events: 'Mes précédents événements'
     posted_by: 'Publié par'
     profile_title: 'Mon Profil'
-    search_by_musictype: user.search_by_musictype   # FIXME
-    search_by_user: user.search_by_user   # FIXME
-    search_by_usertype: user.search_by_usertype   # FIXME
-    search_input_placeholder: user.search_input_placeholder   # FIXME
-    search_title: user.search_title   # FIXME
+    search_by_musictype: Filtrer par musique
+    search_by_user: Filter par danseur
+    search_by_usertype: Filter par type de danseur
+    search_input_placeholder: Rechercher un danseur
+    search_title: Danseurs et Danseuses
     they_like: 'Ils aiment'
     user_title: 'Mon Profil'
     videos_title: Vidéos
@@ -865,5 +869,5 @@ user_bundle:
         signin_google: 'Se connecter avec Google'
 
 video:
-    search_input_placeholder: video.search_input_placeholder   # FIXME
-    search_title: video.search_title   # FIXME
+    search_input_placeholder: Rechercher une vidéo
+    search_title: Vidéos

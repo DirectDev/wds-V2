@@ -13,6 +13,7 @@ class AddressFrControllerTest extends WebTestCase {
     private $router;
     private $translator;
     private $locale = 'fr';
+    private $country_iso = 'fr';
     private $client;
     private $clientLogged;
     private $event_name = null;
@@ -66,7 +67,7 @@ class AddressFrControllerTest extends WebTestCase {
     }
 
     private function findCountry() {
-        return $this->em->getRepository('FrontFrontBundle:Country')->findOneByIso2($this->locale);
+        return $this->em->getRepository('FrontFrontBundle:Country')->findOneByIso2($this->country_iso);
     }
 
     private function findOneEvent() {
