@@ -19,8 +19,6 @@ script:
   - phpunit -v -c app/ src/Admin/AdminBundle/Tests
   - phpunit -v -c app/ src/Contact/ContactBundle/Tests
   - phpunit -v -c app/ src/Search/SearchBundle/Tests
-  - phpunit -v -c app/ src/Contact/ContactBundle/Tests
-  - phpunit -v -c app/ src/Contact/ContactBundle/Tests
 	  
 
 notifications:
