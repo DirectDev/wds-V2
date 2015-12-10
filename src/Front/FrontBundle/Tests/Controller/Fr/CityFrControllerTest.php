@@ -181,7 +181,6 @@ class CityFrControllerTest extends WebTestCase {
                         '_locale' => $this->locale,
                         'searchcity' => $City->getName()
             )));
-            var_dump($this->client->getResponse()->getContent());
             $this->assertTrue($this->client->getResponse()->isSuccessful());
             $crawler = $this->clientLogged->request('GET', $this->router->generate('city_concert', array(
                         '_locale' => $this->locale,
