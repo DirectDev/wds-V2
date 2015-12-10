@@ -16,8 +16,10 @@ parameters:
     mailer_auth_mode:  ~
     mailer_password:   ~
     mailer_port:       ~
-
-    locale:            en
-    secret:            jetondetravis
-
-    pagination_line_number: 10
+    mailer_encryption: null
+    locale: en
+    secret: jetondetravis
+    debug_toolbar: fzlse
+    debug_redirects: false
+    use_assetic_controller: true
+    pagination_line_number: 5
