@@ -12,7 +12,16 @@ before_script:
   - php app/console doctrine:fixtures:load -n --env=test 
 
 script:
+  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/En
+  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Controller/Fr
+  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Fixtures
+  - phpunit -v -c app/ src/Front/FrontBundle/Tests/Form
   - phpunit -v -c app/ src/Admin/AdminBundle/Tests
+  - phpunit -v -c app/ src/Contact/ContactBundle/Tests
+  - phpunit -v -c app/ src/Search/SearchBundle/Tests
+  - phpunit -v -c app/ src/Contact/ContactBundle/Tests
+  - phpunit -v -c app/ src/Contact/ContactBundle/Tests
+	  
 
 notifications:
   email:

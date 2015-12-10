@@ -12,7 +12,7 @@
                 </div><!--/col-md-3-->
                 <!-- End About -->                    
 
-                <div class="col-md-3 md-margin-bottom-40">
+                <div class="col-md-2 md-margin-bottom-40">
                     <div class="thumb-headline"><h2>{% trans %}footer.cities{% endtrans %}</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
                         {% for city in cities %}
@@ -25,7 +25,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="thumb-headline"><h2>{% trans %}footer.festivals{% endtrans %}</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
                         {% for event in festivals %}
@@ -38,7 +38,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="thumb-headline"><h2>{% trans %}footer.artits{% endtrans %}</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
                         {% for user in artists %}
@@ -50,6 +50,22 @@
                         {% endfor %}
                     </ul>
                 </div>
+
+                <div class="col-md-2">
+                    <div class="thumb-headline"><h2>{% trans %}footer.landing_pages{% endtrans %}</h2></div>
+                    <ul class="list-unstyled simple-list margin-bottom-20">
+                        <li>
+                            <a href="{{ path('landing_dancer') }}">landing page dancer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('landing_pro') }}">landing page pro</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('landing_pub') }}">landing page pub</a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div> 
     </div><!--/footer-->
