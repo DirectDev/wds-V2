@@ -5,7 +5,7 @@ namespace Front\FrontBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Translation\Translator;
 
-class UserEnControllerTest extends WebTestCase {
+class UserFrControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManagerh
@@ -200,59 +200,6 @@ class UserEnControllerTest extends WebTestCase {
         $this->assertEquals(0, count($user->getLovesMe()));
     }
 
-    public function testShowPublic() {
-        $users = $this->findAllUsers();
-        foreach ($users as $user) {
-            $crawler = $this->client->request('GET', $this->router->generate('front_user_show_public', array(
-                        'username' => $user->getUsername(),
-                        'id' => $user->getId(),
-                        '_locale' => $this->locale)
-            ));
-            $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-            $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_show_public', array(
-                        'username' => $user->getUsername(),
-                        'id' => $user->getId(),
-                        '_locale' => $this->locale)
-            ));
-            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-        }
-    }
-
-    public function testShowOverviews() {
-        $users = $this->findAllUsers();
-        foreach ($users as $user) {
-            $crawler = $this->client->request('GET', $this->router->generate('front_user_show_overviews', array(
-                        'id' => $user->getId(),
-                        '_locale' => $this->locale)
-            ));
-            $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-            $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_show_overviews', array(
-                        'id' => $user->getId(),
-                        '_locale' => $this->locale)
-            ));
-            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-        }
-    }
-
-    public function testShowOverviewsProfile() {
-        $users = $this->findAllUsers();
-        foreach ($users as $user) {
-            $crawler = $this->client->request('GET', $this->router->generate('front_user_show_overviews_profile', array(
-                        'id' => $user->getId(),
-                        '_locale' => $this->locale)
-            ));
-            $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-            $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_show_overviews_profile', array(
-                        'id' => $user->getId(),
-                        '_locale' => $this->locale)
-            ));
-            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-        }
-    }
-
     public function testPassedEvents() {
 
         $crawler = $this->client->request('GET', $this->router->generate('front_user_passed_events', array(
@@ -277,23 +224,6 @@ class UserEnControllerTest extends WebTestCase {
                     '_locale' => $this->locale)
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
-    public function testShowPrivate() {
-        $crawler = $this->client->request('GET', $this->router->generate('front_user_show_private', array(
-                    '_locale' => $this->locale)
-        ));
-        $this->assertFalse($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_show_private', array(
-                    '_locale' => $this->locale)
-        ));
-        $this->clientLogged->followRedirect();
-
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-        $this->assertGreaterThan(
-                0, $crawler->filter('html:contains("' . $this->PHP_AUTH_USER . '")')->count()
-        );
     }
 
     public function testRegister() {
