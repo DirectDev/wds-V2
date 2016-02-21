@@ -1,0 +1,26 @@
+<div id='presences_div'>
+    {% if usersPresenceEvent|length > 0 %}
+        <h3>{% trans %}event.user_presences{% endtrans %}</h3>
+        <ul class="list-unstyled blog-photos margin-bottom-30">
+            {% for userPresenceEvent in usersPresenceEvent %}
+                <li>
+                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : userPresenceEvent } %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="presence_form">
+            {% if app.user not in usersPresenceEvent %}
+                {{ form_start(presence_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                {{ form_widget(presence_form.submit) }}
+                {{ form_end(presence_form) }}
+            {% else %}
+                {{ form_start(unpresence_form, {'attr' : { 'class' : 'no_validation'} }) }}            
+                {{ form_widget(unpresence_form.submit) }}
+                {{ form_end(unpresence_form) }}
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

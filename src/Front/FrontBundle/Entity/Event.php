@@ -109,6 +109,11 @@ class Event {
     private $lovesMe;
 
     /**
+     * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="eventPresences")     
+     * */
+    private $userPresents;
+
+    /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaFestival", mappedBy="event")
      * */
     private $meaFestival;
@@ -133,6 +138,7 @@ class Event {
         $this->eventFiles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->lovesMe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userPresents = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getTitle() {
@@ -744,6 +750,38 @@ class Event {
      */
     public function getYoutubeLink() {
         return $this->youtube_link;
+    }
+
+    /**
+     * Add userPresent
+     *
+     * @param \User\UserBundle\Entity\User $userPresent
+     *
+     * @return Event
+     */
+    public function addUserPresent(\User\UserBundle\Entity\User $userPresent) {
+        $userPresent->addEventPresence($this);
+        $this->userPresents[] = $userPresent;
+
+        return $this;
+    }
+
+    /**
+     * Remove userPresent
+     *
+     * @param \User\UserBundle\Entity\User $userPresent
+     */
+    public function removeUserPresent(\User\UserBundle\Entity\User $userPresent) {
+        $this->userPresents->removeElement($userPresent);
+    }
+
+    /**
+     * Get userPresents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserPresents() {
+        return $this->userPresents;
     }
 
 }

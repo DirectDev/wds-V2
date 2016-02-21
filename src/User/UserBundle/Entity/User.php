@@ -165,6 +165,15 @@ class User extends BaseUser {
      * */
     private $meaUser;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Event", inversedBy="userPresents")
+     * @ORM\JoinTable(name="event_presence",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="presence_event_id", referencedColumnName="id")}
+     *      )
+     * */
+    private $eventPresences;
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -193,6 +202,7 @@ class User extends BaseUser {
         $this->musicloves = new ArrayCollection();
         $this->loves = new ArrayCollection();
         $this->lovesMe = new ArrayCollection();
+        $this->eventPresences = new ArrayCollection();
     }
 
     public function isFacebookUser() {
@@ -282,7 +292,7 @@ class User extends BaseUser {
                 return true;
         return false;
     }
-    
+
     public function isBar() {
         foreach ($this->userTypes as $userType)
             if ($userType->getName() == 'bar')
@@ -1012,6 +1022,37 @@ class User extends BaseUser {
      */
     public function getMusicloves() {
         return $this->musicloves;
+    }
+
+    /**
+     * Add eventPresence
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventPresence
+     *
+     * @return User
+     */
+    public function addEventPresence(\Front\FrontBundle\Entity\Event $eventPresence) {
+        $this->eventPresences[] = $eventPresence;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventPresence
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventPresence
+     */
+    public function removeEventPresence(\Front\FrontBundle\Entity\Event $eventPresence) {
+        $this->eventPresences->removeElement($eventPresence);
+    }
+
+    /**
+     * Get eventPresences
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventPresences() {
+        return $this->eventPresences;
     }
 
 }

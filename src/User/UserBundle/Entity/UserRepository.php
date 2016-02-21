@@ -106,6 +106,19 @@ class UserRepository extends EntityRepository {
             $query->setMaxResults($max);
         return $query->getQuery()->getResult();
     }
+    
+    public function getUsersPresentsToEvent(\Front\FrontBundle\Entity\Event $Event, $max = null) {
+        $query = $this->createQueryBuilder('u')
+                ->leftJoin('u.eventPresences', 'e')
+                ->where('e.id = :id')
+                ->setParameter('id', $Event->getId())
+                ->addSelect('RAND() as HIDDEN rand')
+                ->orderBy('rand');
+
+        if ($max > 0)
+            $query->setMaxResults($max);
+        return $query->getQuery()->getResult();
+    }
 
     public function findForFooter($limit = 6, $userTypes = null) {
 

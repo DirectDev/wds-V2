@@ -260,7 +260,7 @@ class EventEnControllerTest extends WebTestCase {
 
     public function testLoves() {
         $event = $this->findOneEvent();
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_event_loves', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventlove_loves', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));
@@ -270,7 +270,7 @@ class EventEnControllerTest extends WebTestCase {
     public function testLove() {
 
         $event = $this->findOneEvent();
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_event_loves', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventlove_loves', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));
@@ -288,7 +288,7 @@ class EventEnControllerTest extends WebTestCase {
     public function testUnlove() {
 
         $event = $this->findOneEvent();
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_event_loves', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventlove_loves', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));

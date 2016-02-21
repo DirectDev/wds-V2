@@ -34,21 +34,7 @@ front_event_delete:
     
 front_event_alerts:
     path:     /alerts/{id}
-    defaults: { _controller: "FrontFrontBundle:Event:alerts" }    
-    
-front_event_loves:
-    path:     /loves/{id}
-    defaults: { _controller: "FrontFrontBundle:Event:loves" }    
-
-front_event_love:
-    path:     /love/{id}
-    defaults: { _controller: "FrontFrontBundle:Event:love" }
-    requirements: { _method: post }
-
-front_event_unlove:
-    path:     /unlove/{id}
-    defaults: { _controller: "FrontFrontBundle:Event:unLove" }
-    requirements: { _method: post }    
+    defaults: { _controller: "FrontFrontBundle:Event:alerts" }  
     
 front_event_show:
     path:     /{uri}/{id}

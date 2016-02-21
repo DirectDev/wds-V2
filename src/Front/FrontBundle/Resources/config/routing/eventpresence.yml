@@ -1,0 +1,14 @@
+
+front_eventpresence_presences:
+    path:     /presences/{id}
+    defaults: { _controller: "FrontFrontBundle:EventPresence:presences" }    
+
+front_eventpresence_presence:
+    path:     /presence/{id}
+    defaults: { _controller: "FrontFrontBundle:EventPresence:presence" }
+    requirements: { _method: post }
+
+front_eventpresence_unpresence:
+    path:     /unpresence/{id}
+    defaults: { _controller: "FrontFrontBundle:EventPresence:unPresence" }
+    requirements: { _method: post }    

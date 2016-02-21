@@ -1,0 +1,14 @@
+
+front_eventlove_loves:
+    path:     /loves/{id}
+    defaults: { _controller: "FrontFrontBundle:EventLove:loves" }    
+
+front_eventlove_love:
+    path:     /love/{id}
+    defaults: { _controller: "FrontFrontBundle:EventLove:love" }
+    requirements: { _method: post }
+
+front_eventlove_unlove:
+    path:     /unlove/{id}
+    defaults: { _controller: "FrontFrontBundle:EventLove:unLove" }
+    requirements: { _method: post }    

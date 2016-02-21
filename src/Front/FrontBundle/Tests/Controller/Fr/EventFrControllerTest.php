@@ -92,6 +92,12 @@ class EventFrControllerTest extends WebTestCase {
             $user->removeEventLove($Event);
             $this->em->persist($user);
         }
+        
+        $Event = $this->findOneEvent();
+        foreach ($Event->getUserPresents() as $user) {
+            $user->removeEventPresence($Event);
+            $this->em->persist($user);
+        }
 
         $this->em->flush();
     }
@@ -260,7 +266,7 @@ class EventFrControllerTest extends WebTestCase {
 
     public function testLoves() {
         $event = $this->findOneEvent();
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_event_loves', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventlove_loves', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));
@@ -270,7 +276,7 @@ class EventFrControllerTest extends WebTestCase {
     public function testLove() {
 
         $event = $this->findOneEvent();
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_event_loves', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventlove_loves', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));
@@ -288,7 +294,7 @@ class EventFrControllerTest extends WebTestCase {
     public function testUnlove() {
 
         $event = $this->findOneEvent();
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_event_loves', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventlove_loves', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));
@@ -301,6 +307,51 @@ class EventFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         $this->em->refresh($event);
         $this->assertEquals(0, count($event->getLovesMe()));
+    }
+
+    public function testPresences() {
+        $event = $this->findOneEvent();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventpresence_presences', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testPresence() {
+
+        $event = $this->findOneEvent();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventpresence_presences', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $form = $crawler->filter('form[name="form"]')->form();
+        $crawler = $this->clientLogged->submit($form);
+
+        $this->clientLogged->followRedirect();
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $this->em->refresh($event);
+        $this->assertEquals(1, count($event->getUserPresents()));
+    }
+
+    public function testUnpresence() {
+
+        $event = $this->findOneEvent();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_eventpresence_presences', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $form = $crawler->filter('form[name="form"]')->form();
+        $crawler = $this->clientLogged->submit($form);
+
+        $this->clientLogged->followRedirect();
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $this->em->refresh($event);
+        $this->assertEquals(0, count($event->getUserPresents()));
     }
 
 }

@@ -11,12 +11,16 @@
     {% endif %}
 
     {% if app.user %}
-        {% if app.user not in usersLoveEvent %}
-            {{ form_start(love_form, {'attr' : { 'class' : 'no_validation'} }) }}
-            {{ form_end(love_form) }}
-        {% else %}
-            {{ form_start(unlove_form, {'attr' : { 'class' : 'no_validation'} }) }}
-            {{ form_end(unlove_form) }}
-        {% endif %}
+        <div class="love_form">
+            {% if app.user not in usersLoveEvent %}
+                {{ form_start(love_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                {{ form_widget(love_form.submit) }}
+                {{ form_end(love_form) }}
+            {% else %}
+                {{ form_start(unlove_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                {{ form_widget(unlove_form.submit) }}
+                {{ form_end(unlove_form) }}
+            {% endif %}
+        </div>
     {% endif %}
 </div>

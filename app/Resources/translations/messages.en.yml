@@ -60,7 +60,7 @@ admin:
     musictypes: 'Music types'
 
     page:
-        see_pagecontent: admin.page.see_pagecontent   # FIXME
+        see_pagecontent: admin.page.see_pagecontent
 
     page_edit_title: 'Page edit'
     page_list_title: 'Page list'
@@ -174,6 +174,7 @@ footer:
     contact: 'Contact Us'
     contact_us: 'Contact Us'
     festivals: Festivals
+    landing_pages: footer.landing_pages
     policy: 'Privacy Policy'
 
 form:
@@ -715,11 +716,11 @@ link:
 modify: modify
 
 move:
-    search_input_placeholder: search move or shine
-    search_title: Moves & Shines
+    search_input_placeholder: 'search move or shine'
+    search_title: 'Moves & Shines'
 
 music:
-    search_input_placeholder: Search Music
+    search_input_placeholder: 'Search Music'
     search_title: Musics
 
 navbar:
@@ -727,17 +728,17 @@ navbar:
     bands: Bands
     dances: Dances
     dances.bachata: Bachata
-    dances.bachata_dominicana: Bachata Dominicana
-    dances.bachata_moderna: Bachata Moderna
-    dances.bachata_sensual: Bachata Sensual
+    dances.bachata_dominicana: 'Bachata Dominicana'
+    dances.bachata_moderna: 'Bachata Moderna'
+    dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
     dances.merengue: Merengue
     dances.salsa: Salsa
-    dances.salsa_cubana: Salsa Cubana
-    dances.salsa_dominicana: Salsa Dominicana
-    dances.salsa_on1: Salsa On1
-    dances.salsa_on2: Salsa On2
-    dances.salsa_rueda: Salsa Rueda
+    dances.salsa_cubana: 'Salsa Cubana'
+    dances.salsa_dominicana: 'Salsa Dominicana'
+    dances.salsa_on1: 'Salsa On1'
+    dances.salsa_on2: 'Salsa On2'
+    dances.salsa_rueda: 'Salsa Rueda'
     dances.tango: Tango
     festivals: Festivals
     festivals.africa: Africa
@@ -760,15 +761,15 @@ navbar:
     help: Help
     home: Home
     learn: Learn
-    learn.bachata: Learn Bachata
-    learn.kizomba: Learn Kizomba
-    learn.merengue: Learn Merengue
-    learn.salsa: Learn Salsa
-    learn.tango: Learn Tango
+    learn.bachata: 'Learn Bachata'
+    learn.kizomba: 'Learn Kizomba'
+    learn.merengue: 'Learn Merengue'
+    learn.salsa: 'Learn Salsa'
+    learn.tango: 'Learn Tango'
     login: Login
     logout: Logout
     medias: Medias
-    moves: Moves & Shines
+    moves: 'Moves & Shines'
     musics: Musics
     publish_button: 'Add Event'
     register: Register
@@ -795,7 +796,7 @@ overviews:
     views: Views
 
 tag:
-    search_by_tag: Filter by tag
+    search_by_tag: 'Filter by tag'
 
 tags:
     label: Tags
@@ -847,10 +848,10 @@ user:
     passed_events: 'My Previous Events'
     posted_by: 'Posted By'
     profile_title: 'My Profile'
-    search_by_musictype: Filter by music 
-    search_by_user: Filter by dancer
-    search_by_usertype: Filter by dancer
-    search_input_placeholder: Search dancer
+    search_by_musictype: 'Filter by music'
+    search_by_user: 'Filter by dancer'
+    search_by_usertype: 'Filter by dancer'
+    search_input_placeholder: 'Search dancer'
     search_title: Dancers
     they_like: Likes
     user_title: 'My Profile'
@@ -869,5 +870,5 @@ user_bundle:
         signin_google: 'Signin with google'
 
 video:
-    search_input_placeholder: Search video
+    search_input_placeholder: 'Search video'
     search_title: Videos

@@ -31,6 +31,14 @@ FrontFrontBundle_eventdate:
     resource: "@FrontFrontBundle/Resources/config/routing/eventdate.yml"
     prefix:   /eventdate      
     
+FrontFrontBundle_eventlove:
+    resource: "@FrontFrontBundle/Resources/config/routing/eventlove.yml"
+    prefix:   /eventlove      
+    
+FrontFrontBundle_eventpresence:
+    resource: "@FrontFrontBundle/Resources/config/routing/eventpresence.yml"
+    prefix:   /eventpresence      
+    
 FrontFrontBundle_festival:
     resource: "@FrontFrontBundle/Resources/config/routing/festival.yml"
     prefix:   /festival      

@@ -180,7 +180,7 @@ admin_pagecontent_delete: '/administration/pagecontent/{id}/delete'
 admin_pagecontent_edit: '/administration/pagecontent/{id}/edit'
 
 # Desc: /admin/pagecontent/{id}/index
-admin_pagecontent_index: '/administration/pagecontent/{id}/index'   # FIXME
+admin_pagecontent_index: '/administration/pagecontent/{id}/index'
 
 # Desc: /admin/pagecontent/new
 admin_pagecontent_new: /administration/pagecontent/new
@@ -475,20 +475,11 @@ front_event_delete: '/evenement/effacer/{id}'
 # Desc: /event/edit/{id}
 front_event_edit: '/evenement/editer/{id}'
 
-# Desc: /event/love/{id}
-front_event_love: '/evenement/aime/{id}'
-
-# Desc: /event/loves/{id}
-front_event_loves: '/evenement/loves/{id}'
-
 # Desc: /event/new
 front_event_new: /evenement/nouveau
 
 # Desc: /event/{uri}/{id}
 front_event_show: '/evenement/{uri}/{id}'
-
-# Desc: /event/unlove/{id}
-front_event_unlove: '/evenement/naimepas/{id}'
 
 # Desc: /event/update/{id}
 front_event_update: '/evenement/mettre_a_jour/{id}'
@@ -523,6 +514,24 @@ front_eventdate_show_tagbox: '/evenementdate/montrer_tagbox/{id}'
 
 # Desc: /eventdate/update/{id}
 front_eventdate_update: '/evenementdate/mettre_a_jour/{id}'
+
+# Desc: /eventlove/love/{id}
+front_eventlove_love: '/eventlove/love/{id}'   # FIXME
+
+# Desc: /eventlove/loves/{id}
+front_eventlove_loves: '/eventlove/loves/{id}'   # FIXME
+
+# Desc: /eventlove/unlove/{id}
+front_eventlove_unlove: '/eventlove/unlove/{id}'   # FIXME
+
+# Desc: /eventpresence/presence/{id}
+front_eventpresence_presence: '/eventpresence/presence/{id}'   # FIXME
+
+# Desc: /eventpresence/presences/{id}
+front_eventpresence_presences: '/eventpresence/presences/{id}'   # FIXME
+
+# Desc: /eventpresence/unpresence/{id}
+front_eventpresence_unpresence: '/eventpresence/unpresence/{id}'   # FIXME
 front_eventtype: /evenementtype/
 front_eventtype_create: /evenementtype/creer
 front_eventtype_delete: '/evenementtype/effacer/{id}'

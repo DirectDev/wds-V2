@@ -737,3 +737,8 @@ fieldset[disabled] .btn-search.active {
     background-color: #265a88;
     background-image: none;
 }
+
+
+.love_form, presence_form{
+    margin-right: 18px;
+}

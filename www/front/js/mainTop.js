@@ -219,3 +219,27 @@ $(document).on('click', 'button.love_button', function (e) {
             });
     e.preventDefault(); //STOP default actiont.
 });
+
+$(document).on('click', 'button.presence_button', function (e) {
+    e.preventDefault();
+    // Get the form instance
+    var form = $(this).parent().closest('form');
+    console.log('click');
+    console.log(form);
+    var postData = form.serializeArray();
+    var formURL = form.attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    $('#presences_div').replaceWith(html);
+                },
+                error: function (html)
+                {
+                }
+            });
+    e.preventDefault(); //STOP default actiont.
+});
