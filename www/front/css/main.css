@@ -747,9 +747,42 @@ fieldset[disabled] .btn-search.active {
     width: 225px !important;
     display: table-cell;
     vertical-align: middle;
-    background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important;
     top: 0px !important;  
+}
+@media screen and (min-width:978px)
+{
+    .navbar-brand {;
+                   background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important;
+    }
 }
 .navbar li {
     padding-top: 3px;
+}
+.search_transversal{
+    z-index: 1000;
+    position        : fixed;
+    top             : 0;
+    text-align: center;
+    background: #FFF;
+    padding: 20px 20px;
+    height: 75px;
+    margin:0;
+    width:100%
+        /*border-bottom: solid 3px #777;*/
+}
+.sub_search_transversal{
+    height: 75px;
+}
+@media screen and (max-width:978px)
+{
+    .search_transversal{
+        display:none;
+    }
+    .sub_search_transversal{
+        display:none;
+    }
+}
+
+button.width-full{
+    width: 100%;
 }

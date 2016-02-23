@@ -1,16 +1,22 @@
 {% extends "::base.html.twig" %}
-    
+
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
-    
+
 
 {% block body %}
-        
-        {% include 'FrontFrontBundle::navbar.html.twig' %}
-    
-        {% block content %}{% endblock %}
-        
-        {% render path('footer') %}
-        
+
+    {% if app.request.get('_route') != 'homepage' and  app.request.get('_route') != 'home' %}
+        {% include 'FrontFrontBundle::search.html.twig' %}
+    {% endif %}
+
+    {% include 'FrontFrontBundle::navbar.html.twig' %}
+
+
+
+{% block content %}{% endblock %}
+
+{% render path('footer') %}
+
 {% endblock %}
