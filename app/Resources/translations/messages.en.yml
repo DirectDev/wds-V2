@@ -2,7 +2,9 @@
 Create: Create
 Delete: Delete
 'I Like': 'I Like'
+'I don''t go': 'I don''t go'   
 'I don''t like': 'I don''t like'
+'I go': 'I go'  
 Update: Update
 
 address:
@@ -157,6 +159,7 @@ event:
     they_like: Likes
     to: To
     type: 'Event type'
+    user_presences: They are going  
 
 file:
     add_file: 'Add image'
@@ -169,7 +172,7 @@ file:
 
 footer:
     artits: Artits
-    baseline: 'Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.'
+    baseline: 'Find Salsa, Bachata and Kizomba, anywhere on the Globe.'
     cities: Cities
     contact: 'Contact Us'
     contact_us: 'Contact Us'
@@ -661,7 +664,7 @@ front:
 
     back: Back
     back_to_list: 'Back to list'
-    baseline: 'Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.'
+    baseline: 'Find Salsa, Bachata and Kizomba, anywhere on the Globe.'
     cancel: Cancel
     edit: Edit
 
@@ -683,7 +686,7 @@ front:
 home:
     about_us_benefit_1: 'A map showing today''s events/lessons/shows...'
     about_us_benefit_2: 'An easy way to find salsa in a city/country you''ve never been to before.'
-    about_us_benefit_3: 'A place dedicated to Salsa/Bachat/Kizomba/Tango exclusively.'
+    about_us_benefit_3: 'A place dedicated to Salsa/Bachat/Kizomba exclusively.'
     about_us_benefit_4: 'Multiple languages.'
     about_us_benefit_5: 'Multiple dances.'
     about_us_benefit_6: 'Totally free website.'
@@ -699,7 +702,7 @@ home:
         warning: 'Warning !'
         warning_no_events: 'There are no events around <strong>%city%</strong> on <strong>%date%</strong>.  Feel free to add your event'
 
-    banner: 'Find Salsa, Bachata, Kizomba and Tango, anywhere on the Globe.'
+    banner: 'Find Salsa, Bachata and Kizomba, anywhere on the Globe.'
 
     cities:
         h2: 'Discover Salsa in those cities'
@@ -726,26 +729,29 @@ music:
 navbar:
     artits: Artits
     bands: Bands
+    bars: Places 
     dances: Dances
     dances.bachata: Bachata
     dances.bachata_dominicana: 'Bachata Dominicana'
     dances.bachata_moderna: 'Bachata Moderna'
     dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
-    dances.merengue: Merengue
+    dances.merengue: navbar.dances.merengue   # FIXME
     dances.salsa: Salsa
     dances.salsa_cubana: 'Salsa Cubana'
     dances.salsa_dominicana: 'Salsa Dominicana'
     dances.salsa_on1: 'Salsa On1'
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
-    dances.tango: Tango
+    dances.tango: navbar.dances.tango   # FIXME
+    discover: Discover  
     festivals: Festivals
     festivals.africa: Africa
     festivals.america: America
     festivals.asia: Asia
     festivals.australia: Australia
     festivals.calendar: Calendar
+    festivals.calendar.p: Find festivals by date
     festivals.central_africa: 'Central Africa'
     festivals.central_america: 'Central America'
     festivals.europe: Europe
@@ -763,12 +769,14 @@ navbar:
     learn: Learn
     learn.bachata: 'Learn Bachata'
     learn.kizomba: 'Learn Kizomba'
-    learn.merengue: 'Learn Merengue'
+    learn.merengue: navbar.learn.merengue   # FIXME
     learn.salsa: 'Learn Salsa'
-    learn.tango: 'Learn Tango'
+    learn.tango: navbar.learn.tango   # FIXME
     login: Login
     logout: Logout
     medias: Medias
+    meet: Meet
+    meet.dancers: Dancers
     moves: 'Moves & Shines'
     musics: Musics
     publish_button: 'Add Event'
@@ -776,10 +784,12 @@ navbar:
     toogle_navigation: 'Toogle Navigation'
     user: Dancers
     user.add_event: 'Add Event'
+    user.events: Events 
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
     user.next_events: 'My Next Events'
     user.passed_events: 'My Previous Events'
+    user.profile: Profile
     videos: Videos
 
 overviews:

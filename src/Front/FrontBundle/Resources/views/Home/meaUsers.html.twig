@@ -1,4 +1,44 @@
 {% for MeaUser in MeaUsers %}
+
+    {% set user = MeaUser.user %}
+
+    <div class="cbp-item print motion">
+        <a href="{{ path('front_user_show_public', { username : user.getUsername(), id : user.id } ) }}" class="cbp-caption"
+           data-title="{{ user.getUsername|capitalize }}">
+            <div class="cbp-caption-defaultWrap">
+                {% if user.getProfilePictureUrl() %}
+                    <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('home_user') }}">
+                {% else %}
+                    <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
+                {% endif %} 
+            </div>
+            <div class="cbp-caption-activeWrap">
+                <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                        <div class="cbp-l-caption-title">{{ user.getUsername|capitalize }}</div>
+                        <div class="cbp-l-caption-desc">
+                            {% if user.getUserType %}
+                                {{ user.getUserTypesText }}
+                            {% endif %}
+                            {% if user.getMusicType %}
+                                / {{ user.getMusicTypesText }}
+                            {% endif %}
+                            <br>
+                            {% if user.getCity %}
+                                {{ user.getCity|capitalize }}
+                            {% endif %}
+                            {% if user.getCountry %}
+                                / {{ user.getCountry|capitalize }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+{% endfor %}
+{#{% for MeaUser in MeaUsers %}
     {% set user = MeaUser.user %}
     <!-- Easy Block -->                
     <div class="col-md-3 col-sm-6 md-margin-bottom-40">
@@ -50,3 +90,4 @@
     </div>
     <!-- End Easy Block -->
 {% endfor %}
+#}

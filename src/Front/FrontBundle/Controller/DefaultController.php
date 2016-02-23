@@ -24,9 +24,9 @@ class DefaultController extends Controller {
         if (!$page)
             throw new \Exception('Page not found!');
 
-        $MeaCities = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForHomePage();
-        $MeaFestivals = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaFestival')->findForHomePage();
-        $MeaUsers = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForHomePage();
+        $MeaCities = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForHomePage(9);
+        $MeaFestivals = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaFestival')->findForHomePage(9);
+        $MeaUsers = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForHomePage(9);
 
 
         return $this->render('FrontFrontBundle:Home:index.html.twig', array(
@@ -36,7 +36,7 @@ class DefaultController extends Controller {
                     'MeaUsers' => $MeaUsers,
         ));
     }
-
+    
     public function policyAction(Request $request) {
 
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('policy');

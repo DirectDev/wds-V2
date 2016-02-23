@@ -516,22 +516,22 @@ front_eventdate_show_tagbox: '/evenementdate/montrer_tagbox/{id}'
 front_eventdate_update: '/evenementdate/mettre_a_jour/{id}'
 
 # Desc: /eventlove/love/{id}
-front_eventlove_love: '/eventlove/love/{id}'   # FIXME
+front_eventlove_love: '/eventlove/love/{id}'
 
 # Desc: /eventlove/loves/{id}
-front_eventlove_loves: '/eventlove/loves/{id}'   # FIXME
+front_eventlove_loves: '/eventlove/loves/{id}'
 
 # Desc: /eventlove/unlove/{id}
-front_eventlove_unlove: '/eventlove/unlove/{id}'   # FIXME
+front_eventlove_unlove: '/eventlove/unlove/{id}'
 
 # Desc: /eventpresence/presence/{id}
-front_eventpresence_presence: '/eventpresence/presence/{id}'   # FIXME
+front_eventpresence_presence: '/eventpresence/presence/{id}'
 
 # Desc: /eventpresence/presences/{id}
-front_eventpresence_presences: '/eventpresence/presences/{id}'   # FIXME
+front_eventpresence_presences: '/eventpresence/presences/{id}'
 
 # Desc: /eventpresence/unpresence/{id}
-front_eventpresence_unpresence: '/eventpresence/unpresence/{id}'   # FIXME
+front_eventpresence_unpresence: '/eventpresence/unpresence/{id}'
 front_eventtype: /evenementtype/
 front_eventtype_create: /evenementtype/creer
 front_eventtype_delete: '/evenementtype/effacer/{id}'

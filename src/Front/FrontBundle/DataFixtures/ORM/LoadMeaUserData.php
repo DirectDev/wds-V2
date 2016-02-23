@@ -30,57 +30,24 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager) {
 
-        $user_reference1 = $user_reference2 = $user_reference3 = $user_reference4 = null;
-        for ($i = 0; $i <= 20; $i++) {
+        shuffle($this->array_user);
 
-            if (!in_array($user_reference1, array($user_reference2, $user_reference3, $user_reference4)) &&
-                    !in_array($user_reference2, array($user_reference1, $user_reference3, $user_reference4)) &&
-                    !in_array($user_reference3, array($user_reference2, $user_reference1, $user_reference4))
-            )
+        $i = 0;
+        foreach ($this->array_user as $user_reference) {
+            if ($i == 9)
                 break;
 
-            $user_reference1 = $this->array_user[rand(0, count($this->array_user) - 1)];
-            $user_reference2 = $this->array_user[rand(0, count($this->array_user) - 1)];
-            $user_reference3 = $this->array_user[rand(0, count($this->array_user) - 1)];
-            $user_reference4 = $this->array_user[rand(0, count($this->array_user) - 1)];
+            $MeaUser = new MeaUser();
+            $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+            $MeaUser->setOrdre(rand(0, 100));
+            $locale = $this->array_locale[rand(0, 1)];
+            $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
+            $manager->persist($MeaUser);
+            $MeaUser->mergeNewTranslations();
+            $this->addReference('meauser-' . filter_var($user_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
+
+            $i++;
         }
-
-        $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
-        $MeaUser->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaUser);
-        $MeaUser->mergeNewTranslations();
-        $this->addReference('meauser-' . filter_var($user_reference1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
-
-        $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
-        $MeaUser->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaUser);
-        $MeaUser->mergeNewTranslations();
-        $this->addReference('meauser-' . filter_var($user_reference2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
-
-        $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
-        $MeaUser->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaUser);
-        $MeaUser->mergeNewTranslations();
-        $this->addReference('meauser-' . filter_var($user_reference3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
-
-        $MeaUser = new MeaUser();
-        $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference4, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
-        $MeaUser->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaUser);
-        $MeaUser->mergeNewTranslations();
-        $this->addReference('meauser-' . filter_var($user_reference4, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaUser);
-
 
         $manager->flush();
     }

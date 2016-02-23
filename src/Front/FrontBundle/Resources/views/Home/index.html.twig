@@ -17,6 +17,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset("front/css/pages/page_job.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/css/home.css") }}">
+    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css") }}">    
+    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css") }}">
 {% endblock %}
 
 {% block topJavascripts %}   
@@ -36,43 +39,64 @@
     </div>    
 
 
+    <!-- Portfolio Section -->
+    <section id="portfolio-cities" class="about-section">
+        <div class="container content-md">
+            <div class="text-center margin-bottom-30">
+                <h2 class="title-v2 title-center">{% trans %}home.cities.h2{% endtrans %}</h2>
+                <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
+            </div>
 
-    <div class="container margin-bottom-30">
-        <div class="text-center margin-bottom-30">
-            <h2 class="title-v2 title-center">{% trans %}home.cities.h2{% endtrans %}</h2>
-            <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
+
+            <div class="cube-portfolio">
+                <div id="grid-container-cities" class="cbp-l-grid-gallery">
+                    {% include 'FrontFrontBundle:Home:meaCities.html.twig' %}
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="row">
-            {% include 'FrontFrontBundle:Home:meaCities.html.twig' %}
+
+    <!-- Portfolio Section -->
+    <section id="portfolio-festivals" class="about-section">
+        <div class="container  content-md">
+            <div class="text-center margin-bottom-30">
+                <h2 class="title-v2 title-center">{% trans %}home.festivals.h2{% endtrans %}</h2>
+                <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
+            </div>
+
+
+            <div class="cube-portfolio">
+                <div id="grid-container-festivals" class="cbp-l-grid-gallery">
+                    {% include 'FrontFrontBundle:Home:meaFestivals.html.twig' %}
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container margin-bottom-30">
-        <div class="text-center margin-bottom-30">
-            <h2 class="title-v2 title-center">{% trans %}home.festivals.h2{% endtrans %}</h2>
-            <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
+    <!-- Portfolio Section -->
+    <section id="portfolio-users" class="about-section">
+        <div class="container  content-md">
+            <div class="text-center margin-bottom-30">
+                <h2 class="title-v2 title-center">{% trans %}home.users.h2{% endtrans %}</h2>
+                <p class="space-lg-hor">If you are going to use a passage of Lorem Ipsum, <span class="color-green">you need to</span> be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <span class="color-green">generator</span> on the Internet.</p>
+            </div>
+
+
+            <div class="cube-portfolio">
+                <div id="grid-container-users" class="cbp-l-grid-gallery">
+                    {% include 'FrontFrontBundle:Home:meaUsers.html.twig' %}
+                </div>
+            </div>
         </div>
-
-        <div class="row">
-            {% include 'FrontFrontBundle:Home:meaFestivals.html.twig' %}
-        </div>
-    </div>
-
-
-    <div class="container team-v1 margin-bottom-30">
-        <div class="margin-bottom-30 text-center">
-            <h2 class="title-v2 title-center">{% trans %}home.users.h2{% endtrans %}</h2>
-            <p>We <strong>meet</strong> and get to know you. You tell us and we listen. <br> 
-                We build your website to realise your vision and we <strong>deliver</strong> the ready product.</p>
-        </div>
-
-        <!-- Easy Blocks v1 -->                
-        <div class="row high-rated margin-bottom-20">
-            {% include 'FrontFrontBundle:Home:meaUsers.html.twig' %}
-        </div>
-        <!-- End Easy Blocks v1 -->                
-
-    </div>
+    </section>
 
 {% endblock %}
+
+{% block bottomJavascripts %}
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset("front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/cube-portfolio-lightbox-home-cities.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/cube-portfolio-lightbox-home-festivals.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("front/js/cube-portfolio-lightbox-home-users.js") }}"></script>
+{% endblock %}   

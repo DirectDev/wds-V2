@@ -1,19 +1,20 @@
 {% for meaCity in MeaCities %}
-    <div class="col-sm-4">
-        <div class="thumbnails-v1">
-            <div class="thumbnail-img">
-                <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}">
-                    <img class="img-responsive" src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('home_city') }}" alt="">    
-                </a>
+
+    <div class="cbp-item print motion">
+        <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}" class="cbp-caption "
+           data-title="{{ meaCity.getName|capitalize }}">
+            <div class="cbp-caption-defaultWrap">
+                <img src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('home_city') }}" alt="">
             </div>
-            <div class="caption">
-                <h3>
-                    <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}">
-                        {{ meaCity.getName|capitalize }}
-                    </a>
-                </h3>
-                <p>{{ meaCity.getDescription| truncate(200, true) }}</p>
+            <div class="cbp-caption-activeWrap">
+                <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                        <div class="cbp-l-caption-title">{{ meaCity.getName|capitalize }}</div>
+                        <div class="cbp-l-caption-desc">{{ meaCity.getDescription| truncate(200, true) }}</div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
+
 {% endfor %}

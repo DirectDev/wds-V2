@@ -208,7 +208,7 @@ trait FixturesDataTrait {
         "Merengue Birthday",
         "Ambiance Salsa",
         "Ambiance Kizomba",
-        "Tango 4 ever",
+        "salsita 4 ever",
         "Milonga day",
         "Concierto Latino",
         "Bailar Bailar y Bailar",
@@ -223,7 +223,7 @@ trait FixturesDataTrait {
         "Merengue Birthday v2",
         "Ambiance Salsa v2",
         "Ambiance Kizomba v2",
-        "Tango 4 ever v2",
+        "salsita 4 ever v2",
         "Milonga day v2",
         "Concierto Latino v2",
         "Bailar Bailar y Bailar v2",
@@ -241,6 +241,8 @@ trait FixturesDataTrait {
         'san_francisco',
         'new_york',
         'budapest',
+        'melbourne',
+        'rio',
     );
     protected $array_eventfile = array(
         1 => '1.jpg',

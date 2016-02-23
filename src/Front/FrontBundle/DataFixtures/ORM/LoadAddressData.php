@@ -57,6 +57,10 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
             $Country = $this->getReference('country-SG');
         if (in_array($city_selected, array('budapest')))
             $Country = $this->getReference('country-HU');
+        if (in_array($city_selected, array('melbourne')))
+            $Country = $this->getReference('country-AU');
+        if (in_array($city_selected, array('rio')))
+            $Country = $this->getReference('country-BR');
         $Address->setCountry($Country);
 
         $manager->persist($Address);

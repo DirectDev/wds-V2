@@ -1,19 +1,20 @@
 {% for meaFestival in MeaFestivals %}
-    <div class="col-sm-4">
-        <div class="thumbnails-v1">
-            <div class="thumbnail-img">
-                <a href="{{ path('front_event_show', { 'id': meaFestival.getEvent.id, 'uri' : meaFestival.getEvent.getURI }) }}" title="{{ meaFestival.getEvent.getTitle()|capitalize }}">
-                    <img class="img-responsive" src="{{ asset(meaFestival.getDefaultImageUrl())|imagine_filter('home_festival') }}" alt="">         
-                </a>
+
+    <div class="cbp-item print motion">
+        <a href="{{ path('front_event_show', { 'id': meaFestival.getEvent.id, 'uri' : meaFestival.getEvent.getURI }) }}" class="cbp-caption"
+           data-title="{{ meaFestival.getEvent.getTitle()|capitalize }}">
+            <div class="cbp-caption-defaultWrap">
+                <img src="{{ asset(meaFestival.getDefaultImageUrl())|imagine_filter('home_festival') }}" alt="">
             </div>
-            <div class="caption">
-                <h3>
-                    <a href="{{ path('front_event_show', { 'id': meaFestival.getEvent.id, 'uri' : meaFestival.getEvent.getURI }) }}" title="{{ meaFestival.getEvent.getTitle()|capitalize }}">
-                        {{ meaFestival.getEvent.getTitle|capitalize }}
-                    </a>
-                </h3>
-                <p>{{ meaFestival.getDescription| truncate(200, true) }}</p>
+            <div class="cbp-caption-activeWrap">
+                <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                        <div class="cbp-l-caption-title">{{ meaFestival.getEvent.getTitle()|capitalize }}</div>
+                        <div class="cbp-l-caption-desc"></div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
+                        
 {% endfor %}

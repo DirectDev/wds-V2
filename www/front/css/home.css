@@ -1,0 +1,16 @@
+.job-img{
+    min-height: 500px;
+}
+
+.job-img .job-img-inputs {
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    padding: 20px 0;
+    position: absolute;
+    /*background: rgba(0,0,0,0.9);*/
+    background: none;
+}
+.job-img{
+    background: url(/assets/img/bg/31.jpg) 70% 40% no-repeat;
+}

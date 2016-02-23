@@ -742,3 +742,14 @@ fieldset[disabled] .btn-search.active {
 .love_form, presence_form{
     margin-right: 18px;
 }
+.navbar-brand {
+    height: 80px !important;
+    width: 225px !important;
+    display: table-cell;
+    vertical-align: middle;
+    background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important;
+    top: 0px !important;  
+}
+.navbar li {
+    padding-top: 3px;
+}

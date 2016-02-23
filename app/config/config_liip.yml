@@ -25,8 +25,8 @@ liip_imagine:
             data_loader:          ~
             default_image:        null
             filters:
-                upscale: { min: [973, 615] } 
-                thumbnail: { size: [973, 615], mode: inbound }
+                upscale: { min: [400, 300] } 
+                thumbnail: { size: [400, 300], mode: inbound }
         home_city:
             quality:              100
             animated:             false
@@ -35,8 +35,8 @@ liip_imagine:
             data_loader:          ~
             default_image:        null
             filters:
-                upscale: { min: [973, 615] } 
-                thumbnail: { size: [973, 615], mode: inbound }
+                upscale: { min: [400, 300] } 
+                thumbnail: { size: [400, 300], mode: inbound }
         home_festival:
             quality:              100
             animated:             false
@@ -45,8 +45,8 @@ liip_imagine:
             data_loader:          ~
             default_image:        null
             filters:
-                upscale: { min: [973, 615] } 
-                thumbnail: { size: [973, 615], mode: inbound }
+                upscale: { min: [400, 300] } 
+                thumbnail: { size: [400, 300], mode: inbound }
         loggedin:
             quality:              100
             animated:             false

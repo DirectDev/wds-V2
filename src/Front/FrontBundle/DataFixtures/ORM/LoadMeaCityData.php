@@ -30,47 +30,19 @@ class LoadMeaCityData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager) {
 
-        $city_reference1 = $city_reference2 = $city_reference3 = null;
-        for ($i = 0; $i <= 10; $i++) {
+        shuffle($this->array_city);
 
-            if ($city_reference1 != $city_reference2 && $city_reference2 != $city_reference3 && $city_reference1 != $city_reference3)
-                break;
-
-            $city_reference1 = $this->array_city[rand(0, count($this->array_city) - 1)];
-            $city_reference2 = $this->array_city[rand(0, count($this->array_city) - 1)];
-            $city_reference3 = $this->array_city[rand(0, count($this->array_city) - 1)];
+        foreach ($this->array_city as $city_reference) {
+            $MeaCity = new MeaCity();
+            $MeaCity->setCity($this->getReference('city-' . $city_reference));
+            $MeaCity->setImage($city_reference);
+            $MeaCity->setOrdre(rand(0, 100));
+            $locale = $this->array_locale[rand(0, 1)];
+            $MeaCity->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
+            $manager->persist($MeaCity);
+            $MeaCity->mergeNewTranslations();
+            $this->addReference('meacity-' . filter_var($city_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaCity);
         }
-
-        $MeaCity = new MeaCity();
-        $MeaCity->setCity($this->getReference('city-'.$city_reference1));
-        $MeaCity->setImage($city_reference1);
-        $MeaCity->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaCity->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaCity);
-        $MeaCity->mergeNewTranslations();
-        $this->addReference('meacity-' . filter_var($city_reference1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaCity);
-
-        $MeaCity = new MeaCity();
-        $MeaCity->setCity($this->getReference('city-'.$city_reference2));
-        $MeaCity->setImage($city_reference2);
-        $MeaCity->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaCity->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaCity);
-        $MeaCity->mergeNewTranslations();
-        $this->addReference('meacity-' . filter_var($city_reference2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaCity);
-
-        $MeaCity = new MeaCity();
-        $MeaCity->setCity($this->getReference('city-'.$city_reference3));
-        $MeaCity->setImage($city_reference3);
-        $MeaCity->setOrdre(rand(0, 100));
-        $locale = $this->array_locale[rand(0, 1)];
-        $MeaCity->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        $manager->persist($MeaCity);
-        $MeaCity->mergeNewTranslations();
-        $this->addReference('meacity-' . filter_var($city_reference3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaCity);
-
 
         $manager->flush();
     }

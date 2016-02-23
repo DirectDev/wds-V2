@@ -2,7 +2,9 @@
 Create: Créer
 Delete: Supprimer
 'I Like': 'J''aime'
+'I don''t go': "Je n'y vais plus"
 'I don''t like': 'Je n''aime plus'
+'I go': "J'y vais"   
 Update: 'Mettre à jour'
 
 address:
@@ -157,6 +159,7 @@ event:
     they_like: 'Ils aiment'
     to: Au
     type: 'Type d''évenement'
+    user_presences: "Ils/elles y vont" 
 
 file:
     add_file: Ajouter
@@ -169,7 +172,7 @@ file:
 
 footer:
     artits: Artistes
-    baseline: 'Trouvez les événements Salsa, Bachata, Kizomba and Tango, n''importe où dans le monde.'
+    baseline: 'Trouvez les événements Salsa, Bachata et Kizomba, n''importe où dans le monde.'
     cities: Villes
     contact: Contactez-nous
     contact_us: Contactez-nous
@@ -675,7 +678,7 @@ front:
     link_delete_address: 'Effacer l''adresse'
     link_delete_eventdate: 'Effacer la date'
     map_title: Carte
-    search_event_button: 'Recherchez les événements'
+    search_event_button: 'Trouvez où danser !'
     today: 'Aujourd''hui'
     user_edit_title: 'Modifier l''utilisateur'
     user_show_title: 'Afficher l''utilisateur'
@@ -683,7 +686,7 @@ front:
 home:
     about_us_benefit_1: 'Une carte montrant les soirées/cours/festival... du jour.'
     about_us_benefit_2: 'Une façon rapide de trouver la salsa dans n''importe quelle ville où vous n''êtes jamais allé.'
-    about_us_benefit_3: 'Un site réservé à la Salsa/Bachata/Kizomba/Tango.'
+    about_us_benefit_3: 'Un site réservé à la Salsa/Bachata/Kizomba.'
     about_us_benefit_4: 'Un site multilingue.'
     about_us_benefit_5: 'Plusieurs danses.'
     about_us_benefit_6: 'C''est gratuit.'
@@ -699,16 +702,16 @@ home:
         warning: 'Attention !'
         warning_no_events: 'Il n''y a pas encore d''évenement Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>.  Ajoutez votre évenement.'
 
-    banner: 'Trouvez les événements Salsa, Bachata, Kizomba and Tango, n''importe où dans le monde.'
+    banner: 'Trouvez les événements Salsa, Bachata et Kizomba, n''importe où dans le monde.'
 
     cities:
-        h2: 'Découvrez la salsa dans ces villes'
+        h2: 'Découvrez les meilleures destinations'
 
     festivals:
         h2: 'Les festivals salsas à travers le monde'
 
     users:
-        h2: 'Les acteurs de la sals'
+        h2: RENCONTRER
 
 link:
     home: Accueil
@@ -726,26 +729,29 @@ music:
 navbar:
     artits: Artistes
     bands: Musiciens
+    bars: Lieux   
     dances: Danses
     dances.bachata: Bachata
     dances.bachata_dominicana: 'Bachata Dominicana'
     dances.bachata_moderna: 'Bachata Moderna'
     dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
-    dances.merengue: Merengue
+    dances.merengue: Merengue   
     dances.salsa: Salsa
     dances.salsa_cubana: 'Salsa Cubana'
     dances.salsa_dominicana: 'Salsa Dominicana'
     dances.salsa_on1: 'Salsa On1'
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
-    dances.tango: Tango
+    dances.tango: navbar.dances.tango   # FIXME
+    discover: Découvrir  
     festivals: Festivals
     festivals.africa: Afrique
     festivals.america: Amérique
     festivals.asia: Asie
     festivals.australia: Australie
     festivals.calendar: Calendier
+    festivals.calendar.p: Les festivals classés par date
     festivals.central_africa: 'Afrique centrale'
     festivals.central_america: 'amérique Centrale'
     festivals.europe: Europe
@@ -763,12 +769,14 @@ navbar:
     learn: Apprendre
     learn.bachata: 'Apprendre la Bachata'
     learn.kizomba: 'Apprendre la Kizomba'
-    learn.merengue: 'Apprendre le Merengue'
+    learn.merengue: navbar.learn.merengue   # FIXME
     learn.salsa: 'Apprendre la Salsa'
-    learn.tango: 'Apprendre le Tango'
+    learn.tango: navbar.learn.tango   # FIXME
     login: Connexion
     logout: Déconnexion
     medias: Médias
+    meet: Rencontrer   
+    meet.dancers: Danceurs/Danseuses 
     moves: 'Passes & Shines'
     musics: Musiques
     publish_button: 'Ajouter un évenement'
@@ -776,10 +784,12 @@ navbar:
     toogle_navigation: Naviguer
     user: Danseurs
     user.add_event: 'Ajouter un événement'
+    user.events: évenements   
     user.my_page: 'Ma page'
     user.my_profile: 'Mon profil'
     user.next_events: 'Mes prochains événements'
     user.passed_events: 'Mes événements précédents'
+    user.profile: Profil  
     videos: Vidéos
 
 overviews:

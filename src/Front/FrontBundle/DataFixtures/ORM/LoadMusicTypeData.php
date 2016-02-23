@@ -49,31 +49,7 @@ class LoadMusicTypeData extends AbstractFixture implements OrderedFixtureInterfa
         $manager->persist($MusicType);
         $this->addReference('musictype-kizomba', $MusicType);
         $MusicType->mergeNewTranslations();
-
-        $MusicType = new MusicType();
-        $MusicType->setName('Tango');
-        $MusicType->translate('en')->setTitle('Tango');
-        $MusicType->translate('fr')->setTitle('Tango');
-        $manager->persist($MusicType);
-        $this->addReference('musictype-tango', $MusicType);
-        $MusicType->mergeNewTranslations();
-
-        $MusicType = new MusicType();
-        $MusicType->setName('Merengue');
-        $MusicType->translate('en')->setTitle('Merengue');
-        $MusicType->translate('fr')->setTitle('Merengue');
-        $manager->persist($MusicType);
-        $this->addReference('musictype-merengue', $MusicType);
-        $MusicType->mergeNewTranslations();
-
-        $MusicType = new MusicType();
-        $MusicType->setName('Zouk');
-        $MusicType->translate('en')->setTitle('Zouk');
-        $MusicType->translate('fr')->setTitle('Zouk');
-        $manager->persist($MusicType);
-        $this->addReference('musictype-zouk', $MusicType);
-        $MusicType->mergeNewTranslations();
-
+        
         $manager->flush();
     }
 
