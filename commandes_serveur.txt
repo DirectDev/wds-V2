@@ -1,0 +1,6 @@
+
+alias php='/usr/local/php5.6/bin/php'
+php composer.phar update
+
+token GIT
+8484e390c249be9d6b6e229e0cd3ace8f1f6c6e9
