@@ -41,9 +41,29 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
                 $UserFile->setName($this->array_userfile_bar[$file_number]);
 
                 $path_src = __DIR__ . "/../../../../../www/fixturesFiles/UserFile/bar/" . $file_number;
-                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . '/large';
-                exec('mkdir "' . $path_dest . '" ');
-                exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                
+                if ($this->detectOsWindows()) {
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . "/large";
+                    exec('mkdir "' . $path_dest . '" ');
+
+                    try {
+                        exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                    } catch (Exception $ex) {
+                        
+                    }
+                } else {
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . "";
+                    exec('mkdir "' . $path_dest . '" ');
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . "/large";
+                    exec('mkdir "' . $path_dest . '" ');
+
+                    try {
+
+                        exec('cp -v -R ' . $path_src . '/' . $file_number . '.jpg  ' . $path_dest);
+                    } catch (Exception $ex) {
+                        
+                    }
+                }
 
                 $manager->persist($UserFile);
 
@@ -67,9 +87,29 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
                 $UserFile->setName($this->array_userfile[$file_number]);
 
                 $path_src = __DIR__ . "/../../../../../www/fixturesFiles/UserFile/" . $file_number;
-                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . '/large';
-                exec('mkdir "' . $path_dest . '" ');
-                exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                
+                if ($this->detectOsWindows()) {
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . "/large";
+                    exec('mkdir "' . $path_dest . '" ');
+
+                    try {
+                        exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                    } catch (Exception $ex) {
+                        
+                    }
+                } else {
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . "";
+                    exec('mkdir "' . $path_dest . '" ');
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/UserFile/" . $User->getId() . "/large";
+                    exec('mkdir "' . $path_dest . '" ');
+
+                    try {
+
+                        exec('cp -v -R ' . $path_src . '/' . $file_number . '.jpg  ' . $path_dest);
+                    } catch (Exception $ex) {
+                        
+                    }
+                }
 
                 $manager->persist($UserFile);
 
@@ -88,6 +128,12 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
      */
     public function getOrder() {
         return 51;
+    }
+
+    private function detectOsWindows() {
+        if (stripos(PHP_OS, 'win') !== false)
+            return true;
+        return false;
     }
 
 }

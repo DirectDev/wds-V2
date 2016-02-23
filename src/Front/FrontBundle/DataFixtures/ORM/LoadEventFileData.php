@@ -41,21 +41,30 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
                 $EventFile->setName($this->array_eventfile[$file_number]);
 
                 $path_src = __DIR__ . "/../../../../../www/fixturesFiles/EventFile/" . $file_number;
-                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId()."";
-                exec('mkdir "' . $path_dest . '" ');
-                $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId()."/large";
-                exec('mkdir "' . $path_dest . '" ');
-                try{
-                                    exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
-                } catch (Exception $ex) {
 
-                }
-                try{
-                                    exec('rsync "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
-                } catch (Exception $ex) {
+                if ($this->detectOsWindows()) {
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId() . "/large";
+                    exec('mkdir "' . $path_dest . '" ');
 
+                    try {
+                        exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                    } catch (Exception $ex) {
+                        
+                    }
+                } else {
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId() . "";
+                    exec('mkdir "' . $path_dest . '" ');
+                    $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId() . "/large";
+                    exec('mkdir "' . $path_dest . '" ');
+
+                    try {
+
+                        exec('cp -v -R ' . $path_src . '/' . $file_number . '.jpg  ' . $path_dest);
+                    } catch (Exception $ex) {
+                        
+                    }
                 }
-                
+
                 $manager->persist($EventFile);
 
                 $EventFile->setEvent($Event);
@@ -73,6 +82,12 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
      */
     public function getOrder() {
         return 50;
+    }
+
+    private function detectOsWindows() {
+        if (stripos(PHP_OS, 'win') !== false)
+            return true;
+        return false;
     }
 
 }
