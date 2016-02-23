@@ -45,8 +45,17 @@ class LoadEventFileData extends AbstractFixture implements OrderedFixtureInterfa
                 exec('mkdir "' . $path_dest . '" ');
                 $path_dest = __DIR__ . "/../../../../../www/uploadedFiles/EventFile/" . $Event->getId()."/large";
                 exec('mkdir "' . $path_dest . '" ');
-                exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                try{
+                                    exec('xcopy "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                } catch (Exception $ex) {
 
+                }
+                try{
+                                    exec('rsync "' . $path_src . '" "' . $path_dest . '" /s /e /c /y /q ');
+                } catch (Exception $ex) {
+
+                }
+                
                 $manager->persist($EventFile);
 
                 $EventFile->setEvent($Event);
