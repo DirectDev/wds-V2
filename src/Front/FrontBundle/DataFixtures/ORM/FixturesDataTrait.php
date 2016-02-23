@@ -5,7 +5,7 @@ namespace Front\FrontBundle\DataFixtures\ORM;
 trait FixturesDataTrait {
 
     protected $array_locale = array('en', 'fr');
-    protected $array_musictype = array('salsa', 'bachata', 'tango', 'kizomba', 'merengue', 'zouk');
+    protected $array_musictype = array('salsa', 'bachata', 'kizomba');
     protected $array_eventtype = array('party', 'festival', 'workshop', 'lesson', 'show', 'concert', 'workshop_party');
     protected $array_user_dancer = array(
         'marie',

@@ -30,21 +30,10 @@ class FixturesFrTest extends WebTestCase {
         $musicType = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Bachata");
         $this->assertNotEmpty($musicType->translate($this->locale)->getTitle());
 
-        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Tango")));
-        $musicType = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Tango");
-        $this->assertNotEmpty($musicType->translate($this->locale)->getTitle());
-
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Kizomba")));
         $musicType = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Kizomba");
         $this->assertNotEmpty($musicType->translate($this->locale)->getTitle());
 
-        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Merengue")));
-        $musicType = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Merengue");
-        $this->assertNotEmpty($musicType->translate($this->locale)->getTitle());
-
-        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Zouk")));
-        $musicType = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName("Zouk");
-        $this->assertNotEmpty($musicType->translate($this->locale)->getTitle());
         
     }
     
