@@ -37,7 +37,7 @@ class CityEnControllerTest extends WebTestCase {
     }
 
     private function findCities() {
-        return $this->em->getRepository('FrontFrontBundle:City')->findAll();
+        return $this->em->getRepository('FrontFrontBundle:City')->findBy(array(), null, 10);
     }
 
     public function testCalendar() {

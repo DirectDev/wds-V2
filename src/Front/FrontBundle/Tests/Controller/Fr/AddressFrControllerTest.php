@@ -84,7 +84,7 @@ class AddressFrControllerTest extends WebTestCase {
     }
 
     private function findAllAddresses() {
-        return $this->em->getRepository('FrontFrontBundle:Address')->findBy(array(), null, 20);
+        return $this->em->getRepository('FrontFrontBundle:Address')->findBy(array(), null, 10);
     }
 
     private function findEventAddress() {
