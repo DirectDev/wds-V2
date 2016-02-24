@@ -540,26 +540,6 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $Page->mergeNewTranslations();
 
         $Page = new Page();
-        $Page->setName('learn-merengue');
-        $Page->translate('en')->setTitle('Learn Merengue');
-        $Page->translate('fr')->setTitle('Apprendre le Merengue');
-        $Page->translate('en')->setDescription(null);
-        $Page->translate('fr')->setDescription(null);
-        $manager->persist($Page);
-        $this->addReference('page-learn-merengue', $Page);
-        $Page->mergeNewTranslations();
-
-        $Page = new Page();
-        $Page->setName('learn-tango');
-        $Page->translate('en')->setTitle('Learn Tango');
-        $Page->translate('fr')->setTitle('Apprendre le Tango');
-        $Page->translate('en')->setDescription(null);
-        $Page->translate('fr')->setDescription(null);
-        $manager->persist($Page);
-        $this->addReference('page-learn-tango', $Page);
-        $Page->mergeNewTranslations();
-
-        $Page = new Page();
         $Page->setName('landing-dancer');
         $Page->translate('en')->setTitle('Landing Page Dancer');
         $Page->translate('fr')->setTitle('Landing Page Dancer');
@@ -587,6 +567,16 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $Page->translate('fr')->setDescription(null);
         $manager->persist($Page);
         $this->addReference('page-landing-pub', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('landing-share-event');
+        $Page->translate('en')->setTitle('Share Event');
+        $Page->translate('fr')->setTitle('Partagez vos évenements');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('page-landing-share-event', $Page);
         $Page->mergeNewTranslations();
 
         $manager->flush();

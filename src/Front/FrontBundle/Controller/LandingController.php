@@ -31,5 +31,12 @@ class LandingController extends Controller {
             throw new \Exception('Page not found!');
         return $this->render('FrontFrontBundle:Landing:page.html.twig', array('page' => $page,));
     }
+    
+    public function landingShareEventAction(Request $request) {
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('landing-share-event');
+        if (!$page)
+            throw new \Exception('Page not found!');
+        return $this->render('FrontFrontBundle:Landing:page.html.twig', array('page' => $page,));
+    }
 
 }

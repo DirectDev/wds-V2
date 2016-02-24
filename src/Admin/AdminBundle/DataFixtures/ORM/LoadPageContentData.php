@@ -186,6 +186,29 @@ La rueda de casino, une variante de ce style, consiste en des rondes (rueda) de 
         $manager->persist($PageContent);
         $PageContent->mergeNewTranslations();
 
+        $share_event = " Partagez vos événements<br>
+                Pourquoi ?<br>
+                vos évenements (soirées, cours, festivals, etc.. apparaitrons dans les recherches <br>
+                vous aurrez plus de danseurs présents<br>
+                gagner en visibilité<br>
+                vous faire connaitre et améliorer votre notoriété<br>
+
+                Comment ?<br>
+                méthode 1<br>
+                inscrivez-vous /  connectez-vous<br>
+                cliquez sur ajouter un évenement<br>
+                méthode 2<br>
+                connectez-vous avec Facebook<br>
+                cliquez sur importez vos événements FB<br>
+        ";
+        $PageContent = new PageContent();
+        $PageContent->setPage($this->getReference('page-landing-share-event'));
+        $PageContent->setPosition(1);
+        $PageContent->translate('en')->setContent($share_event);
+        $PageContent->translate('fr')->setContent($share_event);
+        $manager->persist($PageContent);
+        $PageContent->mergeNewTranslations();
+
         $manager->flush();
     }
 

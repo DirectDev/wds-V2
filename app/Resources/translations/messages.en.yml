@@ -2,9 +2,9 @@
 Create: Create
 Delete: Delete
 'I Like': 'I Like'
-'I don''t go': 'I don''t go'   
+'I don''t go': 'I don''t go'
 'I don''t like': 'I don''t like'
-'I go': 'I go'  
+'I go': 'I go'
 Update: Update
 
 address:
@@ -159,7 +159,7 @@ event:
     they_like: Likes
     to: To
     type: 'Event type'
-    user_presences: They are going  
+    user_presences: 'They are going'
 
 file:
     add_file: 'Add image'
@@ -673,6 +673,7 @@ front:
 
     event_new_title: 'New event'
     eventdates_title: Dates
+    landing_share_event: Share your events  
     link_add_address: 'Add address'
     link_add_eventdate: 'Add event date'
     link_delete_address: 'Delete address'
@@ -729,29 +730,29 @@ music:
 navbar:
     artits: Artits
     bands: Bands
-    bars: Places 
+    bars: Places
     dances: Dances
     dances.bachata: Bachata
     dances.bachata_dominicana: 'Bachata Dominicana'
     dances.bachata_moderna: 'Bachata Moderna'
     dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
-    dances.merengue: navbar.dances.merengue   # FIXME
+    dances.merengue: navbar.dances.merengue
     dances.salsa: Salsa
     dances.salsa_cubana: 'Salsa Cubana'
     dances.salsa_dominicana: 'Salsa Dominicana'
     dances.salsa_on1: 'Salsa On1'
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
-    dances.tango: navbar.dances.tango   # FIXME
-    discover: Discover  
+    dances.tango: navbar.dances.tango
+    discover: Discover
     festivals: Festivals
     festivals.africa: Africa
     festivals.america: America
     festivals.asia: Asia
     festivals.australia: Australia
     festivals.calendar: Calendar
-    festivals.calendar.p: Find festivals by date
+    festivals.calendar.p: 'Find festivals by date'
     festivals.central_africa: 'Central Africa'
     festivals.central_america: 'Central America'
     festivals.europe: Europe
@@ -769,9 +770,9 @@ navbar:
     learn: Learn
     learn.bachata: 'Learn Bachata'
     learn.kizomba: 'Learn Kizomba'
-    learn.merengue: navbar.learn.merengue   # FIXME
+    learn.merengue: navbar.learn.merengue
     learn.salsa: 'Learn Salsa'
-    learn.tango: navbar.learn.tango   # FIXME
+    learn.tango: navbar.learn.tango
     login: Login
     logout: Logout
     medias: Medias
@@ -784,7 +785,7 @@ navbar:
     toogle_navigation: 'Toogle Navigation'
     user: Dancers
     user.add_event: 'Add Event'
-    user.events: Events 
+    user.events: Events
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
     user.next_events: 'My Next Events'

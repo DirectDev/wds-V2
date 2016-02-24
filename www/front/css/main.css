@@ -783,6 +783,6 @@ fieldset[disabled] .btn-search.active {
     }
 }
 
-button.width-full{
+button.width-full, a.width-full{
     width: 100%;
 }

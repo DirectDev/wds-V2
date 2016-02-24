@@ -86,12 +86,11 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-salsa')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-bachata')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-kizomba')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-merengue')));
-        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('learn-tango')));
 
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-dancer')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-pro')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-pub')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-share-event')));
     }
 
 }

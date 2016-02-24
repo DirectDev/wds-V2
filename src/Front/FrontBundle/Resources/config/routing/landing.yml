@@ -11,3 +11,8 @@ landing_pub:
     path:     /landing_pub
     defaults: { _controller: "FrontFrontBundle:Landing:landingPub" }
     
+
+landing-share-event:
+    path:     /share-event
+    defaults: { _controller: "FrontFrontBundle:Landing:landingShareEvent" }
+    
