@@ -786,3 +786,21 @@ fieldset[disabled] .btn-search.active {
 button.width-full, a.width-full{
     width: 100%;
 }
+.btn-u-lg {
+    color: #fff;
+    background: #e67e22;
+}
+.btn-u-lg:hover, .btn-u-lg:focus, .btn-u-lg:active, .btn-u-lg.active{
+    background: #5fb611;
+}
+.btn-u-lg:hover {
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.border-bottom-header{
+    border-bottom: solid 2px #eee;
+}

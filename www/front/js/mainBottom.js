@@ -542,3 +542,11 @@ $(document).on('click', 'a.link-love-music', function () {
     });
     return false;
 });
+
+$(window).scroll(function (event) {
+    var scroll = $(window).scrollTop();
+    if (scroll > 80)
+        $('.search_transversal').addClass('border-bottom-header');
+    else
+        $('.search_transversal').removeClass('border-bottom-header');
+});
