@@ -716,7 +716,7 @@ hwi_oauth_connect_service: '/connecter/service/{service}'
 hwi_oauth_service_redirect: '/connecter/{service}'
 
 # Desc: /landing/share-event
-landing-share-event: /landing/partagez-evenements  
+landing-share-event: /landing/partagez-evenements
 
 # Desc: /landing/landing_dancer
 landing_dancer: /landing/landing_dancer

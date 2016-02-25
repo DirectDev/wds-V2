@@ -163,13 +163,13 @@
                                                         </li>
 
                                                         <li>
-                                                            <a href="">
-                                                                Videos
+                                                            <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Salsa'  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.salsa.video{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Musics
+                                                            <a href="{{ path('front_music_filter', {'music_filter[tag]':  'Salsa'  , 'music_filter[_token]' :  csrf_token('music_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.salsa.music{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -191,13 +191,13 @@
                                                             <a href="{{ path('dance_bachata_sensual') }}">{% trans %}navbar.dances.bachata_sensual{% endtrans %}</a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Videos
+                                                            <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Bachata'  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.bachata.video{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Musics
+                                                            <a href="{{ path('front_music_filter', {'music_filter[tag]':  'Bachata'  , 'music_filter[_token]' :  csrf_token('music_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.bachata.music{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -215,13 +215,13 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Videos
+                                                            <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Kizomba'  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.kizomba.video{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Musics
+                                                            <a href="{{ path('front_music_filter', {'music_filter[tag]':  'Kizomba'  , 'music_filter[_token]' :  csrf_token('music_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.kizomba.music{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -247,14 +247,14 @@
                                                 <div class="col-md-3 equal-height-in">
                                                     <ul class="list-unstyled equal-height-list">
                                                         <li>
-                                                            <h3>Salsa</h3>
+                                                            <h3>{% trans %}navbar.dances.salsa{% endtrans %}</h3>
                                                         </li>
 
                                                         <li><a href="{{ path('learn_salsa') }}">{% trans %}navbar.learn.salsa{% endtrans %}</a></li>
 
                                                         <li>
-                                                            <a href="">
-                                                                Moves & shines de Salsa
+                                                            <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Salsa' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.salsa.move{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -263,14 +263,14 @@
                                                 <div class="col-md-3 equal-height-in">
                                                     <ul class="list-unstyled equal-height-list">
                                                         <li>
-                                                            <h3>Bachata</h3>
+                                                            <h3>{% trans %}navbar.dances.bachata{% endtrans %}</h3>
                                                         </li>
 
                                                         <li><a href="{{ path('learn_bachata') }}">{% trans %}navbar.learn.bachata{% endtrans %}</a></li>
 
                                                         <li>
-                                                            <a href="">
-                                                                Moves & shines de Bachata
+                                                            <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Bachata' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.bachata.move{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -279,14 +279,14 @@
                                                 <div class="col-md-3 equal-height-in">
                                                     <ul class="list-unstyled equal-height-list">
                                                         <li>
-                                                            <h3>Kizomba</h3>
+                                                            <h3>{% trans %}navbar.dances.kizomba{% endtrans %}</h3>
                                                         </li>
 
                                                         <li><a href="{{ path('learn_kizomba') }}">{% trans %}navbar.learn.kizomba{% endtrans %}</a></li>
 
                                                         <li>
-                                                            <a href="">
-                                                                Moves & shines de Kizomba
+                                                            <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Kizomba' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                                                {% trans %}navbar.dances.kizomba.move{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -316,18 +316,18 @@
                                                         </li>
 
                                                         <li>
-                                                            <a href="">
-                                                                Salsa
+                                                            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Salsa' , 'user_filter[usertype]':  'Dancer'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                                                {% trans %}navbar.meet.dancers.salsa{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Bachata
+                                                            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Bachata' , 'user_filter[usertype]':  'Dancer'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                                                {% trans %}navbar.meet.dancers.bachata{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Kizomba
+                                                            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Kizomba' , 'user_filter[usertype]':  'Dancer'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                                                {% trans %}navbar.meet.dancers.kizomba{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -336,22 +336,22 @@
                                                 <div class="col-md-3 equal-height-in">
                                                     <ul class="list-unstyled equal-height-list">
                                                         <li>
-                                                            <h3>{% trans %}navbar.bars{% endtrans %}</h3>
+                                                            <h3>{% trans %}navbar.meet.bars{% endtrans %}</h3>
                                                         </li>
 
                                                         <li>
-                                                            <a href="">
-                                                                Salsa
+                                                            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Salsa' , 'user_filter[usertype]':  'bar'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                                                {% trans %}navbar.meet.bars.salsa{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Bachata
+                                                            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Bachata' , 'user_filter[usertype]':  'bar'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                                                {% trans %}navbar.meet.bars.bachata{% endtrans %}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
-                                                                Kizomba
+                                                            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Kizomba' , 'user_filter[usertype]':  'bar'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                                                {% trans %}navbar.meet.bars.kizomba{% endtrans %}
                                                             </a>
                                                         </li>
                                                     </ul>

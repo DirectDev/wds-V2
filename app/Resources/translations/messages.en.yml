@@ -673,7 +673,7 @@ front:
 
     event_new_title: 'New event'
     eventdates_title: Dates
-    landing_share_event: Share your events  
+    landing_share_event: 'Share your events'
     link_add_address: 'Add address'
     link_add_eventdate: 'Add event date'
     link_delete_address: 'Delete address'
@@ -733,18 +733,25 @@ navbar:
     bars: Places
     dances: Dances
     dances.bachata: Bachata
+    dances.bachata.move: Moves & Shines of Bachata
+    dances.bachata.music: Musics of Bachata
+    dances.bachata.video: Videos of Bachata
     dances.bachata_dominicana: 'Bachata Dominicana'
     dances.bachata_moderna: 'Bachata Moderna'
     dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
-    dances.merengue: navbar.dances.merengue
+    dances.kizomba.move: Moves & Shines of Salsa
+    dances.kizomba.music: Musics of Kizomba
+    dances.kizomba.video: Videos of Kizomba
     dances.salsa: Salsa
+    dances.salsa.move: Moves & Shines of Salsa
+    dances.salsa.music: Musics of Salsa
+    dances.salsa.video: Videos of Salsa
     dances.salsa_cubana: 'Salsa Cubana'
     dances.salsa_dominicana: 'Salsa Dominicana'
     dances.salsa_on1: 'Salsa On1'
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
-    dances.tango: navbar.dances.tango
     discover: Discover
     festivals: Festivals
     festivals.africa: Africa
@@ -770,14 +777,19 @@ navbar:
     learn: Learn
     learn.bachata: 'Learn Bachata'
     learn.kizomba: 'Learn Kizomba'
-    learn.merengue: navbar.learn.merengue
     learn.salsa: 'Learn Salsa'
-    learn.tango: navbar.learn.tango
     login: Login
     logout: Logout
     medias: Medias
     meet: Meet
-    meet.dancers: Dancers
+    meet.bars: Find places
+    meet.bars.bachata: Places for bachata
+    meet.bars.kizomba: Places for kizomba
+    meet.bars.salsa: Places for Salsa
+    meet.dancers: Find Dancers
+    meet.dancers.bachata: Bachata dancers
+    meet.dancers.kizomba: Kizomba dancers
+    meet.dancers.salsa: Salsa dancers
     moves: 'Moves & Shines'
     musics: Musics
     publish_button: 'Add Event'

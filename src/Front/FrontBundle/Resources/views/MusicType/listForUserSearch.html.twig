@@ -2,7 +2,8 @@
 <ul class="list-unstyled">
     {% for musicType in musicTypes %}
         <li>
-            <a href="#" class="search-user-musictype-link">
+            <a href="{{ path('front_user_filter', {'user_filter[musictype]':  musicType.getName() , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}"
+               class="search-user-musictype-link">
                 {{ musicType.getTitle() }}
             </a>
         </li>     

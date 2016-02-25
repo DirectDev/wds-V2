@@ -2,7 +2,8 @@
 <ul class="list-unstyled">
     {% for userType in userTypes %}
         <li>
-            <a href="#" class="search-user-usertype-link">
+            <a href="{{ path('front_user_filter', {'user_filter[usertype]':  userType.getName() , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}"
+               class="search-user-usertype-link">
                 {{ userType.getTitle() }}
             </a>
         </li>     
