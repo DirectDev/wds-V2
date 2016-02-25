@@ -36,7 +36,7 @@ class DefaultController extends Controller {
                     'MeaUsers' => $MeaUsers,
         ));
     }
-    
+
     public function policyAction(Request $request) {
 
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('policy');
@@ -63,6 +63,44 @@ class DefaultController extends Controller {
                     'cities' => $cities,
                     'festivals' => $festivals,
                     'artists' => $artists,
+        ));
+    }
+
+    public function navbarAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+  
+        $MeaUsersSalsaDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForSalsaDiscover(1);
+        $MeaUsersBachataDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForBachataDiscover(2);
+        $MeaUsersKizombaDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForKizombaDiscover(3);
+        $MeaCitiesDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForDiscover(5);
+       
+        $MeaUsersSalsaLearn = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForSalsaLearn(2);
+        $MeaUsersBachataLearn = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForBachataLearn(2);
+        $MeaUsersKizombaLearn = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForKizombaLearn(2);
+        $MeaCitiesLearn = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForLearn(4);
+        
+        $MeaUsersSalsaMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForSalsaMeet(2);
+        $MeaUsersBachataMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForBachataMeet(2);
+        $MeaUsersKizombaMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForKizombaMeet(2);
+        $MeaCitiesMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForMeet(4);
+       
+
+        return $this->render('FrontFrontBundle:Navbar:navbar.html.twig', array(          
+                    'MeaUsersSalsaDiscover' => $MeaUsersSalsaDiscover,
+                    'MeaUsersBachataDiscover' => $MeaUsersBachataDiscover,
+                    'MeaUsersKizombaDiscover' => $MeaUsersKizombaDiscover,
+                    'MeaCitiesDiscover' => $MeaCitiesDiscover,
+            
+                    'MeaUsersSalsaLearn' => $MeaUsersSalsaLearn,
+                    'MeaUsersBachataLearn' => $MeaUsersBachataLearn,
+                    'MeaUsersKizombaLearn' => $MeaUsersKizombaLearn,
+                    'MeaCitiesLearn' => $MeaCitiesLearn,
+            
+                    'MeaUsersSalsaMeet' => $MeaUsersSalsaMeet,
+                    'MeaUsersBachataMeet' => $MeaUsersBachataMeet,
+                    'MeaUsersKizombaMeet' => $MeaUsersKizombaMeet,
+                    'MeaCitiesMeet' => $MeaCitiesMeet,
         ));
     }
 

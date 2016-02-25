@@ -781,6 +781,9 @@ fieldset[disabled] .btn-search.active {
     .sub_search_transversal{
         display:none;
     }
+    .nav_sm_hidden_highlight{
+        display:none !important;
+    }
 }
 
 button.width-full, a.width-full{
@@ -803,4 +806,9 @@ button.width-full, a.width-full{
 }
 .border-bottom-header{
     border-bottom: solid 2px #eee;
+}
+a.navbar_highlight {
+    line-height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
 }

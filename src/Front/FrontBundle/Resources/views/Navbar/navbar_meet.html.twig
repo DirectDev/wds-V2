@@ -1,0 +1,111 @@
+
+
+<li class="dropdown mega-menu-fullwidth">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+        {% trans %}navbar.meet{% endtrans %}
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <div class="mega-menu-content disable-icons">
+                <div class="container">
+                    <div class="row equal-height">
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.meet.salsa{% endtrans %}</h3>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Salsa' , 'user_filter[usertype]':  'artist'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.salsa.artist{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Salsa' , 'user_filter[usertype]':  'teacher'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.salsa.teacher{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'Salsa' , 'user_filter[usertype]':  'artist'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.salsa.bar{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersSalsaMeet %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.meet.bachata{% endtrans %}</h3>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'bachata' , 'user_filter[usertype]':  'artist'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.bachata.artist{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'bachata' , 'user_filter[usertype]':  'teacher'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.bachata.teacher{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'bachata' , 'user_filter[usertype]':  'artist'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.bachata.bar{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersBachataMeet %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.meet.kizomba{% endtrans %}</h3>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'kizomba' , 'user_filter[usertype]':  'artist'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.kizomba.artist{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'kizomba' , 'user_filter[usertype]':  'teacher'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.kizomba.teacher{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_user_filter', {'user_filter[musictype]':  'kizomba' , 'user_filter[usertype]':  'artist'  , 'user_filter[_token]' :  csrf_token('user_filter')  } ) }}">
+                                        {% trans %}navbar.meet.kizomba.bar{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersKizombaMeet %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in nav_sm_hidden_highlight">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.meet.cities{% endtrans %}</h3>
+                                </li>
+                                {% for meaCity in MeaCitiesMeet %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_city.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>            
+
+                    </div>
+                </div>    
+            </div>    
+        </li>
+    </ul>
+</li>
+

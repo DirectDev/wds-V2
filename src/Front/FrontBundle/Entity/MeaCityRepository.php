@@ -17,4 +17,29 @@ class MeaCityRepository extends \Doctrine\ORM\EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function findForDiscover($limit = 3) {
+        $query = $this->createQueryBuilder('mc')
+                ->where('(mc.salsaDiscover = 1 OR mc.bachataDiscover = 1 OR mc.kizombaDiscover = 1)')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForLearn($limit = 3) {
+        $query = $this->createQueryBuilder('mc')
+                ->where('(mc.salsaLearn = 1 OR mc.bachataLearn = 1 OR mc.kizombaLearn = 1)')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+    
+    
+    public function findForMeet($limit = 3) {
+        $query = $this->createQueryBuilder('mc')
+                ->where('(mc.salsaMeet = 1 OR mc.bachataMeet = 1 OR mc.kizombaMeet = 1)')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
 }

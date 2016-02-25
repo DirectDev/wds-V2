@@ -1,0 +1,20 @@
+
+{% set user = MeaUser.user %}
+<li class="nav_sm_hidden_highlight">
+    <a href="{{ path('front_user_show_public', { username : user.getUsername(), id : user.id } ) }}" class="navbar_highlight"
+       data-title="{{ user.getUsername|capitalize }}">
+        <div class="pull-left ">
+            {% if user.getProfilePictureUrl() %}
+                <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('navbar') }}">
+            {% else %}
+                <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('navbar') }}">
+            {% endif %} 
+        </div>
+        <div class="text-left">
+            <span class="m-l-10">
+                {{ user.textForNavbarHighlight()|truncate(25, '...')|capitalize }}
+            </span>
+        </div>
+        <div class="clearfix"></div>
+    </a>
+</li>

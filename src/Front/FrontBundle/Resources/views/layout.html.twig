@@ -4,16 +4,13 @@
     {{ parent() }}
 {% endblock %}
 
-
 {% block body %}
 
     {% if app.request.get('_route') != 'homepage' and  app.request.get('_route') != 'home' %}
         {% include 'FrontFrontBundle::search.html.twig' %}
     {% endif %}
 
-    {% include 'FrontFrontBundle::navbar.html.twig' %}
-
-
+    {% render(path('navbar')) %}
 
 {% block content %}{% endblock %}
 

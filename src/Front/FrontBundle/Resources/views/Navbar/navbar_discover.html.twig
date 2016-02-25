@@ -1,0 +1,132 @@
+
+
+<li class="dropdown mega-menu-fullwidth">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+        {% trans %}navbar.discover{% endtrans %}
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <div class="mega-menu-content disable-icons">
+                <div class="container">
+                    <div class="row equal-height">
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.dances.salsa{% endtrans %}</h3>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('dance_salsa_cubana') }}">{% trans %}navbar.dances.salsa_cubana{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_on1') }}">{% trans %}navbar.dances.salsa_on1{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_on2') }}">{% trans %}navbar.dances.salsa_on2{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_dominicana') }}">{% trans %}navbar.dances.salsa_dominicana{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_salsa_rueda') }}">{% trans %}navbar.dances.salsa_rueda{% endtrans %}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Salsa'  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                        <i class="fa fa-video-camera"></i>
+                                        {% trans %}navbar.dances.salsa.video{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_music_filter', {'music_filter[tag]':  'Salsa'  , 'music_filter[_token]' :  csrf_token('music_filter')  } ) }}">
+                                        <i class="fa fa-music"></i>
+                                        {% trans %}navbar.dances.salsa.music{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersSalsaDiscover %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.dances.bachata{% endtrans %}</h3>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('dance_bachata_moderna') }}">{% trans %}navbar.dances.bachata_moderna{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_bachata_dominicana') }}">{% trans %}navbar.dances.bachata_dominicana{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dance_bachata_sensual') }}">{% trans %}navbar.dances.bachata_sensual{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Bachata'  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                        <i class="fa fa-video-camera"></i>
+                                        {% trans %}navbar.dances.bachata.video{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_music_filter', {'music_filter[tag]':  'Bachata'  , 'music_filter[_token]' :  csrf_token('music_filter')  } ) }}">
+                                        <i class="fa fa-music"></i>
+                                        {% trans %}navbar.dances.bachata.music{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersBachataDiscover %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.dances.kizomba{% endtrans %}</h3>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('dance_kizomba') }}">
+                                        {% trans %}navbar.dances.kizomba{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Kizomba'  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                        <i class="fa fa-video-camera"></i>
+                                        {% trans %}navbar.dances.kizomba.video{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_music_filter', {'music_filter[tag]':  'Kizomba'  , 'music_filter[_token]' :  csrf_token('music_filter')  } ) }}">
+                                        <i class="fa fa-music"></i>
+                                        {% trans %}navbar.dances.kizomba.music{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersKizombaDiscover %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in nav_sm_hidden_highlight">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.discover.cities{% endtrans %}</h3>
+                                </li>
+                                {% for meaCity in MeaCitiesDiscover %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_city.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>            
+
+                    </div>
+                </div>    
+            </div>    
+        </li>
+    </ul>
+</li>
+

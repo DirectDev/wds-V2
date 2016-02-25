@@ -733,26 +733,27 @@ navbar:
     bars: Lieux
     dances: Danses
     dances.bachata: Bachata
-    dances.bachata.move: Passes et Shines de Bachata
-    dances.bachata.music: Musiques de Bachata
-    dances.bachata.video: Vidéos de Bachata
+    dances.bachata.move: 'Passes et Shines de Bachata'
+    dances.bachata.music: 'Musiques de Bachata'
+    dances.bachata.video: 'Vidéos de Bachata'
     dances.bachata_dominicana: 'Bachata Dominicana'
     dances.bachata_moderna: 'Bachata Moderna'
     dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
-    dances.kizomba.move: Passes et Shines de Kizomba
-    dances.kizomba.music: Musiques de Kizomba
-    dances.kizomba.video: Vidéos de Kizomba
+    dances.kizomba.move: 'Passes et Shines de Kizomba'
+    dances.kizomba.music: 'Musiques de Kizomba'
+    dances.kizomba.video: 'Vidéos de Kizomba'
     dances.salsa: Salsa
-    dances.salsa.move: Passes et Shines de Salsa
-    dances.salsa.music: Musiques de Salsa
-    dances.salsa.video: Videos de Salsa
+    dances.salsa.move: 'Passes et Shines de Salsa'
+    dances.salsa.music: 'Musiques de Salsa'
+    dances.salsa.video: 'Videos de Salsa'
     dances.salsa_cubana: 'Salsa Cubana'
     dances.salsa_dominicana: 'Salsa Dominicana'
     dances.salsa_on1: 'Salsa On1'
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
     discover: Découvrir
+    discover.cities: Destinations
     festivals: Festivals
     festivals.africa: Afrique
     festivals.america: Amérique
@@ -776,20 +777,26 @@ navbar:
     home: Accueil
     learn: Apprendre
     learn.bachata: 'Apprendre la Bachata'
+    learn.cities: Destinations
     learn.kizomba: 'Apprendre la Kizomba'
     learn.salsa: 'Apprendre la Salsa'
     login: Connexion
     logout: Déconnexion
     medias: Médias
     meet: Rencontrer
-    meet.bars: Trouver où Danser
-    meet.bars.bachata: Lieux pour la Bachata
-    meet.bars.kizomba: Lieux pour la Kizomba
-    meet.bars.salsa: Lieux pour la Salsa
-    meet.dancers: Rencontrer les danseurs(seuses)
-    meet.dancers.bachata: Danseurs(seuses) de Bachata
-    meet.dancers.kizomba: Danseurs(seuses) de Kizomba
-    meet.dancers.salsa: Danseurs(seuses) de Salsa
+    meet.bachata: Bachata  
+    meet.bachata.artist: Danseurs pro
+    meet.bachata.bar: Lieux
+    meet.bachata.teacher: Professeurs
+    meet.cities: Destinations
+    meet.kizomba: Kizomba  
+    meet.kizomba.artist: Danseurs pro
+    meet.kizomba.bar: Lieux
+    meet.kizomba.teacher: Professeurs
+    meet.salsa: Salsa  
+    meet.salsa.artist: Danseurs pro
+    meet.salsa.bar: Lieux
+    meet.salsa.teacher: Professeurs
     moves: 'Passes & Shines'
     musics: Musiques
     publish_button: 'Ajouter un évenement'

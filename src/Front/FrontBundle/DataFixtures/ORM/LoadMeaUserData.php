@@ -40,6 +40,15 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
             $MeaUser = new MeaUser();
             $MeaUser->setUser($this->getReference('user-' . filter_var($user_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
             $MeaUser->setOrdre(rand(0, 100));
+            $MeaUser->setSalsaDiscover(rand(0, 1));
+            $MeaUser->setBachataDiscover(rand(0, 1));
+            $MeaUser->setKizombaDiscover(rand(0, 1));
+            $MeaUser->setSalsaLearn(rand(0, 1));
+            $MeaUser->setBachataLearn(rand(0, 1));
+            $MeaUser->setKizombaLearn(rand(0, 1));
+            $MeaUser->setSalsaMeet(rand(0, 1));
+            $MeaUser->setBachataMeet(rand(0, 1));
+            $MeaUser->setKizombaMeet(rand(0, 1));
             $locale = $this->array_locale[rand(0, 1)];
             $MeaUser->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
             $manager->persist($MeaUser);

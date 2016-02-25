@@ -733,26 +733,27 @@ navbar:
     bars: Places
     dances: Dances
     dances.bachata: Bachata
-    dances.bachata.move: Moves & Shines of Bachata
-    dances.bachata.music: Musics of Bachata
-    dances.bachata.video: Videos of Bachata
+    dances.bachata.move: 'Moves & Shines of Bachata'
+    dances.bachata.music: 'Musics of Bachata'
+    dances.bachata.video: 'Videos of Bachata'
     dances.bachata_dominicana: 'Bachata Dominicana'
     dances.bachata_moderna: 'Bachata Moderna'
     dances.bachata_sensual: 'Bachata Sensual'
     dances.kizomba: Kizomba
-    dances.kizomba.move: Moves & Shines of Salsa
-    dances.kizomba.music: Musics of Kizomba
-    dances.kizomba.video: Videos of Kizomba
+    dances.kizomba.move: 'Moves & Shines of Salsa'
+    dances.kizomba.music: 'Musics of Kizomba'
+    dances.kizomba.video: 'Videos of Kizomba'
     dances.salsa: Salsa
-    dances.salsa.move: Moves & Shines of Salsa
-    dances.salsa.music: Musics of Salsa
-    dances.salsa.video: Videos of Salsa
+    dances.salsa.move: 'Moves & Shines of Salsa'
+    dances.salsa.music: 'Musics of Salsa'
+    dances.salsa.video: 'Videos of Salsa'
     dances.salsa_cubana: 'Salsa Cubana'
     dances.salsa_dominicana: 'Salsa Dominicana'
     dances.salsa_on1: 'Salsa On1'
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
     discover: Discover
+    discover.cities: Discover destinations
     festivals: Festivals
     festivals.africa: Africa
     festivals.america: America
@@ -776,20 +777,27 @@ navbar:
     home: Home
     learn: Learn
     learn.bachata: 'Learn Bachata'
+    learn.cities: Destinations  
     learn.kizomba: 'Learn Kizomba'
     learn.salsa: 'Learn Salsa'
     login: Login
     logout: Logout
     medias: Medias
     meet: Meet
-    meet.bars: Find places
-    meet.bars.bachata: Places for bachata
-    meet.bars.kizomba: Places for kizomba
-    meet.bars.salsa: Places for Salsa
-    meet.dancers: Find Dancers
-    meet.dancers.bachata: Bachata dancers
-    meet.dancers.kizomba: Kizomba dancers
-    meet.dancers.salsa: Salsa dancers
+    meet.bachata: Bachata  
+    meet.bachata.artist: Artists
+    meet.bachata.bar: Places
+    meet.bachata.teacher: Teachers   
+    meet.bars: 'Find places'
+    meet.cities: Destinations
+    meet.kizomba: Kizomba  
+    meet.kizomba.artist: Artists   
+    meet.kizomba.bar: Places
+    meet.kizomba.teacher: Teachers   
+    meet.salsa: Salsa 
+    meet.salsa.artist: Artists  
+    meet.salsa.bar: Places
+    meet.salsa.teacher: Teachers 
     moves: 'Moves & Shines'
     musics: Musics
     publish_button: 'Add Event'

@@ -328,6 +328,10 @@ class User extends BaseUser {
         return false;
     }
 
+    public function textForNavbarHighlight() {
+        return $this->getUsername() . ' / ' . ucfirst($this->getCity());
+    }
+
     /**
      * Get id
      *

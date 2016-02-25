@@ -1,0 +1,88 @@
+
+<li class="dropdown mega-menu-fullwidth">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+        {% trans %}navbar.learn{% endtrans %}
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <div class="mega-menu-content disable-icons">
+                <div class="container">
+                    <div class="row equal-height">
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.dances.salsa{% endtrans %}</h3>
+                                </li>
+
+                                <li><a href="{{ path('learn_salsa') }}">{% trans %}navbar.learn.salsa{% endtrans %}</a></li>
+
+                                <li>
+                                    <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Salsa' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                        <i class="fa fa-video-camera"></i>
+                                        {% trans %}navbar.dances.salsa.move{% endtrans %}
+                                    </a>
+                                </li>
+                                {% for MeaUser in MeaUsersSalsaLearn %}
+                                    {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.dances.bachata{% endtrans %}</h3>
+                                </li>
+
+                                <li><a href="{{ path('learn_bachata') }}">{% trans %}navbar.learn.bachata{% endtrans %}</a></li>
+
+                                <li>
+                                    <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Bachata' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                        <i class="fa fa-video-camera"></i>
+                                        {% trans %}navbar.dances.bachata.move{% endtrans %}
+                                    </a>
+                                </li>{% for MeaUser in MeaUsersBachataLearn %}
+                                {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="col-md-3 equal-height-in">
+                                <ul class="list-unstyled equal-height-list">
+                                    <li>
+                                        <h3>{% trans %}navbar.dances.kizomba{% endtrans %}</h3>
+                                    </li>
+
+                                    <li><a href="{{ path('learn_kizomba') }}">{% trans %}navbar.learn.kizomba{% endtrans %}</a></li>
+
+                                    <li>
+                                        <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Kizomba' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
+                                            <i class="fa fa-video-camera"></i>
+                                            {% trans %}navbar.dances.kizomba.move{% endtrans %}
+                                        </a>
+                                    </li>
+                                    {% for MeaUser in MeaUsersKizombaLearn %}
+                                        {% include 'FrontFrontBundle:Navbar:navbar_li_user.html.twig' %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="col-md-3 equal-height-in nav_sm_hidden_highlight">
+                                <ul class="list-unstyled equal-height-list">
+                                    <li>
+                                        <h3>{% trans %}navbar.learn.cities{% endtrans %}</h3>
+                                    </li>
+                                    {% for meaCity in MeaCitiesLearn %}
+                                        {% include 'FrontFrontBundle:Navbar:navbar_li_city.html.twig' %}
+                                    {% endfor %}
+                                </ul>
+                            </div>  
+
+                        </div>
+                    </div>    
+                </div>    
+            </li>
+        </ul>
+    </li>
+

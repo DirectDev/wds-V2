@@ -1,0 +1,14 @@
+<li class="nav_sm_hidden_highlight">
+    <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}" class="navbar_highlight"
+       data-title="{{ meaCity.getName|capitalize }}">
+        <div class="pull-left ">
+            <img src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('navbar') }}" alt=""> 
+        </div>
+        <div class="text-left">
+            <span class="m-l-10">
+                {{ meaCity.getName()|truncate(25, '...')|capitalize }}
+            </span>
+        </div>
+        <div class="clearfix"></div>
+    </a>
+</li>

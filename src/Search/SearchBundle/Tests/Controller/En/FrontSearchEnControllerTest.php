@@ -17,6 +17,7 @@ class FrontSearchEnControllerTest extends WebTestCase {
     private $clientLogged;
     private $PHP_AUTH_USER = 'Jerome';
     private $PHP_AUTH_PW = '1234';
+    private $unknown_city = 'liverpool';
 
     public function __construct() {
         static::$kernel = static::createKernel();
@@ -51,6 +52,22 @@ class FrontSearchEnControllerTest extends WebTestCase {
             $this->assertTrue($this->client->getResponse()->isSuccessful());
             $this->assertContains($this->stripAccents($city->getName()), $this->stripAccents($crawler->filter('title')->text()));
         }
+
+        $crawler = $this->client->request('GET', $this->router->generate('search_search_front_event', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
+
+    public function testUnknownCityAnonymous() {
+
+        $crawler = $this->client->request('GET', $this->router->generate('search_search_front_event', array('_locale' => $this->locale)));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $route = $this->router->generate('search_search_front_event', array('_locale' => $this->locale,));
+        $route .= "?searchcity=" . urlencode($this->unknown_city) . "&searcheventdate=" . date('Y-m-d');
+        $crawler = $this->client->request('GET', $route);
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertContains($this->stripAccents($this->unknown_city), $this->stripAccents($crawler->filter('title')->text()));
 
         $crawler = $this->client->request('GET', $this->router->generate('search_search_front_event', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());

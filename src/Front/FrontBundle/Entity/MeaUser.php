@@ -15,11 +15,10 @@ use Doctrine\Common\Collections\Criteria;
  * @ORM\Table(name="meauser")
  * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\MeaUserRepository")
  */
-class MeaUser
-{
-    
+class MeaUser {
+
     use ORMBehaviors\Translatable\Translatable;
-    
+
     /**
      * @var integer
      *
@@ -35,14 +34,77 @@ class MeaUser
      * @ORM\Column(name="ordre", type="integer")
      */
     private $ordre;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="meaUser")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * 
      * */
     protected $user;
-    
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="salsa_discover", type="integer", nullable=true)
+     */
+    private $salsaDiscover;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bachata_discover", type="integer", nullable=true)
+     */
+    private $bachataDiscover;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="kizomba_discover", type="integer", nullable=true)
+     */
+    private $kizombaDiscover;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="salsa_learn", type="integer", nullable=true)
+     */
+    private $salsaLearn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bachata_learn", type="integer", nullable=true)
+     */
+    private $bachataLearn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="kizomba_learn", type="integer", nullable=true)
+     */
+    private $kizombaLearn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="salsa_meet", type="integer", nullable=true)
+     */
+    private $salsaMeet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bachata_meet", type="integer", nullable=true)
+     */
+    private $bachataMeet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="kizomba_meet", type="integer", nullable=true)
+     */
+    private $kizombaMeet;
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -56,14 +118,12 @@ class MeaUser
         }
     }
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -74,8 +134,7 @@ class MeaUser
      *
      * @return MeaUser
      */
-    public function setOrdre($ordre)
-    {
+    public function setOrdre($ordre) {
         $this->ordre = $ordre;
 
         return $this;
@@ -86,8 +145,7 @@ class MeaUser
      *
      * @return integer
      */
-    public function getOrdre()
-    {
+    public function getOrdre() {
         return $this->ordre;
     }
 
@@ -98,8 +156,7 @@ class MeaUser
      *
      * @return MeaUser
      */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
-    {
+    public function setUser(\User\UserBundle\Entity\User $user = null) {
         $this->user = $user;
 
         return $this;
@@ -110,8 +167,212 @@ class MeaUser
      *
      * @return \User\UserBundle\Entity\User
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
+    }
+
+    /**
+     * Set salsaDiscover
+     *
+     * @param integer $salsaDiscover
+     *
+     * @return MeaUser
+     */
+    public function setSalsaDiscover($salsaDiscover) {
+        $this->salsaDiscover = $salsaDiscover;
+
+        return $this;
+    }
+
+    /**
+     * Get salsaDiscover
+     *
+     * @return integer
+     */
+    public function getSalsaDiscover() {
+        return $this->salsaDiscover;
+    }
+
+    /**
+     * Set bachataDiscover
+     *
+     * @param integer $bachataDiscover
+     *
+     * @return MeaUser
+     */
+    public function setBachataDiscover($bachataDiscover) {
+        $this->bachataDiscover = $bachataDiscover;
+
+        return $this;
+    }
+
+    /**
+     * Get bachataDiscover
+     *
+     * @return integer
+     */
+    public function getBachataDiscover() {
+        return $this->bachataDiscover;
+    }
+
+    /**
+     * Set kizombaDiscover
+     *
+     * @param integer $kizombaDiscover
+     *
+     * @return MeaUser
+     */
+    public function setKizombaDiscover($kizombaDiscover) {
+        $this->kizombaDiscover = $kizombaDiscover;
+
+        return $this;
+    }
+
+    /**
+     * Get kizombaDiscover
+     *
+     * @return integer
+     */
+    public function getKizombaDiscover() {
+        return $this->kizombaDiscover;
+    }
+
+    /**
+     * Set salsaLearn
+     *
+     * @param integer $salsaLearn
+     *
+     * @return MeaUser
+     */
+    public function setSalsaLearn($salsaLearn) {
+        $this->salsaLearn = $salsaLearn;
+
+        return $this;
+    }
+
+    /**
+     * Get salsaLearn
+     *
+     * @return integer
+     */
+    public function getSalsaLearn() {
+        return $this->salsaLearn;
+    }
+
+    /**
+     * Set bachataLearn
+     *
+     * @param integer $bachataLearn
+     *
+     * @return MeaUser
+     */
+    public function setBachataLearn($bachataLearn) {
+        $this->bachataLearn = $bachataLearn;
+
+        return $this;
+    }
+
+    /**
+     * Get bachataLearn
+     *
+     * @return integer
+     */
+    public function getBachataLearn() {
+        return $this->bachataLearn;
+    }
+
+    /**
+     * Set kizombaLearn
+     *
+     * @param integer $kizombaLearn
+     *
+     * @return MeaUser
+     */
+    public function setKizombaLearn($kizombaLearn) {
+        $this->kizombaLearn = $kizombaLearn;
+
+        return $this;
+    }
+
+    /**
+     * Get kizombaLearn
+     *
+     * @return integer
+     */
+    public function getKizombaLearn() {
+        return $this->kizombaLearn;
+    }
+
+
+    /**
+     * Set salsaMeet
+     *
+     * @param integer $salsaMeet
+     *
+     * @return MeaUser
+     */
+    public function setSalsaMeet($salsaMeet)
+    {
+        $this->salsaMeet = $salsaMeet;
+
+        return $this;
+    }
+
+    /**
+     * Get salsaMeet
+     *
+     * @return integer
+     */
+    public function getSalsaMeet()
+    {
+        return $this->salsaMeet;
+    }
+
+    /**
+     * Set bachataMeet
+     *
+     * @param integer $bachataMeet
+     *
+     * @return MeaUser
+     */
+    public function setBachataMeet($bachataMeet)
+    {
+        $this->bachataMeet = $bachataMeet;
+
+        return $this;
+    }
+
+    /**
+     * Get bachataMeet
+     *
+     * @return integer
+     */
+    public function getBachataMeet()
+    {
+        return $this->bachataMeet;
+    }
+
+    /**
+     * Set kizombaMeet
+     *
+     * @param integer $kizombaMeet
+     *
+     * @return MeaUser
+     */
+    public function setKizombaMeet($kizombaMeet)
+    {
+        $this->kizombaMeet = $kizombaMeet;
+
+        return $this;
+    }
+
+    /**
+     * Get kizombaMeet
+     *
+     * @return integer
+     */
+    public function getKizombaMeet()
+    {
+        return $this->kizombaMeet;
     }
 }

@@ -298,8 +298,6 @@ dance_bachata_sensual: /dance/dance_bachata_sensual
 
 # Desc: /dance/dance_kizomba
 dance_kizomba: /dance/dance_kizomba
-
-# Desc: /dance/dance_merengue
 dance_merengue: /dance/dance_merengue
 
 # Desc: /dance/dance_salsa
@@ -319,8 +317,6 @@ dance_salsa_on2: /dance/dance_salsa_on2
 
 # Desc: /dance/dance_salsa_rueda
 dance_salsa_rueda: /dance/dance_salsa_rueda
-
-# Desc: /dance/dance_tango
 dance_tango: /dance/dance_tango
 
 # Desc: /login/check-facebook
@@ -732,14 +728,10 @@ learn_bachata: /learn/learn_bachata
 
 # Desc: /learn/learn_kizomba
 learn_kizomba: /learn/learn_kizomba
-
-# Desc: /learn/learn_merengue
 learn_merengue: /learn/learn_merengue
 
 # Desc: /learn/learn_salsa
 learn_salsa: /learn/learn_salsa
-
-# Desc: /learn/learn_tango
 learn_tango: /learn/learn_tango
 
 # Desc: /media/cache/resolve/{filter}/{path}
@@ -747,6 +739,9 @@ liip_imagine_filter: '/media/cache/resoudre/{filter}/{path}'
 
 # Desc: /media/cache/resolve/{filter}/rc/{hash}/{path}
 liip_imagine_filter_runtime: '/media/cache/resoudre/{filter}/rc/{hash}/{path}'
+
+# Desc: /navbar
+navbar: /navbar   # FIXME
 
 # Desc: /policy
 policy: /mentions-legales

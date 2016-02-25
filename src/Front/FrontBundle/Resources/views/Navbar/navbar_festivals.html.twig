@@ -1,0 +1,113 @@
+
+
+<li class="dropdown mega-menu-fullwidth">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+        {% trans %}navbar.festivals{% endtrans %}
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <div class="mega-menu-content disable-icons">
+                <div class="container">
+                    <div class="row equal-height">
+
+                        <div class="col-md-4 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.festivals.calendar{% endtrans %}</h3>
+                                </li>
+                                <li>
+                                    <p>
+                                        {% trans %}navbar.festivals.calendar.p{% endtrans %}
+                                    </p>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_calendar') }}">
+                                        <i class="fa fa-sort-alpha-asc"></i>
+                                        {% trans %}navbar.festivals.calendar{% endtrans %}
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <h3>{% trans %}navbar.festivals.europe{% endtrans %}</h3>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_europe') }}">
+                                        {% trans %}navbar.festivals.europe{% endtrans %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.festivals.america{% endtrans %}</h3>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_north_america') }}">
+                                        {% trans %}navbar.festivals.north_america{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_central_america') }}">
+                                        {% trans %}navbar.festivals.central_america{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_south_america') }}">
+                                        {% trans %}navbar.festivals.south_america{% endtrans %}
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <h3>{% trans %}navbar.festivals.africa{% endtrans %}</h3>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_north_africa') }}">
+                                        {% trans %}navbar.festivals.north_africa{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_central_africa') }}">
+                                        {% trans %}navbar.festivals.central_africa{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_south_africa') }}">
+                                        {% trans %}navbar.festivals.south_africa{% endtrans %}
+                                    </a>
+                                </li>
+                            </ul>                                                                                                                   
+                        </div>
+
+                        <div class="col-md-4 equal-height-in">
+                            <ul class="list-unstyled equal-height-list">
+                                <li>
+                                    <h3>{% trans %}navbar.festivals.asia{% endtrans %}</h3>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_north_asia') }}">
+                                        {% trans %}navbar.festivals.north_asia{% endtrans %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('festival_south_asia') }}">
+                                        {% trans %}navbar.festivals.south_asia{% endtrans %}
+                                    </a>
+                                </li>
+
+                                <li><a href="{{ path('festival_india') }}">{% trans %}navbar.festivals.india{% endtrans %}</a></li>
+                                <li><a href="{{ path('festival_indonesia') }}">{% trans %}navbar.festivals.indonesia{% endtrans %}</a></li>
+                                <li><a href="{{ path('festival_australia') }}">{% trans %}navbar.festivals.australia{% endtrans %}</a></li>
+                                <li><a href="{{ path('festival_middle_east') }}">{% trans %}navbar.festivals.middle_east{% endtrans %}</a></li>
+
+                            </ul>                                                                                                                   
+                        </div>
+
+                    </div>
+                </div>    
+            </div>    
+        </li>
+    </ul>
+</li>
+

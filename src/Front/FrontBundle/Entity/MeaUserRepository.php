@@ -17,4 +17,77 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function findForSalsaDiscover($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.salsaDiscover = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForBachataDiscover($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.bachataDiscover = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForKizombaDiscover($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.kizombaDiscover = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForSalsaLearn($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.salsaLearn = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForBachataLearn($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.bachataLearn = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForKizombaLearn($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.kizombaLearn = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+    
+    
+    public function findForSalsaMeet($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.salsaMeet = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForBachataMeet($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.bachataMeet = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findForKizombaMeet($limit = 1) {
+        $query = $this->createQueryBuilder('mu')
+                ->where('mu.kizombaMeet = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
 }

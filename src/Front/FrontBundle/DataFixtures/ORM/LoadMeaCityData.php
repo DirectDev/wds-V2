@@ -37,6 +37,15 @@ class LoadMeaCityData extends AbstractFixture implements OrderedFixtureInterface
             $MeaCity->setCity($this->getReference('city-' . $city_reference));
             $MeaCity->setImage($city_reference);
             $MeaCity->setOrdre(rand(0, 100));
+            $MeaCity->setSalsaDiscover(rand(0, 1));
+            $MeaCity->setBachataDiscover(rand(0, 1));
+            $MeaCity->setKizombaDiscover(rand(0, 1));
+            $MeaCity->setSalsaLearn(rand(0, 1));
+            $MeaCity->setBachataLearn(rand(0, 1));
+            $MeaCity->setKizombaLearn(rand(0, 1));
+            $MeaCity->setSalsaMeet(rand(0, 1));
+            $MeaCity->setBachataMeet(rand(0, 1));
+            $MeaCity->setKizombaMeet(rand(0, 1));
             $locale = $this->array_locale[rand(0, 1)];
             $MeaCity->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
             $manager->persist($MeaCity);

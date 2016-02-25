@@ -125,3 +125,13 @@ liip_imagine:
                 # min size
                 upscale: { min: [389, 246] } 
                 thumbnail: { size: [389, 246], mode: outbound }         
+        navbar:
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                upscale: { min: [40, 40] } 
+                thumbnail: { size: [40, 40], mode: inbound }
