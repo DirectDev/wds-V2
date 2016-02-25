@@ -127,21 +127,4 @@ class DanceEnControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('dance_kizomba', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
-
-    public function testDanceMerengue() {
-        $crawler = $this->client->request('GET', $this->router->generate('dance_merengue', array('_locale' => $this->locale)));
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('dance_merengue', array('_locale' => $this->locale)));
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
-    public function testDanceTango() {
-        $crawler = $this->client->request('GET', $this->router->generate('dance_tango', array('_locale' => $this->locale)));
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('dance_tango', array('_locale' => $this->locale)));
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
 }

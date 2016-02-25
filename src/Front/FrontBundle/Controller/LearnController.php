@@ -32,18 +32,4 @@ class LearnController extends Controller {
         return $this->render('FrontFrontBundle:Learn:page.html.twig', array('page' => $page,));
     }
 
-    public function learnMerengueAction(Request $request) {
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('learn-merengue');
-        if (!$page)
-            throw new \Exception('Page not found!');
-        return $this->render('FrontFrontBundle:Learn:page.html.twig', array('page' => $page,));
-    }
-
-    public function learnTangoAction(Request $request) {
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('learn-tango');
-        if (!$page)
-            throw new \Exception('Page not found!');
-        return $this->render('FrontFrontBundle:Learn:page.html.twig', array('page' => $page,));
-    }
-
 }

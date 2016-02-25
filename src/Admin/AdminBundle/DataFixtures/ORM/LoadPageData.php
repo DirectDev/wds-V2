@@ -31,18 +31,18 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $Page->setName('home');
         $Page->translate('en')->setTitle('WeDanceSalsa');
         $Page->translate('fr')->setTitle('WeDanceSalsa');
-        $Page->translate('en')->setDescription('Find all Salsa/Bachata/Kizomba/Tango events everywhere, anytime !');
-        $Page->translate('fr')->setDescription('Trouvez tous les évenements Salsa/Bachata/Kizomba/Tango près de chez  vous !');
+        $Page->translate('en')->setDescription('Find all Salsa/Bachata/Kizomba events everywhere, anytime !');
+        $Page->translate('fr')->setDescription('Trouvez tous les évenements Salsa/Bachata/Kizomba près de chez  vous !');
         $manager->persist($Page);
         $this->addReference('page-home', $Page);
         $Page->mergeNewTranslations();
 
         $Page = new Page();
         $Page->setName('city');
-        $Page->translate('en')->setTitle('Find all salsa/Bachata/Kizomba/Tango events close to');
-        $Page->translate('fr')->setTitle('Trouvez tous les événements Salsa/Bachanta/Kizomba/Tango proches de');
-        $Page->translate('en')->setDescription('Find all salsa/Bachata/Kizomba/Tango events close to');
-        $Page->translate('fr')->setDescription('Trouvez tous les événements Salsa/Bachanta/Kizomba/Tango close to');
+        $Page->translate('en')->setTitle('Find all salsa/Bachata/Kizomba events close to');
+        $Page->translate('fr')->setTitle('Trouvez tous les événements Salsa/Bachanta/Kizomba proches de');
+        $Page->translate('en')->setDescription('Find all salsa/Bachata/Kizomba events close to');
+        $Page->translate('fr')->setDescription('Trouvez tous les événements Salsa/Bachanta/Kizomba close to');
         $manager->persist($Page);
         $this->addReference('page-city', $Page);
         $Page->mergeNewTranslations();
@@ -489,26 +489,6 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $this->addReference('page-dance-kizomba', $Page);
         $Page->mergeNewTranslations();
 
-        $Page = new Page();
-        $Page->setName('dance-merengue');
-        $Page->translate('en')->setTitle('Merengue');
-        $Page->translate('fr')->setTitle('Merengue');
-        $Page->translate('en')->setDescription(null);
-        $Page->translate('fr')->setDescription(null);
-        $manager->persist($Page);
-        $this->addReference('page-dance-merengue', $Page);
-        $Page->mergeNewTranslations();
-
-        $Page = new Page();
-        $Page->setName('dance-tango');
-        $Page->translate('en')->setTitle('Tango');
-        $Page->translate('fr')->setTitle('Tango');
-        $Page->translate('en')->setDescription(null);
-        $Page->translate('fr')->setDescription(null);
-        $manager->persist($Page);
-        $this->addReference('page-dance-tango', $Page);
-        $Page->mergeNewTranslations();
-        
         $Page = new Page();
         $Page->setName('learn-salsa');
         $Page->translate('en')->setTitle('Learn Salsa');

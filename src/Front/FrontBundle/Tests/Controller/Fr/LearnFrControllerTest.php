@@ -64,20 +64,4 @@ class LearnFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
-    public function testLearnMerengue() {
-        $crawler = $this->client->request('GET', $this->router->generate('learn_merengue', array('_locale' => $this->locale)));
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('learn_merengue', array('_locale' => $this->locale)));
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
-    public function testLearnTango() {
-        $crawler = $this->client->request('GET', $this->router->generate('learn_tango', array('_locale' => $this->locale)));
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('learn_tango', array('_locale' => $this->locale)));
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
 }

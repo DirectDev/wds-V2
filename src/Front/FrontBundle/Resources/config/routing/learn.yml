@@ -11,10 +11,3 @@ learn_kizomba:
     path:     /learn_kizomba
     defaults: { _controller: "FrontFrontBundle:Learn:learnKizomba" }
     
-learn_merengue:
-    path:     /learn_merengue
-    defaults: { _controller: "FrontFrontBundle:Learn:learnMerengue" }
-    
-learn_tango:
-    path:     /learn_tango
-    defaults: { _controller: "FrontFrontBundle:Learn:learnTango" }

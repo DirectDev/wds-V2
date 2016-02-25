@@ -75,10 +75,6 @@ class FixturesFrTest extends WebTestCase {
         $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Bachata");
         $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
 
-        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Merengue")));
-        $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Merengue");
-        $this->assertNotEmpty($tag->translate($this->locale)->getTitle());
-
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Kizomba")));
         $tag = $this->em->getRepository('FrontFrontBundle:Tag')->findOneByName("Kizomba");
         $this->assertNotEmpty($tag->translate($this->locale)->getTitle());

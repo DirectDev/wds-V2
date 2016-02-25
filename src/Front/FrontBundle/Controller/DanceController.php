@@ -88,18 +88,4 @@ class DanceController extends Controller {
         return $this->render('FrontFrontBundle:Dance:page.html.twig', array('page' => $page,));
     }
 
-    public function danceMerengueAction(Request $request) {
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('dance-merengue');
-        if (!$page)
-            throw new \Exception('Page not found!');
-        return $this->render('FrontFrontBundle:Dance:page.html.twig', array('page' => $page,));
-    }
-
-    public function danceTangoAction(Request $request) {
-        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('dance-tango');
-        if (!$page)
-            throw new \Exception('Page not found!');
-        return $this->render('FrontFrontBundle:Dance:page.html.twig', array('page' => $page,));
-    }
-
 }

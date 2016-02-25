@@ -45,7 +45,7 @@ The site belongs to <a href="http://directdev.fr">DirectDev</a>, whose headquart
 
 <h2>3. Products or services offered by WeDanceSalsa.com</h2>
 
-<p>In keeping with its policy of communication, <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> site aims to inform users about Salsa / Bachata / Kizomba / Tango events. However, inaccuracies or omissions may exist: the company shall in no circumstances be held liable for any error in the <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> site.</p>
+<p>In keeping with its policy of communication, <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> site aims to inform users about Salsa / Bachata / Kizomba  events. However, inaccuracies or omissions may exist: the company shall in no circumstances be held liable for any error in the <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> site.</p>
 
 <h2>4. Contractual Limitations</h2>
 
@@ -101,7 +101,7 @@ Le site <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> est h&eacute;berg
 
 <h2>3. Les produits ou services propos&eacute;s par <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a></h2>
 
-<p>En accord avec sa politique de communication, le site <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> a pour vocation d&#39;informer les utilisateurs sur les &eacute;venements Salsa/Bachata/Kizomba/Tango. Cependant, des inexactitudes ou des omissions peuvent exister : la soci&eacute;t&eacute; ne pourra en aucun cas &ecirc;tre tenue pour responsable pour toute erreur pr&eacute;sente sur le site <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a>.</p>
+<p>En accord avec sa politique de communication, le site <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> a pour vocation d&#39;informer les utilisateurs sur les &eacute;venements Salsa/Bachata/Kizomba. Cependant, des inexactitudes ou des omissions peuvent exister : la soci&eacute;t&eacute; ne pourra en aucun cas &ecirc;tre tenue pour responsable pour toute erreur pr&eacute;sente sur le site <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a>.</p>
 
 <h2>4. Limitations contractuelles</h2>
 

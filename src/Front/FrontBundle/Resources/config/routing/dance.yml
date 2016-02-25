@@ -43,10 +43,3 @@ dance_kizomba:
     path:     /dance_kizomba
     defaults: { _controller: "FrontFrontBundle:Dance:danceKizomba" }
     
-dance_merengue:
-    path:     /dance_merengue
-    defaults: { _controller: "FrontFrontBundle:Dance:danceMerengue" }
-    
-dance_tango:
-    path:     /dance_tango
-    defaults: { _controller: "FrontFrontBundle:Dance:danceTango" }
