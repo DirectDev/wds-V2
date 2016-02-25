@@ -22,8 +22,8 @@ bazinga_geocoder:
         google_maps:
             locale:               null
             region:               null
-            use_ssl:              true
-            api_key:              %google_map_api_key%
+            use_ssl:              false
+            api_key:              null
 #        google_maps_business:
 #            client_id:            ~ # Required
 #            api_key:              null
