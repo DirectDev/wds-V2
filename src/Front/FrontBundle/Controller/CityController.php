@@ -470,7 +470,6 @@ class CityController extends Controller {
             $session->set('longitude', $city->getLongitude());
             $session->set('city', $city->getName());
         } else {
-
             $city = new City();
             $city->setName(trim(strtolower($searchcity)));
 
@@ -501,13 +500,18 @@ class CityController extends Controller {
 
     private function setLatitudeAndLongitude($city) {
         try {
-            $geocode = $this->container
+            $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
                     ->geocode($city->getName());
-
-            $city->setLatitude($geocode['latitude']);
-            $city->setLongitude($geocode['longitude']);
+            if (!count($geocodeAddresses))
+                return;
+            
+            foreach ($geocodeAddresses as $geocodeAddress) {
+                $city->setLatitude($geocodeAddress->getLatitude());
+                $city->setLongitude($geocodeAddress->getLongitude());
+                return;
+            }
         } catch (\Exception $e) {
             throw $e;
         }
