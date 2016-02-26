@@ -1,5 +1,15 @@
-{% set user = event.getUser %}
-<h3>{% trans %}user.posted_by{% endtrans %}</h3>  
+{% set h3 = 'user.posted_by'|trans %}
+
+{% if event.getOrganizedBy() %}
+    {% set user = event.getOrganizedBy %}  
+    {% set h3 = 'user.organized_by'|trans %}
+{% elseif event.getPublishedBy() %}
+    {% set user = event.getPublishedBy %}
+{% else %}
+    {% set user = event.getUser %}
+{% endif %}
+
+<h3>{{ h3 }}</h3>  
 
 {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
 

@@ -784,17 +784,17 @@ navbar:
     logout: Déconnexion
     medias: Médias
     meet: Rencontrer
-    meet.bachata: Bachata  
-    meet.bachata.artist: Danseurs pro
+    meet.bachata: Bachata
+    meet.bachata.artist: 'Danseurs pro'
     meet.bachata.bar: Lieux
     meet.bachata.teacher: Professeurs
     meet.cities: Destinations
-    meet.kizomba: Kizomba  
-    meet.kizomba.artist: Danseurs pro
+    meet.kizomba: Kizomba
+    meet.kizomba.artist: 'Danseurs pro'
     meet.kizomba.bar: Lieux
     meet.kizomba.teacher: Professeurs
-    meet.salsa: Salsa  
-    meet.salsa.artist: Danseurs pro
+    meet.salsa: Salsa
+    meet.salsa.artist: 'Danseurs pro'
     meet.salsa.bar: Lieux
     meet.salsa.teacher: Professeurs
     moves: 'Passes & Shines'
@@ -875,6 +875,7 @@ user:
     my_photos: 'Mes photos'
     my_videos: 'Mes vidéos'
     next_events: 'Mes prochains événements'
+    organized_by: user.organized_by   # FIXME
     passed_events: 'Mes précédents événements'
     posted_by: 'Publié par'
     profile_title: 'Mon Profil'

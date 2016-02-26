@@ -85,6 +85,16 @@ class User extends BaseUser {
      * @ORM\OrderBy({"id" = "DESC"})
      * */
     private $events;
+    /**
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="publishedBy")
+     * @ORM\OrderBy({"id" = "DESC"})
+     * */
+    private $eventsPublished;
+    /**
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="organizedBy")
+     * @ORM\OrderBy({"id" = "DESC"})
+     * */
+    private $eventsOrganized;
 
     /**
      * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Address", mappedBy="users", cascade={"persist"})
@@ -192,6 +202,8 @@ class User extends BaseUser {
 
         $this->userFiles = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->eventsPublished = new ArrayCollection();
+        $this->eventsOrganized = new ArrayCollection();
         $this->addresses = new ArrayCollection();
         $this->musicTypes = new ArrayCollection();
         $this->userTypes = new ArrayCollection();
@@ -1059,4 +1071,72 @@ class User extends BaseUser {
         return $this->eventPresences;
     }
 
+
+    /**
+     * Add eventsPublished
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventsPublished
+     *
+     * @return User
+     */
+    public function addEventsPublished(\Front\FrontBundle\Entity\Event $eventsPublished)
+    {
+        $this->eventsPublished[] = $eventsPublished;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventsPublished
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventsPublished
+     */
+    public function removeEventsPublished(\Front\FrontBundle\Entity\Event $eventsPublished)
+    {
+        $this->eventsPublished->removeElement($eventsPublished);
+    }
+
+    /**
+     * Get eventsPublished
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventsPublished()
+    {
+        return $this->eventsPublished;
+    }
+
+    /**
+     * Add eventsOrganized
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventsOrganized
+     *
+     * @return User
+     */
+    public function addEventsOrganized(\Front\FrontBundle\Entity\Event $eventsOrganized)
+    {
+        $this->eventsOrganized[] = $eventsOrganized;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventsOrganized
+     *
+     * @param \Front\FrontBundle\Entity\Event $eventsOrganized
+     */
+    public function removeEventsOrganized(\Front\FrontBundle\Entity\Event $eventsOrganized)
+    {
+        $this->eventsOrganized->removeElement($eventsOrganized);
+    }
+
+    /**
+     * Get eventsOrganized
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventsOrganized()
+    {
+        return $this->eventsOrganized;
+    }
 }

@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class EventController extends Controller {
 
-
     /**
      * Creates a new Event entity.
      *
@@ -36,6 +35,7 @@ class EventController extends Controller {
 
             $entity->setName($this->slugify($entity->getTitle()));
             $entity->setUser($this->getUser());
+            $entity->setPublishedBy($this->getUser());
 
             $em->persist($entity);
             $em->flush();
@@ -67,7 +67,9 @@ class EventController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Event $entity) {
-        $form = $this->createForm(new EventType(), $entity, array(
+
+        $securityContext = $this->container->get('security.context');
+        $form = $this->createForm(new EventType($securityContext), $entity, array(
             'action' => $this->generateUrl('front_event_create'),
             'method' => 'POST',
             'attr' => array('locale' => $this->get('request')->getLocale())
@@ -168,7 +170,8 @@ class EventController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createEditForm(Event $entity) {
-        $form = $this->createForm(new EventType(), $entity, array(
+        $securityContext = $this->container->get('security.context');
+        $form = $this->createForm(new EventType($securityContext), $entity, array(
             'action' => $this->generateUrl('front_event_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'attr' => array('locale' => $this->get('request')->getLocale())
@@ -444,7 +447,8 @@ class EventController extends Controller {
     }
 
     private function createEditDescriptionForm(Event $entity) {
-        $form = $this->createForm(new EventDescriptionType(), $entity, array(
+        $securityContext = $this->container->get('security.context');
+        $form = $this->createForm(new EventDescriptionType($securityContext), $entity, array(
             'action' => $this->generateUrl('front_event_update_description', array('id' => $entity->getId())),
             'method' => 'PUT',
             'attr' => array('locale' => $this->get('request')->getLocale())

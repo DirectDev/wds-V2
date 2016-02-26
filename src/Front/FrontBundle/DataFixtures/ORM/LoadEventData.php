@@ -33,6 +33,14 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
                 $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
             $Event->setUser($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
 
+            if (rand(0, 1))
+                $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+            $Event->setOrganizedBy($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+
+            if (rand(0, 1))
+                $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+            $Event->setPublishedBy($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+
 
             $locale = $this->array_locale[rand(0, 1)];
             $Event->translate($locale)->setTitle($value);

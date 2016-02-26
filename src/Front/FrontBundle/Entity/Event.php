@@ -102,6 +102,18 @@ class Event {
      * 
      * */
     protected $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="eventsPublished")
+     * @ORM\JoinColumn(name="published_by_user_id", referencedColumnName="id")
+     * 
+     * */
+    protected $publishedBy;
+    /**
+     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="eventsOrganized")
+     * @ORM\JoinColumn(name="organized_by_user_id", referencedColumnName="id")
+     * 
+     * */
+    protected $organizedBy;
 
     /**
      * @ORM\ManyToMany(targetEntity="User\UserBundle\Entity\User", mappedBy="eventloves")     
@@ -784,4 +796,52 @@ class Event {
         return $this->userPresents;
     }
 
+
+    /**
+     * Set publishedBy
+     *
+     * @param \User\UserBundle\Entity\User $publishedBy
+     *
+     * @return Event
+     */
+    public function setPublishedBy(\User\UserBundle\Entity\User $publishedBy = null)
+    {
+        $this->publishedBy = $publishedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedBy
+     *
+     * @return \User\UserBundle\Entity\User
+     */
+    public function getPublishedBy()
+    {
+        return $this->publishedBy;
+    }
+
+    /**
+     * Set organizedBy
+     *
+     * @param \User\UserBundle\Entity\User $organizedBy
+     *
+     * @return Event
+     */
+    public function setOrganizedBy(\User\UserBundle\Entity\User $organizedBy = null)
+    {
+        $this->organizedBy = $organizedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get organizedBy
+     *
+     * @return \User\UserBundle\Entity\User
+     */
+    public function getOrganizedBy()
+    {
+        return $this->organizedBy;
+    }
 }

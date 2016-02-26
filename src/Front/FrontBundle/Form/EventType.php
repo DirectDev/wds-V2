@@ -7,8 +7,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Front\FrontBundle\Entity\Address;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class EventType extends AbstractType {
+
+    private $securityContext;
+
+    public function __construct(SecurityContext $securityContext) {
+        $this->securityContext = $securityContext;
+    }
 
     /**
      * @param FormBuilderInterface $builder
@@ -19,6 +26,8 @@ class EventType extends AbstractType {
         $locales = array('en');
         if (isset($options['attr']['locale']))
             $locales[] = $options['attr']['locale'];
+
+        $User = $this->securityContext->getToken()->getUser();
 
         $builder
                 ->add('eventTypes', 'entity', array(
@@ -41,8 +50,21 @@ class EventType extends AbstractType {
                         'title' => array('attr' => array('required' => true)),
                         'description' => array('attr' => array('class' => 'ckeditor form-control'))
                     )
-                ))
-        ;
+        ));
+        if ($User)
+            $builder->add('organizedBy', 'entity', array(
+                'class' => 'UserUserBundle:User',
+                'required' => false,
+                'property' => 'username',
+                'multiple' => false,
+                'expanded' => false,
+                'by_reference' => true,
+                'query_builder' => function (EntityRepository $er) use ($User) {
+                    return $er->createQueryBuilder('u')
+                                    ->where('u.id = :user')
+                                    ->setParameter('user', $User->getId());
+                },
+            ));
     }
 
     /**
