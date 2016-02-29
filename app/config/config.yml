@@ -50,6 +50,7 @@ twig:
 
 # Assetic Configuration
 assetic:
+    read_from: '%kernel.root_dir%/../www'
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ ]

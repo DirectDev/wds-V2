@@ -16,10 +16,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset("front/css/pages/page_job.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/home.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css") }}">    
-    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css") }}">
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/home.css') }}" />       
 {% endblock %}
 
 {% block topJavascripts %}   
@@ -92,11 +89,3 @@
     </section>
 
 {% endblock %}
-
-{% block bottomJavascripts %}
-    {{ parent() }}    
-    <script type="text/javascript" src="{{ asset("front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/cube-portfolio-lightbox-home-cities.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/cube-portfolio-lightbox-home-festivals.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/cube-portfolio-lightbox-home-users.js") }}"></script>
-{% endblock %}   

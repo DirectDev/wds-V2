@@ -2,8 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css") }}">    
-    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css") }}">
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/cubeportfolio.css') }}" />       
 {% endblock %}
 
 
@@ -42,6 +41,5 @@
 
 {% block bottomJavascripts %}
     {{ parent() }}    
-    <script type="text/javascript" src="{{ asset("front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
 {% endblock %}   

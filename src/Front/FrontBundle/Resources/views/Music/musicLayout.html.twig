@@ -15,10 +15,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v2.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/pages/profile.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/pages/page_search_inner.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/pages/blocks.css") }}">
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/search_layout.css') }}" />       
 {% endblock %}
 
 {% block topJavascripts %}   
@@ -32,9 +29,7 @@
 {% block bottomJavascripts %}
     {{ parent() }}    
 
-    <script type="text/javascript" src="{{ asset("front/plugins/jquery.mixitup.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/pages/page_portfolio.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
+    <script src="{{ asset("front/js/compiled/page-portfolio.js") }}"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function () {

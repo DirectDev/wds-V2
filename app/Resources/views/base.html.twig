@@ -14,46 +14,52 @@
 
         {% block stylesheets %}
 
-
             <!-- Web Fonts -->
             <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
-            <!-- CSS Global Compulsory -->
-            <link rel="stylesheet" href="{{ asset("front/plugins/bootstrap/css/bootstrap.min.css") }}">
-            <link rel="stylesheet" href="{{ asset('front/plugins/bootstrap-validator/bootstrapValidator.css') }}"/>
-            <link rel="stylesheet" href="{{ asset("front/css/style.css") }}">
 
-            <!-- CSS Header and Footer -->
-            <link rel="stylesheet" href="{{ asset("front/css/headers/header-v3.css") }}">
-            <link rel="stylesheet" href="{{ asset("front/css/footers/footer-v3.css") }}">
-
-            <!-- CSS Implementing Plugins -->
-            <link rel="stylesheet" href="{{ asset("front/plugins/animate.css") }}">
-            <link rel="stylesheet" href="{{ asset("front/plugins/line-icons/line-icons.css") }}">
-            <link rel="stylesheet" href="{{ asset("front/plugins/font-awesome/css/font-awesome.min.css") }}">
-            <link rel="stylesheet" href="{{ asset("front/plugins/revolution-slider/rs-plugin/css/settings.css") }}" type="text/css" media="screen">
-            <!--[if lt IE 9]><link rel="stylesheet" href="{{ asset("front/plugins/revolution-slider/rs-plugin/css/settings-ie8.css") }}" type="text/css" media="screen"><![endif]-->
-
-            <!-- CSS Customization -->
-            <link rel="stylesheet" href="{{ asset("front/css/custom.css") }}">
-            <link rel="stylesheet" href="{{ asset("front/css/main.css") }}">
-
+            {% stylesheets 
+                "front/plugins/bootstrap/css/bootstrap.min.css"
+                'front/plugins/bootstrap-validator/bootstrapValidator.css'
+                "front/css/style.css"
+                "front/css/ie8.css"
+                "front/css/blocks.css"
+                "front/css/plugins.css"
+                "front/css/app.css"
+                "front/css/headers/header-v3.css"
+                "front/css/footers/footer-v3.css"
+                "front/plugins/animate.css"
+                "front/plugins/line-icons/line-icons.css"
+                "front/plugins/font-awesome/css/font-awesome.min.css"
+                "front/plugins/revolution-slider/rs-plugin/css/settings.css"
+                "front/plugins/revolution-slider/rs-plugin/css/settings-ie8.css"
+                "front/css/custom.css"
+                "front/css/main.css"
+            filter='cssrewrite' 
+            output='front/css/compiled/main.css'  %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
 
         {% endblock %}
 
         {% block topJavascripts %}
 
-            <script type="text/javascript" src="{{ asset("front/plugins/jquery/jquery.min.js") }}"></script>
-            <script type="text/javascript" src="{{ asset('front/js/jquery-ui-1.11.1/jquery-ui.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset("front/plugins/jquery/jquery-migrate.min.js") }}"></script>
-            <script type="text/javascript" src="{{ asset("front/plugins/bootstrap/js/bootstrap.min.js") }}"></script> 
+            {% javascripts 
+                'front/plugins/jquery/jquery.min.js'           
+                'front/js/jquery-ui-1.11.1/jquery-ui.min.js'
+                "front/plugins/jquery/jquery-migrate.min.js"
+                "front/plugins/bootstrap/js/bootstrap.min.js"
+                'front/js/mainTop.js'
+                'front/plugins/datepicker/js/bootstrap-datepicker.js'
+                output='front/js/compiled/top.js'  %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
 
-            <script src="{{ asset('front/js/mainTop.js') }}" type="text/javascript"></script>
-
-            <script src="{{ asset('front/plugins/datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
             {% if app.request.locale != 'en' %}
                 <script src="{{ asset('front/plugins/datepicker/js/locales/bootstrap-datepicker.' ~ app.request.locale ~ '.js') }}" type="text/javascript"></script> 
             {% endif  %}
+
+
 
         {% endblock %}
 
@@ -71,28 +77,31 @@
 
     {% block bottomJavascripts %}
 
-        <!-- JS Implementing Plugins -->
-        <script type="text/javascript" src="{{ asset("front/plugins/back-to-top.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("front/plugins/smoothScroll.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("front/plugins/jquery.parallax.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("front/plugins/counter/waypoints.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("front/plugins/counter/jquery.counterup.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("front/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("front/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js") }}"></script>
-        <!-- JS Customization -->
-        <script type="text/javascript" src="{{ asset("front/js/custom.js") }}"></script>
-        <!-- JS Page Level -->           
-        <script type="text/javascript" src="{{ asset("front/js/app.js") }}"></script>
-        <!--[if lt IE 9]>
-            <script src="{{ asset("front/plugins/respond.js") }}"></script>
-            <script src="{{ asset("front/plugins/html5shiv.js") }}"></script>
-            <script src="{{ asset("front/plugins/placeholder-IE-fixes.js") }}"></script>
-        <![endif]-->
+        {% javascripts 
+            "front/plugins/back-to-top.js"
+            "front/plugins/smoothScroll.js"
+            "front/plugins/jquery.parallax.js"
+            "front/plugins/counter/waypoints.min.js"
+            "front/plugins/counter/jquery.counterup.min.js"
+            "front/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js"
+            "front/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js"
+            "front/js/custom.js"
+            "front/js/app.js"
+            "front/plugins/respond.js"
+            "front/plugins/html5shiv.js"
+            "front/plugins/placeholder-IE-fixes.js"
+            'front/js/mainBottom.js'
+            'front/plugins/bootstrap-validator/bootstrapValidator.js'
+            'front/js/formValidation.js'
+            "front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js"
+            "front/js/cube-portfolio-lightbox-home-cities.js"
+            "front/js/cube-portfolio-lightbox-home-festivals.js"
+            "front/js/cube-portfolio-lightbox-home-users.js"
+            output='front/js/compiled/bottom.js'  %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
 
-        <script src="{{ asset('front/js/mainBottom.js') }}" type="text/javascript"></script>
-        <script  src="{{ asset('front/plugins/bootstrap-validator/bootstrapValidator.js') }}" type="text/javascript"></script>
         <script  src="{{ asset('front/plugins/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
-        <script  src="{{ asset('front/js/formValidation') }}" type="text/javascript"></script>
 
         <script>
             $(document).on('click focus', 'form input.datepicker', function () {
@@ -115,3 +124,72 @@
     </script>
 </body>
 </html>
+
+{% stylesheets 
+    "front/css/pages/page_job.css"
+    "front/css/home.css"
+    "front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css"
+    "front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css"
+    filter='cssrewrite' 
+    output='front/css/compiled/home.css'  %}
+{% endstylesheets %}
+
+{% stylesheets 
+    "front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css"
+    "front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css"
+    filter='cssrewrite' 
+    output='front/css/compiled/cubeportfolio.css'  %}
+{% endstylesheets %}
+
+{% stylesheets 
+    "front/css/pages/portfolio-v2.css"
+    "front/css/pages/profile.css"
+    filter='cssrewrite' 
+    output='front/css/compiled/profile-portfolio.css'  %}
+{% endstylesheets %}
+
+{% stylesheets 
+    "front/css/pages/page_job_inner1.css"
+    "front/css/pages/shortcode_timeline2.css"
+    "front/plugins/owl-carousel/owl-carousel/owl.carousel.css"
+    "front/css/pages/portfolio-v1.css"
+    "front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css"
+    "front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css"
+    filter='cssrewrite' 
+    output='front/css/compiled/event.css'  %}
+{% endstylesheets %}
+
+{% stylesheets 
+    "front/css/pages/portfolio-v2.css"
+    "front/css/pages/profile.css"
+    "front/css/pages/page_search_inner.css"
+    filter='cssrewrite' 
+    output='front/css/compiled/search_layout.css'  %}
+{% endstylesheets %}
+
+{% stylesheets 
+    "front/css/pages/portfolio-v2.css"
+    "front/css/pages/profile.css"
+    "front/css/pages/shortcode_timeline2.css"
+    "front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css"
+    "front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css"
+    filter='cssrewrite' 
+    output='front/css/compiled/profile.css'  %}
+{% endstylesheets %}
+
+{% javascripts 
+    "front/plugins/jquery.mixitup.min.js"
+    "front/js/pages/page_portfolio.js"
+    "front/js/pages/page_contacts.js"
+    output='front/js/compiled/page-portfolio.js'  %}
+{% endjavascripts %}
+
+{% javascripts 
+    "front/plugins/jquery.mixitup.min.js"
+    "front/js/pages/page_portfolio.js"
+    "front/js/plugins/revolution-slider.js"
+    "front/plugins/gmap/gmap.js"
+    "front/js/pages/page_contacts.js"
+    "front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js"
+    output='front/js/compiled/event.js'  %}
+{% endjavascripts %}

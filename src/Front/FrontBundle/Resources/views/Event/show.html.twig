@@ -20,18 +20,10 @@
     <!-- partage facebook -->
 {% endblock %}
 
-{% block stylesheets %}   
+{% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset("front/css/pages/page_job_inner1.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/pages/shortcode_timeline2.css") }}">
-
-    <link rel="stylesheet" href="{{ asset("front/plugins/owl-carousel/owl-carousel/owl.carousel.css") }}">
-    <link rel="stylesheet" href="{{ asset("front/css/pages/portfolio-v1.css") }}">
-
-    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css") }}">    
-    <link rel="stylesheet" href="{{ asset("front/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css") }}">
-
-{% endblock %}  
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/event.css') }}" />       
+{% endblock %}
 
 
 {% block topJavascripts %}   
@@ -124,7 +116,7 @@
                         <hr> 
 
                         {% render(path('front_eventlove_loves', { id : event.id } )) %}
-                        
+
                         <hr> 
 
                         {% render(path('front_eventpresence_presences', { id : event.id } )) %}
@@ -174,22 +166,12 @@
 
 {% block bottomJavascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset("front/plugins/jquery.mixitup.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/pages/page_portfolio.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/plugins/revolution-slider.js") }}"></script>
-
-
-    <script type="text/javascript" src="{{ asset("http://maps.google.com/maps/api/js?sensor=true") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/plugins/gmap/gmap.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/js/pages/page_contacts.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("front/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js") }}"></script>
-
-    <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
+    <script src="{{ asset("front/js/compiled/event.js") }}"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function () {
-            App.init();
-            PortfolioPage.init();
+                jQuery(document).ready(function () {
+                    App.init();
+                    PortfolioPage.init();
 
-        });
+                });
     </script>
 {% endblock %}
