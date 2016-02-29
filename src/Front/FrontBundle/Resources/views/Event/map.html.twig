@@ -9,7 +9,7 @@
             function initializeGoogleMap() {
             var city = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
             var mapOptions = {
-                zoom: 18,
+                zoom: 16,
                 center: city
             }
             var map = new google.maps.Map(document.getElementById('map-canvas-event'), mapOptions);

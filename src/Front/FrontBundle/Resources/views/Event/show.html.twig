@@ -111,15 +111,18 @@
                         </ul>
                         <!-- End timeline Content -->
 
+                        {% render(path('front_eventpresence_presences', { id : event.id } )) %}
 
+                        <!-- Basic Map -->
+                        <hr>
+                        {% if event.getAddress and event.getAddress().isValid() %}    
+                                {% include 'FrontFrontBundle:Event:map.html.twig' %}
+                        {% endif %}
+                        <!-- End Basic Map -->
 
-                        <hr> 
 
                         {% render(path('front_eventlove_loves', { id : event.id } )) %}
 
-                        <hr> 
-
-                        {% render(path('front_eventpresence_presences', { id : event.id } )) %}
 
                         <hr> 
 
@@ -151,14 +154,6 @@
     </div>   
 </div>   
 <!--=== End Job Description ===-->
-
-<!-- Basic Map -->
-{% if event.getAddress and event.getAddress().isValid() %}    
-    <div id="map" class="map margin-bottom-50">
-        {% include 'FrontFrontBundle:Event:map.html.twig' %}
-    </div>
-{% endif %}
-<!-- End Basic Map -->
 
 
 {% endblock %}

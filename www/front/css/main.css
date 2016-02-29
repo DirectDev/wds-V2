@@ -64,7 +64,9 @@
     height: 350px;
 }
 #map-canvas-event{
-    height: 400px;
+    height: 300px !important;
+    border-bottom: none !important;
+    width: 100%;
 }
 #map-canvas-user{
     height: 400px;

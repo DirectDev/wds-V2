@@ -1,3 +1,5 @@
+{% if usersPresenceEvent|length > 0 or app.user %}
+<hr> 
 <div id='presences_div'>
     {% if usersPresenceEvent|length > 0 %}
         <h3>{% trans %}event.user_presences{% endtrans %}</h3>
@@ -24,3 +26,5 @@
         </div>
     {% endif %}
 </div>
+<div class="clearfix"></div>
+{% endif %}
