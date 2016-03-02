@@ -13,6 +13,116 @@
 
                 <div class="profile-body">
 
+                    <div class="row  p-b-20">
+                        <div class="col-sm-6 p-b-20">
+                            <h2>
+                                {% trans %}navbar.festivals.calendar{% endtrans %}
+                                {% if startdate is defined and startdate %}
+                                    &nbsp;({{ startdate|date('Y-m-d')}})
+                                {% endif %}
+                            </h2>
+                            <p>At vero eos et accusamus et iusto odio dignissimos <a href="#">ducimus qui blanditiis</a> 
+                                praesentium voluptatum condimentum eleifend enim a feugiat. 
+                                Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class=" p-b-20">
+                                <form id="festivals_calendar_form" class="form-inline" action="{{ path('festival_calendar') }}">
+                                    <div class="form-group">
+                                        <label for="festivals_calendar_input">{% trans %}festivals.calendar.input.label{% endtrans %}</label>
+                                        <input id="festivals_calendar_input" required class="datepicker form-control" value="" placeholder="{% trans %}festivals.calendar.input.placeholder{% endtrans %}" />
+                                        <button type="submit" class="btn "><i class="fa fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-xs-6">
+                                    <ul class="list-unstyled">
+                                        {% if  nextWeekend is defined and nextWeekend %}
+                                            <li>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <a href="{{ path('festival_calendar', { 'startdate' : nextWeekend|date('Y-m-d') } ) }}">
+                                                        {% trans %}festivals.calendar.next_weekend{% endtrans %}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        {% endif %}
+                                        {% if  in2Weeks is defined and in2Weeks %}
+                                            <li>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <a href="{{ path('festival_calendar', { 'startdate' : in2Weeks|date('Y-m-d') } ) }}">
+                                                        {% trans %}festivals.calendar.in_2_weeks{% endtrans %}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        {% endif %}
+                                        {% if  in3Weeks is defined and in3Weeks %}
+                                            <li>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <a href="{{ path('festival_calendar', { 'startdate' : in3Weeks|date('Y-m-d') } ) }}">
+                                                        {% trans %}festivals.calendar.in_3_weeks{% endtrans %}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        {% endif %}
+                                    </ul>                    
+                                </div>
+                                <div class="col-xs-6">
+                                    <ul class="list-unstyled">
+                                        {% if  nextMonth is defined and nextMonth %}
+                                            <li>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <a href="{{ path('festival_calendar', { 'startdate' : nextMonth|date('Y-m-d') } ) }}">
+                                                        {% trans %}festivals.calendar.next_month{% endtrans %}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        {% endif %}
+                                        {% if  in2Months is defined and in2Months %}
+                                            <li>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <a href="{{ path('festival_calendar', { 'startdate' : in2Months|date('Y-m-d') } ) }}">
+                                                        {% trans %}festivals.calendar.in_2_months{% endtrans %}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        {% endif %}
+                                        {% if  in3Months is defined and in3Months %}
+                                            <li>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <a href="{{ path('festival_calendar', { 'startdate' : in3Months|date('Y-m-d') } ) }}">
+                                                        {% trans %}festivals.calendar.in_3_months{% endtrans %}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        {% endif %}
+                                    </ul>                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 festival_destinations">
+                            <h2>Destinations</h2>
+                            <div class="row ">
+
+                                {% for meaCity in MeaCities %}
+                                    <div class="col-md-3 m-b-20">
+                                        <a href="{{ path('city_festival', { 'searchcity':  meaCity.getName }) }}" class="navbar_highlight"
+                                           data-title="{{ meaCity.getName|capitalize }}">
+                                            <img src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('city_thumb') }}" alt=""> 
+                                        </a>
+                                    </div>                               
+                                {% endfor %}
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Portfolio Sorting Blocks -->
                     <div class="sorting-block">
                         {% render(path('front_musictype_filters')) %}

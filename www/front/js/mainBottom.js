@@ -550,3 +550,12 @@ $(window).scroll(function (event) {
     else
         $('.search_transversal').removeClass('border-bottom-header');
 });
+
+$(document).on('submit', 'form#festivals_calendar_form', function (e) {
+    e.preventDefault();
+
+    var form = $(this);
+    var input = $(this).find('#festivals_calendar_input');
+
+    window.location = form.attr('action') + '/' + input.val();
+});

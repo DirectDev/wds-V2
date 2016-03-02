@@ -161,6 +161,20 @@ event:
     type: 'Event type'
     user_presences: 'They are going'
 
+festivals:
+    calendar:
+        in_2_months: In 2 months
+        in_2_weeks: In 2 weeks
+        in_3_months: In 3 months
+        in_3_weeks: In 3 weeks
+
+        input:
+            label: Search by date
+            placeholder: Choose a date
+
+        next_month: Next month
+        next_weekend: Next week-end
+
 file:
     add_file: 'Add image'
     cancel: Cancel
@@ -753,7 +767,7 @@ navbar:
     dances.salsa_on2: 'Salsa On2'
     dances.salsa_rueda: 'Salsa Rueda'
     discover: Discover
-    discover.cities: Discover destinations
+    discover.cities: 'Discover destinations'
     festivals: Festivals
     festivals.africa: Africa
     festivals.america: America
@@ -777,27 +791,27 @@ navbar:
     home: Home
     learn: Learn
     learn.bachata: 'Learn Bachata'
-    learn.cities: Destinations  
+    learn.cities: Destinations
     learn.kizomba: 'Learn Kizomba'
     learn.salsa: 'Learn Salsa'
     login: Login
     logout: Logout
     medias: Medias
     meet: Meet
-    meet.bachata: Bachata  
+    meet.bachata: Bachata
     meet.bachata.artist: Artists
     meet.bachata.bar: Places
-    meet.bachata.teacher: Teachers   
+    meet.bachata.teacher: Teachers
     meet.bars: 'Find places'
     meet.cities: Destinations
-    meet.kizomba: Kizomba  
-    meet.kizomba.artist: Artists   
+    meet.kizomba: Kizomba
+    meet.kizomba.artist: Artists
     meet.kizomba.bar: Places
-    meet.kizomba.teacher: Teachers   
-    meet.salsa: Salsa 
-    meet.salsa.artist: Artists  
+    meet.kizomba.teacher: Teachers
+    meet.salsa: Salsa
+    meet.salsa.artist: Artists
     meet.salsa.bar: Places
-    meet.salsa.teacher: Teachers 
+    meet.salsa.teacher: Teachers
     moves: 'Moves & Shines'
     musics: Musics
     publish_button: 'Add Event'
@@ -876,6 +890,7 @@ user:
     my_photos: 'My Photos'
     my_videos: 'My Videos'
     next_events: 'My Next Events'
+    organized_by: Organized By
     passed_events: 'My Previous Events'
     posted_by: 'Posted By'
     profile_title: 'My Profile'

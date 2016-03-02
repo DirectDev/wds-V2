@@ -161,6 +161,20 @@ event:
     type: 'Type d''évenement'
     user_presences: 'Ils/elles y vont'
 
+festivals:
+    calendar:
+        in_2_months: Dans 2 mois 
+        in_2_weeks: Dans 2 semaines   
+        in_3_months: Dans 3 mois  
+        in_3_weeks: Dans 3 semaines  
+
+        input:
+            label: Rechercher par date 
+            placeholder: Choississez une date   
+
+        next_month: Le mois prochain  
+        next_weekend: La semaine prochaine  
+
 file:
     add_file: Ajouter
     cancel: Annuler
@@ -875,7 +889,7 @@ user:
     my_photos: 'Mes photos'
     my_videos: 'Mes vidéos'
     next_events: 'Mes prochains événements'
-    organized_by: user.organized_by   # FIXME
+    organized_by: user.organized_by
     passed_events: 'Mes précédents événements'
     posted_by: 'Publié par'
     profile_title: 'Mon Profil'

@@ -42,6 +42,12 @@ class FestivalEnControllerTest extends WebTestCase {
         $this->assertTrue($this->client->getResponse()->isSuccessful());
         $crawler = $this->clientLogged->request('GET', $this->router->generate('festival_calendar', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $startdate = new \Datetime();
+        $crawler = $this->client->request('GET', $this->router->generate('festival_calendar', array('_locale' => $this->locale, 'startdate' => $startdate->format('y-m-d'))));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('festival_calendar', array('_locale' => $this->locale, 'startdate' => $startdate->format('y-m-d'))));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
     public function testEurope() {

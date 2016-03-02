@@ -325,8 +325,8 @@ facebook_login: /connexion/check-facebook
 # Desc: /festival/australia
 festival_australia: /festival/australie
 
-# Desc: /festival/calendar
-festival_calendar: /festival/calendrier
+# Desc: /festival/calendar/{startdate}
+festival_calendar: '/festival/calendrier/{startdate}'
 
 # Desc: /festival/central_africa
 festival_central_africa: /festival/afrique_centrale

@@ -1,6 +1,6 @@
 festival_calendar:
-    path:      /calendar
-    defaults:  { _controller: FrontFrontBundle:Festival:calendar }    
+    path:      /calendar/{startdate}
+    defaults:  { _controller: FrontFrontBundle:Festival:calendar, startdate: null }    
     requirements:
       _method: GET      
 

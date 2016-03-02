@@ -783,6 +783,9 @@ fieldset[disabled] .btn-search.active {
     .sub_search_transversal{
         display:none;
     }
+    .festival_destinations{
+        display:none;
+    }
     .nav_sm_hidden_highlight{
         display:none !important;
     }
