@@ -1,0 +1,148 @@
+{% extends 'FrontFrontBundle:City:cityLayout.html.twig' %}
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:City:cityBreadcrumb.html.twig' with { active : 'edito' } %}
+
+    <!--=== Profile ===-->
+    <div class="container content profile">
+        <div class="row">
+            <!--Left Sidebar-->
+            {% include 'FrontFrontBundle:City:leftSidebar.html.twig' with { city : city, active : 'edito' } %}
+            <!--End Left Sidebar-->
+
+            <!-- Profile Content -->            
+            <div class="col-md-9">
+
+                <div class="profile-body m-b-20">
+
+                    {% if city.hasImage() %}
+                        <img src="{{ asset('uploadedFiles/Cities/'~city.getImage()|lower~'.jpg')|imagine_filter('city_thumb_large') }}" 
+                             alt="" class="pull-left m-b-20 m-r-20">
+                    {% endif %}
+
+                    {{ city.getEdito()|raw }}
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="m-b-20">
+
+                    <a href="{{ path('city_calendar', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-calendar service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.calendar.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.calendar.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+
+                    <a href="{{ path('city_festival', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-star service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.festival.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.festival.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+                    <a href="{{ path('city_party', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-glass service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.party.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.party.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+                    <a href="{{ path('city_introduction', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-eye service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.introduction.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.introduction.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+
+                    <a href="{{ path('city_artist', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-group service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.artist.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.artist.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+
+                    <a href="{{ path('city_teacher', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-graduation-cap service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.teacher.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.teacher.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+
+                    <a href="{{ path('city_bar', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-beer service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.bar.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.bar.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+
+                    <a href="{{ path('city_photo', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                        <div class="col-md-6">
+                            <div class="service">
+                                <i class="fa fa-camera service-icon"></i>
+                                <div class="desc">
+                                    <h4>{% trans %}city.edito.photo.h4{% endtrans %}</h4>
+                                    <p>{% trans %}city.edito.photo.p{% endtrans %}</p>
+                                </div>
+                            </div>	
+                        </div>
+                    </a>
+
+                </div>
+                <div class="clearfix"></div>
+
+                <div>
+                    {% if People|length > 0 %}
+                        <h3>{% trans %}city.edito.users{% endtrans %}</h3>
+                        <ul class="list-unstyled blog-photos margin-bottom-30">
+                            {% for user in People %}
+                                <li>
+                                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="clearfix"></div>
+
+
+                <!-- End Profile Content -->            
+            </div>
+        </div><!--/container-->    
+    {% endblock %}

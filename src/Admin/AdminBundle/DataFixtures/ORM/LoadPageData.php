@@ -58,6 +58,16 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $Page->mergeNewTranslations();
 
         $Page = new Page();
+        $Page->setName('city_edito');
+        $Page->translate('en')->setTitle('edito');
+        $Page->translate('fr')->setTitle('edito');
+        $Page->translate('en')->setDescription('edito');
+        $Page->translate('fr')->setDescription('editorial');
+        $manager->persist($Page);
+        $this->addReference('page-city-edito', $Page);
+        $Page->mergeNewTranslations();
+        
+        $Page = new Page();
         $Page->setName('city_calendar');
         $Page->translate('en')->setTitle('calendar');
         $Page->translate('fr')->setTitle('calendier');

@@ -47,6 +47,30 @@ class City {
      * */
     private $meaCity;
 
+    public function getEdito() {
+        if (!$this->getMeaCity())
+            return false;
+        return $this->getMeaCity()->getEdito();
+    }
+
+    public function hasEdito() {
+        if ($this->getMeaCity()->getEdito())
+            return true;
+        return false;
+    }
+    
+    public function getImage() {
+        if (!$this->getMeaCity())
+            return false;
+        return $this->getMeaCity()->getImage();
+    }
+
+    public function hasImage() {
+        if ($this->getMeaCity()->getImage())
+            return true;
+        return false;
+    }
+
     /**
      * Get id
      *
@@ -119,7 +143,6 @@ class City {
         return $this->longitude;
     }
 
-
     /**
      * Set meaCity
      *
@@ -127,8 +150,7 @@ class City {
      *
      * @return City
      */
-    public function setMeaCity(\Front\FrontBundle\Entity\MeaCity $meaCity = null)
-    {
+    public function setMeaCity(\Front\FrontBundle\Entity\MeaCity $meaCity = null) {
         $this->meaCity = $meaCity;
 
         return $this;
@@ -139,8 +161,8 @@ class City {
      *
      * @return \Front\FrontBundle\Entity\MeaCity
      */
-    public function getMeaCity()
-    {
+    public function getMeaCity() {
         return $this->meaCity;
     }
+
 }

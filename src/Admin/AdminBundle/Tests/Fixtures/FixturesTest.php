@@ -40,6 +40,7 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('policy')));
 
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_edito')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_calendar')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_dancer')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('city_teacher')));

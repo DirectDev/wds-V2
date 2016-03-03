@@ -40,6 +40,24 @@ class CityFrControllerTest extends WebTestCase {
         return $this->em->getRepository('FrontFrontBundle:City')->findBy(array(), null, 10);
     }
 
+    public function testEdito() {
+        foreach ($this->findCities() as $City) {
+            if(!$city->hasEdito())
+                contiue;
+            
+            $crawler = $this->client->request('GET', $this->router->generate('city_edito', array(
+                        '_locale' => $this->locale,
+                        'searchcity' => $City->getName()
+            )));
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('city_edito', array(
+                        '_locale' => $this->locale,
+                        'searchcity' => $City->getName()
+            )));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
+    
     public function testCalendar() {
         foreach ($this->findCities() as $City) {
             $crawler = $this->client->request('GET', $this->router->generate('city_calendar', array(

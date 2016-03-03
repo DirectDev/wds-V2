@@ -40,6 +40,44 @@ class CityController extends Controller {
         $this->tomorrow = $tomorrow;
     }
 
+    public function editoAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('city_edito');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+        $city = $this->getCity($request);
+        $this->setDates($request);
+
+//        $musicTypes = $em->getRepository('FrontFrontBundle:MusicType')->findById($session->get('musicTypes'));
+//        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById($session->get('eventTypes'));
+//
+//        $events = $this->getEvents($em, true, $this->max_results, $eventTypes, $musicTypes, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
+//        $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, $musicTypes, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);
+
+        $user = $this->getUser();
+
+        $UserTypeArtist = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
+        $UserTypeTeacher = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
+        $UserTypeBar = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
+
+        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 40, array($UserTypeArtist, $UserTypeTeacher, $UserTypeBar));
+
+
+        return $this->render('FrontFrontBundle:City:edito.html.twig', array(
+                    'page' => $page,
+                    'city' => $city,
+                    'user' => $user,
+                    'People' => $People,
+//                    'events' => $events,
+//                    'nextEvents' => $nextEvents,
+                    'startdate' => $this->startdate,
+        ));
+    }
+
     public function calendarAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
@@ -62,6 +100,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:calendar.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -89,6 +128,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'people' => $People,
         ));
@@ -114,6 +154,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:teachers.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'people' => $People,
         ));
@@ -139,6 +180,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:artists.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'people' => $People,
         ));
@@ -164,6 +206,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:bars.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'people' => $People,
         ));
@@ -191,6 +234,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:introductions.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -220,6 +264,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:workshops.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -249,6 +294,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:parties.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -278,6 +324,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:shows.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -307,6 +354,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:concerts.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -337,6 +385,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:festivals.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'events' => $events,
                     'nextEvents' => $nextEvents,
@@ -361,6 +410,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:photos.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'photos' => $photos,
         ));
@@ -383,6 +433,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:musics.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'musics' => $musics,
         ));
@@ -405,6 +456,7 @@ class CityController extends Controller {
 
         return $this->render('FrontFrontBundle:City:videos.html.twig', array(
                     'page' => $page,
+                    'city' => $city,
                     'user' => $user,
                     'videos' => $videos,
         ));
@@ -506,7 +558,7 @@ class CityController extends Controller {
                     ->geocode($city->getName());
             if (!count($geocodeAddresses))
                 return;
-            
+
             foreach ($geocodeAddresses as $geocodeAddress) {
                 $city->setLatitude($geocodeAddress->getLatitude());
                 $city->setLongitude($geocodeAddress->getLongitude());

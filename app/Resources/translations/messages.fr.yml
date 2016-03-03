@@ -87,6 +87,24 @@ city:
     calendar: Calendrier
     concerts: Concerts
     dancers: Danseurs
+    edito: city.edito   # FIXME
+    edito.artist.h4: city.edito.artist.h4   # FIXME
+    edito.artist.p: city.edito.artist.p   # FIXME
+    edito.bar.h4: city.edito.bar.h4   # FIXME
+    edito.bar.p: city.edito.bar.p   # FIXME
+    edito.calendar.h4: city.edito.calendar.h4   # FIXME
+    edito.calendar.p: city.edito.calendar.p   # FIXME
+    edito.festival.h4: city.edito.festival.h4   # FIXME
+    edito.festival.p: city.edito.festival.p   # FIXME
+    edito.introduction.h4: city.edito.introduction.h4   # FIXME
+    edito.introduction.p: city.edito.introduction.p   # FIXME
+    edito.party.h4: city.edito.party.h4   # FIXME
+    edito.party.p: city.edito.party.p   # FIXME
+    edito.photo.h4: city.edito.photo.h4   # FIXME
+    edito.photo.p: city.edito.photo.p   # FIXME
+    edito.teacher.h4: city.edito.teacher.h4   # FIXME
+    edito.teacher.p: city.edito.teacher.p   # FIXME
+    edito.users: city.edito.users   # FIXME
     festivals: Festivals
     introductions: Initiations
     lessons: Cours
@@ -163,17 +181,17 @@ event:
 
 festivals:
     calendar:
-        in_2_months: Dans 2 mois 
-        in_2_weeks: Dans 2 semaines   
-        in_3_months: Dans 3 mois  
-        in_3_weeks: Dans 3 semaines  
+        in_2_months: 'Dans 2 mois'
+        in_2_weeks: 'Dans 2 semaines'
+        in_3_months: 'Dans 3 mois'
+        in_3_weeks: 'Dans 3 semaines'
 
         input:
-            label: Rechercher par date 
-            placeholder: Choississez une date   
+            label: 'Rechercher par date'
+            placeholder: 'Choississez une date'
 
-        next_month: Le mois prochain  
-        next_weekend: La semaine prochaine  
+        next_month: 'Le mois prochain'
+        next_weekend: 'La semaine prochaine'
 
 file:
     add_file: Ajouter

@@ -48,6 +48,8 @@ class LoadMeaCityData extends AbstractFixture implements OrderedFixtureInterface
             $MeaCity->setKizombaMeet(rand(0, 1));
             $locale = $this->array_locale[rand(0, 1)];
             $MeaCity->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
+            if (rand(0, 3))
+                $MeaCity->translate($locale)->setEdito($this->array_description[rand(0, 19)]);
             $manager->persist($MeaCity);
             $MeaCity->mergeNewTranslations();
             $this->addReference('meacity-' . filter_var($city_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $MeaCity);

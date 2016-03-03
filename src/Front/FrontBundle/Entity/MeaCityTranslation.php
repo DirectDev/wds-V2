@@ -21,6 +21,13 @@ class MeaCityTranslation {
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="edito", type="text", nullable=true)
+     */
+    private $edito;
 
     /**
      * Set description
@@ -64,4 +71,28 @@ class MeaCityTranslation {
         return $this->locale;
     }
 
+
+    /**
+     * Set edito
+     *
+     * @param string $edito
+     *
+     * @return MeaCityTranslation
+     */
+    public function setEdito($edito)
+    {
+        $this->edito = $edito;
+
+        return $this;
+    }
+
+    /**
+     * Get edito
+     *
+     * @return string
+     */
+    public function getEdito()
+    {
+        return $this->edito;
+    }
 }

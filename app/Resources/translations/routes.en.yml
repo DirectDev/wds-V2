@@ -251,6 +251,9 @@ city_concert: '/city/concerts/{searchcity}'
 # Desc: /city/dancers/{searchcity}
 city_dancer: '/city/dancers/{searchcity}'
 
+# Desc: /city/edito/{searchcity}
+city_edito: '/city/edito/{searchcity}'  
+
 # Desc: /city/festivals/{searchcity}
 city_festival: '/city/festivals/{searchcity}'
 

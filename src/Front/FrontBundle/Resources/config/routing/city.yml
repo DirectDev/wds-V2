@@ -1,3 +1,9 @@
+city_edito:
+    path:      /edito/{searchcity}
+    defaults:  { _controller: FrontFrontBundle:City:edito }    
+    requirements:
+      _method: GET
+      
 city_calendar:
     path:      /calendar/{searchcity}
     defaults:  { _controller: FrontFrontBundle:City:calendar }    

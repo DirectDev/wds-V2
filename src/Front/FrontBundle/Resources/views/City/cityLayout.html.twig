@@ -1,15 +1,15 @@
 {% extends 'FrontFrontBundle::layout.html.twig' %}
 
-{% set city = app.session.get('city')|capitalize %}
+{#{% set city = app.session.get('city')|capitalize %}#}
 
 {% block title %}
-    {{ city}} - {{ page.getTitle }}
+    {{ city.getName()|capitalize }} - {{ page.getTitle }}
 {% endblock %}
 {% block head %}
     {{ parent() }}
-    <meta name="description" content="{{ city}} {{ page.getDescription }}" />
+    <meta name="description" content="{{ city.getName()|capitalize }} {{ page.getDescription }}" />
     <!-- partage facebook -->
-    <meta property="og:title" content="{{ city}} - {{ page.getTitle }}" />
+    <meta property="og:title" content="{{ city.getName()|capitalize }} - {{ page.getTitle }}" />
     <meta property="og:description" content="{{ page.getDescription }}" />
     <!--<meta property="og:image" content="URL_image" />-->
     <!-- partage facebook -->

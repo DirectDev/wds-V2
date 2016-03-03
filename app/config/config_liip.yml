@@ -114,6 +114,15 @@ liip_imagine:
             default_image:        null
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }         
+        city_thumb_large:        
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }         
         event:        
             quality:              100
             animated:             false
