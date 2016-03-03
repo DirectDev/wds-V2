@@ -1,0 +1,23 @@
+<td> 
+
+    {% if count_lovesme %}
+        <span>{% trans %}overviews.likes{% endtrans %} : {{ count_lovesme }}</span>
+    {% endif %}
+
+    {% if count_events %}
+        <span>{% trans %}overviews.events{% endtrans %} : {{ count_events }}</span>
+    {% endif %}
+
+    {% if count_videos %}
+        <span>{% trans %}overviews.videos{% endtrans %} : {{ count_videos }}</span>
+    {% endif %}
+
+    {% if count_photos %}
+        <span>{% trans %}overviews.photos{% endtrans %} : {{ count_photos }}</span>
+    {% endif %}
+
+    {% if count_musics %}
+        <span>{% trans %}overviews.musics{% endtrans %} : {{ count_musics }}</span>
+    {% endif %}
+
+</td>

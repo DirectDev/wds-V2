@@ -101,6 +101,23 @@ class UserShowFrControllerTest extends WebTestCase {
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         }
     }
+    
+    public function testShowOverviewsIndex() {
+        $users = $this->findAllUsers();
+        foreach ($users as $user) {
+            $crawler = $this->client->request('GET', $this->router->generate('front_user_show_overviews_index', array(
+                        'id' => $user->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_show_overviews_index', array(
+                        'id' => $user->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
 
     public function testShowPrivate() {
         $crawler = $this->client->request('GET', $this->router->generate('front_user_show_private', array(

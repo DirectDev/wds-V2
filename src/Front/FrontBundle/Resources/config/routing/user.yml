@@ -47,6 +47,10 @@ front_user_show_overviews_profile:
     path:     /pofile/overviews_profile/{id}
     defaults: { _controller: "FrontFrontBundle:User:showOverviewsProfile" }
     
+front_user_show_overviews_index:
+    path:     /pofile/overviews_index/{id}
+    defaults: { _controller: "FrontFrontBundle:User:showOverviewsIndex" }
+    
 front_user_loves:
     path:     /profile/loves/{id}
     defaults: { _controller: "FrontFrontBundle:User:loves" }    

@@ -422,6 +422,32 @@ class UserController extends Controller {
                     'count_lovesme' => $count_lovesme,
         ));
     }
+    
+    public function showOverviewsIndexAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('UserUserBundle:User')->findOneById($id);
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $this->get('displayCounters.services')->updateUserDisplayCounter($user);
+
+        $count_events = $em->getRepository('FrontFrontBundle:Event')->countByUser($user);
+        $count_videos = $em->getRepository('FrontFrontBundle:Video')->countByUser($user);
+        $count_musics = $em->getRepository('FrontFrontBundle:Music')->countByUser($user);
+        $count_photos = $em->getRepository('UserUserBundle:UserFile')->countByUser($user);
+        $count_lovesme = $em->getRepository('UserUserBundle:User')->countLovesMeByUser($user);
+
+        return $this->render('FrontFrontBundle:User:showOverviewsIndex.html.twig', array(
+                    'user' => $user,
+                    'count_events' => $count_events,
+                    'count_videos' => $count_videos,
+                    'count_musics' => $count_musics,
+                    'count_photos' => $count_photos,
+                    'count_lovesme' => $count_lovesme,
+        ));
+    }
 
     private function createLoveForm($id) {
         return $this->createFormBuilder()
