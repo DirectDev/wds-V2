@@ -1,0 +1,28 @@
+
+{% set image_default_uri = 'images/wds_750x340_rose.png' %}
+
+<div class="col-md-6 col-sm-12 md-margin-bottom-40 mix " data-cat="">
+
+    <a href="{{ path('landing-share-event') }}"  > 
+
+        <div class="easy-block-v1">
+
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner">
+
+                    <div class="item active">
+                        <img alt="{% trans %}event.list.add{% endtrans %}" src="{{ asset(image_default_uri)|imagine_filter('event') }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-h">
+                <h3>{% trans %}event.list.add{% endtrans %}</h3>
+            </div>     
+
+        </div>  
+
+    </a>
+
+</div>

@@ -54,6 +54,8 @@ class City {
     }
 
     public function hasEdito() {
+        if (!$this->getMeaCity())
+            return false;
         if ($this->getMeaCity()->getEdito())
             return true;
         return false;
@@ -66,6 +68,8 @@ class City {
     }
 
     public function hasImage() {
+        if (!$this->getMeaCity())
+            return false;
         if ($this->getMeaCity()->getImage())
             return true;
         return false;

@@ -15,6 +15,10 @@
                     {% endif %}
 
                 {% endfor %}
+                
+                {% if 4 > people|length %}
+                    {% include 'FrontFrontBundle:User:add.html.twig' %}
+                {% endif %}
             </tbody>
         </table>
     </div>    

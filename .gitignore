@@ -41,3 +41,6 @@
 /app/config/social_parameters.yml
 /www/uploadedFiles
 /www/colorAdmin
+/www/media/cache
+/www/front/js/compiled
+/www/front/css/compiled

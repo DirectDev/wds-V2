@@ -24,6 +24,10 @@
                     {% render(path('front_music_show', { id : music.id } )) %}
                 {% endfor %}
 
+                {% if 8 > musics|length %}
+                    {% include 'FrontFrontBundle:Music:add.html.twig' %}
+                {% endif %}
+
             </div>
             <!-- End Profile Content -->            
         </div>

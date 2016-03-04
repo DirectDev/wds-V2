@@ -23,6 +23,10 @@
                     {% render(path('front_video_show', { id : video.id } )) %}
                 {% endfor %}
 
+                {% if 8 > videos|length %}
+                    {% include 'FrontFrontBundle:Video:add.html.twig' %}
+                {% endif %}
+
             </div>
             <!-- End Profile Content -->            
         </div>

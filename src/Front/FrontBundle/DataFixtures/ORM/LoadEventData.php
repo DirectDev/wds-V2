@@ -53,6 +53,23 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
         }
 
         $manager->flush();
+
+        $this->loadEmpty($manager);
+    }
+
+    private function loadEmpty(ObjectManager $manager) {
+
+        $name = 'empty-event';
+        $Event = new Event();
+        $Event->setName($name);
+
+        $Event->setUser($this->getReference('user-empty-user'));
+
+        $manager->persist($Event);
+        $this->addReference('event-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Event);
+
+
+        $manager->flush();
     }
 
     private function addMusicType(Event $Event) {

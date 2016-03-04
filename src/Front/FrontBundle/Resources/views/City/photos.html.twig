@@ -28,6 +28,10 @@
                             {% include 'FrontFrontBundle:Photo:photo.html.twig'  %}
                         {% endfor %}
 
+                        {% if 8 > photos|length %}
+                            {% include 'FrontFrontBundle:Photo:add.html.twig' %}
+                        {% endif %}
+
                     </div>
                 </div>
 

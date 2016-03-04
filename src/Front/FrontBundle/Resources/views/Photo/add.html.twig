@@ -1,0 +1,25 @@
+
+{% set image_default_uri = 'images/wds_750x340_rose.png' %}
+
+<div class="cbp-item graphic">
+    <div class="cbp-caption">
+        <div class="cbp-caption-defaultWrap">
+            <img src="{{ asset(image_default_uri) }}" alt="">
+        </div>
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions">
+                        <li>
+                            <a href="{{ asset(image_default_uri) }}" class="cbp-lightbox" data-title="{% trans %}photo.list.add.title{% endtrans %}">
+                                <i class="rounded-x fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="cbp-l-grid-agency-title">{% trans %}photo.list.add.title{% endtrans %}</div>
+                    <div class="cbp-l-grid-agency-desc">{% trans %}photo.list.add.desc{% endtrans %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

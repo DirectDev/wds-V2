@@ -35,6 +35,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->loadTeachers($manager);
         $this->loadArtits($manager);
         $this->loadBars($manager);
+        $this->loadEmptyUser($manager);
     }
 
     private function addMusicType(User $User) {
@@ -150,6 +151,26 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $manager->flush();
     }
 
+    public function loadEmptyUser(ObjectManager $manager) {
+
+        $value = 'empty-user';
+        $User = new User();
+        $User->setEnabled(true);
+        $User->setUsername($value);
+        $User->setPassword($this->password);
+        $User->setEmail($value . '@yopmail.com');
+        $User->addRole('ROLE_USER');
+        $encoder = $this->container
+                ->get('security.encoder_factory')
+                ->getEncoder($User);
+        $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
+
+        $manager->persist($User);
+
+        $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
+        $manager->flush();
+    }
+
     private function setDetails(User $User, $value = null) {
         $locale = $this->array_locale[rand(0, 1)];
         if (rand(0, 1))
@@ -177,8 +198,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->setYoutubeLink('http://link-to-' . $value);
         if (rand(0, 1))
             $User->setVimeoLink('http://link-to-' . $value);
-        
-        
+
+
         if (rand(0, 4))
             $User->setDisplayCounter(rand(100, 10000));
     }

@@ -27,6 +27,12 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
             $User->addAddress($this->addAddress($manager));
         }
 
+        $Event = $this->getReference('event-empty-event');
+        $Event->addAddress($this->addEmptyAddress($manager));
+
+        $User = $this->getReference('user-empty-user');
+        $User->addAddress($this->addEmptyAddress($manager));
+
         $manager->flush();
     }
 
@@ -61,6 +67,30 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
             $Country = $this->getReference('country-AU');
         if (in_array($city_selected, array('rio')))
             $Country = $this->getReference('country-BR');
+        $Address->setCountry($Country);
+
+        $manager->persist($Address);
+
+        return $Address;
+    }
+
+    private function addEmptyAddress(ObjectManager $manager) {
+        $Address = new Address();
+
+        $Address->setName($this->array_baseline[rand(0, count($this->array_baseline) - 1)]);
+        $Address->setStreet($this->array_baseline[rand(0, count($this->array_baseline) - 1)]);
+        $Address->setStreetComplement($this->array_baseline[rand(0, count($this->array_baseline) - 1)]);
+        $Address->setPostcode($this->array_baseline[rand(0, count($this->array_baseline) - 1)]);
+
+        $City = $this->getReference('city-empty-city');
+        $latitude = $City->getLatitude() + rand(-100, 100) / 10000;
+        $longitude = $City->getLongitude() + rand(-100, 100) / 10000;
+
+        $Address->setCity($City->getName());
+        $Address->setLatitude($latitude);
+        $Address->setLongitude($longitude);
+
+        $Country = $this->getReference('country-BR');
         $Address->setCountry($Country);
 
         $manager->persist($Address);
