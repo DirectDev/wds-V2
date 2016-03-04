@@ -42,8 +42,8 @@ class CityFrControllerTest extends WebTestCase {
 
     public function testEdito() {
         foreach ($this->findCities() as $City) {
-            if(!$city->hasEdito())
-                contiue;
+            if(!$City->hasEdito())
+                continue;
             
             $crawler = $this->client->request('GET', $this->router->generate('city_edito', array(
                         '_locale' => $this->locale,
