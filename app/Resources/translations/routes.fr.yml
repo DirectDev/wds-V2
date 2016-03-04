@@ -252,7 +252,7 @@ city_concert: '/ville/concerts/{searchcity}'
 city_dancer: '/ville/danseurs/{searchcity}'
 
 # Desc: /city/edito/{searchcity}
-city_edito: '/ville/presentation/{searchcity}' 
+city_edito: '/ville/presentation/{searchcity}'
 
 # Desc: /city/festivals/{searchcity}
 city_festival: '/ville/festivals/{searchcity}'
@@ -627,11 +627,14 @@ front_user_next_events: /profil/next_events
 # Desc: /user/profile/passed_events
 front_user_passed_events: /profil/passed_events
 
-# Desc: /user/pofile/overviews/{id}
-front_user_show_overviews: '/pofile/overviews/{id}'
+# Desc: /user/profile/overviews/{id}
+front_user_show_overviews: '/profil/overvues/{id}'
 
-# Desc: /user/pofile/overviews_profile/{id}
-front_user_show_overviews_profile: '/pofile/overviews_profil/{id}'
+# Desc: /user/profile/overviews_index/{id}
+front_user_show_overviews_index: '/user/profil/overvues_index/{id}'   
+
+# Desc: /user/profile/overviews_profile/{id}
+front_user_show_overviews_profile: '/profile/overvues_profil/{id}'
 
 # Desc: /user/my-profile/
 front_user_show_private: /mon-profil/

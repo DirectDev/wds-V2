@@ -87,24 +87,24 @@ city:
     calendar: Calendrier
     concerts: Concerts
     dancers: Danseurs
-    edito: city.edito   # FIXME
-    edito.artist.h4: city.edito.artist.h4   # FIXME
-    edito.artist.p: city.edito.artist.p   # FIXME
-    edito.bar.h4: city.edito.bar.h4   # FIXME
-    edito.bar.p: city.edito.bar.p   # FIXME
-    edito.calendar.h4: city.edito.calendar.h4   # FIXME
-    edito.calendar.p: city.edito.calendar.p   # FIXME
-    edito.festival.h4: city.edito.festival.h4   # FIXME
-    edito.festival.p: city.edito.festival.p   # FIXME
-    edito.introduction.h4: city.edito.introduction.h4   # FIXME
-    edito.introduction.p: city.edito.introduction.p   # FIXME
-    edito.party.h4: city.edito.party.h4   # FIXME
-    edito.party.p: city.edito.party.p   # FIXME
-    edito.photo.h4: city.edito.photo.h4   # FIXME
-    edito.photo.p: city.edito.photo.p   # FIXME
-    edito.teacher.h4: city.edito.teacher.h4   # FIXME
-    edito.teacher.p: city.edito.teacher.p   # FIXME
-    edito.users: city.edito.users   # FIXME
+    edito: city.edito
+    edito.artist.h4: city.edito.artist.h4
+    edito.artist.p: city.edito.artist.p
+    edito.bar.h4: city.edito.bar.h4
+    edito.bar.p: city.edito.bar.p
+    edito.calendar.h4: city.edito.calendar.h4
+    edito.calendar.p: city.edito.calendar.p
+    edito.festival.h4: city.edito.festival.h4
+    edito.festival.p: city.edito.festival.p
+    edito.introduction.h4: city.edito.introduction.h4
+    edito.introduction.p: city.edito.introduction.p
+    edito.party.h4: city.edito.party.h4
+    edito.party.p: city.edito.party.p
+    edito.photo.h4: city.edito.photo.h4
+    edito.photo.p: city.edito.photo.p
+    edito.teacher.h4: city.edito.teacher.h4
+    edito.teacher.p: city.edito.teacher.p
+    edito.users: city.edito.users
     festivals: Festivals
     introductions: Initiations
     lessons: Cours
@@ -172,6 +172,10 @@ event:
     from: Du
     hours: Horaires
     images_title: Images
+
+    list:
+        add: Ajouter un évenement
+
     music: Musique
     share_this: Partager
     they_like: 'Ils aiment'
@@ -756,6 +760,11 @@ move:
     search_title: 'Passes et Shines'
 
 music:
+    list:
+        add:
+            desc: Partagez vos musiques préférées
+            title: Ajoutez votre musique
+
     search_input_placeholder: 'Recherchez une musique'
     search_title: Musiques
 
@@ -857,6 +866,12 @@ overviews:
     videos: Vidéos
     views: Vues
 
+photo:
+    list:
+        add:
+            desc: Partagez vos photos ici
+            title: Ajoutez vos photos
+
 tag:
     search_by_tag: 'Filtrer par tag'
 
@@ -902,6 +917,12 @@ user:
     edit_profil: 'Modifier mon profil'
     events_title: 'Mes Prochains Evenements'
     images_title: 'Mes Images'
+
+    list:
+        add:
+            h3: Inscrivez-vous 
+            span: Apparaissez ici
+
     musics_title: Musiques
     my_musics: 'Mes musiques'
     my_photos: 'Mes photos'
@@ -933,5 +954,9 @@ user_bundle:
         signin_google: 'Se connecter avec Google'
 
 video:
+    list:
+        add:
+            title: Ajoutez vos videos 
+
     search_input_placeholder: 'Rechercher une vidéo'
     search_title: Vidéos

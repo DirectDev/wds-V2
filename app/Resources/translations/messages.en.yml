@@ -87,24 +87,24 @@ city:
     calendar: Calendar
     concerts: Concerts
     dancers: Dancers
-    edito: Overview  
-    edito.artist.h4: city.edito.artist.h4   # FIXME
-    edito.artist.p: city.edito.artist.p   # FIXME
-    edito.bar.h4: city.edito.bar.h4   # FIXME
-    edito.bar.p: city.edito.bar.p   # FIXME
-    edito.calendar.h4: city.edito.calendar.h4   # FIXME
-    edito.calendar.p: city.edito.calendar.p   # FIXME
-    edito.festival.h4: city.edito.festival.h4   # FIXME
-    edito.festival.p: city.edito.festival.p   # FIXME
-    edito.introduction.h4: city.edito.introduction.h4   # FIXME
-    edito.introduction.p: city.edito.introduction.p   # FIXME
-    edito.party.h4: city.edito.party.h4   # FIXME
-    edito.party.p: city.edito.party.p   # FIXME
-    edito.photo.h4: city.edito.photo.h4   # FIXME
-    edito.photo.p: city.edito.photo.p   # FIXME
-    edito.teacher.h4: city.edito.teacher.h4   # FIXME
-    edito.teacher.p: city.edito.teacher.p   # FIXME
-    edito.users: city.edito.users   # FIXME
+    edito: Overview
+    edito.artist.h4: city.edito.artist.h4
+    edito.artist.p: city.edito.artist.p
+    edito.bar.h4: city.edito.bar.h4
+    edito.bar.p: city.edito.bar.p
+    edito.calendar.h4: city.edito.calendar.h4
+    edito.calendar.p: city.edito.calendar.p
+    edito.festival.h4: city.edito.festival.h4
+    edito.festival.p: city.edito.festival.p
+    edito.introduction.h4: city.edito.introduction.h4
+    edito.introduction.p: city.edito.introduction.p
+    edito.party.h4: city.edito.party.h4
+    edito.party.p: city.edito.party.p
+    edito.photo.h4: city.edito.photo.h4
+    edito.photo.p: city.edito.photo.p
+    edito.teacher.h4: city.edito.teacher.h4
+    edito.teacher.p: city.edito.teacher.p
+    edito.users: city.edito.users
     festivals: Festivals
     introductions: Introductions
     lessons: Lessons
@@ -172,6 +172,10 @@ event:
     from: From
     hours: Hours
     images_title: Images
+
+    list:
+        add: Add Event  
+
     music: Music
     share_this: 'Share this'
     they_like: Likes
@@ -756,6 +760,11 @@ move:
     search_title: 'Moves & Shines'
 
 music:
+    list:
+        add:
+            desc: Add your music here
+            title: Add your music
+
     search_input_placeholder: 'Search Music'
     search_title: Musics
 
@@ -858,6 +867,12 @@ overviews:
     videos: Videos
     views: Views
 
+photo:
+    list:
+        add:
+            desc: Add your photo
+            title: Add your photo here
+
 tag:
     search_by_tag: 'Filter by tag'
 
@@ -903,6 +918,12 @@ user:
     edit_profil: 'Edit Profil'
     events_title: 'My Next Events'
     images_title: 'My Pictures'
+
+    list:
+        add:
+            h3: Register
+            span: register and appear here
+
     musics_title: 'My Musics'
     my_musics: 'My Musics'
     my_photos: 'My Photos'
@@ -934,5 +955,9 @@ user_bundle:
         signin_google: 'Signin with google'
 
 video:
+    list:
+        add:
+            title: Add video
+
     search_input_placeholder: 'Search video'
     search_title: Videos

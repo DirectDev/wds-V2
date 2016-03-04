@@ -40,15 +40,15 @@ front_user_import_facebook_event:
     defaults: { _controller: "FrontFrontBundle:User:importFacebookEvent" }    
 
 front_user_show_overviews:
-    path:     /pofile/overviews/{id}
+    path:     /profile/overviews/{id}
     defaults: { _controller: "FrontFrontBundle:User:showOverviews" }
     
 front_user_show_overviews_profile:
-    path:     /pofile/overviews_profile/{id}
+    path:     /profile/overviews_profile/{id}
     defaults: { _controller: "FrontFrontBundle:User:showOverviewsProfile" }
     
 front_user_show_overviews_index:
-    path:     /pofile/overviews_index/{id}
+    path:     /profile/overviews_index/{id}
     defaults: { _controller: "FrontFrontBundle:User:showOverviewsIndex" }
     
 front_user_loves:
