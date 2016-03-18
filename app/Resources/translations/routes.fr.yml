@@ -746,8 +746,8 @@ liip_imagine_filter: '/media/cache/resoudre/{filter}/{path}'
 # Desc: /media/cache/resolve/{filter}/rc/{hash}/{path}
 liip_imagine_filter_runtime: '/media/cache/resoudre/{filter}/rc/{hash}/{path}'
 
-# Desc: /navbar
-navbar: /navbar
+# Desc: /navbar/{route}
+navbar: /navbar/{route}
 
 # Desc: /policy
 policy: /mentions-legales

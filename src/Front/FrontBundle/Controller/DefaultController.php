@@ -69,6 +69,8 @@ class DefaultController extends Controller {
     public function navbarAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
+        
+        $route = $request->get('route');
   
         $MeaUsersSalsaDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForSalsaDiscover(1);
         $MeaUsersBachataDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForBachataDiscover(2);
@@ -86,7 +88,9 @@ class DefaultController extends Controller {
         $MeaCitiesMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForMeet(4);
        
 
-        return $this->render('FrontFrontBundle:Navbar:navbar.html.twig', array(          
+        return $this->render('FrontFrontBundle:Navbar:navbar.html.twig', array(     
+                    'route' => $route,
+            
                     'MeaUsersSalsaDiscover' => $MeaUsersSalsaDiscover,
                     'MeaUsersBachataDiscover' => $MeaUsersBachataDiscover,
                     'MeaUsersKizombaDiscover' => $MeaUsersKizombaDiscover,

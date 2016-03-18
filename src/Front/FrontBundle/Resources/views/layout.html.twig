@@ -10,7 +10,7 @@
         {% include 'FrontFrontBundle::search.html.twig' %}
     {% endif %}
 
-    {% render(path('navbar')) %}
+    {% render(path('navbar',  { route : app.request.get('_route') } )) %}
 
 {% block content %}{% endblock %}
 

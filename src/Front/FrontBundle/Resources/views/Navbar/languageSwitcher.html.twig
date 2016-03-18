@@ -19,10 +19,8 @@
                 {%set routeParams = routeParams|merge({'_locale': langue}) %}
             {% endif %}
 
-            {% if app.request.get('_route') == 'homepage' %}
+            {% if not route is defined or route == 'homepage' %}
                 {% set route = 'home' %}
-            {% else %}
-                {% set route = app.request.get('_route') %}
             {% endif %}  
 
             {% if actualLangue == langue %}
