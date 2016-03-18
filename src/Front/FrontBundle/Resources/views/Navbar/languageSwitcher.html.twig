@@ -1,11 +1,8 @@
 <!-- _langueSwitcher.html.twig -->
 
-{# If method is not GET the langue switcher is hidden to prevent change the url on a post action #}
-{# if app.request.get('_route') and app.request.get('_method') and "GET" in app.request.get('_method').methods #}
+{% set actualLangue = masterRequest.locale %}
 
-{% set actualLangue = app.request.locale %}
-
-{% set routeParams = app.request.get('_route_params') %}
+{% set routeParams = masterRequest.get('_route_params') %}
 
 <li class="dropdown ">
     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
@@ -19,8 +16,10 @@
                 {%set routeParams = routeParams|merge({'_locale': langue}) %}
             {% endif %}
 
-            {% if not route is defined or route == 'homepage' %}
+            {% if masterRequest.get('_route') == 'homepage' %}
                 {% set route = 'home' %}
+            {% else %}
+                {% set route = masterRequest.get('_route') %}
             {% endif %}  
 
             {% if actualLangue == langue %}

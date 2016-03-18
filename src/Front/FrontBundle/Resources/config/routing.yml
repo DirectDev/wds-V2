@@ -4,8 +4,8 @@ homepage:
     defaults:  { _controller: FrontFrontBundle:Default:index }
     
 navbar:
-    path:      /navbar/{route}
-    defaults:  { _controller: FrontFrontBundle:Default:navbar, route: home } 
+    path:      /navbar
+    defaults:  { _controller: FrontFrontBundle:Default:navbar } 
     
 footer:
     path:      /footer

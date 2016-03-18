@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Search\SearchBundle\Form\UserFrontSearchType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
@@ -70,8 +71,9 @@ class DefaultController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         
-        $route = $request->get('route');
-  
+        $stack = $this->get('request_stack');
+        $masterRequest = $stack->getMasterRequest();
+          
         $MeaUsersSalsaDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForSalsaDiscover(1);
         $MeaUsersBachataDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForBachataDiscover(2);
         $MeaUsersKizombaDiscover = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForKizombaDiscover(3);
@@ -89,7 +91,7 @@ class DefaultController extends Controller {
        
 
         return $this->render('FrontFrontBundle:Navbar:navbar.html.twig', array(     
-                    'route' => $route,
+                    'masterRequest' => $masterRequest,
             
                     'MeaUsersSalsaDiscover' => $MeaUsersSalsaDiscover,
                     'MeaUsersBachataDiscover' => $MeaUsersBachataDiscover,
