@@ -165,6 +165,7 @@
 }
 .navbar li.dropdown{
     padding-top: 3px;
+    padding-bottom: 3px;
 }
 #front_front_bundle_musictypefrontfilter{
     padding: 10px 10px 10px 15px;
@@ -816,4 +817,26 @@ a.navbar_highlight {
     line-height: 40px;
     white-space: nowrap;
     overflow: hidden;
+}
+.easy-block-v1-badge-green{
+    top: 10px !important;
+    background-color: #5FB611;
+}
+.easy-block-v1-badge-danger{
+    top: 10px !important;
+    background-color: #E64C3C;
+}
+.easy-block-v1-badge-yellow{
+    top: 10px !important;
+    background-color: #F1C40F;
+}
+.easy-block-v1-badge-orange{
+    top: 45px !important;
+    background-color: #E47B1F;
+}
+.header-v3 .dropdown-menu li a.btn-facebook-inversed{
+    color: white !important;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 90%;
 }

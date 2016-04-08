@@ -1,11 +1,15 @@
 <div class="breadcrumbs breadcrumbs-dark">
     <div class="container">
-        <h1 class="pull-left">{{ page.getTitle|capitalize }}</h1>
+        {% if title is not defined and app.getUser %}
+            {% set title = app.getUser.getUsername %}
+        {% endif %}
+        <h1 class="pull-left">{{ title }}</h1>
         <ul class="pull-right breadcrumb">
             <li>
                 <a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a>
             </li>
-            <li class="active">{{ page.getTitle|capitalize }}</li>
+            <li>{{ app.user.getUsername()|capitalize }}</li>
+            <li class="active">{{ title }}</li>
         </ul>
     </div>
 </div>

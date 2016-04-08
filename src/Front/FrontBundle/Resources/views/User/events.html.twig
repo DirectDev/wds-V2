@@ -1,0 +1,107 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {% trans %}user.my_events{% endtrans %} 
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/profile-portfolio.css') }}" />   
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/search_layout.css') }}" />       
+{% endblock %}
+
+
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { title : 'user.my_events'|trans } %}
+
+    <!--=== Search Block Version 2 ===-->
+    <div class="search-block-v2">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h2>{% trans %}user.event.search_title{% endtrans %}</h2>
+
+                {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'event_filter_form' } } ) }}
+                <div class="input-group">
+                    {% set placeholder %}
+                        {% trans %}user.event.search_input_placeholder{% endtrans %}
+                    {% endset %}
+                    {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : placeholder|trim } } ) }}
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                    {{ form_row(filterForm.musictype) }}
+                </div>
+                {{ form_end(filterForm) }}
+
+            </div>
+        </div>    
+    </div><!--/container-->     
+    <!--=== End Search Block Version 2 ===-->
+
+    <!--=== Search Results ===-->
+    <div class="container s-results margin-bottom-50">
+        <div class="row">
+            <div class="col-md-2 hidden-xs related-search">
+                <div class="row">
+
+                    <div class="col-md-12 col-sm-4">
+                        {% render(path('front_eventtype_list_for_event_search')) %}
+                    </div> 
+
+                    <div class="col-md-12 col-sm-4">
+                        {% render(path('front_musictype_list_for_event_search')) %}
+                    </div>    
+
+                </div>        
+            </div><!--/col-md-2-->
+
+            <div class="col-md-10 profile" id="event_list">
+
+                <div class="profile-body">
+
+                    <!-- Portfolio Sorting Blocks -->
+                    <div class="sorting-block">
+                        {% render(path('front_musictype_filters')) %}
+
+                        <!-- Easy Blocks v1 -->                
+                        <div class="row high-rated margin-bottom-20 sorting-grid">
+
+                            {% for event in pagination %}
+                                {% include 'FrontFrontBundle:Event:eventWithButtons.html.twig' %}
+                            {% endfor %}
+                        </div>
+                        <!-- End Easy Blocks v1 --> 
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- End Portfolio Sorting Blocks -->   
+
+                </div>
+
+                <div class="margin-bottom-30"></div>
+
+                <div class='text-center'>
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div><!--/col-md-10-->
+        </div>        
+    </div><!--/container-->     
+    <!--=== End Search Results ===-->
+{% endblock %}
+
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+    <script src="{{ asset("front/js/compiled/page-portfolio.js") }}"></script> 
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            PortfolioPage.init();
+
+        });
+    </script>
+
+{% endblock %}    

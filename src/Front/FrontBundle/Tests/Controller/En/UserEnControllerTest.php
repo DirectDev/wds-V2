@@ -226,6 +226,46 @@ class UserFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
+    public function testEvents() {
+
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_events', array(
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_events', array(
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testFilterEventsLoggued() {
+
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#event_filter_form button[type=submit]')->form();
+        $form['event_filter[search]'] = 'salsa';
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $MusicType = $this->findOneMusicType();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#event_filter_form button[type=submit]')->form();
+        $form['event_filter[musictype]'] = $MusicType->getTitle();
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $EventType = $this->findOneEventType();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#event_filter_form button[type=submit]')->form();
+        $form['event_filter[eventtype]'] = $EventType->getTitle();
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+
     public function testRegister() {
 
         $crawler = $this->client->request('GET', $this->router->generate('fos_user_registration_register', array(

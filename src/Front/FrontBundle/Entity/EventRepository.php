@@ -164,6 +164,49 @@ class EventRepository extends EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function getNextEventByUserQuery(User $user, $startdate = null, $stopdate = null) {
+
+        if (!$startdate)
+            $startdate = date('Y-m-d');
+        if (!$stopdate)
+            $stopdate = date('Y-m-d', strtotime('+365 days'));
+
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.user', 'u')
+                ->leftJoin('e.eventDates', 'ed')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('stopdate', $stopdate)
+                ->setParameter('id', $user->getId())
+//                ->orderBy('ed.startdate', 'ASC')
+                ->groupBy('e.id, ed.startdate')
+                ->where('u.id = :id')
+                ->andWhere('((
+                    (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
+                    OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
+                    OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
+                    )
+                    OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
+
+        return $query->getQuery();
+    }
+
+    public function getPassedEventByUserQuery(User $user) {
+
+        $startdate = date('Y-m-d');
+
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.user', 'u')
+                ->leftJoin('e.eventDates', 'ed')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('id', $user->getId())
+//                ->orderBy('ed.startdate', 'DESC')
+                ->groupBy('e.id, ed.startdate')
+                ->where('u.id = :id')
+                ->andWhere('ed.startdate <= :startdate');
+
+        return $query->getQuery();
+    }
+
     public function findForFooter($limit = 6, $eventTypes = null) {
 
         $arrayEventType = array();
@@ -244,6 +287,57 @@ class EventRepository extends EntityRepository {
         }
 
         return $query->getQuery()->getResult();
+    }
+
+    public function filter($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.user', 'u')
+                ->leftJoin('e.translations', 'et', 'WITH', 'et.locale = :locale')
+                ->leftJoin('e.musicTypes', 'mt')
+                ->leftJoin('mt.translations', 'mtt', 'WITH', 'mtt.locale = :locale')
+                ->leftJoin('e.eventTypes', 'ety')
+                ->leftJoin('ety.translations', 'etyt', 'WITH', 'etyt.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("e.name", ":search"));
+            $orQuery->add($query->expr()->like("et.title", ":search"));
+            $orQuery->add($query->expr()->like("mt.name", ":search"));
+            $orQuery->add($query->expr()->like("mtt.title", ":search"));
+            $orQuery->add($query->expr()->like("ety.name", ":search"));
+            $orQuery->add($query->expr()->like("etyt.title", ":search"));
+            $orQuery->add($query->expr()->like("u.username", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        if (isset($data["user"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.username", ":user"));
+            $orQuery->add($query->expr()->like("u.id", ":user"));
+            $query->andWhere($orQuery);
+            $query->setParameter('user', '%' . $data["user"] . '%');
+        }
+
+        if (isset($data["eventtype"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("ety.name", ":eventtype"));
+            $orQuery->add($query->expr()->like("etyt.title", ":eventtype"));
+            $query->andWhere($orQuery);
+            $query->setParameter('eventtype', '%' . $data["eventtype"] . '%');
+        }
+
+        if (isset($data["musictype"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("mt.name", ":musictype"));
+            $orQuery->add($query->expr()->like("mtt.title", ":musictype"));
+            $query->andWhere($orQuery);
+            $query->setParameter('musictype', '%' . $data["musictype"] . '%');
+        }
+
+        return $query->getQuery();
     }
 
 }

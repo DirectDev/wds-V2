@@ -77,6 +77,10 @@ class UserFrControllerTest extends WebTestCase {
         return $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName('salsa');
     }
 
+    private function findOneEventType() {
+        return $this->em->getRepository('FrontFrontBundle:EventType')->findOneByName('show');
+    }
+
     private function deleteData() {
 
         if ($User = $this->findNewUser())
@@ -223,6 +227,45 @@ class UserFrControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_next_events', array(
                     '_locale' => $this->locale)
         ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEvents() {
+
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_events', array(
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_events', array(
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testFilterEventsLoggued() {
+
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#event_filter_form button[type=submit]')->form();
+        $form['event_filter[search]'] = 'salsa';
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $MusicType = $this->findOneMusicType();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#event_filter_form button[type=submit]')->form();
+        $form['event_filter[musictype]'] = $MusicType->getTitle();
+        $crawler = $this->clientLogged->submit($form);
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $EventType = $this->findOneEventType();
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        $form = $crawler->filter('#event_filter_form button[type=submit]')->form();
+        $form['event_filter[eventtype]'] = $EventType->getTitle();
+        $crawler = $this->clientLogged->submit($form);
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 

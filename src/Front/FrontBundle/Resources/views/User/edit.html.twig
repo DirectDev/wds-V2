@@ -13,13 +13,8 @@
 
 {% block content %}
 
-    <!--=== Breadcrumbs ===-->
-    <div class="breadcrumbs">
-        <div class="container">
-            <h1 class="pull-left">{% trans %}user.edit_profil{% endtrans %}</h1>
-        </div>
-    </div><!--/breadcrumbs-->
-    <!--=== End Breadcrumbs ===-->
+    {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { title : 'user.edit_profil'|trans } %}
+
 
     <!--=== Content Part ===-->
     <div class="container content profile">

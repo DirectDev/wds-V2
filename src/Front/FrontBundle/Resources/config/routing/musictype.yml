@@ -6,3 +6,7 @@ front_musictype_filters:
 front_musictype_list_for_user_search:
     path:     /list_for_user_search/
     defaults: { _controller: "FrontFrontBundle:MusicType:listForUserSearch" }    
+    
+front_musictype_list_for_event_search:
+    path:     /list_for_event_search/
+    defaults: { _controller: "FrontFrontBundle:MusicType:listForEventSearch" }    

@@ -33,4 +33,14 @@ class MusicTypeController extends Controller {
         ));
     }
 
+    public function listForEventSearchAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $musicTypes = $em->getRepository('FrontFrontBundle:MusicType')->findAll();
+
+        return $this->render('FrontFrontBundle:MusicType:listForEventSearch.html.twig', array(
+                    'musicTypes' => $musicTypes,
+        ));
+    }
+
 }

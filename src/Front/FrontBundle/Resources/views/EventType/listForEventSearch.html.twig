@@ -1,0 +1,12 @@
+<h3>{% trans %}user.search_by_eventtype{% endtrans %}</h3>
+<ul class="list-unstyled">
+    {% for eventType in eventTypes %}
+        <li>
+            <a href="{{ path('front_user_filter_events', {'event_filter[eventtype]':  eventType.getName() , 'event_filter[_token]' :  csrf_token('event_filter')  } ) }}"
+               class="search-user-eventtype-link">
+                {{ eventType.getTitle() }}
+            </a>
+        </li>     
+    {% endfor %}   
+</ul>
+<hr>

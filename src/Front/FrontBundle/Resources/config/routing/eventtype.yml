@@ -1,0 +1,4 @@
+   
+front_eventtype_list_for_event_search:
+    path:     /list_for_event_search/
+    defaults: { _controller: "FrontFrontBundle:EventType:listForEventSearch" }    

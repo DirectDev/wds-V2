@@ -13,14 +13,8 @@
 
 {% block content %}
 
-    <!--=== Breadcrumbs ===-->
-    <div class="breadcrumbs">
-        <div class="container">
-            <h1 class="pull-left">{% trans %}user.passed_events{% endtrans %}</h1>
+    {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { title : 'user.passed_events'|trans } %}
 
-        </div>
-    </div><!--/breadcrumbs-->
-    <!--=== End Breadcrumbs ===-->
 
     <!--=== Content Part ===-->
     <div class="container content profile">
@@ -38,7 +32,7 @@
                         <!-- Easy Blocks v1 -->                
                         <div class="row high-rated margin-bottom-20 sorting-grid">
 
-                            {% for event in events %}
+                            {% for event in pagination %}
                                 {% include 'FrontFrontBundle:Event:eventWithButtons.html.twig' %}
                             {% endfor %}
                         </div>
@@ -48,6 +42,11 @@
                     <!-- End Portfolio Sorting Blocks -->   
 
                 </div>
+
+                <div class='text-center'>
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+
             </div>
             <!-- End Profile Content -->            
         </div>

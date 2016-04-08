@@ -50,5 +50,12 @@ class MusicTypeFrControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('front_musictype_list_for_user_search', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
+    
+    public function testListForEventSearch() {
+        $crawler = $this->client->request('GET', $this->router->generate('front_musictype_list_for_event_search', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_musictype_list_for_event_search', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
 
 }

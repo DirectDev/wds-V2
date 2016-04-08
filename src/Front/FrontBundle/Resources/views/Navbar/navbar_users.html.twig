@@ -25,7 +25,7 @@
                     <div class="container">
                         <div class="row equal-height">
 
-                            <div class="col-md-3 equal-height-in">
+                            <div class="col-md-4 equal-height-in">
                                 <ul class="list-unstyled equal-height-list">
                                     <li>
                                         <h3>{% trans %}navbar.user.profile{% endtrans %}</h3>
@@ -33,45 +33,66 @@
 
                                     <li>
                                         <a href="{{ path('front_user_show_public', { id : app.user.id, username : app.user.username } ) }}">
+                                            <i class="fa fa-user"></i> 
                                             {% trans %}navbar.user.my_page{% endtrans %}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ path('front_user_edit', { id : app.user.id } ) }}">
-                                            {% trans %}navbar.user.my_profile{% endtrans %}
+                                            <i class="fa fa-pencil"></i>
+                                            {% trans %}navbar.user.my_profile{% endtrans %} modifier 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            <i class="fa fa-power-off"></i>
+                                            {% trans %}navbar.logout{% endtrans %}
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
-                            <div class="col-md-3 equal-height-in">
+                            <div class="col-md-4 equal-height-in">
                                 <ul class="list-unstyled equal-height-list">
                                     <li>
                                         <h3>My {% trans %}navbar.user.events{% endtrans %}</h3>
                                     </li>
                                     <li>
+                                        <a href="{{ path('front_user_events') }}">
+                                            <i class="fa fa-bars"></i>
+                                            {% trans %}navbar.user.my_events{% endtrans %}
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ path('front_user_next_events') }}">
+                                            <i class="fa fa-sort-amount-asc"></i>
                                             {% trans %}navbar.user.next_events{% endtrans %}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ path('front_user_passed_events') }}">
+                                            <i class="fa fa-sort-amount-desc"></i>
                                             {% trans %}navbar.user.passed_events{% endtrans %}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('front_event_new') }}">
-                                            {% trans %}navbar.user.add_event{% endtrans %}
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
-                            <div class="col-md-3 equal-height-in">
+                            <div class="col-md-4 equal-height-in">
                                 <ul class="list-unstyled equal-height-list">
                                     <li>
-                                        <a href="{{ path('fos_user_security_logout') }}">
-                                            {% trans %}navbar.logout{% endtrans %}
+                                        <h3>&nbsp;</h3>
+                                    </li>
+
+                                    <li>
+                                        <a href="" class="btn btn-facebook-inversed rounded">
+                                            <i class="fa fa-facebook"></i> 
+                                            {% trans %}navbar.user.import_facebook{% endtrans %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('front_event_new') }}">
+                                            <i class="fa fa-power-off"></i> {% trans %}navbar.user.add_event{% endtrans %}
                                         </a>
                                     </li>
                                 </ul>

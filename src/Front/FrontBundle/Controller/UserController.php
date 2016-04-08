@@ -11,6 +11,7 @@ use Front\FrontBundle\Form\UserProfileType;
 use Front\FrontBundle\Form\UserLinkType;
 use User\UserBundle\Entity\UserFile;
 use Front\FrontBundle\Form\UserFilterType;
+use Front\FrontBundle\Form\EventFilterType;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -550,7 +551,7 @@ class UserController extends Controller {
         ));
     }
 
-    public function passedEventsAction() {
+    public function passedEventsAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
         if (!$this->getUser())
@@ -561,16 +562,20 @@ class UserController extends Controller {
             return new Response('', 404);
 
         $startdate = date('Y-m-d');
-        $passedEvents = $em->getRepository('FrontFrontBundle:Event')->getPassedEventByUser($entity, $limit = 10);
+        $query = $em->getRepository('FrontFrontBundle:Event')->getPassedEventByUserQuery($entity);
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
 
         return $this->render('FrontFrontBundle:User:passedEvents.html.twig', array(
                     'user' => $entity,
-                    'events' => $passedEvents,
+                    'pagination' => $pagination,
                     'startdate' => $startdate
         ));
     }
 
-    public function nextEventsAction() {
+    public function nextEventsAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
         if (!$this->getUser())
@@ -581,11 +586,15 @@ class UserController extends Controller {
             return new Response('', 404);
 
         $startdate = date('Y-m-d');
-        $nextEvents = $em->getRepository('FrontFrontBundle:Event')->getNextEventByUser($entity, $limit = 10);
+        $query = $em->getRepository('FrontFrontBundle:Event')->getNextEventByUserQuery($entity);
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
 
         return $this->render('FrontFrontBundle:User:nextEvents.html.twig', array(
                     'user' => $entity,
-                    'events' => $nextEvents,
+                    'pagination' => $pagination,
                     'startdate' => $startdate
         ));
     }
@@ -618,6 +627,68 @@ class UserController extends Controller {
         return $this->render('FrontFrontBundle:User:listForMusicSearch.html.twig', array(
                     'users' => $users,
         ));
+    }
+    
+    public function eventsAction(Request $request) {
+        
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->getRepository('FrontFrontBundle:Event')->findBy(array('user' => $this->getUser()));
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterEventForm();
+        $filterForm->handleRequest($request);
+
+        return $this->render('FrontFrontBundle:User:events.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
+    public function filterEventsAction(Request $request) {
+        
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterEventForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+        
+        $filterData['user'] = $this->getUser();
+
+        $query = $em->getRepository('FrontFrontBundle:Event')->filter($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        return $this->render('FrontFrontBundle:User:events.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+    
+     private function createFilterEventForm() {
+        $form = $this->createForm(new EventFilterType($this->getUser()), null, array(
+            'action' => $this->generateUrl('front_user_filter_events'),
+            'method' => 'GET',
+        ));
+
+        return $form;
     }
 
 }

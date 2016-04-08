@@ -241,6 +241,8 @@ class User extends BaseUser {
 
         if ($this->getProfilePicture())
             return $this->getProfilePicture()->getLargePathUri();
+        
+        return '/images/no_user_picture.jpg';
     }
 
     public function getAddress() {

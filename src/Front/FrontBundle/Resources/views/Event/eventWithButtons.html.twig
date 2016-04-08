@@ -6,9 +6,23 @@
     <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" target='_blank'>
 
         <div class="easy-block-v1">    
-            <div class="easy-block-v1-badge easy-block-v1-badge-red">
+            <div class="easy-block-v1-badge easy-block-v1-badge-orange">
                 {% trans %}modify{% endtrans %}
             </div>
+            {% if not event.isValid() %}
+                <div class="easy-block-v1-badge easy-block-v1-badge-danger">
+                    {% trans %}event.not_valid{% endtrans %}
+                </div>
+            {% elseif event.isShownInSearchResults() %}
+                <div class="easy-block-v1-badge easy-block-v1-badge-green">
+                    {% trans %}event.published{% endtrans %}
+                </div>
+            {% else %}
+                <div class="easy-block-v1-badge easy-block-v1-badge-yellow">
+                    {% trans %}event.not_published{% endtrans %}
+                </div>
+            {% endif %}
+            
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     {% for eventFile in event.eventFiles %}

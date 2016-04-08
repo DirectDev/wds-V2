@@ -43,6 +43,10 @@ FrontFrontBundle_eventpresence:
     resource: "@FrontFrontBundle/Resources/config/routing/eventpresence.yml"
     prefix:   /eventpresence      
     
+FrontFrontBundle_eventtype:
+    resource: "@FrontFrontBundle/Resources/config/routing/eventtype.yml"
+    prefix:   /eventtype  
+    
 FrontFrontBundle_festival:
     resource: "@FrontFrontBundle/Resources/config/routing/festival.yml"
     prefix:   /festival      

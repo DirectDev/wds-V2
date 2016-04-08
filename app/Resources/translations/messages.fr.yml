@@ -903,7 +903,7 @@ user:
         links: Liens
         links.h2: 'Liez votre profil aux réseaux sociaux'
         musics: Musiques
-        musics.h2: 'Partagez vous musiques préfèrées'
+        musics.h2: 'Partagez vos musiques préfèrées'
 
         photos:
             h2: 'Partagez vos photos'
@@ -928,7 +928,7 @@ user:
     my_photos: 'Mes photos'
     my_videos: 'Mes vidéos'
     next_events: 'Mes prochains événements'
-    organized_by: user.organized_by
+    organized_by: Organisé par
     passed_events: 'Mes précédents événements'
     posted_by: 'Publié par'
     profile_title: 'Mon Profil'

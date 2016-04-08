@@ -91,4 +91,13 @@ front_user_list_for_move_search:
     
 front_user_list_for_music_search:
     path:     /list_for_music_search/
-    defaults: { _controller: "FrontFrontBundle:User:listForMusicSearch" }    
+    defaults: { _controller: "FrontFrontBundle:User:listForMusicSearch" }  
+    
+front_user_events:
+    path:     /events
+    defaults: { _controller: "FrontFrontBundle:User:events" }
+    
+front_user_filter_events:
+    path:     /filter_events
+    defaults: { _controller: "FrontFrontBundle:User:filterEvents" }
+    methods:  GET    
