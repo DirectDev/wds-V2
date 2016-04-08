@@ -6,19 +6,19 @@
 
 {% block content %}
 
+
+    <!--=== Breadcrumbs ===-->  
+    <div class="breadcrumbs breadcrumbs-dark">
+        <div class="container">
+            <h1 class="pull-left">{% trans %}front.event_new_title{% endtrans %}</h1>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
     <!--=== Content Part ===-->
     <div class="container content profile">
 
-
-        <!--=== Breadcrumbs ===-->  
-        <div class="breadcrumbs">
-            <div class="container">
-                <h1 class="pull-left">{% trans %}front.event_new_title{% endtrans %}</h1>
-            </div><!--/container-->
-        </div><!--/breadcrumbs-->
-        <!--=== End Breadcrumbs ===-->
-
-        {#<div class="alert alert-info fade in">
+        <div class="alert alert-info fade in">
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info{% endtrans %}
@@ -28,7 +28,7 @@
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info2{% endtrans %}
-        </div>#}
+        </div>
 
         <!-- Profile Content -->
         <div class="col-md-12">

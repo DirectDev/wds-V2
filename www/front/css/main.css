@@ -840,3 +840,6 @@ a.navbar_highlight {
     margin-right: 5px;
     width: 90%;
 }
+.author-details{
+    min-height: 99px;
+}

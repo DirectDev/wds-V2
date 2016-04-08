@@ -144,7 +144,8 @@ event:
         new_info: 'First, add a title, a description, a type and the music types.'
         new_info2: 'You may add an address, dates, and pictures on the next page.'
         no_next_date: 'There are no future dates for this event'
-        no_profile_picture: 'There is no picture for this event'
+        missing_date: 'Please add one or more dates for this event'
+        missing_profile_picture: 'Please add one or more pictures for this event'
         valid: 'This event is valid and shows in search results.'
 
     calendar: Calendar

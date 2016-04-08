@@ -140,12 +140,13 @@ event:
 
     alert:
         invalid_address: 'Merci d''indiquer une adresse correcte'
-        missing_address: 'Merci d''indiquer une adresse'
+        missing_address: 'Ajoutez une adresse pour cet évenement.'
         new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''évenement.'
         new_info2: 'Vous pourrez ajouter l''adresse, les dates et des images sur la page suivante.'
         no_next_date: 'Il n''y a pas de date à venir pour cet évenement'
-        no_profile_picture: 'Il n''y a pas d''image pour cet évenement'
-        valid: 'Cet événement apparaît maintenant dans les résultats de recherche.'
+        missing_date: 'Ajoutez une ou plusieurs dates pour cet évenement'
+        missing_profile_picture: 'Ajoutez une image pour cet évenement'
+        valid: 'Cet événement apparaît dans les résultats de recherche.'
 
     calendar: Calendrier
     date: Date
@@ -695,7 +696,7 @@ front:
 
     alert:
         info: 'Info : '
-        success: 'Félicitations ! '
+        success: 'Info : '
         warning: 'Attention ! '
 
     back: Retour

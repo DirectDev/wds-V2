@@ -37,10 +37,6 @@
 
     {% include 'FrontFrontBundle:Event:eventBreadcrumb.html.twig' %}
 
-    <div id="event_alerts" rel="{{ path('front_event_alerts', { id : event.id } ) }}">
-        {% render(path('front_event_alerts', { id : event.id } )) %}
-    </div>
-
     <!--=== Job Description ===-->
     <div class="job-description">
         <div class="container content">
@@ -100,6 +96,10 @@
                     <div class="right-inner">
 
                         {% include 'FrontFrontBundle:User:eventAuthor.html.twig' %}
+                        
+                            <div id="event_alerts" rel="{{ path('front_event_alerts', { id : event.id } ) }}">
+        {% render(path('front_event_alerts', { id : event.id } )) %}
+    </div>
 
                         <hr>
 

@@ -260,9 +260,8 @@ class EventDateController extends Controller {
             $em->flush();
         }
 
-
         if ($event)
-            return $this->redirect($this->generateUrl('front_event_show', array('id' => $event->getId(), 'uri' => $event->getURI())));
+            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $event->getId())));
     }
 
     /**

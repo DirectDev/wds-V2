@@ -102,12 +102,14 @@ class Event {
      * 
      * */
     protected $user;
+
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="eventsPublished")
      * @ORM\JoinColumn(name="published_by_user_id", referencedColumnName="id")
      * 
      * */
     protected $publishedBy;
+
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="eventsOrganized")
      * @ORM\JoinColumn(name="organized_by_user_id", referencedColumnName="id")
@@ -209,6 +211,13 @@ class Event {
             return $address;
     }
 
+    public function hasOneValidAddress() {
+        foreach ($this->addresses as $address)
+            if ($address->isValid())
+                return true;
+        return false;
+    }
+
     public function getCity() {
         if ($this->getAddress())
             return $this->getAddress()->getCity();
@@ -249,7 +258,7 @@ class Event {
     public function isValid() {
         if (!$this->getAddress())
             return false;
-        if (!$this->getAddress()->isValid())
+        if (!$this->hasOneValidAddress())
             return false;
 
         return true;
@@ -796,7 +805,6 @@ class Event {
         return $this->userPresents;
     }
 
-
     /**
      * Set publishedBy
      *
@@ -804,8 +812,7 @@ class Event {
      *
      * @return Event
      */
-    public function setPublishedBy(\User\UserBundle\Entity\User $publishedBy = null)
-    {
+    public function setPublishedBy(\User\UserBundle\Entity\User $publishedBy = null) {
         $this->publishedBy = $publishedBy;
 
         return $this;
@@ -816,8 +823,7 @@ class Event {
      *
      * @return \User\UserBundle\Entity\User
      */
-    public function getPublishedBy()
-    {
+    public function getPublishedBy() {
         return $this->publishedBy;
     }
 
@@ -828,8 +834,7 @@ class Event {
      *
      * @return Event
      */
-    public function setOrganizedBy(\User\UserBundle\Entity\User $organizedBy = null)
-    {
+    public function setOrganizedBy(\User\UserBundle\Entity\User $organizedBy = null) {
         $this->organizedBy = $organizedBy;
 
         return $this;
@@ -840,8 +845,8 @@ class Event {
      *
      * @return \User\UserBundle\Entity\User
      */
-    public function getOrganizedBy()
-    {
+    public function getOrganizedBy() {
         return $this->organizedBy;
     }
+
 }

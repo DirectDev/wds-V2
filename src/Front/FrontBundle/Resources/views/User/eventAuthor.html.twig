@@ -13,7 +13,7 @@
 
 {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
 
-<div class="overflow-h">
+<div class="overflow-h author-details">
     <span class="font-s">{{ user.username|capitalize }}</span>
     <p class="color-green">
         {% if user.getUserType %}

@@ -309,6 +309,7 @@ $(document).on('submit', 'form.newAddress', function (e) {
                 {
                     div.replaceWith(html);
                     loadBootstrapValidator();
+                    reloadEventAlerts();
                 },
                 error: function (html)
                 {
@@ -351,6 +352,7 @@ $(document).on('click', 'button.deleteAddress', function () {
         {
             $('#address_' + addressId).remove();
             loadBootstrapValidator();
+            reloadEventAlerts();
         }
     });
     return false;
@@ -371,6 +373,7 @@ $(document).on('submit', 'form.editAddress', function (e) {
                 {
                     $('#address_' + addressId).replaceWith(html);
                     loadBootstrapValidator();
+                    reloadEventAlerts();
                 },
                 error: function (html)
                 {

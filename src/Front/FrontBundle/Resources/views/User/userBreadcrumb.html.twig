@@ -3,12 +3,19 @@
         {% if title is not defined and app.getUser %}
             {% set title = app.getUser.getUsername %}
         {% endif %}
+        {% if page is defined and page.getTitle() %}
+            {% set title = page.getTitle() %}
+        {% endif %}
         <h1 class="pull-left">{{ title }}</h1>
         <ul class="pull-right breadcrumb">
             <li>
                 <a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a>
             </li>
-            <li>{{ app.user.getUsername()|capitalize }}</li>
+            {% if app.getUser() and page is not defined %}
+                <li>
+                    {{ app.user.getUsername()|capitalize }}
+                </li>
+            {% endif %}
             <li class="active">{{ title }}</li>
         </ul>
     </div>

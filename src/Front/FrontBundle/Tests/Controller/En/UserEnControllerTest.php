@@ -77,6 +77,10 @@ class UserFrControllerTest extends WebTestCase {
         return $this->em->getRepository('FrontFrontBundle:MusicType')->findOneByName('salsa');
     }
 
+    private function findOneEventType() {
+        return $this->em->getRepository('FrontFrontBundle:EventType')->findOneByName('show');
+    }
+
     private function deleteData() {
 
         if ($User = $this->findNewUser())

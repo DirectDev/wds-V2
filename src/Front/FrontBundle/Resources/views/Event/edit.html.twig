@@ -7,33 +7,23 @@
 {% block content %}
 
 
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs breadcrumbs-dark">
+        <div class="container">
+            <h1 class="pull-left">{{ event.getTitle|capitalize }}</h1>
+            <a href="{{ path('front_event_show', {id : event.id, uri : event.getURI }) }}" class="btn btn-warning btn-md pull-right m-t-10">
+                <i class="glyphicon glyphicon-eye-open"></i>
+                <span> {% trans %}front.event.see_event{% endtrans %}</span>
+            </a>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+
     <!--=== Content Part ===-->
     <div class="container content profile">
 
-
-        <!--=== Breadcrumbs ===-->
-        <div class="breadcrumbs">
-            <div class="container">
-                <h1 class="pull-left">{{ event.getTitle|capitalize }}</h1>
-                <a href="{{ path('front_event_show', {id : event.id, uri : event.getURI }) }}" class="btn btn-warning btn-sm pull-right">
-                    <i class="glyphicon glyphicon-eye-open"></i>
-                    <span> {% trans %}front.event.see_event{% endtrans %}</span>
-                </a>
-            </div><!--/container-->
-        </div><!--/breadcrumbs-->
-        <!--=== End Breadcrumbs ===-->
-
-        {#<div class="alert alert-info fade in">
-            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-            <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-            {% trans %}event.alert.new_info{% endtrans %}
-        </div>
-
-        <div class="alert alert-info fade in">
-            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-            <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-            {% trans %}event.alert.new_info2{% endtrans %}
-        </div>#}
+        {% render(path('front_event_alerts', { id : event.id } )) %}
 
         <!-- Profile Content -->
         <div class="col-md-12">

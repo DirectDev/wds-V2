@@ -95,14 +95,15 @@ function reloadEventAlerts() {
 
     var path = $('#event_alerts').attr('rel');
 
-    $.ajax({
-        type: "POST",
-        url: path,
-        success: function (html)
-        {
-            $('#event_alerts').empty().html(html)
-        }
-    });
+    if (path)
+        $.ajax({
+            type: "POST",
+            url: path,
+            success: function (html)
+            {
+                $('#event_alerts').empty().html(html)
+            }
+        });
 }
 
 $(document).on('click focus', 'a.eventdate_edit', function () {
@@ -119,6 +120,7 @@ $(document).on('click focus', 'a.eventdate_edit', function () {
                 scrollTop: ($("#eventdate_new_edit").offset().top - 115)
             }, 2000);
             reloadBootstrapValidator();
+                    reloadEventAlerts();
         }
     });
     return false;
