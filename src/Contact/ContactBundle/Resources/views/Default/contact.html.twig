@@ -86,15 +86,23 @@
 </script>
 
 
+<div class="breadcrumbs breadcrumbs-dark">
+    <div class="container">
+        <h1 class="pull-left">{% trans %}contact.contact_title{% endtrans %}</h1>
+        <ul class="pull-right breadcrumb">
+            <li>
+                <a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a>
+            </li>
+            <li class="active">{% trans %}contact.contact_title{% endtrans %}</li>
+        </ul>
+    </div>
+</div>
 
-
-<div id="content">
+<div id="content" class="m-t-40 m-b-40">
     <div class="container">
 
         <div class="row">
             
-            <h4 class="classic-title"><span>{% trans %}contact.contact_title{% endtrans %}</span></h4>
-
             <div class="col-md-8">
 
 
