@@ -357,7 +357,7 @@ class EventRepository extends EntityRepository {
             $query->setParameter('musictype', '%' . $data["musictype"] . '%');
         }
 
-        if ($data["published"] === false)
+        if (isset($data["published"]) && $data["published"] === false)
             $query->andWhere('(e.published = 0 OR e.published IS NULL)');
         else
             $query->andWhere('e.published = 1');
