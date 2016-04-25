@@ -35,6 +35,13 @@ class Event {
      */
     private $name;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true, options={"default":1})
+     */
+    private $published;
+
     /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
     protected $facebook_link;
 
@@ -265,6 +272,8 @@ class Event {
     }
 
     public function isShownInSearchResults() {
+        if (!$this->getPublished())
+            return false;
         if (!$this->getNextEventDate())
             return false;
         if (!$this->isValid())
@@ -847,6 +856,27 @@ class Event {
      */
     public function getOrganizedBy() {
         return $this->organizedBy;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Event
+     */
+    public function setPublished($published) {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished() {
+        return $this->published;
     }
 
 }

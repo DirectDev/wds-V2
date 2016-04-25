@@ -141,11 +141,11 @@ event:
     alert:
         invalid_address: 'Please add a correct address'
         missing_address: 'Please add an address'
+        missing_date: 'Please add one or more dates for this event'
+        missing_profile_picture: 'Please add one or more pictures for this event'
         new_info: 'First, add a title, a description, a type and the music types.'
         new_info2: 'You may add an address, dates, and pictures on the next page.'
         no_next_date: 'There are no future dates for this event'
-        missing_date: 'Please add one or more dates for this event'
-        missing_profile_picture: 'Please add one or more pictures for this event'
         valid: 'This event is valid and shows in search results.'
 
     calendar: Calendar
@@ -175,9 +175,12 @@ event:
     images_title: Images
 
     list:
-        add: Add Event  
+        add: 'Add Event'
 
     music: Music
+    not_published: event.not_published   # FIXME
+    not_valid: event.not_valid   # FIXME
+    published: event.published   # FIXME
     share_this: 'Share this'
     they_like: Likes
     to: To
@@ -214,7 +217,7 @@ footer:
     contact: 'Contact Us'
     contact_us: 'Contact Us'
     festivals: Festivals
-    landing_pages: WeDanceSalsa & You
+    landing_pages: 'WeDanceSalsa & You'
     policy: 'Privacy Policy'
 
 form:
@@ -473,54 +476,52 @@ form:
 
     front_frontbundle_event:
         children:
-            addresses:
-                label: Addresses
-
-                prototype:
-                    children:
-                        city:
-                            label: City
-
-                        country:
-                            label: Country
-
-                        name:
-                            label: Title
-
-                        postcode:
-                            label: Postcode
-
-                        street:
-                            label: Street
-
-                        streetComplement:
-                            label: 'Street complement'
-
-            eventDates:
-                label: 'Event dates'
-
-                prototype:
-                    children:
-                        startdate:
-                            label: 'Start date'
-
-                        starttime:
-                            label: 'Start time'
-
-                        stopdate:
-                            label: 'Stop date'
-
-                        stoptime:
-                            label: 'Stop time'
-
-            eventType:
-                label: 'Event type'
+            eventTypes:
+                label: Type
 
             musicTypes:
-                label: 'Music type'
+                label: Music
 
             name:
                 label: Event
+
+            organizedBy:
+                label: 'Organized by'
+
+            published:
+                label: Published
+
+            translations:
+                children:
+                    en:
+                        children:
+                            description:
+                                label: Description
+
+                            title:
+                                label: Title
+
+                label: Translations
+
+            user:
+                label: User
+
+    front_frontbundle_event_description:
+        children:
+            eventTypes:
+                label: Type
+
+            musicTypes:
+                label: Music
+
+            name:
+                label: Event
+
+            organizedBy:
+                label: 'Organized by'
+
+            published:
+                label: Published
 
             translations:
                 children:
@@ -763,8 +764,8 @@ move:
 music:
     list:
         add:
-            desc: Add your music here
-            title: Add your music
+            desc: 'Add your music here'
+            title: 'Add your music'
 
     search_input_placeholder: 'Search Music'
     search_title: Musics
@@ -848,6 +849,8 @@ navbar:
     user: Dancers
     user.add_event: 'Add Event'
     user.events: Events
+    user.import_facebook: navbar.user.import_facebook   # FIXME
+    user.my_events: navbar.user.my_events   # FIXME
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
     user.next_events: 'My Next Events'
@@ -871,8 +874,8 @@ overviews:
 photo:
     list:
         add:
-            desc: Add your photo
-            title: Add your photo here
+            desc: 'Add your photo'
+            title: 'Add your photo here'
 
 tag:
     search_by_tag: 'Filter by tag'
@@ -917,15 +920,21 @@ user:
         videos.h2: 'Share your favorite videos'
 
     edit_profil: 'Edit Profil'
+
+    event:
+        search_input_placeholder: user.event.search_input_placeholder   # FIXME
+        search_title: user.event.search_title   # FIXME
+
     events_title: 'My Next Events'
     images_title: 'My Pictures'
 
     list:
         add:
             h3: Register
-            span: register and appear here
+            span: 'register and appear here'
 
     musics_title: 'My Musics'
+    my_events: user.my_events   # FIXME
     my_musics: 'My Musics'
     my_photos: 'My Photos'
     my_videos: 'My Videos'
@@ -934,6 +943,7 @@ user:
     passed_events: 'My Previous Events'
     posted_by: 'Posted By'
     profile_title: 'My Profile'
+    search_by_eventtype: user.search_by_eventtype   # FIXME
     search_by_musictype: 'Filter by music'
     search_by_user: 'Filter by dancer'
     search_by_usertype: 'Filter by dancer'
@@ -958,7 +968,7 @@ user_bundle:
 video:
     list:
         add:
-            title: Add video
+            title: 'Add video'
 
     search_input_placeholder: 'Search video'
     search_title: Videos

@@ -51,6 +51,9 @@ class EventDescriptionType extends AbstractType {
                         'description' => array('attr' => array('class' => 'ckeditor form-control'))
                     )
                 ))
+                ->add('published', 'checkbox', array(
+                    'required' => false,
+                ))
         ;
 
         if ($User)

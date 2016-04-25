@@ -50,7 +50,11 @@ class EventType extends AbstractType {
                         'title' => array('attr' => array('required' => true)),
                         'description' => array('attr' => array('class' => 'ckeditor form-control'))
                     )
-        ));
+                ))
+                ->add('published', 'checkbox', array(
+                    'required' => false,
+                ))
+        ;
         if ($User)
             $builder->add('organizedBy', 'entity', array(
                 'class' => 'UserUserBundle:User',

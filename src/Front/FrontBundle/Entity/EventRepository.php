@@ -29,6 +29,7 @@ class EventRepository extends EntityRepository {
                 ->leftJoin('e.musicTypes', 'mt')
                 ->leftJoin('e.eventDates', 'ed')
                 ->leftJoin('e.addresses', 'a')
+                ->where('e.published = 1')
                 ->setParameter('startdate', $startdate)
                 ->setParameter('stopdate', $stopdate)
                 ->orderBy('ed.startdate', 'ASC')
@@ -36,14 +37,14 @@ class EventRepository extends EntityRepository {
                 ->setMaxResults($limit);
 
         if ($startdate_only)
-            $query->where('((
+            $query->andWhere('((
                     (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
                     OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
                     OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
                     )
                     OR ( ed.stopdate IS NULL AND ed.startdate = :startdate ))');
         else
-            $query->where('((
+            $query->andWhere('((
                     (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
                     OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
                     OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
@@ -95,7 +96,8 @@ class EventRepository extends EntityRepository {
                 ->leftJoin('e.addresses', 'a')
                 ->setParameter('startdate', $startdate)
                 ->orderBy('ed.startdate', 'ASC')
-                ->where('ed.startdate >= :startdate');
+                ->where('e.published = 1')
+                ->andWhere('ed.startdate >= :startdate');
 
 
         /* Geocode */
@@ -119,7 +121,7 @@ class EventRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
-    public function getNextEventByUser(User $user, $limit = 6, $startdate = null, $stopdate = null) {
+    public function getNextEventByUser(User $user, $limit = 6, $startdate = null, $stopdate = null, $published = true) {
 
         if (!$startdate)
             $startdate = date('Y-m-d');
@@ -143,10 +145,15 @@ class EventRepository extends EntityRepository {
                     )
                     OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
 
+        if ($published)
+            $query->andWhere('e.published = 1');
+        else
+            $query->andWhere('(e.published = 0 OR e.published IS NULL)');
+
         return $query->getQuery()->getResult();
     }
 
-    public function getPassedEventByUser(User $user, $limit = 6) {
+    public function getPassedEventByUser(User $user, $limit = 6, $published = true) {
 
         $startdate = date('Y-m-d');
 
@@ -160,6 +167,11 @@ class EventRepository extends EntityRepository {
                 ->setMaxResults($limit)
                 ->where('u.id = :id')
                 ->andWhere('ed.startdate <= :startdate');
+
+        if ($published)
+            $query->andWhere('e.published = 1');
+        else
+            $query->andWhere('(e.published = 0 OR e.published IS NULL)');
 
         return $query->getQuery()->getResult();
     }
@@ -180,6 +192,7 @@ class EventRepository extends EntityRepository {
 //                ->orderBy('ed.startdate', 'ASC')
                 ->groupBy('e.id, ed.startdate')
                 ->where('u.id = :id')
+                ->andWhere('e.published = 1')
                 ->andWhere('((
                     (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
                     OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
@@ -190,7 +203,7 @@ class EventRepository extends EntityRepository {
         return $query->getQuery();
     }
 
-    public function getPassedEventByUserQuery(User $user) {
+    public function getPassedEventByUserQuery(User $user, $published = true) {
 
         $startdate = date('Y-m-d');
 
@@ -204,6 +217,11 @@ class EventRepository extends EntityRepository {
                 ->where('u.id = :id')
                 ->andWhere('ed.startdate <= :startdate');
 
+        if ($published)
+            $query->andWhere('e.published = 1');
+        else
+            $query->andWhere('(e.published = 0 OR e.published IS NULL)');
+
         return $query->getQuery();
     }
 
@@ -213,6 +231,7 @@ class EventRepository extends EntityRepository {
 
         $query = $this->createQueryBuilder('e')
                 ->leftJoin('e.eventTypes', 'et')
+                ->where('e.published = 1')
                 ->setMaxResults($limit);
 
         if ($eventTypes && count($eventTypes)) {
@@ -240,13 +259,14 @@ class EventRepository extends EntityRepository {
                 ->leftJoin('e.musicTypes', 'mt')
                 ->leftJoin('e.eventDates', 'ed')
                 ->leftJoin('e.addresses', 'a')
+                ->where('e.published = 1')
                 ->setParameter('startdate', $startdate)
                 ->setParameter('stopdate', $stopdate)
                 ->orderBy('ed.startdate', 'ASC')
                 ->groupBy('e.id, ed.startdate')
                 ->setMaxResults($limit);
 
-        $query->where('((
+        $query->andWhere('((
                     (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
                     OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
                     OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
@@ -336,6 +356,11 @@ class EventRepository extends EntityRepository {
             $query->andWhere($orQuery);
             $query->setParameter('musictype', '%' . $data["musictype"] . '%');
         }
+
+        if ($data["published"] === false)
+            $query->andWhere('(e.published = 0 OR e.published IS NULL)');
+        else
+            $query->andWhere('e.published = 1');
 
         return $query->getQuery();
     }

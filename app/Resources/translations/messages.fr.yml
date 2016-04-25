@@ -141,11 +141,11 @@ event:
     alert:
         invalid_address: 'Merci d''indiquer une adresse correcte'
         missing_address: 'Ajoutez une adresse pour cet évenement.'
+        missing_date: 'Ajoutez une ou plusieurs dates pour cet évenement'
+        missing_profile_picture: 'Ajoutez une image pour cet évenement'
         new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''évenement.'
         new_info2: 'Vous pourrez ajouter l''adresse, les dates et des images sur la page suivante.'
         no_next_date: 'Il n''y a pas de date à venir pour cet évenement'
-        missing_date: 'Ajoutez une ou plusieurs dates pour cet évenement'
-        missing_profile_picture: 'Ajoutez une image pour cet évenement'
         valid: 'Cet événement apparaît dans les résultats de recherche.'
 
     calendar: Calendrier
@@ -175,9 +175,12 @@ event:
     images_title: Images
 
     list:
-        add: Ajouter un évenement
+        add: 'Ajouter un évenement'
 
     music: Musique
+    not_published: 'Non publié'
+    not_valid: 'A corriger'
+    published: Publié
     share_this: Partager
     they_like: 'Ils aiment'
     to: Au
@@ -214,183 +217,10 @@ footer:
     contact: Contactez-nous
     contact_us: Contactez-nous
     festivals: Festivals
-    landing_pages: WeDanceSalsa & Vous
+    landing_pages: 'WeDanceSalsa & Vous'
     policy: 'Mentions Légales'
 
 form:
-    admin_adminbundle_address:
-        children:
-            city:
-                label: Ville
-
-            country:
-                label: Pays
-
-            name:
-                label: Nom
-
-            postcode:
-                label: 'Code postal'
-
-            street:
-                label: Rue
-
-            streetComplement:
-                label: ''
-
-    admin_adminbundle_city:
-        children:
-            latitude:
-                label: Latitude
-
-            longitude:
-                label: Longitude
-
-            searchcity:
-                label: Nom
-
-    admin_adminbundle_country:
-        children:
-            name:
-                label: Pays
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            title:
-                                label: Titre
-
-                label: Traductions
-
-    admin_adminbundle_event:
-        children:
-            addresses:
-                label: Adresses
-
-                prototype:
-                    children:
-                        city:
-                            label: Ville
-
-                        country:
-                            label: Pays
-
-                        name:
-                            label: Titre
-
-                        postcode:
-                            label: 'Code postal'
-
-                        street:
-                            label: Rue
-
-                        streetComplement:
-                            label: 'Rue complement'
-
-            eventDates:
-                label: Dates
-
-                prototype:
-                    children:
-                        startdate:
-                            label: Début
-
-                        starttime:
-                            label: Heure
-
-                        stopdate:
-                            label: Fin
-
-                        stoptime:
-                            label: Heure
-
-            eventType:
-                label: Type
-
-            musicTypes:
-                label: Musique
-
-            name:
-                label: Evenement
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            description:
-                                label: Description
-
-                            title:
-                                label: Titre
-
-                label: Traductions
-
-            user:
-                label: User
-
-    admin_adminbundle_eventdate:
-        children:
-            startdate:
-                label: Début
-
-            starttime:
-                label: Heure
-
-            stopdate:
-                label: Fin
-
-            stoptime:
-                label: Heure
-
-    admin_adminbundle_eventtype:
-        children:
-            name:
-                label: Type
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            title:
-                                label: Titre
-
-                label: Traductions
-
-    admin_adminbundle_musictype:
-        children:
-            name:
-                label: Musique
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            title:
-                                label: Titre
-
-                label: Traductions
-
-    admin_adminbundle_page:
-        children:
-            name:
-                label: Nom
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            content:
-                                label: Contenu
-
-                            description:
-                                label: Description
-
-                            title:
-                                label: Titre
-
-                label: Traductions
-
     contact_contactbundle_enquiry:
         children:
             email:
@@ -473,47 +303,7 @@ form:
 
     front_frontbundle_event:
         children:
-            addresses:
-                label: Adresses
-
-                prototype:
-                    children:
-                        city:
-                            label: Ville
-
-                        country:
-                            label: Pays
-
-                        name:
-                            label: Titre
-
-                        postcode:
-                            label: 'Code postal'
-
-                        street:
-                            label: Rue
-
-                        streetComplement:
-                            label: 'Rue complement'
-
-            eventDates:
-                label: Dates
-
-                prototype:
-                    children:
-                        startdate:
-                            label: Début
-
-                        starttime:
-                            label: Heure
-
-                        stopdate:
-                            label: Fin
-
-                        stoptime:
-                            label: Heure
-
-            eventType:
+            eventTypes:
                 label: Type
 
             musicTypes:
@@ -521,6 +311,44 @@ form:
 
             name:
                 label: Evenement
+
+            organizedBy:
+                label: 'Organisé par'
+
+            published:
+                label: Publié
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            description:
+                                label: Description
+
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+            user:
+                label: User
+
+    front_frontbundle_event_description:
+        children:
+            eventTypes:
+                label: Type
+
+            musicTypes:
+                label: Musique
+
+            name:
+                label: Evenement
+
+            organizedBy:
+                label: 'Organisé par'
+
+            published:
+                label: Publié
 
             translations:
                 children:
@@ -763,8 +591,8 @@ move:
 music:
     list:
         add:
-            desc: Partagez vos musiques préférées
-            title: Ajoutez votre musique
+            desc: 'Partagez vos musiques préférées'
+            title: 'Ajoutez votre musique'
 
     search_input_placeholder: 'Recherchez une musique'
     search_title: Musiques
@@ -847,6 +675,8 @@ navbar:
     user: Danseurs
     user.add_event: 'Ajouter un événement'
     user.events: évenements
+    user.import_facebook: 'Importer depuis Facebook'
+    user.my_events: 'Tous mes évenements'
     user.my_page: 'Ma page'
     user.my_profile: 'Mon profil'
     user.next_events: 'Mes prochains événements'
@@ -870,8 +700,8 @@ overviews:
 photo:
     list:
         add:
-            desc: Partagez vos photos ici
-            title: Ajoutez vos photos
+            desc: 'Partagez vos photos ici'
+            title: 'Ajoutez vos photos'
 
 tag:
     search_by_tag: 'Filtrer par tag'
@@ -916,23 +746,30 @@ user:
         videos.h2: 'Partagez vos vidéos préfèrées'
 
     edit_profil: 'Modifier mon profil'
+
+    event:
+        search_input_placeholder: user.event.search_input_placeholder
+        search_title: user.event.search_title
+
     events_title: 'Mes Prochains Evenements'
     images_title: 'Mes Images'
 
     list:
         add:
-            h3: Inscrivez-vous 
-            span: Apparaissez ici
+            h3: Inscrivez-vous
+            span: 'Apparaissez ici'
 
     musics_title: Musiques
+    my_events: 'Mes événements'
     my_musics: 'Mes musiques'
     my_photos: 'Mes photos'
     my_videos: 'Mes vidéos'
     next_events: 'Mes prochains événements'
-    organized_by: Organisé par
+    organized_by: 'Organisé par'
     passed_events: 'Mes précédents événements'
     posted_by: 'Publié par'
     profile_title: 'Mon Profil'
+    search_by_eventtype: 'Filter par type'
     search_by_musictype: 'Filtrer par musique'
     search_by_user: 'Filter par danseur'
     search_by_usertype: 'Filter par type de danseur'
@@ -957,7 +794,7 @@ user_bundle:
 video:
     list:
         add:
-            title: Ajoutez vos videos 
+            title: 'Ajoutez vos videos'
 
     search_input_placeholder: 'Rechercher une vidéo'
     search_title: Vidéos

@@ -535,6 +535,9 @@ front_eventtype: /eventtype/
 front_eventtype_create: /eventtype/create
 front_eventtype_delete: '/eventtype/delete/{id}'
 front_eventtype_edit: '/eventtype/edit/{id}'
+
+# Desc: /eventtype/list_for_event_search/
+front_eventtype_list_for_event_search: /eventtype/list_for_event_search/   # FIXME
 front_eventtype_new: '/eventtype/new/{id}'
 front_eventtype_show: '/eventtype/show/{id}'
 front_eventtype_update: '/eventtype/update/{id}'
@@ -582,6 +585,9 @@ front_musictype_edit: '/musictype/edit/{id}'
 # Desc: /musictype/filters
 front_musictype_filters: /musictype/filters
 
+# Desc: /musictype/list_for_event_search/
+front_musictype_list_for_event_search: /musictype/list_for_event_search/   # FIXME
+
 # Desc: /musictype/list_for_user_search/
 front_musictype_list_for_user_search: /musictype/list_for_user_search/
 front_musictype_new: /musictype/new
@@ -597,8 +603,14 @@ front_tag_list_for_video_search: /tag/list_for_video_search/
 # Desc: /user/profile/edit/{id}
 front_user_edit: '/profile/edit/{id}'
 
+# Desc: /user/events
+front_user_events: /user/events   # FIXME
+
 # Desc: /user/filter
 front_user_filter: /user/filter
+
+# Desc: /user/filter_events
+front_user_filter_events: /user/filter_events   # FIXME
 
 # Desc: /user/import_facebook_event/
 front_user_import_facebook_event: /import_facebook_event/
@@ -631,7 +643,7 @@ front_user_passed_events: /profile/passed_events
 front_user_show_overviews: '/profile/overviews/{id}'
 
 # Desc: /user/profile/overviews_index/{id}
-front_user_show_overviews_index: '/user/profile/overviews_index/{id}' 
+front_user_show_overviews_index: '/user/profile/overviews_index/{id}'
 
 # Desc: /user/profile/overviews_profile/{id}
 front_user_show_overviews_profile: '/profile/overviews_profile/{id}'

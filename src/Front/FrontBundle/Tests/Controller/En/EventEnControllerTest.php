@@ -138,6 +138,8 @@ class EventFrControllerTest extends WebTestCase {
         $count_eventTypes = count($this->em->getRepository('FrontFrontBundle:EventType')->findAll());
         for ($i = 0; $i < $count_eventTypes; $i++)
             $form['front_frontbundle_event[eventTypes][' . $i . ']']->tick();
+        if (rand(0, 1))
+            $form['front_frontbundle_event[published]']->tick();
 
         $form['front_frontbundle_event[translations][' . $this->locale . '][title]'] = $this->title;
         $form['front_frontbundle_event[translations][' . $this->locale . '][description]'] = $this->description;
@@ -193,6 +195,8 @@ class EventFrControllerTest extends WebTestCase {
         $count_eventTypes = count($this->em->getRepository('FrontFrontBundle:EventType')->findAll());
         for ($i = 0; $i < $count_eventTypes; $i++)
             $form['front_frontbundle_event_description[eventTypes][' . $i . ']']->untick();
+        if (rand(0, 1))
+            $form['front_frontbundle_event_description[published]']->tick();
 
         $form['front_frontbundle_event_description[translations][' . $this->locale . '][title]'] = $this->title;
         $form['front_frontbundle_event_description[translations][' . $this->locale . '][description]'] = $this->updated_description;

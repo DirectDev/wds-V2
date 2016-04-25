@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "489568bff367630dd0dabbb55db0421e",
-    "content-hash": "cf09cc811d1736963b084ad3c8655981",
+    "hash": "a8021b2519fe05a4f88eb38411fc72e9",
+    "content-hash": "0e5e45737de8d33464b6d9855537e58a",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1131,7 +1131,63 @@
                 "http-client",
                 "psr-7"
             ],
+            "abandoned": "php-http/httplug",
             "time": "2015-08-12 09:35:40"
+        },
+        {
+            "name": "elao/form-translation-bundle",
+            "version": "v1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Elao/ElaoFormTranslationBundle.git",
+                "reference": "60245b345c3bbde8177f5d039c560e8116c615ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Elao/ElaoFormTranslationBundle/zipball/60245b345c3bbde8177f5d039c560e8116c615ff",
+                "reference": "60245b345c3bbde8177f5d039c560e8116c615ff",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/form": "~2.6",
+                "symfony/framework-bundle": "~2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elao\\Bundle\\FormTranslationBundle\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elao",
+                    "homepage": "http://www.elao.com"
+                },
+                {
+                    "name": "Thomas Jarrand",
+                    "homepage": "https://github.com/Tom32i"
+                }
+            ],
+            "description": "Generate translation key for forms",
+            "homepage": "https://github.com/Elao/ElaoFormTranslationBundle",
+            "keywords": [
+                "elao",
+                "form",
+                "translation"
+            ],
+            "time": "2015-12-10 09:00:33"
         },
         {
             "name": "facebook/php-sdk-v4",
@@ -1694,21 +1750,22 @@
         },
         {
             "name": "jms/di-extra-bundle",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSDiExtraBundle.git",
-                "reference": "85a989bedcf22495c03bf94339ddc5e856bd9b46"
+                "reference": "27c3fc7150550ccc0731290b2c1ceb57449f909d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/85a989bedcf22495c03bf94339ddc5e856bd9b46",
-                "reference": "85a989bedcf22495c03bf94339ddc5e856bd9b46",
+                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/27c3fc7150550ccc0731290b2c1ceb57449f909d",
+                "reference": "27c3fc7150550ccc0731290b2c1ceb57449f909d",
                 "shasum": ""
             },
             "require": {
                 "jms/aop-bundle": "~1.1",
                 "jms/metadata": "~1.0",
+                "php": "~5.3|~7.0",
                 "symfony/dependency-injection": "~2.3|~3.0",
                 "symfony/finder": "~2.3|~3.0",
                 "symfony/framework-bundle": "~2.3|~3.0",
@@ -1719,7 +1776,7 @@
             "require-dev": {
                 "doctrine/doctrine-bundle": "~1.5",
                 "doctrine/orm": "~2.3",
-                "jms/security-extra-bundle": "~1.0@dev",
+                "jms/security-extra-bundle": "~1.0",
                 "phpcollection/phpcollection": ">=0.2,<0.3-dev",
                 "sensio/framework-extra-bundle": "~2.0|~3.0",
                 "symfony/browser-kit": "~2.3|~3.0",
@@ -1758,7 +1815,7 @@
                 "annotations",
                 "dependency injection"
             ],
-            "time": "2016-02-21 22:14:09"
+            "time": "2016-04-18 22:27:09"
         },
         {
             "name": "jms/i18n-routing-bundle",
@@ -1990,7 +2047,7 @@
             ],
             "authors": [
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 }
             ],
@@ -2007,90 +2064,6 @@
                 "tree"
             ],
             "time": "2015-12-18 13:42:46"
-        },
-        {
-            "name": "knplabs/gaufrette",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KnpLabs/Gaufrette.git",
-                "reference": "9d52413665284f9c96e0cef399fc14e68ac0aa5a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/9d52413665284f9c96e0cef399fc14e68ac0aa5a",
-                "reference": "9d52413665284f9c96e0cef399fc14e68ac0aa5a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "amazonwebservices/aws-sdk-for-php": "1.5.*",
-                "aws/aws-sdk-php": "~2",
-                "doctrine/dbal": ">=2.3",
-                "dropbox-php/dropbox-php": "*",
-                "google/apiclient": "~1.1",
-                "herzult/php-ssh": "*",
-                "microsoft/windowsazure": "dev-master",
-                "mikey179/vfsstream": "~1.2.0",
-                "phpseclib/phpseclib": "dev-master",
-                "phpspec/phpspec": "2.0.*",
-                "phpunit/phpunit": "3.7.*",
-                "rackspace/php-opencloud": "1.9.*"
-            },
-            "suggest": {
-                "amazonwebservices/aws-sdk-for-php": "to use the legacy Amazon S3 adapters",
-                "aws/aws-sdk-php": "to use the Amazon S3 adapter",
-                "doctrine/dbal": "to use the Doctrine DBAL adapter",
-                "dropbox-php/dropbox-php": "to use the Dropbox adapter",
-                "ext-apc": "to use the APC adapter",
-                "ext-curl": "*",
-                "ext-fileinfo": "This extension is used to automatically detect the content-type of a file in the AwsS3, OpenCloud, AzureBlogStorage and GoogleCloudStorage adapters",
-                "ext-mbstring": "*",
-                "ext-mongo": "*",
-                "ext-zip": "to use the Zip adapter",
-                "google/apiclient": "to use GoogleCloudStorage adapter",
-                "herzult/php-ssh": "to use SFtp adapter",
-                "knplabs/knp-gaufrette-bundle": "to use with Symfony2",
-                "microsoft/windowsazure": "to use Microsoft Azure Blob Storage adapter",
-                "phpseclib/phpseclib": "to use PhpseclibSftp adapter",
-                "rackspace/php-opencloud": "to use Opencloud adapter"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Gaufrette": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "The contributors",
-                    "homepage": "http://github.com/knplabs/Gaufrette/contributors"
-                },
-                {
-                    "name": "KnpLabs Team",
-                    "homepage": "http://knplabs.com"
-                }
-            ],
-            "description": "PHP5 library that provides a filesystem abstraction layer",
-            "homepage": "http://knplabs.com",
-            "keywords": [
-                "abstraction",
-                "file",
-                "filesystem",
-                "media"
-            ],
-            "time": "2015-05-26 08:25:40"
         },
         {
             "name": "knplabs/knp-components",
@@ -2159,64 +2132,6 @@
                 "paginator"
             ],
             "time": "2015-09-01 10:54:53"
-        },
-        {
-            "name": "knplabs/knp-gaufrette-bundle",
-            "version": "0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KnpLabs/KnpGaufretteBundle.git",
-                "reference": "44cf552e14031517516458b0e394f16dd36a131b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/44cf552e14031517516458b0e394f16dd36a131b",
-                "reference": "44cf552e14031517516458b0e394f16dd36a131b",
-                "shasum": ""
-            },
-            "require": {
-                "knplabs/gaufrette": "~0.1.7|~0.2",
-                "symfony/framework-bundle": "~2.0|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.2",
-                "symfony/console": "~2.0|~3.0",
-                "symfony/yaml": "~2.0|~3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Knp\\Bundle\\GaufretteBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "The contributors",
-                    "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
-                },
-                {
-                    "name": "Antoine Hérault",
-                    "email": "antoine.herault@gmail.com"
-                }
-            ],
-            "description": "Allows to easily use the Gaufrette library in a Symfony project",
-            "homepage": "http://knplabs.com",
-            "keywords": [
-                "abstraction",
-                "file",
-                "filesystem",
-                "media"
-            ],
-            "time": "2016-01-16 00:12:11"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -2480,16 +2395,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.17.2",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24"
+                "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
-                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5f56ed5212dc509c8dc8caeba2715732abb32dbf",
+                "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf",
                 "shasum": ""
             },
             "require": {
@@ -2504,13 +2419,13 @@
                 "doctrine/couchdb": "~1.0@dev",
                 "graylog2/gelf-php": "~1.0",
                 "jakub-onderka/php-parallel-lint": "0.9",
+                "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
                 "phpunit/phpunit": "~4.5",
                 "phpunit/phpunit-mock-objects": "2.3.0",
                 "raven/raven": "^0.13",
                 "ruflin/elastica": ">=0.90 <3.0",
-                "swiftmailer/swiftmailer": "~5.3",
-                "videlalvaro/php-amqplib": "~2.4"
+                "swiftmailer/swiftmailer": "~5.3"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -2518,16 +2433,17 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
                 "raven/raven": "Allow sending log messages to a Sentry server",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-                "videlalvaro/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib"
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -2553,7 +2469,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-10-14 12:51:02"
+            "time": "2016-04-12 18:29:35"
         },
         {
             "name": "nikic/php-parser",
@@ -2596,16 +2512,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.2.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "b0e69d10852716b2ccbdff69c75c477637220790"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b0e69d10852716b2ccbdff69c75c477637220790",
-                "reference": "b0e69d10852716b2ccbdff69c75c477637220790",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -2640,7 +2556,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-02-06 03:52:05"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3215,12 +3131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/punkave/symfony2-file-uploader-bundle.git",
-                "reference": "414ba0afa11076dab1e30654d9cae7ee583154d8"
+                "reference": "3dd8c13b3f4b50f0b49c04c6632ee705f16ae864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/punkave/symfony2-file-uploader-bundle/zipball/414ba0afa11076dab1e30654d9cae7ee583154d8",
-                "reference": "414ba0afa11076dab1e30654d9cae7ee583154d8",
+                "url": "https://api.github.com/repos/punkave/symfony2-file-uploader-bundle/zipball/3dd8c13b3f4b50f0b49c04c6632ee705f16ae864",
+                "reference": "3dd8c13b3f4b50f0b49c04c6632ee705f16ae864",
                 "shasum": ""
             },
             "require": {
@@ -3268,7 +3184,7 @@
                 "upload",
                 "uploader"
             ],
-            "time": "2015-03-26 19:13:38"
+            "time": "2016-03-18 14:09:40"
         },
         {
             "name": "sebastian/comparator",
@@ -3862,16 +3778,16 @@
         },
         {
             "name": "symfony/assetic-bundle",
-            "version": "v2.7.1",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/assetic-bundle.git",
-                "reference": "d885ec8451d5a7b077bda81bb19ac9fbff9cdc76"
+                "reference": "aa5b4f8b712f38745928fa845ddb73300bb2af6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/d885ec8451d5a7b077bda81bb19ac9fbff9cdc76",
-                "reference": "d885ec8451d5a7b077bda81bb19ac9fbff9cdc76",
+                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/aa5b4f8b712f38745928fa845ddb73300bb2af6d",
+                "reference": "aa5b4f8b712f38745928fa845ddb73300bb2af6d",
                 "shasum": ""
             },
             "require": {
@@ -3928,7 +3844,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2015-11-17 09:45:47"
+            "time": "2015-12-28 13:12:39"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -4401,20 +4317,20 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.3.3",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "4d54fde709664562eb63356f0250d527824d05de"
+                "reference": "b1d59735b672865dbeb930805029c24f226e3e77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/4d54fde709664562eb63356f0250d527824d05de",
-                "reference": "4d54fde709664562eb63356f0250d527824d05de",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/b1d59735b672865dbeb930805029c24f226e3e77",
+                "reference": "b1d59735b672865dbeb930805029c24f226e3e77",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4",
+                "php": "^5.4 || ^7.0",
                 "psr/http-message": "~1.0"
             },
             "provide": {
@@ -4447,7 +4363,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2016-01-04 21:37:32"
+            "time": "2016-03-17 18:02:05"
         }
     ],
     "packages-dev": [
@@ -4501,20 +4417,20 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "4580ae86cde5497d38fc971192cd2c37e546eb4f"
+                "reference": "b097218e4ab7724e7ec0c420e96dfd70518c2354"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/4580ae86cde5497d38fc971192cd2c37e546eb4f",
-                "reference": "4580ae86cde5497d38fc971192cd2c37e546eb4f",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b097218e4ab7724e7ec0c420e96dfd70518c2354",
+                "reference": "b097218e4ab7724e7ec0c420e96dfd70518c2354",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.3.3"
             },
             "suggest": {
                 "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
@@ -4552,7 +4468,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-01-21 09:38:31"
+            "time": "2016-03-23 13:46:08"
         }
     ],
     "aliases": [],

@@ -28,7 +28,7 @@ class AppKernel extends Kernel {
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
-//            new Elao\Bundle\FormTranslationBundle\ElaoFormTranslationBundle(),
+            new Elao\Bundle\FormTranslationBundle\ElaoFormTranslationBundle(),
             # images
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),

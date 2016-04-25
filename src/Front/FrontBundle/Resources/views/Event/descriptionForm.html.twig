@@ -2,6 +2,7 @@
 {{ form_start(edit_description_form) }}
 {{ form_errors(edit_description_form) }}
 
+{{ form_row(edit_description_form.published, { 'label_attr' : {'class' : 'checkbox-inline' } } ) }}
 {{ form_row(edit_description_form.musicTypes, { 'label_attr' : {'class' : 'checkbox-inline' } } ) }}
 {{ form_row(edit_description_form.eventTypes, { 'label_attr' : {'class' : 'checkbox-inline' } } ) }}
 {{ form_row(edit_description_form.organizedBy, { 'label_attr' : {'class' : '' } } ) }}
