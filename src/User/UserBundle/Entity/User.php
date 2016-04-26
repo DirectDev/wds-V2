@@ -56,6 +56,12 @@ class User extends BaseUser {
     /** @ORM\Column(name="youtube_link", type="string", length=255, nullable=true) */
     protected $youtube_link;
 
+    /** @ORM\Column(name="baidu_link", type="string", length=255, nullable=true) */
+    protected $baidu_link;
+
+    /** @ORM\Column(name="xing_link", type="string", length=255, nullable=true) */
+    protected $xing_link;
+
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) 
      * @Assert\Length(
      *      min = 7
@@ -1140,5 +1146,53 @@ class User extends BaseUser {
     public function getEventsOrganized()
     {
         return $this->eventsOrganized;
+    }
+
+    /**
+     * Set baiduLink
+     *
+     * @param string $baiduLink
+     *
+     * @return User
+     */
+    public function setBaiduLink($baiduLink)
+    {
+        $this->baidu_link = $baiduLink;
+
+        return $this;
+    }
+
+    /**
+     * Get baiduLink
+     *
+     * @return string
+     */
+    public function getBaiduLink()
+    {
+        return $this->baidu_link;
+    }
+
+    /**
+     * Set xingLink
+     *
+     * @param string $xingLink
+     *
+     * @return User
+     */
+    public function setXingLink($xingLink)
+    {
+        $this->xing_link = $xingLink;
+
+        return $this;
+    }
+
+    /**
+     * Get xingLink
+     *
+     * @return string
+     */
+    public function getXingLink()
+    {
+        return $this->xing_link;
     }
 }

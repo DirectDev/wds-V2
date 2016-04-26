@@ -9,6 +9,16 @@
             <a class="social_googleplus" data-original-title="Google Plus" href="{{ user.googleLink }}"></a>
         </li>
     {% endif %}
+    {% if user.baiduLink %}
+        <li>
+            <a class="social_baidu" data-original-title="Baidu" href="{{ user.baiduLink }}"></a>
+        </li>
+    {% endif %}
+    {% if user.xingLink %}
+        <li>
+            <a class="social_xing" data-original-title="Xing" href="{{ user.xingLink }}"></a>
+        </li>
+    {% endif %}
     {% if user.tumblrLink %}
         <li>
             <a class="social_tumblr" data-original-title="Tumblr" href="{{ user.tumblrLink }}"></a>
@@ -21,27 +31,27 @@
     {% endif %}
     {% if user.linkedinLink %}
         <li>
-            <a class="social_linkedin" data-original-title="Twitter" href="{{ user.linkedinLink }}"></a>
+            <a class="social_linkedin" data-original-title="LinkedIn" href="{{ user.linkedinLink }}"></a>
         </li>
     {% endif %}
     {% if user.flickrLink %}
         <li>
-            <a class="social_flickr" data-original-title="Twitter" href="{{ user.flickrLink }}"></a>
+            <a class="social_flickr" data-original-title="Flickr" href="{{ user.flickrLink }}"></a>
         </li>
     {% endif %}
     {% if user.instagramLink %}
         <li>
-            <a class="social_instagram" data-original-title="Twitter" href="{{ user.instagramLink }}"></a>
+            <a class="social_instagram" data-original-title="Instagram" href="{{ user.instagramLink }}"></a>
         </li>
     {% endif %}
     {% if user.vimeoLink %}
         <li>
-            <a class="social_vimeo" data-original-title="Twitter" href="{{ user.vimeoLink }}"></a>
+            <a class="social_vimeo" data-original-title="Vimeo" href="{{ user.vimeoLink }}"></a>
         </li>
     {% endif %}
     {% if user.youtubeLink %}
         <li>
-            <a class="social_youtube" data-original-title="Twitter" href="{{ user.youtubeLink }}"></a>
+            <a class="social_youtube" data-original-title="Youtube" href="{{ user.youtubeLink }}"></a>
         </li>
     {% endif %}
 </ul>

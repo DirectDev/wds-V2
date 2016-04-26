@@ -392,7 +392,25 @@ form:
                                 label: Titre
 
                 label: Traductions
-
+    front_frontbundle_event_link:
+        children:
+            facebook_link:
+                label: Facebook
+            google_link:
+                label: Google
+            twitter_link:
+                label: Twitter
+            linkedin_link:
+                label: LinkedIn
+            flickr_link:
+                label: Flickr
+            tumblr_link:
+                label: Tumblr
+            vimeo_link:
+                label: Vimeo
+            instagram_link:
+                label: Instagram
+                    
     front_frontbundle_musictype:
         children:
             name:
@@ -748,8 +766,8 @@ user:
     edit_profil: 'Modifier mon profil'
 
     event:
-        search_input_placeholder: user.event.search_input_placeholder
-        search_title: user.event.search_title
+        search_input_placeholder: Rechercher un événement
+        search_title: Mes événements
 
     events_title: 'Mes Prochains Evenements'
     images_title: 'Mes Images'

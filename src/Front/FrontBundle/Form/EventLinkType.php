@@ -24,6 +24,8 @@ class EventLinkType extends AbstractType {
                 ->add('tumblr_link')
                 ->add('vimeo_link')
                 ->add('instagram_link')
+                ->add('baidu_link')
+                ->add('xing_link')
         ;
     }
 

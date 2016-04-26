@@ -4,3 +4,4 @@ parameters:
     google_app_id: google_id
     google_app_secret:  google_secret
     google_map_api_key: api_key
+    share_this_publisher: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

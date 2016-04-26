@@ -76,7 +76,22 @@
 
                         {% render(path('front_user_show_overviews_profile', { id : user.id } )) %}   
 
-                        {% render(path('front_user_loves', { id : user.id } )) %}                               
+                        {% render(path('front_user_loves', { id : user.id } )) %}     
+
+                        <div class="col-sm-6 sm-margin-bottom-30" >
+                            <div class="panel panel-profile">
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left">
+                                        {% trans %}event.share_this{% endtrans %}
+                                    </h2>
+                                </div>
+                                <div class="panel-body">
+
+                                    {% include 'FrontFrontBundle::socialIcons.html.twig' %}
+
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div><!--/end row-->    

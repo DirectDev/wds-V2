@@ -40,6 +40,7 @@ twig:
         facebook_app_id: "%facebook_app_id%"
         google_app_id: "%google_app_id%"
         google_map_api_key: "%google_map_api_key%"
+        share_this_publisher: "%share_this_publisher%"
         upload_url: "%upload_url%"
         upload_view_url: "%upload_view_url%"
         upload_folder: "%upload_folder%"

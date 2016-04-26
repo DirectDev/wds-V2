@@ -18,13 +18,15 @@
             {% if app.user %}
                 {% if app.user not in usersLoveUser %}
                     {{ form_start(love_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                    {{ form_widget(love_form.submit) }}
                     {{ form_end(love_form) }}
                 {% else %}
                     {{ form_start(unlove_form, {'attr' : { 'class' : 'no_validation'} }) }}
+                    {{ form_widget(unlove_form.submit) }}
                     {{ form_end(unlove_form) }}
                 {% endif %}
             {% endif %}
-            
+
         </div>       
     </div>
 </div>

@@ -178,9 +178,9 @@ event:
         add: 'Add Event'
 
     music: Music
-    not_published: event.not_published   # FIXME
-    not_valid: event.not_valid   # FIXME
-    published: event.published   # FIXME
+    not_published: Event not published
+    not_valid: Event not valid
+    published: Event published
     share_this: 'Share this'
     they_like: Likes
     to: To
@@ -565,6 +565,25 @@ form:
                                 label: Title
 
                 label: Translations
+                
+    front_frontbundle_event_link:
+        children:
+            facebook_link:
+                label: Facebook
+            google_link:
+                label: Google
+            twitter_link:
+                label: Twitter
+            linkedin_link:
+                label: LinkedIn
+            flickr_link:
+                label: Flickr
+            tumblr_link:
+                label: Tumblr
+            vimeo_link:
+                label: Vimeo
+            instagram_link:
+                label: Instagram            
 
     front_frontbundle_musictype:
         children:
@@ -849,8 +868,8 @@ navbar:
     user: Dancers
     user.add_event: 'Add Event'
     user.events: Events
-    user.import_facebook: navbar.user.import_facebook   # FIXME
-    user.my_events: navbar.user.my_events   # FIXME
+    user.import_facebook: Import form Facebook
+    user.my_events: My Events
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
     user.next_events: 'My Next Events'
@@ -922,8 +941,8 @@ user:
     edit_profil: 'Edit Profil'
 
     event:
-        search_input_placeholder: user.event.search_input_placeholder   # FIXME
-        search_title: user.event.search_title   # FIXME
+        search_input_placeholder: Search event
+        search_title: My events
 
     events_title: 'My Next Events'
     images_title: 'My Pictures'
@@ -934,7 +953,7 @@ user:
             span: 'register and appear here'
 
     musics_title: 'My Musics'
-    my_events: user.my_events   # FIXME
+    my_events: 'My Events'
     my_musics: 'My Musics'
     my_photos: 'My Photos'
     my_videos: 'My Videos'
@@ -943,7 +962,7 @@ user:
     passed_events: 'My Previous Events'
     posted_by: 'Posted By'
     profile_title: 'My Profile'
-    search_by_eventtype: user.search_by_eventtype   # FIXME
+    search_by_eventtype: 'Filter by type'
     search_by_musictype: 'Filter by music'
     search_by_user: 'Filter by dancer'
     search_by_usertype: 'Filter by dancer'
