@@ -44,5 +44,9 @@ monolog:
 assetic:
     use_controller: "%use_assetic_controller%"
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    delivery_address: wds-directdev@yopmail.com
+
+# form label translations    
+elao_form_translation:
+    auto_generate: true   

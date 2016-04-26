@@ -424,6 +424,21 @@ form:
                                 label: Titre
 
                 label: Traductions
+                
+    front_frontbundle_music:
+        children:
+            translations:
+                label: Traductions
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre   
+                                
+            url:
+                label: URL
+            tags:
+                label: Tags            
 
     front_frontbundle_page:
         children:
@@ -445,31 +460,40 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_user:
+    front_frontbundle_user_profile:
         children:
-            addresses:
-                label: Adresses
+            musicTypes:
+                label: Musique
 
-                prototype:
-                    children:
-                        city:
-                            label: Ville
+            userTypes:
+                label: Type
 
-                        country:
-                            label: Pays
+            username:
+                label: Login         
 
-                        name:
-                            label: Titre
+    front_frontbundle_user_description:
+        children:
+            baseline:
+                label: Baseline 
+            translations:
+                children:
+                    fr:
+                        children:
+                            baseline:
+                                label: Baseline
 
-                        postcode:
-                            label: 'Code postal'
+                            description:
+                                label: Description
 
-                        street:
-                            label: Rue
+                            description_short:
+                                label: 'Description courte'
 
-                        streetComplement:
-                            label: 'Rue complement'
-
+                label: Traductions
+                
+                
+    front_frontbundle_user_link:
+        children:
+     
             facebook_link:
                 label: 'Lien Facebook'
 
@@ -485,38 +509,37 @@ form:
             linkedin_link:
                 label: 'Lien LinkedIn'
 
-            musicTypes:
-                label: Musique
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            baseline:
-                                label: Slogan
-
-                            description:
-                                label: Description
-
-                            description_short:
-                                label: 'Description courte'
-
-                label: Traductions
-
             tumblr_link:
                 label: 'Lien Tumblr'
 
             twitter_link:
                 label: 'Lien Twitter'
 
-            userTypes:
-                label: Type
-
-            username:
-                label: Identifiant
-
             vimeo_link:
-                label: 'Lien Vimeo'
+                label: 'Lien Vimeo'            
+
+            baidu_link:
+                label: 'Lien Baidu'            
+
+            xing_link:
+                label: 'Lien Xing'            
+
+    front_frontbundle_video:
+        children:
+            translations:
+                label: Traductions
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+            url:
+                label: URL
+            tags:
+                label: Tags
+            move:
+                label: Vidéo d'une passe ou d'un shine
 
     user_userbundle_user:
         children:

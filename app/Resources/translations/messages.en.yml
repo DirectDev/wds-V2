@@ -598,6 +598,21 @@ form:
                                 label: Title
 
                 label: Translations
+                
+    front_frontbundle_music:
+        children:
+            translations:
+                label: Translations
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title   
+                                
+            url:
+                label: URL
+            tags:
+                label: Tags
 
     front_frontbundle_page:
         children:
@@ -619,31 +634,40 @@ form:
 
                 label: Translations
 
-    front_frontbundle_user:
+    front_frontbundle_user_profile:
         children:
-            addresses:
-                label: Addresses
+            musicTypes:
+                label: Music
 
-                prototype:
-                    children:
-                        city:
-                            label: City
+            userTypes:
+                label: Type
 
-                        country:
-                            label: Country
+            username:
+                label: Username         
 
-                        name:
-                            label: Title
+    front_frontbundle_user_description:
+        children:
+            baseline:
+                label: Baseline 
+            translations:
+                children:
+                    en:
+                        children:
+                            baseline:
+                                label: Baseline
 
-                        postcode:
-                            label: Postcode
+                            description:
+                                label: Description
 
-                        street:
-                            label: Street
+                            description_short:
+                                label: 'Short description'
 
-                        streetComplement:
-                            label: 'Street complement'
-
+                label: Translations
+                
+                
+    front_frontbundle_user_link:
+        children:
+     
             facebook_link:
                 label: 'Facebook link'
 
@@ -659,38 +683,37 @@ form:
             linkedin_link:
                 label: 'LinkedIn link'
 
-            musicTypes:
-                label: Music
-
-            translations:
-                children:
-                    en:
-                        children:
-                            baseline:
-                                label: Baseline
-
-                            description:
-                                label: Description
-
-                            description_short:
-                                label: 'Short description'
-
-                label: Translations
-
             tumblr_link:
                 label: 'Tumblr link'
 
             twitter_link:
                 label: 'Twitter link'
 
-            userTypes:
-                label: Type
-
-            username:
-                label: Username
-
             vimeo_link:
-                label: 'Vimeo link'
+                label: 'Vimeo link'            
+
+            baidu_link:
+                label: 'Baidu link'            
+
+            xing_link:
+                label: 'Xing link'            
+
+    front_frontbundle_video:
+        children:
+            translations:
+                label: Translations
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+            url:
+                label: URL
+            tags:
+                label: Tags
+            move:
+                label: Move
 
     user_userbundle_user:
         children:
@@ -909,11 +932,11 @@ timeline:
 update: Update
 
 user:
-    add_address_button: user.add_address_button
-    add_music_button: user.add_music_button
-    add_video_button: user.add_video_button
-    address_title: user.address_title
-    addresses_title: 'My Address'
+    add_address_button: Add address
+    add_music_button: Add music
+    add_video_button: Add video
+    address_title: 'My Address'
+    addresses_title: 'My Addresses'
     by: By
     description_title: 'My Description'
 

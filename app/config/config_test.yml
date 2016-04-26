@@ -69,3 +69,7 @@ doctrine:
             timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
             week: DoctrineExtensions\Query\Mysql\Week
             year: DoctrineExtensions\Query\Mysql\Year                
+
+# form label translations    
+elao_form_translation:
+    auto_generate: true   

@@ -37,3 +37,7 @@ monolog:
             path:               "%kernel.logs_dir%/auth.log"
             level:              info
             channels:           security
+
+# form label translations    
+elao_form_translation:
+    auto_generate: false   
