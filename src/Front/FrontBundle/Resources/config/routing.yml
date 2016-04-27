@@ -82,3 +82,8 @@ FrontFrontBundle_usertype:
 front_front_front_video:
     resource: "@FrontFrontBundle/Resources/config/routing/video.yml"
     prefix:   /video
+    
+    
+facebook_test:
+    path:      /facebook_test
+    defaults:  { _controller: FrontFrontBundle:Facebook:test }     
