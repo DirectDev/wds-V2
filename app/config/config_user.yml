@@ -50,10 +50,11 @@ hwi_oauth:
             scope: "email"
             options:
                 display: popup #dialog is optimized for popup window
-            infos_url:     "https://graph.facebook.com/me?fields=name,email,picture.type(square)"
+            infos_url:     "https://graph.facebook.com/me?fields=name,email,locale,picture.type(square)"
             paths:
                 name:       name
                 email:      email
+                locale:     locale
                 profilepicture: picture.data.url
         google:
             type: google
