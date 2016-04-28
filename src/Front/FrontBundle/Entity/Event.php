@@ -41,6 +41,13 @@ class Event {
      * @ORM\Column(name="published", type="boolean", nullable=true, options={"default":1})
      */
     private $published;
+    
+    /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) 
+     * @Assert\Length(
+     *      min = 7
+     * )
+     */
+    protected $facebook_id;
 
     /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
     protected $facebook_link;
@@ -932,5 +939,29 @@ class Event {
     public function getXingLink()
     {
         return $this->xing_link;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return Event
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebook_id = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
     }
 }

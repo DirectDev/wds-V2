@@ -75,6 +75,13 @@ class Address {
      * @ORM\Column(name="longitude", type="float", nullable=true)
      */
     private $longitude;
+    
+    /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) 
+     * @Assert\Length(
+     *      min = 7
+     * )
+     */
+    protected $facebook_id;
 
     /**
      * @ORM\ManyToMany(targetEntity="Event", inversedBy="addresses", cascade={"persist"})
@@ -409,4 +416,28 @@ class Address {
         return $this->users;
     }
 
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return Address
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebook_id = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
 }

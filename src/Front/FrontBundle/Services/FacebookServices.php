@@ -8,6 +8,8 @@ use Facebook\GraphUser;
 use Facebook\FacebookRequestException;
 use Doctrine\ORM\EntityManager;
 use Front\FrontBundle\Entity\Event;
+use Front\FrontBundle\Entity\EventDate;
+use Front\FrontBundle\Entity\Address;
 
 class FacebookServices {
 
@@ -73,6 +75,8 @@ class FacebookServices {
         $this->event = new Event();
         $this->setEventData();
         $this->setEventTranslations();
+        $this->setEventDate();
+        $this->setEventAddress();
     }
 
     private function setEventData() {
@@ -92,6 +96,30 @@ class FacebookServices {
             $this->event->translate($this->locale)->setDescription($this->getNodeData('description'));
         }
         $this->event->mergeNewTranslations();
+    }
+
+    private function setEventDate() {
+        $eventDate = new EventDate();
+        $startTime = $this->getNodeData('start_time');
+        if ($startTime) {
+            $eventDate->setStartdate($startTime);
+            $eventDate->setStarttime($startTime);
+        } else
+            return;
+        $stopTime = $this->getNodeData('end_time');
+        if ($stopTime) {
+            $eventDate->setStopdate($stopTime);
+            $eventDate->setStoptime($stopTime);
+        }
+        $this->event->addEventDate($eventDate);
+    }
+
+    private function setEventAddress() {
+        $address = $this->findAddressByFacebookIdOrAddressFields();
+        if (!$address)
+            $address = $this->createAddress();
+        if ($address)
+            $this->event->addAddress($address);
     }
 
     private function getNodeData($type) {
@@ -175,6 +203,58 @@ class FacebookServices {
         if (!$facebook_id)
             return;
         return $this->em->getRepository('UserUserBundle:User')->findOneBy(array('facebook_id' => $facebook_id));
+    }
+
+    private function findAddressByFacebookIdOrAddressFields() {
+        $place = $this->getNodeData('place');
+        if (!$place)
+            return;
+        $address = $this->findAddressByFacebookId($place->getField('id'));
+        if ($address)
+            return $address;
+
+        $location = $place->getField('location');
+        if (!$location)
+            return;
+        $address = $this->em->getRepository('FrontFrontBundle:Address')->findOneBy(
+                array(
+                    'name' => $place->getField('name'),
+                    'street' => $location->getField('street'),
+                    'city' => $location->getField('city'),
+                    'postcode' => $location->getField('zip'),
+                )
+        );
+        return $address;
+    }
+
+    private function createAddress() {
+        $place = $this->getNodeData('place');
+        if (!$place)
+            return null;
+        $location = $place->getField('location');
+        if (!$location)
+            return null;
+
+        $address = new Address();
+        $address->setName($place->getField('name'));
+        $address->setStreet($location->getField('street'));
+        $address->setCity($location->getField('city'));
+        $address->setPostcode($location->getField('zip'));
+        $address->setLatitude($location->getField('latitude'));
+        $address->setLongitude($location->getField('longitude'));
+        $address->setFacebookId($place->getField('id'));
+
+        $country = $this->em->getRepository('FrontFrontBundle:Country')->findOneByTitle($location->getField('country'));
+        if ($country)
+            $address->setCountry($country);
+
+        return $address;
+    }
+
+    private function findAddressByFacebookId($facebook_id = null) {
+        if (!$facebook_id)
+            return;
+        return $this->em->getRepository('FrontFrontBundle:Address')->findOneBy(array('facebook_id' => $facebook_id));
     }
 
 }
