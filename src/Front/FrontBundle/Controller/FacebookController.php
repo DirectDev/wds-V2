@@ -18,7 +18,8 @@ class FacebookController extends Controller {
         // besoin de se connecter avec un compte fb d'abord
         
         $facebookServices = $this->get('facebook.services');
-        $facebookServices->importEvent('1599833447000034');
+//        $facebookServices->importEvent('1599833447000034');
+        $facebookServices->importEvent('1597645500474602');
         
         return new Response('test facebook', 200);
     }

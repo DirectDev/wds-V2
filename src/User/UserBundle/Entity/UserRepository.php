@@ -106,7 +106,7 @@ class UserRepository extends EntityRepository {
             $query->setMaxResults($max);
         return $query->getQuery()->getResult();
     }
-    
+
     public function getUsersPresentsToEvent(\Front\FrontBundle\Entity\Event $Event, $max = null) {
         $query = $this->createQueryBuilder('u')
                 ->leftJoin('u.eventPresences', 'e')
@@ -216,6 +216,18 @@ class UserRepository extends EntityRepository {
         // order by count loves
 
         return $query->getQuery();
+    }
+
+    public function findByArrayFacebookIds($array = array()) {
+        if (!count($array))
+            return;
+
+        $query = $this->createQueryBuilder('u')
+                ->where('u.enabled = 1');
+        $query->andWhere($query->expr()->in('u.facebook_id', $array))
+                ->setMaxResults(200);
+
+        return $query->getQuery()->getResult();
     }
 
 }

@@ -31,7 +31,7 @@ class FacebookServices {
         $this->facebook = new \Facebook\Facebook([
             'app_id' => $facebook_app_id,
             'app_secret' => $facebook_app_secret,
-            'default_graph_version' => 'v2.6',
+            'default_graph_version' => 'v2.1',
         ]);
         $this->facebook->setDefaultAccessToken((string) $this->access_token);
     }
@@ -47,20 +47,24 @@ class FacebookServices {
         $this->facebook_event_id = $facebook_event_id;
         $this->getEventNode();
 
+        if (!$this->allowImportEvent())
+            return;
 // recherche si event existe
         // si existe .... 
         // met a jour
         // si existe pas cree event
         $this->createEvent();
 
-        $place_node = $this->eventNode->getField('place');
+//        $place_node = $this->eventNode->getField('place');
 //        var_dump($place_node);
-        $address_node = $place_node->getField('location');
+//        $address_node = $place_node->getField('location');
 //        var_dump($address_node);
-//        var_dump($this->getNodeData('owner'));
+        var_dump('cover'.$this->getNodeData('cover'));
 //        var_dump($this->getNodeData('place'));
-//        $admins = $this->getEdge('admins');
-//        var_dump($admins);
+        $admins = $this->getEdge('photo');
+        var_dump($admins);
+        $admins = $this->getEdge('picture');
+        var_dump($admins);
 //        ;
 //        foreach ($admins->getIterator() as $item) {
 //            var_dump($item->getField('id'));
@@ -71,12 +75,27 @@ class FacebookServices {
         $this->em->flush();
     }
 
+    private function allowImportEvent() {
+        $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
+        foreach ($musicTypes as $musicType) {
+            $music_title = $musicType->translate($this->locale)->getTitle();
+            if (stripos($this->getNodeData('name'), $music_title) !== false)
+                return true;
+            if (stripos($this->getNodeData('description'), $music_title) !== false)
+                return true;
+        }
+        return false;
+    }
+
     private function createEvent() {
         $this->event = new Event();
         $this->setEventData();
         $this->setEventTranslations();
         $this->setEventDate();
         $this->setEventAddress();
+        $this->setEventMusicTypes();
+        $this->setEventEventTypes();
+        $this->setEventPresences();
     }
 
     private function setEventData() {
@@ -127,7 +146,7 @@ class FacebookServices {
             return;
         if (!$type)
             return;
-        $nodes = array('id', 'attenting_count', 'can_guests_invite', 'category', 'cover',
+        $nodes = array('id', 'attending_count', 'can_guests_invite', 'category', 'cover',
             'declined_count', 'description', 'end_time', 'guest_list_enabled', 'interested_count', 'is_page_owned', 'is_viewer_admin',
             'maybe_count', 'name', 'no_reply_count', 'owner', 'parent_group', 'place', 'start_time', 'ticket_uri', 'timezone', 'type', 'updated_time');
         if (!in_array($type, $nodes))
@@ -153,6 +172,7 @@ class FacebookServices {
         $graphuser = $response->getGraphUser();
         if ($graphuser)
             $this->locale = substr($graphuser['locale'], 0, 2);
+//        $this->locale = 'fr';
 
         $request = $this->facebook->request('GET', '/' . $this->facebook_event_id);
         try {
@@ -175,7 +195,7 @@ class FacebookServices {
             return;
         if (!$type)
             return;
-        $edges = array('admins', 'attenting', 'comments', 'declined', 'interested',
+        $edges = array('admins', 'attending', 'comments', 'declined', 'interested',
             'live_videos', 'maybe', 'noreply', 'photos', 'picture', 'roles', 'video', 'feed');
         if (!in_array($type, $edges))
             return;
@@ -188,7 +208,7 @@ class FacebookServices {
     private function findUserByFacebookOwnerOrFacebookAdmins() {
         $owner = $this->getNodeData('owner');
         if ($owner)
-            return $this->findUserByFacebookId($onwer->getField('id'));
+            return $this->findUserByFacebookId($owner->getField('id'));
         $admins = $this->getEdge('admins');
         foreach ($admins->getIterator() as $item) {
             $facebook_id = $item->getField('id');
@@ -255,6 +275,54 @@ class FacebookServices {
         if (!$facebook_id)
             return;
         return $this->em->getRepository('FrontFrontBundle:Address')->findOneBy(array('facebook_id' => $facebook_id));
+    }
+
+    private function setEventMusicTypes() {
+        $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
+        foreach ($musicTypes as $musicType) {
+            $music_title = $musicType->translate($this->locale)->getTitle();
+            if (stripos($this->getNodeData('name'), $music_title) !== false) {
+                if ($this->event->getMusicTypes()->contains($musicType) == false)
+                    $this->event->addMusicType($musicType);
+            }
+            if (stripos($this->getNodeData('description'), $music_title) !== false) {
+                if ($this->event->getMusicTypes()->contains($musicType) == false)
+                    $this->event->addMusicType($musicType);
+            }
+        }
+    }
+
+    private function setEventEventTypes() {
+        $eventTypes = $this->em->getRepository('FrontFrontBundle:EventType')->findAll();
+        foreach ($eventTypes as $eventType) {
+            $eventtype_title = $eventType->translate($this->locale)->getTitle();
+            if (stripos($this->getNodeData('name'), $eventtype_title) !== false) {
+                if ($this->event->getEventTypes()->contains($eventType) == false)
+                    $this->event->addEventType($eventType);
+            }
+            if (stripos($this->getNodeData('description'), $eventtype_title) !== false) {
+                if ($this->event->getEventTypes()->contains($eventType) == false)
+                    $this->event->addEventType($eventType);
+            }
+        }
+        if (!count($this->event->getEventTypes())) {
+            $eventType = $this->em->getRepository('FrontFrontBundle:EventType')->findOneByName('Party');
+            if ($this->event->getEventTypes()->contains($eventType) == false)
+                $this->event->addEventType($eventType);
+        }
+    }
+
+    private function setEventPresences() {
+        $array = array();
+        $attending = $this->getEdge('attending');
+        foreach ($attending->getIterator() as $node_attending)
+            if ($node_attending->getField('id'))
+                $array[] = $node_attending->getField('id');
+
+        $users = $this->em->getRepository('UserUserBundle:User')->findByArrayFacebookIds($array);
+        foreach ($users as $user)
+            if ($this->event->getUserPresents()->contains($user) == false)
+                $this->event->addUserPresent($user);
     }
 
 }
