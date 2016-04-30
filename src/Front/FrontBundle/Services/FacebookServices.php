@@ -9,6 +9,7 @@ use Facebook\FacebookRequestException;
 use Doctrine\ORM\EntityManager;
 use Front\FrontBundle\Entity\Event;
 use Front\FrontBundle\Entity\EventDate;
+use Front\FrontBundle\Entity\EventFile;
 use Front\FrontBundle\Entity\Address;
 
 class FacebookServices {
@@ -31,7 +32,7 @@ class FacebookServices {
         $this->facebook = new \Facebook\Facebook([
             'app_id' => $facebook_app_id,
             'app_secret' => $facebook_app_secret,
-            'default_graph_version' => 'v2.1',
+            'default_graph_version' => 'v2.6',
         ]);
         $this->facebook->setDefaultAccessToken((string) $this->access_token);
     }
@@ -59,12 +60,16 @@ class FacebookServices {
 //        var_dump($place_node);
 //        $address_node = $place_node->getField('location');
 //        var_dump($address_node);
-        var_dump('cover'.$this->getNodeData('cover'));
+//        var_dump('cover'.$this->getNodeData('cover'));
 //        var_dump($this->getNodeData('place'));
-        $admins = $this->getEdge('photo');
-        var_dump($admins);
-        $admins = $this->getEdge('picture');
-        var_dump($admins);
+//        $admins = $this->getEdge('photo');
+//        var_dump($admins);
+//        $node = $this->getEdge('picture');
+//        var_dump($node);
+//        foreach ($node->getIterator() as $picture) {
+////        $graphpicture = $node->getGraphPicture();
+//            var_dump($picture);
+//        }
 //        ;
 //        foreach ($admins->getIterator() as $item) {
 //            var_dump($item->getField('id'));
@@ -96,6 +101,8 @@ class FacebookServices {
         $this->setEventMusicTypes();
         $this->setEventEventTypes();
         $this->setEventPresences();
+        $this->setEventPictureUrl();
+        $this->createEventFile();
     }
 
     private function setEventData() {
@@ -203,6 +210,54 @@ class FacebookServices {
         $request = $this->facebook->request('GET', '/' . $this->facebook_event_id . '/' . $type);
         $response = $this->facebook->getClient()->sendRequest($request);
         return $response->getGraphEdge();
+    }
+
+    private function setEventPictureUrl() {
+        if (!$this->facebook or ! $this->facebook_event_id)
+            return;
+        $request = $this->facebook->request('GET', '/' . $this->facebook_event_id . '/?fields=cover');
+        $response = $this->facebook->getClient()->sendRequest($request);
+        $node = $response->getGraphNode();
+        if($node->getField('cover') && $node->getField('cover')->getField('source') )
+            $this->event->setFacebookPictureUrl($node->getField('cover')->getField('source'));
+    }
+
+    private function createEventFile() {
+        if (!$this->event->getFacebookPictureUrl())
+            return;
+
+        try {
+            $this->em->persist($this->event);
+            $this->em->flush();
+            $this->em->refresh($this->event);
+
+            $eventFile = new EventFile();
+            $eventFile->setEvent($this->event);
+
+            $path = $eventFile->getGeneralPath();
+            if (!is_dir($path))
+                mkdir($path);
+            $path = $path . 'large/';
+            if (!is_dir($path))
+                mkdir($path);
+            $url = $this->event->getFacebookPictureUrl();
+
+            $name = 'img_facebook.jpg';
+            if (stripos($url, '.png') !== false)
+                $name = 'img_facebook.png';
+            if (stripos($url, '.gif') !== false)
+                $name = 'img_facebook.gif';
+
+            $file = file_get_contents($url);
+            file_put_contents($path . $name, $file);
+
+            if (is_file($path . $name)) {
+                $eventFile->setName($name);
+                $this->em->persist($eventFile);
+            }
+        } catch (\Exception $e) {
+            
+        }
     }
 
     private function findUserByFacebookOwnerOrFacebookAdmins() {

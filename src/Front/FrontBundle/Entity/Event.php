@@ -41,7 +41,7 @@ class Event {
      * @ORM\Column(name="published", type="boolean", nullable=true, options={"default":1})
      */
     private $published;
-    
+
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) 
      * @Assert\Length(
      *      min = 7
@@ -51,6 +51,9 @@ class Event {
 
     /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
     protected $facebook_link;
+    
+    /** @ORM\Column(name="facebook_picture_url", type="string", length=500, nullable=true) */
+    protected $facebook_picture_url;
 
     /** @ORM\Column(name="google_link", type="string", length=255, nullable=true) */
     protected $google_link;
@@ -224,6 +227,8 @@ class Event {
     public function getProfilePictureUrl() {
         if ($this->getProfilePicture())
             return $this->getProfilePicture()->getLargePathUri();
+        if ($this->isFacebookEvent() && $this->getFacebookPictureUrl())
+            return $this->getFacebookPictureUrl();
     }
 
     public function getAddress() {
@@ -892,7 +897,6 @@ class Event {
         return $this->published;
     }
 
-
     /**
      * Set baiduLink
      *
@@ -900,8 +904,7 @@ class Event {
      *
      * @return Event
      */
-    public function setBaiduLink($baiduLink)
-    {
+    public function setBaiduLink($baiduLink) {
         $this->baidu_link = $baiduLink;
 
         return $this;
@@ -912,8 +915,7 @@ class Event {
      *
      * @return string
      */
-    public function getBaiduLink()
-    {
+    public function getBaiduLink() {
         return $this->baidu_link;
     }
 
@@ -924,8 +926,7 @@ class Event {
      *
      * @return Event
      */
-    public function setXingLink($xingLink)
-    {
+    public function setXingLink($xingLink) {
         $this->xing_link = $xingLink;
 
         return $this;
@@ -936,8 +937,7 @@ class Event {
      *
      * @return string
      */
-    public function getXingLink()
-    {
+    public function getXingLink() {
         return $this->xing_link;
     }
 
@@ -948,8 +948,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFacebookId($facebookId)
-    {
+    public function setFacebookId($facebookId) {
         $this->facebook_id = $facebookId;
 
         return $this;
@@ -960,8 +959,32 @@ class Event {
      *
      * @return string
      */
-    public function getFacebookId()
-    {
+    public function getFacebookId() {
         return $this->facebook_id;
+    }
+
+
+    /**
+     * Set facebookPictureUrl
+     *
+     * @param string $facebookPictureUrl
+     *
+     * @return Event
+     */
+    public function setFacebookPictureUrl($facebookPictureUrl)
+    {
+        $this->facebook_picture_url = $facebookPictureUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookPictureUrl
+     *
+     * @return string
+     */
+    public function getFacebookPictureUrl()
+    {
+        return $this->facebook_picture_url;
     }
 }
