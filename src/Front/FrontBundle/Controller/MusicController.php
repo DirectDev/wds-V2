@@ -131,6 +131,7 @@ class MusicController extends Controller {
      */
     private function createCreateForm(Music $music, $id) {
         $form = $this->createForm(new MusicType(), $music, array(
+            'attr' => array('locale' => $this->get('request')->getLocale()),
             'action' => $this->generateUrl('front_music_create', array('id' => $id)),
             'method' => 'POST',
         ));
@@ -229,6 +230,7 @@ class MusicController extends Controller {
      */
     private function createEditForm(Music $music) {
         $form = $this->createForm(new MusicType(), $music, array(
+                        'attr' => array('locale' => $this->get('request')->getLocale()),
             'action' => $this->generateUrl('front_music_update', array('id' => $music->getId())),
             'method' => 'PUT',
         ));

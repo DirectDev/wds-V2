@@ -194,6 +194,7 @@ class VideoController extends Controller {
      */
     private function createCreateForm(Video $video, $id) {
         $form = $this->createForm(new VideoType(), $video, array(
+            'attr' => array('locale' => $this->get('request')->getLocale()),
             'action' => $this->generateUrl('front_video_create', array('id' => $id)),
             'method' => 'POST',
         ));
@@ -262,7 +263,7 @@ class VideoController extends Controller {
      */
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
-        
+
         if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
@@ -289,6 +290,7 @@ class VideoController extends Controller {
      */
     private function createEditForm(Video $video) {
         $form = $this->createForm(new VideoType(), $video, array(
+            'attr' => array('locale' => $this->get('request')->getLocale()),
             'action' => $this->generateUrl('front_video_update', array('id' => $video->getId())),
             'method' => 'PUT',
         ));
