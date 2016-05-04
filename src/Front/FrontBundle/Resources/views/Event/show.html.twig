@@ -53,6 +53,21 @@
                         <h2>{% trans %}event.description_title{% endtrans %}</h2>
                         {{ event.getDescription()|raw }}
 
+                        {% if not event.getDescription() %}
+                            {% if app.user and app.user == event.user %}
+                                {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
+                                    path : path('front_event_edit', { id : event.id } ) , 
+                                    title : 'add_block.event.description.add_title'|trans, 
+                                    paragraphe: 'add_block.event.description.add_paragraphe'|trans 
+                                } %}
+                            {% else %}
+                                {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 
+                                    title : 'info_block.event.description.info_title'|trans, 
+                                    paragraphe: 'info_block.event.description.info_paragraphe'|trans 
+                                } %}
+                            {% endif%}
+                        {% endif%}
+
                     </div>
 
                     <!--=== Cube-Portfdlio ===-->
@@ -60,8 +75,10 @@
 
                         <div id="grid-container" class="cbp-l-grid-fullWidth">
 
+                            {% set count_image = 0 %}
                             {% for eventFile in event.eventFiles %}
                                 {% if eventFile.isImage %}
+                                    {% set count_image = count_image + 1 %}
                                     <div class="cbp-item graphic">
                                         <div class="cbp-caption">
                                             <div class="cbp-caption-defaultWrap">
@@ -86,6 +103,21 @@
                         </div><!--/end Grid Container-->
                     </div>
                     <!--=== End Cube-Portfdlio ===-->
+                    
+                    {% if not count_image %}
+                            {% if app.user and app.user == event.user %}
+                                {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
+                                    path : path('front_event_edit', { id : event.id } ) , 
+                                    title : 'add_block.event.images.add_title'|trans, 
+                                    paragraphe: 'add_block.event.images.add_paragraphe'|trans 
+                                } %}
+                            {% else %}
+                                {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 
+                                    title : 'info_block.event.images.info_title'|trans, 
+                                    paragraphe: 'info_block.event.images.info_paragraphe'|trans 
+                                } %}
+                            {% endif%}
+                        {% endif%}
 
                 </div>
                 <!-- End Left Inner -->
@@ -96,10 +128,10 @@
                     <div class="right-inner">
 
                         {% include 'FrontFrontBundle:User:eventAuthor.html.twig' %}
-                        
-                            <div id="event_alerts" rel="{{ path('front_event_alerts', { id : event.id } ) }}">
-        {% render(path('front_event_alerts', { id : event.id } )) %}
-    </div>
+
+                        <div id="event_alerts" rel="{{ path('front_event_alerts', { id : event.id } ) }}">
+                            {% render(path('front_event_alerts', { id : event.id } )) %}
+                        </div>
 
                         <hr>
 
@@ -116,7 +148,7 @@
                         <!-- Basic Map -->
                         <hr>
                         {% if event.getAddress and event.getAddress().isValid() %}    
-                                {% include 'FrontFrontBundle:Event:map.html.twig' %}
+                            {% include 'FrontFrontBundle:Event:map.html.twig' %}
                         {% endif %}
                         <!-- End Basic Map -->
 

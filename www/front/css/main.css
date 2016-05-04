@@ -742,8 +742,8 @@ fieldset[disabled] .btn-search.active {
 }
 
 
-.love_form, presence_form{
-    margin-right: 18px;
+.love_form, .presence_form{
+    /*margin-right: 18px;*/
 }
 .navbar-brand {
     height: 80px !important;
