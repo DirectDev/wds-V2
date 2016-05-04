@@ -63,6 +63,21 @@
                                 {% if user.getAddress %}
                                     <p>{{ user.getAddress }}</p>
                                 {% endif %}
+
+                                {% if user.hasNoDetails %}
+                                    {% if app.user and app.user == user %}
+                                        {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
+                                            path : path('front_user_edit', { id : app.user.id } ), 
+                                            title : 'add_block.user.details.add_title'|trans, 
+                                            paragraphe: 'add_block.user.details.add_paragraphe'|trans 
+                                        } %}
+                                    {% else %}
+                                        {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 
+                                            title : 'info_block.user.details.info_title'|trans, 
+                                            paragraphe: 'info_block.user.details.info_paragraphe'|trans 
+                                        } %}
+                                    {% endif%}
+                                {% endif %}
                                 <div class='margin-top-20 margin-bottom-20'>
                                     {% include 'FrontFrontBundle:User:userSocialIcons.html.twig'  %}
                                 </div>

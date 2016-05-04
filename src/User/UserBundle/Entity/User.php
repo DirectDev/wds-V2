@@ -91,11 +91,13 @@ class User extends BaseUser {
      * @ORM\OrderBy({"id" = "DESC"})
      * */
     private $events;
+
     /**
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="publishedBy")
      * @ORM\OrderBy({"id" = "DESC"})
      * */
     private $eventsPublished;
+
     /**
      * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="organizedBy")
      * @ORM\OrderBy({"id" = "DESC"})
@@ -247,7 +249,7 @@ class User extends BaseUser {
 
         if ($this->getProfilePicture())
             return $this->getProfilePicture()->getLargePathUri();
-        
+
         return '/images/no_user_picture.jpg';
     }
 
@@ -350,6 +352,18 @@ class User extends BaseUser {
 
     public function textForNavbarHighlight() {
         return $this->getUsername() . ' / ' . ucfirst($this->getCity());
+    }
+
+    public function hasNoDetails() {
+        if ($this->getBaseline())
+            return false;
+        if ($this->getDescriptionShort())
+            return false;
+        if ($this->getDescription())
+            return false;
+        if ($this->getAddress())
+            return false;
+        return true;
     }
 
     /**
@@ -1079,7 +1093,6 @@ class User extends BaseUser {
         return $this->eventPresences;
     }
 
-
     /**
      * Add eventsPublished
      *
@@ -1087,8 +1100,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addEventsPublished(\Front\FrontBundle\Entity\Event $eventsPublished)
-    {
+    public function addEventsPublished(\Front\FrontBundle\Entity\Event $eventsPublished) {
         $this->eventsPublished[] = $eventsPublished;
 
         return $this;
@@ -1099,8 +1111,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Event $eventsPublished
      */
-    public function removeEventsPublished(\Front\FrontBundle\Entity\Event $eventsPublished)
-    {
+    public function removeEventsPublished(\Front\FrontBundle\Entity\Event $eventsPublished) {
         $this->eventsPublished->removeElement($eventsPublished);
     }
 
@@ -1109,8 +1120,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEventsPublished()
-    {
+    public function getEventsPublished() {
         return $this->eventsPublished;
     }
 
@@ -1121,8 +1131,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addEventsOrganized(\Front\FrontBundle\Entity\Event $eventsOrganized)
-    {
+    public function addEventsOrganized(\Front\FrontBundle\Entity\Event $eventsOrganized) {
         $this->eventsOrganized[] = $eventsOrganized;
 
         return $this;
@@ -1133,8 +1142,7 @@ class User extends BaseUser {
      *
      * @param \Front\FrontBundle\Entity\Event $eventsOrganized
      */
-    public function removeEventsOrganized(\Front\FrontBundle\Entity\Event $eventsOrganized)
-    {
+    public function removeEventsOrganized(\Front\FrontBundle\Entity\Event $eventsOrganized) {
         $this->eventsOrganized->removeElement($eventsOrganized);
     }
 
@@ -1143,8 +1151,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEventsOrganized()
-    {
+    public function getEventsOrganized() {
         return $this->eventsOrganized;
     }
 
@@ -1155,8 +1162,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setBaiduLink($baiduLink)
-    {
+    public function setBaiduLink($baiduLink) {
         $this->baidu_link = $baiduLink;
 
         return $this;
@@ -1167,8 +1173,7 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getBaiduLink()
-    {
+    public function getBaiduLink() {
         return $this->baidu_link;
     }
 
@@ -1179,8 +1184,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setXingLink($xingLink)
-    {
+    public function setXingLink($xingLink) {
         $this->xing_link = $xingLink;
 
         return $this;
@@ -1191,8 +1195,8 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getXingLink()
-    {
+    public function getXingLink() {
         return $this->xing_link;
     }
+
 }

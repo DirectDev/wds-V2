@@ -843,3 +843,8 @@ a.navbar_highlight {
 .author-details{
     min-height: 99px;
 }
+
+
+.service-block-light-green {
+    background: rgba(121,213,179,0.8) !important;
+}

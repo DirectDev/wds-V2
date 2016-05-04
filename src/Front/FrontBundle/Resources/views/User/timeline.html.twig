@@ -1,14 +1,15 @@
-{% if nextEvents|length %}
-    <div class="panel panel-profile">
-        <div class="panel-heading overflow-h">
-            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> {% trans %}user.events_title{% endtrans %}</h2>
-        </div>
-        <div class="panel-body margin-bottom-40">
-            <ul class="timeline-v2 timeline-me">
-                {% for event in nextEvents %}
-                    {% if event.isValid %}
-                        {% set eventDate = event.getNextEventDate %}
-
+{% set count = 0 %}
+<div class="panel panel-profile">
+    <div class="panel-heading overflow-h">
+        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-calendar"></i> {% trans %}user.events_title{% endtrans %}</h2>
+    </div>
+    <div class="panel-body margin-bottom-40">
+        <ul class="timeline-v2 timeline-me">
+            {% for event in nextEvents %}
+                {% if event.isValid %}
+                    {% set eventDate = event.getNextEventDate %}
+                    {% if eventDate is not null %}
+                        {% set count = count + 1 %}
                         <li>
                             <time datetime="" class="cbp_tmtime">
                                 <span>{{ eventDate.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }}</span> 
@@ -34,9 +35,24 @@
                         </li>
 
                     {% endif%}
-                {% endfor%}
-            </ul>
-        </div>    
-    </div>
-{% endif%}
+                {% endif%}
+            {% endfor%}
+        </ul>
+
+        {% if count == 0 %}
+            {% if app.user and app.user == user %}
+                {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
+                    path : path('front_user_edit', { id : app.user.id } ) , 
+                    title : 'add_block.user.timeline.add_title'|trans, 
+                    paragraphe: 'add_block.user.timeline.add_paragraphe'|trans 
+                } %}
+            {% else %}
+                {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 
+                    title : 'info_block.user.timeline.info_title'|trans, 
+                    paragraphe: 'info_block.user.timeline.info_paragraphe'|trans 
+                } %}
+            {% endif%}
+        {% endif%}
+    </div>    
+</div>
 

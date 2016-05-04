@@ -1,15 +1,28 @@
-{% if user.musics|length %}
-    <div class="panel panel-profile">
-        <div class="panel-heading overflow-h">
-            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i>{% trans %}user.my_musics{% endtrans %}</h2>
-            <a href="#"><i class="fa fa-cog pull-right"></i></a>
-        </div>
-
-        <div class="row margin-bottom-20">
-            {% for music in user.musics %}
-                {% render(path('front_music_show', { id : music.id } )) %}
-            {% endfor %}                   
-        </div>
+<div class="panel panel-profile">
+    <div class="panel-heading overflow-h">
+        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-music"></i>{% trans %}user.my_musics{% endtrans %}</h2>
     </div>
-{% endif%}
+
+    <div class="row margin-bottom-20">
+        {% for music in user.musics %}
+            {% render(path('front_music_show', { id : music.id } )) %}
+        {% endfor %}                   
+    </div>
+    {% if not user.musics|length %}
+        <div class='panel-body'>
+            {% if app.user and app.user == user %}
+                {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
+                    path : path('front_user_edit', { id : app.user.id } ) , 
+                    title : 'add_block.user.musics.add_title'|trans, 
+                    paragraphe: 'add_block.user.musics.add_paragraphe'|trans 
+                } %}
+            {% else %}
+                {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 
+                    title : 'info_block.user.musics.info_title'|trans, 
+                    paragraphe: 'info_block.user.musics.info_paragraphe'|trans 
+                } %}
+            {% endif%}
+        </div>
+    {% endif%}
+</div>
 

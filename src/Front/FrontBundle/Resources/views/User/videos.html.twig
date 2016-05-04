@@ -1,16 +1,29 @@
-{% if user.videos|length %}
-    <div class="panel panel-profile">
-        <div class="panel-heading overflow-h">
-            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i>{% trans %}user.my_videos{% endtrans %}</h2>
-            <a href="#"><i class="fa fa-cog pull-right"></i></a>
-        </div>
-
-        <div class="row margin-bottom-60">
-
-            {% for video in user.videos %}
-                {% render(path('front_video_show', { id : video.id } )) %}
-            {% endfor %}
-        </div>
+<div class="panel panel-profile">
+    <div class="panel-heading overflow-h">
+        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-video-camera"></i>{% trans %}user.my_videos{% endtrans %}</h2>
     </div>
-{% endif%}
+
+    <div class="row margin-bottom-60">
+
+        {% for video in user.videos %}
+            {% render(path('front_video_show', { id : video.id } )) %}
+        {% endfor %}
+    </div>
+    {% if not user.videos|length %}
+        <div class='panel-body'>
+            {% if app.user and app.user == user %}
+                {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
+                    path : path('front_user_edit', { id : app.user.id } ) , 
+                    title : 'add_block.user.videos.add_title'|trans, 
+                    paragraphe: 'add_block.user.videos.add_paragraphe'|trans 
+                } %}
+            {% else %}
+                {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 
+                    title : 'info_block.user.videos.info_title'|trans, 
+                    paragraphe: 'info_block.user.videos.info_paragraphe'|trans 
+                } %}
+            {% endif%}
+        </div>
+    {% endif%}
+</div>
 

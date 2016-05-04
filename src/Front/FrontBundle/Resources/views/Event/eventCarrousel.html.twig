@@ -20,12 +20,21 @@
             {% endif %}
         {% endfor %}
         {% if event.eventFiles|length == 0 %}
+            {% if event.getFacebookPictureUrl %}
+                <div class="item active">
+                <img alt="{{ event.getTitle|capitalize }}" src="{{ event.getFacebookPictureUrl }}">
+                <div class="carousel-caption">
+                    <p>{{ event.getTitle|capitalize }} facebook</p>
+                </div>
+            </div>
+            {% else %}
             <div class="item active">
                 <img alt="{{ event.getTitle|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('event_carrousel') }}">
                 <div class="carousel-caption">
                     <p>{{ event.getTitle|capitalize }}</p>
                 </div>
             </div>
+            {% endif %}    
         {% endif %}
     </div>
 
