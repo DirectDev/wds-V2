@@ -55,13 +55,13 @@
                     <div class="thumb-headline"><h2>{% trans %}footer.landing_pages{% endtrans %}</h2></div>
                     <ul class="list-unstyled simple-list margin-bottom-20">
                         <li>
-                            <a href="{{ path('landing_dancer') }}">landing page dancer</a>
+                            <a href="{{ path('landing_dancer') }}">{% trans %}footer.landing_page_dancer{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('landing_pro') }}">landing page pro</a>
+                            <a href="{{ path('landing_pro') }}">{% trans %}footer.landing_page_pro{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('landing_pub') }}">landing page pub</a>
+                            <a href="{{ path('landing-share-event') }}">{% trans %}footer.share_events{% endtrans %}</a>
                         </li>
                     </ul>
                 </div>
@@ -75,20 +75,22 @@
             <div class="row">
                 <div class="col-md-6">                     
                     <p>
-                        2015 &copy; All Rights Reserved.  
-                        <a target="_blank" href="#">DirectDev</a> | <a href="#">{% trans %}footer.contact_us{% endtrans %}</a> | <a href="#">{% trans %}footer.policy{% endtrans %}</a> | <a href="#">1ZERO</a> | 
+                        2016 &copy; All Rights Reserved.  
+                        <a href="{{ path('contact_contact_contact') }}">{% trans %}footer.contact_us{% endtrans %}</a> | <a href="{{ path('policy') }}">{% trans %}footer.policy{% endtrans %}</a> |  
                         <a href="#">Sitemap</a>
+                        {% if app.environment  == 'dev' %}
                         | <a href="{{ asset('Unify/HTML/index.html') }}" target='_blank'>Unify</a>
+                        {% endif %}
                     </p>
                 </div>
                 <!-- Social Links -->
                 <div class="col-md-6">  
                     <ul class="social-icons pull-right">
                         <li><a href="#" data-original-title="Facebook" class="rounded-x social_facebook"></a></li>
-                        <li><a href="#" data-original-title="Twitter" class="rounded-x social_twitter"></a></li>
+                       {# <li><a href="#" data-original-title="Twitter" class="rounded-x social_twitter"></a></li>
                         <li><a href="#" data-original-title="Goole Plus" class="rounded-x social_googleplus"></a></li>
                         <li><a href="#" data-original-title="Linkedin" class="rounded-x social_linkedin"></a></li>
-                        <li><a href="#" data-original-title="Pinterest" class="rounded-x social_pintrest"></a></li>
+                        <li><a href="#" data-original-title="Pinterest" class="rounded-x social_pintrest"></a></li>#}
                     </ul>
                 </div>
                 <!-- End Social Links -->

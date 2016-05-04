@@ -7,6 +7,37 @@ Delete: Supprimer
 'I go': 'J''y vais'
 Update: 'Mettre à jour'
 
+add_block:
+    event:
+        description:
+            add_paragraphe: add_block.event.description.add_paragraphe
+            add_title: add_block.event.description.add_title
+
+        images:
+            add_paragraphe: add_block.event.images.add_paragraphe
+            add_title: add_block.event.images.add_title
+
+    user:
+        details:
+            add_paragraphe: add_block.user.details.add_paragraphe
+            add_title: add_block.user.details.add_title
+
+        musics:
+            add_paragraphe: add_block.user.musics.add_paragraphe
+            add_title: add_block.user.musics.add_title
+
+        photos:
+            add_paragraphe: add_block.user.photos.add_paragraphe
+            add_title: add_block.user.photos.add_title
+
+        timeline:
+            add_paragraphe: add_block.user.timeline.add_paragraphe
+            add_title: 'Ajoutez des événements'
+
+        videos:
+            add_paragraphe: add_block.user.videos.add_paragraphe
+            add_title: add_block.user.videos.add_title
+
 address:
     city: Ville
     country: Pays
@@ -217,8 +248,11 @@ footer:
     contact: Contactez-nous
     contact_us: Contactez-nous
     festivals: Festivals
+    landing_page_dancer: footer.landing_page_dancer   # FIXME
+    landing_page_pro: footer.landing_page_pro   # FIXME
     landing_pages: 'WeDanceSalsa & Vous'
     policy: 'Mentions Légales'
+    share_events: footer.share_events   # FIXME
 
 form:
     contact_contactbundle_enquiry:
@@ -365,6 +399,32 @@ form:
             user:
                 label: User
 
+    front_frontbundle_event_link:
+        children:
+            facebook_link:
+                label: Facebook
+
+            flickr_link:
+                label: Flickr
+
+            google_link:
+                label: Google
+
+            instagram_link:
+                label: Instagram
+
+            linkedin_link:
+                label: LinkedIn
+
+            tumblr_link:
+                label: Tumblr
+
+            twitter_link:
+                label: Twitter
+
+            vimeo_link:
+                label: Vimeo
+
     front_frontbundle_eventdate:
         children:
             startdate:
@@ -392,25 +452,24 @@ form:
                                 label: Titre
 
                 label: Traductions
-    front_frontbundle_event_link:
+
+    front_frontbundle_music:
         children:
-            facebook_link:
-                label: Facebook
-            google_link:
-                label: Google
-            twitter_link:
-                label: Twitter
-            linkedin_link:
-                label: LinkedIn
-            flickr_link:
-                label: Flickr
-            tumblr_link:
-                label: Tumblr
-            vimeo_link:
-                label: Vimeo
-            instagram_link:
-                label: Instagram
-                    
+            tags:
+                label: Tags
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            title:
+                                label: Titre
+
+                label: Traductions
+
+            url:
+                label: URL
+
     front_frontbundle_musictype:
         children:
             name:
@@ -424,21 +483,6 @@ form:
                                 label: Titre
 
                 label: Traductions
-                
-    front_frontbundle_music:
-        children:
-            translations:
-                label: Traductions
-                children:
-                    fr:
-                        children:
-                            title:
-                                label: Titre   
-                                
-            url:
-                label: URL
-            tags:
-                label: Tags            
 
     front_frontbundle_page:
         children:
@@ -460,21 +504,11 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_user_profile:
-        children:
-            musicTypes:
-                label: Musique
-
-            userTypes:
-                label: Type
-
-            username:
-                label: Login         
-
     front_frontbundle_user_description:
         children:
             baseline:
-                label: Baseline 
+                label: Baseline
+
             translations:
                 children:
                     fr:
@@ -489,11 +523,12 @@ form:
                                 label: 'Description courte'
 
                 label: Traductions
-                
-                
+
     front_frontbundle_user_link:
         children:
-     
+            baidu_link:
+                label: 'Lien Baidu'
+
             facebook_link:
                 label: 'Lien Facebook'
 
@@ -516,30 +551,41 @@ form:
                 label: 'Lien Twitter'
 
             vimeo_link:
-                label: 'Lien Vimeo'            
-
-            baidu_link:
-                label: 'Lien Baidu'            
+                label: 'Lien Vimeo'
 
             xing_link:
-                label: 'Lien Xing'            
+                label: 'Lien Xing'
+
+    front_frontbundle_user_profile:
+        children:
+            musicTypes:
+                label: Musique
+
+            userTypes:
+                label: Type
+
+            username:
+                label: Login
 
     front_frontbundle_video:
         children:
+            move:
+                label: 'Vidéo d''une passe ou d''un shine'
+
+            tags:
+                label: Tags
+
             translations:
-                label: Traductions
                 children:
                     fr:
                         children:
                             title:
                                 label: Titre
 
+                label: Traductions
+
             url:
                 label: URL
-            tags:
-                label: Tags
-            move:
-                label: Vidéo d'une passe ou d'un shine
 
     user_userbundle_user:
         children:
@@ -620,6 +666,37 @@ home:
     users:
         h2: RENCONTRER
 
+info_block:
+    event:
+        description:
+            info_paragraphe: info_block.event.description.info_paragraphe
+            info_title: info_block.event.description.info_title
+
+        images:
+            info_paragraphe: info_block.event.images.info_paragraphe
+            info_title: info_block.event.images.info_title
+
+    user:
+        details:
+            info_paragraphe: info_block.user.details.info_paragraphe
+            info_title: info_block.user.details.info_title
+
+        musics:
+            info_paragraphe: info_block.user.musics.info_paragraphe
+            info_title: info_block.user.musics.info_title
+
+        photos:
+            info_paragraphe: info_block.user.photos.info_paragraphe
+            info_title: info_block.user.photos.info_title
+
+        timeline:
+            info_paragraphe: info_block.user.timeline.info_paragraphe
+            info_title: info_block.user.timeline.info_title
+
+        videos:
+            info_paragraphe: info_block.user.videos.info_paragraphe
+            info_title: info_block.user.videos.info_title
+
 link:
     home: Accueil
 
@@ -686,6 +763,7 @@ navbar:
     festivals.south_asia: 'Asie du Sud'
     help: Aide
     home: Accueil
+    home_mobile: navbar.home_mobile
     learn: Apprendre
     learn.bachata: 'Apprendre la Bachata'
     learn.cities: Destinations
@@ -789,8 +867,8 @@ user:
     edit_profil: 'Modifier mon profil'
 
     event:
-        search_input_placeholder: Rechercher un événement
-        search_title: Mes événements
+        search_input_placeholder: 'Rechercher un événement'
+        search_title: 'Mes événements'
 
     events_title: 'Mes Prochains Evenements'
     images_title: 'Mes Images'

@@ -30,6 +30,8 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('paris');
         $City->setLatitude(48.856614);
         $City->setLongitude(2.3522219);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-paris', $City);
 
@@ -37,6 +39,8 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('lille');
         $City->setLatitude(50.62925);
         $City->setLongitude(3.057256);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-lille', $City);
 
@@ -44,6 +48,8 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('singapore');
         $City->setLatitude(1.352083);
         $City->setLongitude(103.819836);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-singapore', $City);
 
@@ -51,6 +57,8 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('pékin');
         $City->setLatitude(39.904211);
         $City->setLongitude(116.407395);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-pekin', $City);
 
@@ -58,6 +66,8 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('san francisco');
         $City->setLatitude(37.779276);
         $City->setLongitude(-122.419232);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-san_francisco', $City);
 
@@ -65,6 +75,8 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('new york');
         $City->setLatitude(40.714353);
         $City->setLongitude(-74.005973);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-new_york', $City);
 
@@ -72,30 +84,38 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface {
         $City->setName('budapest');
         $City->setLatitude(47.4980100);
         $City->setLongitude(19.0399100);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-budapest', $City);
-        
+
         $City = new City();
         $City->setName('melbourne');
         $City->setLatitude(-37.8140000);
         $City->setLongitude(144.9633200);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-melbourne', $City);
-        
+
         $City = new City();
         $City->setName('rio');
         $City->setLatitude(-22.9027800);
         $City->setLongitude(-43.2075000);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-rio', $City);
-        
+
         $City = new City();
         $City->setName('empty-city');
         $City->setLatitude(-29.9027800);
         $City->setLongitude(-33.2075000);
+        if (rand(0, 4))
+            $City->setFooter(true);
         $manager->persist($City);
         $this->addReference('city-empty-city', $City);
-        
+
         $manager->flush();
     }
 

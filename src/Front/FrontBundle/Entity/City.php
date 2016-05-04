@@ -43,6 +43,13 @@ class City {
     private $longitude;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="footer", type="boolean", nullable=true)
+     */
+    private $footer;
+
+    /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaCity", mappedBy="city")
      * */
     private $meaCity;
@@ -169,4 +176,28 @@ class City {
         return $this->meaCity;
     }
 
+
+    /**
+     * Set footer
+     *
+     * @param boolean $footer
+     *
+     * @return City
+     */
+    public function setFooter($footer)
+    {
+        $this->footer = $footer;
+
+        return $this;
+    }
+
+    /**
+     * Get footer
+     *
+     * @return boolean
+     */
+    public function getFooter()
+    {
+        return $this->footer;
+    }
 }

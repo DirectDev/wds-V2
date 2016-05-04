@@ -42,6 +42,13 @@ class Event {
      */
     private $published;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="footer", type="boolean", nullable=true)
+     */
+    private $footer;
+
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) 
      * @Assert\Length(
      *      min = 7
@@ -51,7 +58,7 @@ class Event {
 
     /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
     protected $facebook_link;
-    
+
     /** @ORM\Column(name="facebook_picture_url", type="string", length=500, nullable=true) */
     protected $facebook_picture_url;
 
@@ -963,7 +970,6 @@ class Event {
         return $this->facebook_id;
     }
 
-
     /**
      * Set facebookPictureUrl
      *
@@ -971,8 +977,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFacebookPictureUrl($facebookPictureUrl)
-    {
+    public function setFacebookPictureUrl($facebookPictureUrl) {
         $this->facebook_picture_url = $facebookPictureUrl;
 
         return $this;
@@ -983,8 +988,32 @@ class Event {
      *
      * @return string
      */
-    public function getFacebookPictureUrl()
-    {
+    public function getFacebookPictureUrl() {
         return $this->facebook_picture_url;
+    }
+
+
+    /**
+     * Set footer
+     *
+     * @param boolean $footer
+     *
+     * @return Event
+     */
+    public function setFooter($footer)
+    {
+        $this->footer = $footer;
+
+        return $this;
+    }
+
+    /**
+     * Get footer
+     *
+     * @return boolean
+     */
+    public function getFooter()
+    {
+        return $this->footer;
     }
 }

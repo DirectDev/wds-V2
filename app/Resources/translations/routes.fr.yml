@@ -325,6 +325,9 @@ dance_tango: /dance/dance_tango
 # Desc: /login/check-facebook
 facebook_login: /connexion/check-facebook
 
+# Desc: /facebook_test
+facebook_test: /facebook_test
+
 # Desc: /festival/australia
 festival_australia: /festival/australie
 

@@ -53,7 +53,7 @@ class DefaultController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $cities = $this->getDoctrine()->getRepository('FrontFrontBundle:City')->findAll();
+        $cities = $this->getDoctrine()->getRepository('FrontFrontBundle:City')->findForFooter(6);
         $eventTypeFestival = $this->getDoctrine()->getRepository('FrontFrontBundle:EventType')->findOneByName('Festival');
         $festivals = $this->getDoctrine()->getRepository('FrontFrontBundle:Event')->findForFooter(6, array($eventTypeFestival));
         $userTypeArtist = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');

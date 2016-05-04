@@ -82,6 +82,13 @@ class User extends BaseUser {
     protected $display_counter;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="footer", type="boolean", nullable=true)
+     */
+    private $footer;
+
+    /**
      * @ORM\OneToMany(targetEntity="UserFile", mappedBy="user")
      */
     protected $userFiles;
@@ -1199,4 +1206,28 @@ class User extends BaseUser {
         return $this->xing_link;
     }
 
+
+    /**
+     * Set footer
+     *
+     * @param boolean $footer
+     *
+     * @return User
+     */
+    public function setFooter($footer)
+    {
+        $this->footer = $footer;
+
+        return $this;
+    }
+
+    /**
+     * Get footer
+     *
+     * @return boolean
+     */
+    public function getFooter()
+    {
+        return $this->footer;
+    }
 }

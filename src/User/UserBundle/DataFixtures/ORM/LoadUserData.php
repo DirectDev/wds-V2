@@ -202,6 +202,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
         if (rand(0, 4))
             $User->setDisplayCounter(rand(100, 10000));
+        if (rand(0, 4))
+            $User->setFooter(true);
     }
 
     /**

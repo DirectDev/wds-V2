@@ -325,6 +325,9 @@ dance_tango: /dance/dance_tango
 # Desc: /login/check-facebook
 facebook_login: /login/check-facebook
 
+# Desc: /facebook_test
+facebook_test: /facebook_test
+
 # Desc: /festival/australia
 festival_australia: /festival/australia
 
@@ -537,7 +540,7 @@ front_eventtype_delete: '/eventtype/delete/{id}'
 front_eventtype_edit: '/eventtype/edit/{id}'
 
 # Desc: /eventtype/list_for_event_search/
-front_eventtype_list_for_event_search: /eventtype/list_for_event_search/   # FIXME
+front_eventtype_list_for_event_search: /eventtype/list_for_event_search/
 front_eventtype_new: '/eventtype/new/{id}'
 front_eventtype_show: '/eventtype/show/{id}'
 front_eventtype_update: '/eventtype/update/{id}'
@@ -586,7 +589,7 @@ front_musictype_edit: '/musictype/edit/{id}'
 front_musictype_filters: /musictype/filters
 
 # Desc: /musictype/list_for_event_search/
-front_musictype_list_for_event_search: /musictype/list_for_event_search/   # FIXME
+front_musictype_list_for_event_search: /musictype/list_for_event_search/
 
 # Desc: /musictype/list_for_user_search/
 front_musictype_list_for_user_search: /musictype/list_for_user_search/
@@ -604,13 +607,13 @@ front_tag_list_for_video_search: /tag/list_for_video_search/
 front_user_edit: '/profile/edit/{id}'
 
 # Desc: /user/events
-front_user_events: /user/events   # FIXME
+front_user_events: /user/events
 
 # Desc: /user/filter
 front_user_filter: /user/filter
 
 # Desc: /user/filter_events
-front_user_filter_events: /user/filter_events   # FIXME
+front_user_filter_events: /user/filter_events
 
 # Desc: /user/import_facebook_event/
 front_user_import_facebook_event: /import_facebook_event/

@@ -232,6 +232,7 @@ class EventRepository extends EntityRepository {
         $query = $this->createQueryBuilder('e')
                 ->leftJoin('e.eventTypes', 'et')
                 ->where('e.published = 1')
+                ->andWhere('e.footer = 1')
                 ->setMaxResults($limit);
 
         if ($eventTypes && count($eventTypes)) {

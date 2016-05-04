@@ -7,6 +7,37 @@ Delete: Delete
 'I go': 'I go'
 Update: Update
 
+add_block:
+    event:
+        description:
+            add_paragraphe: add_block.event.description.add_paragraphe
+            add_title: add_block.event.description.add_title
+
+        images:
+            add_paragraphe: add_block.event.images.add_paragraphe
+            add_title: add_block.event.images.add_title
+
+    user:
+        details:
+            add_paragraphe: add_block.user.details.add_paragraphe
+            add_title: add_block.user.details.add_title
+
+        musics:
+            add_paragraphe: add_block.user.musics.add_paragraphe
+            add_title: add_block.user.musics.add_title
+
+        photos:
+            add_paragraphe: add_block.user.photos.add_paragraphe
+            add_title: add_block.user.photos.add_title
+
+        timeline:
+            add_paragraphe: add_block.user.timeline.add_paragraphe
+            add_title: add_block.user.timeline.add_title
+
+        videos:
+            add_paragraphe: add_block.user.videos.add_paragraphe
+            add_title: add_block.user.videos.add_title
+
 address:
     city: City
     country: Country
@@ -178,9 +209,9 @@ event:
         add: 'Add Event'
 
     music: Music
-    not_published: Event not published
-    not_valid: Event not valid
-    published: Event published
+    not_published: 'Event not published'
+    not_valid: 'Event not valid'
+    published: 'Event published'
     share_this: 'Share this'
     they_like: Likes
     to: To
@@ -217,8 +248,11 @@ footer:
     contact: 'Contact Us'
     contact_us: 'Contact Us'
     festivals: Festivals
+    landing_page_dancer: footer.landing_page_dancer   # FIXME
+    landing_page_pro: footer.landing_page_pro   # FIXME
     landing_pages: 'WeDanceSalsa & You'
     policy: 'Privacy Policy'
+    share_events: footer.share_events   # FIXME
 
 form:
     admin_adminbundle_address:
@@ -538,6 +572,32 @@ form:
             user:
                 label: User
 
+    front_frontbundle_event_link:
+        children:
+            facebook_link:
+                label: Facebook
+
+            flickr_link:
+                label: Flickr
+
+            google_link:
+                label: Google
+
+            instagram_link:
+                label: Instagram
+
+            linkedin_link:
+                label: LinkedIn
+
+            tumblr_link:
+                label: Tumblr
+
+            twitter_link:
+                label: Twitter
+
+            vimeo_link:
+                label: Vimeo
+
     front_frontbundle_eventdate:
         children:
             startdate:
@@ -565,25 +625,23 @@ form:
                                 label: Title
 
                 label: Translations
-                
-    front_frontbundle_event_link:
+
+    front_frontbundle_music:
         children:
-            facebook_link:
-                label: Facebook
-            google_link:
-                label: Google
-            twitter_link:
-                label: Twitter
-            linkedin_link:
-                label: LinkedIn
-            flickr_link:
-                label: Flickr
-            tumblr_link:
-                label: Tumblr
-            vimeo_link:
-                label: Vimeo
-            instagram_link:
-                label: Instagram            
+            tags:
+                label: Tags
+
+            translations:
+                children:
+                    en:
+                        children:
+                            title:
+                                label: Title
+
+                label: Translations
+
+            url:
+                label: URL
 
     front_frontbundle_musictype:
         children:
@@ -598,21 +656,6 @@ form:
                                 label: Title
 
                 label: Translations
-                
-    front_frontbundle_music:
-        children:
-            translations:
-                label: Translations
-                children:
-                    en:
-                        children:
-                            title:
-                                label: Title   
-                                
-            url:
-                label: URL
-            tags:
-                label: Tags
 
     front_frontbundle_page:
         children:
@@ -634,21 +677,11 @@ form:
 
                 label: Translations
 
-    front_frontbundle_user_profile:
-        children:
-            musicTypes:
-                label: Music
-
-            userTypes:
-                label: Type
-
-            username:
-                label: Username         
-
     front_frontbundle_user_description:
         children:
             baseline:
-                label: Baseline 
+                label: Baseline
+
             translations:
                 children:
                     en:
@@ -663,11 +696,12 @@ form:
                                 label: 'Short description'
 
                 label: Translations
-                
-                
+
     front_frontbundle_user_link:
         children:
-     
+            baidu_link:
+                label: 'Baidu link'
+
             facebook_link:
                 label: 'Facebook link'
 
@@ -690,30 +724,41 @@ form:
                 label: 'Twitter link'
 
             vimeo_link:
-                label: 'Vimeo link'            
-
-            baidu_link:
-                label: 'Baidu link'            
+                label: 'Vimeo link'
 
             xing_link:
-                label: 'Xing link'            
+                label: 'Xing link'
+
+    front_frontbundle_user_profile:
+        children:
+            musicTypes:
+                label: Music
+
+            userTypes:
+                label: Type
+
+            username:
+                label: Username
 
     front_frontbundle_video:
         children:
+            move:
+                label: Move
+
+            tags:
+                label: Tags
+
             translations:
-                label: Translations
                 children:
                     en:
                         children:
                             title:
                                 label: Title
 
+                label: Translations
+
             url:
                 label: URL
-            tags:
-                label: Tags
-            move:
-                label: Move
 
     user_userbundle_user:
         children:
@@ -794,6 +839,37 @@ home:
     users:
         h2: 'Salsa People'
 
+info_block:
+    event:
+        description:
+            info_paragraphe: info_block.event.description.info_paragraphe
+            info_title: info_block.event.description.info_title
+
+        images:
+            info_paragraphe: info_block.event.images.info_paragraphe
+            info_title: info_block.event.images.info_title
+
+    user:
+        details:
+            info_paragraphe: info_block.user.details.info_paragraphe
+            info_title: info_block.user.details.info_title
+
+        musics:
+            info_paragraphe: info_block.user.musics.info_paragraphe
+            info_title: info_block.user.musics.info_title
+
+        photos:
+            info_paragraphe: info_block.user.photos.info_paragraphe
+            info_title: info_block.user.photos.info_title
+
+        timeline:
+            info_paragraphe: info_block.user.timeline.info_paragraphe
+            info_title: info_block.user.timeline.info_title
+
+        videos:
+            info_paragraphe: info_block.user.videos.info_paragraphe
+            info_title: info_block.user.videos.info_title
+
 link:
     home: Home
 
@@ -860,6 +936,7 @@ navbar:
     festivals.south_asia: 'South Asia'
     help: Help
     home: Home
+    home_mobile: navbar.home_mobile
     learn: Learn
     learn.bachata: 'Learn Bachata'
     learn.cities: Destinations
@@ -891,8 +968,8 @@ navbar:
     user: Dancers
     user.add_event: 'Add Event'
     user.events: Events
-    user.import_facebook: Import form Facebook
-    user.my_events: My Events
+    user.import_facebook: 'Import form Facebook'
+    user.my_events: 'My Events'
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
     user.next_events: 'My Next Events'
@@ -932,9 +1009,9 @@ timeline:
 update: Update
 
 user:
-    add_address_button: Add address
-    add_music_button: Add music
-    add_video_button: Add video
+    add_address_button: 'Add address'
+    add_music_button: 'Add music'
+    add_video_button: 'Add video'
     address_title: 'My Address'
     addresses_title: 'My Addresses'
     by: By
@@ -964,8 +1041,8 @@ user:
     edit_profil: 'Edit Profil'
 
     event:
-        search_input_placeholder: Search event
-        search_title: My events
+        search_input_placeholder: 'Search event'
+        search_title: 'My events'
 
     events_title: 'My Next Events'
     images_title: 'My Pictures'

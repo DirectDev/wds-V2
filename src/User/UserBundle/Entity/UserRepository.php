@@ -126,6 +126,7 @@ class UserRepository extends EntityRepository {
 
         $query = $this->createQueryBuilder('u')
                 ->leftJoin('u.userTypes', 'ut')
+                ->where('u.footer = 1')
                 ->setMaxResults($limit);
 
         if ($userTypes && count($userTypes)) {
