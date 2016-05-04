@@ -6,6 +6,15 @@ homepage:
 navbar:
     path:      /navbar
     defaults:  { _controller: FrontFrontBundle:Default:navbar } 
+navbar_learn:
+    path:      /navbar_learn
+    defaults:  { _controller: FrontFrontBundle:Default:navbarLearn } 
+navbar_discover:
+    path:      /navbar_discover
+    defaults:  { _controller: FrontFrontBundle:Default:navbarDiscover } 
+navbar_meet:
+    path:      /navbar_meet
+    defaults:  { _controller: FrontFrontBundle:Default:navbarMeet } 
     
 footer:
     path:      /footer

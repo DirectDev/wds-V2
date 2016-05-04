@@ -26,11 +26,11 @@
 
                         {% include 'FrontFrontBundle:Navbar:navbar_festivals.html.twig' %}  
 
-                        {% include 'FrontFrontBundle:Navbar:navbar_discover.html.twig' %}  
+                        {{ render_esi( path('navbar_discover')) }}
 
-                        {% include 'FrontFrontBundle:Navbar:navbar_learn.html.twig' %}  
+                        {{ render_esi( path('navbar_learn')) }}
 
-                        {% include 'FrontFrontBundle:Navbar:navbar_meet.html.twig' %}  
+                        {{ render_esi( path('navbar_meet')) }}
 
                         {% include 'FrontFrontBundle:Navbar:languageSwitcher.html.twig' %}  
 

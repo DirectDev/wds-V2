@@ -764,6 +764,15 @@ liip_imagine_filter_runtime: '/media/cache/resolve/{filter}/rc/{hash}/{path}'
 # Desc: /navbar
 navbar: /navbar
 
+# Desc: /navbar_discover
+navbar_discover: /navbar_discover   # FIXME
+
+# Desc: /navbar_learn
+navbar_learn: /navbar_learn   # FIXME
+
+# Desc: /navbar_meet
+navbar_meet: /navbar_meet   # FIXME
+
 # Desc: /policy
 policy: /policy
 

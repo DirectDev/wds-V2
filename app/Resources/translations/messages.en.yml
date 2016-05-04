@@ -248,11 +248,11 @@ footer:
     contact: 'Contact Us'
     contact_us: 'Contact Us'
     festivals: Festivals
-    landing_page_dancer: footer.landing_page_dancer   # FIXME
-    landing_page_pro: footer.landing_page_pro   # FIXME
+    landing_page_dancer: footer.landing_page_dancer
+    landing_page_pro: footer.landing_page_pro
     landing_pages: 'WeDanceSalsa & You'
     policy: 'Privacy Policy'
-    share_events: footer.share_events   # FIXME
+    share_events: footer.share_events
 
 form:
     admin_adminbundle_address:
