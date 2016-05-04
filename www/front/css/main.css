@@ -757,6 +757,9 @@ fieldset[disabled] .btn-search.active {
     .navbar-brand {;
                    background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important;
     }
+    .hide-for-desktop{
+        display:none !important;
+    }
 }
 .navbar li {
     padding-top: 3px;

@@ -18,6 +18,12 @@
                 <div class="container">
                     <ul class="nav navbar-nav">
 
+                        <li class='hide-for-desktop'>
+                            <a href="{{ path('home') }}">
+                                {% trans %}navbar.home_mobile{% endtrans %}
+                            </a>
+                        </li>
+
                         {% include 'FrontFrontBundle:Navbar:navbar_festivals.html.twig' %}  
 
                         {% include 'FrontFrontBundle:Navbar:navbar_discover.html.twig' %}  
