@@ -14,6 +14,20 @@
             </a>
         </li>
     {% endif %}
+    {% if person.baiduLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Baidu" href="{{ person.baiduLink }}">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+    {% endif %}
+    {% if person.xingLink %}
+        <li>
+            <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Xing" href="{{ person.xingLink }}">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+    {% endif %}
     {% if person.linkedinLink %}
         <li>
             <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="{{ person.linkedinLink }}">

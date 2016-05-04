@@ -1,6 +1,6 @@
 <tr>
     <td>
-        {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : person, class : 'rounded-x' } %}
+        {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : person, class : '' } %}
     </td>
     <td class="td-width">
         <h3>
@@ -8,14 +8,14 @@
                 {{ person.username|capitalize }}
             </a>
         </h3>
-        {% if person.getBaseline %}
+        {% if person.getAddress %}
             <p>
-                <small class="hex">{{ person.getBaseline|capitalize }}</small>
+                <small class="hex">{{ person.getAddress.getFullAddress|capitalize }}</small>
             </p>
         {% endif %}
         {% if person.getBaseline %}
             <p>
-                <small class="hex">{{ person.getAddress.getFullAddress|capitalize }}</small>
+                <small class="hex">{{ person.getBaseline|capitalize }}</small>
             </p>
         {% endif %}
 

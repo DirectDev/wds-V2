@@ -3,19 +3,9 @@
         <table class="table table-bordered table-striped">
             <tbody>
                 {% for person in people %}
-
-                    {% if active == 'artists' %}
-                        {% include 'FrontFrontBundle:User:showArtist.html.twig' %}
-                    {% elseif active == 'teachers' %}
-                        {% include 'FrontFrontBundle:User:showTeachers.html.twig' %}
-                    {% elseif active == 'bars' %}
-                        {% include 'FrontFrontBundle:User:showBars.html.twig' %}
-                    {% elseif active == 'dancers' %}
-                        {% include 'FrontFrontBundle:User:showDancers.html.twig' %}
-                    {% endif %}
-
+                    {% include 'FrontFrontBundle:User:showListTr.html.twig' %}
                 {% endfor %}
-                
+
                 {% if 4 > people|length %}
                     {% include 'FrontFrontBundle:User:add.html.twig' %}
                 {% endif %}

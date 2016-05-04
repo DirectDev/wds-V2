@@ -15,7 +15,12 @@
                                     <h3>{% trans %}navbar.dances.salsa{% endtrans %}</h3>
                                 </li>
 
-                                <li><a href="{{ path('learn_salsa') }}">{% trans %}navbar.learn.salsa{% endtrans %}</a></li>
+                                <li>
+                                    <a href="{{ path('learn_salsa') }}">
+                                        <i class="fa fa-graduation-cap"></i>
+                                        {% trans %}navbar.learn.salsa{% endtrans %}
+                                    </a>
+                                </li>
 
                                 <li>
                                     <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Salsa' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
@@ -35,7 +40,12 @@
                                     <h3>{% trans %}navbar.dances.bachata{% endtrans %}</h3>
                                 </li>
 
-                                <li><a href="{{ path('learn_bachata') }}">{% trans %}navbar.learn.bachata{% endtrans %}</a></li>
+                                <li>
+                                    <a href="{{ path('learn_bachata') }}">
+                                        <i class="fa fa-graduation-cap"></i>
+                                        {% trans %}navbar.learn.bachata{% endtrans %}
+                                    </a>
+                                </li>
 
                                 <li>
                                     <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Bachata' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">
@@ -54,7 +64,12 @@
                                         <h3>{% trans %}navbar.dances.kizomba{% endtrans %}</h3>
                                     </li>
 
-                                    <li><a href="{{ path('learn_kizomba') }}">{% trans %}navbar.learn.kizomba{% endtrans %}</a></li>
+                                    <li>
+                                        <a href="{{ path('learn_kizomba') }}">
+                                            <i class="fa fa-graduation-cap"></i>
+                                            {% trans %}navbar.learn.kizomba{% endtrans %}
+                                        </a>
+                                    </li>
 
                                     <li>
                                         <a href="{{ path('front_video_filter_video', {'video_filter[tag]':  'Kizomba' , 'video_filter[move]':  1  , 'video_filter[_token]' :  csrf_token('video_filter')  } ) }}">

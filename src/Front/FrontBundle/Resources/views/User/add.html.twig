@@ -1,17 +1,15 @@
+{% set image_default_uri = 'images/wds_70x70_add.png' %}
+
 <tr>
-    <td>
+    <td width='95px'>
+        <img src="{{ asset(image_default_uri) }}" alt="" class="member_min_thumb" >
     </td>
-    <td class="td-width">
+    <td colspan='3'>
         <h3>
             <a href="{{ path('landing_pro') }}">
                 {% trans %}user.list.add.h3{% endtrans %}
             </a>
         </h3>
         <small class="hex">{% trans %}user.list.add.span{% endtrans %}</small>
-    </td>
-    <td>
-
-    </td>
-    <td>
     </td>
 </tr>

@@ -53,19 +53,15 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <tbody>
+                                {% set count_people = 0 %}
                                 {% for person in pagination %}
-
-                                    {% if person.isArtist() %}
-                                        {% include 'FrontFrontBundle:User:showArtist.html.twig' %}
-                                    {% elseif person.isTeacher() %}
-                                        {% include 'FrontFrontBundle:User:showTeachers.html.twig' %}
-                                    {% elseif person.isBar() %}
-                                        {% include 'FrontFrontBundle:User:showBars.html.twig' %}
-                                    {% else %}
-                                        {% include 'FrontFrontBundle:User:showDancers.html.twig' %}
-                                    {% endif %}
-
+                                    {% set count_people = count_people + 1 %}
+                                    {% include 'FrontFrontBundle:User:showListTr.html.twig' %}
                                 {% endfor %}
+
+                                {% if 4 > count_people %}
+                                    {% include 'FrontFrontBundle:User:add.html.twig' %}
+                                {% endif %}
                             </tbody>
                         </table>
                     </div>    
