@@ -49,10 +49,16 @@
 
             <div class="col-md-10" id="video_list">
 
+                {% set count_video = 0 %}
                 {% for video in pagination %}
+                    {% set count_video = count_video + 1 %}
                     {% render(path('front_video_show', { id : video.id } )) %}
                 {% endfor %}
 
+                {% if count_video < 6 %}
+                    {% include 'FrontFrontBundle:Video:add.html.twig' %}
+                {% endif %}
+                
                 <div class="margin-bottom-30"></div>
 
                 {{ knp_pagination_render(pagination) }}

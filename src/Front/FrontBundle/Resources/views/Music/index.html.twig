@@ -49,9 +49,15 @@
 
             <div class="col-md-10" id="music_list">
 
+                {% set count_music = 0 %}
                 {% for music in pagination %}
+                    {% set count_music = count_music + 1 %}
                     {% render(path('front_music_show', { id : music.id } )) %}
                 {% endfor %}
+
+                {% if count_music < 6 %}
+                    {% include 'FrontFrontBundle:Music:add.html.twig' %}
+                {% endif %}
 
                 <div class="margin-bottom-30"></div>
 
