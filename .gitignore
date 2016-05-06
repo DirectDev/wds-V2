@@ -44,3 +44,4 @@
 /www/media/cache
 /www/front/js/compiled
 /www/front/css/compiled
+/composer.lock
