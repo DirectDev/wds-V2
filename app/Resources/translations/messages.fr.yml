@@ -114,6 +114,7 @@ admin:
     users: Utilisateurs
 
 city:
+    in : à
     artits: Artistes
     calendar: Calendrier
     concerts: Concerts

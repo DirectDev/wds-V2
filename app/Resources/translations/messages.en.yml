@@ -114,6 +114,7 @@ admin:
     users: Users
 
 city:
+    in: in
     artits: Artits
     calendar: Calendar
     concerts: Concerts

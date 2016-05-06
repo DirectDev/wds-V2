@@ -1,7 +1,7 @@
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs breadcrumbs-dark">
     <div class="container">
-        <h1 class="pull-left">Salsa in {{ city.getName()|capitalize }}, {{ page.getTitle|capitalize }}
+        <h1 class="pull-left">Salsa {% trans %}city.in{% endtrans %} {{ city.getName()|capitalize }}, {{ page.getTitle|capitalize }}
             {% if active in ['calendar', 'festivals', 'parties', 'shows', 'workshops', 'introductions', 'concerts'] %}
                 : {{ app.session.get('startdate')|localizeddate('full', 'none', app.request.locale )|capitalize }}
             {% endif %}
