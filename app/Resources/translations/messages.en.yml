@@ -1072,6 +1072,7 @@ user_bundle:
 
     signin:
         or: or
+        signin_facebook: 'Connect with Facebook to import all your facebook events easily !'
         signin_facebook: 'Signin with facebook'
         signin_google: 'Signin with google'
 

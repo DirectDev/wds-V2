@@ -898,6 +898,7 @@ user_bundle:
 
     signin:
         or: ou
+        signin_facebook_paragraphe: 'Facile ! Connectez vous avec Facebook pour importer tous vos évenements en quelques clics.'
         signin_facebook: 'Se connecter avec Facebook'
         signin_google: 'Se connecter avec Google'
 
