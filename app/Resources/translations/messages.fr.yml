@@ -118,24 +118,24 @@ city:
     calendar: Calendrier
     concerts: Concerts
     dancers: Danseurs
-    edito: city.edito # FIXME
-    edito.artist.h4: city.edito.artist.h4
-    edito.artist.p: city.edito.artist.p
-    edito.bar.h4: city.edito.bar.h4
-    edito.bar.p: city.edito.bar.p
-    edito.calendar.h4: city.edito.calendar.h4
-    edito.calendar.p: city.edito.calendar.p
-    edito.festival.h4: city.edito.festival.h4
-    edito.festival.p: city.edito.festival.p
-    edito.introduction.h4: city.edito.introduction.h4
-    edito.introduction.p: city.edito.introduction.p
-    edito.party.h4: city.edito.party.h4
-    edito.party.p: city.edito.party.p
-    edito.photo.h4: city.edito.photo.h4
-    edito.photo.p: city.edito.photo.p
-    edito.teacher.h4: city.edito.teacher.h4
-    edito.teacher.p: city.edito.teacher.p
-    edito.users: city.edito.users
+    edito: Edito
+    edito.artist.h4: Les artistes
+    edito.artist.p: Découvrez les artistes de cette ville
+    edito.bar.h4: Les lieux
+    edito.bar.p: Découvrez les lieux où danser
+    edito.calendar.h4: Le calendrier
+    edito.calendar.p: Ne ratez aucun événement
+    edito.festival.h4: Les festivals
+    edito.festival.p: Découvrez les festivals
+    edito.introduction.h4: Les initiations
+    edito.introduction.p: Apprenez à danser
+    edito.party.h4: Les soirées
+    edito.party.p: Découvrez toutes les soirées et amusez-vous
+    edito.photo.h4: Les photos
+    edito.photo.p: Les photos préférées des danseurs
+    edito.teacher.h4: Les professeurs
+    edito.teacher.p: Envie d'apprendre, ils sont là pour vous
+    edito.users: Quelques danseurs
     festivals: Festivals
     introductions: Initiations
     lessons: Cours

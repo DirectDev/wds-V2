@@ -119,23 +119,23 @@ city:
     concerts: Concerts
     dancers: Dancers
     edito: Overview
-    edito.artist.h4: city.edito.artist.h4 #FIXME
-    edito.artist.p: city.edito.artist.p
-    edito.bar.h4: city.edito.bar.h4
-    edito.bar.p: city.edito.bar.p
-    edito.calendar.h4: city.edito.calendar.h4
-    edito.calendar.p: city.edito.calendar.p
-    edito.festival.h4: city.edito.festival.h4
-    edito.festival.p: city.edito.festival.p
-    edito.introduction.h4: city.edito.introduction.h4
-    edito.introduction.p: city.edito.introduction.p
-    edito.party.h4: city.edito.party.h4
-    edito.party.p: city.edito.party.p
-    edito.photo.h4: city.edito.photo.h4
-    edito.photo.p: city.edito.photo.p
-    edito.teacher.h4: city.edito.teacher.h4
-    edito.teacher.p: city.edito.teacher.p
-    edito.users: city.edito.users
+    edito.artist.h4: Artits
+    edito.artist.p: All the artists from the city
+    edito.bar.h4: Places
+    edito.bar.p: The places to dance
+    edito.calendar.h4: Calendar
+    edito.calendar.p: All events on a map
+    edito.festival.h4: Festivals
+    edito.festival.p: All the festivals in this city
+    edito.introduction.h4: Introductions
+    edito.introduction.p: Introductions, to discover what dance is
+    edito.party.h4: Parties
+    edito.party.p: All the parties 
+    edito.photo.h4: Photos
+    edito.photo.p: The best photos
+    edito.teacher.h4: Teachers
+    edito.teacher.p: Discover all teachers and learn to dance
+    edito.users: Some dancers
     festivals: Festivals
     introductions: Introductions
     lessons: Lessons
