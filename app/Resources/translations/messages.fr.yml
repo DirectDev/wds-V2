@@ -10,33 +10,33 @@ Update: 'Mettre à jour'
 add_block:
     event:
         description:
-            add_paragraphe: add_block.event.description.add_paragraphe
-            add_title: add_block.event.description.add_title
+            add_paragraphe: Ajoutez vos événements
+            add_title: Ajouter
 
         images:
-            add_paragraphe: add_block.event.images.add_paragraphe
-            add_title: add_block.event.images.add_title
+            add_paragraphe: Ajoutez des photos
+            add_title: Ajouter
 
     user:
         details:
-            add_paragraphe: add_block.user.details.add_paragraphe
-            add_title: add_block.user.details.add_title
+            add_paragraphe: Décrivez-vous 
+            add_title: Ajouter
 
         musics:
-            add_paragraphe: add_block.user.musics.add_paragraphe
-            add_title: add_block.user.musics.add_title
+            add_paragraphe: Partagez vos musiques préférées
+            add_title: Ajouter
 
         photos:
-            add_paragraphe: add_block.user.photos.add_paragraphe
-            add_title: add_block.user.photos.add_title
+            add_paragraphe: Partagez vos photos préférées
+            add_title: Ajouter
 
         timeline:
-            add_paragraphe: add_block.user.timeline.add_paragraphe
+            add_paragraphe: Partagez vos événements
             add_title: 'Ajoutez des événements'
 
         videos:
-            add_paragraphe: add_block.user.videos.add_paragraphe
-            add_title: add_block.user.videos.add_title
+            add_paragraphe: Partagez vos vidéos préférées
+            add_title: Ajouter
 
 address:
     city: Ville
@@ -118,7 +118,7 @@ city:
     calendar: Calendrier
     concerts: Concerts
     dancers: Danseurs
-    edito: city.edito
+    edito: city.edito # FIXME
     edito.artist.h4: city.edito.artist.h4
     edito.artist.p: city.edito.artist.p
     edito.bar.h4: city.edito.bar.h4
@@ -248,11 +248,11 @@ footer:
     contact: Contactez-nous
     contact_us: Contactez-nous
     festivals: Festivals
-    landing_page_dancer: footer.landing_page_dancer
-    landing_page_pro: footer.landing_page_pro
+    landing_page_dancer: WeDanceSalsa pour les danseurs
+    landing_page_pro: WeDanceSalsa pour les pros
     landing_pages: 'WeDanceSalsa & Vous'
     policy: 'Mentions Légales'
-    share_events: footer.share_events
+    share_events: Partagez vos événements
 
 form:
     contact_contactbundle_enquiry:
@@ -637,17 +637,7 @@ front:
     user_show_title: 'Afficher l''utilisateur'
 
 home:
-    about_us_benefit_1: 'Une carte montrant les soirées/cours/festival... du jour.'
-    about_us_benefit_2: 'Une façon rapide de trouver la salsa dans n''importe quelle ville où vous n''êtes jamais allé.'
-    about_us_benefit_3: 'Un site réservé à la Salsa/Bachata/Kizomba.'
-    about_us_benefit_4: 'Un site multilingue.'
-    about_us_benefit_5: 'Plusieurs danses.'
-    about_us_benefit_6: 'C''est gratuit.'
-    about_us_benefits: 'Les avantages sont :'
-    about_us_p1: 'Notre objectif est de pouvoir vous informer sur les événements Salsa, d''aujourd''hui, de demain, près de chez vous, ou <strong>N''IMPORTE OU</strong> dans le monde. Le projet est de combiner les compétences des danseurs pour construire une site de type réseau social, pratique, rapide, utilisant les dernières technologies comme la géolocalisation.'
-    about_us_title: 'WeDanceSalsa en 2 mots'
-    about_us_title_desc: '<strong>WeDanceSalsa</strong> est une idée venant de danseurs de Salsa'
-
+    
     alert:
         success_contact_button: Contactez-nous
         success_contribute: 'Si ce projet vous intéresse, vous pouvez contribuer en : partageant sur Facebook, en parlant à vos amis, traduisant le site, faisant des suggestions de nouvelles fonctionnalités, aidant pour le design ou la communication/SEO, etc. '
@@ -669,33 +659,33 @@ home:
 info_block:
     event:
         description:
-            info_paragraphe: info_block.event.description.info_paragraphe
-            info_title: info_block.event.description.info_title
+            info_paragraphe: Pas encore d'informations
+            info_title: ''
 
         images:
-            info_paragraphe: info_block.event.images.info_paragraphe
-            info_title: info_block.event.images.info_title
+            info_paragraphe: Pas encore de photos
+            info_title: ''
 
     user:
         details:
-            info_paragraphe: info_block.user.details.info_paragraphe
-            info_title: info_block.user.details.info_title
+            info_paragraphe: Pas encore de photos
+            info_title: ''
 
         musics:
-            info_paragraphe: info_block.user.musics.info_paragraphe
-            info_title: info_block.user.musics.info_title
+            info_paragraphe: Pas encore de détails
+            info_title: ''
 
         photos:
-            info_paragraphe: info_block.user.photos.info_paragraphe
-            info_title: info_block.user.photos.info_title
+            info_paragraphe: Pas encore de photos
+            info_title: ''
 
         timeline:
-            info_paragraphe: info_block.user.timeline.info_paragraphe
-            info_title: info_block.user.timeline.info_title
+            info_paragraphe: Pas d'événements à venir
+            info_title: ''
 
         videos:
-            info_paragraphe: info_block.user.videos.info_paragraphe
-            info_title: info_block.user.videos.info_title
+            info_paragraphe: Pas encore de vidéos
+            info_title: ''
 
 link:
     home: Accueil
@@ -763,7 +753,7 @@ navbar:
     festivals.south_asia: 'Asie du Sud'
     help: Aide
     home: Accueil
-    home_mobile: navbar.home_mobile
+    home_mobile: Accueil/Recherche
     learn: Apprendre
     learn.bachata: 'Apprendre la Bachata'
     learn.cities: Destinations

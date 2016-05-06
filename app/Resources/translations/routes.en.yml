@@ -765,13 +765,13 @@ liip_imagine_filter_runtime: '/media/cache/resolve/{filter}/rc/{hash}/{path}'
 navbar: /navbar
 
 # Desc: /navbar_discover
-navbar_discover: /navbar_discover   # FIXME
+navbar_discover: /navbar_discover 
 
 # Desc: /navbar_learn
-navbar_learn: /navbar_learn   # FIXME
+navbar_learn: /navbar_learn 
 
 # Desc: /navbar_meet
-navbar_meet: /navbar_meet   # FIXME
+navbar_meet: /navbar_meet
 
 # Desc: /policy
 policy: /policy

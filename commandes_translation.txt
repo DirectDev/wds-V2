@@ -1,0 +1,3 @@
+
+php app/console translation:extract en --config=app --keep --default-output-format=yml
+php app/console translation:extract fr --config=app --keep --default-output-format=yml

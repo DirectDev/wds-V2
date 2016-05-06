@@ -762,16 +762,16 @@ liip_imagine_filter: '/media/cache/resoudre/{filter}/{path}'
 liip_imagine_filter_runtime: '/media/cache/resoudre/{filter}/rc/{hash}/{path}'
 
 # Desc: /navbar
-navbar: /navbar
+navbar: /navbarfr
 
 # Desc: /navbar_discover
-navbar_discover: /navbar_discover   # FIXME
+navbar_discover: /navbar_decouvrir   
 
 # Desc: /navbar_learn
-navbar_learn: /navbar_learn   # FIXME
+navbar_learn: /navbar_apprendre   
 
 # Desc: /navbar_meet
-navbar_meet: /navbar_meet   # FIXME
+navbar_meet: /navbar_rencontrer   
 
 # Desc: /policy
 policy: /mentions-legales
