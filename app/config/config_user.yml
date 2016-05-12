@@ -47,7 +47,7 @@ hwi_oauth:
             type: facebook
             client_id: "%facebook_app_id%"
             client_secret: "%facebook_app_secret%"
-            scope: "email"
+            scope: "email,user_events,public_profile"
             options:
                 display: popup #dialog is optimized for popup window
             infos_url:     "https://graph.facebook.com/me?fields=name,email,locale,picture.type(square)"

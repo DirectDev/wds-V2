@@ -19,6 +19,8 @@ class FacebookServices {
     private $user;
     private $access_token;
     private $facebook_event_id;
+    private $facebook_event_imported = array();
+    private $music_array = array();
     private $eventNode;
     private $event;
     private $locale = 'en';
@@ -37,8 +39,78 @@ class FacebookServices {
         $this->facebook->setDefaultAccessToken((string) $this->access_token);
     }
 
-    public function importEvents() {
+    private function setLocale() {
+        $request = $this->facebook->request('GET', '/me?fields=locale');
+        try {
+            $response = $this->facebook->getClient()->sendRequest($request);
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $graphuser = $response->getGraphUser();
+        if ($graphuser)
+            $this->locale = substr($graphuser['locale'], 0, 2);
+//        $this->locale = 'fr';
         
+        $this->setMusicArray();
+    }
+    
+    private function setMusicArray() {
+        $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
+        foreach ($musicTypes as $musicType) 
+            $this->music_array[] = $musicType->translate($this->locale)->getTitle();
+    }
+
+    public function importEvents() {
+        if (!$this->facebook)
+            return;
+        
+        $this->setLocale();
+
+//
+//        $request = $this->facebook->request('GET', '/me/permissions');
+//        try {
+//            $response = $this->facebook->getClient()->sendRequest($request);
+//        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+//            echo 'Graph returned an error: ' . $e->getMessage();
+//            exit;
+//        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+//            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+//            exit;
+//        }
+//        var_dump($response);
+
+        $request = $this->facebook->request('GET', '/me/events?fields=id,description,name,type&limit=10');
+        try {
+            $response = $this->facebook->getClient()->sendRequest($request);
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+//        var_dump($response);
+
+        $edge = $response->getGraphEdge();
+//        var_dump($edge);
+        foreach ($edge->getIterator() as $fb_event) {
+            $success = false;
+            if(!$this->allowImportEvent($fb_event))
+                continue;
+            $success = $this->importEvent($fb_event->getField('id'));
+//            var_dump($fb_event->getField('id'));
+            
+            if($success)
+                $this->facebook_event_imported[] = array($fb_event->getField('id'),$fb_event->getField('name'));
+        }
+        
+        var_dump( $this->facebook_event_imported);
     }
 
     public function importEvent($facebook_event_id = null) {
@@ -48,8 +120,7 @@ class FacebookServices {
         $this->facebook_event_id = $facebook_event_id;
         $this->getEventNode();
 
-        if (!$this->allowImportEvent())
-            return;
+
 // recherche si event existe
         // si existe .... 
         // met a jour
@@ -78,15 +149,19 @@ class FacebookServices {
 //        var_dump($this->eventNode);
         $this->em->persist($this->event);
         $this->em->flush();
+        
+        return true;
     }
 
-    private function allowImportEvent() {
-        $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
-        foreach ($musicTypes as $musicType) {
-            $music_title = $musicType->translate($this->locale)->getTitle();
-            if (stripos($this->getNodeData('name'), $music_title) !== false)
+    private function allowImportEvent($fb_event) {
+        
+        if($fb_event->getField('type') != 'public')
+            return false;
+        
+        foreach ($this->music_array as $music_title) {
+            if (stripos($fb_event->getField('name'), $music_title) !== false)
                 return true;
-            if (stripos($this->getNodeData('description'), $music_title) !== false)
+            if (stripos($fb_event->getField('description'), $music_title) !== false)
                 return true;
         }
         return false;
@@ -165,22 +240,6 @@ class FacebookServices {
         if (!$this->facebook or ! $this->facebook_event_id)
             return;
 
-        $request = $this->facebook->request('GET', '/me?fields=locale');
-        try {
-            $response = $this->facebook->getClient()->sendRequest($request);
-        } catch (Facebook\Exceptions\FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch (Facebook\Exceptions\FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
-
-        $graphuser = $response->getGraphUser();
-        if ($graphuser)
-            $this->locale = substr($graphuser['locale'], 0, 2);
-//        $this->locale = 'fr';
-
         $request = $this->facebook->request('GET', '/' . $this->facebook_event_id);
         try {
             $response = $this->facebook->getClient()->sendRequest($request);
@@ -218,7 +277,7 @@ class FacebookServices {
         $request = $this->facebook->request('GET', '/' . $this->facebook_event_id . '/?fields=cover');
         $response = $this->facebook->getClient()->sendRequest($request);
         $node = $response->getGraphNode();
-        if($node->getField('cover') && $node->getField('cover')->getField('source') )
+        if ($node->getField('cover') && $node->getField('cover')->getField('source'))
             $this->event->setFacebookPictureUrl($node->getField('cover')->getField('source'));
     }
 

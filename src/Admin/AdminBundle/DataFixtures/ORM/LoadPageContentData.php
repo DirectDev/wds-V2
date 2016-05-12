@@ -50,7 +50,7 @@ The site belongs to <a href="http://directdev.fr">DirectDev</a>, whose headquart
 <h2>4. Contractual Limitations</h2>
 
 <p>The information input on our website <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> subject to qualitative approaches in order to ensure their reliability. However, we will not incur any responsibility for any technical inaccuracies in our explanations.<br />
-If you find an error in the information we have been omitted, please notify us by email at <a href="http://WeDanceSalsa.com/contact">WeDanceSalsa.com/contact</a>.<br />
+If you find an error in the information we have been omitted, please notify us by email at <a href="http://WeDanceSalsa.com/contact/en/">WeDanceSalsa.com/contact/en/</a>.<br />
 <br />
 The links directly or indirectly linked to our website <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> are not under the control of our company. Therefore, we can not assure us of the correctness of the information on those other websites.<br />
 <br />
@@ -72,7 +72,7 @@ By browsing <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> site, the use
 
 <p>Any information collected on the website <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> are within the requirements related to the use of our platform, such as the user profile form or the form of Events Suscribe.<br />
 <br />
-Accordance with the &quot;Data Protection&quot; Act of 6 January 1978 amended in 2004, the user has a right to access and correct information about him, right can be exercised at any time by sending an email via contact page: <a href="http://WeDanceSalsa.com/contact/en">WeDanceSalsa.com/contact</a><br />
+Accordance with the &quot;Data Protection&quot; Act of 6 January 1978 amended in 2004, the user has a right to access and correct information about him, right can be exercised at any time by sending an email via contact page: <a href="http://WeDanceSalsa.com/contact/en/">WeDanceSalsa.com/contact/en/</a><br />
 <br />
 The databases are protected by the provisions of the Law of 1 July 1998 transposing Directive 96/9 of 11 March 1996 on the legal protection of databases.</p>
 
@@ -106,7 +106,7 @@ Le site <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> est h&eacute;berg
 <h2>4. Limitations contractuelles</h2>
 
 <p>Les informations retranscrites sur notre site web <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> font l&rsquo;objet de d&eacute;marches qualitatives, en vue de nous assurer de leur fiabilit&eacute;. Cependant, nous ne pourrons encourir de responsabilit&eacute;s en cas d&rsquo;inexactitudes techniques lors de nos explications.<br />
-Si vous constatez une erreur concernant des informations que nous auront pu omettre, n&rsquo;h&eacute;sitez pas &agrave; nous le signaler par mail &agrave; <a href="http://WeDanceSalsa.com/contact">WeDanceSalsa.com/contact</a>.</p>
+Si vous constatez une erreur concernant des informations que nous auront pu omettre, n&rsquo;h&eacute;sitez pas &agrave; nous le signaler par mail &agrave; <a href="http://WeDanceSalsa.com/contact/fr">WeDanceSalsa.com/contact/fr</a>.</p>
 
 <p>Les liens reli&eacute;s directement ou indirectement &agrave; notre site web <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> ne sont pas sous le contr&ocirc;le de notre soci&eacute;t&eacute;. Par cons&eacute;quent, nous ne pouvons nous assurer de l&rsquo;exactitude des informations pr&eacute;sentes sur ces autres sites Internet.</p>
 
@@ -124,7 +124,7 @@ Si vous constatez une erreur concernant des informations que nous auront pu omet
 
 <p>Toute informations recueillie sur le site web <a href="http://WeDanceSalsa.com">WeDanceSalsa.com</a> se font dans le cadre des besoins li&eacute;s &agrave; l&#39;utilisation de notre plateforme, tels que le formulaire de profil utilisateur ou le formulaire d&#39;incription d&#39;&eacute;venements.</p>
 
-<p>Conform&eacute;ment &agrave; la loi &laquo; informatique et libert&eacute;s &raquo; du 6 janvier 1978 modifi&eacute;e en 2004, l&rsquo;utilisateur b&eacute;n&eacute;ficie d&rsquo;un droit d&rsquo;acc&egrave;s et de rectification aux informations le concernant, droit qu&rsquo;il peut exercer &agrave; tout moment en adressant un mail via la page de contact : <a href="http://WeDanceSalsa.com/contact/fr">WeDanceSalsa.com/contact</a><br />
+<p>Conform&eacute;ment &agrave; la loi &laquo; informatique et libert&eacute;s &raquo; du 6 janvier 1978 modifi&eacute;e en 2004, l&rsquo;utilisateur b&eacute;n&eacute;ficie d&rsquo;un droit d&rsquo;acc&egrave;s et de rectification aux informations le concernant, droit qu&rsquo;il peut exercer &agrave; tout moment en adressant un mail via la page de contact : <a href="http://WeDanceSalsa.com/contact/fr/">WeDanceSalsa.com/contact/fr/</a><br />
 <br />
 Les bases de donn&eacute;es sont prot&eacute;g&eacute;es par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative &agrave; la protection juridique des bases de donn&eacute;es.</p>
 
