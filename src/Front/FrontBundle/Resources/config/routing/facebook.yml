@@ -15,6 +15,12 @@ facebook_preview_import_events:
     requirements:
       _method: POST
       
+facebook_preview_import_event:
+    path:      /preview_import_event
+    defaults:  { _controller: FrontFrontBundle:Facebook:previewImportEvent }    
+    requirements:
+      _method: POST
+      
 facebook_import_events:
     path:      /import_events
     defaults:  { _controller: FrontFrontBundle:Facebook:importEvents }    

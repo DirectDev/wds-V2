@@ -48,7 +48,6 @@ class FacebookFrControllerTest extends WebTestCase {
         ));
     }
 
-    // faire test non loggué // loggué // loggué avec FB
     public function testImportEventPage() {
         $crawler = $this->client->request('GET', $this->router->generate('facebook_import_event_page', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());

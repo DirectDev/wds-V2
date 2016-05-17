@@ -25,8 +25,8 @@ class FacebookServices {
     private $eventNode;
     private $event;
     private $locale = 'en';
-    private $limit = 30;
-    private $limit_add = 15;
+    private $limit = 200;
+    private $limit_add = 10;
 
     public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
         $this->em = $em;
@@ -74,7 +74,9 @@ class FacebookServices {
         $this->setLocale();
 
         $fields = 'id,description,name,type,place,cover,start_time,end_time';
-        $request = $this->facebook->request('GET', '/me/events?fields=' . $fields . '&limit=' . $this->limit);
+        $since = 'since=' . date('U');
+        $until = 'until=' . date('U') + 7776000;
+        $request = $this->facebook->request('GET', '/me/events?' . $since . '&' . $until . '&fields=' . $fields . '&limit=' . $this->limit);
         try {
             $response = $this->facebook->getClient()->sendRequest($request);
         } catch (\Facebook\Exceptions\FacebookResponseException $e) {
@@ -98,7 +100,7 @@ class FacebookServices {
                 continue;
 
             $event = $this->getEventByFacebookId($fb_event->getField('id'));
-            if (!$event->allowModificationByFacebookUser($this->user))
+            if ($event and ! $event->allowModificationByFacebookUser($this->user))
                 continue;
 
             $img_url = $place = $city = $country = null;
@@ -129,6 +131,59 @@ class FacebookServices {
         return( $this->facebook_events_preview);
     }
 
+    public function previewImportEvent($facebook_event_id = null) {
+        if (!$this->facebook or ! $facebook_event_id)
+            return;
+
+        $this->facebook_event_id = $facebook_event_id;
+
+        $this->setLocale();
+
+        $fields = 'id,description,name,type,place,cover,start_time,end_time';
+        $request = $this->facebook->request('GET', '/' . $facebook_event_id . '?fields=' . $fields);
+        try {
+            $response = $this->facebook->getClient()->sendRequest($request);
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $this->getEventNode();
+
+        $event = $this->getEventByFacebookId($this->facebook_event_id);
+        if ($event and ! $event->allowModificationByFacebookUser($this->user))
+            return;
+
+        $img_url = $place = $city = $country = null;
+        $array_place = $this->eventNode->getField('place');
+        if (isset($array_place['name']))
+            $place = $array_place['name'];
+        if (isset($array_place['location']) && isset($array_place['location']['city']))
+            $city = $array_place['location']['city'];
+        if (isset($array_place['location']) && isset($array_place['location']['country']))
+            $city = $array_place['location']['country'];
+
+        $img_url = $this->getEventPictureUrl();
+
+        $this->facebook_events_preview[] = array(
+            'id' => $this->eventNode->getField('id'),
+            'name' => $this->eventNode->getField('name'),
+            'start_time' => $this->eventNode->getField('start_time'),
+            'end_time' => $this->eventNode->getField('end_time'),
+            'place' => $place,
+            'city' => $city,
+            'country' => $country,
+            'img_url' => $img_url,
+            'event' => $event,
+        );
+
+
+        return( $this->facebook_events_preview);
+    }
+
     public function importEvents($ids = array()) {
         if (!$this->facebook or ! count($ids))
             return;
@@ -154,7 +209,7 @@ class FacebookServices {
         $event = $this->getEventByFacebookId($facebook_event_id);
         if ($event and ! $event->allowModificationByFacebookUser($this->user))
             return;
-        
+
         if ($event)
             $this->updateEvent($event);
         else
@@ -167,25 +222,22 @@ class FacebookServices {
     }
 
     private function allowImportEvent($fb_event) {
-
         if ($fb_event->getField('type') != 'public')
             return false;
 
-        //// FILTRE PAR DATE, OK, DESACTIVE POUR DEV
-//
-//        if ($fb_event->getField('end_time')) {
-//            $now = new \DateTime();
-//            $end = $fb_event->getField('end_time');
-//            if ($end->format('U') < $now->format('U'))
-//                return false;
-//        }
-//
-//        if ($fb_event->getField('start_time')) {
-//            $now = new \DateTime();
-//            $start = $fb_event->getField('start_time');
-//            if ($start->format('U') < $now->format('U'))
-//                return false;
-//        }
+        if ($fb_event->getField('end_time')) {
+            $now = new \DateTime();
+            $end = $fb_event->getField('end_time');
+            if ($end->format('U') < $now->format('U'))
+                return false;
+        }
+
+        if ($fb_event->getField('start_time')) {
+            $now = new \DateTime();
+            $start = $fb_event->getField('start_time');
+            if ($start->format('U') < $now->format('U'))
+                return false;
+        }
 
         foreach ($this->music_array as $music_title) {
             if (stripos($fb_event->getField('name'), $music_title) !== false)
@@ -343,11 +395,17 @@ class FacebookServices {
     private function setEventPictureUrl() {
         if (!$this->facebook or ! $this->facebook_event_id)
             return;
+        $this->event->setFacebookPictureUrl($this->getEventPictureUrl());
+    }
+
+    private function getEventPictureUrl() {
+        if (!$this->facebook or ! $this->facebook_event_id)
+            return;
         $request = $this->facebook->request('GET', '/' . $this->facebook_event_id . '/?fields=cover');
         $response = $this->facebook->getClient()->sendRequest($request);
         $node = $response->getGraphNode();
         if ($node->getField('cover') && $node->getField('cover')->getField('source'))
-            $this->event->setFacebookPictureUrl($node->getField('cover')->getField('source'));
+            return $node->getField('cover')->getField('source');
     }
 
     private function createEventFile() {
@@ -505,9 +563,10 @@ class FacebookServices {
                 $array[] = $node_attending->getField('id');
 
         $users = $this->em->getRepository('UserUserBundle:User')->findByArrayFacebookIds($array);
-        foreach ($users as $user)
-            if ($this->event->getUserPresents()->contains($user) == false)
-                $this->event->addUserPresent($user);
+        if (count($users))
+            foreach ($users as $user)
+                if ($this->event->getUserPresents()->contains($user) == false)
+                    $this->event->addUserPresent($user);
     }
 
 }

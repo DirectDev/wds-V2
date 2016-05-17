@@ -610,3 +610,26 @@ $(document).on('click', '#importEventsFacebook', function () {
     });
     return false;
 });
+
+$(document).on('submit', 'form[name="facebook_event_import"]', function (e) {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    e.preventDefault();
+
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    xhr = $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    $('#facebookResults').html(html);
+                    loadBootstrapValidator();
+                }
+            });
+    return false;
+});
