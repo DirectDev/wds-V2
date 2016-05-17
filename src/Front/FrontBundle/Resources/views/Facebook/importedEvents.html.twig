@@ -1,0 +1,61 @@
+<div class="table-search-v2">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tbody>
+
+                {% for event in events %}
+                    <tr class="" >
+                        <td>
+                            {% set break = false %}
+                            {% for eventFile in event.eventFiles  if not break %}
+                                {% if eventFile.isValid %}
+                                    <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(eventFile.getLargePathUri)|imagine_filter('facebook_imported_event') }}">
+                                    {% set break = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if event.eventFiles|length == 0 %}
+                                <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(image_default_uri)|imagine_filter('facebook_imported_event') }}">
+                            {% endif %}
+                        </td>
+                        <td class="td-width">
+                            <h3>
+                                {{ event.getName()|capitalize }}
+                            </h3>
+                            {% if event.getNextEventDate() %}
+                                <p>
+                                    <small class="hex">
+                                        {{ event.getNextEventDate().startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                                    </small>
+                                </p>
+                            {% endif %}
+                            {% if event.place or event.city or event.country %}
+                                <p>
+                                    <small class="hex">
+                                        {{ event.getPlace()|capitalize }}
+                                        {{ event.getCity() ? ' / ' }}
+                                        {{ event.getCity() ? event.getCity()|capitalize }}
+                                        {{ event.getCountry() ? ' / ' }}
+                                        {{ event.getCountry() ? event.getCountry()|capitalize }}
+                                    </small>
+                                </p>
+                            {% endif %}
+
+                        </td>
+                        <td>
+                            <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}" 
+                               class="btn btn-default" target="_blank">
+                                {% trans %}facebook.event_show{% endtrans %}
+                            </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-success">
+                                <i class="fa fa-check-circle-o"></i>
+                                {% trans %}facebook.event_added{% endtrans %}
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+</div>

@@ -90,6 +90,7 @@ class FixturesTest extends WebTestCase {
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-pro')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-pub')));
         $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('landing-share-event')));
+        $this->assertEquals(1, count($this->em->getRepository('AdminAdminBundle:Page')->findByName('facebook-import-event')));
     }
 
 }

@@ -56,6 +56,10 @@ FrontFrontBundle_eventtype:
     resource: "@FrontFrontBundle/Resources/config/routing/eventtype.yml"
     prefix:   /eventtype  
     
+FrontFrontBundle_facebook:
+    resource: "@FrontFrontBundle/Resources/config/routing/facebook.yml"
+    prefix:   /facebook      
+    
 FrontFrontBundle_festival:
     resource: "@FrontFrontBundle/Resources/config/routing/festival.yml"
     prefix:   /festival      
@@ -91,8 +95,3 @@ FrontFrontBundle_usertype:
 front_front_front_video:
     resource: "@FrontFrontBundle/Resources/config/routing/video.yml"
     prefix:   /video
-    
-    
-facebook_test:
-    path:      /facebook_test
-    defaults:  { _controller: FrontFrontBundle:Facebook:test }     

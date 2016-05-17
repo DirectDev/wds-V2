@@ -250,9 +250,19 @@ class Event {
         return false;
     }
 
+    public function getPlace() {
+        if ($this->getAddress())
+            return $this->getAddress()->getName();
+    }
+
     public function getCity() {
         if ($this->getAddress())
             return $this->getAddress()->getCity();
+    }
+    
+    public function getCountry() {
+        if ($this->getAddress())
+            return $this->getAddress()->getCountry();
     }
 
     public function getLatitude() {

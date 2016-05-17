@@ -566,3 +566,47 @@ $(document).on('submit', 'form#festivals_calendar_form', function (e) {
 
     window.location = form.attr('action') + '/' + input.val();
 });
+
+$(document).on('click', '#previewImportEventsFacebook', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#facebookResults').html(html);
+//            loadBootstrapValidator();
+        }
+    });
+    return false;
+});
+
+$(document).on('click', 'button.supprFacebookEventTr', function () {
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click', '#importEventsFacebook', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var data = new Array();
+    $('#facebookResults').find("tr.facebookEventTr").each(function () {
+        data.push($(this).data('id'));
+    });
+
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        data: '&ids=' + data,
+        success: function (html)
+        {
+            $('#facebookResults').html(html);
+//            loadBootstrapValidator();
+        }
+    });
+    return false;
+});

@@ -1,0 +1,36 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ page.getTitle|capitalize }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription|capitalize }}" />
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+
+{% block content %}
+
+    {% for pageContent in page.getPageContents %}
+        {{ pageContent.getContent|raw }}
+    {% endfor %}
+
+    {% if not user.isFacebookUser() %}
+        {% trans %}facebook.not_facebook_user{% endtrans %}
+    {% endif %}
+
+    <button id="previewImportEventsFacebook" class="btn btn-default" href="{{ path('facebook_preview_import_events') }}">
+        {% trans %}facebook.event_preview{% endtrans %}
+    </button>
+    <button id="importEventsFacebook" class="btn btn-default" href="{{ path('facebook_import_events') }}">
+        {% trans %}facebook.event_import{% endtrans %}
+    </button>
+
+    <div class="container s-results margin-bottom-20">
+        <div class="row">
+            <div class="col-md-10" id="facebookResults"></div>
+        </div>
+    </div>
+
+{% endblock %}

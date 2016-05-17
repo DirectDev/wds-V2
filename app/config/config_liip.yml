@@ -134,6 +134,17 @@ liip_imagine:
                 # min size
                 upscale: { min: [389, 246] } 
                 thumbnail: { size: [389, 246], mode: outbound }         
+        facebook_imported_event:        
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                # min size
+                upscale: { min: [150, 95] } 
+                thumbnail: { size: [150, 95], mode: outbound }         
         navbar:
             quality:              100
             animated:             false

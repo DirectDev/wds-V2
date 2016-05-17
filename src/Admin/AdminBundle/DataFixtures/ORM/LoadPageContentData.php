@@ -208,6 +208,20 @@ La rueda de casino, une variante de ce style, consiste en des rondes (rueda) de 
         $PageContent->translate('fr')->setContent($share_event);
         $manager->persist($PageContent);
         $PageContent->mergeNewTranslations();
+        
+        $import_event = " Importez vos évenements Facebook<br>
+                bla bla bla ?<br>
+                bla bla bla ?<br>
+                bla bla bla ?<br>
+                bla bla bla ?bla bla bla ?<br>
+        ";
+        $PageContent = new PageContent();
+        $PageContent->setPage($this->getReference('facebook-import-event'));
+        $PageContent->setPosition(1);
+        $PageContent->translate('en')->setContent($import_event);
+        $PageContent->translate('fr')->setContent($import_event);
+        $manager->persist($PageContent);
+        $PageContent->mergeNewTranslations();
 
         $manager->flush();
     }

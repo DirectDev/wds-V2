@@ -568,6 +568,16 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-landing-share-event', $Page);
         $Page->mergeNewTranslations();
+        
+        $Page = new Page();
+        $Page->setName('facebook-import-event');
+        $Page->translate('en')->setTitle('Import Event from Facebook');
+        $Page->translate('fr')->setTitle('Importez vos évenements Facebook');
+        $Page->translate('en')->setDescription(null);
+        $Page->translate('fr')->setDescription(null);
+        $manager->persist($Page);
+        $this->addReference('facebook-import-event', $Page);
+        $Page->mergeNewTranslations();
 
         $manager->flush();
     }

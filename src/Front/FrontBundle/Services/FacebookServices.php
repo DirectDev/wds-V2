@@ -19,11 +19,14 @@ class FacebookServices {
     private $user;
     private $access_token;
     private $facebook_event_id;
-    private $facebook_event_imported = array();
+    private $facebook_events_imported = array();
+    private $facebook_events_preview = array();
     private $music_array = array();
     private $eventNode;
     private $event;
     private $locale = 'en';
+    private $limit = 25;
+    private $limit_add = 10;
 
     public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
         $this->em = $em;
@@ -55,36 +58,24 @@ class FacebookServices {
         if ($graphuser)
             $this->locale = substr($graphuser['locale'], 0, 2);
 //        $this->locale = 'fr';
-        
+
         $this->setMusicArray();
     }
-    
+
     private function setMusicArray() {
         $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
-        foreach ($musicTypes as $musicType) 
+        foreach ($musicTypes as $musicType)
             $this->music_array[] = $musicType->translate($this->locale)->getTitle();
     }
 
-    public function importEvents() {
+    public function previewImportEvents() {
         if (!$this->facebook)
             return;
-        
+
         $this->setLocale();
 
-//
-//        $request = $this->facebook->request('GET', '/me/permissions');
-//        try {
-//            $response = $this->facebook->getClient()->sendRequest($request);
-//        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
-//            echo 'Graph returned an error: ' . $e->getMessage();
-//            exit;
-//        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-//            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-//            exit;
-//        }
-//        var_dump($response);
-
-        $request = $this->facebook->request('GET', '/me/events?fields=id,description,name,type&limit=10');
+        $fields = 'id,description,name,type,place,cover,start_time,end_time';
+        $request = $this->facebook->request('GET', '/me/events?fields=' . $fields . '&limit=' . $this->limit);
         try {
             $response = $this->facebook->getClient()->sendRequest($request);
         } catch (\Facebook\Exceptions\FacebookResponseException $e) {
@@ -99,19 +90,110 @@ class FacebookServices {
 
         $edge = $response->getGraphEdge();
 //        var_dump($edge);
+        $add = 0;
         foreach ($edge->getIterator() as $fb_event) {
-            $success = false;
-            if(!$this->allowImportEvent($fb_event))
+
+            if (!$this->allowImportEvent($fb_event))
                 continue;
-            $success = $this->importEvent($fb_event->getField('id'));
-//            var_dump($fb_event->getField('id'));
-            
-            if($success)
-                $this->facebook_event_imported[] = array($fb_event->getField('id'),$fb_event->getField('name'));
+
+            $add++;
+            if ($add > $this->limit_add)
+                continue;
+
+            $event = $this->getEventById($fb_event->getField('id'));
+            $img_url = $place = $city = $country = null;
+            $array_place = $fb_event->getField('place');
+            if (isset($array_place['name']))
+                $place = $array_place['name'];
+            if (isset($array_place['location']) && isset($array_place['location']['city']))
+                $city = $array_place['location']['city'];
+            if (isset($array_place['location']) && isset($array_place['location']['country']))
+                $city = $array_place['location']['country'];
+            $array_cover = $fb_event->getField('cover');
+            if (isset($array_cover['source']))
+                $img_url = $array_cover['source'];
+
+            $this->facebook_events_preview[] = array(
+                'id' => $fb_event->getField('id'),
+                'name' => $fb_event->getField('name'),
+                'start_time' => $fb_event->getField('start_time'),
+                'end_time' => $fb_event->getField('end_time'),
+                'place' => $place,
+                'city' => $city,
+                'country' => $country,
+                'img_url' => $img_url,
+                'event' => $event,
+            );
+        }
+
+
+//        var_dump( $this->facebook_events_preview);
+        return( $this->facebook_events_preview);
+    }
+
+    public function importEvents($ids = array()) {
+        if (!$this->facebook or !count($ids))
+            return;
+
+        $this->setLocale();
+
+        foreach ($ids as $facebook_event_id) {
+            if ($this->importEvent($facebook_event_id)) {
+                $this->facebook_events_imported[] = $this->event;
+            }
         }
         
-        var_dump( $this->facebook_event_imported);
+        return $this->facebook_events_imported;
     }
+
+//        
+//    public function importEvents($ids = array()) {
+//        if (!$this->facebook)
+//            return;
+//
+//        $this->setLocale();
+//
+////
+////        $request = $this->facebook->request('GET', '/me/permissions');
+////        try {
+////            $response = $this->facebook->getClient()->sendRequest($request);
+////        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+////            echo 'Graph returned an error: ' . $e->getMessage();
+////            exit;
+////        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+////            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+////            exit;
+////        }
+////        var_dump($response);
+//
+//        $request = $this->facebook->request('GET', '/me/events?fields=id,description,name,type&limit=' . $this->limit);
+//        try {
+//            $response = $this->facebook->getClient()->sendRequest($request);
+//        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+//            echo 'Graph returned an error: ' . $e->getMessage();
+//            exit;
+//        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+//            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+//            exit;
+//        }
+//
+////        var_dump($response);
+//
+//        $edge = $response->getGraphEdge();
+////        var_dump($edge);
+//        foreach ($edge->getIterator() as $fb_event) {
+//            $success = false;
+//            if (!$this->allowImportEvent($fb_event))
+//                continue;
+//            $success = $this->importEvent($fb_event->getField('id'));
+////            var_dump($fb_event->getField('id'));
+//
+//            if ($success)
+//                $this->facebook_event_imported[] = array($fb_event->getField('id'), $fb_event->getField('name'));
+//        }
+//
+//        var_dump($this->facebook_event_imported);
+//    }
 
     public function importEvent($facebook_event_id = null) {
         if (!$facebook_event_id)
@@ -122,9 +204,9 @@ class FacebookServices {
 
 
 // recherche si event existe
-        // si existe .... 
-        // met a jour
-        // si existe pas cree event
+// si existe .... 
+// met a jour
+// si existe pas cree event
         $this->createEvent();
 
 //        $place_node = $this->eventNode->getField('place');
@@ -149,21 +231,47 @@ class FacebookServices {
 //        var_dump($this->eventNode);
         $this->em->persist($this->event);
         $this->em->flush();
-        
+
         return true;
     }
 
     private function allowImportEvent($fb_event) {
-        
-        if($fb_event->getField('type') != 'public')
+
+        if ($fb_event->getField('type') != 'public')
             return false;
-        
+
+        //// FILTRE PAR DATE, OK, DESACTIVE POUR DEV
+//
+//        if ($fb_event->getField('end_time')) {
+//            $now = new \DateTime();
+//            $end = $fb_event->getField('end_time');
+//            if ($end->format('U') < $now->format('U'))
+//                return false;
+//        }
+//
+//        if ($fb_event->getField('start_time')) {
+//            $now = new \DateTime();
+//            $start = $fb_event->getField('start_time');
+//            if ($start->format('U') < $now->format('U'))
+//                return false;
+//        }
+
         foreach ($this->music_array as $music_title) {
             if (stripos($fb_event->getField('name'), $music_title) !== false)
                 return true;
             if (stripos($fb_event->getField('description'), $music_title) !== false)
                 return true;
         }
+
+        return false;
+    }
+
+    private function getEventById($id = null) {
+        if (!$id)
+            return false;
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('facebook_id' => $id));
+        if ($event)
+            return $event;
         return false;
     }
 

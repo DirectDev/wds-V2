@@ -1,0 +1,57 @@
+
+
+
+<div class="table-search-v2">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tbody>
+
+                {% for facebook_event in facebook_events %}
+                    <tr class="facebookEventTr" data-id="{{ facebook_event.id }}">
+                        <td>
+                            {% if facebook_event.img_url is not null %}
+                                <img alt="{{ facebook_event.name|capitalize }}" src="{{ facebook_event.img_url }}" style="max-width: 150px;">
+                            {% endif %}
+                        </td>
+                        <td class="td-width">
+                            <h3>
+                                {{ facebook_event.name|capitalize }}
+                            </h3>
+                            {% if facebook_event.start_time %}
+                                <p>
+                                    <small class="hex">
+                                        {{ facebook_event.start_time|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                                        {{ facebook_event.end_time ? ' / ' }}
+                                        {{ facebook_event.end_time ? facebook_event.end_time|localizeddate('full', 'none', app.request.locale )|capitalize : '' }}
+                                    </small>
+                                </p>
+                            {% endif %}
+                            {% if facebook_event.place or facebook_event.city or facebook_event.country %}
+                                <p>
+                                    <small class="hex">
+                                        {{ facebook_event.place|capitalize }}
+                                        {{ facebook_event.city ? ' / ' }}
+                                        {{ facebook_event.city ? facebook_event.city|capitalize }}
+                                        {{ facebook_event.country ? ' / ' }}
+                                        {{ facebook_event.country ? facebook_event.country|capitalize }}
+                                    </small>
+                                </p>
+                            {% endif %}
+
+                        </td>
+                        <td>
+                            {% if facebook_event.event and facebook_event.event.id %}
+                                {% trans %}facebook.event_update{% endtrans %}
+                            {% else %}
+                                {% trans %}facebook.event_add{% endtrans %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button class="supprFacebookEventTr btn btn-warning">{% trans %}facebook.event_do_not_import{% endtrans %}</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+</div>

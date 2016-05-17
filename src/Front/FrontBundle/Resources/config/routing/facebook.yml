@@ -1,0 +1,22 @@
+        
+facebook_test:
+    path:      /facebook_test
+    defaults:  { _controller: FrontFrontBundle:Facebook:test }     
+    
+facebook_import_event_page:
+    path:      /import_event_page
+    defaults:  { _controller: FrontFrontBundle:Facebook:importEventPage }    
+    requirements:
+      _method: GET
+      
+facebook_preview_import_events:
+    path:      /preview_import_events
+    defaults:  { _controller: FrontFrontBundle:Facebook:previewImportEvents }    
+    requirements:
+      _method: POST
+      
+facebook_import_events:
+    path:      /import_events
+    defaults:  { _controller: FrontFrontBundle:Facebook:importEvents }    
+    requirements:
+      _method: POST
