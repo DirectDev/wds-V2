@@ -259,7 +259,7 @@ class Event {
         if ($this->getAddress())
             return $this->getAddress()->getCity();
     }
-    
+
     public function getCountry() {
         if ($this->getAddress())
             return $this->getAddress()->getCountry();
@@ -342,6 +342,21 @@ class Event {
             if ($startdate == $eventDate->getStartDate()->format('Y-m-d'))
                 return true;
         return false;
+    }
+
+    public function allowModificationByFacebookUser(User $user) {
+        if (!$user->getFacebookId())
+            return false;
+        if ($this->getOrganizedBy() and $this->getOrganizedBy()->getFacebookId())
+            if ($this->getOrganizedBy()->getFacebookId() != $user->getFacebookId())
+                return false;
+        if ($this->getPublishedBy() and $this->getPublishedBy()->getFacebookId())
+            if ($this->getPublishedBy()->getFacebookId() != $user->getFacebookId())
+                return false;
+        if ($this->getUser() and $this->getUser()->getFacebookId())
+            if ($this->getUser()->getFacebookId() != $user->getFacebookId())
+                return false;
+        return true;
     }
 
     /**
@@ -1002,7 +1017,6 @@ class Event {
         return $this->facebook_picture_url;
     }
 
-
     /**
      * Set footer
      *
@@ -1010,8 +1024,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFooter($footer)
-    {
+    public function setFooter($footer) {
         $this->footer = $footer;
 
         return $this;
@@ -1022,8 +1035,8 @@ class Event {
      *
      * @return boolean
      */
-    public function getFooter()
-    {
+    public function getFooter() {
         return $this->footer;
     }
+
 }

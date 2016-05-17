@@ -1,3 +1,6 @@
+body.wait *, body.wait{
+    cursor: wait !important;
+}
 .div_navbar_search {
     display: inline-block;
     float: left;

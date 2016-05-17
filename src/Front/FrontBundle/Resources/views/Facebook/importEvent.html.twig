@@ -16,16 +16,27 @@
         {{ pageContent.getContent|raw }}
     {% endfor %}
 
-    {% if not user.isFacebookUser() %}
+    {% if user and not user.isFacebookUser() %}
         {% trans %}facebook.not_facebook_user{% endtrans %}
     {% endif %}
 
-    <button id="previewImportEventsFacebook" class="btn btn-default" href="{{ path('facebook_preview_import_events') }}">
-        {% trans %}facebook.event_preview{% endtrans %}
-    </button>
-    <button id="importEventsFacebook" class="btn btn-default" href="{{ path('facebook_import_events') }}">
-        {% trans %}facebook.event_import{% endtrans %}
-    </button>
+    {% if not user %}
+        {% trans %}facebook.not_logged{% endtrans %}
+        <a class="btn btn-default" href="{{ path('fos_user_security_login') }}">
+            {% trans %}navbar.login{% endtrans %}
+        </a>
+    {% endif %}
+
+    {% if user and  user.isFacebookUser() %}
+
+        <button id="previewImportEventsFacebook" class="btn btn-default" href="{{ path('facebook_preview_import_events') }}">
+            {% trans %}facebook.event_preview{% endtrans %}
+        </button>
+        <button id="importEventsFacebook" class="btn btn-default" href="{{ path('facebook_import_events') }}">
+            {% trans %}facebook.event_import{% endtrans %}
+        </button>
+
+    {% endif %}
 
     <div class="container s-results margin-bottom-20">
         <div class="row">

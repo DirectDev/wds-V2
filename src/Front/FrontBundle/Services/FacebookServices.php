@@ -25,8 +25,8 @@ class FacebookServices {
     private $eventNode;
     private $event;
     private $locale = 'en';
-    private $limit = 25;
-    private $limit_add = 10;
+    private $limit = 30;
+    private $limit_add = 15;
 
     public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
         $this->em = $em;
@@ -57,7 +57,6 @@ class FacebookServices {
         $graphuser = $response->getGraphUser();
         if ($graphuser)
             $this->locale = substr($graphuser['locale'], 0, 2);
-//        $this->locale = 'fr';
 
         $this->setMusicArray();
     }
@@ -86,10 +85,8 @@ class FacebookServices {
             exit;
         }
 
-//        var_dump($response);
-
         $edge = $response->getGraphEdge();
-//        var_dump($edge);
+
         $add = 0;
         foreach ($edge->getIterator() as $fb_event) {
 
@@ -100,7 +97,10 @@ class FacebookServices {
             if ($add > $this->limit_add)
                 continue;
 
-            $event = $this->getEventById($fb_event->getField('id'));
+            $event = $this->getEventByFacebookId($fb_event->getField('id'));
+            if (!$event->allowModificationByFacebookUser($this->user))
+                continue;
+
             $img_url = $place = $city = $country = null;
             $array_place = $fb_event->getField('place');
             if (isset($array_place['name']))
@@ -126,13 +126,11 @@ class FacebookServices {
             );
         }
 
-
-//        var_dump( $this->facebook_events_preview);
         return( $this->facebook_events_preview);
     }
 
     public function importEvents($ids = array()) {
-        if (!$this->facebook or !count($ids))
+        if (!$this->facebook or ! count($ids))
             return;
 
         $this->setLocale();
@@ -142,58 +140,9 @@ class FacebookServices {
                 $this->facebook_events_imported[] = $this->event;
             }
         }
-        
+
         return $this->facebook_events_imported;
     }
-
-//        
-//    public function importEvents($ids = array()) {
-//        if (!$this->facebook)
-//            return;
-//
-//        $this->setLocale();
-//
-////
-////        $request = $this->facebook->request('GET', '/me/permissions');
-////        try {
-////            $response = $this->facebook->getClient()->sendRequest($request);
-////        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
-////            echo 'Graph returned an error: ' . $e->getMessage();
-////            exit;
-////        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-////            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-////            exit;
-////        }
-////        var_dump($response);
-//
-//        $request = $this->facebook->request('GET', '/me/events?fields=id,description,name,type&limit=' . $this->limit);
-//        try {
-//            $response = $this->facebook->getClient()->sendRequest($request);
-//        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
-//            echo 'Graph returned an error: ' . $e->getMessage();
-//            exit;
-//        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-//            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-//            exit;
-//        }
-//
-////        var_dump($response);
-//
-//        $edge = $response->getGraphEdge();
-////        var_dump($edge);
-//        foreach ($edge->getIterator() as $fb_event) {
-//            $success = false;
-//            if (!$this->allowImportEvent($fb_event))
-//                continue;
-//            $success = $this->importEvent($fb_event->getField('id'));
-////            var_dump($fb_event->getField('id'));
-//
-//            if ($success)
-//                $this->facebook_event_imported[] = array($fb_event->getField('id'), $fb_event->getField('name'));
-//        }
-//
-//        var_dump($this->facebook_event_imported);
-//    }
 
     public function importEvent($facebook_event_id = null) {
         if (!$facebook_event_id)
@@ -202,33 +151,15 @@ class FacebookServices {
         $this->facebook_event_id = $facebook_event_id;
         $this->getEventNode();
 
+        $event = $this->getEventByFacebookId($facebook_event_id);
+        if ($event and ! $event->allowModificationByFacebookUser($this->user))
+            return;
+        
+        if ($event)
+            $this->updateEvent($event);
+        else
+            $this->createEvent();
 
-// recherche si event existe
-// si existe .... 
-// met a jour
-// si existe pas cree event
-        $this->createEvent();
-
-//        $place_node = $this->eventNode->getField('place');
-//        var_dump($place_node);
-//        $address_node = $place_node->getField('location');
-//        var_dump($address_node);
-//        var_dump('cover'.$this->getNodeData('cover'));
-//        var_dump($this->getNodeData('place'));
-//        $admins = $this->getEdge('photo');
-//        var_dump($admins);
-//        $node = $this->getEdge('picture');
-//        var_dump($node);
-//        foreach ($node->getIterator() as $picture) {
-////        $graphpicture = $node->getGraphPicture();
-//            var_dump($picture);
-//        }
-//        ;
-//        foreach ($admins->getIterator() as $item) {
-//            var_dump($item->getField('id'));
-//            var_dump($item->getField('name'));
-//        }
-//        var_dump($this->eventNode);
         $this->em->persist($this->event);
         $this->em->flush();
 
@@ -266,10 +197,10 @@ class FacebookServices {
         return false;
     }
 
-    private function getEventById($id = null) {
-        if (!$id)
+    private function getEventByFacebookId($facebook_id = null) {
+        if (!$facebook_id)
             return false;
-        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('facebook_id' => $id));
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('facebook_id' => $facebook_id));
         if ($event)
             return $event;
         return false;
@@ -277,7 +208,21 @@ class FacebookServices {
 
     private function createEvent() {
         $this->event = new Event();
+        $this->event->setFacebookId($this->facebook_event_id);
         $this->setEventData();
+        $this->setEventTranslations();
+        $this->setEventDate();
+        $this->setEventAddress();
+        $this->setEventMusicTypes();
+        $this->setEventEventTypes();
+        $this->setEventPresences();
+        $this->setEventPictureUrl();
+        $this->createEventFile();
+    }
+
+    private function updateEvent($event) {
+        $this->event = $event;
+        $this->updateEventData();
         $this->setEventTranslations();
         $this->setEventDate();
         $this->setEventAddress();
@@ -290,9 +235,16 @@ class FacebookServices {
 
     private function setEventData() {
         $this->event->setName($this->getNodeData('name'));
-//        $this->event->setFacebookLink(/* ????? */); // ????????????????????????????
+        $this->event->setFacebookLink('https://www.facebook.com/' . $this->facebook_event_id);
         $this->event->setPublished(true);
         $this->event->setUser($this->user);
+        $this->event->setPublishedBy($this->user);
+        $this->event->setOrganizedBy($this->findUserByFacebookOwnerOrFacebookAdmins());
+    }
+
+    private function updateEventData() {
+        if ($this->user == $this->findUserByFacebookOwnerOrFacebookAdmins())
+            $this->event->setUser($this->user);
         $this->event->setPublishedBy($this->user);
         $this->event->setOrganizedBy($this->findUserByFacebookOwnerOrFacebookAdmins());
     }
@@ -308,14 +260,20 @@ class FacebookServices {
     }
 
     private function setEventDate() {
-        $eventDate = new EventDate();
         $startTime = $this->getNodeData('start_time');
+        if (!$startTime)
+            return;
+        $stopTime = $this->getNodeData('end_time');
+
+        if ($this->event->hasEventDateForDate($startTime->format('Y-m-d')))
+            return;
+
+        $eventDate = new EventDate();
         if ($startTime) {
             $eventDate->setStartdate($startTime);
             $eventDate->setStarttime($startTime);
         } else
             return;
-        $stopTime = $this->getNodeData('end_time');
         if ($stopTime) {
             $eventDate->setStopdate($stopTime);
             $eventDate->setStoptime($stopTime);
@@ -327,8 +285,13 @@ class FacebookServices {
         $address = $this->findAddressByFacebookIdOrAddressFields();
         if (!$address)
             $address = $this->createAddress();
-        if ($address)
+        if ($address) {
+            foreach ($this->event->getAddresses() as $event_address) {
+                if ($event_address == $address)
+                    return;
+            }
             $this->event->addAddress($address);
+        }
     }
 
     private function getNodeData($type) {
@@ -358,8 +321,6 @@ class FacebookServices {
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
-
-//        var_dump($response);
 
         $this->eventNode = $response->getGraphNode();
     }
@@ -398,7 +359,9 @@ class FacebookServices {
             $this->em->flush();
             $this->em->refresh($this->event);
 
-            $eventFile = new EventFile();
+            $eventFile = $this->event->getProfilePicture();
+            if (!$eventFile)
+                $eventFile = new EventFile();
             $eventFile->setEvent($this->event);
 
             $path = $eventFile->getGeneralPath();

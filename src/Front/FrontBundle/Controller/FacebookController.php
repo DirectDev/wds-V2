@@ -32,8 +32,6 @@ class FacebookController extends Controller {
 
         $user = $this->getUser();
         
-        // besoin de se connecter avec un compte fb d'abord
-
         $facebookServices = $this->get('facebook.services');
         $facebook_events = $facebookServices->previewImportEvents();
 
@@ -50,9 +48,6 @@ class FacebookController extends Controller {
         $user = $this->getUser();
         
         $ids = explode(',',$request->get('ids'));
-        dump($ids);
-        
-        // besoin de se connecter avec un compte fb d'abord
 
         $facebookServices = $this->get('facebook.services');
         $events = $facebookServices->importEvents($ids);
@@ -63,19 +58,19 @@ class FacebookController extends Controller {
         ));
     }
 
-    public function testAction(Request $request) {
-
-        $em = $this->getDoctrine()->getManager();
-        $session = $this->getRequest()->getSession();
-
-        // besoin de se connecter avec un compte fb d'abord
-
-        $facebookServices = $this->get('facebook.services');
+//    public function testAction(Request $request) {
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $session = $this->getRequest()->getSession();
+//
+//        // besoin de se connecter avec un compte fb d'abord
+//
+//        $facebookServices = $this->get('facebook.services');
 //        $facebookServices->importEvent('1599833447000034');
 //        $facebookServices->importEvent('1597645500474602');
-        $facebookServices->importEvents();
-
-        return new Response('test facebook', 200);
-    }
+//        $facebookServices->importEvents();
+//
+//        return new Response('test facebook', 200);
+//    }
 
 }

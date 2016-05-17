@@ -2,6 +2,11 @@ var xhr;
 var xhr_list;
 var xhr_map;
 
+$(document).ajaxStart(function () {
+    $('body').addClass('wait');
+}).ajaxComplete(function () {
+    $('body').removeClass('wait');
+});
 
 function searchFront(element, path, div_results, div_loading) {
     if (xhr && xhr.readystate != 4) {
@@ -120,7 +125,7 @@ $(document).on('click focus', 'a.eventdate_edit', function () {
                 scrollTop: ($("#eventdate_new_edit").offset().top - 115)
             }, 2000);
             reloadBootstrapValidator();
-                    reloadEventAlerts();
+            reloadEventAlerts();
         }
     });
     return false;

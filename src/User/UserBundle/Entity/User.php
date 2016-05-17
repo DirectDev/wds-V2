@@ -233,7 +233,7 @@ class User extends BaseUser {
     }
 
     public function isFacebookUser() {
-        if ($this->facebook_id)
+        if ($this->facebook_id and $this->facebook_access_token)
             return true;
         return false;
     }
@@ -1206,7 +1206,6 @@ class User extends BaseUser {
         return $this->xing_link;
     }
 
-
     /**
      * Set footer
      *
@@ -1214,8 +1213,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setFooter($footer)
-    {
+    public function setFooter($footer) {
         $this->footer = $footer;
 
         return $this;
@@ -1226,8 +1224,8 @@ class User extends BaseUser {
      *
      * @return boolean
      */
-    public function getFooter()
-    {
+    public function getFooter() {
         return $this->footer;
     }
+
 }
