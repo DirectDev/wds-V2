@@ -854,3 +854,10 @@ a.navbar_highlight {
 .service-block-light-green {
     background: rgba(121,213,179,0.8) !important;
 }
+
+#divImportEventsFacebook{
+    background-color: white;
+}
+#blockImportEventsFacebook{
+    display: none;
+}

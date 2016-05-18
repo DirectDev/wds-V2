@@ -44,7 +44,9 @@
                             {% endif %}
                         </td>
                         <td>
-                            <button class="supprFacebookEventTr btn btn-warning">{% trans %}facebook.event_do_not_import{% endtrans %}</button>
+                            <button class="supprFacebookEventTr btn btn-warning" title="{% trans %}facebook.event_do_not_import{% endtrans %}" >
+                                <i class="fa fa-times"></i>
+                            </button>
                         </td>
                     </tr>
                 {% endfor %}

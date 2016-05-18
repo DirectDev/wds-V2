@@ -322,10 +322,22 @@ dance_salsa_on2: /dance/dance_salsa_on2
 dance_salsa_rueda: /dance/dance_salsa_rueda
 dance_tango: /dance/dance_tango
 
+# Desc: /facebook/import_event_page
+facebook_import_event_page: /facebook/importer_evenement_page
+
+# Desc: /facebook/import_events
+facebook_import_events: /facebook/importer__evenements
+
 # Desc: /login/check-facebook
 facebook_login: /connexion/check-facebook
 
-# Desc: /facebook_test
+# Desc: /facebook/preview_import_event
+facebook_preview_import_event: /facebook/previsualiser_importer__evenement
+
+# Desc: /facebook/preview_import_events
+facebook_preview_import_events: /facebook/previsualiser_importer__evenements
+
+# Desc: /facebook/facebook_test
 facebook_test: /facebook_test
 
 # Desc: /festival/australia
@@ -765,13 +777,13 @@ liip_imagine_filter_runtime: '/media/cache/resoudre/{filter}/rc/{hash}/{path}'
 navbar: /navbarfr
 
 # Desc: /navbar_discover
-navbar_discover: /navbar_decouvrir   
+navbar_discover: /navbar_decouvrir
 
 # Desc: /navbar_learn
-navbar_learn: /navbar_apprendre   
+navbar_learn: /navbar_apprendre
 
 # Desc: /navbar_meet
-navbar_meet: /navbar_rencontrer   
+navbar_meet: /navbar_rencontrer
 
 # Desc: /policy
 policy: /mentions-legales

@@ -10,32 +10,32 @@ Update: Update
 add_block:
     event:
         description:
-            add_paragraphe: Add your details
+            add_paragraphe: 'Add your details'
             add_title: Add
 
         images:
-            add_paragraphe: Add your pictures
+            add_paragraphe: 'Add your pictures'
             add_title: Add
 
     user:
         details:
-            add_paragraphe: Add your details
+            add_paragraphe: 'Add your details'
             add_title: Add
 
         musics:
-            add_paragraphe: Add your favourite musics
+            add_paragraphe: 'Add your favourite musics'
             add_title: Add
 
         photos:
-            add_paragraphe: Add photos
+            add_paragraphe: 'Add photos'
             add_title: Add
 
         timeline:
-            add_paragraphe: Share your events
+            add_paragraphe: 'Share your events'
             add_title: Add
 
         videos:
-            add_paragraphe: Add videos
+            add_paragraphe: 'Add videos'
             add_title: Add
 
 address:
@@ -114,30 +114,30 @@ admin:
     users: Users
 
 city:
-    in: in
     artits: Artits
     calendar: Calendar
     concerts: Concerts
     dancers: Dancers
     edito: Overview
     edito.artist.h4: Artits
-    edito.artist.p: All the artists from the city
+    edito.artist.p: 'All the artists from the city'
     edito.bar.h4: Places
-    edito.bar.p: The places to dance
+    edito.bar.p: 'The places to dance'
     edito.calendar.h4: Calendar
-    edito.calendar.p: All events on a map
+    edito.calendar.p: 'All events on a map'
     edito.festival.h4: Festivals
-    edito.festival.p: All the festivals in this city
+    edito.festival.p: 'All the festivals in this city'
     edito.introduction.h4: Introductions
-    edito.introduction.p: Introductions, to discover what dance is
+    edito.introduction.p: 'Introductions, to discover what dance is'
     edito.party.h4: Parties
-    edito.party.p: All the parties 
+    edito.party.p: 'All the parties'
     edito.photo.h4: Photos
-    edito.photo.p: The best photos
+    edito.photo.p: 'The best photos'
     edito.teacher.h4: Teachers
-    edito.teacher.p: Discover all teachers and learn to dance
-    edito.users: Some dancers
+    edito.teacher.p: 'Discover all teachers and learn to dance'
+    edito.users: 'Some dancers'
     festivals: Festivals
+    in: in
     introductions: Introductions
     lessons: Lessons
     musics: Musics
@@ -219,6 +219,26 @@ event:
     type: 'Event type'
     user_presences: 'They are going'
 
+facebook:
+    event_add: New
+    event_added: added
+    event_do_not_import: 'Do not import this event'
+    event_edit: Edit
+    event_import_button: 'Import from Facebook'
+    event_import_p: 'Import events listed below'
+    event_import_title: Import
+    event_preview_button: List
+    event_preview_p: 'List my events from Facebook'
+    event_preview_title: 'List events'
+    event_search_p: 'Search an event with Facebook url or id'
+    event_search_placeholder: Event url or id
+    event_search_title: 'Search event'
+    event_show: Show
+    event_update: Edit
+    no_events: 'Sorry we can''t find any event'
+    not_facebook_user: 'You are not loggued as a Facebook user'
+    not_logged: 'You are not loggued, please connect with Facebook to import events'
+
 festivals:
     calendar:
         in_2_months: 'In 2 months'
@@ -249,11 +269,11 @@ footer:
     contact: 'Contact Us'
     contact_us: 'Contact Us'
     festivals: Festivals
-    landing_page_dancer: WeDanceSalsa for dancers
-    landing_page_pro: WeDanceSalsa for pros
+    landing_page_dancer: 'WeDanceSalsa for dancers'
+    landing_page_pro: 'WeDanceSalsa for pros'
     landing_pages: 'WeDanceSalsa & You'
     policy: 'Privacy Policy'
-    share_events: Share events
+    share_events: 'Share events'
 
 form:
     admin_adminbundle_address:
@@ -811,7 +831,6 @@ front:
     user_show_title: 'User show'
 
 home:
-    
     alert:
         success_contact_button: 'Contact Us'
         success_contribute: 'If you are interested by this project, you can contribute by :  sharing this website on Facebook, introducing the website to other people, writing translations, suggesting new functionalities,   helping with design, helping with communication/SEO'
@@ -833,33 +852,33 @@ home:
 info_block:
     event:
         description:
-            info_paragraphe: No description yet
-            info_title: ''
+            info_paragraphe: 'No description yet'
+            info_title: info_block.event.description.info_title
 
         images:
-            info_paragraphe: No photos yet
-            info_title: ''
+            info_paragraphe: 'No photos yet'
+            info_title: info_block.event.images.info_title
 
     user:
         details:
-            info_paragraphe: No description yet
-            info_title: ''
+            info_paragraphe: 'No description yet'
+            info_title: info_block.user.details.info_title
 
         musics:
-            info_paragraphe: No nusics yet
-            info_title: ''
+            info_paragraphe: 'No nusics yet'
+            info_title: info_block.user.musics.info_title
 
         photos:
-            info_paragraphe: No photos yet
-            info_title: ''
+            info_paragraphe: 'No photos yet'
+            info_title: info_block.user.photos.info_title
 
         timeline:
-            info_paragraphe: No futur events
-            info_title: ''
+            info_paragraphe: 'No futur events'
+            info_title: info_block.user.timeline.info_title
 
         videos:
-            info_paragraphe: No videos yet
-            info_title: ''
+            info_paragraphe: 'No videos yet'
+            info_title: info_block.user.videos.info_title
 
 link:
     home: Home
@@ -1072,8 +1091,8 @@ user_bundle:
 
     signin:
         or: or
-        signin_facebook: 'Connect with Facebook to import all your facebook events easily !'
         signin_facebook: 'Signin with facebook'
+        signin_facebook_paragraphe: 'Connect with Facebook to import all your facebook events easily !'
         signin_google: 'Signin with google'
 
 video:

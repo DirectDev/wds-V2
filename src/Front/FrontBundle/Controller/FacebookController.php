@@ -68,9 +68,6 @@ class FacebookController extends Controller {
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('preview'), 'attr' => array('class' => 'btn-u pull-right')));
-
-
         return $form;
     }
 
@@ -113,18 +110,4 @@ class FacebookController extends Controller {
         return null;
     }
 
-//    public function testAction(Request $request) {
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $session = $this->getRequest()->getSession();
-//
-//        // besoin de se connecter avec un compte fb d'abord
-//
-//        $facebookServices = $this->get('facebook.services');
-//        $facebookServices->importEvent('1599833447000034');
-//        $facebookServices->importEvent('1597645500474602');
-//        $facebookServices->importEvents();
-//
-//        return new Response('test facebook', 200);
-//    }
 }

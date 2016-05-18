@@ -10,32 +10,32 @@ Update: 'Mettre à jour'
 add_block:
     event:
         description:
-            add_paragraphe: Ajoutez vos événements
+            add_paragraphe: 'Ajoutez vos événements'
             add_title: Ajouter
 
         images:
-            add_paragraphe: Ajoutez des photos
+            add_paragraphe: 'Ajoutez des photos'
             add_title: Ajouter
 
     user:
         details:
-            add_paragraphe: Décrivez-vous 
+            add_paragraphe: Décrivez-vous
             add_title: Ajouter
 
         musics:
-            add_paragraphe: Partagez vos musiques préférées
+            add_paragraphe: 'Partagez vos musiques préférées'
             add_title: Ajouter
 
         photos:
-            add_paragraphe: Partagez vos photos préférées
+            add_paragraphe: 'Partagez vos photos préférées'
             add_title: Ajouter
 
         timeline:
-            add_paragraphe: Partagez vos événements
+            add_paragraphe: 'Partagez vos événements'
             add_title: 'Ajoutez des événements'
 
         videos:
-            add_paragraphe: Partagez vos vidéos préférées
+            add_paragraphe: 'Partagez vos vidéos préférées'
             add_title: Ajouter
 
 address:
@@ -66,9 +66,9 @@ admin:
     country_show_title: Pays
     delete: Effacer
     edit: Modifier
-    event_edit_title: 'Modifier l''évenement'
-    event_list_title: 'Liste des évenements'
-    event_new_title: 'Nouvel évenement'
+    event_edit_title: 'Modifier l''événement'
+    event_list_title: 'Liste des événements'
+    event_new_title: 'Nouvel événement'
     event_show_title: Evenement
     eventdate_edit_title: 'Modifier la date'
     eventdate_list_title: 'Liste des dates'
@@ -76,11 +76,11 @@ admin:
     eventdate_show_title: Date
     eventdates: Dates
     events: Evenements
-    eventtype_edit_title: 'Modifier le type d''évenement'
-    eventtype_list_title: 'Liste de type d''évenement'
-    eventtype_new_title: 'Nouveau type d''évenement'
-    eventtype_show_title: 'Type d''évenement'
-    eventtypes: 'types d''évenements'
+    eventtype_edit_title: 'Modifier le type d''événement'
+    eventtype_list_title: 'Liste de type d''événement'
+    eventtype_new_title: 'Nouveau type d''événement'
+    eventtype_show_title: 'Type d''événement'
+    eventtypes: 'types d''événements'
     general_title: Administration
     link_add_address: 'Ajouter une adresse'
     link_add_eventdate: 'Ajouter une date'
@@ -114,30 +114,30 @@ admin:
     users: Utilisateurs
 
 city:
-    in : à
     artits: Artistes
     calendar: Calendrier
     concerts: Concerts
     dancers: Danseurs
     edito: Edito
-    edito.artist.h4: Les artistes
-    edito.artist.p: Découvrez les artistes de cette ville
-    edito.bar.h4: Les lieux
-    edito.bar.p: Découvrez les lieux où danser
-    edito.calendar.h4: Le calendrier
-    edito.calendar.p: Ne ratez aucun événement
-    edito.festival.h4: Les festivals
-    edito.festival.p: Découvrez les festivals
-    edito.introduction.h4: Les initiations
-    edito.introduction.p: Apprenez à danser
-    edito.party.h4: Les soirées
-    edito.party.p: Découvrez toutes les soirées et amusez-vous
-    edito.photo.h4: Les photos
-    edito.photo.p: Les photos préférées des danseurs
-    edito.teacher.h4: Les professeurs
-    edito.teacher.p: Envie d'apprendre, ils sont là pour vous
-    edito.users: Quelques danseurs
+    edito.artist.h4: 'Les artistes'
+    edito.artist.p: 'Découvrez les artistes de cette ville'
+    edito.bar.h4: 'Les lieux'
+    edito.bar.p: 'Découvrez les lieux où danser'
+    edito.calendar.h4: 'Le calendrier'
+    edito.calendar.p: 'Ne ratez aucun événement'
+    edito.festival.h4: 'Les festivals'
+    edito.festival.p: 'Découvrez les festivals'
+    edito.introduction.h4: 'Les initiations'
+    edito.introduction.p: 'Apprenez à danser'
+    edito.party.h4: 'Les soirées'
+    edito.party.p: 'Découvrez toutes les soirées et amusez-vous'
+    edito.photo.h4: 'Les photos'
+    edito.photo.p: 'Les photos préférées des danseurs'
+    edito.teacher.h4: 'Les professeurs'
+    edito.teacher.p: 'Envie d''apprendre, ils sont là pour vous'
+    edito.users: 'Quelques danseurs'
     festivals: Festivals
+    in: 'à'
     introductions: Initiations
     lessons: Cours
     musics: Musiques
@@ -172,12 +172,12 @@ event:
 
     alert:
         invalid_address: 'Merci d''indiquer une adresse correcte'
-        missing_address: 'Ajoutez une adresse pour cet évenement.'
-        missing_date: 'Ajoutez une ou plusieurs dates pour cet évenement'
-        missing_profile_picture: 'Ajoutez une image pour cet évenement'
-        new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''évenement.'
+        missing_address: 'Ajoutez une adresse pour cet événement.'
+        missing_date: 'Ajoutez une ou plusieurs dates pour cet événement'
+        missing_profile_picture: 'Ajoutez une image pour cet événement'
+        new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''événement.'
         new_info2: 'Vous pourrez ajouter l''adresse, les dates et des images sur la page suivante.'
-        no_next_date: 'Il n''y a pas de date à venir pour cet évenement'
+        no_next_date: 'Il n''y a pas de date à venir pour cet événement'
         valid: 'Cet événement apparaît dans les résultats de recherche.'
 
     calendar: Calendrier
@@ -191,9 +191,9 @@ event:
         dates: Dates
         dates.h2: 'Indiquez ici à quelles dates aura lieu cet événement'
         description: Description
-        description.h2: 'Décrivez l''évenement'
+        description.h2: 'Décrivez l''événement'
         links: Liens
-        links.h2: 'Liez votre évenement aux réseaux sociaux'
+        links.h2: 'Liez votre événement aux réseaux sociaux'
         pictures: Photos
         pictures.h2: 'Ajoutez des photos'
 
@@ -207,7 +207,7 @@ event:
     images_title: Images
 
     list:
-        add: 'Ajouter un évenement'
+        add: 'Ajouter un événement'
 
     music: Musique
     not_published: 'Non publié'
@@ -216,8 +216,28 @@ event:
     share_this: Partager
     they_like: 'Ils aiment'
     to: Au
-    type: 'Type d''évenement'
+    type: 'Type d''événement'
     user_presences: 'Ils/elles y vont'
+
+facebook:
+    event_add: Nouveau
+    event_added: Importé
+    event_do_not_import: 'Ne pas importer cet événement'
+    event_edit: Modifier
+    event_import_button: 'Importer les événements'
+    event_import_p: 'Importez les événements Facebook listés ci dessous'
+    event_import_title: Importer
+    event_preview_button: Lister
+    event_preview_p: 'Cherchez vos événements importables depuis Facebook'
+    event_preview_title: 'Lister mes événements facebook'
+    event_search_p: 'Rechercher un événement en particulier avec son url ou son identifiant Facebook'
+    event_search_placeholder: url ou id de l'événement 
+    event_search_title: Rechercher
+    event_show: Voir
+    event_update: 'Mettre à jour'
+    no_events: 'Nous n''avons pas trouvé d''événements'
+    not_facebook_user: 'Vous n''êtes pas connecté via Facebook'
+    not_logged: 'Vous n''êtes pas connecté. Connectez-vous avec Facebook pour pouvoir importer vos événements.'
 
 festivals:
     calendar:
@@ -249,11 +269,11 @@ footer:
     contact: Contactez-nous
     contact_us: Contactez-nous
     festivals: Festivals
-    landing_page_dancer: WeDanceSalsa pour les danseurs
-    landing_page_pro: WeDanceSalsa pour les pros
+    landing_page_dancer: 'WeDanceSalsa pour les danseurs'
+    landing_page_pro: 'WeDanceSalsa pour les pros'
     landing_pages: 'WeDanceSalsa & Vous'
     policy: 'Mentions Légales'
-    share_events: Partagez vos événements
+    share_events: 'Partagez vos événements'
 
 form:
     contact_contactbundle_enquiry:
@@ -624,9 +644,9 @@ front:
     event:
         see_event: Voir
 
-    event_new_title: 'Nouvel évenement'
+    event_new_title: 'Nouvel événement'
     eventdates_title: Dates
-    landing_share_event: 'Partagez vos évenements'
+    landing_share_event: 'Partagez vos événements'
     link_add_address: 'Ajouter une adresse'
     link_add_eventdate: 'Ajouter une date'
     link_delete_address: 'Effacer l''adresse'
@@ -638,13 +658,12 @@ front:
     user_show_title: 'Afficher l''utilisateur'
 
 home:
-    
     alert:
         success_contact_button: Contactez-nous
         success_contribute: 'Si ce projet vous intéresse, vous pouvez contribuer en : partageant sur Facebook, en parlant à vos amis, traduisant le site, faisant des suggestions de nouvelles fonctionnalités, aidant pour le design ou la communication/SEO, etc. '
-        success_events: 'Cette page indique les évenements Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>. Ajoutez votre évenement.'
+        success_events: 'Cette page indique les événements Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>. Ajoutez votre événement.'
         warning: 'Attention !'
-        warning_no_events: 'Il n''y a pas encore d''évenement Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>.  Ajoutez votre évenement.'
+        warning_no_events: 'Il n''y a pas encore d''événement Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>.  Ajoutez votre événement.'
 
     banner: 'Trouvez les événements Salsa, Bachata et Kizomba, n''importe où dans le monde.'
 
@@ -660,33 +679,33 @@ home:
 info_block:
     event:
         description:
-            info_paragraphe: Pas encore d'informations
-            info_title: ''
+            info_paragraphe: 'Pas encore d''informations'
+            info_title: info_block.event.description.info_title
 
         images:
-            info_paragraphe: Pas encore de photos
-            info_title: ''
+            info_paragraphe: 'Pas encore de photos'
+            info_title: info_block.event.images.info_title
 
     user:
         details:
-            info_paragraphe: Pas encore de photos
-            info_title: ''
+            info_paragraphe: 'Pas encore de photos'
+            info_title: info_block.user.details.info_title
 
         musics:
-            info_paragraphe: Pas encore de détails
-            info_title: ''
+            info_paragraphe: 'Pas encore de détails'
+            info_title: info_block.user.musics.info_title
 
         photos:
-            info_paragraphe: Pas encore de photos
-            info_title: ''
+            info_paragraphe: 'Pas encore de photos'
+            info_title: info_block.user.photos.info_title
 
         timeline:
-            info_paragraphe: Pas d'événements à venir
-            info_title: ''
+            info_paragraphe: 'Pas d''événements à venir'
+            info_title: info_block.user.timeline.info_title
 
         videos:
-            info_paragraphe: Pas encore de vidéos
-            info_title: ''
+            info_paragraphe: 'Pas encore de vidéos'
+            info_title: info_block.user.videos.info_title
 
 link:
     home: Accueil
@@ -779,14 +798,14 @@ navbar:
     meet.salsa.teacher: Professeurs
     moves: 'Passes & Shines'
     musics: Musiques
-    publish_button: 'Ajouter un évenement'
+    publish_button: 'Ajouter un événement'
     register: Inscription
     toogle_navigation: Naviguer
     user: Danseurs
     user.add_event: 'Ajouter un événement'
-    user.events: évenements
+    user.events: événements
     user.import_facebook: 'Importer depuis Facebook'
-    user.my_events: 'Tous mes évenements'
+    user.my_events: 'Tous mes événements'
     user.my_page: 'Ma page'
     user.my_profile: 'Mon profil'
     user.next_events: 'Mes prochains événements'
@@ -898,8 +917,8 @@ user_bundle:
 
     signin:
         or: ou
-        signin_facebook_paragraphe: 'Facile ! Connectez vous avec Facebook pour importer tous vos évenements en quelques clics.'
         signin_facebook: 'Se connecter avec Facebook'
+        signin_facebook_paragraphe: 'Facile ! Connectez vous avec Facebook pour importer tous vos événements en quelques clics.'
         signin_google: 'Se connecter avec Google'
 
 video:

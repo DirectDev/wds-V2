@@ -12,40 +12,85 @@
 
 {% block content %}
 
-    {% for pageContent in page.getPageContents %}
-        {{ pageContent.getContent|raw }}
-    {% endfor %}
+    <div class="container  s-results">
 
-    {% if user and not user.isFacebookUser() %}
-        {% trans %}facebook.not_facebook_user{% endtrans %}
-    {% endif %}
+        {% for pageContent in page.getPageContents %}
+            {{ pageContent.getContent|raw }}
+        {% endfor %}
 
-    {% if not user %}
-        {% trans %}facebook.not_logged{% endtrans %}
-        <a class="btn btn-default" href="{{ path('fos_user_security_login') }}">
-            {% trans %}navbar.login{% endtrans %}
-        </a>
-    {% endif %}
+        <div class="margin-bottom-20"></div>
 
-    {% if user and  user.isFacebookUser() %}
+        {% if user and not user.isFacebookUser() %}
+            {% trans %}facebook.not_facebook_user{% endtrans %}
+        {% endif %}
 
-        <button id="previewImportEventsFacebook" class="btn btn-default" href="{{ path('facebook_preview_import_events') }}">
-            {% trans %}facebook.event_preview{% endtrans %}
-        </button>
-        <button id="importEventsFacebook" class="btn btn-default" href="{{ path('facebook_import_events') }}">
-            {% trans %}facebook.event_import{% endtrans %}
-        </button>
+        {% if not user %}
+            {% trans %}facebook.not_logged{% endtrans %}
+            <a class="btn btn-default" href="{{ path('fos_user_security_login') }}">
+                {% trans %}navbar.login{% endtrans %}
+            </a>
+        {% endif %}
 
-    {% endif %}
-    
-    <div>
-        {{ form(facebookEventImportForm) }}
-    </div>
+        {% if user and  user.isFacebookUser() %}
 
-    <div class="container s-results margin-bottom-20">
-        <div class="row">
-            <div class="col-md-10" id="facebookResults"></div>
+            <div class="col-md-4 col-sm-12">
+                <div class="service-block service-block-u">
+                    <i class="icon-custom icon-color-light rounded-x fa fa-search"></i>
+                    <h2 class="heading-md">{% trans %}facebook.event_preview_title{% endtrans %}</h2>
+                    <p>{% trans %}facebook.event_preview_p{% endtrans %}</p>
+                    <div>
+                        <button id="previewImportEventsFacebook" class="btn btn-default  full-width" href="{{ path('facebook_preview_import_events') }}">
+                            {% trans %}facebook.event_preview_button{% endtrans %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="service-block service-block-light">
+                    <i class="icon-custom icon-color-dark rounded-x fa fa-search"></i>
+                    <h2 class="heading-md">{% trans %}facebook.event_search_title{% endtrans %}</h2>
+                    <p>{% trans %}facebook.event_search_p{% endtrans %}</p>
+                    <div class="row">
+                        {{ form_start(facebookEventImportForm, { 'attr' : { 'class' : 'no-validation' } } ) }}
+                        <div class="input-group">
+                            {% set placeholder %}
+                                {% trans %}facebook.event_search_placeholder{% endtrans %}
+                            {% endset %}
+                            {{ form_widget(facebookEventImportForm.url, { 'attr' : { 'class' : 'pull-left', 'placeholder' : placeholder|trim } } ) }}
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        {{ form_end(facebookEventImportForm) }}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="service-block service-block-blue" id="blockImportEventsFacebook">            
+                    <i class="icon-custom icon-color-light rounded-x fa fa-exchange"></i>
+                    <h2 class="heading-md">{% trans %}facebook.event_import_title{% endtrans %}</h2>
+                    <p>{% trans %}facebook.event_import_p{% endtrans %}</p>
+                    <div id="divImportEventsFacebook" >
+                        <button id="importEventsFacebook" class="btn btn-facebook full-width" href="{{ path('facebook_import_events') }}">
+                            {% trans %}facebook.event_import_button{% endtrans %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+
+        <div class="margin-bottom-20">
+            <div class="row">
+                <div class="col-md-12" id="facebookResults"></div>
+            </div>
         </div>
+
     </div>
 
 {% endblock %}

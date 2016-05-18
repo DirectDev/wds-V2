@@ -43,16 +43,22 @@
 
                         </td>
                         <td>
+                            <span class="text-success">
+                                <i class="fa fa-check"></i>
+                                {% trans %}facebook.event_added{% endtrans %}
+                            </span>
+                        </td>
+                        <td>
                             <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}" 
-                               class="btn btn-default" target="_blank">
-                                {% trans %}facebook.event_show{% endtrans %}
+                               class="btn btn-default" target="_blank" alt="{% trans %}facebook.event_show{% endtrans %}">
+                                <i class="fa fa-eye"></i>
                             </a>
                         </td>
                         <td>
-                            <button class="btn btn-success">
-                                <i class="fa fa-check-circle-o"></i>
-                                {% trans %}facebook.event_added{% endtrans %}
-                            </button>
+                            <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
+                               class="btn btn-warning" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

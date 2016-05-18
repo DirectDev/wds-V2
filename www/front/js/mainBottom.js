@@ -571,6 +571,7 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
+    $('#blockImportEventsFacebook').hide();
 
     xhr = $.ajax({
         type: "POST",
@@ -578,7 +579,7 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
         success: function (html)
         {
             $('#facebookResults').html(html);
-//            loadBootstrapValidator();
+            $('#blockImportEventsFacebook').show();
         }
     });
     return false;
@@ -605,7 +606,7 @@ $(document).on('click', '#importEventsFacebook', function () {
         success: function (html)
         {
             $('#facebookResults').html(html);
-//            loadBootstrapValidator();
+            $('#blockImportEventsFacebook').hide();
         }
     });
     return false;
@@ -616,6 +617,7 @@ $(document).on('submit', 'form[name="facebook_event_import"]', function (e) {
         xhr.abort();
     }
 
+    $('#blockImportEventsFacebook').hide();
     e.preventDefault();
 
     var postData = $(this).serializeArray();
@@ -629,6 +631,7 @@ $(document).on('submit', 'form[name="facebook_event_import"]', function (e) {
                 {
                     $('#facebookResults').html(html);
                     loadBootstrapValidator();
+                    $('#blockImportEventsFacebook').show();
                 }
             });
     return false;
