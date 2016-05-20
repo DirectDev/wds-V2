@@ -6,6 +6,8 @@ Delete: Supprimer
 'I don''t like': 'Je n''aime plus'
 'I go': 'J''y vais'
 Update: 'Mettre à jour'
+Previous: Précédent
+Next: Suivant
 
 add_block:
     event:
@@ -19,24 +21,24 @@ add_block:
 
     user:
         details:
-            add_paragraphe: Décrivez-vous
-            add_title: Ajouter
+            add_paragraphe: 'Ajouter votre description, vos préférences et vos adresses'
+            add_title: Décrivez-vous
 
         musics:
-            add_paragraphe: 'Partagez vos musiques préférées'
-            add_title: Ajouter
+            add_paragraphe: 'Partagez et faites découvrir vos musiques préférées'
+            add_title: 'Ajouter vos musiques'
 
         photos:
-            add_paragraphe: 'Partagez vos photos préférées'
-            add_title: Ajouter
+            add_paragraphe: 'Partagez et faites découvrir vos photos préférées'
+            add_title: 'Ajouter vos photos'
 
         timeline:
-            add_paragraphe: 'Partagez vos événements'
+            add_paragraphe: 'Partagez et faites découvrir vos événements'
             add_title: 'Ajoutez des événements'
 
         videos:
-            add_paragraphe: 'Partagez vos vidéos préférées'
-            add_title: Ajouter
+            add_paragraphe: 'Partagez et faites découvrir vos vidéos préférées'
+            add_title: 'Ajouter vos vidéos'
 
 address:
     city: Ville
@@ -44,7 +46,7 @@ address:
     name: Titre
     postcode: 'Code postal'
     street: Rue
-    streetComplement: 'Rue complement'
+    streetComplement: 'Rue (complément)'
 
 admin:
     add: Ajouter
@@ -114,11 +116,11 @@ admin:
     users: Utilisateurs
 
 city:
-    artits: Artistes
-    calendar: Calendrier
-    concerts: Concerts
-    dancers: Danseurs
-    edito: Edito
+    artits: 'Les artistes'
+    calendar: 'Le calendrier'
+    concerts: 'Les concerts'
+    dancers: 'Les danseurs'
+    edito: 'L''édito'
     edito.artist.h4: 'Les artistes'
     edito.artist.p: 'Découvrez les artistes de cette ville'
     edito.bar.h4: 'Les lieux'
@@ -138,15 +140,15 @@ city:
     edito.users: 'Quelques danseurs'
     festivals: Festivals
     in: 'à'
-    introductions: Initiations
-    lessons: Cours
-    musics: Musiques
-    parties: Soirées
-    photos: Photos
-    places: Lieux
-    shows: Shows
-    teachers: Professeurs
-    videos: Videos
+    introductions: 'Les initiations'
+    lessons: 'Les cours'
+    musics: 'Les musiques'
+    parties: 'Les soirées'
+    photos: 'Les photos'
+    places: 'Les lieux'
+    shows: 'Les shows'
+    teachers: 'Les professeurs'
+    videos: 'Les vidéos'
 
 contact:
     contact_alert_success: 'Votre message a été envoyé avec succès. Merci !'
@@ -166,7 +168,7 @@ en: English
 
 event:
     add_address_button: 'Ajouter une adresse'
-    address: Addresses
+    address: Adresse
     address_title: Adresse
     addresses_title: Adresses
 
@@ -183,7 +185,7 @@ event:
     calendar: Calendrier
     date: Date
     description_title: Description
-    details_title: Détails
+    details_title: 'Quelques Chiffres'
 
     edit:
         addresses: Adresses
@@ -231,7 +233,7 @@ facebook:
     event_preview_p: 'Cherchez vos événements importables depuis Facebook'
     event_preview_title: 'Lister mes événements facebook'
     event_search_p: 'Rechercher un événement en particulier avec son url ou son identifiant Facebook'
-    event_search_placeholder: url ou id de l'événement 
+    event_search_placeholder: 'url ou id de l''événement'
     event_search_title: Rechercher
     event_show: Voir
     event_update: 'Mettre à jour'
@@ -261,6 +263,9 @@ file:
     save: 'Enregistrer les images'
     start_upload: Uploader
     uploading: Chargement
+
+filters:
+    all: Toutes
 
 footer:
     artits: Artistes
@@ -422,6 +427,9 @@ form:
 
     front_frontbundle_event_link:
         children:
+            baidu_link:
+                label: Baidu
+
             facebook_link:
                 label: Facebook
 
@@ -445,6 +453,9 @@ form:
 
             vimeo_link:
                 label: Vimeo
+
+            xing_link:
+                label: Xing
 
     front_frontbundle_eventdate:
         children:
@@ -643,6 +654,7 @@ front:
 
     event:
         see_event: Voir
+        social_icon_link: 'Voir sur'
 
     event_new_title: 'Nouvel événement'
     eventdates_title: Dates
@@ -668,13 +680,16 @@ home:
     banner: 'Trouvez les événements Salsa, Bachata et Kizomba, n''importe où dans le monde.'
 
     cities:
-        h2: 'Découvrez les meilleures destinations'
+        h2: 'Les destinations à découvrir'
+        p: 'Découvrez les danseurs, les professeurs, les soirées et tout le meilleur de la Salsa/Bachata/Kizomba dans ces destinations incontournables.'
 
     festivals:
-        h2: 'Les festivals salsas à travers le monde'
+        h2: 'Les festivals pour vous faire danser'
+        p: 'Une sélection de festivals Salsa/Bachata/Kizomba à travers le monde, pour vivre votre passion à fond !'
 
     users:
-        h2: RENCONTRER
+        h2: 'Rencontrer les personnnes qui partagent votre passion'
+        p: 'Découvrez ceux qui comme vous aime les danses latines, et sont de vrais acteurs du monde de la Salsa/Bachata/Kizomba.'
 
 info_block:
     event:
@@ -688,15 +703,15 @@ info_block:
 
     user:
         details:
-            info_paragraphe: 'Pas encore de photos'
+            info_paragraphe: 'Pas de photos'
             info_title: info_block.user.details.info_title
 
         musics:
-            info_paragraphe: 'Pas encore de détails'
+            info_paragraphe: 'Pas de musiques'
             info_title: info_block.user.musics.info_title
 
         photos:
-            info_paragraphe: 'Pas encore de photos'
+            info_paragraphe: 'Pas de photos'
             info_title: info_block.user.photos.info_title
 
         timeline:
@@ -704,7 +719,7 @@ info_block:
             info_title: info_block.user.timeline.info_title
 
         videos:
-            info_paragraphe: 'Pas encore de vidéos'
+            info_paragraphe: 'Pas de vidéos'
             info_title: info_block.user.videos.info_title
 
 link:
@@ -730,26 +745,26 @@ navbar:
     bands: Musiciens
     bars: Lieux
     dances: Danses
-    dances.bachata: Bachata
+    dances.bachata: 'Découvrir la Bachata'
     dances.bachata.move: 'Passes et Shines de Bachata'
     dances.bachata.music: 'Musiques de Bachata'
     dances.bachata.video: 'Vidéos de Bachata'
-    dances.bachata_dominicana: 'Bachata Dominicana'
-    dances.bachata_moderna: 'Bachata Moderna'
-    dances.bachata_sensual: 'Bachata Sensual'
-    dances.kizomba: Kizomba
+    dances.bachata_dominicana: 'La Bachata Dominicana'
+    dances.bachata_moderna: 'La Bachata Moderna'
+    dances.bachata_sensual: 'La Bachata Sensual'
+    dances.kizomba: 'Découvrir la Kizomba'
     dances.kizomba.move: 'Passes et Shines de Kizomba'
     dances.kizomba.music: 'Musiques de Kizomba'
     dances.kizomba.video: 'Vidéos de Kizomba'
-    dances.salsa: Salsa
+    dances.salsa: 'Découvrir la Salsa'
     dances.salsa.move: 'Passes et Shines de Salsa'
     dances.salsa.music: 'Musiques de Salsa'
     dances.salsa.video: 'Videos de Salsa'
-    dances.salsa_cubana: 'Salsa Cubana'
-    dances.salsa_dominicana: 'Salsa Dominicana'
-    dances.salsa_on1: 'Salsa On1'
-    dances.salsa_on2: 'Salsa On2'
-    dances.salsa_rueda: 'Salsa Rueda'
+    dances.salsa_cubana: 'La Salsa Cubana'
+    dances.salsa_dominicana: 'La Salsa Dominicana'
+    dances.salsa_on1: 'La Salsa On1'
+    dances.salsa_on2: 'La Salsa On2'
+    dances.salsa_rueda: 'La Rueda de Casino'
     discover: Découvrir
     discover.cities: Destinations
     festivals: Festivals
@@ -758,7 +773,9 @@ navbar:
     festivals.asia: Asie
     festivals.australia: Australie
     festivals.calendar: Calendier
+    festivals.calendar.cities.title: 'Festivals par destinations'
     festivals.calendar.p: 'Les festivals classés par date'
+    festivals.calendar.page.p: 'Recherchez les festivals Salsa/Bachata/Kizomba à travers le monde. Indiquez une date dans le champs ci dessous ou cliquez sur les raccourcis. Les festivals sont classés par ordre chronologique.'
     festivals.central_africa: 'Afrique centrale'
     festivals.central_america: 'amérique Centrale'
     festivals.europe: Europe
@@ -783,19 +800,19 @@ navbar:
     logout: Déconnexion
     medias: Médias
     meet: Rencontrer
-    meet.bachata: Bachata
-    meet.bachata.artist: 'Danseurs pro'
-    meet.bachata.bar: Lieux
-    meet.bachata.teacher: Professeurs
+    meet.bachata: 'Les Bachatero(a)s'
+    meet.bachata.artist: 'Les danseurs pros'
+    meet.bachata.bar: 'Les lieux pour la Bachata'
+    meet.bachata.teacher: 'Les professeurs de Bachata'
     meet.cities: Destinations
-    meet.kizomba: Kizomba
-    meet.kizomba.artist: 'Danseurs pro'
-    meet.kizomba.bar: Lieux
-    meet.kizomba.teacher: Professeurs
-    meet.salsa: Salsa
-    meet.salsa.artist: 'Danseurs pro'
-    meet.salsa.bar: Lieux
-    meet.salsa.teacher: Professeurs
+    meet.kizomba: 'Les Kizombero(a)s'
+    meet.kizomba.artist: 'Les danseurs pros'
+    meet.kizomba.bar: 'Les lieux pour la Kizomba'
+    meet.kizomba.teacher: 'Les professeurs de Kizomba'
+    meet.salsa: 'Les Salsero(a)s'
+    meet.salsa.artist: 'Les danseurs pros'
+    meet.salsa.bar: 'Les lieux pour la Salsa'
+    meet.salsa.teacher: 'Les professeurs de Salsa'
     moves: 'Passes & Shines'
     musics: Musiques
     publish_button: 'Ajouter un événement'
@@ -803,22 +820,23 @@ navbar:
     toogle_navigation: Naviguer
     user: Danseurs
     user.add_event: 'Ajouter un événement'
-    user.events: événements
+    user.add_events: 'Ajouter des événements'
+    user.events: 'Mes événements'
     user.import_facebook: 'Importer depuis Facebook'
     user.my_events: 'Tous mes événements'
     user.my_page: 'Ma page'
     user.my_profile: 'Mon profil'
     user.next_events: 'Mes prochains événements'
     user.passed_events: 'Mes événements précédents'
-    user.profile: Profil
+    user.profile: 'Mon compte'
     videos: Vidéos
 
 overviews:
     dancers: Danseurs
-    events: évenenents
+    events: Evenenents
     likes: 'J''aime'
     musics: Musiques
-    numbers: Chiffres
+    numbers: 'Quelques Chiffres'
     photos: Photos
     places: Lieux
     skills: Détails
@@ -924,7 +942,8 @@ user_bundle:
 video:
     list:
         add:
-            title: 'Ajoutez vos videos'
+            p: 'Partagez et faites décourvir vos vidéos préférées.'
+            title: 'Ajoutez vos vidéos'
 
     search_input_placeholder: 'Rechercher une vidéo'
     search_title: Vidéos

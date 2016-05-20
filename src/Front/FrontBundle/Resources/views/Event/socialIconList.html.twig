@@ -1,0 +1,6 @@
+{% if event.facebookLink %}
+    <a href="{{ event.facebookLink }}" class="btn btn-facebook-inversed full-width">
+        <i class="fa fa-facebook"></i> 
+        {% trans %}front.event.social_icon_link{% endtrans %} Facebook
+    </a>
+{% endif %}

@@ -861,3 +861,9 @@ a.navbar_highlight {
 #blockImportEventsFacebook{
     display: none;
 }
+.text-left-important{
+    text-align: left !important;
+}
+.profile-body .easy-block-v1 .overflow-h{
+    white-space: nowrap;
+}

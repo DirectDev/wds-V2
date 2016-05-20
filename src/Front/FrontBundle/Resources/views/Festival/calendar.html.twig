@@ -21,9 +21,7 @@
                                     &nbsp;({{ startdate|date('Y-m-d')}})
                                 {% endif %}
                             </h2>
-                            <p>At vero eos et accusamus et iusto odio dignissimos <a href="#">ducimus qui blanditiis</a> 
-                                praesentium voluptatum condimentum eleifend enim a feugiat. 
-                                Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>{% trans %}navbar.festivals.calendar.page.p{% endtrans %}</p>
                             <div class=" p-b-20">
                                 <form id="festivals_calendar_form" class="form-inline" action="{{ path('festival_calendar') }}">
                                     <div class="form-group">
@@ -106,7 +104,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6 festival_destinations">
-                            <h2>Destinations</h2>
+                            <h2>{% trans %}navbar.festivals.calendar.cities.title{% endtrans %}</h2>
                             <div class="row ">
 
                                 {% for meaCity in MeaCities %}

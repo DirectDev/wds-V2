@@ -9,7 +9,7 @@
                 {% trans %}event.alert.missing_address{% endtrans %}
             </div>
         {% endif %}
-        {% if not event.hasOneValidAddress %}
+        {% if event.getAddress() and not event.hasOneValidAddress %}
             <div class="alert alert-warning fade in">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 <strong>{% trans %}front.alert.warning{% endtrans %}</strong>

@@ -1,6 +1,6 @@
 <ul class="sorting-nav sorting-nav-v1 text-center">
     <li class="filter" data-filter="all">
-        All
+        {% trans %}filters.all{% endtrans %}
     </li>
     {% for musicType in musicTypes %}
         <li class="filter" data-filter="{{ musicType|lower }}">
