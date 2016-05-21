@@ -12,12 +12,12 @@ Next: Suivant
 add_block:
     event:
         description:
-            add_paragraphe: 'Ajoutez vos événements'
-            add_title: Ajouter
+            add_paragraphe: 'Ajoutez des informations commme le but, le planning, le prix, etc.'
+            add_title: Décrivez cet événement
 
         images:
-            add_paragraphe: 'Ajoutez des photos'
-            add_title: Ajouter
+            add_paragraphe: ''
+            add_title: Ajouter des photos
 
     user:
         details:
@@ -200,6 +200,7 @@ event:
         pictures.h2: 'Ajoutez des photos'
 
     event_title: Evenement
+    event_types: Type
     eventdates_add_form_title: 'Ajouter une date unique : '
     eventdates_edit_form_title: 'Modifier la date'
     eventdates_repeat_form_title: 'Ajouter une date hebdomadaire : '
@@ -212,6 +213,7 @@ event:
         add: 'Ajouter un événement'
 
     music: Musique
+    music_types: Musique
     not_published: 'Non publié'
     not_valid: 'A corriger'
     published: Publié

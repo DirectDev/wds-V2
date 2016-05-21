@@ -1,7 +1,7 @@
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs breadcrumbs-dark">
     <div class="container">
-        <h1 class="pull-left">{{ event.getTitle|capitalize }}
+        <h1 class="pull-left">{{ event.getTitle|truncate(25, '...')|capitalize }}
         </h1>
         <ul class="pull-right breadcrumb">
             <li><a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a></li>
@@ -31,7 +31,7 @@
             {% endif %}
 
             <li class="active">
-                {{ event.getTitle|capitalize }}
+                {{ event.getTitle|truncate(20, '...')|capitalize }}
             </li>
 
         </ul>

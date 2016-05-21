@@ -12,12 +12,12 @@ Next: Next
 add_block:
     event:
         description:
-            add_paragraphe: 'Add your details'
-            add_title: Add
+            add_paragraphe: 'Add details like what is this event for, which style or musics, the price...'
+            add_title: Add a description
 
         images:
-            add_paragraphe: 'Add your pictures'
-            add_title: Add
+            add_paragraphe: ''
+            add_title: Add your pictures
 
     user:
         details:
@@ -200,6 +200,7 @@ event:
         pictures.h2: 'Show your favorite pictures'
 
     event_title: Event
+    event_types: Type
     eventdates_add_form_title: 'Add a single date : '
     eventdates_edit_form_title: 'Edit date'
     eventdates_repeat_form_title: 'Add a weekly date : '
@@ -212,6 +213,7 @@ event:
         add: 'Add Event'
 
     music: Music
+    music_types: Music
     not_published: 'Event not published'
     not_valid: 'Event not valid'
     published: 'Event published'

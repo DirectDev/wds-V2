@@ -58,12 +58,12 @@
             <ul class="list-unstyled">
                 {% if event.getEventTypesText %}
                     <li>
-                        <span class="color-green">Type:</span> {{ event.getEventTypesText }}
+                        <span class="color-green">{% trans %}event.event_types{% endtrans %}:</span> {{ event.getEventTypesText }}
                     </li>
                 {% endif %}
                 {% if event.getMusicTypesText %}
                     <li>
-                        <span class="color-green">Music:</span> {{ event.getMusicTypesText }}
+                        <span class="color-green">{% trans %}event.music_types{% endtrans %}:</span> {{ event.getMusicTypesText }}
                     </li>
                 {% endif %}
                 {% if not event.getEventTypesText %}
