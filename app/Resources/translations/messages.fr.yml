@@ -283,7 +283,7 @@ footer:
     share_events: 'Partagez vos événements'
 
 form:
-    contact_contactbundle_enquiry:
+    cceq:
         children:
             email:
                 label: Email
@@ -308,17 +308,17 @@ form:
             weekday:
                 label: ''
 
-    front_front_bundle_eventtypefrontfilter:
+    ffetff:
         children:
             name:
                 label: Type
 
-    front_front_bundle_musictypefrontfilter:
+    ffmtff:
         children:
             name:
                 label: Musique
 
-    front_frontbundle_address:
+    ffa:
         children:
             city:
                 label: Ville
@@ -338,7 +338,7 @@ form:
             streetComplement:
                 label: 'Rue complement'
 
-    front_frontbundle_city:
+    ffc:
         children:
             latitude:
                 label: Latitude
@@ -349,7 +349,7 @@ form:
             searchcity:
                 label: Nom
 
-    front_frontbundle_country:
+    ffco:
         children:
             name:
                 label: Pays
@@ -363,7 +363,7 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_event:
+    ffe:
         children:
             eventTypes:
                 label: Type
@@ -395,7 +395,7 @@ form:
             user:
                 label: User
 
-    front_frontbundle_event_description:
+    ffede:
         children:
             eventTypes:
                 label: Type
@@ -427,7 +427,7 @@ form:
             user:
                 label: User
 
-    front_frontbundle_event_link:
+    ffel:
         children:
             baidu_link:
                 label: Baidu
@@ -459,7 +459,7 @@ form:
             xing_link:
                 label: Xing
 
-    front_frontbundle_eventdate:
+    ffed:
         children:
             startdate:
                 label: Début
@@ -473,7 +473,7 @@ form:
             stoptime:
                 label: Heure
 
-    front_frontbundle_eventtype:
+    ffet:
         children:
             name:
                 label: Type
@@ -487,7 +487,7 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_music:
+    ffm:
         children:
             tags:
                 label: Tags
@@ -504,7 +504,7 @@ form:
             url:
                 label: URL
 
-    front_frontbundle_musictype:
+    ffmt:
         children:
             name:
                 label: Musique
@@ -538,7 +538,7 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_user_description:
+    ffud:
         children:
             baseline:
                 label: Baseline
@@ -558,7 +558,7 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_user_link:
+    fful:
         children:
             baidu_link:
                 label: 'Lien Baidu'
@@ -590,7 +590,7 @@ form:
             xing_link:
                 label: 'Lien Xing'
 
-    front_frontbundle_user_profile:
+    ffup:
         children:
             musicTypes:
                 label: Musique
@@ -601,7 +601,7 @@ form:
             username:
                 label: Login
 
-    front_frontbundle_video:
+    ffv:
         children:
             move:
                 label: 'Vidéo d''une passe ou d''un shine'

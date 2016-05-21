@@ -46,7 +46,7 @@ class AddressType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_address';
+        return 'ffa';
     }
 
 }

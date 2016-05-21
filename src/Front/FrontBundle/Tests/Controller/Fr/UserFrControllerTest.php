@@ -376,7 +376,7 @@ class UserFrControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', $this->router->generate('callback_username', array(
                     '_locale' => $this->locale,
-                    'front_frontbundle_user_profile[username]' => 'Jerome'
+                    'ffup[username]' => 'Jerome'
                         )
         ));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
@@ -384,7 +384,7 @@ class UserFrControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', $this->router->generate('callback_username', array(
                     '_locale' => $this->locale,
-                    'front_frontbundle_user_profile[username]' => 'azer'
+                    'ffup[username]' => 'azer'
                         )
         ));
         $this->assertTrue($this->client->getResponse()->isSuccessful());
@@ -392,7 +392,7 @@ class UserFrControllerTest extends WebTestCase {
 
         $crawler = $this->clientLogged->request('GET', $this->router->generate('callback_username', array(
                     '_locale' => $this->locale,
-                    'front_frontbundle_user_profile[username]' => 'Jerome'
+                    'ffup[username]' => 'Jerome'
                         )
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -400,7 +400,7 @@ class UserFrControllerTest extends WebTestCase {
 
         $crawler = $this->clientLogged->request('GET', $this->router->generate('callback_username', array(
                     '_locale' => $this->locale,
-                    'front_frontbundle_user_profile[username]' => 'azer'
+                    'ffup[username]' => 'azer'
                         )
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -409,7 +409,7 @@ class UserFrControllerTest extends WebTestCase {
 
         $crawler = $this->clientLogged->request('GET', $this->router->generate('callback_username', array(
                     '_locale' => $this->locale,
-                    'front_frontbundle_user_profile[username]' => 'jeje'
+                    'ffup[username]' => 'jeje'
                         )
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());

@@ -35,6 +35,6 @@ class UserFileType extends AbstractType
      */
     public function getName()
     {
-        return 'user_userbundle_userfile';
+        return 'uuuf';
     }
 }

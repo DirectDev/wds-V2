@@ -15,7 +15,7 @@
     $(document).ready(function () {
         $('form').bootstrapValidator({
             fields: {
-                "front_frontbundle_user_profile[username]": {
+                "ffup[username]": {
                     validators: {
                         remote: {
                             message: "{% trans from 'validators' %}fos_user.username.already_used{% endtrans %}",

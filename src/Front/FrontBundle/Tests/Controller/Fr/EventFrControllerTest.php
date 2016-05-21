@@ -130,19 +130,19 @@ class EventFrControllerTest extends WebTestCase {
 
         $this->assertContains($create, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_event"]')->form();
+        $form = $crawler->filter('form[name="ffe"]')->form();
 
         $count_musicTypes = count($this->em->getRepository('FrontFrontBundle:MusicType')->findAll());
         for ($i = 0; $i < $count_musicTypes; $i++)
-            $form['front_frontbundle_event[musicTypes][' . $i . ']']->tick();
+            $form['ffe[musicTypes][' . $i . ']']->tick();
         $count_eventTypes = count($this->em->getRepository('FrontFrontBundle:EventType')->findAll());
         for ($i = 0; $i < $count_eventTypes; $i++)
-            $form['front_frontbundle_event[eventTypes][' . $i . ']']->tick();
+            $form['ffe[eventTypes][' . $i . ']']->tick();
         if (rand(0, 1))
-            $form['front_frontbundle_event[published]']->tick();
+            $form['ffe[published]']->tick();
 
-        $form['front_frontbundle_event[translations][' . $this->locale . '][title]'] = $this->title;
-        $form['front_frontbundle_event[translations][' . $this->locale . '][description]'] = $this->description;
+        $form['ffe[translations][' . $this->locale . '][title]'] = $this->title;
+        $form['ffe[translations][' . $this->locale . '][description]'] = $this->description;
 
         $crawler = $this->clientLogged->submit($form);
 
@@ -187,19 +187,19 @@ class EventFrControllerTest extends WebTestCase {
 
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_event_description"]')->form();
+        $form = $crawler->filter('form[name="ffede"]')->form();
 
         $count_musicTypes = count($this->em->getRepository('FrontFrontBundle:MusicType')->findAll());
         for ($i = 0; $i < $count_musicTypes; $i++)
-            $form['front_frontbundle_event_description[musicTypes][' . $i . ']']->untick();
+            $form['ffede[musicTypes][' . $i . ']']->untick();
         $count_eventTypes = count($this->em->getRepository('FrontFrontBundle:EventType')->findAll());
         for ($i = 0; $i < $count_eventTypes; $i++)
-            $form['front_frontbundle_event_description[eventTypes][' . $i . ']']->untick();
+            $form['ffede[eventTypes][' . $i . ']']->untick();
         if (rand(0, 1))
-            $form['front_frontbundle_event_description[published]']->tick();
+            $form['ffede[published]']->tick();
 
-        $form['front_frontbundle_event_description[translations][' . $this->locale . '][title]'] = $this->title;
-        $form['front_frontbundle_event_description[translations][' . $this->locale . '][description]'] = $this->updated_description;
+        $form['ffede[translations][' . $this->locale . '][title]'] = $this->title;
+        $form['ffede[translations][' . $this->locale . '][description]'] = $this->updated_description;
 
         $crawler = $this->clientLogged->submit($form);
 
@@ -221,9 +221,9 @@ class EventFrControllerTest extends WebTestCase {
 
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_event_link"]')->form();
+        $form = $crawler->filter('form[name="ffel"]')->form();
 
-        $form['front_frontbundle_event_link[facebook_link]'] = $this->facebook_link;
+        $form['ffel[facebook_link]'] = $this->facebook_link;
 
         $crawler = $this->clientLogged->submit($form);
 

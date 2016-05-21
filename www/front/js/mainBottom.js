@@ -1,4 +1,4 @@
-$(document).on('submit', 'form[name="front_frontbundle_user_profile"]', function (e) {
+$(document).on('submit', 'form[name="ffup"]', function (e) {
     e.preventDefault();
     var $form = $(e.target);
     // Get the BootstrapValidator instance
@@ -23,7 +23,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_profile"]', function
     e.preventDefault();
 });
 
-$(document).on('submit', 'form[name="front_frontbundle_user_description"]', function (e) {
+$(document).on('submit', 'form[name="ffud"]', function (e) {
     e.preventDefault();
     var $form = $(e.target);
     // Get the BootstrapValidator instance
@@ -48,7 +48,7 @@ $(document).on('submit', 'form[name="front_frontbundle_user_description"]', func
     e.preventDefault();
 });
 
-$(document).on('submit', 'form[name="front_frontbundle_user_link"]', function (e) {
+$(document).on('submit', 'form[name="fful"]', function (e) {
     e.preventDefault();
     var $form = $(e.target);
     // Get the BootstrapValidator instance
@@ -387,7 +387,7 @@ $(document).on('submit', 'form.editAddress', function (e) {
 });
 
 
-$(document).on('submit', 'form[name="front_frontbundle_event_description"]', function (e) {
+$(document).on('submit', 'form[name="ffede"]', function (e) {
     e.preventDefault();
     var $form = $(e.target);
     // Get the BootstrapValidator instance
@@ -412,7 +412,7 @@ $(document).on('submit', 'form[name="front_frontbundle_event_description"]', fun
     e.preventDefault();
 });
 
-$(document).on('submit', 'form[name="front_frontbundle_event_link"]', function (e) {
+$(document).on('submit', 'form[name="ffel"]', function (e) {
     e.preventDefault();
     var $form = $(e.target);
     // Get the BootstrapValidator instance

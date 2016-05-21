@@ -170,10 +170,10 @@ body.wait *, body.wait{
     padding-top: 3px;
     padding-bottom: 3px;
 }
-#front_front_bundle_musictypefrontfilter{
+#ffmtff{
     padding: 10px 10px 10px 15px;
 }
-#front_front_bundle_musictypefrontfilter label{
+#ffmtff label{
     float:left;
     font-size: 16px;
 }
@@ -189,11 +189,11 @@ body.wait *, body.wait{
     margin-right: 10px;
     margin-left: 10px;
 }
-#front_front_bundle_eventtypefrontfilter {
+#ffetff {
     padding: 10px 10px 10px 15px;
 }
 
-#front_front_bundle_eventtypefrontfilter label{
+#ffetff label{
     float:left;
     font-size: 16px;
 }
@@ -300,12 +300,6 @@ footer a{
 }
 .dropdown-toggle{
     color: #E8DDD1;
-}
-#front_frontbundle_event_addresses{
-    display: none;
-}
-#front_frontbundle_event_eventDates{
-    display: none;
 }
 .fileinput-button {
     overflow: hidden;
@@ -473,7 +467,7 @@ footer a{
     position: relative;
 }
 
-i[data-bv-icon-for="front_frontbundle_address[country]"] {
+i[data-bv-icon-for="ffa[country]"] {
     right: 30px !important;
 }
 

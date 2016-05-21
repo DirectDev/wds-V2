@@ -50,7 +50,7 @@ class VideoType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_video';
+        return 'ffv';
     }
 
 }

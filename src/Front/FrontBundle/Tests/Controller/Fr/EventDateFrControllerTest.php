@@ -112,14 +112,14 @@ class EventDateFrControllerTest extends WebTestCase {
 
         $this->assertContains($create, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_eventdate"]')->form();
+        $form = $crawler->filter('form[name="ffed"]')->form();
 
-        $form['front_frontbundle_eventdate[startdate]'] = $this->date;
-        $form['front_frontbundle_eventdate[starttime][hour]'] = 20;
-        $form['front_frontbundle_eventdate[starttime][minute]'] = 30;
-        $form['front_frontbundle_eventdate[stopdate]'] = $this->date;
-        $form['front_frontbundle_eventdate[stoptime][hour]'] = "";
-        $form['front_frontbundle_eventdate[stoptime][minute]'] = "";
+        $form['ffed[startdate]'] = $this->date;
+        $form['ffed[starttime][hour]'] = 20;
+        $form['ffed[starttime][minute]'] = 30;
+        $form['ffed[stopdate]'] = $this->date;
+        $form['ffed[stoptime][hour]'] = "";
+        $form['ffed[stoptime][minute]'] = "";
 
         $crawler = $this->clientLogged->submit($form);
 
@@ -141,14 +141,14 @@ class EventDateFrControllerTest extends WebTestCase {
 
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_eventdate"]')->form();
+        $form = $crawler->filter('form[name="ffed"]')->form();
 
-        $form['front_frontbundle_eventdate[startdate]'] = $this->date;
-        $form['front_frontbundle_eventdate[starttime][hour]'] = 20;
-        $form['front_frontbundle_eventdate[starttime][minute]'] = 30;
-        $form['front_frontbundle_eventdate[stopdate]'] = $this->date;
-        $form['front_frontbundle_eventdate[stoptime][hour]'] = 21;
-        $form['front_frontbundle_eventdate[stoptime][minute]'] = 12;
+        $form['ffed[startdate]'] = $this->date;
+        $form['ffed[starttime][hour]'] = 20;
+        $form['ffed[starttime][minute]'] = 30;
+        $form['ffed[stopdate]'] = $this->date;
+        $form['ffed[stoptime][hour]'] = 21;
+        $form['ffed[stoptime][minute]'] = 12;
 
         $crawler = $this->clientLogged->submit($form);
 

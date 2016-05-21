@@ -84,7 +84,7 @@ class EventType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_event';
+        return 'ffe';
     }
 
 }

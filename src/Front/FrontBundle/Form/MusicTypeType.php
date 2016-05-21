@@ -35,6 +35,6 @@ class MusicTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'front_frontbundle_musictype';
+        return 'ffmt';
     }
 }

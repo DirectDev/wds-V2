@@ -34,6 +34,6 @@ class CityFrontSearchType extends AbstractType
      */
     public function getName()
     {
-        return 'search_search_bundle_cityfrontsearch';
+        return 'sscfs';
     }
 }

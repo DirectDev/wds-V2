@@ -40,6 +40,6 @@ class EventTypeFrontFilterType extends AbstractType
      */
     public function getName()
     {
-        return 'front_front_bundle_eventtypefrontfilter';
+        return 'ffetff';
     }
 }

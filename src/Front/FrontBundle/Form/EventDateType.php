@@ -56,7 +56,7 @@ class EventDateType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_eventdate';
+        return 'ffed';
     }
 
 }

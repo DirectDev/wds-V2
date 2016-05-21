@@ -285,7 +285,7 @@ class UserController extends Controller {
     public function callbackUsernameAction(Request $request) {
         $username = $request->query->get('fos_user_registration_form')['username'];
         if (!$username)
-            $username = $request->query->get('front_frontbundle_user_profile')['username'];
+            $username = $request->query->get('ffup')['username'];
 
         $username = trim($username);
         

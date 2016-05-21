@@ -40,6 +40,6 @@ class MusicTypeFrontFilterType extends AbstractType
      */
     public function getName()
     {
-        return 'front_front_bundle_musictypefrontfilter';
+        return 'ffmtff';
     }
 }

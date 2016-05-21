@@ -34,6 +34,6 @@ class EventTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'front_frontbundle_eventtype';
+        return 'ffet';
     }
 }

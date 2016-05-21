@@ -34,6 +34,6 @@ class CountryType extends AbstractType
      */
     public function getName()
     {
-        return 'front_frontbundle_country';
+        return 'ffco';
     }
 }

@@ -19,7 +19,7 @@ class UserFileControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'user_userbundle_userfile[field_name]'  => 'Test',
+            'uuuf[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class UserFileControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'user_userbundle_userfile[field_name]'  => 'Foo',
+            'uuuf[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

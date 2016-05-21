@@ -157,14 +157,14 @@ class AddressEnControllerTest extends WebTestCase {
 
         $this->assertContains($create, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_address"]')->form();
+        $form = $crawler->filter('form[name="ffa"]')->form();
 
-        $form['front_frontbundle_address[name]'] = $this->event_name;
-        $form['front_frontbundle_address[street]'] = $this->event_street;
-        $form['front_frontbundle_address[streetComplement]'] = $this->event_street_complement;
-        $form['front_frontbundle_address[postcode]'] = $this->event_postcode;
-        $form['front_frontbundle_address[city]'] = $this->event_city;
-        $form['front_frontbundle_address[country]'] = $this->event_country->getId();
+        $form['ffa[name]'] = $this->event_name;
+        $form['ffa[street]'] = $this->event_street;
+        $form['ffa[streetComplement]'] = $this->event_street_complement;
+        $form['ffa[postcode]'] = $this->event_postcode;
+        $form['ffa[city]'] = $this->event_city;
+        $form['ffa[country]'] = $this->event_country->getId();
 
         $crawler = $this->clientLogged->submit($form);
 
@@ -185,14 +185,14 @@ class AddressEnControllerTest extends WebTestCase {
 
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_address"]')->form();
+        $form = $crawler->filter('form[name="ffa"]')->form();
 
-        $form['front_frontbundle_address[name]'] = $this->updated_name;
-        $form['front_frontbundle_address[street]'] = $this->event_street;
-        $form['front_frontbundle_address[streetComplement]'] = $this->event_street_complement;
-        $form['front_frontbundle_address[postcode]'] = $this->event_postcode;
-        $form['front_frontbundle_address[city]'] = $this->event_city;
-        $form['front_frontbundle_address[country]'] = $this->event_country->getId();
+        $form['ffa[name]'] = $this->updated_name;
+        $form['ffa[street]'] = $this->event_street;
+        $form['ffa[streetComplement]'] = $this->event_street_complement;
+        $form['ffa[postcode]'] = $this->event_postcode;
+        $form['ffa[city]'] = $this->event_city;
+        $form['ffa[country]'] = $this->event_country->getId();
 
         $crawler = $this->clientLogged->submit($form);
 
@@ -239,14 +239,14 @@ class AddressEnControllerTest extends WebTestCase {
 
         $this->assertContains($create, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_address"]')->form();
+        $form = $crawler->filter('form[name="ffa"]')->form();
 
-        $form['front_frontbundle_address[name]'] = $this->user_name;
-        $form['front_frontbundle_address[street]'] = $this->user_street;
-        $form['front_frontbundle_address[streetComplement]'] = $this->user_street_complement;
-        $form['front_frontbundle_address[postcode]'] = $this->user_postcode;
-        $form['front_frontbundle_address[city]'] = $this->user_city;
-        $form['front_frontbundle_address[country]'] = $this->user_country->getId();
+        $form['ffa[name]'] = $this->user_name;
+        $form['ffa[street]'] = $this->user_street;
+        $form['ffa[streetComplement]'] = $this->user_street_complement;
+        $form['ffa[postcode]'] = $this->user_postcode;
+        $form['ffa[city]'] = $this->user_city;
+        $form['ffa[country]'] = $this->user_country->getId();
 
         $crawler = $this->clientLogged->submit($form);
 
@@ -267,14 +267,14 @@ class AddressEnControllerTest extends WebTestCase {
 
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
 
-        $form = $crawler->filter('form[name="front_frontbundle_address"]')->form();
+        $form = $crawler->filter('form[name="ffa"]')->form();
 
-        $form['front_frontbundle_address[name]'] = $this->updated_name;
-        $form['front_frontbundle_address[street]'] = $this->user_street;
-        $form['front_frontbundle_address[streetComplement]'] = $this->user_street_complement;
-        $form['front_frontbundle_address[postcode]'] = $this->user_postcode;
-        $form['front_frontbundle_address[city]'] = $this->user_city;
-        $form['front_frontbundle_address[country]'] = $this->user_country->getId();
+        $form['ffa[name]'] = $this->updated_name;
+        $form['ffa[street]'] = $this->user_street;
+        $form['ffa[streetComplement]'] = $this->user_street_complement;
+        $form['ffa[postcode]'] = $this->user_postcode;
+        $form['ffa[city]'] = $this->user_city;
+        $form['ffa[country]'] = $this->user_country->getId();
 
         $crawler = $this->clientLogged->submit($form);
 

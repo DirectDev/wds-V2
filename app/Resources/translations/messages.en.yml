@@ -456,7 +456,7 @@ form:
 
                 label: Translations
 
-    contact_contactbundle_enquiry:
+    cceq:
         children:
             email:
                 label: Email
@@ -481,17 +481,17 @@ form:
             weekday:
                 label: ''
 
-    front_front_bundle_eventtypefrontfilter:
+    ffetff:
         children:
             name:
                 label: 'Event type'
 
-    front_front_bundle_musictypefrontfilter:
+    ffmtff:
         children:
             name:
                 label: Music
 
-    front_frontbundle_address:
+    ffa:
         children:
             city:
                 label: City
@@ -511,7 +511,7 @@ form:
             streetComplement:
                 label: 'Street complement'
 
-    front_frontbundle_city:
+    ffc:
         children:
             latitude:
                 label: Latitude
@@ -522,7 +522,7 @@ form:
             searchcity:
                 label: Name
 
-    front_frontbundle_country:
+    ffco:
         children:
             name:
                 label: Country
@@ -536,7 +536,7 @@ form:
 
                 label: Translations
 
-    front_frontbundle_event:
+    ffe:
         children:
             eventTypes:
                 label: Type
@@ -568,7 +568,7 @@ form:
             user:
                 label: User
 
-    front_frontbundle_event_description:
+    ffede:
         children:
             eventTypes:
                 label: Type
@@ -600,7 +600,7 @@ form:
             user:
                 label: User
 
-    front_frontbundle_event_link:
+    ffel:
         children:
             baidu_link:
                 label: Baidu
@@ -632,7 +632,7 @@ form:
             xing_link:
                 label: Xing
 
-    front_frontbundle_eventdate:
+    ffed:
         children:
             startdate:
                 label: 'Start date'
@@ -646,7 +646,7 @@ form:
             stoptime:
                 label: 'Stop time'
 
-    front_frontbundle_eventtype:
+    ffet:
         children:
             name:
                 label: 'Event type'
@@ -660,7 +660,7 @@ form:
 
                 label: Translations
 
-    front_frontbundle_music:
+    ffm:
         children:
             tags:
                 label: Tags
@@ -677,7 +677,7 @@ form:
             url:
                 label: URL
 
-    front_frontbundle_musictype:
+    ffmt:
         children:
             name:
                 label: 'Music type'
@@ -711,7 +711,7 @@ form:
 
                 label: Translations
 
-    front_frontbundle_user_description:
+    ffud:
         children:
             baseline:
                 label: Baseline
@@ -731,7 +731,7 @@ form:
 
                 label: Translations
 
-    front_frontbundle_user_link:
+    fful:
         children:
             baidu_link:
                 label: 'Baidu link'
@@ -763,7 +763,7 @@ form:
             xing_link:
                 label: 'Xing link'
 
-    front_frontbundle_user_profile:
+    ffup:
         children:
             musicTypes:
                 label: Music
@@ -774,7 +774,7 @@ form:
             username:
                 label: Username
 
-    front_frontbundle_video:
+    ffv:
         children:
             move:
                 label: Move

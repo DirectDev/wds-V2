@@ -120,7 +120,7 @@ class MusicFrControllerTest extends WebTestCase {
         $this->assertContains($create, $this->clientLogged->getResponse()->getContent());
 
         $form = $crawler->selectButton($create)->form();
-        $form['front_frontbundle_music[url]'] = $url;
+        $form['ffm[url]'] = $url;
         $crawler = $this->clientLogged->submit($form);
         $this->clientLogged->followRedirect();
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -148,7 +148,7 @@ class MusicFrControllerTest extends WebTestCase {
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
 
         $form = $crawler->selectButton($update)->form();
-        $form['front_frontbundle_music[url]'] = $url;
+        $form['ffm[url]'] = $url;
         $crawler = $this->clientLogged->submit($form);
         $this->clientLogged->followRedirect();
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());

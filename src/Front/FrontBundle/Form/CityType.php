@@ -36,6 +36,6 @@ class CityType extends AbstractType
      */
     public function getName()
     {
-        return 'front_frontbundle_city';
+        return 'ffc';
     }
 }

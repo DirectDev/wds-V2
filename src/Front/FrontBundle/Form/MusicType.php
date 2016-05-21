@@ -49,7 +49,7 @@ class MusicType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_music';
+        return 'ffm';
     }
 
 }

@@ -42,7 +42,7 @@ class EventLinkType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_event_link';
+        return 'ffel';
     }
 
 }

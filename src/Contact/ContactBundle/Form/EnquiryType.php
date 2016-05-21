@@ -29,7 +29,7 @@ class EnquiryType extends AbstractType
 
     public function getName()
     {
-        return 'contact_contactbundle_enquiry';
+        return 'cceq';
     }
 }
 ?>

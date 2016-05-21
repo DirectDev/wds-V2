@@ -42,7 +42,7 @@ class UserLinkType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_user_link';
+        return 'fful';
     }
 
 }

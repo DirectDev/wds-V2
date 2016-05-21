@@ -46,7 +46,7 @@ class UserProfileType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_user_profile';
+        return 'ffup';
     }
 
 }

@@ -41,7 +41,7 @@ class UserDescriptionType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'front_frontbundle_user_description';
+        return 'ffud';
     }
 
 }

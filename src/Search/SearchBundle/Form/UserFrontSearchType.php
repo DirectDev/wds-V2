@@ -34,6 +34,6 @@ class UserFrontSearchType extends AbstractType
      */
     public function getName()
     {
-        return 'search_search_bundle_userfrontsearch';
+        return 'ssufs';
     }
 }
