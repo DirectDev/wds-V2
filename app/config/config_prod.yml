@@ -40,4 +40,4 @@ monolog:
 
 # form label translations    
 elao_form_translation:
-    auto_generate: false   
+    auto_generate: true   
