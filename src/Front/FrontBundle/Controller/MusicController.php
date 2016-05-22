@@ -108,6 +108,7 @@ class MusicController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $music->setName($music->getTitle());
             $em->persist($music);
             $em->flush();
 
@@ -260,6 +261,8 @@ class MusicController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $music->setName($music->getTitle());
+            $em->persist($music);
             $em->flush();
 
             return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $id)));

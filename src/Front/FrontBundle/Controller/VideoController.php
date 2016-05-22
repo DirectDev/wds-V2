@@ -322,6 +322,7 @@ class VideoController extends Controller {
 
         if ($editForm->isValid()) {
             $video->setName($video->getTitle());
+            $em->persist($video);
             $em->flush();
 
             return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $id)));
