@@ -11,29 +11,27 @@ use Admin\AdminBundle\Form\AddressType;
  * Address controller.
  *
  */
-class AddressController extends Controller
-{
+class AddressController extends Controller {
 
     /**
      * Lists all Address entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('FrontFrontBundle:Address')->findAll();
 
         return $this->render('AdminAdminBundle:Address:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Address entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Address();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -42,7 +40,7 @@ class AddressController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            
+
             try {
                 $em->refresh($entity);
                 $this->setLatitudeAndLongitude($entity);
@@ -56,8 +54,8 @@ class AddressController extends Controller
         }
 
         return $this->render('AdminAdminBundle:Address:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -68,8 +66,7 @@ class AddressController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Address $entity)
-    {
+    private function createCreateForm(Address $entity) {
         $form = $this->createForm(new AddressType(), $entity, array(
             'action' => $this->generateUrl('admin_address_create'),
             'method' => 'POST',
@@ -84,14 +81,13 @@ class AddressController extends Controller
      * Displays a form to create a new Address entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Address();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('AdminAdminBundle:Address:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -99,8 +95,7 @@ class AddressController extends Controller
      * Finds and displays a Address entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
@@ -112,8 +107,8 @@ class AddressController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:Address:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -121,8 +116,7 @@ class AddressController extends Controller
      * Displays a form to edit an existing Address entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
@@ -135,21 +129,20 @@ class AddressController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:Address:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Address entity.
-    *
-    * @param Address $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Address $entity)
-    {
+     * Creates a form to edit a Address entity.
+     *
+     * @param Address $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Address $entity) {
         $form = $this->createForm(new AddressType(), $entity, array(
             'action' => $this->generateUrl('admin_address_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -159,12 +152,12 @@ class AddressController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Address entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Address')->find($id);
@@ -178,7 +171,7 @@ class AddressController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            
+
             try {
                 $this->setLatitudeAndLongitude($entity);
                 $em->persist($entity);
@@ -186,24 +179,24 @@ class AddressController extends Controller
             } catch (\Exception $e) {
                 
             }
-            
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_address_edit', array('id' => $id)));
         }
 
         return $this->render('AdminAdminBundle:Address:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Address entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -229,28 +222,33 @@ class AddressController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_address_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('admin_address_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
-    
+
     private function setLatitudeAndLongitude($entity) {
         try {
-            $geocode = $this->container
+            $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
                     ->geocode($entity->stringForGoogleMaps());
 
-            $entity->setLatitude($geocode['latitude']);
-            $entity->setLongitude($geocode['longitude']);
-            
+            if (!count($geocodeAddresses))
+                return;
+
+            foreach ($geocodeAddresses as $geocodeAddress) {
+                $entity->setLatitude($geocodeAddress->getLatitude());
+                $entity->setLongitude($geocodeAddress->getLongitude());
+                return;
+            }
         } catch (\Exception $e) {
             throw $e;
         }
     }
+
 }

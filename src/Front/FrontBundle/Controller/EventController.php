@@ -409,13 +409,19 @@ class EventController extends Controller {
             if (!$entity OR ! $entity->stringForGoogleMaps())
                 return;
 
-            $geocode = $this->container
+            $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
                     ->geocode($entity->stringForGoogleMaps());
 
-            $entity->setLatitude($geocode['latitude']);
-            $entity->setLongitude($geocode['longitude']);
+            if (!count($geocodeAddresses))
+                return;
+
+            foreach ($geocodeAddresses as $geocodeAddress) {
+                $entity->setLatitude($geocodeAddress->getLatitude());
+                $entity->setLongitude($geocodeAddress->getLongitude());
+                return;
+            }
         } catch (\Exception $e) {
             throw $e;
         }

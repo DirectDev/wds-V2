@@ -334,13 +334,19 @@ class AddressController extends Controller {
             if (!$address OR ! $address->stringForGoogleMaps())
                 return;
 
-            $geocode = $this->container
+            $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
                     ->geocode($address->stringForGoogleMaps());
 
-            $address->setLatitude($geocode['latitude']);
-            $address->setLongitude($geocode['longitude']);
+            if (!count($geocodeAddresses))
+                return;
+
+            foreach ($geocodeAddresses as $geocodeAddress) {
+                $address->setLatitude($geocodeAddress->getLatitude());
+                $address->setLongitude($geocodeAddress->getLongitude());
+                return;
+            }
         } catch (\Exception $e) {
             throw $e;
         }

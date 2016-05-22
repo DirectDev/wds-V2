@@ -348,13 +348,19 @@ class UserController extends Controller {
             if (!$entity OR ! $entity->stringForGoogleMaps())
                 return;
 
-            $geocode = $this->container
+            $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')
                     ->using('google_maps')
                     ->geocode($entity->stringForGoogleMaps());
 
-            $entity->setLatitude($geocode['latitude']);
-            $entity->setLongitude($geocode['longitude']);
+            if (!count($geocodeAddresses))
+                return;
+
+            foreach ($geocodeAddresses as $geocodeAddress) {
+                $entity->setLatitude($geocodeAddress->getLatitude());
+                $entity->setLongitude($geocodeAddress->getLongitude());
+                return;
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -423,7 +429,7 @@ class UserController extends Controller {
                     'count_lovesme' => $count_lovesme,
         ));
     }
-    
+
     public function showOverviewsIndexAction($id) {
         $em = $this->getDoctrine()->getManager();
 
@@ -628,12 +634,12 @@ class UserController extends Controller {
                     'users' => $users,
         ));
     }
-    
+
     public function eventsAction(Request $request) {
-        
+
         if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->getRepository('FrontFrontBundle:Event')->findBy(array('user' => $this->getUser()));
@@ -652,10 +658,10 @@ class UserController extends Controller {
     }
 
     public function filterEventsAction(Request $request) {
-        
+
         if (!$this->getUser())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $filterForm = $this->createFilterEventForm();
@@ -666,7 +672,7 @@ class UserController extends Controller {
         if ($filterForm->isValid()) {
             $filterData = $filterForm->getData();
         }
-        
+
         $filterData['user'] = $this->getUser();
 
         $query = $em->getRepository('FrontFrontBundle:Event')->filter($filterData, $request->getLocale());
@@ -681,8 +687,8 @@ class UserController extends Controller {
                     'filterForm' => $filterForm->createView(),
         ));
     }
-    
-     private function createFilterEventForm() {
+
+    private function createFilterEventForm() {
         $form = $this->createForm(new EventFilterType($this->getUser()), null, array(
             'action' => $this->generateUrl('front_user_filter_events'),
             'method' => 'GET',
