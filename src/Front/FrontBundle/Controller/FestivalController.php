@@ -101,9 +101,10 @@ class FestivalController extends Controller {
         array('name' => 'sana a', 'latitude' => '15.275706', 'longitude' => '44.226564', 'distance' => 400,),
     );
 
-    private function setDates($request) {
+    private function setDates($request, $startdate = null) {
         $session = $this->getRequest()->getSession();
-        $startdate = $request->get('searcheventdate', '', true);
+        if (!$startdate)
+            $startdate = $request->get('searcheventdate', '', true);
         if (!$startdate)
             $startdate = $session->get('startdate');
         if (!$startdate)
@@ -218,10 +219,11 @@ class FestivalController extends Controller {
     public function calendarAction(Request $request, $startdate = null) {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
-        if ($startdate)
+
+        if (!$startdate)
             $startdate = $session->get('startdate');
 
-        $this->setDates($request);
+        $this->setDates($request, $startdate);
 
         $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('festival_calendar');
         if (!$page)
@@ -235,32 +237,32 @@ class FestivalController extends Controller {
         $user = $this->getUser();
 
         $MeaCities = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForHomePage(8);
-        
+
         $nextWeekend = new \DateTime('next Friday');
         $in2Weeks = new \Datetime();
         $in2Weeks->modify('+14days');
         $in3Weeks = new \Datetime();
         $in3Weeks->modify('+21days');
-        
+
         $nextMonth = new \Datetime();
         $nextMonth->modify('+1month');
         $in2Months = new \Datetime();
         $in2Months->modify('+2months');
         $in3Months = new \Datetime();
         $in3Months->modify('+3months');
-        
+
         return $this->render('FrontFrontBundle:Festival:calendar.html.twig', array(
                     'page' => $page,
                     'user' => $user,
                     'nextEvents' => $nextEvents,
                     'startdate' => $this->startdate,
                     'MeaCities' => $MeaCities,
-            'nextWeekend' => $nextWeekend,
-            'in2Weeks' => $in2Weeks,
-            'in3Weeks' => $in3Weeks,
-            'nextMonth' => $nextMonth,
-            'in2Months' => $in2Months,
-            'in3Months' => $in3Months,
+                    'nextWeekend' => $nextWeekend,
+                    'in2Weeks' => $in2Weeks,
+                    'in3Weeks' => $in3Weeks,
+                    'nextMonth' => $nextMonth,
+                    'in2Months' => $in2Months,
+                    'in3Months' => $in3Months,
         ));
     }
 
