@@ -9,7 +9,7 @@
         }
     },
     "require": {
-        "php": ">5.5,<=5.6.20",
+        "php": ">5.5,<=5.6.21",
         "a2lix/translation-form-bundle": "2.1.1",
         "beberlei/DoctrineExtensions": "1.0.6",
         "behat/transliterator": "1.1.0",
