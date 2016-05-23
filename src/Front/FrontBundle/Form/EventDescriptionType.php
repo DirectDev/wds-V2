@@ -32,14 +32,14 @@ class EventDescriptionType extends AbstractType {
         $builder
                 ->add('eventTypes', 'entity', array(
                     'class' => 'FrontFrontBundle:EventType',
-                    'property' => 'name',
+                    'property' => 'title',
                     'multiple' => true,
                     'expanded' => true,
                     'by_reference' => true,
                 ))
                 ->add('musicTypes', 'entity', array(
                     'class' => 'FrontFrontBundle:MusicType',
-                    'property' => 'name',
+                    'property' => 'title',
                     'multiple' => true,
                     'expanded' => true,
                     'by_reference' => true,

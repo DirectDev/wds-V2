@@ -19,9 +19,9 @@
 {% if user %}
     <a href="{{ href }}" class="{{ a_class }}" data-user-id="{{ user.id }}">
         {% if user.isFacebookUser %}
-            <img src='{{ user.profilePictureUrl }}' class="{{ class }}" width="{{ width }}"  /> 
+            <img src='{{ user.profilePictureUrl }}' class="{{ class }} img-responsive" width="{{ width }}"  /> 
         {% elseif user.profilePictureUrl %}
-            <img src='{{ asset(user.profilePictureUrl)| imagine_filter(filter) }}' class="{{ class }}" width="{{ width }}" /> 
+            <img src='{{ asset(user.profilePictureUrl)| imagine_filter(filter) }}' class="{{ class }} img-responsive" width="{{ width }}" /> 
         {% endif %}
     </a>    
 {% endif %}

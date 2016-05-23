@@ -697,32 +697,32 @@ info_block:
     event:
         description:
             info_paragraphe: 'Pas encore d''informations'
-            info_title: info_block.event.description.info_title
+            info_title: ''
 
         images:
             info_paragraphe: 'Pas encore de photos'
-            info_title: info_block.event.images.info_title
+            info_title: ''
 
     user:
         details:
             info_paragraphe: 'Pas de photos'
-            info_title: info_block.user.details.info_title
+            info_title: ''
 
         musics:
             info_paragraphe: 'Pas de musiques'
-            info_title: info_block.user.musics.info_title
+            info_title: ''
 
         photos:
             info_paragraphe: 'Pas de photos'
-            info_title: info_block.user.photos.info_title
+            info_title: ''
 
         timeline:
             info_paragraphe: 'Pas d''événements à venir'
-            info_title: info_block.user.timeline.info_title
+            info_title: ''
 
         videos:
             info_paragraphe: 'Pas de vidéos'
-            info_title: info_block.user.videos.info_title
+            info_title: ''
 
 link:
     home: Accueil

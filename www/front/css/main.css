@@ -757,6 +757,9 @@ fieldset[disabled] .btn-search.active {
     .hide-for-desktop{
         display:none !important;
     }
+    .profile-body .easy-block-v1 .overflow-h{
+        white-space: nowrap;
+    }
 }
 .navbar li {
     padding-top: 3px;
@@ -857,7 +860,4 @@ a.navbar_highlight {
 }
 .text-left-important{
     text-align: left !important;
-}
-.profile-body .easy-block-v1 .overflow-h{
-    white-space: nowrap;
 }
