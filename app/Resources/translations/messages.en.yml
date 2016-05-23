@@ -998,7 +998,7 @@ navbar:
     user.add_event: 'Add Event'
     user.add_events: 'Add Events'
     user.events: Events
-    user.import_facebook: 'Import form Facebook'
+    user.import_facebook: 'Import from Facebook'
     user.my_events: 'My Events'
     user.my_page: 'My Page'
     user.my_profile: 'My Profile'
