@@ -25,13 +25,18 @@ $(document).on('submit', 'form[name="ffup"]', function (e) {
 
 $(document).on('submit', 'form[name="ffud"]', function (e) {
     e.preventDefault();
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    
     var $form = $(e.target);
     // Get the BootstrapValidator instance
     var bv = $form.data('bootstrapValidator');
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
@@ -39,7 +44,9 @@ $(document).on('submit', 'form[name="ffud"]', function (e) {
                 success: function (html)
                 {
                     $('#descriptionForm').empty().html(html);
+                    updateCKEditors();
                     loadBootstrapValidator();
+
                 },
                 error: function (html)
                 {
@@ -96,7 +103,7 @@ $(document).on('submit', 'form.newMusic', function (e) {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
-    
+
     var div = $(this).parent();
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
@@ -393,20 +400,26 @@ $(document).on('submit', 'form.editAddress', function (e) {
 
 $(document).on('submit', 'form[name="ffede"]', function (e) {
     e.preventDefault();
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    
     var $form = $(e.target);
     // Get the BootstrapValidator instance
     var bv = $form.data('bootstrapValidator');
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
                 data: postData,
                 success: function (html)
                 {
-                    $('#descriptionFormDiv').empty().html(html);
+                    $('#descriptionForm').empty().html(html);
+                    updateCKEditors();
                     loadBootstrapValidator();
                 },
                 error: function (html)

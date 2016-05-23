@@ -8,6 +8,12 @@ $(document).ajaxStart(function () {
     $('body').removeClass('wait');
 });
 
+function updateCKEditors() {
+    for (var instanceName in CKEDITOR.instances) {
+        CKEDITOR.replace(instanceName);
+    }
+}
+
 function searchFront(element, path, div_results, div_loading) {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();

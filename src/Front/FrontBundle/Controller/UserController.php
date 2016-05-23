@@ -136,7 +136,7 @@ class UserController extends Controller {
      */
     public function editAction($id) {
 
-        if (!$this->getUser())
+        if (!$this->getUser() or $id != $this->getUser()->getId())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $em = $this->getDoctrine()->getManager();
@@ -221,7 +221,7 @@ class UserController extends Controller {
      */
     public function updateProfileAction(Request $request, $id) {
 
-        if (!$this->getUser())
+        if (!$this->getUser() or $id != $this->getUser()->getId())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $em = $this->getDoctrine()->getManager();
@@ -247,7 +247,7 @@ class UserController extends Controller {
 
     public function updateDescriptionAction(Request $request, $id) {
 
-        if (!$this->getUser())
+        if (!$this->getUser() or $id != $this->getUser()->getId())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $em = $this->getDoctrine()->getManager();
@@ -273,7 +273,7 @@ class UserController extends Controller {
 
     public function updateLinkAction(Request $request, $id) {
 
-        if (!$this->getUser())
+        if (!$this->getUser() or $id != $this->getUser()->getId())
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $em = $this->getDoctrine()->getManager();
@@ -340,30 +340,6 @@ class UserController extends Controller {
         /*
          * UPLOAD FILE FORM END
          */
-    }
-
-    private function setLatitudeAndLongitude($entity) {
-        try {
-
-            if (!$entity OR ! $entity->stringForGoogleMaps())
-                return;
-
-            $geocodeAddresses = $this->container
-                    ->get('bazinga_geocoder.geocoder')
-                    ->using('google_maps')
-                    ->geocode($entity->stringForGoogleMaps());
-
-            if (!count($geocodeAddresses))
-                return;
-
-            foreach ($geocodeAddresses as $geocodeAddress) {
-                $entity->setLatitude($geocodeAddress->getLatitude());
-                $entity->setLongitude($geocodeAddress->getLongitude());
-                return;
-            }
-        } catch (\Exception $e) {
-            throw $e;
-        }
     }
 
     public function importFacebookEventAction() {

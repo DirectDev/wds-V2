@@ -13,6 +13,9 @@ function loadBootstrapValidator() {
     $('form:not(.navbar-form):not(.no_validation) input.datepicker').on('change show', function (e) {
         $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator('revalidateField', $(this));
     });
+    $('#userProfilForm input[type=checkbox]').on('click', function (e) {
+        $('#userProfilForm').bootstrapValidator('resetForm');
+    });
 }
 
 
