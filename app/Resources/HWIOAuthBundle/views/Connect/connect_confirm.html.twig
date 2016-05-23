@@ -1,0 +1,47 @@
+{% extends "FrontFrontBundle::layout.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('front/css/bootstrap-social.css') }}" />
+    <link rel="stylesheet" href="{{ asset('front/css/pages/page_log_reg_v1.css') }}">    
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container content">
+
+        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+
+            <div class="panel panel-default">
+
+                <div class="panel-padding panel-body text-center">
+
+                    <h3>{{ 'header.connecting' | trans({}, 'HWIOAuthBundle')}}</h3>
+                    <div class="row">
+                        <div class="span6">
+                            <p>{{ 'connect.confirm.text' | trans({'%service%': service | trans({}, 'HWIOAuthBundle'), '%name%': userInformation.realName}, 'HWIOAuthBundle') }}</p>
+                            <p>
+                            <form action="{{ path('hwi_oauth_connect_service', {'service': service, 'key': key}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+                                {{ form_widget(form) }}
+                                <div>
+                                    <button type="submit" class="btn btn-primary">{{ 'connect.confirm.submit' | trans({}, 'HWIOAuthBundle') }}</button>
+                                    <a href="{{ path('hwi_oauth_connect') }}" class="btn">{{ 'connect.confirm.cancel' | trans({}, 'HWIOAuthBundle') }}</a>
+                                </div>
+                            </form>
+                            </p>
+                        </div>
+                        <div class="span6">
+                            {% if userInformation.profilePicture is defined and userInformation.profilePicture is not empty %}
+                                <img src="{{ userInformation.profilePicture }}" />
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

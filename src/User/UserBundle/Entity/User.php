@@ -390,6 +390,8 @@ class User extends BaseUser {
      */
     public function setFacebookId($facebookId) {
         $this->facebook_id = $facebookId;
+        if($facebookId)
+            $this->setFacebookLink ('https://www.facebook.com/'.$facebookId);
 
         return $this;
     }

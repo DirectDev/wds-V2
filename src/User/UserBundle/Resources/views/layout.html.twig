@@ -144,7 +144,7 @@
 
                     <div>
                         {% if is_granted("ROLE_USER") %}
-                            {% trans %}user_bundle.return_home_page{% endtrans %}<a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a>
+                            {% trans %}user_bundle.return_home_page{% endtrans %} <a href="{{ path('home') }}">{% trans %}link.home{% endtrans %}</a>
                         {% else %}
                             {% if app.request.attributes.get('_route') != 'fos_user_registration_register' %}
                                 {% trans %}user_bundle.question_not_registered{% endtrans %} <a href="{{ path('fos_user_registration_register') }}">{% trans %}user_bundle.register{% endtrans %}</a>
