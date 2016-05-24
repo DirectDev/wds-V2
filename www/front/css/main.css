@@ -760,6 +760,9 @@ fieldset[disabled] .btn-search.active {
     .profile-body .easy-block-v1 .overflow-h{
         white-space: nowrap;
     }
+    #carousel-example-generic .carousel-inner .item{
+        width: 100%;
+    }
 }
 .navbar li {
     padding-top: 3px;

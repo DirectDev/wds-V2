@@ -5,6 +5,7 @@
         <form id="search_event_form" action="{{ path('search_search_front_event') }}" method="GET" class="no_validation" role="search">
 
             {% set placeholder_city = app.session.get('city')|capitalize %}
+            {% set value_city = app.session.get('city')|capitalize %}
             {% if not placeholder_city %}
                 {% set placeholder_city = 'Lille, France'%}
             {% endif  %}
@@ -19,8 +20,11 @@
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                     <input type="text" autocomplete="off" class="form-control  input-md" id="sscfs_searchcity" 
-                           placeholder="{{ placeholder_city }}" required
-                           name="searchcity">
+                           placeholder="{{ placeholder_city }}" required  name="searchcity"
+                           {% if value_city is defined and value_city is not null %}
+                               value="{{ value_city }}"
+                           {% endif  %}
+                           >
                 </div>
             </div>    
             <div class="col-sm-3 md-margin-bottom-10">
