@@ -25,11 +25,11 @@ $(document).on('submit', 'form[name="ffup"]', function (e) {
 
 $(document).on('submit', 'form[name="ffud"]', function (e) {
     e.preventDefault();
-    
+
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
-    
+
     var $form = $(e.target);
     // Get the BootstrapValidator instance
     var bv = $form.data('bootstrapValidator');
@@ -400,11 +400,11 @@ $(document).on('submit', 'form.editAddress', function (e) {
 
 $(document).on('submit', 'form[name="ffede"]', function (e) {
     e.preventDefault();
-    
+
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
-    
+
     var $form = $(e.target);
     // Get the BootstrapValidator instance
     var bv = $form.data('bootstrapValidator');
@@ -589,6 +589,9 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
         xhr.abort();
     }
     $('#blockImportEventsFacebook').hide();
+    hideLoaderGif($('#importEventsFacebook'));
+
+    showLoaderGif($('#previewImportEventsFacebook'));
 
     xhr = $.ajax({
         type: "POST",
@@ -597,6 +600,7 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
         {
             $('#facebookResults').html(html);
             $('#blockImportEventsFacebook').show();
+            hideLoaderGif($('#previewImportEventsFacebook'));
         }
     });
     return false;
@@ -616,6 +620,8 @@ $(document).on('click', '#importEventsFacebook', function () {
         data.push($(this).data('id'));
     });
 
+    showLoaderGif($('#importEventsFacebook'));
+
     xhr = $.ajax({
         type: "POST",
         url: $(this).attr("href"),
@@ -624,6 +630,7 @@ $(document).on('click', '#importEventsFacebook', function () {
         {
             $('#facebookResults').html(html);
             $('#blockImportEventsFacebook').hide();
+            hideLoaderGif($('#importEventsFacebook'));
         }
     });
     return false;
@@ -635,6 +642,7 @@ $(document).on('submit', 'form[name="facebook_event_import"]', function (e) {
     }
 
     $('#blockImportEventsFacebook').hide();
+    hideLoaderGif($('#importEventsFacebook'));
     e.preventDefault();
 
     var postData = $(this).serializeArray();

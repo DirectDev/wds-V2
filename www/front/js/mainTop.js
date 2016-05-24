@@ -256,3 +256,10 @@ $(document).on('click', 'button.presence_button', function (e) {
             });
     e.preventDefault(); //STOP default actiont.
 });
+
+function showLoaderGif(button){
+     button.find('img').show();
+}
+function hideLoaderGif(button){
+     button.find('img').hide();
+}
