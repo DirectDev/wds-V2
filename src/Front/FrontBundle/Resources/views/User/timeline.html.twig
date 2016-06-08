@@ -42,7 +42,7 @@
         {% if count == 0 %}
             {% if app.user and app.user == user %}
                 {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
-                    path : path('front_user_edit', { id : app.user.id } ) , 
+                    path : path('front_event_new') , 
                     title : 'add_block.user.timeline.add_title'|trans, 
                     paragraphe: 'add_block.user.timeline.add_paragraphe'|trans 
                 } %}

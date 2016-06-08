@@ -301,7 +301,6 @@ dance_bachata_sensual: /dance/dance_bachata_sensual
 
 # Desc: /dance/dance_kizomba
 dance_kizomba: /dance/dance_kizomba
-dance_merengue: /dance/dance_merengue
 
 # Desc: /dance/dance_salsa
 dance_salsa: /dance/dance_salsa
@@ -320,7 +319,6 @@ dance_salsa_on2: /dance/dance_salsa_on2
 
 # Desc: /dance/dance_salsa_rueda
 dance_salsa_rueda: /dance/dance_salsa_rueda
-dance_tango: /dance/dance_tango
 
 # Desc: /facebook/import_event_page
 facebook_import_event_page: /facebook/import_event_page
@@ -761,11 +759,9 @@ learn_bachata: /learn/learn_bachata
 
 # Desc: /learn/learn_kizomba
 learn_kizomba: /learn/learn_kizomba
-learn_merengue: /learn/learn_merengue
 
 # Desc: /learn/learn_salsa
 learn_salsa: /learn/learn_salsa
-learn_tango: /learn/learn_tango
 
 # Desc: /media/cache/resolve/{filter}/{path}
 liip_imagine_filter: '/media/cache/resolve/{filter}/{path}'

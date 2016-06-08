@@ -262,7 +262,7 @@ file:
     cancel: Annuler
     delete_file: Effacer
     drag_drop_message: 'ou glissez-déposez vos fichiers ici'
-    reminder: N'oubliez pas de cliquer sur 'Enregistrer les images'
+    reminder: 'N''oubliez pas de cliquer sur ''Enregistrer les images'''
     save: 'Enregistrer les images'
     start_upload: Uploader
     uploading: Chargement
@@ -358,7 +358,7 @@ form:
                 label: 'Organisé par'
 
             published:
-                label: Publié
+                label: 'Publié (cochez cette case pour faire apparaître votre évenement dans les recherches)'
 
             translations:
                 children:
@@ -404,7 +404,7 @@ form:
                 label: 'Organisé par'
 
             published:
-                label: Publié (cochez cette case pour faire apparaître votre évenement dans les recherches)
+                label: 'Publié (cochez cette case pour faire apparaître votre évenement dans les recherches)'
 
             translations:
                 children:
@@ -420,6 +420,9 @@ form:
 
             user:
                 label: User
+
+        flashbags:
+            update: La description de l'événement a été mise à jour.
 
     ffel:
         children:
@@ -452,6 +455,9 @@ form:
 
             xing_link:
                 label: Xing
+
+        flashbags:
+            update: Les liens de l'événement ont été mis à jour.
 
     ffet:
         children:
@@ -488,7 +494,7 @@ form:
 
             url:
                 label: URL
-                placeholder: Lien vers vos musiques SoundCloud ou Spotify.
+                placeholder: 'Lien vers vos musiques SoundCloud ou Spotify.'
 
     ffmt:
         children:
@@ -562,7 +568,7 @@ form:
                 label: 'Lien Xing'
 
         flashbags:
-            update: Vos liens ont été mis à jour
+            update: 'Vos liens ont été mis à jour'
 
     ffup:
         children:
@@ -597,7 +603,7 @@ form:
 
             url:
                 label: URL
-                placeholder: Lien vers une vidéo Youtube, Vimeo ou Dailymotion.
+                placeholder: 'Lien vers une vidéo Youtube, Vimeo ou Dailymotion.'
 
     form:
         children:
@@ -785,7 +791,7 @@ navbar:
     festivals.asia: Asie
     festivals.australia: Australie
     festivals.calendar: Calendier
-    festivals.calendar.a: Recherchez les festivals par date
+    festivals.calendar.a: 'Recherchez les festivals par date'
     festivals.calendar.cities.title: 'Festivals par destinations'
     festivals.calendar.p: 'Les festivals classés par date'
     festivals.calendar.page.p: 'Recherchez les festivals Salsa/Bachata/Kizomba à travers le monde. Indiquez une date dans le champs ci dessous ou cliquez sur les raccourcis. Les festivals sont classés par ordre chronologique.'
@@ -887,7 +893,7 @@ user:
     edit:
         addresses:
             h2: 'Indiquez votre ou vos adresses'
-            p: Ajoutez une ou plusieurs adresses pour apparaitre dans les villes de votre choix.
+            p: 'Ajoutez une ou plusieurs adresses pour apparaitre dans les villes de votre choix.'
 
         adresses: Adresses
         descriptions: Descriptions
@@ -896,7 +902,7 @@ user:
         links.h2: 'Liez votre profil aux réseaux sociaux'
         musics: Musiques
         musics.h2: 'Partagez vos musiques préfèrées'
-        musics.p: Ajoutez vos musiques SoundCloud ou Spotify.
+        musics.p: 'Ajoutez vos musiques SoundCloud ou Spotify.'
 
         photos:
             h2: 'Partagez vos photos'
@@ -906,7 +912,7 @@ user:
         profil.h2: 'Indiquez votre nom et vos préférences'
         videos: Vidéos
         videos.h2: 'Partagez vos vidéos préfèrées'
-        videos.p: Ajoutez vos vidéos Youtube, Vimeo ou Dailymotion.
+        videos.p: 'Ajoutez vos vidéos Youtube, Vimeo ou Dailymotion.'
 
     edit_profil: 'Modifier mon profil'
 

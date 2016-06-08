@@ -262,7 +262,7 @@ file:
     cancel: Cancel
     delete_file: 'Delete image'
     drag_drop_message: 'Or drag and drop your images here'
-    reminder: Don't forget to click 'Save images' once uploaded
+    reminder: 'Don''t forget to click ''Save images'' once uploaded'
     save: 'Save images'
     start_upload: 'Start upload'
     uploading: Uploading
@@ -594,6 +594,9 @@ form:
             user:
                 label: User
 
+        flashbags:
+            update: The event description has been updated
+
     ffel:
         children:
             baidu_link:
@@ -625,6 +628,9 @@ form:
 
             xing_link:
                 label: Xing
+
+        flashbags:
+            update: The event links have been updated
 
     ffet:
         children:
@@ -661,7 +667,7 @@ form:
 
             url:
                 label: URL
-                placeholder: Link to SoundCloud or Spotify musics
+                placeholder: 'Link to SoundCloud or Spotify musics'
 
     ffmt:
         children:
@@ -700,7 +706,7 @@ form:
                 label: Translations
 
         flashbags:
-            update: Your description has been updated
+            update: 'Your description has been updated'
 
     fful:
         children:
@@ -735,7 +741,7 @@ form:
                 label: 'Xing link'
 
         flashbags:
-            update: Your links has been updated
+            update: 'Your links has been updated'
 
     ffup:
         children:
@@ -749,7 +755,7 @@ form:
                 label: Username
 
         flashbags:
-            update: Your profil has been updated
+            update: 'Your profil has been updated'
 
     ffv:
         children:
@@ -770,7 +776,7 @@ form:
 
             url:
                 label: URL
-                placeholder: Link to Youtube, Vimeo or Dailymotion video
+                placeholder: 'Link to Youtube, Vimeo or Dailymotion video'
 
     form:
         children:
@@ -826,7 +832,7 @@ front:
     addresses_title: Addresses
 
     alert:
-        error: Oups !
+        error: 'Oups !'
         info: 'Info : '
         success: 'Well done ! '
         warning: 'Warning ! '
@@ -958,7 +964,7 @@ navbar:
     festivals.asia: Asia
     festivals.australia: Australia
     festivals.calendar: Calendar
-    festivals.calendar.a: Search festival by date
+    festivals.calendar.a: 'Search festival by date'
     festivals.calendar.cities.title: 'Festivals by destinations'
     festivals.calendar.p: 'Find festivals by date'
     festivals.calendar.page.p: 'Search for Salsa/Bachata/Kizomba festivals around the world. Select a date below or use the preset links. Festivals are ordered by date.'
@@ -1061,7 +1067,7 @@ user:
     edit:
         addresses:
             h2: 'Manage your addresses'
-            p: Add one or more addresses to appear in cities you dance in.
+            p: 'Add one or more addresses to appear in cities you dance in.'
 
         adresses: Adresses
         descriptions: Descriptions
@@ -1070,7 +1076,7 @@ user:
         links.h2: 'Link your profile to social networks.'
         musics: Musics
         musics.h2: 'Share your favorite musics'
-        musics.p: Add SoundCloud or Spotify musics
+        musics.p: 'Add SoundCloud or Spotify musics'
 
         photos:
             h2: 'Share your favorite photos'
@@ -1080,7 +1086,7 @@ user:
         profil.h2: 'Manage your name and details.'
         videos: Videos
         videos.h2: 'Share your favorite videos'
-        videos.p: Add Youtube, Vimeo, or Dailymotion videos
+        videos.p: 'Add Youtube, Vimeo, or Dailymotion videos'
 
     edit_profil: 'Edit Profil'
 

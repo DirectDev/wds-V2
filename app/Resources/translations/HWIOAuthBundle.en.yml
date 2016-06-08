@@ -1,15 +1,15 @@
 connect:
     confirm:
-        cancel: connect.confirm.cancel   # FIXME
-        submit: connect.confirm.submit   # FIXME
-        text: connect.confirm.text   # FIXME
+        cancel: connect.confirm.cancel
+        submit: connect.confirm.submit
+        text: connect.confirm.text
 
     registration:
-        cancel: connect.registration.cancel   # FIXME
-        submit: connect.registration.submit   # FIXME
+        cancel: connect.registration.cancel
+        submit: connect.registration.submit
 
 header:
-    connecting: header.connecting   # FIXME
-    register: header.register   # FIXME
-    registration_success: header.registration_success   # FIXME
-    success: header.success   # FIXME
+    connecting: header.connecting
+    register: header.register
+    registration_success: header.registration_success
+    success: header.success
