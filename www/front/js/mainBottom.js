@@ -427,6 +427,7 @@ $(document).on('submit', 'form[name="ffede"]', function (e) {
                     $('#descriptionForm').empty().html(html);
                     updateCKEditors();
                     loadBootstrapValidator();
+                    scrollToElement($('#descriptionForm .flashbags'));
                 },
                 error: function (html)
                 {
@@ -450,8 +451,9 @@ $(document).on('submit', 'form[name="ffel"]', function (e) {
                 data: postData,
                 success: function (html)
                 {
-                    $('#linkFormDiv').empty().html(html);
+                    $('#linkForm').empty().html(html);
                     loadBootstrapValidator();
+                    scrollToElement($('#linkForm .flashbags'));
                 },
                 error: function (html)
                 {

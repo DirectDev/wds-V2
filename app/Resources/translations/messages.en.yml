@@ -697,9 +697,6 @@ form:
                             description:
                                 label: Description
 
-                            description_short:
-                                label: 'Short description'
-
                 label: Translations
 
         flashbags:

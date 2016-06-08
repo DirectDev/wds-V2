@@ -53,6 +53,7 @@ resetting:
     reset:
         submit: Submit
 
+"Bad credentials.": Bad credentials.
 security:
     login:
         password: Password

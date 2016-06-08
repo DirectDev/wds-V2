@@ -53,6 +53,7 @@ resetting:
     reset:
         submit: Réinitialiser
 
+"Bad credentials.": Nom d'utilisateur ou mot de passe incorrect
 security:
     login:
         password: Password

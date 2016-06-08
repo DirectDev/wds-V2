@@ -868,3 +868,6 @@ label.required:after {
     content:" *";
     color:red;
 }
+.text-error {
+    color: #b94a48;
+}

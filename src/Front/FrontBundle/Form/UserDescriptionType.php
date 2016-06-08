@@ -22,7 +22,7 @@ class UserDescriptionType extends AbstractType {
             'locales' => $locales,
             'fields' => array(
                 'baseline' => array(),
-                'description' => array('attr' => array('class' => 'ckeditor form-control')),
+                'description' => array('attr' => array('class' => 'form-control')),
     )))
         ;
     }

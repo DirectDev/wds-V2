@@ -198,8 +198,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->translate($locale)->setBaseline($this->array_baseline[rand(0, 19)]);
         if (rand(0, 1))
             $User->translate($locale)->setDescription($this->array_description[rand(0, 19)]);
-        if (rand(0, 1))
-            $User->translate($locale)->setDescriptionShort($this->array_description[rand(0, 19)]);
 
         if (rand(0, 1))
             $User->setFacebookLink('http://link-to-' . $value);

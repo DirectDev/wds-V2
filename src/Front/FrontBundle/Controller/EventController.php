@@ -265,6 +265,10 @@ class EventController extends Controller {
 
         if ($editLinkForm->isValid()) {
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffel.flashbags.update')
+            );
         }
 
         return $this->render('FrontFrontBundle:Event:linkForm.html.twig', array(
@@ -291,6 +295,10 @@ class EventController extends Controller {
 
         if ($editDescriptionForm->isValid()) {
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffede.flashbags.update')
+            );
         }
 
         return $this->render('FrontFrontBundle:Event:DescriptionForm.html.twig', array(

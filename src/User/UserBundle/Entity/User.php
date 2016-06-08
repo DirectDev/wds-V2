@@ -364,8 +364,6 @@ class User extends BaseUser {
     public function hasNoDetails() {
         if ($this->getBaseline())
             return false;
-        if ($this->getDescriptionShort())
-            return false;
         if ($this->getDescription())
             return false;
         if ($this->getAddress())
