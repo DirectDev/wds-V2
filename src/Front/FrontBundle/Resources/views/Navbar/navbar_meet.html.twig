@@ -10,6 +10,29 @@
                 <div class="container">
                     <div class="row equal-height">
 
+                        <div class="col-md-3 equal-height-in ">
+                            <ul class="list-unstyled equal-height-list">
+                                <li class='sm-hidden'>
+                                    <h3>Rechercher</h3>
+                                </li>
+                                <li>
+                                    {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation', 'id' : 'user_filter_form' } } ) }}
+                                    <div class="input-group m-l-10 m-r-10">
+                                        {% set placeholder %}
+                                            {% trans %}user.search_input_placeholder{% endtrans %}
+                                        {% endset %}
+                                        {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : placeholder|trim } } ) }}
+                                        <span class="input-group-btn">
+                                            <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                                        </span>
+                                        {{ form_row(filterForm.musictype) }}
+                                        {{ form_row(filterForm.usertype) }}
+                                    </div>
+                                    {{ form_end(filterForm) }}
+                                </li>
+                            </ul>
+                        </div> 
+
                         <div class="col-md-3 equal-height-in">
                             <ul class="list-unstyled equal-height-list">
                                 <li class='sm-hidden'>
@@ -91,7 +114,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-3 equal-height-in nav_sm_hidden_highlight">
+                        {#<div class="col-md-3 equal-height-in nav_sm_hidden_highlight">
                             <ul class="list-unstyled equal-height-list">
                                 <li>
                                     <h3>{% trans %}navbar.meet.cities{% endtrans %}</h3>
@@ -100,7 +123,8 @@
                                     {% include 'FrontFrontBundle:Navbar:navbar_li_city.html.twig' %}
                                 {% endfor %}
                             </ul>
-                        </div>            
+                        </div>  #}          
+
 
                     </div>
                 </div>    

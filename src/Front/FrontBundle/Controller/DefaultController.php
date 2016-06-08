@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Front\FrontBundle\Entity\City;
 use Front\FrontBundle\Form\MusicTypeFrontFilterType;
 use Front\FrontBundle\Form\EventTypeFrontFilterType;
+use Front\FrontBundle\Form\UserFilterType;
 
 class DefaultController extends Controller {
 
@@ -120,14 +121,25 @@ class DefaultController extends Controller {
         $MeaUsersSalsaMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForSalsaMeet(2);
         $MeaUsersBachataMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForBachataMeet(2);
         $MeaUsersKizombaMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForKizombaMeet(2);
-        $MeaCitiesMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForMeet(4);
+//        $MeaCitiesMeet = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForMeet(4);
+        $filterForm = $this->createFilterUserForm();
 
         return $this->render('FrontFrontBundle:Navbar:navbar_meet.html.twig', array(
                     'MeaUsersSalsaMeet' => $MeaUsersSalsaMeet,
                     'MeaUsersBachataMeet' => $MeaUsersBachataMeet,
                     'MeaUsersKizombaMeet' => $MeaUsersKizombaMeet,
-                    'MeaCitiesMeet' => $MeaCitiesMeet,
+//                    'MeaCitiesMeet' => $MeaCitiesMeet,
+                    'filterForm' => $filterForm->createView(),
         ));
+    }
+
+    private function createFilterUserForm() {
+        $form = $this->createForm(new UserFilterType(), null, array(
+            'action' => $this->generateUrl('front_user_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
     }
 
 }

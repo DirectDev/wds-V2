@@ -788,6 +788,7 @@ navbar:
     festivals.asia: Asie
     festivals.australia: Australie
     festivals.calendar: Calendier
+    festivals.calendar.a: Recherchez les festivals par date
     festivals.calendar.cities.title: 'Festivals par destinations'
     festivals.calendar.p: 'Les festivals classés par date'
     festivals.calendar.page.p: 'Recherchez les festivals Salsa/Bachata/Kizomba à travers le monde. Indiquez une date dans le champs ci dessous ou cliquez sur les raccourcis. Les festivals sont classés par ordre chronologique.'
@@ -816,16 +817,16 @@ navbar:
     medias: Médias
     meet: Rencontrer
     meet.bachata: 'Les Bachatero(a)s'
-    meet.bachata.artist: 'Les danseurs pros'
+    meet.bachata.artist: 'Les danseurs de Bachata'
     meet.bachata.bar: 'Les lieux pour la Bachata'
     meet.bachata.teacher: 'Les professeurs de Bachata'
     meet.cities: Destinations
     meet.kizomba: 'Les Kizombero(a)s'
-    meet.kizomba.artist: 'Les danseurs pros'
+    meet.kizomba.artist: 'Les danseurs de Kizomba'
     meet.kizomba.bar: 'Les lieux pour la Kizomba'
     meet.kizomba.teacher: 'Les professeurs de Kizomba'
     meet.salsa: 'Les Salsero(a)s'
-    meet.salsa.artist: 'Les danseurs pros'
+    meet.salsa.artist: 'Les danseurs de Salsa'
     meet.salsa.bar: 'Les lieux pour la Salsa'
     meet.salsa.teacher: 'Les professeurs de Salsa'
     moves: 'Passes & Shines'
@@ -938,7 +939,7 @@ user:
     search_by_musictype: 'Filtrer par musique'
     search_by_user: 'Filter par danseur'
     search_by_usertype: 'Filter par type de danseur'
-    search_input_placeholder: 'Rechercher un danseur'
+    search_input_placeholder: 'Rechercher par nom'
     search_title: 'Danseurs et Danseuses'
     they_like: 'Ils aiment'
     user_title: 'Mon Profil'

@@ -961,6 +961,7 @@ navbar:
     festivals.asia: Asia
     festivals.australia: Australia
     festivals.calendar: Calendar
+    festivals.calendar.a: Search festival by date
     festivals.calendar.cities.title: 'Festivals by destinations'
     festivals.calendar.p: 'Find festivals by date'
     festivals.calendar.page.p: 'Search for Salsa/Bachata/Kizomba festivals around the world. Select a date below or use the preset links. Festivals are ordered by date.'
