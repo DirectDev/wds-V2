@@ -404,7 +404,7 @@ form:
                 label: 'Organisé par'
 
             published:
-                label: Publié
+                label: Publié (cochez cette case pour faire apparaître votre évenement dans les recherches)
 
             translations:
                 children:

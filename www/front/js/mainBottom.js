@@ -207,10 +207,14 @@ $(document).on('click', '#userAddVideo', function () {
 $(document).on('submit', 'form.newVideo', function (e) {
     e.preventDefault();
 
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
     var div = $(this).parent();
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",

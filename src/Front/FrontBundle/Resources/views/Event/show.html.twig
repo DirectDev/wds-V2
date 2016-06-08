@@ -134,6 +134,12 @@
                             {% render(path('front_event_alerts', { id : event.id } )) %}
                         </div>
 
+                        {% if app.user and app.user == event.user %}
+                            <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+                                {% trans %}modify{% endtrans %}
+                            </a>
+                        {% endif%}
+
                         <hr>
 
                         <h3>{% trans %}event.calendar{% endtrans %}</h3>

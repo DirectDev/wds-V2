@@ -112,7 +112,7 @@ function reloadEventAlerts() {
             url: path,
             success: function (html)
             {
-                $('#event_alerts').empty().html(html)
+                $('#event_alerts').empty().html(html);
             }
         });
 }
@@ -174,6 +174,7 @@ $(document).on('submit', '#form_eventdate_new, #form_eventdate_daily', function 
                 success: function (html)
                 {
                     $('#eventdates').empty().html(html);
+                    scrollToElement($('#eventdates'));
                     reloadEventAlerts();
                 },
                 error: function (html)
