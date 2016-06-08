@@ -1,0 +1,33 @@
+<div class="flashbags">
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.success{% endtrans %}</strong>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-info fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-error fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <strong>{% trans %}front.alert.error{% endtrans %}</strong>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+</div>

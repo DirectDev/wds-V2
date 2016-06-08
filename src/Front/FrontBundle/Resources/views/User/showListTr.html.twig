@@ -19,7 +19,7 @@
             </p>
         {% endif %}
 
-        <p>{{ person.getDescriptionShort|raw }}</p>
+        <p>{{ person.getDescription()|raw }}</p>
     </td>
     <td>
         {% include 'FrontFrontBundle:User:musicTypeList.html.twig' %}

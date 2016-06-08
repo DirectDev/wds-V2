@@ -5,19 +5,19 @@ Delete: Supprimer
 'I don''t go': 'Je n''y vais plus'
 'I don''t like': 'Je n''aime plus'
 'I go': 'J''y vais'
-Update: 'Mettre à jour'
-Previous: Précédent
 Next: Suivant
+Previous: Précédent
+Update: 'Mettre à jour'
 
 add_block:
     event:
         description:
             add_paragraphe: 'Ajoutez des informations commme le but, le planning, le prix, etc.'
-            add_title: Décrivez cet événement
+            add_title: 'Décrivez cet événement'
 
         images:
-            add_paragraphe: ''
-            add_title: Ajouter des photos
+            add_paragraphe: add_block.event.images.add_paragraphe
+            add_title: 'Ajouter des photos'
 
     user:
         details:
@@ -262,6 +262,7 @@ file:
     cancel: Annuler
     delete_file: Effacer
     drag_drop_message: 'ou glissez-déposez vos fichiers ici'
+    reminder: N'oubliez pas de cliquer sur 'Enregistrer les images'
     save: 'Enregistrer les images'
     start_upload: Uploader
     uploading: Chargement
@@ -296,27 +297,6 @@ form:
 
             subject:
                 label: Sujet
-
-    form:
-        children:
-            stopdate:
-                label: 'jusqu''au'
-
-            time:
-                label: 'à'
-
-            weekday:
-                label: ''
-
-    ffetff:
-        children:
-            name:
-                label: Type
-
-    ffmtff:
-        children:
-            name:
-                label: Musique
 
     ffa:
         children:
@@ -395,6 +375,20 @@ form:
             user:
                 label: User
 
+    ffed:
+        children:
+            startdate:
+                label: Début
+
+            starttime:
+                label: Heure
+
+            stopdate:
+                label: Fin
+
+            stoptime:
+                label: Heure
+
     ffede:
         children:
             eventTypes:
@@ -459,20 +453,6 @@ form:
             xing_link:
                 label: Xing
 
-    ffed:
-        children:
-            startdate:
-                label: Début
-
-            starttime:
-                label: Heure
-
-            stopdate:
-                label: Fin
-
-            stoptime:
-                label: Heure
-
     ffet:
         children:
             name:
@@ -486,6 +466,11 @@ form:
                                 label: Titre
 
                 label: Traductions
+
+    ffetff:
+        children:
+            name:
+                label: Type
 
     ffm:
         children:
@@ -503,6 +488,7 @@ form:
 
             url:
                 label: URL
+                placeholder: Lien vers vos musiques SoundCloud ou Spotify.
 
     ffmt:
         children:
@@ -518,25 +504,10 @@ form:
 
                 label: Traductions
 
-    front_frontbundle_page:
+    ffmtff:
         children:
             name:
-                label: Nom
-
-            translations:
-                children:
-                    fr:
-                        children:
-                            content:
-                                label: Contenu
-
-                            description:
-                                label: Description
-
-                            title:
-                                label: Titre
-
-                label: Traductions
+                label: Musique
 
     ffud:
         children:
@@ -557,6 +528,9 @@ form:
                                 label: 'Description courte'
 
                 label: Traductions
+
+        flashbags:
+            update: 'Votre description a été mise à jour'
 
     fful:
         children:
@@ -590,6 +564,9 @@ form:
             xing_link:
                 label: 'Lien Xing'
 
+        flashbags:
+            update: Vos liens ont été mis à jour
+
     ffup:
         children:
             musicTypes:
@@ -600,6 +577,9 @@ form:
 
             username:
                 label: Login
+
+        flashbags:
+            update: 'Votre profile a été mis à jour'
 
     ffv:
         children:
@@ -620,6 +600,38 @@ form:
 
             url:
                 label: URL
+                placeholder: Lien vers une vidéo Youtube, Vimeo ou Dailymotion.
+
+    form:
+        children:
+            stopdate:
+                label: 'jusqu''au'
+
+            time:
+                label: 'à'
+
+            weekday:
+                label: ''
+
+    front_frontbundle_page:
+        children:
+            name:
+                label: Nom
+
+            translations:
+                children:
+                    fr:
+                        children:
+                            content:
+                                label: Contenu
+
+                            description:
+                                label: Description
+
+                            title:
+                                label: Titre
+
+                label: Traductions
 
     user_userbundle_user:
         children:
@@ -644,6 +656,7 @@ front:
     addresses_title: Adresses
 
     alert:
+        error: front.alert.error
         info: 'Info : '
         success: 'Info : '
         warning: 'Attention ! '
@@ -697,32 +710,32 @@ info_block:
     event:
         description:
             info_paragraphe: 'Pas encore d''informations'
-            info_title: ''
+            info_title: info_block.event.description.info_title
 
         images:
             info_paragraphe: 'Pas encore de photos'
-            info_title: ''
+            info_title: info_block.event.images.info_title
 
     user:
         details:
             info_paragraphe: 'Pas de photos'
-            info_title: ''
+            info_title: info_block.user.details.info_title
 
         musics:
             info_paragraphe: 'Pas de musiques'
-            info_title: ''
+            info_title: info_block.user.musics.info_title
 
         photos:
             info_paragraphe: 'Pas de photos'
-            info_title: ''
+            info_title: info_block.user.photos.info_title
 
         timeline:
             info_paragraphe: 'Pas d''événements à venir'
-            info_title: ''
+            info_title: info_block.user.timeline.info_title
 
         videos:
             info_paragraphe: 'Pas de vidéos'
-            info_title: ''
+            info_title: info_block.user.videos.info_title
 
 link:
     home: Accueil
@@ -876,6 +889,7 @@ user:
     edit:
         addresses:
             h2: 'Indiquez votre ou vos adresses'
+            p: Ajoutez une ou plusieurs adresses pour apparaitre dans les villes de votre choix.
 
         adresses: Adresses
         descriptions: Descriptions
@@ -884,6 +898,7 @@ user:
         links.h2: 'Liez votre profil aux réseaux sociaux'
         musics: Musiques
         musics.h2: 'Partagez vos musiques préfèrées'
+        musics.p: Ajoutez vos musiques SoundCloud ou Spotify.
 
         photos:
             h2: 'Partagez vos photos'
@@ -893,6 +908,7 @@ user:
         profil.h2: 'Indiquez votre nom et vos préférences'
         videos: Vidéos
         videos.h2: 'Partagez vos vidéos préfèrées'
+        videos.p: Ajoutez vos vidéos Youtube, Vimeo ou Dailymotion.
 
     edit_profil: 'Modifier mon profil'
 

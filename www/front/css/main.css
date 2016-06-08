@@ -864,3 +864,7 @@ a.navbar_highlight {
 .text-left-important{
     text-align: left !important;
 }
+label.required:after {
+    content:" *";
+    color:red;
+}

@@ -237,6 +237,10 @@ class UserController extends Controller {
 
         if ($editProfileForm->isValid()) {
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffup.flashbags.update')
+            );
         }
 
         return $this->render('FrontFrontBundle:User:profileForm.html.twig', array(
@@ -263,6 +267,10 @@ class UserController extends Controller {
 
         if ($editDescriptionForm->isValid()) {
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffud.flashbags.update')
+            );
         }
 
         return $this->render('FrontFrontBundle:User:descriptionForm.html.twig', array(
@@ -289,6 +297,10 @@ class UserController extends Controller {
 
         if ($editLinkForm->isValid()) {
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.fful.flashbags.update')
+            );
         }
 
         return $this->render('FrontFrontBundle:User:linkForm.html.twig', array(

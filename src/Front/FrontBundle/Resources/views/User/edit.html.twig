@@ -87,6 +87,9 @@
                         <div id="music" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
 
+                            <p>{% trans %}user.edit.musics.p{% endtrans %}</p>
+
+
                             <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
                                 {% trans %}user.add_music_button{% endtrans %}
                             </button>
@@ -104,6 +107,9 @@
                         <div id="video" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">{% trans %}user.edit.videos.h2{% endtrans %}</h2>
 
+                            <p>{% trans %}user.edit.videos.p{% endtrans %}</p>
+
+
                             <button class='btn btn-success margin-bottom-30 pull-left' id="userAddVideo" href="{{ path('front_video_new', { id : entity.id } ) }}">
                                 {% trans %}user.add_video_button{% endtrans %}
                             </button>
@@ -118,6 +124,8 @@
 
                         <div id="address" class="profile-edit tab-pane fade">
                             <h2 class="heading-md">{% trans %}user.edit.addresses.h2{% endtrans %}</h2>
+
+                            <p>{% trans %}user.edit.addresses.p{% endtrans %}</p>
 
                             <button class='btn btn-success margin-bottom-30 pull-left' id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">
                                 {% trans %}user.add_address_button{% endtrans %}
@@ -158,7 +166,7 @@
     <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
-{#            PortfolioPage.init();#}
+        {#            PortfolioPage.init();#}
 
         });
     </script>

@@ -7,7 +7,10 @@
     </div>
 
     <div class="col-md-10">
-        {{ form_row(form.url) }}
+        {% set placeholder %}
+            {% trans %}form.ffm.children.url.placeholder{% endtrans %}
+        {% endset %}                            
+        {{ form_row(form.url, { 'attr' : { 'placeholder' : placeholder|trim } } ) }}
         {{ form_row(form.tags) }}
     </div>
 
@@ -18,3 +21,5 @@
     {{ form_end(form) }}
 
 </div>
+
+<div class="clear-both"></div>

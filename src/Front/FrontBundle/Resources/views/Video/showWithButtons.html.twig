@@ -1,4 +1,4 @@
-<div id="video_{{ video.id }}">
+<div id="video_{{ video.id }}" class="tag-box tag-box-v2 box-shadow shadow-effect-1">
 
     <div class="col-md-10 md-margin-bottom-20">
         {% include 'FrontFrontBundle:Video:player.html.twig' with { video : video } %}
@@ -28,5 +28,7 @@
             </p>
         {% endif %}   
     </div>
+
+    <div class="clear-both"></div>
 
 </div>

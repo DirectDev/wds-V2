@@ -5,19 +5,19 @@ Delete: Delete
 'I don''t go': 'I don''t go'
 'I don''t like': 'I don''t like'
 'I go': 'I go'
-Update: Update
-Previous: Previous
 Next: Next
+Previous: Previous
+Update: Update
 
 add_block:
     event:
         description:
             add_paragraphe: 'Add details like what is this event for, which style or musics, the price...'
-            add_title: Add a description
+            add_title: 'Add a description'
 
         images:
-            add_paragraphe: ''
-            add_title: Add your pictures
+            add_paragraphe: add_block.event.images.add_paragraphe
+            add_title: 'Add your pictures'
 
     user:
         details:
@@ -262,6 +262,7 @@ file:
     cancel: Cancel
     delete_file: 'Delete image'
     drag_drop_message: 'Or drag and drop your images here'
+    reminder: Don't forget to click 'Save images' once uploaded
     save: 'Save images'
     start_upload: 'Start upload'
     uploading: Uploading
@@ -470,27 +471,6 @@ form:
             subject:
                 label: Subject
 
-    form:
-        children:
-            stopdate:
-                label: until
-
-            time:
-                label: at
-
-            weekday:
-                label: ''
-
-    ffetff:
-        children:
-            name:
-                label: 'Event type'
-
-    ffmtff:
-        children:
-            name:
-                label: Music
-
     ffa:
         children:
             city:
@@ -568,6 +548,20 @@ form:
             user:
                 label: User
 
+    ffed:
+        children:
+            startdate:
+                label: 'Start date'
+
+            starttime:
+                label: 'Start time'
+
+            stopdate:
+                label: 'Stop date'
+
+            stoptime:
+                label: 'Stop time'
+
     ffede:
         children:
             eventTypes:
@@ -632,20 +626,6 @@ form:
             xing_link:
                 label: Xing
 
-    ffed:
-        children:
-            startdate:
-                label: 'Start date'
-
-            starttime:
-                label: 'Start time'
-
-            stopdate:
-                label: 'Stop date'
-
-            stoptime:
-                label: 'Stop time'
-
     ffet:
         children:
             name:
@@ -659,6 +639,11 @@ form:
                                 label: Title
 
                 label: Translations
+
+    ffetff:
+        children:
+            name:
+                label: 'Event type'
 
     ffm:
         children:
@@ -676,6 +661,7 @@ form:
 
             url:
                 label: URL
+                placeholder: Link to SoundCloud or Spotify musics
 
     ffmt:
         children:
@@ -691,25 +677,10 @@ form:
 
                 label: Translations
 
-    front_frontbundle_page:
+    ffmtff:
         children:
             name:
-                label: Name
-
-            translations:
-                children:
-                    en:
-                        children:
-                            content:
-                                label: Content
-
-                            description:
-                                label: Description
-
-                            title:
-                                label: Title
-
-                label: Translations
+                label: Music
 
     ffud:
         children:
@@ -730,6 +701,9 @@ form:
                                 label: 'Short description'
 
                 label: Translations
+
+        flashbags:
+            update: Your description has been updated
 
     fful:
         children:
@@ -763,6 +737,9 @@ form:
             xing_link:
                 label: 'Xing link'
 
+        flashbags:
+            update: Your links has been updated
+
     ffup:
         children:
             musicTypes:
@@ -773,6 +750,9 @@ form:
 
             username:
                 label: Username
+
+        flashbags:
+            update: Your profil has been updated
 
     ffv:
         children:
@@ -793,6 +773,38 @@ form:
 
             url:
                 label: URL
+                placeholder: Link to Youtube, Vimeo or Dailymotion video
+
+    form:
+        children:
+            stopdate:
+                label: until
+
+            time:
+                label: at
+
+            weekday:
+                label: ''
+
+    front_frontbundle_page:
+        children:
+            name:
+                label: Name
+
+            translations:
+                children:
+                    en:
+                        children:
+                            content:
+                                label: Content
+
+                            description:
+                                label: Description
+
+                            title:
+                                label: Title
+
+                label: Translations
 
     user_userbundle_user:
         children:
@@ -817,6 +829,7 @@ front:
     addresses_title: Addresses
 
     alert:
+        error: Oups !
         info: 'Info : '
         success: 'Well done ! '
         warning: 'Warning ! '
@@ -870,32 +883,32 @@ info_block:
     event:
         description:
             info_paragraphe: 'No description yet'
-            info_title: ''
+            info_title: info_block.event.description.info_title
 
         images:
             info_paragraphe: 'No photos yet'
-            info_title: ''
+            info_title: info_block.event.images.info_title
 
     user:
         details:
             info_paragraphe: 'No description yet'
-            info_title: ''
+            info_title: info_block.user.details.info_title
 
         musics:
             info_paragraphe: 'No musics yet'
-            info_title: ''
+            info_title: info_block.user.musics.info_title
 
         photos:
             info_paragraphe: 'No photos yet'
-            info_title: ''
+            info_title: info_block.user.photos.info_title
 
         timeline:
             info_paragraphe: 'No futur events'
-            info_title: ''
+            info_title: info_block.user.timeline.info_title
 
         videos:
             info_paragraphe: 'No videos yet'
-            info_title: ''
+            info_title: info_block.user.videos.info_title
 
 link:
     home: Home
@@ -1050,6 +1063,7 @@ user:
     edit:
         addresses:
             h2: 'Manage your addresses'
+            p: Add one or more addresses to appear in cities you dance in.
 
         adresses: Adresses
         descriptions: Descriptions
@@ -1058,6 +1072,7 @@ user:
         links.h2: 'Link your profile to social networks.'
         musics: Musics
         musics.h2: 'Share your favorite musics'
+        musics.p: Add SoundCloud or Spotify musics
 
         photos:
             h2: 'Share your favorite photos'
@@ -1067,6 +1082,7 @@ user:
         profil.h2: 'Manage your name and details.'
         videos: Videos
         videos.h2: 'Share your favorite videos'
+        videos.p: Add Youtube, Vimeo, or Dailymotion videos
 
     edit_profil: 'Edit Profil'
 
@@ -1111,9 +1127,9 @@ user_bundle:
 
     signin:
         or: or
-        signin_facebook: 'Signin with facebook'
+        signin_facebook: 'Sign in with facebook'
         signin_facebook_paragraphe: 'Connect with Facebook to import all your facebook events easily !'
-        signin_google: 'Signin with google'
+        signin_google: 'Sign in with google'
 
 video:
     list:

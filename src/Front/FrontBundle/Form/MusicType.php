@@ -27,7 +27,7 @@ class MusicType extends AbstractType {
                 ->add('url')
                 ->add('tags', 'entity', array(
                     'class' => 'FrontFrontBundle:Tag',
-                    'property' => 'name',
+                    'property' => 'title',
                     'multiple' => true,
                     'expanded' => true,
                     'by_reference' => false,

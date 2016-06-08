@@ -15,6 +15,7 @@ $(document).on('submit', 'form[name="ffup"]', function (e) {
                 {
                     $('#profilFormDiv').empty().html(html);
                     loadBootstrapValidator();
+                    scrollToElement($('#profilFormDiv .flashbags'));
                 },
                 error: function (html)
                 {
@@ -46,7 +47,7 @@ $(document).on('submit', 'form[name="ffud"]', function (e) {
                     $('#descriptionForm').empty().html(html);
                     updateCKEditors();
                     loadBootstrapValidator();
-
+                    scrollToElement($('#descriptionForm .flashbags'));
                 },
                 error: function (html)
                 {
@@ -72,6 +73,7 @@ $(document).on('submit', 'form[name="fful"]', function (e) {
                 {
                     $('#linkForm').empty().html(html);
                     loadBootstrapValidator();
+                    scrollToElement($('#linkForm .flashbags'));
                 },
                 error: function (html)
                 {
@@ -601,6 +603,7 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
             $('#facebookResults').html(html);
             $('#blockImportEventsFacebook').show();
             hideLoaderGif($('#previewImportEventsFacebook'));
+            scrollToElement($("#blockImportEventsFacebook"));
         }
     });
     return false;
@@ -631,6 +634,7 @@ $(document).on('click', '#importEventsFacebook', function () {
             $('#facebookResults').html(html);
             $('#blockImportEventsFacebook').hide();
             hideLoaderGif($('#importEventsFacebook'));
+            scrollToElement($("#facebookResults"));
         }
     });
     return false;

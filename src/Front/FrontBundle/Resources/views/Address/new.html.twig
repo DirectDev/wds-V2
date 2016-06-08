@@ -11,13 +11,13 @@
 
         {{ form_start(form, { 'attr' : { 'class' : 'newAddress' } } ) }}
 
-        <div class="col-md-10">
-            {{ form_row(form.name) }}
+        <div class="col-md-10">                                
+            {{ form_row(form.country) }}
+            {{ form_row(form.city) }}    
+            {{ form_row(form.postcode) }}
             {{ form_row(form.street) }}
             {{ form_row(form.streetComplement) }}
-            {{ form_row(form.postcode) }}
-            {{ form_row(form.city) }}                                    
-            {{ form_row(form.country) }}
+            {{ form_row(form.name) }}
         </div>
 
         <div class="col-md-2">
@@ -30,3 +30,5 @@
     {% endif %}
 
 </div>
+
+<div class="clear-both"></div>

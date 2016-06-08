@@ -257,9 +257,18 @@ $(document).on('click', 'button.presence_button', function (e) {
     e.preventDefault(); //STOP default actiont.
 });
 
-function showLoaderGif(button){
-     button.find('img').show();
+function showLoaderGif(button) {
+    button.find('img').show();
 }
-function hideLoaderGif(button){
-     button.find('img').hide();
+function hideLoaderGif(button) {
+    button.find('img').hide();
+}
+function scrollToElement(element) {
+    var marge = 0;
+    if ($('.search_transversal').is(":visible"))
+        marge = $('.search_transversal').outerHeight(true) + 10;
+
+    $('html, body').animate({
+        scrollTop: (element.offset().top - marge)
+    }, 1000);
 }

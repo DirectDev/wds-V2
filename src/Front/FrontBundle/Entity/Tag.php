@@ -73,6 +73,10 @@ class Tag {
         $this->musics = new ArrayCollection();
         $this->videos = new ArrayCollection();
     }
+    
+    public function getTitle(){
+        return $this->__call('getTitle', array());
+    }
 
     /**
      * Get id

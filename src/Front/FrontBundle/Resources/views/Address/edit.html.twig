@@ -6,12 +6,13 @@
 
         {{ form_errors(edit_form) }}
 
-        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.country) }}
+        {{ form_row(edit_form.city) }}
+        {{ form_row(edit_form.postcode) }}
         {{ form_row(edit_form.street) }}
         {{ form_row(edit_form.streetComplement) }}
-        {{ form_row(edit_form.postcode) }}
-        {{ form_row(edit_form.city) }}                                    
-        {{ form_row(edit_form.country) }}
+        {{ form_row(edit_form.name) }}
+
     </div>
 
     <div class="col-md-2">
@@ -26,3 +27,5 @@
     {{ form_end(edit_form) }}
 
 </div>
+
+<div class="clear-both"></div>

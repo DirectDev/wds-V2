@@ -5,10 +5,10 @@
 {% endblock %}
 {% block head %}
     {{ parent() }}
-    <meta name="description" content="{{ user.getDescriptionShort|striptags }}" />
+    <meta name="description" content="{{ user.getDescription()|striptags }}" />
     <!-- partage facebook -->
     <meta property="og:title" content="{{ user.username|capitalize }}" />
-    <meta property="og:description" content="{{ user.getDescriptionShort|striptags }}" />
+    <meta property="og:description" content="{{ user.getDescription()|striptags }}" />
     <!--<meta property="og:image" content="URL_image" />-->
     <!-- partage facebook -->
 {% endblock %}
@@ -53,9 +53,6 @@
                                 <hr>
                                 {% if user.getBaseline %}
                                     <p>{{ user.getBaseline|capitalize }}</p>
-                                {% endif %}
-                                {% if user.getDescriptionShort %}
-                                    <p>{{ user.getDescriptionShort|raw }}</p>
                                 {% endif %}
                                 {% if user.getDescription %}
                                     <p>{{ user.getDescription|raw }}</p>

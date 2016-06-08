@@ -1,6 +1,12 @@
 {# Underscore templates for the uploader #}
 {% include "FileFileBundle::fileUploadTemplate.html.twig" %}
 
+<div class="alert alert-success fade in">
+    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+    <strong>{% trans %}front.alert.success{% endtrans %}</strong>
+    {% trans %}file.reminder{% endtrans %}
+</div>
+
 <form class="edit-form" action="{{ action_path }}" method="post" enctype="multipart/form-data">      
 
     {% set isNew = true %}
