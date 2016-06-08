@@ -28,7 +28,7 @@ profile:
 registration:
     back: Back
     check_email: 'Check email'
-    confirmed: Confirmed
+    confirmed: 'Congratulations %username% ! You are now registered and connected. :-)'
 
     email:
         message: Message

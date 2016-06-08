@@ -28,7 +28,7 @@ profile:
 registration:
     back: Retour
     check_email: 'Vérification de l''email'
-    confirmed: Confirmé
+    confirmed: 'Félicitation %username% ! Vous êtes inscrit et connecté. Utilisez le menu pour naviguer sur le site.'
 
     email:
         message: Message
