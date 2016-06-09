@@ -843,7 +843,7 @@ navbar:
     user.events: 'Mes événements'
     user.import_facebook: 'Importer depuis Facebook'
     user.my_events: 'Tous mes événements'
-    user.my_page: 'Voir ma page'
+    user.my_page: 'Voir mon profil'
     user.my_profile: 'Modifier mon profil'
     user.next_events: 'Mes prochains événements'
     user.passed_events: 'Mes événements précédents'

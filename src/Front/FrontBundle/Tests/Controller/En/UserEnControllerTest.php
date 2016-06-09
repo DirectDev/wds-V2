@@ -322,9 +322,9 @@ class UserFrControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->client->followRedirect();
+        $this->client->followRedirects();
 
-        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
     }
 
     public function testCallbackUsernameTest() {
