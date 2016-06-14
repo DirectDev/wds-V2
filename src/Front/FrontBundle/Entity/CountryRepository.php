@@ -22,4 +22,30 @@ class CountryRepository extends EntityRepository {
         return $query->getQuery()->getOneOrNullResult();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('c')
+                ->leftJoin('c.translations', 'ct', 'WITH', 'ct.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('c')
+                ->leftJoin('c.translations', 'ct', 'WITH', 'ct.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("c.name", ":search"));
+            $orQuery->add($query->expr()->like("c.iso2", ":search"));
+            $orQuery->add($query->expr()->like("ct.title", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

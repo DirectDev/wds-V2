@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>User</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Facebook_link</th>
+                <td>{{ entity.facebooklink }}</td>
+            </tr>
+            <tr>
+                <th>Google_link</th>
+                <td>{{ entity.googlelink }}</td>
+            </tr>
+            <tr>
+                <th>Twitter_link</th>
+                <td>{{ entity.twitterlink }}</td>
+            </tr>
+            <tr>
+                <th>Linkedin_link</th>
+                <td>{{ entity.linkedinlink }}</td>
+            </tr>
+            <tr>
+                <th>Flickr_link</th>
+                <td>{{ entity.flickrlink }}</td>
+            </tr>
+            <tr>
+                <th>Tumblr_link</th>
+                <td>{{ entity.tumblrlink }}</td>
+            </tr>
+            <tr>
+                <th>Instagram_link</th>
+                <td>{{ entity.instagramlink }}</td>
+            </tr>
+            <tr>
+                <th>Vimeo_link</th>
+                <td>{{ entity.vimeolink }}</td>
+            </tr>
+            <tr>
+                <th>Youtube_link</th>
+                <td>{{ entity.youtubelink }}</td>
+            </tr>
+            <tr>
+                <th>Baidu_link</th>
+                <td>{{ entity.baidulink }}</td>
+            </tr>
+            <tr>
+                <th>Xing_link</th>
+                <td>{{ entity.xinglink }}</td>
+            </tr>
+            <tr>
+                <th>Facebook_id</th>
+                <td>{{ entity.facebookid }}</td>
+            </tr>
+            <tr>
+                <th>Facebook_access_token</th>
+                <td>{{ entity.facebookaccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Google_id</th>
+                <td>{{ entity.googleid }}</td>
+            </tr>
+            <tr>
+                <th>Google_access_token</th>
+                <td>{{ entity.googleaccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Display_counter</th>
+                <td>{{ entity.displaycounter }}</td>
+            </tr>
+            <tr>
+                <th>Footer</th>
+                <td>{{ entity.footer }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_user') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

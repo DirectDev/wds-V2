@@ -1,0 +1,51 @@
+{% extends 'AdminAdminBundle::layout.html.twig' %}
+
+{% block content -%}
+
+    <h1 class="page-header">{% trans %}admin.mea_festival_list_title{% endtrans %}</h1>
+
+    {% include 'AdminAdminBundle::search_add.html.twig' with { add_path : path('admin_mea_festival_new') }%}
+
+    <!-- begin row -->
+    <div class="row">
+
+        <div class="col-md-12 ui-sortable">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
+            
+                  {% include 'AdminAdminBundle::panel_heading.html.twig' with { title : 'mea_festivals' }%}
+
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in pagination %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('admin_mea_festival_show', { 'id': entity.id }) }}">{{ entity }}</a> 
+                                    </td>
+                                    <td>
+                                        <a class='pull-right' href="{{ path('admin_mea_festival_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+    </div>
+    <div class="margin-bottom-30"></div>
+
+    {{ knp_pagination_render(pagination) }}
+
+
+{% endblock %}    
+
+

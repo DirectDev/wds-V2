@@ -17,4 +17,33 @@ class MeaFestivalRepository extends \Doctrine\ORM\EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('mf')
+                ->leftJoin('mf.translations', 'mft', 'WITH', 'mft.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('mf')
+                ->leftJoin('mf.translations', 'mft', 'WITH', 'mft.locale = :locale')
+                ->leftJoin('mf.event', 'mfe')
+                ->leftJoin('mfe.translations', 'mfet', 'WITH', 'mfet.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("mft.description", ":search"));
+            $orQuery->add($query->expr()->like("mfe.name", ":search"));
+            $orQuery->add($query->expr()->like("mfet.title", ":search"));
+            $orQuery->add($query->expr()->like("mfet.description", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

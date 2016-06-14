@@ -4,43 +4,73 @@ namespace Admin\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Admin\AdminBundle\Entity\PageContent;
 use Admin\AdminBundle\Form\PageContentType;
+use Admin\AdminBundle\Form\PageContentFilterType;
 
 /**
  * PageContent controller.
  *
  */
-class PageContentController extends Controller
-{
+class PageContentController extends Controller {
 
-    /**
-     * Lists all PageContent entities.
-     *
-     */
-    public function indexAction($id)
-    {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-       
-        $page = $em->getRepository('AdminAdminBundle:Page')->find($id);
-        if (!$page) {
-            throw $this->createNotFoundException('Unable to find Page entity.');
-        }
 
-        $entities = $em->getRepository('AdminAdminBundle:PageContent')->findByPage($page);
+        $query = $em->getRepository('AdminAdminBundle:PageContent')->findForAdmin($request->getLocale());
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('AdminAdminBundle:PageContent:index.html.twig', array(
-            'entities' => $entities,
-            'page' => $page,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
         ));
     }
+
+    private function createFilterForm() {
+        $form = $this->createForm(new PageContentFilterType(), null, array(
+            'action' => $this->generateUrl('admin_page_content_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('AdminAdminBundle:PageContent')->filterAdmin($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        return $this->render('AdminAdminBundle:PageContent:index.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
     /**
      * Creates a new PageContent entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new PageContent();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -54,8 +84,8 @@ class PageContentController extends Controller
         }
 
         return $this->render('AdminAdminBundle:PageContent:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -66,8 +96,7 @@ class PageContentController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(PageContent $entity)
-    {
+    private function createCreateForm(PageContent $entity) {
         $form = $this->createForm(new PageContentType(), $entity, array(
             'action' => $this->generateUrl('admin_pagecontent_create'),
             'method' => 'POST',
@@ -82,14 +111,13 @@ class PageContentController extends Controller
      * Displays a form to create a new PageContent entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new PageContent();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('AdminAdminBundle:PageContent:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -97,8 +125,7 @@ class PageContentController extends Controller
      * Finds and displays a PageContent entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AdminAdminBundle:PageContent')->find($id);
@@ -110,8 +137,8 @@ class PageContentController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:PageContent:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -135,18 +162,17 @@ class PageContentController extends Controller
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView()
-                ));
+        ));
     }
 
     /**
-    * Creates a form to edit a PageContent entity.
-    *
-    * @param PageContent $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(PageContent $entity)
-    {
+     * Creates a form to edit a PageContent entity.
+     *
+     * @param PageContent $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(PageContent $entity) {
         $form = $this->createForm(new PageContentType(), $entity, array(
             'action' => $this->generateUrl('admin_pagecontent_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -156,12 +182,12 @@ class PageContentController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing PageContent entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AdminAdminBundle:PageContent')->find($id);
@@ -181,17 +207,17 @@ class PageContentController extends Controller
         }
 
         return $this->render('AdminAdminBundle:PageContent:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a PageContent entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -217,13 +243,13 @@ class PageContentController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_pagecontent_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('admin_pagecontent_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }

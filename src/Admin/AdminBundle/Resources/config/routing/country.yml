@@ -28,3 +28,8 @@ admin_country_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminAdminBundle:Country:delete" }
     requirements: { _method: post|delete }
+    
+admin_country_filter:
+    path:     /filter_country
+    defaults: { _controller: "AdminAdminBundle:Country:filter" }
+    methods:  GET       

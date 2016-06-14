@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-1 pull-right">
+        <a class="btn btn-success pull-right m-b-15" href="{% if add_path is defined %}{{ add_path }}{% endif %}" >
+            <i class="glyphicon glyphicon-plus"></i>
+            <span> {% trans %}admin.add{% endtrans %}</span>
+        </a>
+    </div>
+
+    {% if filterForm is defined %}
+        <div class="col-md-11 pull-left">
+            {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation' } } ) }}
+            <div class="input-group">
+                {% set placeholder %}
+                    {% trans %}admin.search{% endtrans %}
+                {% endset %}
+                {{ form_widget(filterForm.search,{ 'attr' : { 'class' : 'form-control', 'placeholder' : placeholder|trim } } ) }}
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+            {{ form_end(filterForm) }}
+        </div>
+    {% endif %}
+</div>

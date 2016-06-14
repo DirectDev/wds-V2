@@ -22,4 +22,31 @@ class PageContentRepository extends EntityRepository {
         return $query->getResult();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('pc')
+                ->leftJoin('pc.translations', 'pct', 'WITH', 'pct.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('pc')
+                ->leftJoin('pc.translations', 'pct', 'WITH', 'pct.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("pc.name", ":search"));
+            $orQuery->add($query->expr()->like("pct.title", ":search"));
+            $orQuery->add($query->expr()->like("pct.content", ":search"));
+            $orQuery->add($query->expr()->like("pct.description", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

@@ -3,40 +3,99 @@
 <div id="sidebar" class="sidebar">
     <!-- begin sidebar scrollbar -->
     <div data-scrollbar="true" data-height="100%">
-        <!-- begin sidebar user -->
-        <ul class="nav">
-            <li class="nav-profile">
-                <div class="image">
-                    <a href="javascript:;"><img src="assets/img/user-13.jpg" alt="" /></a>
-                </div>
-                <div class="info">
-                    Sean Ngu
-                    <small>Front end developer</small>
-                </div>
-            </li>
-        </ul>
-        <!-- end sidebar user -->
+
         <!-- begin sidebar nav -->
         <ul class="nav">
-            <li class="nav-header">Navigation</li>
 
-            <li><a href="{{ path('admin_user') }}">{% trans %}admin.users{% endtrans %}</a></li>
-            <li><a href="{{ path('admin_page') }}">{% trans %}admin.pages{% endtrans %}</a></li>
-{#            <li><a href="{{ path('admin_address') }}">{% trans %}admin.addresses{% endtrans %}</a></li>#}
-            <li><a href="{{ path('admin_city') }}">{% trans %}admin.cities{% endtrans %}</a></li>
-{#            <li><a href="{{ path('admin_country') }}">{% trans %}admin.countries{% endtrans %}</a></li>#}
-            <li><a href="{{ path('admin_event') }}">{% trans %}admin.events{% endtrans %}</a></li>
-{#            <li><a href="{{ path('admin_eventdate') }}">{% trans %}admin.eventdates{% endtrans %}</a></li>#}
-            <li><a href="{{ path('admin_eventtype') }}">{% trans %}admin.eventtypes{% endtrans %}</a></li>
-            <li><a href="{{ path('admin_musictype') }}">{% trans %}admin.musictypes{% endtrans %}</a></li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-map-marker"></i>
+                    <span>Géo</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{ path('admin_address') }}">{% trans %}admin.addresses{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_city') }}">{% trans %}admin.cities{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_country') }}">{% trans %}admin.countries{% endtrans %}</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-glass"></i>
+                    <span>Events</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{ path('admin_event') }}">{% trans %}admin.events{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_eventdate') }}">{% trans %}admin.eventdates{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_event_file') }}">{% trans %}admin.event_files{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_eventtype') }}">{% trans %}admin.eventtypes{% endtrans %}</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-star"></i>
+                    <span>MEA</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{ path('admin_mea_city') }}">{% trans %}admin.mea_city{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_mea_festival') }}">{% trans %}admin.mea_festival{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_mea_user') }}">{% trans %}admin.mea_user{% endtrans %}</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-camera"></i>
+                    <span>Medias</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{ path('admin_music') }}">{% trans %}admin.musics{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_musictype') }}">{% trans %}admin.musictypes{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_tag') }}">{% trans %}admin.tags{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_video') }}">{% trans %}admin.videos{% endtrans %}</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-file-o"></i>
+                    <span>Pages</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{ path('admin_page') }}">{% trans %}admin.pages{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_pagecontent') }}">{% trans %}admin.pagecontents{% endtrans %}</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-users"></i>
+                    <span>Users</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{ path('admin_user') }}">{% trans %}admin.users{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_user_file') }}">{% trans %}admin.user_files{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_user_type') }}">{% trans %}admin.usertypes{% endtrans %}</a></li>
+                </ul>
+            </li>
+
+
             <li><a href="{{ path('jms_translation_index') }}">{% trans %}admin.translations{% endtrans %}</a></li>
 
             {% if is_granted("ROLE_USER") %}
-{#                <li><a href="{{ path('admin_user_show', {id : app.user.id} ) }}">{{ app.user.username }}</a></li>#}
-                <li><a href="{{ path('fos_user_security_logout') }}">{% trans %}navbar.logout{% endtrans %}</a></li>
-                {% endif %}
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">{% trans %}navbar.logout{% endtrans %}</a>
+                </li>
+            {% endif %}
 
-            <li class="has-sub active">
+        {#    <li class="has-sub active">
                 <a href="javascript:;">
                     <b class="caret pull-right"></b>
                     <i class="fa fa-laptop"></i>
@@ -295,7 +354,7 @@
             </li>
             <!-- begin sidebar minify button -->
             <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
-            <!-- end sidebar minify button -->
+            <!-- end sidebar minify button -->#}
         </ul>
         <!-- end sidebar nav -->
     </div>

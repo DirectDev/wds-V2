@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Event;
 use Front\FrontBundle\Entity\EventFile;
 use Admin\AdminBundle\Form\EventType;
+use Admin\AdminBundle\Form\EventFilterType;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -15,17 +16,55 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class EventController extends Controller {
 
-    /**
-     * Lists all Event entities.
-     *
-     */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FrontFrontBundle:Event')->findAll();
+        $query = $em->getRepository('FrontFrontBundle:Event')->findForAdmin($request->getLocale());
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('AdminAdminBundle:Event:index.html.twig', array(
-                    'entities' => $entities,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
+    private function createFilterForm() {
+        $form = $this->createForm(new EventFilterType(), null, array(
+            'action' => $this->generateUrl('admin_event_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Event')->filterAdmin($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        return $this->render('AdminAdminBundle:Event:index.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
         ));
     }
 

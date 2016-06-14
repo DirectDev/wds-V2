@@ -92,4 +92,34 @@ class MusicRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('m')
+                ->leftJoin('m.translations', 'mt', 'WITH', 'mt.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('m')
+                ->leftJoin('m.translations', 'mt', 'WITH', 'mt.locale = :locale')
+                ->leftJoin('m.tags', 'mta')
+                ->leftJoin('mta.translations', 'mtat', 'WITH', 'mtat.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("m.name", ":search"));
+            $orQuery->add($query->expr()->like("m.url", ":search"));
+            $orQuery->add($query->expr()->like("mt.title", ":search"));
+            $orQuery->add($query->expr()->like("mta.name", ":search"));
+            $orQuery->add($query->expr()->like("mtat.title", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

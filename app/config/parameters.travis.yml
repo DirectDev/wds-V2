@@ -19,3 +19,4 @@ parameters:
     debug_redirects: false
     use_assetic_controller: true
     pagination_line_number: 10
+    admin_pagination_line_number: 50

@@ -125,6 +125,10 @@ class MeaCity {
         }
     }
 
+    public function __toString() {
+        return $this->getCity()->getName();
+    }
+
     public function getName() {
         return $this->getCity()->getName();
     }
@@ -336,7 +340,6 @@ class MeaCity {
         return $this->kizombaLearn;
     }
 
-
     /**
      * Set salsaMeet
      *
@@ -344,8 +347,7 @@ class MeaCity {
      *
      * @return MeaCity
      */
-    public function setSalsaMeet($salsaMeet)
-    {
+    public function setSalsaMeet($salsaMeet) {
         $this->salsaMeet = $salsaMeet;
 
         return $this;
@@ -356,8 +358,7 @@ class MeaCity {
      *
      * @return integer
      */
-    public function getSalsaMeet()
-    {
+    public function getSalsaMeet() {
         return $this->salsaMeet;
     }
 
@@ -368,8 +369,7 @@ class MeaCity {
      *
      * @return MeaCity
      */
-    public function setBachataMeet($bachataMeet)
-    {
+    public function setBachataMeet($bachataMeet) {
         $this->bachataMeet = $bachataMeet;
 
         return $this;
@@ -380,8 +380,7 @@ class MeaCity {
      *
      * @return integer
      */
-    public function getBachataMeet()
-    {
+    public function getBachataMeet() {
         return $this->bachataMeet;
     }
 
@@ -392,8 +391,7 @@ class MeaCity {
      *
      * @return MeaCity
      */
-    public function setKizombaMeet($kizombaMeet)
-    {
+    public function setKizombaMeet($kizombaMeet) {
         $this->kizombaMeet = $kizombaMeet;
 
         return $this;
@@ -404,8 +402,8 @@ class MeaCity {
      *
      * @return integer
      */
-    public function getKizombaMeet()
-    {
+    public function getKizombaMeet() {
         return $this->kizombaMeet;
     }
+
 }

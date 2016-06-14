@@ -38,4 +38,30 @@ class EventFileRepository extends EntityRepository {
         ;
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('ef');
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('ef')
+                ->leftJoin('ef.event', 'efe')
+                ->leftJoin('efe.translations', 'efet', 'WITH', 'efet.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("ef.name", ":search"));
+            $orQuery->add($query->expr()->like("efe.name", ":search"));
+            $orQuery->add($query->expr()->like("efet.title", ":search"));
+            $orQuery->add($query->expr()->like("efet.description", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

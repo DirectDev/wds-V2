@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>MeaUser</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Ordre</th>
+                <td>{{ entity.ordre }}</td>
+            </tr>
+            <tr>
+                <th>Salsadiscover</th>
+                <td>{{ entity.salsaDiscover }}</td>
+            </tr>
+            <tr>
+                <th>Bachatadiscover</th>
+                <td>{{ entity.bachataDiscover }}</td>
+            </tr>
+            <tr>
+                <th>Kizombadiscover</th>
+                <td>{{ entity.kizombaDiscover }}</td>
+            </tr>
+            <tr>
+                <th>Salsalearn</th>
+                <td>{{ entity.salsaLearn }}</td>
+            </tr>
+            <tr>
+                <th>Bachatalearn</th>
+                <td>{{ entity.bachataLearn }}</td>
+            </tr>
+            <tr>
+                <th>Kizombalearn</th>
+                <td>{{ entity.kizombaLearn }}</td>
+            </tr>
+            <tr>
+                <th>Salsameet</th>
+                <td>{{ entity.salsaMeet }}</td>
+            </tr>
+            <tr>
+                <th>Bachatameet</th>
+                <td>{{ entity.bachataMeet }}</td>
+            </tr>
+            <tr>
+                <th>Kizombameet</th>
+                <td>{{ entity.kizombaMeet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_mea_user') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_mea_user_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

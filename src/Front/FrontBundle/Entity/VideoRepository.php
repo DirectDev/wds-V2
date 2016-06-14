@@ -108,4 +108,34 @@ class VideoRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('v')
+                ->leftJoin('v.translations', 'vt', 'WITH', 'vt.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('v')
+                ->leftJoin('v.translations', 'vt', 'WITH', 'vt.locale = :locale')
+                ->leftJoin('v.tags', 'vta')
+                ->leftJoin('vta.translations', 'vtat', 'WITH', 'vtat.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("v.name", ":search"));
+            $orQuery->add($query->expr()->like("vt.title", ":search"));
+            $orQuery->add($query->expr()->like("v.url", ":search"));
+            $orQuery->add($query->expr()->like("vta.name", ":search"));
+            $orQuery->add($query->expr()->like("vtat.title", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

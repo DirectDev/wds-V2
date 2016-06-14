@@ -32,14 +32,40 @@ class MeaCityRepository extends \Doctrine\ORM\EntityRepository {
 
         return $query->getQuery()->getResult();
     }
-    
-    
+
     public function findForMeet($limit = 3) {
         $query = $this->createQueryBuilder('mc')
                 ->where('(mc.salsaMeet = 1 OR mc.bachataMeet = 1 OR mc.kizombaMeet = 1)')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
+    }
+
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('mc')
+                ->leftJoin('mc.translations', 'mct', 'WITH', 'mct.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('mc')
+                ->leftJoin('mc.translations', 'mct', 'WITH', 'mct.locale = :locale')
+                ->leftJoin('mc.city', 'mcc')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("mct.description", ":search"));
+            $orQuery->add($query->expr()->like("mct.edito", ":search"));
+            $orQuery->add($query->expr()->like("mcc.name", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
     }
 
 }

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Front\FrontBundle\Entity\Address;
 use Admin\AdminBundle\Form\AddressType;
+use Admin\AdminBundle\Form\AddressFilterType;
 
 /**
  * Address controller.
@@ -13,17 +14,55 @@ use Admin\AdminBundle\Form\AddressType;
  */
 class AddressController extends Controller {
 
-    /**
-     * Lists all Address entities.
-     *
-     */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FrontFrontBundle:Address')->findAll();
+        $query = $em->getRepository('FrontFrontBundle:Address')->findForAdmin($request->getLocale());
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('AdminAdminBundle:Address:index.html.twig', array(
-                    'entities' => $entities,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
+    private function createFilterForm() {
+        $form = $this->createForm(new AddressFilterType(), null, array(
+            'action' => $this->generateUrl('admin_address_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Address')->filterAdmin($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        return $this->render('AdminAdminBundle:Address:index.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
         ));
     }
 

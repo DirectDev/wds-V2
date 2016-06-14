@@ -53,6 +53,11 @@ class City {
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaCity", mappedBy="city")
      * */
     private $meaCity;
+    
+    public function __toString() {
+        if ($this->getName())
+            return $this->getName();
+    }
 
     public function getEdito() {
         if (!$this->getMeaCity())

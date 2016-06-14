@@ -366,4 +366,28 @@ class EventRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('e');
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('e')
+                ->leftJoin('e.translations', 'et', 'WITH', 'et.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("e.name", ":search"));
+            $orQuery->add($query->expr()->like("et.title", ":search"));
+            $orQuery->add($query->expr()->like("et.description", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

@@ -1,0 +1,35 @@
+admin_music:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:Music:index" }
+
+admin_music_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:Music:show" }
+
+admin_music_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:Music:new" }
+
+admin_music_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:Music:create" }
+    methods:  POST
+
+admin_music_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:Music:edit" }
+
+admin_music_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:Music:update" }
+    methods:  [POST, PUT]
+
+admin_music_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:Music:delete" }
+    methods:  [POST, DELETE]
+    
+admin_music_filter:
+    path:     /filter_music
+    defaults: { _controller: "AdminAdminBundle:Music:filter" }
+    methods:  GET       

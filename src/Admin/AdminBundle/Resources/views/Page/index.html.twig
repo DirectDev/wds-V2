@@ -2,22 +2,9 @@
 
 {% block content -%}
 
-    <!-- begin breadcrumb -->
-    <ol class="breadcrumb pull-right">
-        <li><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;">Tables</a></li>
-        <li class="active">Pages</li>
-    </ol>
-    <!-- end breadcrumb -->
-    <!-- begin page-header -->
     <h1 class="page-header">{% trans %}admin.page_list_title{% endtrans %}</h1>
-    <!-- end page-header -->
 
-
-    <a class="btn btn-success pull-right" href="{{ path('admin_page_new') }}" >
-        <i class="glyphicon glyphicon-plus"></i>
-        <span> {% trans %}admin.add{% endtrans %}</span>
-    </a>
+    {% include 'AdminAdminBundle::search_add.html.twig' with { add_path : path('admin_page_new') }%}
 
     <!-- begin row -->
     <div class="row">
@@ -25,25 +12,19 @@
         <div class="col-md-12 ui-sortable">
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="table-basic-4">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">Table Striped</h4>
-                </div>
+            
+                  {% include 'AdminAdminBundle::panel_heading.html.twig' with { title : 'Pages' }%}
+
                 <div class="panel-body">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Page</th>
+                                <th>Name</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for entity in entities %}
+                            {% for entity in pagination %}
                                 <tr>
                                     <td>
                                         <a href="{{ path('admin_page_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
@@ -52,7 +33,7 @@
                                         <a class='pull-right' href="{{ path('admin_page_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
                                     </td>
                                     <td>
-                                        <a class='pull-right' href="{{ path('admin_pagecontent_index', { 'id': entity.id }) }}">{% trans %}admin.page.see_pagecontent{% endtrans %}</a>
+{#                                        <a class='pull-right' href="{{ path('admin_pagecontent_index', { 'id': entity.id }) }}">{% trans %}admin.page.see_pagecontent{% endtrans %}</a>#}
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -63,12 +44,9 @@
             <!-- end panel -->
         </div>
     </div>
+    <div class="margin-bottom-30"></div>
 
-
-
-
-
-
+    {{ knp_pagination_render(pagination) }}
 
 
 {% endblock %}    

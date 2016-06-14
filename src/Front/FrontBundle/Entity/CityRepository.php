@@ -21,4 +21,24 @@ class CityRepository extends EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('c');
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('c')
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("c.name", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

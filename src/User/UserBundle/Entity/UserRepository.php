@@ -231,4 +231,32 @@ class UserRepository extends EntityRepository {
         return $query->getQuery()->getResult();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('u');
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('u')
+                ->leftJoin('u.translations', 'ut', 'WITH', 'ut.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.username", ":search"));
+            $orQuery->add($query->expr()->like("u.email", ":search"));
+            $orQuery->add($query->expr()->like("u.facebookId", ":search"));
+            $orQuery->add($query->expr()->like("u.googleId", ":search"));
+            $orQuery->add($query->expr()->like("u.email", ":search"));
+            $orQuery->add($query->expr()->like("mut.description", ":search"));
+            $orQuery->add($query->expr()->like("mut.baseline", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

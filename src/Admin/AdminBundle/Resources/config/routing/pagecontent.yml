@@ -1,5 +1,5 @@
-admin_pagecontent_index:
-    path:     /{id}/index
+admin_pagecontent:
+    path:     /
     defaults: { _controller: "AdminAdminBundle:PageContent:index" }
 
 admin_pagecontent_show:
@@ -28,3 +28,8 @@ admin_pagecontent_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminAdminBundle:PageContent:delete" }
     requirements: { _method: post|delete }
+    
+admin_page_content_filter:
+    path:     /filter_page_content
+    defaults: { _controller: "AdminAdminBundle:PageContent:filter" }
+    methods:  GET       

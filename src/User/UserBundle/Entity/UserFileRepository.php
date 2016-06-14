@@ -38,4 +38,33 @@ class UserFileRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('uf');
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('uf')
+                ->leftJoin('uf.user', 'u')
+                ->leftJoin('u.translations', 'ut', 'WITH', 'ut.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.username", ":search"));
+            $orQuery->add($query->expr()->like("u.email", ":search"));
+            $orQuery->add($query->expr()->like("u.facebook_id", ":search"));
+            $orQuery->add($query->expr()->like("u.google_id", ":search"));
+            $orQuery->add($query->expr()->like("u.email", ":search"));
+            $orQuery->add($query->expr()->like("ut.description", ":search"));
+            $orQuery->add($query->expr()->like("ut.baseline", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
 }

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Admin\AdminBundle\Entity\Page;
 use Admin\AdminBundle\Form\PageType;
+use Admin\AdminBundle\Form\PageFilterType;
 
 /**
  * Page controller.
@@ -19,16 +20,59 @@ class PageController extends Controller
      * Lists all Page entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->getRepository('AdminAdminBundle:Page')->findForAdmin( $request->getLocale()); 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
 
-        $entities = $em->getRepository('AdminAdminBundle:Page')->findAll();
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('AdminAdminBundle:Page:index.html.twig', array(
-            'entities' => $entities,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
         ));
     }
+    
+    private function createFilterForm() {
+        $form = $this->createForm(new PageFilterType(), null, array(
+            'action' => $this->generateUrl('admin_page_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+    
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('AdminAdminBundle:Page')->filterAdmin($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        return $this->render('AdminAdminBundle:Page:index.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+    
     /**
      * Creates a new Page entity.
      *

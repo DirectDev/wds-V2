@@ -28,3 +28,8 @@ admin_event_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminAdminBundle:Event:delete" }
     requirements: { _method: post|delete }
+    
+admin_event_filter:
+    path:     /filter_event
+    defaults: { _controller: "AdminAdminBundle:Event:filter" }
+    methods:  GET       

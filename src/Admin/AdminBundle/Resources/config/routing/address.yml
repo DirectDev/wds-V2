@@ -28,3 +28,8 @@ admin_address_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminAdminBundle:Address:delete" }
     requirements: { _method: post|delete }
+    
+admin_address_filter:
+    path:     /filter_address
+    defaults: { _controller: "AdminAdminBundle:Address:filter" }
+    methods:  GET       

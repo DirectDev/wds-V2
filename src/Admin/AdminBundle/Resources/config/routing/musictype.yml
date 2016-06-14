@@ -28,3 +28,8 @@ admin_musictype_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminAdminBundle:MusicType:delete" }
     requirements: { _method: post|delete }
+    
+admin_musictype_filter:
+    path:     /filter_musictype
+    defaults: { _controller: "AdminAdminBundle:MusicType:filter" }
+    methods:  GET       

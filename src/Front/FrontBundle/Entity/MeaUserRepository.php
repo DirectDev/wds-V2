@@ -64,8 +64,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
 
         return $query->getQuery()->getResult();
     }
-    
-    
+
     public function findForSalsaMeet($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.salsaMeet = 1')
@@ -88,6 +87,33 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
+    }
+
+    public function findForAdmin($locale = 'en') {
+        $query = $this->createQueryBuilder('mu')
+                ->leftJoin('mu.translations', 'mut', 'WITH', 'mut.locale = :locale')
+                ->setParameter('locale', $locale);
+
+        return $query->getQuery();
+    }
+
+    public function filterAdmin($data, $locale = 'en') {
+        $query = $this->createQueryBuilder('mu')
+                ->leftJoin('mu.translations', 'mut', 'WITH', 'mut.locale = :locale')
+                ->leftJoin('mu.user', 'muu')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1");
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("muu.username", ":search"));
+            $orQuery->add($query->expr()->like("muu.email", ":search"));
+            $orQuery->add($query->expr()->like("mut.description", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        return $query->getQuery();
     }
 
 }

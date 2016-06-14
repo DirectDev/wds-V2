@@ -118,6 +118,11 @@ class MeaUser {
         }
     }
 
+    public function __toString() {
+        if ($this->getUser())
+            return $this->getUser()->__toString();
+    }
+
     /**
      * Get id
      *
@@ -303,7 +308,6 @@ class MeaUser {
         return $this->kizombaLearn;
     }
 
-
     /**
      * Set salsaMeet
      *
@@ -311,8 +315,7 @@ class MeaUser {
      *
      * @return MeaUser
      */
-    public function setSalsaMeet($salsaMeet)
-    {
+    public function setSalsaMeet($salsaMeet) {
         $this->salsaMeet = $salsaMeet;
 
         return $this;
@@ -323,8 +326,7 @@ class MeaUser {
      *
      * @return integer
      */
-    public function getSalsaMeet()
-    {
+    public function getSalsaMeet() {
         return $this->salsaMeet;
     }
 
@@ -335,8 +337,7 @@ class MeaUser {
      *
      * @return MeaUser
      */
-    public function setBachataMeet($bachataMeet)
-    {
+    public function setBachataMeet($bachataMeet) {
         $this->bachataMeet = $bachataMeet;
 
         return $this;
@@ -347,8 +348,7 @@ class MeaUser {
      *
      * @return integer
      */
-    public function getBachataMeet()
-    {
+    public function getBachataMeet() {
         return $this->bachataMeet;
     }
 
@@ -359,8 +359,7 @@ class MeaUser {
      *
      * @return MeaUser
      */
-    public function setKizombaMeet($kizombaMeet)
-    {
+    public function setKizombaMeet($kizombaMeet) {
         $this->kizombaMeet = $kizombaMeet;
 
         return $this;
@@ -371,8 +370,8 @@ class MeaUser {
      *
      * @return integer
      */
-    public function getKizombaMeet()
-    {
+    public function getKizombaMeet() {
         return $this->kizombaMeet;
     }
+
 }

@@ -38,3 +38,50 @@ AdminAdminBundle_musictype:
     resource: "@AdminAdminBundle/Resources/config/routing/musictype.yml"
     prefix:   /musictype       
     
+AdminAdminBundle_video:
+    resource: "@AdminAdminBundle/Resources/config/routing/video.yml"
+    prefix:   /video
+
+AdminAdminBundle_music:
+    resource: "@AdminAdminBundle/Resources/config/routing/music.yml"
+    prefix:   /music
+
+AdminAdminBundle_tag:
+    resource: "@AdminAdminBundle/Resources/config/routing/tag.yml"
+    prefix:   /tag
+
+AdminAdminBundle_mea_user:
+    resource: "@AdminAdminBundle/Resources/config/routing/meauser.yml"
+    prefix:   /mea_user
+
+AdminAdminBundle_mea_festival:
+    resource: "@AdminAdminBundle/Resources/config/routing/meafestival.yml"
+    prefix:   /mea_festival
+
+AdminAdminBundle_mea_city:
+    resource: "@AdminAdminBundle/Resources/config/routing/meacity.yml"
+    prefix:   /mea_city
+
+AdminAdminBundle_event_file:
+    resource: "@AdminAdminBundle/Resources/config/routing/eventfile.yml"
+    prefix:   /event_file
+
+AdminAdminBundle_address:
+    resource: "@AdminAdminBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+
+AdminAdminBundle_address:
+    resource: "@AdminAdminBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+    
+AdminAdminBundle_user_type:
+    resource: "@AdminAdminBundle/Resources/config/routing/usertype.yml"
+    prefix:   /user_type
+
+AdminAdminBundle_user_file:
+    resource: "@AdminAdminBundle/Resources/config/routing/userfile.yml"
+    prefix:   /user_file
+
+AdminAdminBundle_user:
+    resource: "@AdminAdminBundle/Resources/config/routing/user.yml"
+    prefix:   /user    

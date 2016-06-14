@@ -4,37 +4,73 @@ namespace Admin\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Front\FrontBundle\Entity\Country;
 use Admin\AdminBundle\Form\CountryType;
+use Admin\AdminBundle\Form\CountryFilterType;
 
 /**
  * Country controller.
  *
  */
-class CountryController extends Controller
-{
+class CountryController extends Controller {
 
-    /**
-     * Lists all Country entities.
-     *
-     */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FrontFrontBundle:Country')->findAll();
+        $query = $em->getRepository('FrontFrontBundle:Country')->findForAdmin($request->getLocale());
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('AdminAdminBundle:Country:index.html.twig', array(
-            'entities' => $entities,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
         ));
     }
+
+    private function createFilterForm() {
+        $form = $this->createForm(new CountryFilterType(), null, array(
+            'action' => $this->generateUrl('admin_country_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Country')->filterAdmin($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        return $this->render('AdminAdminBundle:Country:index.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
     /**
      * Creates a new Country entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Country();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -48,8 +84,8 @@ class CountryController extends Controller
         }
 
         return $this->render('AdminAdminBundle:Country:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -60,8 +96,7 @@ class CountryController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Country $entity)
-    {
+    private function createCreateForm(Country $entity) {
         $form = $this->createForm(new CountryType(), $entity, array(
             'action' => $this->generateUrl('admin_country_create'),
             'method' => 'POST',
@@ -76,14 +111,13 @@ class CountryController extends Controller
      * Displays a form to create a new Country entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Country();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('AdminAdminBundle:Country:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,8 +125,7 @@ class CountryController extends Controller
      * Finds and displays a Country entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Country')->find($id);
@@ -104,8 +137,8 @@ class CountryController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:Country:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +146,7 @@ class CountryController extends Controller
      * Displays a form to edit an existing Country entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Country')->find($id);
@@ -127,21 +159,20 @@ class CountryController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:Country:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Country entity.
-    *
-    * @param Country $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Country $entity)
-    {
+     * Creates a form to edit a Country entity.
+     *
+     * @param Country $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Country $entity) {
         $form = $this->createForm(new CountryType(), $entity, array(
             'action' => $this->generateUrl('admin_country_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -151,12 +182,12 @@ class CountryController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Country entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:Country')->find($id);
@@ -176,17 +207,17 @@ class CountryController extends Controller
         }
 
         return $this->render('AdminAdminBundle:Country:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Country entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -212,13 +243,13 @@ class CountryController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_country_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('admin_country_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }

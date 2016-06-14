@@ -2,37 +2,50 @@
 
 {% block content -%}
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class='admin-title'>
-            <div class='pull-left'>
-                <h1>{% trans %}admin.musictype_list_title{% endtrans %}</h1>
-            </div>
+    <h1 class="page-header">{% trans %}admin.musictype_list_title{% endtrans %}</h1>
 
-            <div class='pull-right'>
-                <a class="btn btn-success pull-right" href="{{ path('admin_musictype_new') }}" >
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span> {% trans %}admin.add{% endtrans %}</span>
-                </a>   
+    {% include 'AdminAdminBundle::search_add.html.twig' with { add_path : path('admin_musictype_new') }%}
+
+    <!-- begin row -->
+    <div class="row">
+
+        <div class="col-md-12 ui-sortable">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
+            
+                  {% include 'AdminAdminBundle::panel_heading.html.twig' with { title : 'musictypes' }%}
+
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in pagination %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('admin_musictype_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
+                                    </td>
+                                    <td>
+                                        <a class='pull-right' href="{{ path('admin_musictype_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            <!-- end panel -->
         </div>
     </div>
-        
-    <div class="panel-body">  
-        
-        {% for entity in entities %}
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <a href="{{ path('admin_musictype_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
-                    <a class='pull-right' href="{{ path('admin_musictype_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
-                </div>
-                <div class="panel-body">
+    <div class="margin-bottom-30"></div>
 
+    {{ knp_pagination_render(pagination) }}
 
-                </div>
-            </div>
-        {% endfor %}
-        
-     </div>   
 
 {% endblock %}    
+
+

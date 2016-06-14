@@ -15,11 +15,10 @@ use Doctrine\Common\Collections\Criteria;
  * @ORM\Table(name="meafestival")
  * @ORM\Entity(repositoryClass="Front\FrontBundle\Entity\MeaFestivalRepository")
  */
-class MeaFestival
-{
-    
+class MeaFestival {
+
     use ORMBehaviors\Translatable\Translatable;
-    
+
     /**
      * @var integer
      *
@@ -35,14 +34,14 @@ class MeaFestival
      * @ORM\Column(name="ordre", type="integer")
      */
     private $ordre;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\Event", inversedBy="meaFestival")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      * 
      * */
     protected $event;
-    
+
     public function __call($method, $arguments) {
         $current = $this->proxyCurrentLocaleTranslation($method, $arguments);
         if ($current)
@@ -55,19 +54,22 @@ class MeaFestival
                 return $value;
         }
     }
-    
+
+    public function __toString() {
+        if ($this->getEvent())
+            return $this->getEvent()->__toString();
+    }
+
     public function getDefaultImageUrl() {
         return $this->getEvent()->getDefaultImageUrl();
     }
-
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -78,8 +80,7 @@ class MeaFestival
      *
      * @return MeaFestival
      */
-    public function setOrdre($ordre)
-    {
+    public function setOrdre($ordre) {
         $this->ordre = $ordre;
 
         return $this;
@@ -90,8 +91,7 @@ class MeaFestival
      *
      * @return integer
      */
-    public function getOrdre()
-    {
+    public function getOrdre() {
         return $this->ordre;
     }
 
@@ -102,8 +102,7 @@ class MeaFestival
      *
      * @return MeaFestival
      */
-    public function setEvent(\Front\FrontBundle\Entity\Event $event = null)
-    {
+    public function setEvent(\Front\FrontBundle\Entity\Event $event = null) {
         $this->event = $event;
 
         return $this;
@@ -114,8 +113,8 @@ class MeaFestival
      *
      * @return \Front\FrontBundle\Entity\Event
      */
-    public function getEvent()
-    {
+    public function getEvent() {
         return $this->event;
     }
+
 }

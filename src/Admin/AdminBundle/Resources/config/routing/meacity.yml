@@ -1,0 +1,35 @@
+admin_mea_city:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:MeaCity:index" }
+
+admin_mea_city_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:MeaCity:show" }
+
+admin_mea_city_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:MeaCity:new" }
+
+admin_mea_city_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:MeaCity:create" }
+    methods:  POST
+
+admin_mea_city_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:MeaCity:edit" }
+
+admin_mea_city_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:MeaCity:update" }
+    methods:  [POST, PUT]
+
+admin_mea_city_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:MeaCity:delete" }
+    methods:  [POST, DELETE]
+    
+admin_mea_city_filter:
+    path:     /filter_mea_city
+    defaults: { _controller: "AdminAdminBundle:MeaCity:filter" }
+    methods:  GET       

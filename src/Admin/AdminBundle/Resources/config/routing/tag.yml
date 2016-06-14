@@ -1,0 +1,35 @@
+admin_tag:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:Tag:index" }
+
+admin_tag_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:Tag:show" }
+
+admin_tag_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:Tag:new" }
+
+admin_tag_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:Tag:create" }
+    methods:  POST
+
+admin_tag_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:Tag:edit" }
+
+admin_tag_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:Tag:update" }
+    methods:  [POST, PUT]
+
+admin_tag_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:Tag:delete" }
+    methods:  [POST, DELETE]
+    
+admin_tag_filter:
+    path:     /filter_tag
+    defaults: { _controller: "AdminAdminBundle:Tag:filter" }
+    methods:  GET       

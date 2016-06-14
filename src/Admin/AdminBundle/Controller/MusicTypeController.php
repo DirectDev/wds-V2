@@ -4,37 +4,73 @@ namespace Admin\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Front\FrontBundle\Entity\MusicType;
 use Admin\AdminBundle\Form\MusicTypeType;
+use Admin\AdminBundle\Form\MusicTypeFilterType;
 
 /**
  * MusicType controller.
  *
  */
-class MusicTypeController extends Controller
-{
+class MusicTypeController extends Controller {
 
-    /**
-     * Lists all MusicType entities.
-     *
-     */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FrontFrontBundle:MusicType')->findAll();
+        $query = $em->getRepository('FrontFrontBundle:MusicType')->findForAdmin($request->getLocale());
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
 
         return $this->render('AdminAdminBundle:MusicType:index.html.twig', array(
-            'entities' => $entities,
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
         ));
     }
+
+    private function createFilterForm() {
+        $form = $this->createForm(new MusicTypeFilterType(), null, array(
+            'action' => $this->generateUrl('admin_musictype_filter'),
+            'method' => 'GET',
+        ));
+
+        return $form;
+    }
+
+    public function filterAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $filterForm = $this->createFilterForm();
+        $filterForm->handleRequest($request);
+
+        $filterData = array();
+
+        if ($filterForm->isValid()) {
+            $filterData = $filterForm->getData();
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:MusicType')->filterAdmin($filterData, $request->getLocale());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('admin_pagination_line_number')
+        );
+
+        return $this->render('AdminAdminBundle:MusicType:index.html.twig', array(
+                    'pagination' => $pagination,
+                    'filterForm' => $filterForm->createView(),
+        ));
+    }
+
     /**
      * Creates a new MusicType entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new MusicType();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -48,8 +84,8 @@ class MusicTypeController extends Controller
         }
 
         return $this->render('AdminAdminBundle:MusicType:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -60,8 +96,7 @@ class MusicTypeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(MusicType $entity)
-    {
+    private function createCreateForm(MusicType $entity) {
         $form = $this->createForm(new MusicTypeType(), $entity, array(
             'action' => $this->generateUrl('admin_musictype_create'),
             'method' => 'POST',
@@ -76,14 +111,13 @@ class MusicTypeController extends Controller
      * Displays a form to create a new MusicType entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new MusicType();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('AdminAdminBundle:MusicType:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,8 +125,7 @@ class MusicTypeController extends Controller
      * Finds and displays a MusicType entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:MusicType')->find($id);
@@ -104,8 +137,8 @@ class MusicTypeController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:MusicType:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +146,7 @@ class MusicTypeController extends Controller
      * Displays a form to edit an existing MusicType entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:MusicType')->find($id);
@@ -127,21 +159,20 @@ class MusicTypeController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:MusicType:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a MusicType entity.
-    *
-    * @param MusicType $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(MusicType $entity)
-    {
+     * Creates a form to edit a MusicType entity.
+     *
+     * @param MusicType $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(MusicType $entity) {
         $form = $this->createForm(new MusicTypeType(), $entity, array(
             'action' => $this->generateUrl('admin_musictype_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -151,12 +182,12 @@ class MusicTypeController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing MusicType entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FrontFrontBundle:MusicType')->find($id);
@@ -176,17 +207,17 @@ class MusicTypeController extends Controller
         }
 
         return $this->render('AdminAdminBundle:MusicType:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a MusicType entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -212,13 +243,13 @@ class MusicTypeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_musictype_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('admin_musictype_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }

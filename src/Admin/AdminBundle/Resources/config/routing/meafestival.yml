@@ -1,0 +1,35 @@
+admin_mea_festival:
+    path:     /
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:index" }
+
+admin_mea_festival_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:show" }
+
+admin_mea_festival_new:
+    path:     /new
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:new" }
+
+admin_mea_festival_create:
+    path:     /create
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:create" }
+    methods:  POST
+
+admin_mea_festival_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:edit" }
+
+admin_mea_festival_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:update" }
+    methods:  [POST, PUT]
+
+admin_mea_festival_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:delete" }
+    methods:  [POST, DELETE]
+    
+admin_mea_festival_filter:
+    path:     /filter_mea_festival
+    defaults: { _controller: "AdminAdminBundle:MeaFestival:filter" }
+    methods:  GET       
