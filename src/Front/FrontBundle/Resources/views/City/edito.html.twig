@@ -131,7 +131,7 @@
                         <h3>{% trans %}city.edito.users{% endtrans %}</h3>
                         <ul class="list-unstyled blog-photos margin-bottom-30">
                             {% for user in People %}
-                                <li>
+                                <li class="pull-left m-r-10">
                                     {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
                                 </li>
                             {% endfor %}
