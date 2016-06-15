@@ -27,7 +27,7 @@
                             {% for entity in pagination %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('admin_pagecontent_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
+                                        <a href="{{ path('admin_pagecontent_show', { 'id': entity.id }) }}">{{ entity }}</a> 
                                     </td>
                                     <td>
                                         <a class='pull-right' href="{{ path('admin_pagecontent_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>

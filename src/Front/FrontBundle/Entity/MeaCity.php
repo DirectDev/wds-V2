@@ -52,63 +52,63 @@ class MeaCity {
     /**
      * @var integer
      *
-     * @ORM\Column(name="salsa_discover", type="integer", nullable=true)
+     * @ORM\Column(name="salsa_discover", type="boolean", nullable=true)
      */
     private $salsaDiscover;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="bachata_discover", type="integer", nullable=true)
+     * @ORM\Column(name="bachata_discover", type="boolean", nullable=true)
      */
     private $bachataDiscover;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="kizomba_discover", type="integer", nullable=true)
+     * @ORM\Column(name="kizomba_discover", type="boolean", nullable=true)
      */
     private $kizombaDiscover;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="salsa_learn", type="integer", nullable=true)
+     * @ORM\Column(name="salsa_learn", type="boolean", nullable=true)
      */
     private $salsaLearn;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="bachata_learn", type="integer", nullable=true)
+     * @ORM\Column(name="bachata_learn", type="boolean", nullable=true)
      */
     private $bachataLearn;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="kizomba_learn", type="integer", nullable=true)
+     * @ORM\Column(name="kizomba_learn", type="boolean", nullable=true)
      */
     private $kizombaLearn;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="salsa_meet", type="integer", nullable=true)
+     * @ORM\Column(name="salsa_meet", type="boolean", nullable=true)
      */
     private $salsaMeet;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="bachata_meet", type="integer", nullable=true)
+     * @ORM\Column(name="bachata_meet", type="boolean", nullable=true)
      */
     private $bachataMeet;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="kizomba_meet", type="integer", nullable=true)
+     * @ORM\Column(name="kizomba_meet", type="boolean", nullable=true)
      */
     private $kizombaMeet;
 

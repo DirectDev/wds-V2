@@ -1,16 +1,35 @@
-{% extends '::base.html.twig' %}
+{% extends 'AdminAdminBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Music edit</h1>
+{% block content -%}
 
-    {{ form(edit_form) }}
+    <div class="row">
+        <div class="col-md-9 pull-left">
+            <h1 class="page-header">{% trans %}admin.music_edit_title{% endtrans %}</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <a href="{{ path('admin_music') }}" class="btn btn-warning btn-sm pull-right">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+                <span> {% trans %}admin.back_to_list{% endtrans %}</span>
+            </a>
+            <div class='pull-right'>
+                {% form_theme delete_form with ['AdminAdminBundle:Form:bootstrap_form_delete_override.html.twig'] %}
+                {{ form(delete_form) }}
+            </div>
+        </div>
+    </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_music') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="panel panel-default">
+        <div class="panel-body">    
+            <div class="panel panel-info">
+                <div class="panel-body">
+
+                    {% form_theme edit_form with ['AdminAdminBundle:Form:bootstrap_form_override.html.twig'] %}
+                    {{ form(edit_form) }}
+
+                </div>
+            </div>
+        </div>   
+    </div>   
+
 {% endblock %}
+

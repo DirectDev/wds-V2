@@ -1,15 +1,31 @@
-{% extends '::base.html.twig' %}
+{% extends 'AdminAdminBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Video creation</h1>
+{% block content -%}
 
-    {{ form(form) }}
+    <div class="row">
+        <div class="col-md-11 pull-left">
+            <h1 class="page-header">{% trans %}admin.video_new_title{% endtrans %}</h1>
+        </div>
+        <div class="col-md-1 pull-right">
+            <a href="{{ path('admin_video') }}" class="btn btn-warning btn-sm pull-right">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+                <span> {% trans %}admin.back_to_list{% endtrans %}</span>
+            </a>
+        </div>
+    </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_video') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="panel panel-default">
+        <div class="panel-body">    
+            <div class="panel panel-info">
+                <div class="panel-body">
+
+                    {% form_theme form with ['AdminAdminBundle:Form:bootstrap_form_override.html.twig'] %}
+                    {{ form(form) }}
+
+                </div>
+            </div>
+        </div>   
+    </div>   
+
 {% endblock %}
+

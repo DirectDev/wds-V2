@@ -6,30 +6,31 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class VideoType extends AbstractType
-{
+class VideoType extends AbstractType {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('url')
-            ->add('name')
-            ->add('move')
-            ->add('createdAt')
-            ->add('user')
-            ->add('tags')
-            ->add('lovesMe')
+                ->add('url')
+                ->add('name')
+                ->add('move')
+                ->add('user')
+                ->add('tags')
+                ->add('translations', 'a2lix_translations', array(
+                    'fields' => array(
+                        'title' => array('attr' => array('class' => 'form-control'))
+                    )
+                ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Front\FrontBundle\Entity\Video'
         ));
@@ -38,8 +39,8 @@ class VideoType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'admin_adminbundle_video';
     }
+
 }

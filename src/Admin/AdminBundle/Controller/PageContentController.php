@@ -203,7 +203,6 @@ class PageContentController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_pagecontent_index', array('id' => $entity->getPage()->getId())));
         }
 
         return $this->render('AdminAdminBundle:PageContent:edit.html.twig', array(

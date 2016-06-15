@@ -31,7 +31,7 @@ class PageContent {
      * @ORM\Column(name="position", type="integer", nullable=true)
      */
     private $position;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Page", inversedBy="PageContents")
      * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
@@ -51,6 +51,11 @@ class PageContent {
         }
     }
 
+    public function __toString() {
+        if ($this->getPage())
+            return (string) $this->getPosition() . ' - ' . $this->getPage()->getName();
+    }
+
     /**
      * Get id
      *
@@ -60,8 +65,6 @@ class PageContent {
         return $this->id;
     }
 
-
-
     /**
      * Set position
      *
@@ -69,8 +72,7 @@ class PageContent {
      *
      * @return PageContent
      */
-    public function setPosition($position)
-    {
+    public function setPosition($position) {
         $this->position = $position;
 
         return $this;
@@ -81,8 +83,7 @@ class PageContent {
      *
      * @return integer
      */
-    public function getPosition()
-    {
+    public function getPosition() {
         return $this->position;
     }
 
@@ -93,8 +94,7 @@ class PageContent {
      *
      * @return PageContent
      */
-    public function setPage(\Admin\AdminBundle\Entity\Page $page = null)
-    {
+    public function setPage(\Admin\AdminBundle\Entity\Page $page = null) {
         $this->Page = $page;
 
         return $this;
@@ -105,8 +105,8 @@ class PageContent {
      *
      * @return \Admin\AdminBundle\Entity\Page
      */
-    public function getPage()
-    {
+    public function getPage() {
         return $this->Page;
     }
+
 }

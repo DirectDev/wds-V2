@@ -15,27 +15,17 @@ class EventDateType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
         $builder
-                ->add('startdate', 'date', array(
-                    'widget' => 'single_text',
-                    'input' => 'datetime',
-                    'format' => 'yyyy-MM-dd', // bug avec les heures
-                    'attr' => array('class' => 'datepicker')
-                ))
-                ->add('starttime', 'time', array(
-                    'input' => 'datetime',
-                    'widget' => 'choice',
-                    'with_seconds' => false
-                ))
-                ->add('stopdate', 'date', array(
-                    'widget' => 'single_text',
-                    'input' => 'datetime',
-                    'format' => 'yyyy-MM-dd', // bug avec les heures
-                    'attr' => array('class' => 'datepicker')
-                ))
-                ->add('stoptime', 'time', array(
-                    'input' => 'datetime',
-                    'widget' => 'choice',
-                    'with_seconds' => false
+                ->add('startdate')
+                ->add('starttime')
+                ->add('stopdate')
+                ->add('stoptime')
+                ->add('event', 'entity', array(
+                    'class' => 'FrontFrontBundle:Event',
+                    'property' => 'name',
+                    'multiple' => false,
+                    'expanded' => false,
+                    'by_reference' => true,
+                    'required' => false,
                 ))
 
         ;
@@ -58,4 +48,3 @@ class EventDateType extends AbstractType {
     }
 
 }
-

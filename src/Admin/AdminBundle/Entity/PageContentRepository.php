@@ -33,15 +33,19 @@ class PageContentRepository extends EntityRepository {
     public function filterAdmin($data, $locale = 'en') {
         $query = $this->createQueryBuilder('pc')
                 ->leftJoin('pc.translations', 'pct', 'WITH', 'pct.locale = :locale')
+                ->leftJoin('pc.Page', 'p')
+                ->leftJoin('p.translations', 'pt', 'WITH', 'pt.locale = :locale')
                 ->setParameter('locale', $locale)
                 ->where("1 = 1");
 
         if (isset($data["search"])) {
             $orQuery = $query->expr()->orx();
-            $orQuery->add($query->expr()->like("pc.name", ":search"));
-            $orQuery->add($query->expr()->like("pct.title", ":search"));
+            $orQuery->add($query->expr()->like("pc.position", ":search"));
+            $orQuery->add($query->expr()->like("p.name", ":search"));
+            $orQuery->add($query->expr()->like("pt.title", ":search"));
+            $orQuery->add($query->expr()->like("pt.description", ":search"));
+            $orQuery->add($query->expr()->like("pt.content", ":search"));
             $orQuery->add($query->expr()->like("pct.content", ":search"));
-            $orQuery->add($query->expr()->like("pct.description", ":search"));
             $query->andWhere($orQuery);
             $query->setParameter('search', '%' . $data["search"] . '%');
         }
