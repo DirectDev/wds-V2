@@ -42,6 +42,12 @@ class VideoRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('v')
+                ->select('COUNT(v.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     public function filter($data, $locale = 'en') {
         $query = $this->createQueryBuilder('v')
                 ->leftJoin('v.translations', 'vt', 'WITH', 'vt.locale = :locale')

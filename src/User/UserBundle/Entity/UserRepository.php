@@ -81,6 +81,12 @@ class UserRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('u')
+                ->select('COUNT(u.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     public function getUsersLoveEvent(\Front\FrontBundle\Entity\Event $Event, $max = null) {
         $query = $this->createQueryBuilder('u')
                 ->leftJoin('u.eventloves', 'e')

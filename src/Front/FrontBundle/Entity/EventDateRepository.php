@@ -37,4 +37,10 @@ class EventDateRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('ed')
+                ->select('COUNT(ed.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

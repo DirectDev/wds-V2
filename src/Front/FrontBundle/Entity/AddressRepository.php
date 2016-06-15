@@ -50,4 +50,10 @@ class AddressRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('a')
+                ->select('COUNT(a.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

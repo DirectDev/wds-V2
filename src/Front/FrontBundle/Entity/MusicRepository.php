@@ -42,6 +42,12 @@ class MusicRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('m')
+                ->select('COUNT(m.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     public function findForMusicIndex() {
         $query = $this->createQueryBuilder('m')
                 ->leftJoin('m.user', 'u')

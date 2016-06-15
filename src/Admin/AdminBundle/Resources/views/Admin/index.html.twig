@@ -2,4 +2,106 @@
 
 {% block content -%}
 
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-green">
+                <div class="stats-icon"><i class="fa fa-users"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL USERS</h4>
+                    <p>{{ count_users|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-green-lighter">
+                <div class="stats-icon"><i class="fa fa-bullseye"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL CITIES</h4>
+                    <p>{{ count_cities|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-green-lighter">
+                <div class="stats-icon"><i class="fa fa-map-marker"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL ADDRESS</h4>
+                    <p>{{ count_addresss|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-blue">
+                <div class="stats-icon"><i class="fa fa-glass"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL EVENTS</h4>
+                    <p>{{ count_events|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-blue-lighter">
+                <div class="stats-icon"><i class="fa fa-calendar"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL DATES</h4>
+                    <p>{{ count_eventdates|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-purple">
+                <div class="stats-icon"><i class="fa fa-music"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL MUSICS</h4>
+                    <p>{{ count_musics|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-purple-lighter">
+                <div class="stats-icon"><i class="fa fa-camera"></i></div>
+                <div class="stats-info">
+                    <h4>TOTAL VIDEOS</h4>
+                    <p>{{ count_videos|number_format(0, ',', ' ') }}</p>	
+                </div>
+                <div class="stats-link">
+                    <a href="javascript:;">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}

@@ -121,6 +121,12 @@ class EventRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('e')
+                ->select('COUNT(e.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     public function getNextEventByUser(User $user, $limit = 6, $startdate = null, $stopdate = null, $published = true) {
 
         if (!$startdate)
