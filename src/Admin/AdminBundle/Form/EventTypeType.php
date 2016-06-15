@@ -35,6 +35,6 @@ class EventTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_adminbundle_eventtype';
+        return 'aab_eventtype';
     }
 }

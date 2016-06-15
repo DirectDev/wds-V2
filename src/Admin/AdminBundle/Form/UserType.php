@@ -6,10 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\EntityRepository;
+
 //use Symfony\Component\Security\Core\SecurityContext;
 
 class UserType extends AbstractType {
-
 //    private $securityContext;
 //
 //    public function __construct(SecurityContext $securityContext) {
@@ -22,10 +22,41 @@ class UserType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('facebook_id')
-                ->add('facebook_access_token')
-                ->add('google_id')
-                ->add('google_access_token');
+                ->add('username')
+                ->add('email')
+                ->add('enabled')
+                ->add('translations', 'a2lix_translations', array(
+                    'fields' => array(
+                        'baseline' => array('attr' => array()),
+                        'description' => array('attr' => array('class' => 'ckeditor form-control'))
+                    )
+                ))
+                ->add('userTypes', 'entity', array(
+                    'class' => 'UserUserBundle:UserType',
+                    'property' => 'title',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'by_reference' => true,
+                ))
+                ->add('musicTypes', 'entity', array(
+                    'class' => 'FrontFrontBundle:MusicType',
+                    'property' => 'title',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'by_reference' => true,
+                ))
+                ->add('facebookId')
+                ->add('facebookLink')
+                ->add('googleLink')
+                ->add('twitterLink')
+                ->add('linkedinLink')
+                ->add('flickrLink')
+                ->add('tumblrLink')
+                ->add('instagramLink')
+                ->add('vimeoLink')
+                ->add('youtubeLink')
+                ->add('baiduLink')
+                ->add('xingLink');
 
 //        $User = $builder->getData();
 //        $User = $this->securityContext->getToken()->getUser();
@@ -36,7 +67,6 @@ class UserType extends AbstractType {
 //                                ->where('ug.name IN (:userGroupName)')
 //                                ->setParameter('userGroupName', array('User', 'Group'));
 //            }));
-
 //        if ($this->securityContext->isGranted('ROLE_SUPER_ADMIN'))
 //            $builder->add('userGroups', 'entity', array(
 //                'class' => 'UserUserBundle:UserGroup',
@@ -70,7 +100,7 @@ class UserType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_user';
+        return 'aab_user';
     }
 
 }

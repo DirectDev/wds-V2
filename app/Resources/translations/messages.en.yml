@@ -284,7 +284,7 @@ footer:
     share_events: 'Share events'
 
 form:
-    admin_adminbundle_address:
+    aab_address:
         children:
             city:
                 label: City
@@ -304,7 +304,7 @@ form:
             streetComplement:
                 label: 'Street complement'
 
-    admin_adminbundle_city:
+    aab_city:
         children:
             latitude:
                 label: Latitude
@@ -315,7 +315,7 @@ form:
             searchcity:
                 label: Name
 
-    admin_adminbundle_country:
+    aab_country:
         children:
             name:
                 label: Country
@@ -329,7 +329,7 @@ form:
 
                 label: Translations
 
-    admin_adminbundle_event:
+    aab_event:
         children:
             addresses:
                 label: Addresses
@@ -395,7 +395,7 @@ form:
             user:
                 label: User
 
-    admin_adminbundle_eventdate:
+    aab_eventdate:
         children:
             startdate:
                 label: 'Start date'
@@ -409,7 +409,7 @@ form:
             stoptime:
                 label: 'Stop time'
 
-    admin_adminbundle_eventtype:
+    aab_eventtype:
         children:
             name:
                 label: 'Event type'
@@ -423,7 +423,7 @@ form:
 
                 label: Translations
 
-    admin_adminbundle_musictype:
+    aab_musictype:
         children:
             name:
                 label: 'Music type'
@@ -437,7 +437,7 @@ form:
 
                 label: Translations
 
-    admin_adminbundle_page:
+    aab_page:
         children:
             name:
                 label: Name

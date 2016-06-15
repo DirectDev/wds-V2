@@ -22,7 +22,7 @@ class EventType extends AbstractType {
                 ->add('published')
                 ->add('musicTypes', 'entity', array(
                     'class' => 'FrontFrontBundle:MusicType',
-                    'property' => 'name',
+                    'property' => 'title',
                     'multiple' => true,
                     'expanded' => true,
                     'by_reference' => true,
@@ -65,7 +65,7 @@ class EventType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_event';
+        return 'aab_event';
     }
 
 }

@@ -37,7 +37,7 @@ class MeaFestivalType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_meafestival';
+        return 'aab_meafestival';
     }
 
 }

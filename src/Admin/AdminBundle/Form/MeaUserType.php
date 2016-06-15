@@ -64,7 +64,7 @@ class MeaUserType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_meauser';
+        return 'aab_meauser';
     }
 
 }

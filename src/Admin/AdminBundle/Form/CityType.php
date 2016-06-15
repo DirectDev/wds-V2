@@ -37,7 +37,7 @@ class CityType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_city';
+        return 'aab_city';
     }
 
 }

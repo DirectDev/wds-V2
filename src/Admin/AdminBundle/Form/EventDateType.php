@@ -44,7 +44,7 @@ class EventDateType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_eventdate';
+        return 'aab_eventdate';
     }
 
 }

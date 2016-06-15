@@ -66,7 +66,7 @@ class MeaCityType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_meacity';
+        return 'aab_meacity';
     }
 
 }

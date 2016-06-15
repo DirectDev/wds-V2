@@ -36,7 +36,7 @@ class TagType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_tag';
+        return 'aab_tag';
     }
 
 }

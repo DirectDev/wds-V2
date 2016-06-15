@@ -35,6 +35,6 @@ class EventFileType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_adminbundle_eventfile';
+        return 'aab_eventfile';
     }
 }

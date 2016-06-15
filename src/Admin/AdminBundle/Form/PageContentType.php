@@ -46,6 +46,6 @@ class PageContentType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_adminbundle_pagecontent';
+        return 'aab_pagecontent';
     }
 }

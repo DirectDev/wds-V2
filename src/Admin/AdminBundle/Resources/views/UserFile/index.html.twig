@@ -4,7 +4,7 @@
 
     <h1 class="page-header">{% trans %}admin.userfile_list_title{% endtrans %}</h1>
 
-    {% include 'AdminAdminBundle::search_add.html.twig' with { add_path : path('admin_userfile_new') }%}
+    {% include 'AdminAdminBundle::search_add.html.twig' with { add_path : path('admin_user_file_new') }%}
 
     <!-- begin row -->
     <div class="row">
@@ -27,10 +27,10 @@
                             {% for entity in pagination %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('admin_userfile_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
+                                        <a href="{{ path('admin_user_file_show', { 'id': entity.id }) }}">{{ entity.name }}</a> 
                                     </td>
                                     <td>
-                                        <a class='pull-right' href="{{ path('admin_userfile_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
+                                        <a class='pull-right' href="{{ path('admin_user_file_edit', { 'id': entity.id }) }}">{% trans %}admin.edit{% endtrans %}</a>
                                     </td>
                                 </tr>
                             {% endfor %}

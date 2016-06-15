@@ -35,6 +35,6 @@ class CountryType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_adminbundle_country';
+        return 'aab_country';
     }
 }

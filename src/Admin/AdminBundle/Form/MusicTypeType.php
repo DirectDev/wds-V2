@@ -35,6 +35,6 @@ class MusicTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_adminbundle_musictype';
+        return 'aab_musictype';
     }
 }

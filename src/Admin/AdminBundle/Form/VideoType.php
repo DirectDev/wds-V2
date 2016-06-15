@@ -40,7 +40,7 @@ class VideoType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'admin_adminbundle_video';
+        return 'aab_video';
     }
 
 }
