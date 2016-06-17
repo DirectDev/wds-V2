@@ -38,6 +38,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         facebook_app_id: "%facebook_app_id%"
+        facebook_scope: "%facebook_scope%"
         google_app_id: "%google_app_id%"
         google_map_api_key: "%google_map_api_key%"
         share_this_publisher: "%share_this_publisher%"
