@@ -15,8 +15,12 @@ class LoadEventPresenceData extends AbstractFixture implements OrderedFixtureInt
     use FixturesDataTrait;
 
     public function load(ObjectManager $manager) {
+        
+        $array_events = $this->array_event;
+        $array_events[] = 'to-delete';
+        $array_events[] = 'not-to-delete';
 
-        foreach ($this->array_event as $value) {
+        foreach ($array_events as $value) {
 
             $Event = $this->getReference('event-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
 
@@ -25,6 +29,9 @@ class LoadEventPresenceData extends AbstractFixture implements OrderedFixtureInt
                 for ($i = 0; $i < $count; $i++) {
                     $user_reference = $this->array_user[rand(0, count($this->array_user) - 1)];
                     $User = $this->getReference('user-' . filter_var($user_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
+                    if (!$Event->getUserPresents()->contains($User))
+                        $Event->addUserPresent($User);
+                    $User = $this->getReference('user-to-delete');
                     if (!$Event->getUserPresents()->contains($User))
                         $Event->addUserPresent($User);
                 }

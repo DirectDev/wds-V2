@@ -77,6 +77,36 @@ class LoadVideoData extends AbstractFixture implements OrderedFixtureInterface {
         }
 
         $manager->flush();
+
+        $this->loadToDelete($manager);
+    }
+
+    public function loadToDelete(ObjectManager $manager) {
+
+        $name = 'to-delete';
+        $url = 'url-to-delete';
+
+        $Video = new Video();
+        $Video->setUrl($url);
+        $Video->setName($name);
+        $Video->translate('en')->setTitle($name);
+        $Video->translate('fr')->setTitle($name);
+        $Video->setCreatedAt(new \DateTime());
+
+        $Video->setUser($this->getReference('user-to-delete'));
+
+        foreach ($this->array_tag as $tag_selected) {
+            if (rand(0, 1))
+                $Video->addTag($this->getReference('tag-' . filter_var($tag_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+        }
+
+
+        $manager->persist($Video);
+        $Video->mergeNewTranslations();
+        $this->addReference('video-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Video);
+
+
+        $manager->flush();
     }
 
     /**

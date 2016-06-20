@@ -25,6 +25,9 @@ class LoadMusicLoveData extends AbstractFixture implements OrderedFixtureInterfa
                     $User = $this->getReference('user-' . filter_var($user_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
                     if (!$Music->getLovesMe()->contains($User))
                         $Music->addLovesMe($User);
+                    $User = $this->getReference('user-to-delete');
+                    if (!$Music->getLovesMe()->contains($User))
+                        $Music->addLovesMe($User);
                 }
 
             $manager->persist($Music);

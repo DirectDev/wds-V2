@@ -101,3 +101,8 @@ front_user_filter_events:
     path:     /filter_events
     defaults: { _controller: "FrontFrontBundle:User:filterEvents" }
     methods:  GET    
+    
+front_user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FrontFrontBundle:User:delete" }
+    methods:  [DELETE]    

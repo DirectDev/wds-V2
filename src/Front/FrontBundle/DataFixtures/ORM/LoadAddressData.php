@@ -33,6 +33,14 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
         $User = $this->getReference('user-empty-user');
         $User->addAddress($this->addEmptyAddress($manager));
 
+        $Event = $this->getReference('event-to-delete');
+        $Event->addAddress($this->addAddress($manager));
+        $Event = $this->getReference('event-not-to-delete');
+        $Event->addAddress($this->addAddress($manager));
+
+        $User = $this->getReference('user-to-delete');
+        $User->addAddress($this->addAddress($manager));
+
         $manager->flush();
     }
 

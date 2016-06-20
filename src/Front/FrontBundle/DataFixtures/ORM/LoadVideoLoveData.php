@@ -25,6 +25,9 @@ class LoadVideoLoveData extends AbstractFixture implements OrderedFixtureInterfa
                     $User = $this->getReference('user-' . filter_var($user_reference, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
                     if (!$Video->getLovesMe()->contains($User))
                         $Video->addLovesMe($User);
+                    $User = $this->getReference('user-to-delete');
+                    if (!$Video->getLovesMe()->contains($User))
+                        $Video->addLovesMe($User);
                 }
 
             $manager->persist($Video);

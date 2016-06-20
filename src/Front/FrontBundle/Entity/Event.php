@@ -98,7 +98,7 @@ class Event {
     protected $eventFiles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Address", mappedBy="events", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Address", mappedBy="events", cascade={"persist", "remove"})
      */
     protected $addresses;
 
@@ -112,7 +112,7 @@ class Event {
     protected $musicTypes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="EventDate", mappedBy="events", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="EventDate", mappedBy="events", cascade={"persist", "remove"})
      * @ORM\OrderBy({"startdate" = "ASC"})
      */
     protected $eventDates;
@@ -158,7 +158,7 @@ class Event {
     private $userPresents;
 
     /**
-     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaFestival", mappedBy="event")
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaFestival", mappedBy="event", cascade={"remove"})
      * */
     private $meaFestival;
 

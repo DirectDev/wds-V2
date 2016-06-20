@@ -150,6 +150,7 @@ class UserController extends Controller {
         $editProfileForm = $this->createEditProfileForm($entity);
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
         $editLinkForm = $this->createEditLinkForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
 
 
         /*
@@ -171,6 +172,7 @@ class UserController extends Controller {
 
         return $this->render('FrontFrontBundle:User:edit.html.twig', array(
                     'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
                     'edit_profile_form' => $editProfileForm->createView(),
                     'edit_description_form' => $editDescriptionForm->createView(),
                     'edit_link_form' => $editLinkForm->createView(),
@@ -237,7 +239,7 @@ class UserController extends Controller {
 
         if ($editProfileForm->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
                     'success', $this->get('translator')->trans('form.ffup.flashbags.update')
             );
@@ -267,7 +269,7 @@ class UserController extends Controller {
 
         if ($editDescriptionForm->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
                     'success', $this->get('translator')->trans('form.ffud.flashbags.update')
             );
@@ -297,7 +299,7 @@ class UserController extends Controller {
 
         if ($editLinkForm->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
                     'success', $this->get('translator')->trans('form.fful.flashbags.update')
             );
@@ -681,6 +683,74 @@ class UserController extends Controller {
             'action' => $this->generateUrl('front_user_filter_events'),
             'method' => 'GET',
         ));
+
+        return $form;
+    }
+
+    /**
+     * Deletes a User entity.
+     *
+     */
+    public function deleteAction(Request $request, $id) {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+
+        if (!$id or ! $this->getUser())
+            throw $this->createNotFoundException('Unable to find User entity.');
+
+        if ($this->getUser() && $this->getUser()->getId() != $id)
+            throw $this->createNotFoundException('Wrong User.');
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find User entity.');
+            }
+
+            foreach ($entity->getEvents() as $event) {
+                $event->setPublishedBy(null);
+                $event->setOrganizedBy(null);
+                $em->persist($event);
+            }
+            $em->flush();
+            $em->refresh($entity);
+
+            foreach ($entity->getEventsPublished() as $event) {
+                $event->setPublishedBy(null);
+                $em->persist($event);
+            }
+
+            foreach ($entity->getEventsOrganized() as $event) {
+                $event->setOrganizedBy(null);
+                $em->persist($event);
+            }
+            $em->flush();
+            $em->refresh($entity);
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('fos_user_security_logout'));
+    }
+
+    /**
+     * Creates a form to delete a User entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id) {
+        $form = $this->createFormBuilder()
+                ->setAction($this->generateUrl('front_user_delete', array('id' => $id)))
+                ->setMethod('DELETE')
+                ->getForm();
+
+        $form->add('submit', 'submit', array(
+            'label' => /** @Ignore */ $this->get('translator')->trans('user.delete.button'), 'attr' => array('class' => 'btn btn-default pull-right')));
 
         return $form;
     }

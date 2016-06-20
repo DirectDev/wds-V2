@@ -37,6 +37,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->loadBars($manager);
         $this->loadEmptyUser($manager);
         $this->loadFacebookUser($manager);
+        $this->loadUserToDelete($manager);
     }
 
     private function addMusicType(User $User) {
@@ -175,6 +176,26 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     public function loadFacebookUser(ObjectManager $manager) {
 
         $value = 'facebook-user';
+        $User = new User();
+        $User->setEnabled(true);
+        $User->setUsername($value);
+        $User->setPassword($this->password);
+        $User->setEmail($value . '@yopmail.com');
+        $User->addRole('ROLE_USER');
+        $encoder = $this->container
+                ->get('security.encoder_factory')
+                ->getEncoder($User);
+        $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
+
+        $manager->persist($User);
+
+        $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
+        $manager->flush();
+    }
+    
+    public function loadUserToDelete(ObjectManager $manager) {
+
+        $value = 'to-delete';
         $User = new User();
         $User->setEnabled(true);
         $User->setUsername($value);

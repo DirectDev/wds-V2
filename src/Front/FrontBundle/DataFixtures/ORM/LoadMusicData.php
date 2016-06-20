@@ -52,6 +52,34 @@ class LoadMusicData extends AbstractFixture implements OrderedFixtureInterface {
         }
 
         $manager->flush();
+        
+        $this->loadUserToDelete($manager);
+    }
+
+    public function loadUserToDelete(ObjectManager $manager) {
+
+        $name = 'to-delete';
+        $url = 'url-to-delete';
+
+        $Music = new Music();
+        $Music->setUrl($url);
+        $Music->setName($name);
+        $Music->translate('en')->setTitle($name);
+        $Music->translate('fr')->setTitle($name);
+        $Music->setCreatedAt(new \DateTime());
+
+        $Music->setUser($this->getReference('user-to-delete'));
+
+        foreach ($this->array_tag as $tag_selected) {
+            if (rand(0, 1))
+                $Music->addTag($this->getReference('tag-' . filter_var($tag_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+        }
+
+        $manager->persist($Music);
+        $Music->mergeNewTranslations();
+        $this->addReference('music-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Music);
+
+        $manager->flush();
     }
 
     /**

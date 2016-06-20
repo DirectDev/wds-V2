@@ -11,10 +11,14 @@
 
 {{ form_end(edit_profile_form) }}
 
+{{ form_start(delete_form, { 'attr' : { 'id' : 'userDeleteForm', 'class' : 'no_validation' } } ) }}
+{{ form_errors(delete_form) }}
+{{ form_row(delete_form.submit, { 'id' : 'userDeleteButton' } ) }}
+{{ form_end(delete_form) }}
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('form').bootstrapValidator({
+        $('form:not(.no_validation)').bootstrapValidator({
             fields: {
                 "ffup[username]": {
                     validators: {
@@ -27,5 +31,19 @@
                 }
             }
         });
+
+        $("#userDeleteButton").on("click", function (e) {
+            e.preventDefault();
+            if (!confirm("{% trans %}user.delete.confirmation{% endtrans %}")) {
+                return false;
+            }
+            {#var bootstrapValidator = $("#userDeleteForm").data('bootstrapValidator');
+            bootstrapValidator.validate();
+            if (bootstrapValidator.isValid())#}
+                $("#userDeleteForm").submit();
+            {#else
+                return;#}
+        });
+
     });
 </script>

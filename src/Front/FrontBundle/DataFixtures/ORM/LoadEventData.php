@@ -58,6 +58,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->flush();
 
         $this->loadEmpty($manager);
+        $this->loadToDeleteTest($manager);
     }
 
     private function loadEmpty(ObjectManager $manager) {
@@ -89,6 +90,39 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
             if (rand(0, 1))
                 $Event->addEventType($this->getReference('eventtype-' . $this->array_eventtype[$i]));
         }
+    }
+
+    private function loadToDeleteTest(ObjectManager $manager) {
+
+        $name = 'to-delete';
+        $Event = new Event();
+        $Event->setName($name);
+        $Event->setUser($this->getReference('user-to-delete'));
+        $this->addMusicType($Event);
+        $this->addEventType($Event);
+            $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+        $Event->setOrganizedBy($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+            $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+        $Event->setPublishedBy($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+        $Event->setPublished(true);
+        $manager->persist($Event);
+        $this->addReference('event-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Event);
+
+        $name = 'not-to-delete';
+        $Event = new Event();
+        $Event->setName($name);
+
+        $user_selected = $this->array_user[rand(0, count($this->array_user) - 1)];
+        $Event->setUser($this->getReference('user-' . filter_var($user_selected, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)));
+        $Event->setPublishedBy($this->getReference('user-to-delete'));
+        $Event->setOrganizedBy($this->getReference('user-to-delete'));
+
+        $Event->setPublished(true);
+        $manager->persist($Event);
+        $this->addReference('event-' . filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $Event);
+
+
+        $manager->flush();
     }
 
     /**

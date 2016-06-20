@@ -94,7 +94,7 @@ class User extends BaseUser {
     protected $userFiles;
 
     /**
-     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Event", mappedBy="user", cascade={"remove"})
      * @ORM\OrderBy({"id" = "DESC"})
      * */
     private $events;
@@ -112,7 +112,7 @@ class User extends BaseUser {
     private $eventsOrganized;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Address", mappedBy="users", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Front\FrontBundle\Entity\Address", mappedBy="users", cascade={"persist", "remove"})
      */
     protected $addresses;
 
@@ -135,12 +135,12 @@ class User extends BaseUser {
     protected $userTypes;
 
     /**
-     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Music", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Music", mappedBy="user", cascade={"remove"})
      */
     protected $musics;
 
     /**
-     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Video", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Front\FrontBundle\Entity\Video", mappedBy="user", cascade={"remove"})
      */
     protected $videos;
 
@@ -186,7 +186,7 @@ class User extends BaseUser {
     private $musicloves;
 
     /**
-     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaUser", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaUser", mappedBy="user", cascade={"remove"})
      * */
     private $meaUser;
 
