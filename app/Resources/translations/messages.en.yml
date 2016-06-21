@@ -997,8 +997,8 @@ user:
     by: By
 
     delete:
-        button: Delete my profile
-        confirmation: Are you sure ?
+        button: 'Delete my profile'
+        confirmation: 'Are you sure ?'
 
     description_title: 'My Description'
 

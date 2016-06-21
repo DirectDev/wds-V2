@@ -1,4 +1,5 @@
 
+
 # Desc: /user/callback_username/
 callback_username: /callback_username/en/
 
@@ -566,7 +567,7 @@ admin_address_delete: '/admin/address/{id}/delete'
 admin_address_edit: '/admin/address/{id}/edit'
 
 # Desc: /admin/address/filter_address
-admin_address_filter: /admin/address/filter_address   # FIXME
+admin_address_filter: /admin/address/filter_address
 
 # Desc: /admin/address/new
 admin_address_new: /admin/address/new
@@ -593,7 +594,7 @@ admin_city_delete: '/admin/city/{id}/delete'
 admin_city_edit: '/admin/city/{id}/edit'
 
 # Desc: /admin/city/filter_city
-admin_city_filter: /admin/city/filter_city   # FIXME
+admin_city_filter: /admin/city/filter_city
 
 # Desc: /admin/city/new
 admin_city_new: /admin/city/new
@@ -617,7 +618,7 @@ admin_country_delete: '/admin/country/{id}/delete'
 admin_country_edit: '/admin/country/{id}/edit'
 
 # Desc: /admin/country/filter_country
-admin_country_filter: /admin/country/filter_country   # FIXME
+admin_country_filter: /admin/country/filter_country
 
 # Desc: /admin/country/new
 admin_country_new: /admin/country/new
@@ -641,31 +642,31 @@ admin_event_delete: '/admin/event/{id}/delete'
 admin_event_edit: '/admin/event/{id}/edit'
 
 # Desc: /admin/event_file/
-admin_event_file: /admin/event_file/   # FIXME
+admin_event_file: /admin/event_file/
 
 # Desc: /admin/event_file/create
-admin_event_file_create: /admin/event_file/create   # FIXME
+admin_event_file_create: /admin/event_file/create
 
 # Desc: /admin/event_file/{id}/delete
-admin_event_file_delete: '/admin/event_file/{id}/delete'   # FIXME
+admin_event_file_delete: '/admin/event_file/{id}/delete'
 
 # Desc: /admin/event_file/{id}/edit
-admin_event_file_edit: '/admin/event_file/{id}/edit'   # FIXME
+admin_event_file_edit: '/admin/event_file/{id}/edit'
 
 # Desc: /admin/event_file/filter_event_file
-admin_event_file_filter: /admin/event_file/filter_event_file   # FIXME
+admin_event_file_filter: /admin/event_file/filter_event_file
 
 # Desc: /admin/event_file/new
-admin_event_file_new: /admin/event_file/new   # FIXME
+admin_event_file_new: /admin/event_file/new
 
 # Desc: /admin/event_file/{id}/show
-admin_event_file_show: '/admin/event_file/{id}/show'   # FIXME
+admin_event_file_show: '/admin/event_file/{id}/show'
 
 # Desc: /admin/event_file/{id}/update
-admin_event_file_update: '/admin/event_file/{id}/update'   # FIXME
+admin_event_file_update: '/admin/event_file/{id}/update'
 
 # Desc: /admin/event/filter_event
-admin_event_filter: /admin/event/filter_event   # FIXME
+admin_event_filter: /admin/event/filter_event
 
 # Desc: /admin/event/new
 admin_event_new: /admin/event/new
@@ -689,7 +690,7 @@ admin_eventdate_delete: '/admin/eventdate/{id}/delete'
 admin_eventdate_edit: '/admin/eventdate/{id}/edit'
 
 # Desc: /admin/eventdate/filter_eventdate
-admin_eventdate_filter: /admin/eventdate/filter_eventdate   # FIXME
+admin_eventdate_filter: /admin/eventdate/filter_eventdate
 
 # Desc: /admin/eventdate/new
 admin_eventdate_new: /admin/eventdate/new
@@ -713,7 +714,7 @@ admin_eventtype_delete: '/admin/eventtype/{id}/delete'
 admin_eventtype_edit: '/admin/eventtype/{id}/edit'
 
 # Desc: /admin/eventtype/filter_eventtype
-admin_eventtype_filter: /admin/eventtype/filter_eventtype   # FIXME
+admin_eventtype_filter: /admin/eventtype/filter_eventtype
 
 # Desc: /admin/eventtype/new
 admin_eventtype_new: /admin/eventtype/new
@@ -725,100 +726,100 @@ admin_eventtype_show: '/admin/eventtype/{id}/show'
 admin_eventtype_update: '/admin/eventtype/{id}/update'
 
 # Desc: /admin/mea_city/
-admin_mea_city: /admin/mea_city/   # FIXME
+admin_mea_city: /admin/mea_city/
 
 # Desc: /admin/mea_city/create
-admin_mea_city_create: /admin/mea_city/create   # FIXME
+admin_mea_city_create: /admin/mea_city/create
 
 # Desc: /admin/mea_city/{id}/delete
-admin_mea_city_delete: '/admin/mea_city/{id}/delete'   # FIXME
+admin_mea_city_delete: '/admin/mea_city/{id}/delete'
 
 # Desc: /admin/mea_city/{id}/edit
-admin_mea_city_edit: '/admin/mea_city/{id}/edit'   # FIXME
+admin_mea_city_edit: '/admin/mea_city/{id}/edit'
 
 # Desc: /admin/mea_city/filter_mea_city
-admin_mea_city_filter: /admin/mea_city/filter_mea_city   # FIXME
+admin_mea_city_filter: /admin/mea_city/filter_mea_city
 
 # Desc: /admin/mea_city/new
-admin_mea_city_new: /admin/mea_city/new   # FIXME
+admin_mea_city_new: /admin/mea_city/new
 
 # Desc: /admin/mea_city/{id}/show
-admin_mea_city_show: '/admin/mea_city/{id}/show'   # FIXME
+admin_mea_city_show: '/admin/mea_city/{id}/show'
 
 # Desc: /admin/mea_city/{id}/update
-admin_mea_city_update: '/admin/mea_city/{id}/update'   # FIXME
+admin_mea_city_update: '/admin/mea_city/{id}/update'
 
 # Desc: /admin/mea_festival/
-admin_mea_festival: /admin/mea_festival/   # FIXME
+admin_mea_festival: /admin/mea_festival/
 
 # Desc: /admin/mea_festival/create
-admin_mea_festival_create: /admin/mea_festival/create   # FIXME
+admin_mea_festival_create: /admin/mea_festival/create
 
 # Desc: /admin/mea_festival/{id}/delete
-admin_mea_festival_delete: '/admin/mea_festival/{id}/delete'   # FIXME
+admin_mea_festival_delete: '/admin/mea_festival/{id}/delete'
 
 # Desc: /admin/mea_festival/{id}/edit
-admin_mea_festival_edit: '/admin/mea_festival/{id}/edit'   # FIXME
+admin_mea_festival_edit: '/admin/mea_festival/{id}/edit'
 
 # Desc: /admin/mea_festival/filter_mea_festival
-admin_mea_festival_filter: /admin/mea_festival/filter_mea_festival   # FIXME
+admin_mea_festival_filter: /admin/mea_festival/filter_mea_festival
 
 # Desc: /admin/mea_festival/new
-admin_mea_festival_new: /admin/mea_festival/new   # FIXME
+admin_mea_festival_new: /admin/mea_festival/new
 
 # Desc: /admin/mea_festival/{id}/show
-admin_mea_festival_show: '/admin/mea_festival/{id}/show'   # FIXME
+admin_mea_festival_show: '/admin/mea_festival/{id}/show'
 
 # Desc: /admin/mea_festival/{id}/update
-admin_mea_festival_update: '/admin/mea_festival/{id}/update'   # FIXME
+admin_mea_festival_update: '/admin/mea_festival/{id}/update'
 
 # Desc: /admin/mea_user/
-admin_mea_user: /admin/mea_user/   # FIXME
+admin_mea_user: /admin/mea_user/
 
 # Desc: /admin/mea_user/create
-admin_mea_user_create: /admin/mea_user/create   # FIXME
+admin_mea_user_create: /admin/mea_user/create
 
 # Desc: /admin/mea_user/{id}/delete
-admin_mea_user_delete: '/admin/mea_user/{id}/delete'   # FIXME
+admin_mea_user_delete: '/admin/mea_user/{id}/delete'
 
 # Desc: /admin/mea_user/{id}/edit
-admin_mea_user_edit: '/admin/mea_user/{id}/edit'   # FIXME
+admin_mea_user_edit: '/admin/mea_user/{id}/edit'
 
 # Desc: /admin/mea_user/filter_mea_user
-admin_mea_user_filter: /admin/mea_user/filter_mea_user   # FIXME
+admin_mea_user_filter: /admin/mea_user/filter_mea_user
 
 # Desc: /admin/mea_user/new
-admin_mea_user_new: /admin/mea_user/new   # FIXME
+admin_mea_user_new: /admin/mea_user/new
 
 # Desc: /admin/mea_user/{id}/show
-admin_mea_user_show: '/admin/mea_user/{id}/show'   # FIXME
+admin_mea_user_show: '/admin/mea_user/{id}/show'
 
 # Desc: /admin/mea_user/{id}/update
-admin_mea_user_update: '/admin/mea_user/{id}/update'   # FIXME
+admin_mea_user_update: '/admin/mea_user/{id}/update'
 
 # Desc: /admin/music/
-admin_music: /admin/music/   # FIXME
+admin_music: /admin/music/
 
 # Desc: /admin/music/create
-admin_music_create: /admin/music/create   # FIXME
+admin_music_create: /admin/music/create
 
 # Desc: /admin/music/{id}/delete
-admin_music_delete: '/admin/music/{id}/delete'   # FIXME
+admin_music_delete: '/admin/music/{id}/delete'
 
 # Desc: /admin/music/{id}/edit
-admin_music_edit: '/admin/music/{id}/edit'   # FIXME
+admin_music_edit: '/admin/music/{id}/edit'
 
 # Desc: /admin/music/filter_music
-admin_music_filter: /admin/music/filter_music   # FIXME
+admin_music_filter: /admin/music/filter_music
 
 # Desc: /admin/music/new
-admin_music_new: /admin/music/new   # FIXME
+admin_music_new: /admin/music/new
 
 # Desc: /admin/music/{id}/show
-admin_music_show: '/admin/music/{id}/show'   # FIXME
+admin_music_show: '/admin/music/{id}/show'
 
 # Desc: /admin/music/{id}/update
-admin_music_update: '/admin/music/{id}/update'   # FIXME
+admin_music_update: '/admin/music/{id}/update'
 
 # Desc: /admin/musictype/
 admin_musictype: /admin/musictype/
@@ -833,7 +834,7 @@ admin_musictype_delete: '/admin/musictype/{id}/delete'
 admin_musictype_edit: '/admin/musictype/{id}/edit'
 
 # Desc: /admin/musictype/filter_musictype
-admin_musictype_filter: /admin/musictype/filter_musictype   # FIXME
+admin_musictype_filter: /admin/musictype/filter_musictype
 
 # Desc: /admin/musictype/new
 admin_musictype_new: /admin/musictype/new
@@ -848,7 +849,7 @@ admin_musictype_update: '/admin/musictype/{id}/update'
 admin_page: /admin/page/
 
 # Desc: /admin/pagecontent/filter_page_content
-admin_page_content_filter: /admin/pagecontent/filter_page_content   # FIXME
+admin_page_content_filter: /admin/pagecontent/filter_page_content
 
 # Desc: /admin/page/create
 admin_page_create: /admin/page/create
@@ -860,7 +861,7 @@ admin_page_delete: '/admin/page/{id}/delete'
 admin_page_edit: '/admin/page/{id}/edit'
 
 # Desc: /admin/page/filter_page
-admin_page_filter: /admin/page/filter_page   # FIXME
+admin_page_filter: /admin/page/filter_page
 
 # Desc: /admin/page/new
 admin_page_new: /admin/page/new
@@ -894,28 +895,28 @@ admin_pagecontent_show: '/admin/pagecontent/{id}/show'
 admin_pagecontent_update: '/admin/pagecontent/{id}/update'
 
 # Desc: /admin/tag/
-admin_tag: /admin/tag/   # FIXME
+admin_tag: /admin/tag/
 
 # Desc: /admin/tag/create
-admin_tag_create: /admin/tag/create   # FIXME
+admin_tag_create: /admin/tag/create
 
 # Desc: /admin/tag/{id}/delete
-admin_tag_delete: '/admin/tag/{id}/delete'   # FIXME
+admin_tag_delete: '/admin/tag/{id}/delete'
 
 # Desc: /admin/tag/{id}/edit
-admin_tag_edit: '/admin/tag/{id}/edit'   # FIXME
+admin_tag_edit: '/admin/tag/{id}/edit'
 
 # Desc: /admin/tag/filter_tag
-admin_tag_filter: /admin/tag/filter_tag   # FIXME
+admin_tag_filter: /admin/tag/filter_tag
 
 # Desc: /admin/tag/new
-admin_tag_new: /admin/tag/new   # FIXME
+admin_tag_new: /admin/tag/new
 
 # Desc: /admin/tag/{id}/show
-admin_tag_show: '/admin/tag/{id}/show'   # FIXME
+admin_tag_show: '/admin/tag/{id}/show'
 
 # Desc: /admin/tag/{id}/update
-admin_tag_update: '/admin/tag/{id}/update'   # FIXME
+admin_tag_update: '/admin/tag/{id}/update'
 
 # Desc: /admin/user/
 admin_user: /admin/user/
@@ -930,31 +931,31 @@ admin_user_delete: '/admin/user/{id}/delete'
 admin_user_edit: '/admin/user/{id}/edit'
 
 # Desc: /admin/user_file/
-admin_user_file: /admin/user_file/   # FIXME
+admin_user_file: /admin/user_file/
 
 # Desc: /admin/user_file/create
-admin_user_file_create: /admin/user_file/create   # FIXME
+admin_user_file_create: /admin/user_file/create
 
 # Desc: /admin/user_file/{id}/delete
-admin_user_file_delete: '/admin/user_file/{id}/delete'   # FIXME
+admin_user_file_delete: '/admin/user_file/{id}/delete'
 
 # Desc: /admin/user_file/{id}/edit
-admin_user_file_edit: '/admin/user_file/{id}/edit'   # FIXME
+admin_user_file_edit: '/admin/user_file/{id}/edit'
 
 # Desc: /admin/user_file/filter_user_file
-admin_user_file_filter: /admin/user_file/filter_user_file   # FIXME
+admin_user_file_filter: /admin/user_file/filter_user_file
 
 # Desc: /admin/user_file/new
-admin_user_file_new: /admin/user_file/new   # FIXME
+admin_user_file_new: /admin/user_file/new
 
 # Desc: /admin/user_file/{id}/show
-admin_user_file_show: '/admin/user_file/{id}/show'   # FIXME
+admin_user_file_show: '/admin/user_file/{id}/show'
 
 # Desc: /admin/user_file/{id}/update
-admin_user_file_update: '/admin/user_file/{id}/update'   # FIXME
+admin_user_file_update: '/admin/user_file/{id}/update'
 
 # Desc: /admin/user/filter_user
-admin_user_filter: /admin/user/filter_user   # FIXME
+admin_user_filter: /admin/user/filter_user
 
 # Desc: /admin/user/new
 admin_user_new: /admin/user/new
@@ -963,28 +964,28 @@ admin_user_new: /admin/user/new
 admin_user_show: '/admin/user/{id}/show'
 
 # Desc: /admin/user_type/
-admin_user_type: /admin/user_type/   # FIXME
+admin_user_type: /admin/user_type/
 
 # Desc: /admin/user_type/create
-admin_user_type_create: /admin/user_type/create   # FIXME
+admin_user_type_create: /admin/user_type/create
 
 # Desc: /admin/user_type/{id}/delete
-admin_user_type_delete: '/admin/user_type/{id}/delete'   # FIXME
+admin_user_type_delete: '/admin/user_type/{id}/delete'
 
 # Desc: /admin/user_type/{id}/edit
-admin_user_type_edit: '/admin/user_type/{id}/edit'   # FIXME
+admin_user_type_edit: '/admin/user_type/{id}/edit'
 
 # Desc: /admin/user_type/filter_user_type
-admin_user_type_filter: /admin/user_type/filter_user_type   # FIXME
+admin_user_type_filter: /admin/user_type/filter_user_type
 
 # Desc: /admin/user_type/new
-admin_user_type_new: /admin/user_type/new   # FIXME
+admin_user_type_new: /admin/user_type/new
 
 # Desc: /admin/user_type/{id}/show
-admin_user_type_show: '/admin/user_type/{id}/show'   # FIXME
+admin_user_type_show: '/admin/user_type/{id}/show'
 
 # Desc: /admin/user_type/{id}/update
-admin_user_type_update: '/admin/user_type/{id}/update'   # FIXME
+admin_user_type_update: '/admin/user_type/{id}/update'
 
 # Desc: /admin/user/{id}/update
 admin_user_update: '/admin/user/{id}/update'
@@ -997,25 +998,25 @@ admin_userfile_show: '/admin/userfile/{id}/show'
 admin_userfile_update: '/admin/userfile/{id}/update'
 
 # Desc: /admin/video/
-admin_video: /admin/video/   # FIXME
+admin_video: /admin/video/
 
 # Desc: /admin/video/create
-admin_video_create: /admin/video/create   # FIXME
+admin_video_create: /admin/video/create
 
 # Desc: /admin/video/{id}/delete
-admin_video_delete: '/admin/video/{id}/delete'   # FIXME
+admin_video_delete: '/admin/video/{id}/delete'
 
 # Desc: /admin/video/{id}/edit
-admin_video_edit: '/admin/video/{id}/edit'   # FIXME
+admin_video_edit: '/admin/video/{id}/edit'
 
 # Desc: /admin/video/filter_video
-admin_video_filter: /admin/video/filter_video   # FIXME
+admin_video_filter: /admin/video/filter_video
 
 # Desc: /admin/video/new
-admin_video_new: /admin/video/new   # FIXME
+admin_video_new: /admin/video/new
 
 # Desc: /admin/video/{id}/show
-admin_video_show: '/admin/video/{id}/show'   # FIXME
+admin_video_show: '/admin/video/{id}/show'
 
 # Desc: /admin/video/{id}/update
-admin_video_update: '/admin/video/{id}/update'   # FIXME
+admin_video_update: '/admin/video/{id}/update'
