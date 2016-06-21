@@ -12,14 +12,6 @@ home:
     requirements:
         _locale: en|fr|de|es   
 
-# Bundles
-_liip_imagine:
-    resource: "@LiipImagineBundle/Resources/config/routing.xml"  
-
-admin_admin:
-    resource: "@AdminAdminBundle/Resources/config/routing.yml"
-    prefix:   /admin
-
 front_front:
     resource: "@FrontFrontBundle/Resources/config/routing.yml"
     prefix:   /
@@ -56,7 +48,7 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-
+    
 
 # HWI OAUTH
 hwi_oauth_redirect:
@@ -77,6 +69,12 @@ facebook_login:
 google_login:
     pattern: /login/check-google    
 
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"  
+
+admin_admin:
+    resource: "@AdminAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
    
 # JMS Translation    
 jms_translation_bundle_ui:
