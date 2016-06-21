@@ -11,10 +11,6 @@
                 <i class="glyphicon glyphicon-arrow-left"></i>
                 <span> {% trans %}admin.back_to_list{% endtrans %}</span>
             </a>
-            <div class='pull-right'>
-                {% form_theme delete_form with ['AdminAdminBundle:Form:bootstrap_form_delete_override.html.twig'] %}
-                {{ form(delete_form) }}
-            </div>
         </div>
     </div>
 

@@ -134,11 +134,8 @@ class CityController extends Controller {
             throw $this->createNotFoundException('Unable to find City entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('AdminAdminBundle:City:show.html.twig', array(
                     'entity' => $entity,
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -156,12 +153,10 @@ class CityController extends Controller {
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AdminAdminBundle:City:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -196,7 +191,6 @@ class CityController extends Controller {
             throw $this->createNotFoundException('Unable to find City entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -209,7 +203,6 @@ class CityController extends Controller {
         return $this->render('AdminAdminBundle:City:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -218,38 +211,8 @@ class CityController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FrontFrontBundle:City')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find City entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('admin_city'));
-    }
-
-    /**
-     * Creates a form to delete a City entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id) {
-        return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('admin_city_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
-                        ->getForm()
-        ;
+        
+        throw $this->createNotFoundException('Forbidden to delete.');
     }
 
 }

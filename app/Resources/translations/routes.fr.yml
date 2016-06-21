@@ -370,19 +370,19 @@ front_tag_list_for_music_search: /tag/list_for_music_search/
 front_tag_list_for_video_search: /tag/list_for_video_search/
 
 # Desc: /user/{id}/delete
-front_user_delete: '/user/{id}/delete'
+front_user_delete: '/profil/{id}/effacer'
 
 # Desc: /user/profile/edit/{id}
 front_user_edit: '/profil/editer/{id}'
 
 # Desc: /user/events
-front_user_events: /user/events
+front_user_events: /profil/evenements
 
 # Desc: /user/filter
 front_user_filter: /danseur/filtrer
 
 # Desc: /user/filter_events
-front_user_filter_events: /user/filter_events
+front_user_filter_events: /profil/filtrer_evenements
 
 # Desc: /user/import_facebook_event/
 front_user_import_facebook_event: /import_facebook_event/
@@ -406,10 +406,10 @@ front_user_love: '/profil/aime/{id}'
 front_user_loves: '/profil/loves/{id}'
 
 # Desc: /user/profile/next_events
-front_user_next_events: /profil/next_events
+front_user_next_events: /profil/prochains_evenements
 
 # Desc: /user/profile/passed_events
-front_user_passed_events: /profil/passed_events
+front_user_passed_events: /profil/evenements_passes
 
 # Desc: /user/profile/overviews/{id}
 front_user_show_overviews: '/profil/overvues/{id}'
@@ -442,7 +442,7 @@ front_user_update_link: '/profil/mettre_a_jour_link/{id}'
 front_user_update_profile: '/profil/mettre_a_jour_profil/{id}'
 
 # Desc: /usertype/list_for_user_search/
-front_usertype_list_for_user_search: /usertype/list_for_user_search/
+front_usertype_list_for_user_search: /type_profil/list_for_user_search/
 
 # Desc: /video/
 front_video: /video_fr/

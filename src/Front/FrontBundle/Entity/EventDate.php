@@ -55,7 +55,7 @@ class EventDate {
     /**
      * @ORM\ManyToMany(targetEntity="Event", inversedBy="eventDates", cascade={"persist"})
      * @ORM\JoinTable(name="event_eventdates",
-     * joinColumns={@ORM\JoinColumn(name="eEventDate_id", referencedColumnName="id")},
+     * joinColumns={@ORM\JoinColumn(name="eventdate_id", referencedColumnName="id")},
      * inverseJoinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")}
      * )
      */
@@ -135,36 +135,6 @@ class EventDate {
     }
 
     /**
-     * Add events
-     *
-     * @param \Front\FrontBundle\Entity\Event $events
-     * @return EventDate
-     */
-    public function addEvent(\Front\FrontBundle\Entity\Event $events) {
-        $this->events[] = $events;
-
-        return $this;
-    }
-
-    /**
-     * Remove events
-     *
-     * @param \Front\FrontBundle\Entity\Event $events
-     */
-    public function removeEvent(\Front\FrontBundle\Entity\Event $events) {
-        $this->events->removeElement($events);
-    }
-
-    /**
-     * Get events
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEvents() {
-        return $this->events;
-    }
-
-    /**
      * Set starttime
      *
      * @param \DateTime $starttime
@@ -206,4 +176,38 @@ class EventDate {
         return $this->stoptime;
     }
 
+
+    /**
+     * Add event
+     *
+     * @param \Front\FrontBundle\Entity\Event $event
+     *
+     * @return EventDate
+     */
+    public function addEvent(\Front\FrontBundle\Entity\Event $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \Front\FrontBundle\Entity\Event $event
+     */
+    public function removeEvent(\Front\FrontBundle\Entity\Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
 }

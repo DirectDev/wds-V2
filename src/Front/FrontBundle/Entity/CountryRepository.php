@@ -48,4 +48,10 @@ class CountryRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('c')
+                ->select('COUNT(c.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

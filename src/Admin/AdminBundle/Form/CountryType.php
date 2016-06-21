@@ -16,6 +16,7 @@ class CountryType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('iso2')
             ->add('translations', 'a2lix_translations');    
         ;
     }
