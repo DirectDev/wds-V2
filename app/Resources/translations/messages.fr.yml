@@ -48,73 +48,6 @@ address:
     street: Rue
     streetComplement: 'Rue (complément)'
 
-admin:
-    add: Ajouter
-    address_edit_title: 'Modifier l''adresse'
-    address_list_title: 'Liste des adresses'
-    address_new_title: 'Nouvelle adresse'
-    address_show_title: Adresse
-    addresses: Adresses
-    back_to_list: 'Retour à la liste'
-    cities: Villes
-    city_edit_title: 'Modifier la ville'
-    city_list_title: 'Liste des villes'
-    city_new_title: 'Nouvelle ville'
-    city_show_title: Ville
-    countries: Pays
-    country_edit_title: 'Modifier le pays'
-    country_list_title: 'Liste des pays'
-    country_new_title: 'Nouveau pays'
-    country_show_title: Pays
-    delete: Effacer
-    edit: Modifier
-    event_edit_title: 'Modifier l''événement'
-    event_list_title: 'Liste des événements'
-    event_new_title: 'Nouvel événement'
-    event_show_title: Evenement
-    eventdate_edit_title: 'Modifier la date'
-    eventdate_list_title: 'Liste des dates'
-    eventdate_new_title: 'Nouvelle date'
-    eventdate_show_title: Date
-    eventdates: Dates
-    events: Evenements
-    eventtype_edit_title: 'Modifier le type d''événement'
-    eventtype_list_title: 'Liste de type d''événement'
-    eventtype_new_title: 'Nouveau type d''événement'
-    eventtype_show_title: 'Type d''événement'
-    eventtypes: 'types d''événements'
-    general_title: Administration
-    link_add_address: 'Ajouter une adresse'
-    link_add_eventdate: 'Ajouter une date'
-    link_delete_address: 'Effacer l''adresse'
-    link_delete_eventdate: 'Effacer une date'
-    musictype_edit_title: 'Modifier la musique'
-    musictype_list_title: 'Liste des musiques'
-    musictype_new_title: 'Nouvelle musique'
-    musictype_show_title: Musique
-    musictypes: Musiques
-
-    page:
-        see_pagecontent: admin.page.see_pagecontent
-
-    page_edit_title: 'Modifier la page'
-    page_list_title: 'Liste des pages'
-    page_new_title: 'Nouvelle page'
-    page_show_title: Page
-    pagecontent: admin.pagecontent
-    pagecontent_edit_title: admin.pagecontent_edit_title
-    pagecontent_list_title: admin.pagecontent_list_title
-    pagecontent_new_title: admin.pagecontent_new_title
-    pagecontent_show_title: admin.pagecontent_show_title
-    pages: Pages
-    translations: Traductions
-    update: 'Mise à jour'
-    user_edit_title: 'Modifier l''utilisateur'
-    user_list_title: 'Liste d''utilisateurs'
-    user_new_title: 'Nouvel utilisateur'
-    user_show_title: Utilisateur
-    users: Utilisateurs
-
 city:
     artits: 'Les artistes'
     calendar: 'Le calendrier'
@@ -422,7 +355,7 @@ form:
                 label: User
 
         flashbags:
-            update: La description de l'événement a été mise à jour.
+            update: 'La description de l''événement a été mise à jour.'
 
     ffel:
         children:
@@ -457,7 +390,7 @@ form:
                 label: Xing
 
         flashbags:
-            update: Les liens de l'événement ont été mis à jour.
+            update: 'Les liens de l''événement ont été mis à jour.'
 
     ffet:
         children:
@@ -888,6 +821,11 @@ user:
     address_title: Adresse
     addresses_title: 'Mon Adresse'
     by: Par
+
+    delete:
+        button: Supprimer mon profil
+        confirmation: Etes vous sûr de vouloir supprimer votre profil ?
+
     description_title: 'Ma Description'
 
     edit:

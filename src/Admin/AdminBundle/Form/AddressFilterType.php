@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityRepository;
 
-
 class AddressFilterType extends AbstractType {
 
     /**
@@ -16,7 +15,7 @@ class AddressFilterType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('search', 'text', array(
+                ->add('search', 'text', array('translation_domain' => 'AdminBundle',
                     'required' => false,
                     'attr' => array('placeholder' => "Search",)
                 ))

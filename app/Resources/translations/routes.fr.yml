@@ -1,237 +1,3 @@
-# Desc: /admin/address/
-admin_address: /administration/address/
-
-# Desc: /admin/address/create
-admin_address_create: /administration/address/create
-
-# Desc: /admin/address/{id}/delete
-admin_address_delete: '/administration/address/{id}/delete'
-
-# Desc: /admin/address/{id}/edit
-admin_address_edit: '/administration/address/{id}/edit'
-
-# Desc: /admin/address/new
-admin_address_new: /administration/address/new
-
-# Desc: /admin/address/{id}/show
-admin_address_show: '/administration/address/{id}/show'
-
-# Desc: /admin/address/{id}/update
-admin_address_update: '/administration/address/{id}/update'
-
-# Desc: /admin/
-admin_admin_homepage: /administration/
-
-# Desc: /admin/city/
-admin_city: /administration/city/
-
-# Desc: /admin/city/create
-admin_city_create: /administration/city/create
-
-# Desc: /admin/city/{id}/delete
-admin_city_delete: '/administration/city/{id}/delete'
-
-# Desc: /admin/city/{id}/edit
-admin_city_edit: '/administration/city/{id}/edit'
-
-# Desc: /admin/city/new
-admin_city_new: /administration/city/new
-
-# Desc: /admin/city/{id}/show
-admin_city_show: '/administration/city/{id}/show'
-
-# Desc: /admin/city/{id}/update
-admin_city_update: '/administration/city/{id}/update'
-
-# Desc: /admin/country/
-admin_country: /administration/country/
-
-# Desc: /admin/country/create
-admin_country_create: /administration/country/create
-
-# Desc: /admin/country/{id}/delete
-admin_country_delete: '/administration/country/{id}/delete'
-
-# Desc: /admin/country/{id}/edit
-admin_country_edit: '/administration/country/{id}/edit'
-
-# Desc: /admin/country/new
-admin_country_new: /administration/country/new
-
-# Desc: /admin/country/{id}/show
-admin_country_show: '/administration/country/{id}/show'
-
-# Desc: /admin/country/{id}/update
-admin_country_update: '/administration/country/{id}/update'
-
-# Desc: /admin/event/
-admin_event: /administration/event/
-
-# Desc: /admin/event/create
-admin_event_create: /administration/event/create
-
-# Desc: /admin/event/{id}/delete
-admin_event_delete: '/administration/event/{id}/delete'
-
-# Desc: /admin/event/{id}/edit
-admin_event_edit: '/administration/event/{id}/edit'
-
-# Desc: /admin/event/new
-admin_event_new: /administration/event/new
-
-# Desc: /admin/event/{id}/show
-admin_event_show: '/administration/event/{id}/show'
-
-# Desc: /admin/event/{id}/update
-admin_event_update: '/administration/event/{id}/update'
-
-# Desc: /admin/eventdate/
-admin_eventdate: /administration/eventdate/
-
-# Desc: /admin/eventdate/create
-admin_eventdate_create: /administration/eventdate/create
-
-# Desc: /admin/eventdate/{id}/delete
-admin_eventdate_delete: '/administration/eventdate/{id}/delete'
-
-# Desc: /admin/eventdate/{id}/edit
-admin_eventdate_edit: '/administration/eventdate/{id}/edit'
-
-# Desc: /admin/eventdate/new
-admin_eventdate_new: /administration/eventdate/new
-
-# Desc: /admin/eventdate/{id}/show
-admin_eventdate_show: '/administration/eventdate/{id}/show'
-
-# Desc: /admin/eventdate/{id}/update
-admin_eventdate_update: '/administration/eventdate/{id}/update'
-
-# Desc: /admin/eventtype/
-admin_eventtype: /administration/eventtype/
-
-# Desc: /admin/eventtype/create
-admin_eventtype_create: /administration/eventtype/create
-
-# Desc: /admin/eventtype/{id}/delete
-admin_eventtype_delete: '/administration/eventtype/{id}/delete'
-
-# Desc: /admin/eventtype/{id}/edit
-admin_eventtype_edit: '/administration/eventtype/{id}/edit'
-
-# Desc: /admin/eventtype/new
-admin_eventtype_new: /administration/eventtype/new
-
-# Desc: /admin/eventtype/{id}/show
-admin_eventtype_show: '/administration/eventtype/{id}/show'
-
-# Desc: /admin/eventtype/{id}/update
-admin_eventtype_update: '/administration/eventtype/{id}/update'
-
-# Desc: /admin/musictype/
-admin_musictype: /administration/musictype/
-
-# Desc: /admin/musictype/create
-admin_musictype_create: /administration/musictype/create
-
-# Desc: /admin/musictype/{id}/delete
-admin_musictype_delete: '/administration/musictype/{id}/delete'
-
-# Desc: /admin/musictype/{id}/edit
-admin_musictype_edit: '/administration/musictype/{id}/edit'
-
-# Desc: /admin/musictype/new
-admin_musictype_new: /administration/musictype/new
-
-# Desc: /admin/musictype/{id}/show
-admin_musictype_show: '/administration/musictype/{id}/show'
-
-# Desc: /admin/musictype/{id}/update
-admin_musictype_update: '/administration/musictype/{id}/update'
-
-# Desc: /admin/page/
-admin_page: /administration/page/
-
-# Desc: /admin/page/create
-admin_page_create: /administration/page/create
-
-# Desc: /admin/page/{id}/delete
-admin_page_delete: '/administration/page/{id}/delete'
-
-# Desc: /admin/page/{id}/edit
-admin_page_edit: '/administration/page/{id}/edit'
-
-# Desc: /admin/page/new
-admin_page_new: /administration/page/new
-
-# Desc: /admin/page/{id}/show
-admin_page_show: '/administration/page/{id}/show'
-
-# Desc: /admin/page/{id}/update
-admin_page_update: '/administration/page/{id}/update'
-admin_pagecontent: /administration/pagecontent/
-
-# Desc: /admin/pagecontent/create
-admin_pagecontent_create: /administration/pagecontent/create
-
-# Desc: /admin/pagecontent/{id}/delete
-admin_pagecontent_delete: '/administration/pagecontent/{id}/delete'
-
-# Desc: /admin/pagecontent/{id}/edit
-admin_pagecontent_edit: '/administration/pagecontent/{id}/edit'
-
-# Desc: /admin/pagecontent/{id}/index
-admin_pagecontent_index: '/administration/pagecontent/{id}/index'
-
-# Desc: /admin/pagecontent/new
-admin_pagecontent_new: /administration/pagecontent/new
-
-# Desc: /admin/pagecontent/{id}/show
-admin_pagecontent_show: '/administration/pagecontent/{id}/show'
-
-# Desc: /admin/pagecontent/{id}/update
-admin_pagecontent_update: '/administration/pagecontent/{id}/update'
-
-# Desc: /admin/user/
-admin_user: /administration/danseur/
-
-# Desc: /admin/user/create
-admin_user_create: /administration/danseur/create
-
-# Desc: /admin/user/{id}/delete
-admin_user_delete: '/administration/danseur/{id}/delete'
-
-# Desc: /admin/user/{id}/edit
-admin_user_edit: '/administration/danseur/{id}/edit'
-
-# Desc: /admin/user/new
-admin_user_new: /administration/danseur/new
-
-# Desc: /admin/user/{id}/show
-admin_user_show: '/administration/danseur/{id}/show'
-
-# Desc: /admin/user/{id}/update
-admin_user_update: '/administration/danseur/{id}/update'
-
-# Desc: /admin/userfile/
-admin_userfile: /administration/userfile/
-
-# Desc: /admin/userfile/create
-admin_userfile_create: /administration/userfile/create
-
-# Desc: /admin/userfile/{id}/delete
-admin_userfile_delete: '/administration/userfile/{id}/delete'
-
-# Desc: /admin/userfile/{id}/edit
-admin_userfile_edit: '/administration/userfile/{id}/edit'
-
-# Desc: /admin/userfile/new
-admin_userfile_new: /administration/userfile/new
-
-# Desc: /admin/userfile/{id}/show
-admin_userfile_show: '/administration/userfile/{id}/show'
-
-# Desc: /admin/userfile/{id}/update
-admin_userfile_update: '/administration/userfile/{id}/update'
 
 # Desc: /user/callback_username/
 callback_username: /callback_username/fr/
@@ -385,20 +151,10 @@ footer: /footer/fr/
 
 # Desc: /profile/change-password
 fos_user_change_password: /profil/change-password
-
-# Desc: /group/{groupname}/delete
 fos_user_group_delete: '/group/{groupName}/effacer'
-
-# Desc: /group/{groupname}/edit
 fos_user_group_edit: '/group/{groupName}/editer'
-
-# Desc: /group/list
 fos_user_group_list: /group/list
-
-# Desc: /group/new
 fos_user_group_new: /group/nouveau
-
-# Desc: /group/{groupname}
 fos_user_group_show: '/group/{groupName}'
 
 # Desc: /profile/edit
@@ -613,6 +369,9 @@ front_tag_list_for_music_search: /tag/list_for_music_search/
 # Desc: /tag/list_for_video_search/
 front_tag_list_for_video_search: /tag/list_for_video_search/
 
+# Desc: /user/{id}/delete
+front_user_delete: '/user/{id}/delete'
+
 # Desc: /user/profile/edit/{id}
 front_user_edit: '/profil/editer/{id}'
 
@@ -793,3 +552,472 @@ search_search_front_user: /front/rechercher/utilisateur
 
 # Desc: /file/upload
 upload: /file/uploader
+
+
+
+# Desc: /admin/address/
+admin_address: /administration/address/
+
+# Desc: /admin/address/create
+admin_address_create: /administration/address/create
+
+# Desc: /admin/address/{id}/delete
+admin_address_delete: '/administration/address/{id}/delete'
+
+# Desc: /admin/address/{id}/edit
+admin_address_edit: '/administration/address/{id}/edit'
+
+# Desc: /admin/address/filter_address
+admin_address_filter: /administration/address/filter_address
+
+# Desc: /admin/address/new
+admin_address_new: /administration/address/new
+
+# Desc: /admin/address/{id}/show
+admin_address_show: '/administration/address/{id}/show'
+
+# Desc: /admin/address/{id}/update
+admin_address_update: '/administration/address/{id}/update'
+
+# Desc: /admin/
+admin_admin_homepage: /administration/
+
+# Desc: /admin/city/
+admin_city: /administration/city/
+
+# Desc: /admin/city/create
+admin_city_create: /administration/city/create
+
+# Desc: /admin/city/{id}/delete
+admin_city_delete: '/administration/city/{id}/delete'
+
+# Desc: /admin/city/{id}/edit
+admin_city_edit: '/administration/city/{id}/edit'
+
+# Desc: /admin/city/filter_city
+admin_city_filter: /administration/city/filter_city
+
+# Desc: /admin/city/new
+admin_city_new: /administration/city/new
+
+# Desc: /admin/city/{id}/show
+admin_city_show: '/administration/city/{id}/show'
+
+# Desc: /admin/city/{id}/update
+admin_city_update: '/administration/city/{id}/update'
+
+# Desc: /admin/country/
+admin_country: /administration/country/
+
+# Desc: /admin/country/create
+admin_country_create: /administration/country/create
+
+# Desc: /admin/country/{id}/delete
+admin_country_delete: '/administration/country/{id}/delete'
+
+# Desc: /admin/country/{id}/edit
+admin_country_edit: '/administration/country/{id}/edit'
+
+# Desc: /admin/country/filter_country
+admin_country_filter: /administration/country/filter_country
+
+# Desc: /admin/country/new
+admin_country_new: /administration/country/new
+
+# Desc: /admin/country/{id}/show
+admin_country_show: '/administration/country/{id}/show'
+
+# Desc: /admin/country/{id}/update
+admin_country_update: '/administration/country/{id}/update'
+
+# Desc: /admin/event/
+admin_event: /administration/event/
+
+# Desc: /admin/event/create
+admin_event_create: /administration/event/create
+
+# Desc: /admin/event/{id}/delete
+admin_event_delete: '/administration/event/{id}/delete'
+
+# Desc: /admin/event/{id}/edit
+admin_event_edit: '/administration/event/{id}/edit'
+
+# Desc: /admin/event_file/
+admin_event_file: /administration/event_file/
+
+# Desc: /admin/event_file/create
+admin_event_file_create: /administration/event_file/create
+
+# Desc: /admin/event_file/{id}/delete
+admin_event_file_delete: '/administration/event_file/{id}/delete'
+
+# Desc: /admin/event_file/{id}/edit
+admin_event_file_edit: '/administration/event_file/{id}/edit'
+
+# Desc: /admin/event_file/filter_event_file
+admin_event_file_filter: /administration/event_file/filter_event_file
+
+# Desc: /admin/event_file/new
+admin_event_file_new: /administration/event_file/new
+
+# Desc: /admin/event_file/{id}/show
+admin_event_file_show: '/administration/event_file/{id}/show'
+
+# Desc: /admin/event_file/{id}/update
+admin_event_file_update: '/administration/event_file/{id}/update'
+
+# Desc: /admin/event/filter_event
+admin_event_filter: /administration/event/filter_event
+
+# Desc: /admin/event/new
+admin_event_new: /administration/event/new
+
+# Desc: /admin/event/{id}/show
+admin_event_show: '/administration/event/{id}/show'
+
+# Desc: /admin/event/{id}/update
+admin_event_update: '/administration/event/{id}/update'
+
+# Desc: /admin/eventdate/
+admin_eventdate: /administration/eventdate/
+
+# Desc: /admin/eventdate/create
+admin_eventdate_create: /administration/eventdate/create
+
+# Desc: /admin/eventdate/{id}/delete
+admin_eventdate_delete: '/administration/eventdate/{id}/delete'
+
+# Desc: /admin/eventdate/{id}/edit
+admin_eventdate_edit: '/administration/eventdate/{id}/edit'
+
+# Desc: /admin/eventdate/filter_eventdate
+admin_eventdate_filter: /administration/eventdate/filter_eventdate
+
+# Desc: /admin/eventdate/new
+admin_eventdate_new: /administration/eventdate/new
+
+# Desc: /admin/eventdate/{id}/show
+admin_eventdate_show: '/administration/eventdate/{id}/show'
+
+# Desc: /admin/eventdate/{id}/update
+admin_eventdate_update: '/administration/eventdate/{id}/update'
+
+# Desc: /admin/eventtype/
+admin_eventtype: /administration/eventtype/
+
+# Desc: /admin/eventtype/create
+admin_eventtype_create: /administration/eventtype/create
+
+# Desc: /admin/eventtype/{id}/delete
+admin_eventtype_delete: '/administration/eventtype/{id}/delete'
+
+# Desc: /admin/eventtype/{id}/edit
+admin_eventtype_edit: '/administration/eventtype/{id}/edit'
+
+# Desc: /admin/eventtype/filter_eventtype
+admin_eventtype_filter: /administration/eventtype/filter_eventtype
+
+# Desc: /admin/eventtype/new
+admin_eventtype_new: /administration/eventtype/new
+
+# Desc: /admin/eventtype/{id}/show
+admin_eventtype_show: '/administration/eventtype/{id}/show'
+
+# Desc: /admin/eventtype/{id}/update
+admin_eventtype_update: '/administration/eventtype/{id}/update'
+
+# Desc: /admin/mea_city/
+admin_mea_city: /administration/mea_city/
+
+# Desc: /admin/mea_city/create
+admin_mea_city_create: /administration/mea_city/create
+
+# Desc: /admin/mea_city/{id}/delete
+admin_mea_city_delete: '/administration/mea_city/{id}/delete'
+
+# Desc: /admin/mea_city/{id}/edit
+admin_mea_city_edit: '/administration/mea_city/{id}/edit'
+
+# Desc: /admin/mea_city/filter_mea_city
+admin_mea_city_filter: /administration/mea_city/filter_mea_city
+
+# Desc: /admin/mea_city/new
+admin_mea_city_new: /administration/mea_city/new
+
+# Desc: /admin/mea_city/{id}/show
+admin_mea_city_show: '/administration/mea_city/{id}/show'
+
+# Desc: /admin/mea_city/{id}/update
+admin_mea_city_update: '/administration/mea_city/{id}/update'
+
+# Desc: /admin/mea_festival/
+admin_mea_festival: /administration/mea_festival/
+
+# Desc: /admin/mea_festival/create
+admin_mea_festival_create: /administration/mea_festival/create
+
+# Desc: /admin/mea_festival/{id}/delete
+admin_mea_festival_delete: '/administration/mea_festival/{id}/delete'
+
+# Desc: /admin/mea_festival/{id}/edit
+admin_mea_festival_edit: '/administration/mea_festival/{id}/edit'
+
+# Desc: /admin/mea_festival/filter_mea_festival
+admin_mea_festival_filter: /administration/mea_festival/filter_mea_festival
+
+# Desc: /admin/mea_festival/new
+admin_mea_festival_new: /administration/mea_festival/new
+
+# Desc: /admin/mea_festival/{id}/show
+admin_mea_festival_show: '/administration/mea_festival/{id}/show'
+
+# Desc: /admin/mea_festival/{id}/update
+admin_mea_festival_update: '/administration/mea_festival/{id}/update'
+
+# Desc: /admin/mea_user/
+admin_mea_user: /administration/mea_user/
+
+# Desc: /admin/mea_user/create
+admin_mea_user_create: /administration/mea_user/create
+
+# Desc: /admin/mea_user/{id}/delete
+admin_mea_user_delete: '/administration/mea_user/{id}/delete'
+
+# Desc: /admin/mea_user/{id}/edit
+admin_mea_user_edit: '/administration/mea_user/{id}/edit'
+
+# Desc: /admin/mea_user/filter_mea_user
+admin_mea_user_filter: /administration/mea_user/filter_mea_user
+
+# Desc: /admin/mea_user/new
+admin_mea_user_new: /administration/mea_user/new
+
+# Desc: /admin/mea_user/{id}/show
+admin_mea_user_show: '/administration/mea_user/{id}/show'
+
+# Desc: /admin/mea_user/{id}/update
+admin_mea_user_update: '/administration/mea_user/{id}/update'
+
+# Desc: /admin/music/
+admin_music: /administration/music/
+
+# Desc: /admin/music/create
+admin_music_create: /administration/music/create
+
+# Desc: /admin/music/{id}/delete
+admin_music_delete: '/administration/music/{id}/delete'
+
+# Desc: /admin/music/{id}/edit
+admin_music_edit: '/administration/music/{id}/edit'
+
+# Desc: /admin/music/filter_music
+admin_music_filter: /administration/music/filter_music
+
+# Desc: /admin/music/new
+admin_music_new: /administration/music/new
+
+# Desc: /admin/music/{id}/show
+admin_music_show: '/administration/music/{id}/show'
+
+# Desc: /admin/music/{id}/update
+admin_music_update: '/administration/music/{id}/update'
+
+# Desc: /admin/musictype/
+admin_musictype: /administration/musictype/
+
+# Desc: /admin/musictype/create
+admin_musictype_create: /administration/musictype/create
+
+# Desc: /admin/musictype/{id}/delete
+admin_musictype_delete: '/administration/musictype/{id}/delete'
+
+# Desc: /admin/musictype/{id}/edit
+admin_musictype_edit: '/administration/musictype/{id}/edit'
+
+# Desc: /admin/musictype/filter_musictype
+admin_musictype_filter: /administration/musictype/filter_musictype
+
+# Desc: /admin/musictype/new
+admin_musictype_new: /administration/musictype/new
+
+# Desc: /admin/musictype/{id}/show
+admin_musictype_show: '/administration/musictype/{id}/show'
+
+# Desc: /admin/musictype/{id}/update
+admin_musictype_update: '/administration/musictype/{id}/update'
+
+# Desc: /admin/page/
+admin_page: /administration/page/
+
+# Desc: /admin/pagecontent/filter_page_content
+admin_page_content_filter: /administration/pagecontent/filter_page_content
+
+# Desc: /admin/page/create
+admin_page_create: /administration/page/create
+
+# Desc: /admin/page/{id}/delete
+admin_page_delete: '/administration/page/{id}/delete'
+
+# Desc: /admin/page/{id}/edit
+admin_page_edit: '/administration/page/{id}/edit'
+
+# Desc: /admin/page/filter_page
+admin_page_filter: /administration/page/filter_page
+
+# Desc: /admin/page/new
+admin_page_new: /administration/page/new
+
+# Desc: /admin/page/{id}/show
+admin_page_show: '/administration/page/{id}/show'
+
+# Desc: /admin/page/{id}/update
+admin_page_update: '/administration/page/{id}/update'
+
+# Desc: /admin/pagecontent/
+admin_pagecontent: /administration/pagecontent/
+
+# Desc: /admin/pagecontent/create
+admin_pagecontent_create: /administration/pagecontent/create
+
+# Desc: /admin/pagecontent/{id}/delete
+admin_pagecontent_delete: '/administration/pagecontent/{id}/delete'
+
+# Desc: /admin/pagecontent/{id}/edit
+admin_pagecontent_edit: '/administration/pagecontent/{id}/edit'
+admin_pagecontent_index: '/administration/pagecontent/{id}/index'
+
+# Desc: /admin/pagecontent/new
+admin_pagecontent_new: /administration/pagecontent/new
+
+# Desc: /admin/pagecontent/{id}/show
+admin_pagecontent_show: '/administration/pagecontent/{id}/show'
+
+# Desc: /admin/pagecontent/{id}/update
+admin_pagecontent_update: '/administration/pagecontent/{id}/update'
+
+# Desc: /admin/tag/
+admin_tag: /administration/tag/
+
+# Desc: /admin/tag/create
+admin_tag_create: /administration/tag/create
+
+# Desc: /admin/tag/{id}/delete
+admin_tag_delete: '/administration/tag/{id}/delete'
+
+# Desc: /admin/tag/{id}/edit
+admin_tag_edit: '/administration/tag/{id}/edit'
+
+# Desc: /admin/tag/filter_tag
+admin_tag_filter: /administration/tag/filter_tag
+
+# Desc: /admin/tag/new
+admin_tag_new: /administration/tag/new
+
+# Desc: /admin/tag/{id}/show
+admin_tag_show: '/administration/tag/{id}/show'
+
+# Desc: /admin/tag/{id}/update
+admin_tag_update: '/administration/tag/{id}/update'
+
+# Desc: /admin/user/
+admin_user: /administration/danseur/
+
+# Desc: /admin/user/create
+admin_user_create: /administration/danseur/create
+
+# Desc: /admin/user/{id}/delete
+admin_user_delete: '/administration/danseur/{id}/delete'
+
+# Desc: /admin/user/{id}/edit
+admin_user_edit: '/administration/danseur/{id}/edit'
+
+# Desc: /admin/user_file/
+admin_user_file: /administration/user_file/
+
+# Desc: /admin/user_file/create
+admin_user_file_create: /administration/user_file/create
+
+# Desc: /admin/user_file/{id}/delete
+admin_user_file_delete: '/administration/user_file/{id}/delete'
+
+# Desc: /admin/user_file/{id}/edit
+admin_user_file_edit: '/administration/user_file/{id}/edit'
+
+# Desc: /admin/user_file/filter_user_file
+admin_user_file_filter: /administration/user_file/filter_user_file
+
+# Desc: /admin/user_file/new
+admin_user_file_new: /administration/user_file/new
+
+# Desc: /admin/user_file/{id}/show
+admin_user_file_show: '/administration/user_file/{id}/show'
+
+# Desc: /admin/user_file/{id}/update
+admin_user_file_update: '/administration/user_file/{id}/update'
+
+# Desc: /admin/user/filter_user
+admin_user_filter: /administration/user/filter_user
+
+# Desc: /admin/user/new
+admin_user_new: /administration/danseur/new
+
+# Desc: /admin/user/{id}/show
+admin_user_show: '/administration/danseur/{id}/show'
+
+# Desc: /admin/user_type/
+admin_user_type: /administration/user_type/
+
+# Desc: /admin/user_type/create
+admin_user_type_create: /administration/user_type/create
+
+# Desc: /admin/user_type/{id}/delete
+admin_user_type_delete: '/administration/user_type/{id}/delete'
+
+# Desc: /admin/user_type/{id}/edit
+admin_user_type_edit: '/administration/user_type/{id}/edit'
+
+# Desc: /admin/user_type/filter_user_type
+admin_user_type_filter: /administration/user_type/filter_user_type
+
+# Desc: /admin/user_type/new
+admin_user_type_new: /administration/user_type/new
+
+# Desc: /admin/user_type/{id}/show
+admin_user_type_show: '/administration/user_type/{id}/show'
+
+# Desc: /admin/user_type/{id}/update
+admin_user_type_update: '/administration/user_type/{id}/update'
+
+# Desc: /admin/user/{id}/update
+admin_user_update: '/administration/danseur/{id}/update'
+admin_userfile: /administration/userfile/
+admin_userfile_create: /administration/userfile/create
+admin_userfile_delete: '/administration/userfile/{id}/delete'
+admin_userfile_edit: '/administration/userfile/{id}/edit'
+admin_userfile_new: /administration/userfile/new
+admin_userfile_show: '/administration/userfile/{id}/show'
+admin_userfile_update: '/administration/userfile/{id}/update'
+
+# Desc: /admin/video/
+admin_video: /administration/video/
+
+# Desc: /admin/video/create
+admin_video_create: /administration/video/create
+
+# Desc: /admin/video/{id}/delete
+admin_video_delete: '/administration/video/{id}/delete'
+
+# Desc: /admin/video/{id}/edit
+admin_video_edit: '/administration/video/{id}/edit'
+
+# Desc: /admin/video/filter_video
+admin_video_filter: /administration/video/filter_video
+
+# Desc: /admin/video/new
+admin_video_new: /administration/video/new
+
+# Desc: /admin/video/{id}/show
+admin_video_show: '/administration/video/{id}/show'
+
+# Desc: /admin/video/{id}/update
+admin_video_update: '/administration/video/{id}/update'

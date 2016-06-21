@@ -48,73 +48,6 @@ address:
     street: Street
     streetComplement: 'Street complement'
 
-admin:
-    add: Add
-    address_edit_title: 'Address edit'
-    address_list_title: 'Address list'
-    address_new_title: 'New address'
-    address_show_title: Address
-    addresses: Addresses
-    back_to_list: 'Back to list'
-    cities: Cities
-    city_edit_title: 'City edit'
-    city_list_title: 'City list'
-    city_new_title: 'New city'
-    city_show_title: City
-    countries: Countries
-    country_edit_title: 'Country edit'
-    country_list_title: 'Country list'
-    country_new_title: 'New country'
-    country_show_title: Country
-    delete: Delete
-    edit: Edit
-    event_edit_title: 'Event edit'
-    event_list_title: 'Event list'
-    event_new_title: 'New event'
-    event_show_title: Event
-    eventdate_edit_title: 'Event date edit'
-    eventdate_list_title: 'Event date list'
-    eventdate_new_title: 'New event date'
-    eventdate_show_title: 'Event date'
-    eventdates: 'Event dates'
-    events: Events
-    eventtype_edit_title: 'Event type edit'
-    eventtype_list_title: 'Event type list'
-    eventtype_new_title: 'New event type'
-    eventtype_show_title: 'Event type'
-    eventtypes: 'Event types'
-    general_title: Administration
-    link_add_address: 'Add address'
-    link_add_eventdate: 'Add event date'
-    link_delete_address: 'Delete address'
-    link_delete_eventdate: 'Delete event date'
-    musictype_edit_title: 'Music type edit'
-    musictype_list_title: 'Music type list'
-    musictype_new_title: 'New music type'
-    musictype_show_title: 'Music type'
-    musictypes: 'Music types'
-
-    page:
-        see_pagecontent: admin.page.see_pagecontent
-
-    page_edit_title: 'Page edit'
-    page_list_title: 'Page list'
-    page_new_title: 'New page'
-    page_show_title: Page
-    pagecontent: admin.pagecontent
-    pagecontent_edit_title: admin.pagecontent_edit_title
-    pagecontent_list_title: admin.pagecontent_list_title
-    pagecontent_new_title: admin.pagecontent_new_title
-    pagecontent_show_title: admin.pagecontent_show_title
-    pages: Pages
-    translations: Translations
-    update: Update
-    user_edit_title: 'User edit'
-    user_list_title: 'User list'
-    user_new_title: 'New user'
-    user_show_title: User
-    users: Users
-
 city:
     artits: Artits
     calendar: Calendar
@@ -595,7 +528,7 @@ form:
                 label: User
 
         flashbags:
-            update: The event description has been updated
+            update: 'The event description has been updated'
 
     ffel:
         children:
@@ -630,7 +563,7 @@ form:
                 label: Xing
 
         flashbags:
-            update: The event links have been updated
+            update: 'The event links have been updated'
 
     ffet:
         children:
@@ -1062,6 +995,11 @@ user:
     address_title: 'My Address'
     addresses_title: 'My Addresses'
     by: By
+
+    delete:
+        button: Delete my profile
+        confirmation: Are you sure ?
+
     description_title: 'My Description'
 
     edit:

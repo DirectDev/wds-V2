@@ -1,4 +1,4 @@
-{% extends 'AdminAdminBundle::layout.html.twig' %}
+{% extends 'AdminAdminBundle::layout.html.twig' %} {% trans_default_domain 'AdminBundle' %}
 
 {% block content -%}
 
@@ -12,8 +12,8 @@
         <div class="col-md-12 ui-sortable">
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="table-basic-4">
-            
-                  {% include 'AdminAdminBundle::panel_heading.html.twig' with { title : 'addresss' }%}
+
+                {% include 'AdminAdminBundle::panel_heading.html.twig' with { title : 'addresss' }%}
 
                 <div class="panel-body">
                     <table class="table table-striped">

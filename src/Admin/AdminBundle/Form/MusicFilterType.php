@@ -16,7 +16,7 @@ class MusicFilterType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('search', 'text', array(
+                ->add('search', 'text', array('translation_domain' => 'AdminBundle',
                     'required' => false,
                     'attr' => array('placeholder' => "Search",)
                 ))
