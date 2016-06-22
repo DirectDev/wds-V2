@@ -4,52 +4,118 @@ namespace Admin\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class UserControllerTest extends WebTestCase
-{
-    /*
-    public function testCompleteScenario()
-    {
-        // Create a new client to browse the application
-        $client = static::createClient();
+class UserControllerTest extends WebTestCase {
 
-        // Create a new entry in the database
-        $crawler = $client->request('GET', '/admin_user/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin_user/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $em;
+    private $router;
+    private $translator;
+    private $locale = 'en';
+    private $clientLogged;
+    private $PHP_AUTH_USER = 'Jerome';
+    private $PHP_AUTH_PW = '1234';
+    private $username = null;
+    private $updated_username = null;
+    private $description = null;
+    private $email = null;
 
-        // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'user_userbundle_user[field_name]'  => 'Test',
-            // ... other fields to fill
+    public function __construct() {
+        static::$kernel = static::createKernel();
+        static::$kernel->boot();
+        $this->em = static::$kernel->getContainer()
+                ->get('doctrine')
+                ->getManager();
+
+        $this->clientLogged = static::createClient(array(), array(
+                    'PHP_AUTH_USER' => $this->PHP_AUTH_USER,
+                    'PHP_AUTH_PW' => $this->PHP_AUTH_PW
         ));
 
-        $client->submit($form);
-        $crawler = $client->followRedirect();
+        $this->router = $this->clientLogged->getContainer()->get('router');
+        $this->translator = $this->clientLogged->getContainer()->get('translator');
 
-        // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
-
-        // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
-
-        $form = $crawler->selectButton('Update')->form(array(
-            'user_userbundle_user[field_name]'  => 'Foo',
-            // ... other fields to fill
-        ));
-
-        $client->submit($form);
-        $crawler = $client->followRedirect();
-
-        // Check the element contains an attribute with value equals "Foo"
-        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
-
-        // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
-        $crawler = $client->followRedirect();
-
-        // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+        $this->email = 'email@test.com';
+        $this->username = '_admin_user_username_' . $this->locale;
+        $this->updated_username = $this->username . '_updated';
+        $this->description = 'description';
     }
 
-    */
+    private function findAllUsers() {
+        return $this->em->getRepository('UserUserBundle:User')->findBy(array('footer' => true), null, 1);
+    }
+
+    private function findOneUser() {
+        foreach ($this->findAllUsers() as $user)
+            return $user;
+    }
+
+    public function testIndex() {
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_user', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testUpdate() {
+
+
+        $user = $this->findOneUser();
+        $this->assertNotNull($user);
+
+        /*         * **** Update ***** */
+        $update = $this->translator->trans('admin.update', array(), 'AdminBundle', $this->locale);
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_user_edit', array(
+                    '_locale' => $this->locale,
+                    'id' => $user->getId()
+                        )
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
+
+        $form = $crawler->selectButton($update)->form();
+
+        $form['aab_user[username]'] = $this->updated_username;
+
+        $crawler = $this->clientLogged->submit($form);
+
+        $response = $this->clientLogged->getResponse();
+
+        $this->em->refresh($user);
+        $this->assertEquals($this->updated_username, $user->getUsername());
+    }
+
+    public function testDelete() {
+
+        $delete = $this->translator->trans('admin.delete', array(), 'AdminBundle', $this->locale);
+
+        $count_users_before = $this->em->getRepository('UserUserBundle:User')->count();
+
+        $user = $this->findOneUser();
+        $this->assertNotNull($user);
+        $crawler = $this->clientLogged->request('DELETE', $this->router->generate('admin_user_edit', array(
+                    '_locale' => $this->locale,
+                    'id' => $user->getId(),
+                        )
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $this->assertContains($delete, $this->clientLogged->getResponse()->getContent());
+
+        $form = $crawler->selectButton($delete)->form();
+
+        $crawler = $this->clientLogged->submit($form);
+
+        $response = $this->clientLogged->getResponse();
+        var_dump($response->getContent());
+        $this->assertTrue($this->clientLogged->getResponse()->isRedirect());
+
+        $this->assertEquals(0, count($this->em->getRepository('UserUserBundle:User')->findOneById($user->getId())));
+
+        $count_users_after = $this->em->getRepository('UserUserBundle:User')->count();
+
+        $this->assertEquals(($count_users_before - 1), $count_users_after);
+    }
+
 }

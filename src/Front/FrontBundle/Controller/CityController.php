@@ -550,7 +550,9 @@ class CityController extends Controller {
         return $events;
     }
 
-    private function setLatitudeAndLongitude($city) {
+    private function setLatitudeAndLongitude($city = null) {
+        if (!$city)
+            return;
         try {
             $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')

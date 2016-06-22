@@ -1,17 +1,19 @@
 {% trans_default_domain 'AdminBundle' %}
 
 <div class="row">
-    <div class="col-md-1 pull-right">
-        <a class="btn btn-success pull-right m-b-15" href="{% if add_path is defined %}{{ add_path }}{% endif %}" >
-            <i class="glyphicon glyphicon-plus"></i>
-            <span> {% trans %}admin.add{% endtrans %}</span>
-        </a>
-    </div>
+    {% if add_path is defined and add_path is not null%}
+        <div class="col-md-1 pull-right">
+            <a class="btn btn-success pull-right m-b-15" href="{{ add_path }}" >
+                <i class="glyphicon glyphicon-plus"></i>
+                <span> {% trans %}admin.add{% endtrans %}</span>
+            </a>
+        </div>
+    {% endif %}
 
     {% if filterForm is defined %}
         <div class="col-md-11 pull-left">
             {{ form_start(filterForm, { 'attr' : { 'class' : 'no_validation' } } ) }}
-            <div class="input-group">
+            <div class="input-group m-b-15">
                 {% set placeholder %}
                     {% trans %}admin.search{% endtrans %}
                 {% endset %}

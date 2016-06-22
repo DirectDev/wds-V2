@@ -328,7 +328,9 @@ class AddressController extends Controller {
         return new Response('', 200);
     }
 
-    private function setLatitudeAndLongitude($address) {
+    private function setLatitudeAndLongitude($address = null) {
+        if (!$address)
+            return;
         try {
 
             if (!$address OR ! $address->stringForGoogleMaps())

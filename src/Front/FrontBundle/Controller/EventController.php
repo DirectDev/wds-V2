@@ -265,7 +265,7 @@ class EventController extends Controller {
 
         if ($editLinkForm->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
                     'success', $this->get('translator')->trans('form.ffel.flashbags.update')
             );
@@ -295,7 +295,7 @@ class EventController extends Controller {
 
         if ($editDescriptionForm->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
                     'success', $this->get('translator')->trans('form.ffede.flashbags.update')
             );
@@ -411,7 +411,9 @@ class EventController extends Controller {
         return $arrayFile;
     }
 
-    private function setLatitudeAndLongitude($entity) {
+    private function setLatitudeAndLongitude($entity = null) {
+        if (!$entity)
+            return;
         try {
 
             if (!$entity OR ! $entity->stringForGoogleMaps())

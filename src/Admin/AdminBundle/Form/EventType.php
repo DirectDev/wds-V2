@@ -15,7 +15,13 @@ class EventType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('name')
-                ->add('eventTypes')
+                ->add('eventTypes', 'entity', array(
+                    'class' => 'FrontFrontBundle:EventType',
+                    'property' => 'title',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'by_reference' => true,
+                ))
                 ->add('user')
                 ->add('publishedBy')
                 ->add('organizedBy')

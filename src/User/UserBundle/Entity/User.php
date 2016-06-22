@@ -89,7 +89,7 @@ class User extends BaseUser {
     private $footer;
 
     /**
-     * @ORM\OneToMany(targetEntity="UserFile", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UserFile", mappedBy="user", cascade={"remove"})
      */
     protected $userFiles;
 

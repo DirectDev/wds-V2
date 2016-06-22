@@ -270,7 +270,9 @@ class AddressController extends Controller {
         ;
     }
 
-    private function setLatitudeAndLongitude($entity) {
+    private function setLatitudeAndLongitude($entity = null) {
+        if (!$entity)
+            return;
         try {
             $geocodeAddresses = $this->container
                     ->get('bazinga_geocoder.geocoder')
