@@ -121,6 +121,7 @@ class MeaUser {
     public function __toString() {
         if ($this->getUser())
             return $this->getUser()->__toString();
+        return (string) $this->ordre;
     }
 
     /**

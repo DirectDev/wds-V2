@@ -4,7 +4,7 @@ namespace Admin\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MeaUserControllerTest extends WebTestCase {
+class MusicTypeControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -16,9 +16,9 @@ class MeaUserControllerTest extends WebTestCase {
     private $clientLogged;
     private $PHP_AUTH_USER = 'Jerome';
     private $PHP_AUTH_PW = '1234';
-    private $ordre = null;
-    private $updated_ordre = null;
-    private $description = null;
+    private $name = null;
+    private $updated_name = null;
+    private $title = null;
 
     public function __construct() {
         static::$kernel = static::createKernel();
@@ -35,49 +35,48 @@ class MeaUserControllerTest extends WebTestCase {
         $this->router = $this->clientLogged->getContainer()->get('router');
         $this->translator = $this->clientLogged->getContainer()->get('translator');
 
-        $this->ordre = 1000;
-        $this->updated_ordre = 1001;
-        $this->description = 'description';
+        $this->name = '_admin_musictype_name_' . $this->locale;
+        $this->updated_name = $this->name . '_updated';
+        $this->title = 'title';
 
         $this->deleteData();
     }
 
     private function deleteData() {
-        if ($mea_user = $this->findMeaUser())
-            $this->em->remove($mea_user);
+        if ($musictype = $this->findMusicType())
+            $this->em->remove($musictype);
 
         $this->em->flush();
     }
 
-    private function findAllMeaUsers() {
-        return $this->em->getRepository('FrontFrontBundle:MeaUser')->findBy(array(), null, 1);
+    private function findAllMusicTypes() {
+        return $this->em->getRepository('FrontFrontBundle:MusicType')->findBy(array(), null, 1);
     }
 
-    private function findOneMeaUser() {
-        foreach ($this->findAllMeaUsers() as $mea_user)
-            return $mea_user;
+    private function findOneMusicType() {
+        foreach ($this->findAllMusicTypes() as $musictype)
+            return $musictype;
     }
 
-    private function findMeaUser() {
-        $mea_user = $this->em->getRepository('FrontFrontBundle:MeaUser')->findOneBy(
+    private function findMusicType() {
+        $musictype = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneBy(
                 array(
-                    'ordre' => $this->ordre,
+                    'name' => $this->name,
                 )
         );
-        if ($mea_user)
-            return $mea_user;
-        $mea_user = $this->em->getRepository('FrontFrontBundle:MeaUser')->findOneBy(
+        if ($musictype)
+            return $musictype;
+        $musictype = $this->em->getRepository('FrontFrontBundle:MusicType')->findOneBy(
                 array(
-                    'ordre' => $this->updated_ordre,
+                    'name' => $this->updated_name,
                 )
         );
-        if ($mea_user)
-            return $mea_user;
+        if ($musictype)
+            return $musictype;
     }
 
     public function testIndex() {
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_user', array('_locale' => $this->locale)));
-        var_dump($this->clientLogged->getResponse()->getContent());
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_musictype', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
@@ -85,7 +84,7 @@ class MeaUserControllerTest extends WebTestCase {
         /*         * **** Create ***** */
         $create = $this->translator->trans('admin.update', array(), 'AdminBundle', $this->locale);
 
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_user_new', array(
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_musictype_new', array(
                     '_locale' => $this->locale
                         )
         ));
@@ -96,23 +95,23 @@ class MeaUserControllerTest extends WebTestCase {
 
         $form = $crawler->selectButton($create)->form();
 
-        $form['aab_meauser[ordre]'] = $this->ordre;
-        $form['aab_meauser[translations][' . $this->locale . '][description]'] = $this->description;
+        $form['aab_musictype[name]'] = $this->name;
+        $form['aab_musictype[translations][' . $this->locale . '][title]'] = $this->title;
 
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
         var_dump($response->getContent());
 
-        $mea_user = $this->findMeaUser();
-        $this->assertNotNull($mea_user);
+        $musictype = $this->findMusicType();
+        $this->assertNotNull($musictype);
 
         /*         * **** Update ***** */
         $update = $this->translator->trans('admin.update', array(), 'AdminBundle', $this->locale);
 
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_user_edit', array(
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_musictype_edit', array(
                     '_locale' => $this->locale,
-                    'id' => $mea_user->getId()
+                    'id' => $musictype->getId()
                         )
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -121,14 +120,14 @@ class MeaUserControllerTest extends WebTestCase {
 
         $form = $crawler->selectButton($update)->form();
 
-        $form['aab_meauser[ordre]'] = $this->updated_ordre;
+        $form['aab_musictype[name]'] = $this->updated_name;
 
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
 
-        $this->em->refresh($mea_user);
-        $this->assertEquals($this->updated_ordre, $mea_user->getOrdre());
+        $this->em->refresh($musictype);
+        $this->assertEquals($this->updated_name, $musictype->getName());
     }
 
     public function testDelete() {
@@ -136,14 +135,15 @@ class MeaUserControllerTest extends WebTestCase {
         $delete = $this->translator->trans('admin.delete', array(), 'AdminBundle', $this->locale);
 
         $count_events_before = $this->em->getRepository('FrontFrontBundle:Event')->count();
-        $count_mea_users_before = $this->em->getRepository('FrontFrontBundle:MeaUser')->count();
+        $count_musics_before = $this->em->getRepository('FrontFrontBundle:Music')->count();
+        $count_musictypes_before = $this->em->getRepository('FrontFrontBundle:MusicType')->count();
         $count_users_before = $this->em->getRepository('UserUserBundle:User')->count();
 
-        $mea_user = $this->findOneMeaUser();
-        $this->assertNotNull($mea_user);
-        $crawler = $this->clientLogged->request('DELETE', $this->router->generate('admin_mea_user_edit', array(
+        $musictype = $this->findOneMusicType();
+        $this->assertNotNull($musictype);
+        $crawler = $this->clientLogged->request('DELETE', $this->router->generate('admin_musictype_edit', array(
                     '_locale' => $this->locale,
-                    'id' => $mea_user->getId(),
+                    'id' => $musictype->getId(),
                         )
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -156,15 +156,17 @@ class MeaUserControllerTest extends WebTestCase {
 
         $this->assertTrue($this->clientLogged->getResponse()->isRedirect());
 
-        $this->assertEquals(0, count($this->em->getRepository('FrontFrontBundle:MeaUser')->findOneById($mea_user->getId())));
+        $this->assertEquals(0, count($this->em->getRepository('FrontFrontBundle:MusicType')->findOneById($musictype->getId())));
 
 
         $count_events_after = $this->em->getRepository('FrontFrontBundle:Event')->count();
-        $count_mea_users_after = $this->em->getRepository('FrontFrontBundle:MeaUser')->count();
+        $count_musics_after = $this->em->getRepository('FrontFrontBundle:Music')->count();
+        $count_musictypes_after = $this->em->getRepository('FrontFrontBundle:MusicType')->count();
         $count_users_after = $this->em->getRepository('UserUserBundle:User')->count();
 
         $this->assertEquals($count_events_before, $count_events_after);
-        $this->assertEquals(($count_mea_users_before - 1), $count_mea_users_after);
+        $this->assertEquals($count_musics_before, $count_musics_after);
+        $this->assertEquals(($count_musictypes_before - 1), $count_musictypes_after);
         $this->assertEquals($count_users_before, $count_users_after);
     }
 

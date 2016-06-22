@@ -53,4 +53,10 @@ class PageContentRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('pc')
+                ->select('COUNT(pc.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

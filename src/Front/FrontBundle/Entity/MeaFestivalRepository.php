@@ -46,4 +46,10 @@ class MeaFestivalRepository extends \Doctrine\ORM\EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('mf')
+                ->select('COUNT(mf.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

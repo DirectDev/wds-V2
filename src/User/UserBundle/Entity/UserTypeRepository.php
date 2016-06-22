@@ -35,4 +35,10 @@ class UserTypeRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('ut')
+                ->select('COUNT(ut.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

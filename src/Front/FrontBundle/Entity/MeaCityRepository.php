@@ -68,4 +68,10 @@ class MeaCityRepository extends \Doctrine\ORM\EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('mc')
+                ->select('COUNT(mc.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

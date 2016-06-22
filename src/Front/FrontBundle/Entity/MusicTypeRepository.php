@@ -36,5 +36,11 @@ class MusicTypeRepository extends EntityRepository {
 
         return $query->getQuery();
     }
+    
+    public function count() {
+        $query = $this->createQueryBuilder('my')
+                ->select('COUNT(my.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
 
 }

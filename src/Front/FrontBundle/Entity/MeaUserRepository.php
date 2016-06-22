@@ -116,4 +116,10 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
         return $query->getQuery();
     }
 
+    public function count() {
+        $query = $this->createQueryBuilder('mu')
+                ->select('COUNT(mu.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 }

@@ -66,5 +66,11 @@ class UserFileRepository extends EntityRepository {
 
         return $query->getQuery();
     }
+    
+    public function count() {
+        $query = $this->createQueryBuilder('uf')
+                ->select('COUNT(uf.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
 
 }

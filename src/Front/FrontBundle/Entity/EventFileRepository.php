@@ -63,5 +63,11 @@ class EventFileRepository extends EntityRepository {
 
         return $query->getQuery();
     }
+    
+    public function count() {
+        $query = $this->createQueryBuilder('ef')
+                ->select('COUNT(ef.id)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
 
 }
