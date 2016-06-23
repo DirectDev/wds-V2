@@ -112,7 +112,7 @@ class EventTypeControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $event_type = $this->findEventType();
         $this->assertNotNull($event_type);

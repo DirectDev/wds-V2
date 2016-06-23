@@ -112,7 +112,7 @@ class MeaFestivalControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $mea_festival = $this->findMeaFestival();
         $this->assertNotNull($mea_festival);

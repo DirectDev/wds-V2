@@ -116,7 +116,7 @@ class MeaCityControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $mea_city = $this->findMeaCity();
         $this->assertNotNull($mea_city);

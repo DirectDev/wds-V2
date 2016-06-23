@@ -119,7 +119,7 @@ class UserControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
         $this->assertTrue($this->clientLogged->getResponse()->isRedirect());
 
         $this->assertEquals(0, count($this->em->getRepository('UserUserBundle:User')->findOneById($user->getId())));

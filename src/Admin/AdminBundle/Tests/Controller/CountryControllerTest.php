@@ -115,7 +115,7 @@ class CountryControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $country = $this->findCountry();
         $this->assertNotNull($country);

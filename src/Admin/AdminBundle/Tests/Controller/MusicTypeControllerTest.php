@@ -112,7 +112,7 @@ class MusicTypeControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $musictype = $this->findMusicType();
         $this->assertNotNull($musictype);

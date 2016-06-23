@@ -112,7 +112,7 @@ class UserTypeControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $usertype = $this->findUserType();
         $this->assertNotNull($usertype);

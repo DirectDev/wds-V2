@@ -118,7 +118,7 @@ class PageControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $page = $this->findPage();
         $this->assertNotNull($page);

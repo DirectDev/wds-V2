@@ -115,7 +115,7 @@ class VideoControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $video = $this->findVideo();
         $this->assertNotNull($video);

@@ -77,7 +77,6 @@ class MeaUserControllerTest extends WebTestCase {
 
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_user', array('_locale' => $this->locale)));
-        var_dump($this->clientLogged->getResponse()->getContent());
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
     
@@ -113,7 +112,7 @@ class MeaUserControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $mea_user = $this->findMeaUser();
         $this->assertNotNull($mea_user);

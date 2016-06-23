@@ -55,10 +55,15 @@ class EventDateControllerTest extends WebTestCase {
     }
 
     private function findEventDate() {
+        if($eventDates = $this->findEventDates())
+            return $eventDates[0];
+    }
+    
+    private function findEventDates() {
         $event = $this->findOneEvent();
         $this->em->refresh($event);
         $eventDates = $event->getEventDates();
-        return $eventDates[0];
+        return $eventDates;
     }
 
     private function deleteData() {
@@ -75,7 +80,7 @@ class EventDateControllerTest extends WebTestCase {
     }
     
     public function testShow() {
-        $eventDates = $this->findAllEventDates();
+        $eventDates = $this->findEventDates();
         foreach ($eventDates as $eventDate) {
             $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_eventdate_show', array(
                         'id' => $eventDate->getId(),
@@ -118,7 +123,7 @@ class EventDateControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
 
         $this->em->refresh($event);

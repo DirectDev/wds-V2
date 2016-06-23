@@ -112,7 +112,7 @@ class PageContentControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $pagecontent = $this->findPageContent();
         $this->assertNotNull($pagecontent);

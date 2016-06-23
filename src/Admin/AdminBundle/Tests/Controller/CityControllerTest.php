@@ -115,7 +115,7 @@ class CityControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        var_dump($response->getContent());
+        
 
         $city = $this->findCity();
         $this->assertNotNull($city);
