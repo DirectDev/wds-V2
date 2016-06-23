@@ -50,7 +50,7 @@ class MeaUserControllerTest extends WebTestCase {
     }
 
     private function findAllMeaUsers() {
-        return $this->em->getRepository('FrontFrontBundle:MeaUser')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:MeaUser')->findBy(array(), null, 5);
     }
 
     private function findOneMeaUser() {
@@ -79,6 +79,17 @@ class MeaUserControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_user', array('_locale' => $this->locale)));
         var_dump($this->clientLogged->getResponse()->getContent());
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $meaUsers = $this->findAllMeaUsers();
+        foreach ($meaUsers as $meaUser) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_user_show', array(
+                        'id' => $meaUser->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

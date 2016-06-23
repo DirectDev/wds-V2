@@ -73,6 +73,17 @@ class EventDateControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_eventdate', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
+    
+    public function testShow() {
+        $eventDates = $this->findAllEventDates();
+        foreach ($eventDates as $eventDate) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_eventdate_show', array(
+                        'id' => $eventDate->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
 
     public function testCreateUpdate() {
 

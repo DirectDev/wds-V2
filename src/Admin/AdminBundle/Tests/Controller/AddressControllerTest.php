@@ -61,7 +61,7 @@ class AddressControllerTest extends WebTestCase {
     }
 
     private function findAllAddresses() {
-        return $this->em->getRepository('FrontFrontBundle:Address')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:Address')->findBy(array(), null, 5);
     }
 
     private function findOneAddress() {
@@ -83,6 +83,17 @@ class AddressControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_address', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $addresses = $this->findAllAddresses();
+        foreach ($addresses as $address) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_address_show', array(
+                        'id' => $address->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

@@ -50,7 +50,7 @@ class PageContentControllerTest extends WebTestCase {
     }
 
     private function findAllPageContents() {
-        return $this->em->getRepository('AdminAdminBundle:PageContent')->findBy(array(), null, 1);
+        return $this->em->getRepository('AdminAdminBundle:PageContent')->findBy(array(), null, 5);
     }
 
     private function findOnePageContent() {
@@ -78,6 +78,17 @@ class PageContentControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_pagecontent', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $pageContents = $this->findAllPageContents();
+        foreach ($pageContents as $pageContent) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_pagecontent_show', array(
+                        'id' => $pageContent->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

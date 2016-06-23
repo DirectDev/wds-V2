@@ -52,7 +52,7 @@ class MeaCityControllerTest extends WebTestCase {
     }
 
     private function findAllMeaCitys() {
-        return $this->em->getRepository('FrontFrontBundle:MeaCity')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:MeaCity')->findBy(array(), null, 5);
     }
 
     private function findOneMeaCity() {
@@ -80,6 +80,17 @@ class MeaCityControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_city', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $meaCitys = $this->findAllMeaCitys();
+        foreach ($meaCitys as $meaCity) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_city_show', array(
+                        'id' => $meaCity->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

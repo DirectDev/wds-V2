@@ -52,7 +52,7 @@ class EventControllerTest extends WebTestCase {
     }
 
     private function findAllEvents() {
-        return $this->em->getRepository('FrontFrontBundle:Event')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:Event')->findBy(array(), null, 5);
     }
 
     private function findOneEvent() {
@@ -72,6 +72,17 @@ class EventControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_event', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $events = $this->findAllEvents();
+        foreach ($events as $event) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_event_show', array(
+                        'id' => $event->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

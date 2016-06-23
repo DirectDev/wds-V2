@@ -52,7 +52,7 @@ class MusicControllerTest extends WebTestCase {
     }
 
     private function findAllMusics() {
-        return $this->em->getRepository('FrontFrontBundle:Music')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:Music')->findBy(array(), null, 5);
     }
 
     private function findOneMusic() {
@@ -80,6 +80,17 @@ class MusicControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_music', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $musics = $this->findAllMusics();
+        foreach ($musics as $music) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_music_show', array(
+                        'id' => $music->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

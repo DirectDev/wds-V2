@@ -54,7 +54,7 @@ class PageControllerTest extends WebTestCase {
     }
 
     private function findAllPages() {
-        return $this->em->getRepository('AdminAdminBundle:Page')->findBy(array(), null, 1);
+        return $this->em->getRepository('AdminAdminBundle:Page')->findBy(array(), null, 5);
     }
 
     private function findOnePage() {
@@ -82,6 +82,17 @@ class PageControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_page', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $pages = $this->findAllPages();
+        foreach ($pages as $page) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_page_show', array(
+                        'id' => $page->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

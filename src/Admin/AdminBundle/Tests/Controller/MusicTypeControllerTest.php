@@ -50,7 +50,7 @@ class MusicTypeControllerTest extends WebTestCase {
     }
 
     private function findAllMusicTypes() {
-        return $this->em->getRepository('FrontFrontBundle:MusicType')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:MusicType')->findBy(array(), null, 5);
     }
 
     private function findOneMusicType() {
@@ -78,6 +78,17 @@ class MusicTypeControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_musictype', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $musicTypes = $this->findAllMusicTypes();
+        foreach ($musicTypes as $musicType) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_musictype_show', array(
+                        'id' => $musicType->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

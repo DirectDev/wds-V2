@@ -52,7 +52,7 @@ class VideoControllerTest extends WebTestCase {
     }
 
     private function findAllVideos() {
-        return $this->em->getRepository('FrontFrontBundle:Video')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:Video')->findBy(array(), null, 5);
     }
 
     private function findOneVideo() {
@@ -80,6 +80,17 @@ class VideoControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_video', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $videos = $this->findAllVideos();
+        foreach ($videos as $video) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_video_show', array(
+                        'id' => $video->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

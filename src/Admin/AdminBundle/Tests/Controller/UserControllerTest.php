@@ -55,6 +55,17 @@ class UserControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_user', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
+    
+    public function testShow() {
+        $users = $this->findAllUsers();
+        foreach ($users as $user) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_user_show', array(
+                        'id' => $user->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
+    }
 
     public function testUpdate() {
 

@@ -51,12 +51,12 @@ class CountryControllerTest extends WebTestCase {
         $this->em->flush();
     }
 
-    private function findAllCountrys() {
-        return $this->em->getRepository('FrontFrontBundle:Country')->findBy(array(), null, 1);
+    private function findAllCountries() {
+        return $this->em->getRepository('FrontFrontBundle:Country')->findBy(array(), null, 5);
     }
 
     private function findOneCountry() {
-        foreach ($this->findAllCountrys() as $country)
+        foreach ($this->findAllCountries() as $country)
             return $country;
     }
 
@@ -80,6 +80,17 @@ class CountryControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_country', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $countries = $this->findAllCountries();
+        foreach ($countries as $country) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_country_show', array(
+                        'id' => $country->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {
@@ -140,7 +151,7 @@ class CountryControllerTest extends WebTestCase {
         $delete = $this->translator->trans('admin.delete', array(), 'AdminBundle', $this->locale);
 
         $count_events_before = $this->em->getRepository('FrontFrontBundle:Event')->count();
-        $count_countrys_before = $this->em->getRepository('FrontFrontBundle:Country')->count();
+        $count_countries_before = $this->em->getRepository('FrontFrontBundle:Country')->count();
         $count_users_before = $this->em->getRepository('UserUserBundle:User')->count();
 
         $country = $this->findOneCountry();
@@ -164,11 +175,11 @@ class CountryControllerTest extends WebTestCase {
 
 
         $count_events_after = $this->em->getRepository('FrontFrontBundle:Event')->count();
-        $count_countrys_after = $this->em->getRepository('FrontFrontBundle:Country')->count();
+        $count_countries_after = $this->em->getRepository('FrontFrontBundle:Country')->count();
         $count_users_after = $this->em->getRepository('UserUserBundle:User')->count();
 
         $this->assertEquals($count_events_before, $count_events_after);
-        $this->assertEquals(($count_countrys_before - 1), $count_countrys_after);
+        $this->assertEquals(($count_countries_before - 1), $count_countries_after);
         $this->assertEquals($count_users_before, $count_users_after);
     }
 

@@ -50,7 +50,7 @@ class EventTypeControllerTest extends WebTestCase {
     }
 
     private function findAllEventTypes() {
-        return $this->em->getRepository('FrontFrontBundle:EventType')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:EventType')->findBy(array(), null, 5);
     }
 
     private function findOneEventType() {
@@ -78,6 +78,17 @@ class EventTypeControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_eventtype', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $eventTypes = $this->findAllEventTypes();
+        foreach ($eventTypes as $eventType) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_eventtype_show', array(
+                        'id' => $eventType->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

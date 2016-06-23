@@ -50,7 +50,7 @@ class UserTypeControllerTest extends WebTestCase {
     }
 
     private function findAllUserTypes() {
-        return $this->em->getRepository('UserUserBundle:UserType')->findBy(array(), null, 1);
+        return $this->em->getRepository('UserUserBundle:UserType')->findBy(array(), null, 5);
     }
 
     private function findOneUserType() {
@@ -78,6 +78,17 @@ class UserTypeControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_user_type', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $userTypes = $this->findAllUserTypes();
+        foreach ($userTypes as $userType) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_user_type_show', array(
+                        'id' => $userType->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

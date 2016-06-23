@@ -50,7 +50,7 @@ class MeaFestivalControllerTest extends WebTestCase {
     }
 
     private function findAllMeaFestivals() {
-        return $this->em->getRepository('FrontFrontBundle:MeaFestival')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:MeaFestival')->findBy(array(), null, 5);
     }
 
     private function findOneMeaFestival() {
@@ -78,6 +78,17 @@ class MeaFestivalControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_festival', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $meaFestivals = $this->findAllMeaFestivals();
+        foreach ($meaFestivals as $meaFestival) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_mea_festival_show', array(
+                        'id' => $meaFestival->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

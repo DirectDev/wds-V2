@@ -52,7 +52,7 @@ class CityControllerTest extends WebTestCase {
     }
 
     private function findAllCities() {
-        return $this->em->getRepository('FrontFrontBundle:City')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:City')->findBy(array(), null, 5);
     }
 
     private function findOneCity() {
@@ -80,6 +80,17 @@ class CityControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_city', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $cities = $this->findAllCities();
+        foreach ($cities as $city) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_city_show', array(
+                        'id' => $city->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {

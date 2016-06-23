@@ -50,7 +50,7 @@ class TagControllerTest extends WebTestCase {
     }
 
     private function findAllTags() {
-        return $this->em->getRepository('FrontFrontBundle:Tag')->findBy(array(), null, 1);
+        return $this->em->getRepository('FrontFrontBundle:Tag')->findBy(array(), null, 5);
     }
 
     private function findOneTag() {
@@ -78,6 +78,17 @@ class TagControllerTest extends WebTestCase {
     public function testIndex() {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_tag', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+    
+    public function testShow() {
+        $tags = $this->findAllTags();
+        foreach ($tags as $tag) {
+            $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_tag_show', array(
+                        'id' => $tag->getId(),
+                        '_locale' => $this->locale)
+            ));
+            $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+        }
     }
 
     public function testCreateUpdate() {
