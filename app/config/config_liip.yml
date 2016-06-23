@@ -5,12 +5,26 @@ liip_imagine:
             web_path:
               web_root: %kernel.root_dir%/../www
               cache_prefix: media/cache
+        aws_resolver:
+            aws_s3:
+                client_config:
+                    credentials:
+                        key:    %amazon.s3.key%
+                        secret: %amazon.s3.secret%
+                    region: %amazon.s3.region%
+                    version: %amazon.s3.version%
+                    scheme: %amazon.s3.scheme%
+                bucket:     %amazon.s3.bucket%
+#                get_options:
+#                    scheme: %amazon.s3.scheme%
+                put_options:
+                    CacheControl: 'max-age=86400' 
     loaders:
         default:
             filesystem:
                 data_root: %kernel.root_dir%/../www/
     driver:               gd
-    cache:                default
+    cache:                aws_resolver
     data_loader:          default
     default_image:        null
     controller:
@@ -155,3 +169,12 @@ liip_imagine:
             filters:
                 upscale: { min: [40, 40] } 
                 thumbnail: { size: [40, 40], mode: inbound }
+                
+knp_gaufrette:
+    adapters:
+        aws_adapater:
+            aws_s3:
+                service_id: wds.amazon_s3
+                bucket_name: %amazon.s3.bucket%
+#                options:
+#                    directory: 'profile_photos'                

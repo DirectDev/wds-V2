@@ -53,9 +53,9 @@ class EventFile {
         return $this->getGeneralPath() . 'originals/' . $this->name;
     }
     
-//    public function getThumbnailsPathFile() {
-//        return $this->getGeneralPath() . 'thumbnails/' . $this->name;
-//    }
+    public function getThumbnailsPathFile() {
+        return $this->getGeneralPath() . 'thumbnails/' . $this->name;
+    }
 
     public function getLargePathUri() {
         return $this->getGeneralUri() . 'large/' . $this->name;
@@ -74,8 +74,8 @@ class EventFile {
                 unlink($this->getLargePathFile());
             if (file_exists($this->getOriginalsPathFile()))
                 unlink($this->getOriginalsPathFile());
-//            if (file_exists($this->getThumbnailsPathFile()))
-//                unlink($this->getThumbnailsPathFile());
+            if (file_exists($this->getThumbnailsPathFile()))
+                unlink($this->getThumbnailsPathFile());
         } catch (\Exception $e) {
             
         }

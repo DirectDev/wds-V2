@@ -18,6 +18,7 @@ class AppKernel extends Kernel {
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             # users bundle
             new FOS\UserBundle\FOSUserBundle(),
             new User\UserBundle\UserUserBundle(),
