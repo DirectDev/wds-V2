@@ -5,6 +5,7 @@ namespace Admin\AdminBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use User\UserBundle\Entity\User;
+use User\UserBundle\Entity\UserFile;
 use Admin\AdminBundle\Form\UserType;
 use Admin\AdminBundle\Form\UserFilterType;
 
@@ -103,11 +104,75 @@ class UserController extends Controller {
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        /*
+         * UPLOAD FILE FORM
+         * remplacer le User par entite souhaitee
+         * ajouter au render  
+          'editId' => $editId,
+          'existingFiles' => $existingFiles,
+         * ajouter fonction handleFiles
+         * 
+         */
+        $editId = $this->getRequest()->get('editId');
+        $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
+        $editId = $arrayFile ['editId'];
+        $existingFiles = $arrayFile ['existingFiles'];
+        /*
+         * UPLOAD FILE FORM END
+         */
+
         return $this->render('AdminAdminBundle:User:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
+                    'editId' => $editId,
+                    'existingFiles' => $existingFiles,
         ));
+    }
+
+    private function handleFiles($entity, $editId = null) {
+        /*
+         * UPLOAD FILE FORM
+         * remplacer le User par entite souhaitee
+         *  Voir ajout dans showAction
+         * 
+         */
+
+        $entityName = substr(get_class($entity), (strrpos(get_class($entity), "\\", -1)) + 1) . 'File';
+        $arrayFile = $this->get('image_bundle.get_editiId_and_existingFiles')->getEditIdAndExistingFiles(
+                array(
+                    'editId' => $editId,
+                    'entityName' => $entityName,
+                    'entityId' => $entity->getId(),
+                )
+        );
+
+        $editId = $arrayFile ['editId'];
+        $existingFiles = $arrayFile ['existingFiles'];
+
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($existingFiles as $file_name) {
+            $UserFile = $em->getRepository('UserUserBundle:UserFile')->findOneBy(array('name' => $file_name, 'user' => $entity));
+            if (!$UserFile) {
+                $UserFile = new UserFile();
+                $UserFile->setName($file_name)
+                        ->setUser($entity);
+                $em->persist($UserFile);
+            }
+        }
+        foreach ($entity->getUserFiles() as $UserFile)
+            if (!in_array($UserFile->getName(), $existingFiles))
+                $em->remove($UserFile);
+
+        $em->flush();
+
+        $this->get('punk_ave.file_uploader')->removeFiles(array('folder' => 'attachments/' . $editId));
+
+        return $arrayFile;
+        /*
+         * UPLOAD FILE FORM END
+         */
     }
 
     /**
@@ -173,7 +238,7 @@ class UserController extends Controller {
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find User entity.');
             }
-            
+
             foreach ($entity->getEvents() as $event) {
                 $event->setPublishedBy(null);
                 $event->setOrganizedBy(null);

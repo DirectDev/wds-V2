@@ -189,10 +189,29 @@ class EventController extends Controller {
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        /*
+         * UPLOAD FILE FORM
+         * remplacer le User par entite souhaitee
+         * ajouter au render  
+          'editId' => $editId,
+          'existingFiles' => $existingFiles,
+         * ajouter fonction handleFiles
+         * 
+         */
+        $editId = $this->getRequest()->get('editId');
+        $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
+        $editId = $arrayFile ['editId'];
+        $existingFiles = $arrayFile ['existingFiles'];
+        /*
+         * UPLOAD FILE FORM END
+         */
+
         return $this->render('AdminAdminBundle:Event:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
+                    'editId' => $editId,
+                    'existingFiles' => $existingFiles,
         ));
     }
 

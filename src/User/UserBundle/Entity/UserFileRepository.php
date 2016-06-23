@@ -53,6 +53,7 @@ class UserFileRepository extends EntityRepository {
 
         if (isset($data["search"])) {
             $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.id", ":search"));
             $orQuery->add($query->expr()->like("u.username", ":search"));
             $orQuery->add($query->expr()->like("u.email", ":search"));
             $orQuery->add($query->expr()->like("u.facebook_id", ":search"));

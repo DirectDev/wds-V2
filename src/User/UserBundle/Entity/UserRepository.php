@@ -251,13 +251,14 @@ class UserRepository extends EntityRepository {
 
         if (isset($data["search"])) {
             $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("u.id", ":search"));
             $orQuery->add($query->expr()->like("u.username", ":search"));
             $orQuery->add($query->expr()->like("u.email", ":search"));
-            $orQuery->add($query->expr()->like("u.facebookId", ":search"));
-            $orQuery->add($query->expr()->like("u.googleId", ":search"));
+            $orQuery->add($query->expr()->like("u.facebook_id", ":search"));
+            $orQuery->add($query->expr()->like("u.google_id", ":search"));
             $orQuery->add($query->expr()->like("u.email", ":search"));
-            $orQuery->add($query->expr()->like("mut.description", ":search"));
-            $orQuery->add($query->expr()->like("mut.baseline", ":search"));
+            $orQuery->add($query->expr()->like("ut.description", ":search"));
+            $orQuery->add($query->expr()->like("ut.baseline", ":search"));
             $query->andWhere($orQuery);
             $query->setParameter('search', '%' . $data["search"] . '%');
         }

@@ -30,6 +30,41 @@
             </div>
         </div>   
     </div>   
+    <div class="panel panel-default">
+        <div class="panel-body">    
+            <div class="panel panel-info">
+                <div class="panel-body">
+
+                    <div id="picture" class="profile-edit">
+
+                        <h2 class="heading-md">{% trans %}admin.event.photos{% endtrans %}</h2>
+                        <br>
+
+                        {% set action_path = path('admin_event_edit' , { id: entity.id, editId: editId }) %}
+                        {% include 'FileFileBundle::uploadFileForm.html.twig' with {
+                                action_path: action_path,
+                                cancel_path: null,
+                                delete_path: '',
+                                id: entity.id, 
+                                editId: editId, 
+                                existingFiles: existingFiles,
+                                entity: entity,
+                        } %}
+
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>   
 
 {% endblock %}
 
+{% block bottomJavascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('front/js/underscore-min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bundles/punkavefileuploader/js/jquery.fileupload.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/punkavefileuploader/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script>  
+{% endblock %} 

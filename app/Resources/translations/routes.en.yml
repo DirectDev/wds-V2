@@ -640,31 +640,6 @@ admin_event_delete: '/admin/event/{id}/delete'
 
 # Desc: /admin/event/{id}/edit
 admin_event_edit: '/admin/event/{id}/edit'
-
-# Desc: /admin/event_file/
-admin_event_file: /admin/event_file/
-
-# Desc: /admin/event_file/create
-admin_event_file_create: /admin/event_file/create
-
-# Desc: /admin/event_file/{id}/delete
-admin_event_file_delete: '/admin/event_file/{id}/delete'
-
-# Desc: /admin/event_file/{id}/edit
-admin_event_file_edit: '/admin/event_file/{id}/edit'
-
-# Desc: /admin/event_file/filter_event_file
-admin_event_file_filter: /admin/event_file/filter_event_file
-
-# Desc: /admin/event_file/new
-admin_event_file_new: /admin/event_file/new
-
-# Desc: /admin/event_file/{id}/show
-admin_event_file_show: '/admin/event_file/{id}/show'
-
-# Desc: /admin/event_file/{id}/update
-admin_event_file_update: '/admin/event_file/{id}/update'
-
 # Desc: /admin/event/filter_event
 admin_event_filter: /admin/event/filter_event
 
@@ -929,30 +904,6 @@ admin_user_delete: '/admin/user/{id}/delete'
 
 # Desc: /admin/user/{id}/edit
 admin_user_edit: '/admin/user/{id}/edit'
-
-# Desc: /admin/user_file/
-admin_user_file: /admin/user_file/
-
-# Desc: /admin/user_file/create
-admin_user_file_create: /admin/user_file/create
-
-# Desc: /admin/user_file/{id}/delete
-admin_user_file_delete: '/admin/user_file/{id}/delete'
-
-# Desc: /admin/user_file/{id}/edit
-admin_user_file_edit: '/admin/user_file/{id}/edit'
-
-# Desc: /admin/user_file/filter_user_file
-admin_user_file_filter: /admin/user_file/filter_user_file
-
-# Desc: /admin/user_file/new
-admin_user_file_new: /admin/user_file/new
-
-# Desc: /admin/user_file/{id}/show
-admin_user_file_show: '/admin/user_file/{id}/show'
-
-# Desc: /admin/user_file/{id}/update
-admin_user_file_update: '/admin/user_file/{id}/update'
 
 # Desc: /admin/user/filter_user
 admin_user_filter: /admin/user/filter_user

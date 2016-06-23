@@ -62,10 +62,6 @@ AdminAdminBundle_mea_city:
     resource: "@AdminAdminBundle/Resources/config/routing/meacity.yml"
     prefix:   /mea_city
 
-AdminAdminBundle_event_file:
-    resource: "@AdminAdminBundle/Resources/config/routing/eventfile.yml"
-    prefix:   /event_file
-
 AdminAdminBundle_address:
     resource: "@AdminAdminBundle/Resources/config/routing/address.yml"
     prefix:   /address
@@ -77,11 +73,7 @@ AdminAdminBundle_address:
 AdminAdminBundle_user_type:
     resource: "@AdminAdminBundle/Resources/config/routing/usertype.yml"
     prefix:   /user_type
-
-AdminAdminBundle_user_file:
-    resource: "@AdminAdminBundle/Resources/config/routing/userfile.yml"
-    prefix:   /user_file
-
+    
 AdminAdminBundle_user:
     resource: "@AdminAdminBundle/Resources/config/routing/user.yml"
     prefix:   /user    
