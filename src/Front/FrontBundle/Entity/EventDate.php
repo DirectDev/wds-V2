@@ -59,7 +59,7 @@ class EventDate {
      * inverseJoinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")}
      * )
      */
-    protected $events;
+    public $events;
 
     public function __construct() {
         $this->events = new \Doctrine\Common\Collections\ArrayCollection();

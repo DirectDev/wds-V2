@@ -19,7 +19,16 @@ class EventDateType extends AbstractType {
                 ->add('starttime')
                 ->add('stopdate')
                 ->add('stoptime')
-                ->add('events')
+                ->add('events', 'entity', array(
+                    'class' => 'FrontFrontBundle:Event',
+                    'property' => 'title',
+                    'multiple' => true,
+                    'expanded' => false,
+                    'by_reference' => true,
+                    'required' => true,
+                    'empty_value' => '',
+                    'empty_data' => null
+                ))
 
         ;
     }
