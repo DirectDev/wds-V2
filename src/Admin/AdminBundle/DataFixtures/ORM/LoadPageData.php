@@ -5,9 +5,11 @@ namespace Admin\AdminBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Admin\AdminBundle\Entity\Page;
 
-class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadPageData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 
     /**
      * @var ContainerInterface
@@ -26,6 +28,17 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
      */
     public function load(ObjectManager $manager) {
 
+        if ($this->container->get('kernel')->getEnvironment() == 'test') {
+            $Page = new Page();
+            $Page->setName('for-test');
+            $Page->translate('en')->setTitle('for-test');
+            $Page->translate('fr')->setTitle('for-test');
+            $Page->translate('en')->setDescription('for-test');
+            $Page->translate('fr')->setDescription('for-test');
+            $manager->persist($Page);
+            $this->addReference('page-for-test', $Page);
+            $Page->mergeNewTranslations();
+        }
 
         $Page = new Page();
         $Page->setName('home');
@@ -66,7 +79,7 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-city-edito', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('city_calendar');
         $Page->translate('en')->setTitle('calendar');
@@ -508,7 +521,7 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-learn-salsa', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('learn-bachata');
         $Page->translate('en')->setTitle('Learn Bachata');
@@ -518,7 +531,7 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-learn-bachata', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('learn-kizomba');
         $Page->translate('en')->setTitle('Learn Kizomba');
@@ -558,7 +571,7 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-landing-pub', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('landing-share-event');
         $Page->translate('en')->setTitle('Share Event');
@@ -568,7 +581,7 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->persist($Page);
         $this->addReference('page-landing-share-event', $Page);
         $Page->mergeNewTranslations();
-        
+
         $Page = new Page();
         $Page->setName('facebook-import-event');
         $Page->translate('en')->setTitle('Import Event from Facebook');

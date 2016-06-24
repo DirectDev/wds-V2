@@ -5,9 +5,11 @@ namespace User\UserBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use User\UserBundle\Entity\UserType;
 
-class LoadUserTypeData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadUserTypeData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 
     /**
      * @var ContainerInterface
@@ -25,6 +27,16 @@ class LoadUserTypeData extends AbstractFixture implements OrderedFixtureInterfac
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+
+        if ($this->container->get('kernel')->getEnvironment() == 'test') {
+            $UserType = new UserType();
+            $UserType->setName('for-test');
+            $UserType->translate('en')->setTitle('for-test');
+            $UserType->translate('fr')->setTitle('for-test');
+            $manager->persist($UserType);
+            $this->addReference('usertype-for-test', $UserType);
+            $UserType->mergeNewTranslations();
+        }
 
         $UserType = new UserType();
         $UserType->setName('dancer');

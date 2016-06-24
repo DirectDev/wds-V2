@@ -5,9 +5,11 @@ namespace Front\FrontBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Front\FrontBundle\Entity\EventType;
 
-class LoadEventTypeData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadEventTypeData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 
     /**
      * @var ContainerInterface
@@ -25,6 +27,16 @@ class LoadEventTypeData extends AbstractFixture implements OrderedFixtureInterfa
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+
+        if ($this->container->get('kernel')->getEnvironment() == 'test') {
+            $EventType = new EventType();
+            $EventType->setName('for-test');
+            $EventType->translate('en')->setTitle('for-test');
+            $EventType->translate('fr')->setTitle('for-test');
+            $manager->persist($EventType);
+            $this->addReference('eventtype-for-test', $EventType);
+            $EventType->mergeNewTranslations();
+        }
 
         $EventType = new EventType();
         $EventType->setName('Party');
