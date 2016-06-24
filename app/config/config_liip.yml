@@ -24,7 +24,7 @@ liip_imagine:
             filesystem:
                 data_root: %kernel.root_dir%/../www/
     driver:               gd
-    cache:                aws_resolver
+    cache:                %liip.cache.resolver%
     data_loader:          default
     default_image:        null
     controller:
@@ -175,6 +175,4 @@ knp_gaufrette:
         aws_adapater:
             aws_s3:
                 service_id: wds.amazon_s3
-                bucket_name: %amazon.s3.bucket%
-#                options:
-#                    directory: 'profile_photos'                
+                bucket_name: %amazon.s3.bucket%               

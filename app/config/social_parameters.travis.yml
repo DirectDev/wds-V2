@@ -6,3 +6,10 @@ parameters:
     google_app_secret:  google_secret
     google_map_api_key: api_key
     share_this_publisher: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    amazon.s3.key:    ""
+    amazon.s3.secret: ""
+    amazon.s3.bucket: ""
+    amazon.s3.region: ""
+    amazon.s3.version: ""
+    amazon.s3.scheme: ""
+    liip.cache.resolver: default
