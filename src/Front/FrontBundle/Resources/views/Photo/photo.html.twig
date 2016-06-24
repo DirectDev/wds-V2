@@ -9,13 +9,13 @@
     <div class="cbp-item graphic">
         <div class="cbp-caption">
             <div class="cbp-caption-defaultWrap">
-                <img src="{{ asset(photo.getLargePathUri()) }}" alt="">
+                <img src="{{ asset(photo.getLargePathUri())|imagine_filter('large') }}" alt="">
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
                     <div class="cbp-l-caption-body">
                         <ul class="link-captions">
-                            <li><a href="{{ asset(photo.getLargePathUri()) }}" class="cbp-lightbox" data-title="{{ photo.getTitle|capitalize }}"><i class="rounded-x fa fa-search"></i></a></li>
+                            <li><a href="{{ asset(photo.getLargePathUri())|imagine_filter('large') }}" class="cbp-lightbox" data-title="{{ photo.getTitle|capitalize }}"><i class="rounded-x fa fa-search"></i></a></li>
                         </ul>
                         <div class="cbp-l-grid-agency-title">{{ photo.getTitle|capitalize }}</div>
                         {% if desc %}

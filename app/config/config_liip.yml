@@ -169,6 +169,15 @@ liip_imagine:
             filters:
                 upscale: { min: [40, 40] } 
                 thumbnail: { size: [40, 40], mode: inbound }
+        large:
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                downscale: { max: [973, 615] } 
                 
 knp_gaufrette:
     adapters:

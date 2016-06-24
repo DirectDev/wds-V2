@@ -9,7 +9,7 @@ parameters:
     amazon.s3.key:    "key"
     amazon.s3.secret: "secret"
     amazon.s3.bucket: "bucket"
-    amazon.s3.region: "region"
-    amazon.s3.version: "version"
+    amazon.s3.region: eu-west-1
+    amazon.s3.version: "2006-03-01"
     amazon.s3.scheme: "http"
     liip.cache.resolver: default
