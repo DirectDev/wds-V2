@@ -21,4 +21,4 @@ services:
             - { scheme: %amazon.s3.scheme% }
             - { CacheControl: 'max-age=86400' }
         tags:
-            - { name: 'liip_imagine.cache.resolver', resolver: 'aws_resolver' }
+            - { name: 'liip_imagine.cache.resolver', resolver: %liip.cache.resolver% }
