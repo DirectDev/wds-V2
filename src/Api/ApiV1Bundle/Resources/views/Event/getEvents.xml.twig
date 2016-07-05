@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+    {% for event in events %}
+        {% include "ApiApiV1Bundle:Event:event.xml.twig" with { event : event } %}
+    {% endfor %}
+</events>

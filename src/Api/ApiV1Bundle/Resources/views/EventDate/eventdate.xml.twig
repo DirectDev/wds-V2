@@ -1,0 +1,15 @@
+{% if eventDate is defined and eventDate is not null %}
+    <eventDate>
+        <id>{{ eventDate.id }}</id>
+        <startdate>{{ eventDate.startdate|date('Y-m-d') }}</startdate>
+            {% if eventDate.starttime is not null %}
+            <starttime>{{ eventDate.starttime|date('H:i') }}</starttime>
+            {% endif %}
+            {% if eventDate.stopdate is not null %}
+            <stopdate>{{ eventDate.stopdate|date('Y-m-d') }}</stopdate>
+            {% endif %}
+            {% if eventDate.stoptime is not null %}
+            <stoptime>{{ eventDate.stoptime|date('H:i') }}</stoptime>
+            {% endif %}
+    </eventDate>
+{% endif %}

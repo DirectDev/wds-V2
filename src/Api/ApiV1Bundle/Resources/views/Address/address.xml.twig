@@ -1,0 +1,13 @@
+{% if address is defined and address is not null %}
+    <address>
+        <id>{{ address.id }}</id>
+        <name>{{ address.name }}</name>
+        <street>{{ address.street }}</street>
+        <street_complement>{{ address.streetComplement }}</street_complement>
+        <city>{{ address.city }}</city>
+        <postcode>{{ address.postcode }}</postcode>
+        <latitude>{{ address.latitude }}</latitude>
+        <longitude>{{ address.longitude }}</longitude>
+        <country>{{ address.getCountry() }}</country>
+    </address>
+{% endif %}

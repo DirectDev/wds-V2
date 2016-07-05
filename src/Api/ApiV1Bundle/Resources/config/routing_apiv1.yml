@@ -1,0 +1,4 @@
+api_v1_event:
+    type:     rest
+    name_prefix:  apiv1_
+    resource: Api\ApiV1Bundle\Controller\EventController

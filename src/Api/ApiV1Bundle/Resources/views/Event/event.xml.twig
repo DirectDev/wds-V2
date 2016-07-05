@@ -1,0 +1,63 @@
+{% if event is defined and event is not null %}
+    <event>
+        <id>{{ event.id }}</id>
+        <name>{{ event.name }}</name>
+
+        <title>{{ event.getTitle() }}</title>
+        <description>{{ event.getDescription() }}</description>
+
+        <facebook_id>{{ event.facebookId }}</facebook_id>
+        <facebook_link>{{ event.facebookLink }}</facebook_link>
+        <facebook_picture_url>{{ event.facebookPictureUrl }}</facebook_picture_url>
+
+        <event_addresses>
+            {% for address in event.getAddresses %}
+                {% include "ApiApiV1Bundle:Address:address.xml.twig" with { address : address } %}
+            {% endfor %}
+        </event_addresses>
+
+        <event_eventdates>
+            {% for eventDate in event.getEventDates() %}
+                {% include "ApiApiV1Bundle:EventDate:eventdate.xml.twig" with { eventDate : eventDate } %}
+            {% endfor %}
+        </event_eventdates>
+
+        <event_eventtypes>
+            {% for eventType in event.getEventTypes() %}
+                {% include "ApiApiV1Bundle:EventType:eventtype.xml.twig" with { eventType : eventType } %}
+            {% endfor %}
+        </event_eventtypes>
+
+        <event_musictypes>
+            {% for musicType in event.getMusicTypes() %}
+                {% include "ApiApiV1Bundle:MusicType:musictype.xml.twig" with { musicType : musicType } %}
+            {% endfor %}
+        </event_musictypes>
+
+        <event_user>
+            {% include "ApiApiV1Bundle:User:user.xml.twig" with { user : event.user } %}
+        </event_user>
+        <event_user_published>
+            {% include "ApiApiV1Bundle:User:user.xml.twig" with { user : event.getPublishedBy } %}
+        </event_user_published>
+        <event_user_organized>
+            {% include "ApiApiV1Bundle:User:user.xml.twig" with { user : event.getOrganizedBy } %}
+        </event_user_organized>
+
+        <event_images>
+            {% for eventFile in event.eventFiles %}
+                {% if eventFile.isValid %}
+                    <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(eventFile.getLargePathUri())|imagine_filter('event_carrousel') }}"></img>                
+                {% endif %}
+            {% endfor %}
+            {% if event.eventFiles|length == 0 %}
+                {% if event.getFacebookPictureUrl %}
+                    <img alt="{{ event.getTitle|capitalize }}" src="{{ event.getFacebookPictureUrl }}"></img> 
+                {% else %}
+                    <img alt="{{ event.getTitle|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('event_carrousel') }}"></img> 
+                {% endif %}    
+            {% endif %}
+        </event_images>
+
+    </event>
+{% endif %}

@@ -8,6 +8,7 @@ imports:
     - { resource: upload_parameters.yml }
     - { resource: security.yml }
     - { resource: config_liip.yml }
+    - { resource: config_api.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:

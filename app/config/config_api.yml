@@ -1,0 +1,14 @@
+
+fos_rest:
+    routing_loader:
+        default_format: xml
+    view:
+        formats:
+            json: false
+            xml: true
+        templating_formats:
+            xml: true
+        force_redirects:
+            xml: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig    

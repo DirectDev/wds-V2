@@ -1,0 +1,13 @@
+{% if user is defined and user is not null %}
+    <user>
+        <id>{{ user.id }}</id>
+        <name>{{ user.username }}</name>
+
+        {% if user.getProfilePictureUrl() %}
+            <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('home_user') }}"></img>
+        {% else %}
+            <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}"></img>
+        {% endif %} 
+
+    </user>
+{% endif %}

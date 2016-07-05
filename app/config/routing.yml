@@ -1,7 +1,3 @@
-contact_contact:
-    resource: "@ContactContactBundle/Resources/config/routing.yml"
-    prefix:   /
-
 search_search:
     resource: "@SearchSearchBundle/Resources/config/routing.yml"
     prefix:   /
@@ -27,7 +23,14 @@ search_search:
 file_file:
     resource: "@FileFileBundle/Resources/config/routing.yml"
     prefix:   /file/         
-    
+
+#API
+#options: { i18n: false } -> exclude from jms translation routing
+api_api_v1:
+    type: rest
+    options: { i18n: false } 
+    resource: "@ApiApiV1Bundle/Resources/config/routing_apiv1.yml"
+    prefix:   /apiv1
     
 # FOS USER    
 fos_user_security:
@@ -71,6 +74,10 @@ google_login:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"  
+    
+contact_contact:
+    resource: "@ContactContactBundle/Resources/config/routing.yml"
+    prefix:   /
 
 admin_admin:
     resource: "@AdminAdminBundle/Resources/config/routing.yml"
