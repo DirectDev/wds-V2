@@ -2,6 +2,7 @@
 {% if not is_granted("ROLE_USER") %}
     <li>
         <a href="{{ path('fos_user_registration_register') }}">
+            <i class="fa fa-pencil"></i>
             {% trans %}navbar.register{% endtrans %}
         </a>
     </li>
@@ -9,6 +10,7 @@
     </li>   
     <li>
         <a href="{{ path('fos_user_security_login') }}">
+            <i class="fa fa-lock"></i>
             {% trans %}navbar.login{% endtrans %}
         </a>
     </li>

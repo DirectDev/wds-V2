@@ -15,7 +15,7 @@
         scrollByPage: false,
         mediaQueries: [{
             width: 1100,
-            cols: 3
+            cols: 4
         }, {
             width: 800,
             cols: 3
@@ -28,8 +28,8 @@
         }],
         defaultFilter: '*',
         animationType: 'rotateSides',
-        gapHorizontal: 10,
-        gapVertical: 10,
+        gapHorizontal: 20,
+        gapVertical: 20,
         gridAdjustment: 'responsive',
         caption: 'overlayBottomPush',
         displayType: 'sequentially',

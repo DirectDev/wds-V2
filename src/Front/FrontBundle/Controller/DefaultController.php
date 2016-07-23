@@ -26,9 +26,9 @@ class DefaultController extends Controller {
         if (!$page)
             throw new \Exception('Page not found!');
 
-        $MeaCities = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForHomePage(9);
-        $MeaFestivals = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaFestival')->findForHomePage(9);
-        $MeaUsers = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForHomePage(9);
+        $MeaCities = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaCity')->findForHomePage(8);
+        $MeaFestivals = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaFestival')->findForHomePage(8);
+        $MeaUsers = $this->getDoctrine()->getRepository('FrontFrontBundle:MeaUser')->findForHomePage(8);
 
 
         return $this->render('FrontFrontBundle:Home:index.html.twig', array(

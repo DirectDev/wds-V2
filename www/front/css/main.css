@@ -537,10 +537,10 @@ a.disabled {
 
 .header .logo {
     height: 80px !important;
-    width: 225px !important;
+    width: 123px !important;
     display: table-cell;
     vertical-align: middle;
-    background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important; 
+    background: url('../../images/wedancesalsa_logo.png') no-repeat !important; 
 }
 
 
@@ -549,10 +549,13 @@ input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
-@media screen and (max-width:768px)
+@media screen and (max-width:978px)
 {
+    .navbar-brand {
+        height: 65px !important;
+    }
     .navbar-brand:before {
-        content: url('../../images/wds_logo_small.png');
+        content: url('../../images/wedancesalsa_logo_estampille.png');
     }
     .navbar-brand img{
         display: none;
@@ -743,17 +746,29 @@ fieldset[disabled] .btn-search.active {
     /*margin-right: 18px;*/
 }
 .navbar-brand {
-    height: 80px !important;
-    width: 225px !important;
     display: table-cell;
     vertical-align: middle;
     top: 0px !important;  
 }
+@media screen and (min-width:978px) and (max-width:1200px)
+{
+    .navbar-brand {
+        background: url('../../images/wedancesalsa_logo.png') no-repeat !important;
+        width: 110px !important;
+        height: 120px !important;
+    }
+}
+@media screen and (min-width:1200px)
+{
+    .navbar-brand {
+        background: url('../../images/wedancesalsa_logo.png') no-repeat !important;
+        width: 123px !important;
+        height: 120px !important;
+    }
+}
 @media screen and (min-width:978px)
 {
-    .navbar-brand {;
-                   background: url('../../images/wedancesalsa_logo_v2.png') no-repeat !important;
-    }
+
     .hide-for-desktop{
         display:none !important;
     }
@@ -803,7 +818,8 @@ button.width-full, a.width-full{
 }
 .btn-u-lg {
     color: #fff;
-    background: #e67e22;
+    background: #CE0B47;
+    background: #CE0B47;
 }
 .btn-u-lg:hover, .btn-u-lg:focus, .btn-u-lg:active, .btn-u-lg.active{
     background: #5fb611;
@@ -870,4 +886,69 @@ label.required:after {
 }
 .text-error {
     color: #b94a48;
+}
+
+#portfolio-cities{
+/*    padding-bottom: 40px;*/
+}
+#portfolio-festivals {
+    background-color: #CE0B47; 
+    padding-bottom: 40px;
+}
+
+@media screen and (min-width:978px)
+{
+    #portfolio-cities:after {
+        left: calc(50% - 20px);
+        border-top: 20px solid; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        width: 0; 
+        height: 0;
+        content: " ";
+        display: block; 
+        position: absolute; 
+        border-top-color: white;
+        border-left-style: inset; /*FF fixes*/
+        border-right-style: inset; /*FF fixes*/ 
+    }
+
+    #portfolio-festivals {
+        background: url('../../images/home_festival_background.png') repeat-y center center !important; 
+        background-color: #CE0B47; 
+        padding-bottom: 0px;
+    }
+    #portfolio-festivals:after {
+        left: calc(50% - 20px);
+        border-top: 20px solid; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        width: 0; 
+        height: 0;
+        content: " ";
+        display: block; 
+        position: absolute; 
+        border-top-color: #9C093F;
+        border-left-style: inset; /*FF fixes*/
+        border-right-style: inset; /*FF fixes*/ 
+    }
+
+}
+#portfolio-cities p.space-lg-hor{
+    color: #939496;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+#portfolio-festivals p.space-lg-hor{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+#portfolio-users p.space-lg-hor{
+    color: #939496;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px;
 }

@@ -60,7 +60,7 @@
 .header-v3 .navbar-toggle,
 .header-v3 .navbar-default .navbar-toggle:hover, 
 .header-v3 .navbar-default .navbar-toggle:focus {
-	background: #e67e22;
+	background: #CE0B47;
 	padding: 6px 10px 2px;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .header-v3 .navbar-default .navbar-nav > .active > a {
-	color: #e67e22;
+	color: #CE0B47;
 }
 
 @media (min-width: 992px) {
@@ -228,13 +228,13 @@
 	}
 
 	.header-v3 .navbar-default .navbar-nav > li > a:hover {
-		color: #e67e22;
+		color: #CE0B47;
 	}
 
 	.header-v3 .navbar-default .navbar-nav > .active > a,
 	.header-v3 .navbar-default .navbar-nav > .active > a:hover,
 	.header-v3 .navbar-default .navbar-nav > .active > a:focus {
-		background: #e67e22;
+		background: #CE0B47;
 		color: #fff !important;	
 	}
 
@@ -253,12 +253,12 @@
 @media (min-width: 992px) {	
 	/*Navbar Collapse*/
 	.header-v3 .navbar-collapse {
-		padding: 0;
+		padding: 20px 0 0 0;
 	}
 
 	.header-v3 .navbar-default .navbar-nav > li > a {
 		font-size: 13px;
-		padding: 30px 30px 26px 20px;
+		padding: 30px 30px 45px 20px;
 	}
 	
 	.header-v3 .navbar-default .navbar-nav > li > a,
@@ -273,11 +273,11 @@
 	.header-v3 .navbar-default .navbar-nav > .open > a,
 	.header-v3 .navbar-default .navbar-nav > .open > a:hover,
 	.header-v3 .navbar-default .navbar-nav > .open > a:focus {
-		color: #e67e22;
+		color: #CE0B47;
 	}
 
 	.header-v3 .navbar-default .navbar-nav > li:hover > a {
-        color: #e67e22;
+        color: #CE0B47;
     }
 
 	/*Dropdown Menu*/
@@ -287,7 +287,7 @@
 		min-width: 200px;
 		border-radius: 0; 
 		z-index: 9999 !important;
-		border-top: solid 2px #e67e22; 
+		border-top: solid 2px #CE0B47; 
 		border-bottom: solid 2px #687074; 
 	}
 
@@ -431,7 +431,7 @@
 }
 
 .header-v3 .navbar .nav > li > .search:hover {
-	color: #e67e22;
+	color: #CE0B47;
 	background: inherit;
 }
 
@@ -588,6 +588,7 @@
 	font-weight: 400;
 	padding: 0 10px 0 13px;
 	text-transform: uppercase;
+        color: #CE0B47;
 }
 
 /*Space for only Big Resolution*/
@@ -693,7 +694,7 @@
 
     /*Equal Height List Style*/
     .header-v3 .mega-menu .equal-height-list h3 { 
-		color: #333; 
+		color: #CE0B47; 
 		margin: 0 0 5px;
 		font-size: 13px; 
 		font-weight: 400; 

@@ -2,31 +2,32 @@
 ------------------------------------*/
 .footer-v3 .footer {
 	padding: 40px 0;
-	background: #280201;
-	border-top: 5px solid #ff931e;
+	background: #CE0B47;
 }
 
 .footer-v3 .thumb-headline h2 {
-	color: #fff;
+	color: #FEC400;
 	line-height: 22px;
 	margin-bottom: 10px;
 }
 
 .footer-v3 .footer p,
 .footer-v3 .simple-list a {
-	color: #bbb;
+	color: #fff;
 }
 
 /*Copyright*/
 .footer-v3 .copyright {
 	padding: 10px 0;
-	background: #222;
-	border-top-color: #292929;
+	background: #A00934;
 }
 
 .footer-v3 .copyright p {
-	color: #bbb;
+	color: #fff;
 	margin-top: 14px;
+}
+.footer-v3 .copyright a {
+	color: #FEC400;
 }
 
 .footer-v3 .copyright .social-icons {
