@@ -1,11 +1,25 @@
-<a href='{{ path }}'>
-    <div class="service-block service-block-light-green">            
-        <i class="icon-2x color-light fa fa-plus"></i>
-        {% if title is defined and title%}
-            <h2 class="heading-md">{{ title }}</h2>
-        {% endif %}
-        {% if paragraphe is defined and paragraphe %}
-            <p>{{ paragraphe }}</p>
-        {% endif %}
-    </div>
-</a>
+{% if color is defined and color == 'grey' %}
+    <a href='{{ path }}'>
+        <div class="service-block service-block-light-grey">            
+            <i class="icon-2x color-red fa fa-plus"></i>
+            {% if title is defined and title%}
+                <h2 class="heading-md color-white">{{ title|upper }}</h2>
+            {% endif %}
+            {% if paragraphe is defined and paragraphe %}
+                <p class="color-white">{{ paragraphe }}</p>
+            {% endif %}
+        </div>
+    </a>
+{% else %}
+    <a href='{{ path }}'>
+        <div class="service-block service-block-light-white">            
+            <i class="icon-2x color-red fa fa-plus"></i>
+            {% if title is defined and title%}
+                <h2 class="heading-md color-red">{{ title|upper }}</h2>
+            {% endif %}
+            {% if paragraphe is defined and paragraphe %}
+                <p>{{ paragraphe }}</p>
+            {% endif %}
+        </div>
+    </a>
+{% endif %}

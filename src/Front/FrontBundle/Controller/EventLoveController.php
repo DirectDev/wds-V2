@@ -26,7 +26,7 @@ class EventLoveController extends Controller {
                         ->add('submit', 'submit', array(
                             'label' => /** @Ignore */ $this->get('translator')->trans('I Like'),
                             'attr' => array(
-                                'class' => 'btn-u btn-block love_button'
+                                'class' => 'btn-wds2 btn-block love_button'
                             )
                         ))
                         ->getForm()
@@ -40,7 +40,7 @@ class EventLoveController extends Controller {
                         ->add('submit', 'submit', array(
                             'label' => /** @Ignore */ $this->get('translator')->trans("I don't like"),
                             'attr' => array(
-                                'class' => 'btn-u btn-block love_button'
+                                'class' => 'btn-wds2 btn-block love_button'
                             )
                         ))
                         ->getForm()

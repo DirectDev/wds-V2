@@ -45,12 +45,12 @@
                             <div class="col-md-8">
                                 <h2>{{ user.username|capitalize }}</h2>
                                 {% if user.getUserTypesText %}
-                                    <span class="color-green">{{ user.getUserTypesText }}</span>
+                                    <span class="color-white">{{ user.getUserTypesText }}</span>
                                 {% endif %}
                                 {% if user.getMusicTypesText %}
-                                    <span class="color-green">{{ user.getMusicTypesText }}</span>
+                                    <span class="color-white">{{ user.getMusicTypesText }}</span>
                                 {% endif %}
-                                <hr>
+
                                 {% if user.getBaseline %}
                                     <p>{{ user.getBaseline|capitalize }}</p>
                                 {% endif %}

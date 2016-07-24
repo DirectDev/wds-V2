@@ -787,7 +787,7 @@ fieldset[disabled] .btn-search.active {
     position        : fixed;
     top             : 0;
     text-align: center;
-    background: #FFF;
+    background: #EAEAEA;
     padding: 20px 20px;
     height: 75px;
     margin:0;
@@ -870,6 +870,25 @@ a.navbar_highlight {
 .service-block-light-green {
     background: rgba(121,213,179,0.8) !important;
 }
+.service-block-light-white {
+    background-color: #fff !important;
+}
+.service-block-light-grey {
+    background-color: #999999 !important;
+}
+.service-block-wds2 {
+    background-color: #fec400 !important;
+    color: white !important;
+}
+.service-block-wds2 h2,  .service-block-wds2 p{
+    color: white !important;
+}
+.service-block-blue h2,  .service-block-blue p{
+    color: white !important;
+}
+.service-block-blue{
+    color: white !important;
+}
 
 #divImportEventsFacebook{
     background-color: white;
@@ -889,7 +908,7 @@ label.required:after {
 }
 
 #portfolio-cities{
-/*    padding-bottom: 40px;*/
+    /*    padding-bottom: 40px;*/
 }
 #portfolio-festivals {
     background-color: #CE0B47; 
@@ -951,4 +970,20 @@ label.required:after {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 0px;
+}
+
+.overflow-h-add h3{
+    color: #CE0B47;
+}
+
+.job-description h3, h2.panel-title{
+    color: #CE0B47;
+    font-weight: bold;
+
+}
+.color-red{
+    color: #CE0B47 !important;
+}
+.color-white{
+    color: white !important;
 }

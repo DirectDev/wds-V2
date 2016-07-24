@@ -33,7 +33,7 @@
 }
 .breadcrumb li.active,
 .breadcrumb li a:hover {
-  color: #CE0B47;
+  color: #FDC300;
   text-decoration: none;
 }
 
@@ -57,9 +57,9 @@
 /*Breadcrumbs Dark and Light*/
 .breadcrumbs.breadcrumbs-dark,
 .breadcrumbs.breadcrumbs-light {
-  background: #222;
+  background: #CE0B47;
   padding: 30px 0 20px;
-  border-bottom: solid 3px #777;  
+  /*border-bottom: solid 3px #777;*/  
 }
 
 .breadcrumbs.breadcrumbs-light {

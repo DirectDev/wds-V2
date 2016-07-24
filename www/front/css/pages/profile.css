@@ -475,7 +475,7 @@
 ------------------------------------*/
 /*Profile Biography*/
 .profile .profile-bio {
-	background: #fff;
+	background: #CE0B47;
 	position: relative;
 	padding: 15px 10px 5px 15px;
 }
@@ -491,10 +491,18 @@
 .profile .profile-bio h2 {
 	margin-top: 0;
 	font-weight: 200;
+        color: #FBC600;
 }
 
 .profile .profile-bio span {
 	display: block;
+        color: white;
+}
+.profile .profile-bio p {
+        color: white;
+}
+.profile .profile-bio .service-block p {
+    color: #808080;
 }
 
 .profile .profile-bio hr {
@@ -796,7 +804,7 @@
 	}
 }
 
-@media screen (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 768px) and (max-width: 992px) {
 	.profile .timeline-v2 > li .cbp_tmlabel:after {
 		border-bottom-color: #fff;
 		border-right-color: transparent;

@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if event.isValid %}
-    <div class="col-md-6 col-sm-12 md-margin-bottom-40 mix {{ event.getMusicTypesClasses }}" data-cat="{{ event.getMusicTypesClasses }}">
+    <div class="col-md-4 col-sm-12 md-margin-bottom-40 mix {{ event.getMusicTypesClasses }}" data-cat="{{ event.getMusicTypesClasses }}">
 
         <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}">
 

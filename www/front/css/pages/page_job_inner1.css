@@ -3,7 +3,7 @@
 .job-description {
 	padding-bottom: 30px;
 	position: relative;
-	background: #f9f9f9;
+	background: #f3f3f3;
 	border-top: 1px solid #eee;
 }
 
@@ -21,8 +21,13 @@
 /*Left-Inner*/
 .job-description .left-inner {
 	padding: 20px;
-	background: #fff;
+	background: #CE0B47;
 	position: relative;
+        color: white;
+}
+.job-description .left-inner h2 {
+	text-transform: uppercase;
+        color: white;
 }
 
 .job-description i.position-top {

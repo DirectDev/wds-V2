@@ -15,7 +15,8 @@
                 {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
                     path : path('front_user_edit', { id : app.user.id } ) , 
                     title : 'add_block.user.videos.add_title'|trans, 
-                    paragraphe: 'add_block.user.videos.add_paragraphe'|trans 
+                    paragraphe: 'add_block.user.videos.add_paragraphe'|trans, 
+                    color: 'grey' 
                 } %}
             {% else %}
                 {% include 'FrontFrontBundle::infoBlock.html.twig' with  { 

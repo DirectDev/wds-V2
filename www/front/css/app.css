@@ -2141,9 +2141,11 @@ i.icon-bg-light-grey {
     margin-bottom: 20px;
 }
 
-.service-block p,
 .service-block h2 {
-    color: #fff;
+    /*color: #fff;*/
+}
+.service-block p {
+    color: #808080;
 }
 
 .service-block h2 a:hover{

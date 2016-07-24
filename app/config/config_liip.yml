@@ -146,8 +146,8 @@ liip_imagine:
             default_image:        null
             filters:
                 # min size
-                upscale: { min: [389, 246] } 
-                thumbnail: { size: [389, 246], mode: outbound }         
+                upscale: { min: [389, 389] } 
+                thumbnail: { size: [389, 389], mode: outbound }         
         facebook_imported_event:        
             quality:              100
             animated:             false

@@ -26,7 +26,7 @@ class EventPresenceController extends Controller {
                         ->add('submit', 'submit', array(
                             'label' => /** @Ignore */ $this->get('translator')->trans('I go'),
                             'attr' => array(
-                                'class' => 'btn-u btn-block presence_button'
+                                'class' => 'btn-wds2 btn-block presence_button'
                             )
                         ))
                         ->getForm()
@@ -40,7 +40,7 @@ class EventPresenceController extends Controller {
                         ->add('submit', 'submit', array(
                             'label' => /** @Ignore */ $this->get('translator')->trans("I don't go"),
                             'attr' => array(
-                                'class' => 'btn-u btn-block presence_button'
+                                'class' => 'btn-wds2 btn-block presence_button'
                             )
                         ))
                         ->getForm()
