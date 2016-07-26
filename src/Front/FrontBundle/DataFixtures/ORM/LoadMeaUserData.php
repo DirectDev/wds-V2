@@ -29,9 +29,6 @@ class LoadMeaUserData extends AbstractFixture implements OrderedFixtureInterface
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
-        
-        if ($this->container->get('kernel')->getEnvironment() == 'prod')
-            return;
 
         shuffle($this->array_user);
 

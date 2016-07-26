@@ -19,9 +19,6 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface {
      */
     public function load(ObjectManager $manager) {
         
-        if ($this->container->get('kernel')->getEnvironment() == 'prod')
-            return;
-        
         $i = 0;
         foreach ($this->array_event as $value) {
 

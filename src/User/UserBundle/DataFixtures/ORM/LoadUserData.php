@@ -31,8 +31,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
-        if ($this->container->get('kernel')->getEnvironment() == 'prod')
-            return;
 
         $this->loadDancers($manager);
         $this->loadTeachers($manager);

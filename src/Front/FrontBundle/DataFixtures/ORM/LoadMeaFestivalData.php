@@ -29,9 +29,6 @@ class LoadMeaFestivalData extends AbstractFixture implements OrderedFixtureInter
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
-        
-        if ($this->container->get('kernel')->getEnvironment() == 'prod')
-            return;
 
         $EventType = $this->getReference('eventtype-festival');
 
