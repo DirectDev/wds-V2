@@ -55,10 +55,16 @@ class EventDateControllerTest extends WebTestCase {
     }
 
     private function findEventDate() {
-        if($eventDates = $this->findEventDates())
+        if ($eventDates = $this->findEventDates())
             return $eventDates[0];
     }
-    
+
+    private function findEventDateForDelete() {
+        $eventDates = $this->em->getRepository('FrontFrontBundle:EventDate')->findBy(array(), null, 1);
+        foreach ($eventDates as $eventDate)
+            return $eventDate;
+    }
+
     private function findEventDates() {
         $event = $this->findOneEvent();
         $this->em->refresh($event);
@@ -78,7 +84,7 @@ class EventDateControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_eventdate', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
-    
+
     public function testShow() {
         $eventDates = $this->findEventDates();
         foreach ($eventDates as $eventDate) {
@@ -123,7 +129,7 @@ class EventDateControllerTest extends WebTestCase {
         $crawler = $this->clientLogged->submit($form);
 
         $response = $this->clientLogged->getResponse();
-        
+
 
 
         $this->em->refresh($event);
@@ -176,7 +182,7 @@ class EventDateControllerTest extends WebTestCase {
         $count_event_dates_before = $this->em->getRepository('FrontFrontBundle:EventDate')->count();
         $count_users_before = $this->em->getRepository('UserUserBundle:User')->count();
 
-        $eventDate = $this->findEventDate();
+        $eventDate = $this->findEventDateForDelete();
         $this->assertNotNull($eventDate);
         $crawler = $this->clientLogged->request('DELETE', $this->router->generate('admin_eventdate_edit', array(
                     '_locale' => $this->locale,
