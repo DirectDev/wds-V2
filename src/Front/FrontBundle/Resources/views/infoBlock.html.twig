@@ -1,9 +1,9 @@
 <div class="service-block service-block-default">            
     <i class="icon-custom icon-color-dark rounded-x fa fa-info"></i>
-    {% if title is defined and title%}
+    {% if title is defined and title and title != ' ' %}
         <h2 class="heading-md">{{ title }}</h2>
     {% endif %}       
-    {% if paragraphe is defined and paragraphe %}
+    {% if paragraphe is defined and paragraphe and paragraphe != ' ' %}
         <p>{{ paragraphe }}</p>
     {% endif %}
 </div>

@@ -2,10 +2,10 @@
     <a href='{{ path }}'>
         <div class="service-block service-block-light-grey">            
             <i class="icon-2x color-red fa fa-plus"></i>
-            {% if title is defined and title%}
+            {% if title is defined and title and title != ' ' %}
                 <h2 class="heading-md color-white">{{ title|upper }}</h2>
             {% endif %}
-            {% if paragraphe is defined and paragraphe %}
+            {% if paragraphe is defined and paragraphe and paragraphe != ' ' %}
                 <p class="color-white">{{ paragraphe }}</p>
             {% endif %}
         </div>
@@ -14,10 +14,10 @@
     <a href='{{ path }}'>
         <div class="service-block service-block-light-white">            
             <i class="icon-2x color-red fa fa-plus"></i>
-            {% if title is defined and title%}
+            {% if title is defined and title and title != ' ' %}
                 <h2 class="heading-md color-red">{{ title|upper }}</h2>
             {% endif %}
-            {% if paragraphe is defined and paragraphe %}
+            {% if paragraphe is defined and paragraphe and paragraphe != ' ' %}
                 <p>{{ paragraphe }}</p>
             {% endif %}
         </div>

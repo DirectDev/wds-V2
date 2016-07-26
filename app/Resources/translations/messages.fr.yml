@@ -16,7 +16,7 @@ add_block:
             add_title: 'Décrivez cet événement'
 
         images:
-            add_paragraphe: add_block.event.images.add_paragraphe
+            add_paragraphe: ' '
             add_title: 'Ajouter des photos'
 
     user:
@@ -144,6 +144,7 @@ event:
 
     list:
         add: 'Ajouter un événement'
+        add.p: "Passionné de Salsa/Bachata/Kizomba, vous n’alliez pas quand même pas garder jalousement l’info d’un prochain event à côté de chez vous\_?!!\_ Partagez nous un maximum de renseignements (date, lieu, horaires, style de danse, niveau), bref on veut tout savoir\_! Qui sait, peut-être êtes-vous en train d’inviter le partenaire de vos rêves\_?!"
 
     music: Musique
     music_types: Musique
@@ -646,32 +647,32 @@ info_block:
     event:
         description:
             info_paragraphe: 'Pas encore d''informations'
-            info_title: ""
+            info_title: ' '
 
         images:
             info_paragraphe: 'Pas encore de photos'
-            info_title: ""
+            info_title: ' '
 
     user:
         details:
             info_paragraphe: 'Pas de photos'
-            info_title: ""
+            info_title: ' '
 
         musics:
             info_paragraphe: 'Pas de musiques'
-            info_title: ""
+            info_title: ' '
 
         photos:
             info_paragraphe: 'Pas de photos'
-            info_title: ""
+            info_title: ' '
 
         timeline:
             info_paragraphe: 'Pas d''événements à venir'
-            info_title: ""
+            info_title: ' '
 
         videos:
             info_paragraphe: 'Pas de vidéos'
-            info_title: ""
+            info_title: ' '
 
 link:
     home: Accueil
@@ -823,8 +824,8 @@ user:
     by: Par
 
     delete:
-        button: Supprimer mon profil
-        confirmation: Etes vous sûr de vouloir supprimer votre profil ?
+        button: 'Supprimer mon profil'
+        confirmation: 'Etes vous sûr de vouloir supprimer votre profil ?'
 
     description_title: 'Ma Description'
 

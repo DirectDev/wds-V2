@@ -16,7 +16,7 @@ add_block:
             add_title: 'Add a description'
 
         images:
-            add_paragraphe: add_block.event.images.add_paragraphe
+            add_paragraphe: " "
             add_title: 'Add your pictures'
 
     user:
@@ -144,6 +144,7 @@ event:
 
     list:
         add: 'Add Event'
+        add.p: "Hey Salsa /Bachata/Kizomba lover, were you really going to guard the information of the coming event happening next to your home jealously?!!  Share a maximum of info with us (date, place, time, style of dance, level), we want to know all about it! Who knows, maybe you are inviting your ideal partner right now?!"
 
     music: Music
     music_types: Music
@@ -819,32 +820,32 @@ info_block:
     event:
         description:
             info_paragraphe: 'No description yet'
-            info_title: ""
+            info_title: " "
 
         images:
             info_paragraphe: 'No photos yet'
-            info_title: ""
+            info_title: " "
 
     user:
         details:
             info_paragraphe: 'No description yet'
-            info_title: ""
+            info_title: " "
 
         musics:
             info_paragraphe: 'No musics yet'
-            info_title: ""
+            info_title: " "
 
         photos:
             info_paragraphe: 'No photos yet'
-            info_title: ""
+            info_title: " "
 
         timeline:
             info_paragraphe: 'No futur events'
-            info_title: ""
+            info_title: " "
 
         videos:
             info_paragraphe: 'No videos yet'
-            info_title: ""
+            info_title: " "
 
 link:
     home: Home
