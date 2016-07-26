@@ -16,6 +16,9 @@ class LoadEventPresenceData extends AbstractFixture implements OrderedFixtureInt
 
     public function load(ObjectManager $manager) {
         
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
+        
         $array_events = $this->array_event;
         $array_events[] = 'to-delete';
         $array_events[] = 'not-to-delete';

@@ -13,6 +13,9 @@ class LoadMusicLoveData extends AbstractFixture implements OrderedFixtureInterfa
     use FixturesDataTrait;
 
     public function load(ObjectManager $manager) {
+        
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
 
         foreach ($this->array_music as $name => $url) {
 

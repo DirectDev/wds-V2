@@ -30,6 +30,9 @@ class LoadLoveData extends AbstractFixture implements OrderedFixtureInterface, C
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+        
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
 
         $count_users = count($this->array_user);
         foreach ($this->array_user as $value) {

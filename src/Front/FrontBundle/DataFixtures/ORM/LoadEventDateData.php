@@ -28,6 +28,9 @@ class LoadEventDateData extends AbstractFixture implements OrderedFixtureInterfa
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+        
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;s
 
         for ($i = 0; $i <= 80; $i++)
             $this->loadEventDate($manager);

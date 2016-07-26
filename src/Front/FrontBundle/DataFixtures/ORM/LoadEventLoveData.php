@@ -16,6 +16,9 @@ class LoadEventLoveData extends AbstractFixture implements OrderedFixtureInterfa
 
     public function load(ObjectManager $manager) {
         
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
+        
         $array_events = $this->array_event;
         $array_events[] = 'to-delete';
         $array_events[] = 'not-to-delete';

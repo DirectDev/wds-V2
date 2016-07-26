@@ -31,6 +31,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
+
         $this->loadDancers($manager);
         $this->loadTeachers($manager);
         $this->loadArtits($manager);
@@ -172,7 +175,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
         $manager->flush();
     }
-    
+
     public function loadFacebookUser(ObjectManager $manager) {
 
         $value = 'facebook-user';
@@ -192,7 +195,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->addReference('user-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), $User);
         $manager->flush();
     }
-    
+
     public function loadUserToDelete(ObjectManager $manager) {
 
         $value = 'to-delete';

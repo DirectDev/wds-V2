@@ -16,6 +16,9 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+        
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
 
         foreach ($this->array_event as $value) {
             $Event = $this->getReference('event-' . filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));

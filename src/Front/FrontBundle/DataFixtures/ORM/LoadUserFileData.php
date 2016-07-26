@@ -28,6 +28,9 @@ class LoadUserFileData extends AbstractFixture implements OrderedFixtureInterfac
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager) {
+        
+        if ($this->container->get('kernel')->getEnvironment() == 'prod')
+            return;
 
         foreach ($this->array_user_bar as $value) {
 
