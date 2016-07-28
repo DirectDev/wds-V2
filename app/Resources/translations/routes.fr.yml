@@ -54,37 +54,37 @@ city_workshop: '/ville/workshops/{searchcity}'
 contact_contact_contact: /contact/fr/
 
 # Desc: /dance/dance_bachata
-dance_bachata: /dance/dance_bachata
+dance_bachata: /danse/bachata
 
 # Desc: /dance/dance_bachata_dominicana
-dance_bachata_dominicana: /dance/dance_bachata_dominicana
+dance_bachata_dominicana: /danse/bachata_dominicaine
 
 # Desc: /dance/dance_bachata_moderna
-dance_bachata_moderna: /dance/dance_bachata_moderna
+dance_bachata_moderna: /danse/bachata_moderne
 
 # Desc: /dance/dance_bachata_sensual
-dance_bachata_sensual: /dance/dance_bachata_sensual
+dance_bachata_sensual: /danse/bachata_sensuelle
 
 # Desc: /dance/dance_kizomba
-dance_kizomba: /dance/dance_kizomba
+dance_kizomba: /danse/kizomba
 
 # Desc: /dance/dance_salsa
-dance_salsa: /dance/dance_salsa
+dance_salsa: /danse/salsa
 
 # Desc: /dance/dance_salsa_cubana
-dance_salsa_cubana: /dance/dance_salsa_cubana
+dance_salsa_cubana: /danse/salsa_cubaine
 
 # Desc: /dance/dance_salsa_dominicana
-dance_salsa_dominicana: /dance/dance_salsa_dominicana
+dance_salsa_dominicana: /danse/salsa_dominicaine
 
 # Desc: /dance/dance_salsa_on1
-dance_salsa_on1: /dance/dance_salsa_on1
+dance_salsa_on1: /danse/salsa_on1
 
 # Desc: /dance/dance_salsa_on2
-dance_salsa_on2: /dance/dance_salsa_on2
+dance_salsa_on2: /danse/salsa_on2
 
 # Desc: /dance/dance_salsa_rueda
-dance_salsa_rueda: /dance/dance_salsa_rueda
+dance_salsa_rueda: /danse/salsa_rueda
 
 # Desc: /facebook/import_event_page
 facebook_import_event_page: /facebook/importer_evenement_page
@@ -505,13 +505,13 @@ hwi_oauth_service_redirect: '/connecter/{service}'
 landing-share-event: /landing/partagez-evenements
 
 # Desc: /landing/landing_dancer
-landing_dancer: /landing/landing_dancer
+landing_dancer: /page/danseurs
 
 # Desc: /landing/landing_pro
-landing_pro: /landing/landing_pro
+landing_pro: /page/professionnels
 
 # Desc: /landing/landing_pub
-landing_pub: /landing/landing_pub
+landing_pub: /page/publicite
 
 # Desc: /learn/learn_bachata
 learn_bachata: /apprendre/apprendre_bachata

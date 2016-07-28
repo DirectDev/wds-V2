@@ -55,37 +55,37 @@ city_workshop: '/city/workshops/{searchcity}'
 contact_contact_contact: /contact/en/
 
 # Desc: /dance/dance_bachata
-dance_bachata: /dance/dance_bachata
+dance_bachata: /dance/bachata
 
 # Desc: /dance/dance_bachata_dominicana
-dance_bachata_dominicana: /dance/dance_bachata_dominicana
+dance_bachata_dominicana: /dance/dominican_bachata
 
 # Desc: /dance/dance_bachata_moderna
-dance_bachata_moderna: /dance/dance_bachata_moderna
+dance_bachata_moderna: /dance/modern_bachata
 
 # Desc: /dance/dance_bachata_sensual
-dance_bachata_sensual: /dance/dance_bachata_sensual
+dance_bachata_sensual: /dance/sensual_bachata
 
 # Desc: /dance/dance_kizomba
-dance_kizomba: /dance/dance_kizomba
+dance_kizomba: /dance/kizomba
 
 # Desc: /dance/dance_salsa
-dance_salsa: /dance/dance_salsa
+dance_salsa: /dance/salsa
 
 # Desc: /dance/dance_salsa_cubana
-dance_salsa_cubana: /dance/dance_salsa_cubana
+dance_salsa_cubana: /dance/cuban_salsa
 
 # Desc: /dance/dance_salsa_dominicana
-dance_salsa_dominicana: /dance/dance_salsa_dominicana
+dance_salsa_dominicana: /dance/dominican_salsa
 
 # Desc: /dance/dance_salsa_on1
-dance_salsa_on1: /dance/dance_salsa_on1
+dance_salsa_on1: /dance/salsa_on1
 
 # Desc: /dance/dance_salsa_on2
-dance_salsa_on2: /dance/dance_salsa_on2
+dance_salsa_on2: /dance/salsa_on2
 
 # Desc: /dance/dance_salsa_rueda
-dance_salsa_rueda: /dance/dance_salsa_rueda
+dance_salsa_rueda: /dance/salsa_rueda
 
 # Desc: /facebook/import_event_page
 facebook_import_event_page: /facebook/import_event_page
