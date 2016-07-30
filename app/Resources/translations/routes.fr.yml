@@ -505,10 +505,10 @@ hwi_oauth_service_redirect: '/connecter/{service}'
 landing-share-event: /landing/partagez-evenements
 
 # Desc: /landing/landing_dancer
-landing_dancer: /page/danseurs
+landing_dancer: /page/wedancesalsa_outil_danseurs_salsa_bachata_kizomba
 
 # Desc: /landing/landing_pro
-landing_pro: /page/professionnels
+landing_pro: /page/portail_professionnels_salsa_bachata_kizomba
 
 # Desc: /landing/landing_pub
 landing_pub: /page/publicite

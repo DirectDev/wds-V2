@@ -7,7 +7,7 @@ callback_username: /callback_username/en/
 city_artist: '/city/artists/{searchcity}'
 
 # Desc: /city/bars/{searchcity}
-city_bar: '/city/bars/{searchcity}'
+city_bar: '/city/places/{searchcity}'
 
 # Desc: /city/calendar/{searchcity}
 city_calendar: '/city/calendar/{searchcity}'
@@ -19,7 +19,7 @@ city_concert: '/city/concerts/{searchcity}'
 city_dancer: '/city/dancers/{searchcity}'
 
 # Desc: /city/edito/{searchcity}
-city_edito: '/city/edito/{searchcity}'
+city_edito: '/city/overview/{searchcity}'
 
 # Desc: /city/festivals/{searchcity}
 city_festival: '/city/festivals/{searchcity}'
@@ -506,10 +506,10 @@ hwi_oauth_service_redirect: '/connect/{service}'
 landing-share-event: /landing/share-event
 
 # Desc: /landing/landing_dancer
-landing_dancer: /landing/landing_dancer
+landing_dancer: /welcome/wedancesalsa_for_salsa_bachata_kizomba_dancers
 
 # Desc: /landing/landing_pro
-landing_pro: /landing/landing_pro
+landing_pro: /welcome/professional_platform_salsa_bachata_kizomba
 
 # Desc: /landing/landing_pub
 landing_pub: /landing/landing_pub
