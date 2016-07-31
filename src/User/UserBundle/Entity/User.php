@@ -251,13 +251,14 @@ class User extends BaseUser {
     }
 
     public function getProfilePictureUrl() {
-        if ($this->isFacebookUser())
-            return 'https://graph.facebook.com/' . $this->getFacebookId() . '/picture?type=large';
 
         if ($this->getProfilePicture())
             return $this->getProfilePicture()->getLargePathUri();
 
-        return '/images/no_user_picture.jpg';
+        if ($this->isFacebookUser())
+            return 'https://graph.facebook.com/' . $this->getFacebookId() . '/picture?type=large';
+        else
+            return '/images/no_user_picture.jpg';
     }
 
     public function getAddress() {
@@ -358,7 +359,10 @@ class User extends BaseUser {
     }
 
     public function textForNavbarHighlight() {
-        return $this->getUsername() . ' / ' . ucfirst($this->getCity());
+        $text = $this->getUsername();
+        if ($this->getCity())
+            $text .= ' / ' . ucfirst($this->getCity());
+        return $text;
     }
 
     public function hasNoDetails() {
@@ -388,8 +392,8 @@ class User extends BaseUser {
      */
     public function setFacebookId($facebookId) {
         $this->facebook_id = $facebookId;
-        if($facebookId)
-            $this->setFacebookLink ('https://www.facebook.com/'.$facebookId);
+        if ($facebookId)
+            $this->setFacebookLink('https://www.facebook.com/' . $facebookId);
 
         return $this;
     }

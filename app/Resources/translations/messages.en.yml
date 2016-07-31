@@ -951,8 +951,8 @@ navbar:
     user.events: Events
     user.import_facebook: 'Import from Facebook'
     user.my_events: 'My Events'
-    user.my_page: 'My Page'
-    user.my_profile: 'My Profile'
+    user.my_page: 'See my profile'
+    user.my_profile: 'Edit my profile'
     user.next_events: 'My Next Events'
     user.passed_events: 'My Previous Events'
     user.profile: 'My account'

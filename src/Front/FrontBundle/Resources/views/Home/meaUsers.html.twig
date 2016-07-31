@@ -6,7 +6,9 @@
         <a href="{{ path('front_user_show_public', { username : user.getUsername(), id : user.id } ) }}" class="cbp-caption"
            data-title="{{ user.getUsername|capitalize }}">
             <div class="cbp-caption-defaultWrap">
-                {% if user.getProfilePictureUrl() %}
+                {% if user.isFacebookUser and not user.getProfilePicture() %}
+                    <img alt="{{ user.getUsername|capitalize }}" src='{{ user.profilePictureUrl }}' width="250px"  /> 
+                {% elseif user.getProfilePictureUrl() %}
                     <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('home_user') }}">
                 {% else %}
                     <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
