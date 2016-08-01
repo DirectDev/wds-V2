@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-4 eventdate_box">
     <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
         <h2>{{ entity.startdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd LLLL  yyyy')|capitalize }}</h2>
         <p>
@@ -19,7 +19,7 @@
             </a>
 
             {{ form_start(delete_form, {'attr' : { 'class' : 'no_validation'} }) }}
-            {{ form_widget(delete_form.submit, {'attr' : { 'class' : 'btn btn-danger btn-sm pull-right margin-right-10'} }) }}
+            {{ form_widget(delete_form.submit, {'attr' : { 'class' : 'btn btn-danger btn-sm pull-right margin-right-10 eventdate_delete'} }) }}
             {{ form_end(delete_form) }}
             <div class="clear-both"></div>
         {% endif %}

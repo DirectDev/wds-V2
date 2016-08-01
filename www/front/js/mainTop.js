@@ -117,6 +117,31 @@ function reloadEventAlerts() {
         });
 }
 
+$(document).on('click', 'button.eventdate_delete', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+
+    var box = $(this).closest('.eventdate_box');
+    var form = $(this).closest('form');
+
+    var postData = form.serializeArray();
+    var formURL = form.attr("action");
+    $.ajax(
+            {
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (html)
+                {
+                    box.focus().remove();
+                    loadBootstrapValidator();
+                    reloadEventAlerts();
+                }
+            });
+    return false;
+});
+
 $(document).on('click focus', 'a.eventdate_edit', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
@@ -130,7 +155,7 @@ $(document).on('click focus', 'a.eventdate_edit', function () {
             $('html, body').animate({
                 scrollTop: ($("#eventdate_new_edit").offset().top - 115)
             }, 2000);
-            reloadBootstrapValidator();
+            loadBootstrapValidator();
             reloadEventAlerts();
         }
     });
