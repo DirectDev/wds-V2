@@ -1,97 +1,105 @@
 admin:
-    add: Add   
-    address_edit: Address edit   
-    address_list: Address list   
-    address_new: Address new   
-    address_show: Address show   
-    addresses: Addresses   
-    back_to_list: Back to list   
-    cities: Cities   
-    city_edit: City edit   
-    city_list: City list   
-    city_new: City new   
-    city_show: City show   
-    countries: Countries   
-    country_edit: Country edit   
-    country_list: Country list   
-    country_new: Country new   
-    country_show: Country show   
-    delete: Delete   
-    edit: Edit   
-    event_edit: Event edit   
-    event_file_list: Event file list   
-    event_files: Event files   
-    event_list: Event list   
-    event_new: Event new   
-    event_show: Event show   
-    eventdate_edit: Event date edit   
-    eventdate_list: Event date list   
-    eventdate_new: Event date new   
-    eventdate_show: Event date show   
-    eventdates: Event dates   
-    eventfile_edit: Event file edit   
-    eventfile_new: Event file new   
-    events: Events   
-    eventtype_edit: Event type edit   
-    eventtype_list: Event type list   
-    eventtype_new: Event type new   
-    eventtype_show: Event type show   
-    eventtypes: Event types   
-    general: General   
-    mea_city: Mea city   
-    mea_city_edit: Mea city edit   
-    mea_city_list: Mea city list   
-    mea_city_new: Mea city new   
-    mea_festival: Mea festival   
-    mea_festival_edit: Mea festival edit   
-    mea_festival_list: Mea festival list   
-    mea_festival_new: Mea festival new   
-    mea_user: Mea user   
-    mea_user_edit: Mea user edit   
-    mea_user_list: Mea user list   
-    mea_user_new: Mea user new   
-    music_edit: Music edit   
-    music_list: Music list   
-    music_new: Music new   
-    musics: Musics   
-    musictype_edit: Music type edit   
-    musictype_list: Music type list   
-    musictype_new: Music type new   
-    musictype_show: Music type show   
-    musictypes: Music types   
-    page_edit: Page edit   
-    page_list: Page list   
-    page_new: Page new   
-    page_show: Page show   
-    pagecontent_edit: Page content edit   
-    pagecontent_list: Page content list   
-    pagecontent_new: Page content new   
-    pagecontent_show: Page content show   
-    pagecontents: Page contents   
-    pages: Pages   
-    search: Search   
-    tag_edit: Tag edit   
-    tag_list: Tag list   
-    tag_new: Tag new   
-    tags: Tags   
-    translations: Translations   
-    update: Update   
-    user_edit: User edit   
-    user_files: User files   
-    user_list: User list   
-    user_new: User new   
-    userfile_edit: Userfile edit   
-    userfile_list: Userfile list   
-    userfile_new: Userfile new   
-    users: Users   
-    usertype_edit: Usertype edit   
-    usertype_list: Usertype list   
-    usertype_new: Usertype new   
-    usertypes: Usertypes   
-    video_edit: Video edit   
-    video_list: Video list   
-    video_new: Video new   
-    videos: Videos   
+    add: Add
+    address_edit: 'Address edit'
+    address_list: 'Address list'
+    address_new: 'Address new'
+    address_show: 'Address show'
+    addresses: Addresses
+    back_to_list: 'Back to list'
+    cities: Cities
+    city_edit: 'City edit'
+    city_list: 'City list'
+    city_new: 'City new'
+    city_show: 'City show'
+    countries: Countries
+    country_edit: 'Country edit'
+    country_list: 'Country list'
+    country_new: 'Country new'
+    country_show: 'Country show'
+    delete: Delete
+    edit: Edit
+
+    event:
+        photos: admin.event.photos
+
+    event_edit: 'Event edit'
+    event_file_list: 'Event file list'
+    event_files: 'Event files'
+    event_list: 'Event list'
+    event_new: 'Event new'
+    event_show: 'Event show'
+    eventdate_edit: 'Event date edit'
+    eventdate_list: 'Event date list'
+    eventdate_new: 'Event date new'
+    eventdate_show: 'Event date show'
+    eventdates: 'Event dates'
+    eventfile_edit: 'Event file edit'
+    eventfile_new: 'Event file new'
+    events: Events
+    eventtype_edit: 'Event type edit'
+    eventtype_list: 'Event type list'
+    eventtype_new: 'Event type new'
+    eventtype_show: 'Event type show'
+    eventtypes: 'Event types'
+    general: General
+    mea_city: 'Mea city'
+    mea_city_edit: 'Mea city edit'
+    mea_city_list: 'Mea city list'
+    mea_city_new: 'Mea city new'
+    mea_festival: 'Mea festival'
+    mea_festival_edit: 'Mea festival edit'
+    mea_festival_list: 'Mea festival list'
+    mea_festival_new: 'Mea festival new'
+    mea_user: 'Mea user'
+    mea_user_edit: 'Mea user edit'
+    mea_user_list: 'Mea user list'
+    mea_user_new: 'Mea user new'
+    music_edit: 'Music edit'
+    music_list: 'Music list'
+    music_new: 'Music new'
+    musics: Musics
+    musictype_edit: 'Music type edit'
+    musictype_list: 'Music type list'
+    musictype_new: 'Music type new'
+    musictype_show: 'Music type show'
+    musictypes: 'Music types'
+    page_edit: 'Page edit'
+    page_list: 'Page list'
+    page_new: 'Page new'
+    page_show: 'Page show'
+    pagecontent_edit: 'Page content edit'
+    pagecontent_list: 'Page content list'
+    pagecontent_new: 'Page content new'
+    pagecontent_show: 'Page content show'
+    pagecontents: 'Page contents'
+    pages: Pages
+    search: Search
+    tag_edit: 'Tag edit'
+    tag_list: 'Tag list'
+    tag_new: 'Tag new'
+    tags: Tags
+    translations: Translations
+    update: Update
+
+    user:
+        photos: admin.user.photos
+
+    user_edit: 'User edit'
+    user_files: 'User files'
+    user_list: 'User list'
+    user_new: 'User new'
+    userfile_edit: 'Userfile edit'
+    userfile_list: 'Userfile list'
+    userfile_new: 'Userfile new'
+    users: Users
+    usertype_edit: 'Usertype edit'
+    usertype_list: 'Usertype list'
+    usertype_new: 'Usertype new'
+    usertypes: Usertypes
+    video_edit: 'Video edit'
+    video_list: 'Video list'
+    video_new: 'Video new'
+    videos: Videos
 
 navbar:
-    logout: Logout   
+    logout: Logout

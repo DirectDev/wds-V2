@@ -1,15 +1,15 @@
 connect:
     confirm:
-        cancel: connect.confirm.cancel
-        submit: connect.confirm.submit
-        text: connect.confirm.text
+        cancel: Cancel
+        submit: Submit
+        text: "Click submit to connect with this account."
 
     registration:
-        cancel: connect.registration.cancel
-        submit: connect.registration.submit
+        cancel: Cancel
+        submit: Submit
 
 header:
-    connecting: header.connecting
-    register: header.register
-    registration_success: header.registration_success
-    success: header.success
+    connecting: Connecting
+    register: Register
+    registration_success: You have registered successfully
+    success: Successful connection

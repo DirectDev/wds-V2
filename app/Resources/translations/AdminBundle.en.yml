@@ -18,6 +18,10 @@ admin:
     country_show: 'Country show'
     delete: Delete
     edit: Edit
+
+    event:
+        photos: admin.event.photos   # FIXME
+
     event_edit: 'Event edit'
     event_file_list: 'Event file list'
     event_files: 'Event files'
@@ -76,6 +80,10 @@ admin:
     tags: Tags
     translations: Translations
     update: Update
+
+    user:
+        photos: admin.user.photos   # FIXME
+
     user_edit: 'User edit'
     user_files: 'User files'
     user_list: 'User list'

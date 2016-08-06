@@ -76,8 +76,8 @@
                 <div class="col-md-6">                     
                     <p>
                         2016 &copy; All Rights Reserved.  
-                        <a href="{{ path('contact_contact_contact') }}">{% trans %}footer.contact_us{% endtrans %}</a> | <a href="{{ path('policy') }}">{% trans %}footer.policy{% endtrans %}</a> |  
-                        <a href="#">Sitemap</a>
+                        <a href="{{ path('contact_contact_contact') }}">{% trans %}footer.contact_us{% endtrans %}</a> | <a href="{{ path('policy') }}">{% trans %}footer.policy{% endtrans %}</a>
+{#                        |  <a href="#">Sitemap</a>#}
                         {% if app.environment  == 'dev' %}
                             | <a href="{{ asset('Unify/HTML/index.html') }}" target='_blank'>Unify</a>
                         {% endif %}

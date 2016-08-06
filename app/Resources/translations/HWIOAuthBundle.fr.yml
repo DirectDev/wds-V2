@@ -1,15 +1,15 @@
 connect:
     confirm:
-        cancel: connect.confirm.cancel
-        submit: connect.confirm.submit
-        text: connect.confirm.text
+        cancel: Annuler
+        submit: Confirmer
+        text: "Cliquez sur confirmer pour vous connecter avec ce compte."
 
     registration:
-        cancel: connect.registration.cancel
-        submit: connect.registration.submit
+        cancel: Annuler
+        submit: S'inscrire
 
 header:
-    connecting: header.connecting
-    register: header.register
-    registration_success: header.registration_success
-    success: header.success
+    connecting: Connexion
+    register: S'inscrire
+    registration_success: "Vous êtes inscrit !"
+    success: Vous êtes connecté.
