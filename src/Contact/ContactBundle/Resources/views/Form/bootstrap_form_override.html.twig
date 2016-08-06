@@ -98,9 +98,6 @@
 {% block form_widget_simple %}
     {% spaceless %}
         {% set type = type|default('text') %}
-        {% if errors|length > 0 %}
-            {{dump(form.vars.attr)}}
-        {% endif %}
         {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
         <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
     {% endspaceless %}

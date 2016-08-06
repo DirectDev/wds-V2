@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Front\FrontBundle\Entity\EventDate;
 use Front\FrontBundle\Form\EventDateType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * EventDate controller.
@@ -258,6 +259,9 @@ class EventDateController extends Controller {
 
             $em->remove($entity);
             $em->flush();
+
+            if ($request->isXmlHttpRequest())
+                return new Response('', 200);
         }
 
         if ($event)
