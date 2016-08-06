@@ -12,7 +12,8 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
 
     public function findForHomePage($limit = 4) {
         $query = $this->createQueryBuilder('mu')
-                ->setMaxResults($limit);
+                ->setMaxResults($limit)
+                ->orderBy('mu.ordre');
 
         return $query->getQuery()->getResult();
     }
@@ -20,6 +21,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForSalsaDiscover($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.salsaDiscover = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -28,6 +30,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForBachataDiscover($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.bachataDiscover = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -36,6 +39,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForKizombaDiscover($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.kizombaDiscover = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -44,6 +48,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForSalsaLearn($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.salsaLearn = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -52,6 +57,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForBachataLearn($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.bachataLearn = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -60,6 +66,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForKizombaLearn($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.kizombaLearn = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -68,6 +75,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForSalsaMeet($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.salsaMeet = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -76,6 +84,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForBachataMeet($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.bachataMeet = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -84,6 +93,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForKizombaMeet($limit = 1) {
         $query = $this->createQueryBuilder('mu')
                 ->where('mu.kizombaMeet = 1')
+                ->orderBy('mu.ordre')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -92,6 +102,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
     public function findForAdmin($locale = 'en') {
         $query = $this->createQueryBuilder('mu')
                 ->leftJoin('mu.translations', 'mut', 'WITH', 'mut.locale = :locale')
+                ->orderBy('mu.ordre')
                 ->setParameter('locale', $locale);
 
         return $query->getQuery();
@@ -102,6 +113,7 @@ class MeaUserRepository extends \Doctrine\ORM\EntityRepository {
                 ->leftJoin('mu.translations', 'mut', 'WITH', 'mut.locale = :locale')
                 ->leftJoin('mu.user', 'muu')
                 ->setParameter('locale', $locale)
+                ->orderBy('mu.ordre')
                 ->where("1 = 1");
 
         if (isset($data["search"])) {

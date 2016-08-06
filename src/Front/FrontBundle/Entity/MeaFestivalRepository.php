@@ -12,7 +12,8 @@ class MeaFestivalRepository extends \Doctrine\ORM\EntityRepository {
 
     public function findForHomePage($limit = 3) {
         $query = $this->createQueryBuilder('mf')
-                ->setMaxResults($limit);
+                ->setMaxResults($limit)
+                ->orderBy('mf.ordre');
 
         return $query->getQuery()->getResult();
     }
@@ -20,6 +21,7 @@ class MeaFestivalRepository extends \Doctrine\ORM\EntityRepository {
     public function findForAdmin($locale = 'en') {
         $query = $this->createQueryBuilder('mf')
                 ->leftJoin('mf.translations', 'mft', 'WITH', 'mft.locale = :locale')
+                ->orderBy('mf.ordre')
                 ->setParameter('locale', $locale);
 
         return $query->getQuery();
@@ -31,6 +33,7 @@ class MeaFestivalRepository extends \Doctrine\ORM\EntityRepository {
                 ->leftJoin('mf.event', 'mfe')
                 ->leftJoin('mfe.translations', 'mfet', 'WITH', 'mfet.locale = :locale')
                 ->setParameter('locale', $locale)
+                ->orderBy('mf.ordre')
                 ->where("1 = 1");
 
         if (isset($data["search"])) {
