@@ -234,6 +234,8 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
+
+        $deleteForm = $this->createDeleteForm($id);
         $editProfileForm = $this->createEditProfileForm($entity);
         $editProfileForm->handleRequest($request);
 
@@ -248,6 +250,7 @@ class UserController extends Controller {
         return $this->render('FrontFrontBundle:User:profileForm.html.twig', array(
                     'entity' => $entity,
                     'edit_profile_form' => $editProfileForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
