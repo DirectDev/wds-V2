@@ -17,8 +17,10 @@ $(document).on('submit', 'form[name="ffup"]', function (e) {
                     loadBootstrapValidator();
                     scrollToElement($('#profilFormDiv .flashbags'));
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -49,8 +51,10 @@ $(document).on('submit', 'form[name="ffud"]', function (e) {
                     loadBootstrapValidator();
                     scrollToElement($('#descriptionForm .flashbags'));
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -75,8 +79,10 @@ $(document).on('submit', 'form[name="fful"]', function (e) {
                     loadBootstrapValidator();
                     scrollToElement($('#linkForm .flashbags'));
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -119,8 +125,10 @@ $(document).on('submit', 'form.newMusic', function (e) {
                     div.replaceWith(html);
                     loadBootstrapValidator();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -180,8 +188,10 @@ $(document).on('submit', 'form.editMusic', function (e) {
                     $('#music_' + musicId).replaceWith(html);
                     loadBootstrapValidator();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -224,8 +234,10 @@ $(document).on('submit', 'form.newVideo', function (e) {
                     div.replaceWith(html);
                     loadBootstrapValidator();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -287,8 +299,10 @@ $(document).on('submit', 'form.editVideo', function (e) {
                     $('#video_' + videoId).replaceWith(html);
                     loadBootstrapValidator();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -312,7 +326,7 @@ $(document).on('click', '#userAddAddress', function () {
 });
 
 $(document).on('submit', 'form.newAddress', function (e) {
-    e.preventDefault();
+    e.preventDefault();loc
 
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
@@ -332,8 +346,10 @@ $(document).on('submit', 'form.newAddress', function (e) {
                     loadBootstrapValidator();
                     reloadEventAlerts();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -396,8 +412,10 @@ $(document).on('submit', 'form.editAddress', function (e) {
                     loadBootstrapValidator();
                     reloadEventAlerts();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -429,8 +447,10 @@ $(document).on('submit', 'form[name="ffede"]', function (e) {
                     loadBootstrapValidator();
                     scrollToElement($('#descriptionForm .flashbags'));
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();
@@ -455,8 +475,10 @@ $(document).on('submit', 'form[name="ffel"]', function (e) {
                     loadBootstrapValidator();
                     scrollToElement($('#linkForm .flashbags'));
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault();

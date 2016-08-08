@@ -214,6 +214,9 @@ class MusicController extends Controller {
             throw $this->createNotFoundException('Unable to find Music entity.');
         }
 
+        if (!$this->getUser() or $music->getUser() != $this->getUser())
+            return new Response('', 403);
+
         $editForm = $this->createEditForm($music);
 
         return $this->render('FrontFrontBundle:Music:edit.html.twig', array(
@@ -256,6 +259,9 @@ class MusicController extends Controller {
         if (!$music) {
             throw $this->createNotFoundException('Unable to find Music entity.');
         }
+        
+        if (!$this->getUser() or $music->getUser() != $this->getUser())
+            return new Response('', 403);
 
         $editForm = $this->createEditForm($music);
         $editForm->handleRequest($request);

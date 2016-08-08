@@ -202,8 +202,10 @@ $(document).on('submit', '#form_eventdate_new, #form_eventdate_daily', function 
                     scrollToElement($('#eventdates'));
                     reloadEventAlerts();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault(); //STOP default actiont.
@@ -228,8 +230,10 @@ $(document).on('submit', '#form_eventdate_edit', function (e) {
                 {
                     location.reload();
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault(); //STOP default actiont.
@@ -252,8 +256,10 @@ $(document).on('click', 'button.love_button', function (e) {
                 {
                     $('#loves_div').replaceWith(html);
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault(); //STOP default actiont.
@@ -276,8 +282,10 @@ $(document).on('click', 'button.presence_button', function (e) {
                 {
                     $('#presences_div').replaceWith(html);
                 },
-                error: function (html)
-                {
+                error: function (error_xhr, ajaxOptions, thrownError) {
+                    if(error_xhr.status==403) {
+                        location.reload();
+                    }
                 }
             });
     e.preventDefault(); //STOP default actiont.

@@ -229,6 +229,9 @@ class AddressController extends Controller {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
 
+        if (!$this->getUser() or $address->getUser() != $this->getUser())
+            return new Response('', 403);
+
         $editForm = $this->createEditForm($address);
 
         return $this->render('FrontFrontBundle:Address:edit.html.twig', array(
@@ -271,6 +274,9 @@ class AddressController extends Controller {
         if (!$address) {
             throw $this->createNotFoundException('Unable to find Address entity.');
         }
+
+        if (!$this->getUser() or $address->getUser() != $this->getUser())
+            return new Response('', 403);
 
         $editForm = $this->createEditForm($address);
         $editForm->handleRequest($request);

@@ -273,6 +273,9 @@ class VideoController extends Controller {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
+        if (!$this->getUser() or $video->getUser() != $this->getUser())
+            return new Response('', 403);
+
         $editForm = $this->createEditForm($video);
 
         return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
@@ -316,6 +319,9 @@ class VideoController extends Controller {
         if (!$video) {
             throw $this->createNotFoundException('Unable to find Video entity.');
         }
+
+        if (!$this->getUser() or $video->getUser() != $this->getUser())
+            return new Response('', 403);
 
         $editForm = $this->createEditForm($video);
         $editForm->handleRequest($request);

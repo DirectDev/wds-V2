@@ -131,6 +131,9 @@ class EventController extends Controller {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
+
         $editForm = $this->createEditForm($entity);
         $editLinkForm = $this->createEditLinkForm($entity);
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
@@ -198,6 +201,9 @@ class EventController extends Controller {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+            return new Response('', 403);
+
         $originalEventDates = new ArrayCollection();
         foreach ($entity->getEventDates() as $eventDate)
             $originalEventDates->add($eventDate);
@@ -259,6 +265,9 @@ class EventController extends Controller {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+            return new Response('', 403);
+
         $editLinkForm = $this->createEditLinkForm($entity);
         $editLinkForm->handleRequest($request);
 
@@ -288,6 +297,9 @@ class EventController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
+
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+                return new Response('', 403);
 
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
         $editDescriptionForm->handleRequest($request);

@@ -83,6 +83,11 @@ class EventDate {
         return $Event->getAddress();
     }
 
+    public function allowModificationByUser($user){
+        if($this->getEvent())
+            return $this->getEvent()->allowModificationByUser($user);
+    }
+
     /**
      * Get id
      *

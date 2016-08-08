@@ -164,6 +164,9 @@ class EventDateController extends Controller {
             throw $this->createNotFoundException('Unable to find EventDate entity.');
         }
 
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+            return new Response('', 403);
+
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -211,6 +214,9 @@ class EventDateController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find EventDate entity.');
         }
+
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+            return new Response('', 403);
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);

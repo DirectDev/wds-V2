@@ -359,6 +359,22 @@ class Event {
         return true;
     }
 
+    public function allowModificationByUser(User $user) {
+        if ($this->allowModificationByFacebookUser($user))
+            return true;
+
+        if ($this->getOrganizedBy() and $this->getOrganizedBy() == $user)
+            return true;
+
+        if ($this->getPublishedBy() and $this->getPublishedBy() == $user)
+            return true;
+
+        if ($this->getUser() and $this->getUser() == $user)
+            return true;
+        
+        return false;
+    }
+
     /**
      * Get id
      *
