@@ -233,7 +233,10 @@ class MusicFrControllerTest extends WebTestCase {
 
     public function testEditLoggued() {
         $musics = $this->findAllMusics();
+        $user = $this->findUser();
         foreach ($musics as $music) {
+            if($music->getUser() != $user)
+                continue;
             $crawler = $this->clientLogged->request('GET', $this->router->generate('front_music_edit', array(
                         'id' => $music->getId(),
                         '_locale' => $this->locale)

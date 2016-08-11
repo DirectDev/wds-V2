@@ -2,13 +2,14 @@
 
 namespace User\UserBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use User\UserBundle\Entity\User;
 
-class LoadSuperAdminData implements FixtureInterface, ContainerAwareInterface {
+class LoadSuperAdminData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface {
 
     /**
      * @var ContainerInterface
@@ -38,6 +39,8 @@ class LoadSuperAdminData implements FixtureInterface, ContainerAwareInterface {
                 ->getEncoder($User)
         ;
         $User->setPassword($encoder->encodePassword('1234', $User->getSalt()));
+
+        $this->addReference('user-admin', $User);
 
         $manager->persist($User);
         $manager->flush();

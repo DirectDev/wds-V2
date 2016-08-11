@@ -233,7 +233,10 @@ class VideoFrControllerTest extends WebTestCase {
 
     public function testEditLoggued() {
         $videos = $this->findAllVideos();
+        $user = $this->findUser();
         foreach ($videos as $video) {
+            if($video->getUser() != $user)
+                continue;
             $crawler = $this->clientLogged->request('GET', $this->router->generate('front_video_edit', array(
                         'id' => $video->getId(),
                         '_locale' => $this->locale)
