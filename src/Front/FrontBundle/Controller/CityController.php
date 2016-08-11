@@ -378,7 +378,7 @@ class CityController extends Controller {
         $this->add_days = 'P1Y';
         $this->setDates($request);
 
-        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Festival'));
+        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findByName(array('Festival', 'Congress'));
 
         $events = $this->getEvents($em, true, $this->max_results, $eventTypes, null, $this->startdate, $this->tomorrow, $city->getLatitude(), $city->getLongitude());
         $nextEvents = $this->getEvents($em, false, $this->max_results, $eventTypes, null, $this->tomorrow, $this->stopdate, $city->getLatitude(), $city->getLongitude(), null, $events);

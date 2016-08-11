@@ -23,9 +23,11 @@
             {% if event.eventTypes|length > 0 and city is defined %}
                 <li>
                     {% for eventType in event.eventTypes %}
-                        <a href="{{ path('city_'~eventType.getName()|lower, { 'searchcity': city, 'searcheventdate': app.session.get('startdate') }) }}">
-                            {{ eventType|capitalize}}
-                        </a>&nbsp;
+                        {% if eventType.name != 'congress' %}
+                            <a href="{{ path('city_'~eventType.getName()|lower, { 'searchcity': city, 'searcheventdate': app.session.get('startdate') }) }}">
+                                {{ eventType|capitalize}}
+                            </a>&nbsp;
+                        {% endif%}
                     {% endfor %}
                 </li>
             {% endif %}

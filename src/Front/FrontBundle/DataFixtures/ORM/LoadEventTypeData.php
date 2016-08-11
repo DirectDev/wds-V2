@@ -86,6 +86,14 @@ class LoadEventTypeData extends AbstractFixture implements OrderedFixtureInterfa
         $this->addReference('eventtype-concert', $EventType);
         $EventType->mergeNewTranslations();
 
+        $EventType = new EventType();
+        $EventType->setName('Congress');
+        $EventType->translate('en')->setTitle('Congress');
+        $EventType->translate('fr')->setTitle('Congress');
+        $manager->persist($EventType);
+        $this->addReference('eventtype-congress', $EventType);
+        $EventType->mergeNewTranslations();
+
         $manager->flush();
     }
 
