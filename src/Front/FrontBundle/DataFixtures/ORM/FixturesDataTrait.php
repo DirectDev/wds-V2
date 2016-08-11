@@ -6,7 +6,7 @@ trait FixturesDataTrait {
 
     protected $array_locale = array('en', 'fr');
     protected $array_musictype = array('salsa', 'bachata', 'kizomba');
-    protected $array_eventtype = array('party', 'festival', 'workshop', 'lesson', 'show', 'concert', 'congress');
+    protected $array_eventtype = array('party', 'festival', 'workshop', 'lesson', 'show', 'concert', 'congress', 'to-delete');
     protected $array_user_dancer = array(
         'marie',
         'john',
