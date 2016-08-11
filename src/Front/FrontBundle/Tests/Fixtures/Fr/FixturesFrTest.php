@@ -47,6 +47,10 @@ class FixturesFrTest extends WebTestCase {
         $eventType = $this->em->getRepository('FrontFrontBundle:EventType')->findOneByName("Festival");
         $this->assertNotEmpty($eventType->translate($this->locale)->getTitle());
 
+        $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findOneByName("Congress")));
+        $eventType = $this->em->getRepository('FrontFrontBundle:EventType')->findOneByName("Congress");
+        $this->assertNotEmpty($eventType->translate($this->locale)->getTitle());
+
         $this->assertEquals(1, count($this->em->getRepository('FrontFrontBundle:EventType')->findOneByName("Workshop")));
         $eventType = $this->em->getRepository('FrontFrontBundle:EventType')->findOneByName("Workshop");
         $this->assertNotEmpty($eventType->translate($this->locale)->getTitle());

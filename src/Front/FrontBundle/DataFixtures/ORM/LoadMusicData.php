@@ -85,7 +85,12 @@ class LoadMusicData extends AbstractFixture implements OrderedFixtureInterface {
 
     public function loadUserAdmin(ObjectManager $manager) {
 
+        $i = 0;
         foreach ($this->array_music as $name => $url) {
+
+            $i++;
+            if($i>5)
+                continue;
 
             $Music = new Music();
             $Music->setUrl($url);

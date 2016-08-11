@@ -112,7 +112,12 @@ class LoadVideoData extends AbstractFixture implements OrderedFixtureInterface {
 
     public function loadUserAdmin(ObjectManager $manager) {
 
+        $i = 0;
         foreach ($this->array_video as $name => $url) {
+
+            $i++;
+            if($i>5)
+                continue;
 
             $Video = new Video();
             $Video->setUrl($url);

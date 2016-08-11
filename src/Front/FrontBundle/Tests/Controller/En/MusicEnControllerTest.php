@@ -5,7 +5,7 @@ namespace Front\FrontBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Translation\Translator;
 
-class MusicEnControllerTest extends WebTestCase {
+class MusicFrControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -233,7 +233,10 @@ class MusicEnControllerTest extends WebTestCase {
 
     public function testEditLoggued() {
         $musics = $this->findAllMusics();
+        $user = $this->findUser();
         foreach ($musics as $music) {
+            if($music->getUser() != $user)
+                continue;
             $crawler = $this->clientLogged->request('GET', $this->router->generate('front_music_edit', array(
                         'id' => $music->getId(),
                         '_locale' => $this->locale)

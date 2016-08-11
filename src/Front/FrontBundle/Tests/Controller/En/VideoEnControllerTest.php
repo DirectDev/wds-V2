@@ -5,7 +5,7 @@ namespace Front\FrontBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Translation\Translator;
 
-class VideoEnControllerTest extends WebTestCase {
+class VideoFrControllerTest extends WebTestCase {
 
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -233,7 +233,10 @@ class VideoEnControllerTest extends WebTestCase {
 
     public function testEditLoggued() {
         $videos = $this->findAllVideos();
+        $user = $this->findUser();
         foreach ($videos as $video) {
+            if($video->getUser() != $user)
+                continue;
             $crawler = $this->clientLogged->request('GET', $this->router->generate('front_video_edit', array(
                         'id' => $video->getId(),
                         '_locale' => $this->locale)

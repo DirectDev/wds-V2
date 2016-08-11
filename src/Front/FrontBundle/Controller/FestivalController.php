@@ -198,9 +198,10 @@ class FestivalController extends Controller {
             throw new \Exception('Page not found!');
 
         $eventTypeFestival = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Festival');
+        $eventTypeCongress = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Congress');
 
         $nextEvents = $em->getRepository('FrontFrontBundle:Event')
-                ->findByContinent($this->max_results, array($eventTypeFestival), null, $this->startdate, $this->stopdate, $array_coordinates);
+                ->findByContinent($this->max_results, array($eventTypeFestival, $eventTypeCongress), null, $this->startdate, $this->stopdate, $array_coordinates);
 
         $user = $this->getUser();
 
@@ -230,9 +231,10 @@ class FestivalController extends Controller {
             throw new \Exception('Page not found!');
 
         $eventTypeFestival = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Festival');
+        $eventTypeCongress = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Congress');
 
         $nextEvents = $em->getRepository('FrontFrontBundle:Event')
-                ->findByContinent(50, array($eventTypeFestival), null, $this->startdate, $this->stopdate);
+                ->findByContinent(50, array($eventTypeFestival, $eventTypeCongress), null, $this->startdate, $this->stopdate);
 
         $user = $this->getUser();
 
