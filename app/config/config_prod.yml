@@ -18,6 +18,8 @@ monolog:
         main:
             type:               fingers_crossed
             action_level:       error
+            excluded_404s:
+                - ^/
             handler:            grouped
         grouped:
             type:               group

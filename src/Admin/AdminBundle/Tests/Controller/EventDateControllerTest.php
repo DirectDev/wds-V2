@@ -42,16 +42,9 @@ class EventDateControllerTest extends WebTestCase {
     }
 
     private function findOneEvent() {
-        foreach ($this->findUserLoggued()->getEvents() as $event)
+        $events = $this->em->getRepository('FrontFrontBundle:Event')->findBy(array(), null, 3, 3);
+        foreach ($events as $event)
             return $event;
-    }
-
-    private function findUserLoggued() {
-        return $this->em->getRepository('UserUserBundle:User')->findOneBy(
-                        array(
-                            'username' => 'marie',
-                        )
-        );
     }
 
     private function findEventDate() {
