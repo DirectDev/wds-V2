@@ -58,7 +58,10 @@ class FOSUBUserProvider extends BaseClass {
             //I have set all requested data with the user's username
             //modify here with relevant data
             $user->setUsername($response->getRealName());
-            $user->setEmail($response->getEmail());
+            if($response->getEmail())
+                $user->setEmail($response->getEmail());
+            else
+                $user->setEmail('user_'.rand(0,100000).'@wedancesalsa.com');
             $user->setPlainPassword($username.rand(0,100));
             $user->setEnabled(true);
             $user->setRoles(array('ROLE_USER'));
