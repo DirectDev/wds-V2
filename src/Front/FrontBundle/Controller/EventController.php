@@ -313,7 +313,7 @@ class EventController extends Controller {
             );
         }
 
-        return $this->render('FrontFrontBundle:Event:DescriptionForm.html.twig', array(
+        return $this->render('FrontFrontBundle:Event:descriptionForm.html.twig', array(
                     'entity' => $entity,
                     'edit_description_form' => $editDescriptionForm->createView(),
         ));
