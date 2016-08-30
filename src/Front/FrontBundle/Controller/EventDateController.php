@@ -316,7 +316,7 @@ class EventDateController extends Controller {
                 if (in_array($day_number, $data['weekday']))
                     $this->createEventDate($event, $today, $data['time']);
 
-                if ($today->format('y-m-d') == $end->format('y-m-d'))
+                if ($end && $today->format('y-m-d') == $end->format('y-m-d'))
                     break;
 
                 $today->add(new \DateInterval('P1D'));

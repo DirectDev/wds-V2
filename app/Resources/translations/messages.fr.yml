@@ -144,7 +144,7 @@ event:
 
     list:
         add: 'Ajouter un événement'
-        add.p: "Passionné de Salsa/Bachata/Kizomba, vous n’alliez pas quand même pas garder jalousement l’info d’un prochain event à côté de chez vous\_?!!\_ Partagez nous un maximum de renseignements (date, lieu, horaires, style de danse, niveau), bref on veut tout savoir\_! Qui sait, peut-être êtes-vous en train d’inviter le partenaire de vos rêves\_?!"
+        add.p: "Passionné de Salsa/Bachata/Kizomba, vous n’alliez quand même pas garder jalousement l’info d’un prochain event à côté de chez vous\_?!!\_ Partagez nous un maximum de renseignements (date, lieu, horaires, style de danse, niveau), bref on veut tout savoir\_! Qui sait, peut-être êtes-vous en train d’inviter le partenaire de vos rêves\_?!"
 
     music: Musique
     music_types: Musique
@@ -641,7 +641,7 @@ home:
 
     users:
         h2: 'Rencontrer les personnes qui partagent votre passion'
-        p: 'Découvrez ceux qui comme vous aime les danses latines, et sont de vrais acteurs du monde de la Salsa/Bachata/Kizomba.'
+        p: 'Découvrez ceux qui comme vous aiment les danses latines, et sont de vrais acteurs du monde de la Salsa/Bachata/Kizomba.'
 
 info_block:
     event:
