@@ -28,13 +28,13 @@
                 {% trans %}city.lessons{% endtrans %}
             </a>
         </li> 
-        <li class="list-group-item {% if active == 'introductions' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'introductions' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_introduction', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-eye"></i>
                 {% trans %}city.introductions{% endtrans %}
             </a>
         </li>
-        <li class="list-group-item {% if active == 'concerts' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'concerts' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_concert', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-volume-up"></i>
                 {% trans %}city.concerts{% endtrans %}
@@ -46,7 +46,7 @@
                 {% trans %}city.festivals{% endtrans %}
             </a>
         </li> 
-        <li class="list-group-item {% if active == 'shows' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'shows' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_show', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-camera-retro"></i>
                 {% trans %}city.shows{% endtrans %}
@@ -55,7 +55,7 @@
 
 
 
-        <li class="list-group-item {% if active == 'artists' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'artists' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_artist', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-group"></i> 
                 {% trans %}city.artits{% endtrans %}
@@ -67,13 +67,13 @@
                 {% trans %}city.teachers{% endtrans %}
             </a>
         </li>
-        <li class="list-group-item {% if active == 'dancers' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'dancers' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_dancer', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-group"></i> 
                 {% trans %}city.dancers{% endtrans %}
             </a>
         </li>  
-        <li class="list-group-item {% if active == 'bars' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'bars' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_bar', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-beer"></i> 
                 {% trans %}city.places{% endtrans %}
@@ -82,19 +82,19 @@
 
 
 
-        <li class="list-group-item {% if active == 'photos' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'photos' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_photo', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-camera"></i> 
                 {% trans %}city.photos{% endtrans %}
             </a>
         </li> 
-        <li class="list-group-item {% if active == 'musics' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'musics' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_music', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-music"></i> 
                 {% trans %}city.musics{% endtrans %}
             </a>
         </li> 
-        <li class="list-group-item {% if active == 'videos' %}active{% endif %}">
+        <li class="list-group-item {% if active == 'videos' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_video', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-video-camera"></i> 
                 {% trans %}city.videos{% endtrans %}

@@ -1,4 +1,5 @@
-<div class="col-sm-6 sm-margin-bottom-30"  id='loves_div'>
+<div class="col-sm-6 sm-margin-bottom-30 {% if usersLoveUser|length == 0 and not app.user %}hidden-sm hidden-xs{% endif %}" 
+     id='loves_div'>
     <div class="panel panel-profile">
         <div class="panel-heading overflow-h">
             <h2 class="panel-title heading-sm pull-left"><i class="fa fa-heart"></i>{% trans %}user.they_like{% endtrans %}</h2>
