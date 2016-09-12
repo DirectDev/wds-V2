@@ -4,20 +4,20 @@
 
     <div class="cbp-item print motion">
         <a href="{{ path('front_user_show_public', { username : user.getUsername(), id : user.id } ) }}" class="cbp-caption"
-           data-title="{{ user.getUsername|capitalize }}">
+           data-title="{{ user.getName|capitalize }}">
             <div class="cbp-caption-defaultWrap">
                 {% if user.isFacebookUser and not user.getProfilePicture() %}
-                    <img alt="{{ user.getUsername|capitalize }}" src='{{ user.profilePictureUrl }}' width="250px"  /> 
+                    <img alt="{{ user.getName|capitalize }}" src='{{ user.profilePictureUrl }}' width="250px"  /> 
                 {% elseif user.getProfilePictureUrl() %}
-                    <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('home_user') }}">
+                    <img alt="{{ user.getName|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('home_user') }}">
                 {% else %}
-                    <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
+                    <img alt="{{ user.getName|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
                 {% endif %} 
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignLeft">
                     <div class="cbp-l-caption-body">
-                        <div class="cbp-l-caption-title">{{ user.getUsername|capitalize }}</div>
+                        <div class="cbp-l-caption-title">{{ user.getName|capitalize }}</div>
                         <div class="cbp-l-caption-desc">
                             {% if user.getUserType %}
                                 {{ user.getUserTypesText }}
@@ -50,23 +50,23 @@
                     {% for userFile in user.userFiles %}
                         {% if userFile.isValid %}
                             <div class="item {% if loop.index == 1 %}active{% endif %}">
-                                <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(userFile.getLargePathUri())|imagine_filter('home_user') }}">
+                                <img alt="{{ user.getName|capitalize }}" src="{{ asset(userFile.getLargePathUri())|imagine_filter('home_user') }}">
                             </div>
                         {% else %}
                             <div class="item">
-                                <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
+                                <img alt="{{ user.getName|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
                             </div>
                         {% endif %} 
                     {% endfor %}
                     {% if user.userFiles|length == 0 %}
                         <div class="item active">
-                            <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
+                            <img alt="{{ user.getName|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('home_user') }}">
                         </div>
                     {% endif %}
                 </div>
             </div>
             <div class="overflow-h">
-                <h3>{{ user.getUsername|capitalize }}</h3>
+                <h3>{{ user.getName|capitalize }}</h3>
             </div>     
             <ul class="list-unstyled">
                 <li>

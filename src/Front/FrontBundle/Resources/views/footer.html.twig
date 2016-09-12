@@ -44,7 +44,7 @@
                         {% for user in artists %}
                             <li>
                                 <a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}">
-                                    {{ user.username|capitalize }}
+                                    {{ user.getName|capitalize }}
                                 </a>
                             </li>
                         {% endfor %}

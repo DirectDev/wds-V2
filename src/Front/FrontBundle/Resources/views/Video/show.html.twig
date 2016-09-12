@@ -12,7 +12,7 @@
                     <span>{% trans %}user.by{% endtrans %}</span>&nbsp;
                     {% if video.user %}
                         <a href="{{ path('front_user_show_public', { username : video.user.username, id : video.user.id } ) }}">
-                            {{  video.user.username|capitalize|truncate(10) }}
+                            {{  video.user.getName|capitalize|truncate(10) }}
                         </a>
                     {% endif %}
                 </li>

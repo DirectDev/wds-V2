@@ -16,20 +16,28 @@ class UserProfileType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
         $builder->add('username')
-                ->add('userTypes', 'entity', array(
-                    'class' => 'UserUserBundle:UserType',
-                    'property' => 'title',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'by_reference' => true,
-                ))
-                ->add('musicTypes', 'entity', array(
-                    'class' => 'FrontFrontBundle:MusicType',
-                    'property' => 'title',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'by_reference' => true,
-                ))
+            ->add('firstname')
+            ->add('lastname')
+            ->add('show_last_firstname')
+            ->add('published')
+            ->add('userTypes',
+                'entity',
+                array(
+                'class' => 'UserUserBundle:UserType',
+                'property' => 'title',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => true,
+            ))
+            ->add('musicTypes',
+                'entity',
+                array(
+                'class' => 'FrontFrontBundle:MusicType',
+                'property' => 'title',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => true,
+            ))
         ;
     }
 
@@ -48,5 +56,4 @@ class UserProfileType extends AbstractType {
     public function getName() {
         return 'ffup';
     }
-
 }

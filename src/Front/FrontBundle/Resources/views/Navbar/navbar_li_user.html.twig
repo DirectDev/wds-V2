@@ -2,14 +2,14 @@
 {% set user = MeaUser.user %}
 <li class="nav_sm_hidden_highlight">
     <a href="{{ path('front_user_show_public', { username : user.getUsername(), id : user.id } ) }}" class="navbar_highlight"
-       data-title="{{ user.getUsername|capitalize }}">
+       data-title="{{ user.getName|capitalize }}">
         <div class="pull-left ">
             {% if user.isFacebookUser and not user.getProfilePicture()  %}
-                <img alt="{{ user.getUsername|capitalize }}" src='{{ user.profilePictureUrl }}' width="40px"  /> 
+                <img alt="{{ user.getName|capitalize }}" src='{{ user.profilePictureUrl }}' width="40px"  /> 
             {% elseif user.getProfilePictureUrl() %}
-                <img alt="{{ user.getUsername|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('navbar') }}">
+                <img alt="{{ user.getName|capitalize }}" src="{{ asset(user.getProfilePictureUrl())|imagine_filter('navbar') }}">
             {% else %}
-                <img alt="{{ user.getUsername|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('navbar') }}">
+                <img alt="{{ user.getName|capitalize }}" src="{{ asset('images/wds_750x340_rose.png')|imagine_filter('navbar') }}">
             {% endif %} 
         </div>
         <div class="text-left">

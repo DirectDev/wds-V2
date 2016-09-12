@@ -514,9 +514,17 @@ form:
 
             username:
                 label: Login
+            firstname:
+                label: Prénom
+            lastname:
+                label: Nom
+            published:
+                label: "Afficher mon profil sur le site et dans les recherches"
+            show_last_firstname:
+                label: "Afficher mon prénom et mon nom"
 
         flashbags:
-            update: 'Votre profile a été mis à jour'
+            update: 'Votre profil a été mis à jour'
 
     ffv:
         children:

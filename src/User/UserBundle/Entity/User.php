@@ -29,6 +29,26 @@ class User extends BaseUser {
      */
     protected $id;
 
+    /** @ORM\Column(name="firstname", type="string", length=25, nullable=true) */
+    protected $firstname;
+
+    /** @ORM\Column(name="lastname", type="string", length=25, nullable=true) */
+    protected $lastname;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    protected $published;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="show_last_firstname", type="boolean", nullable=true)
+     */
+    protected $show_last_firstname;
+
     /** @ORM\Column(name="facebook_link", type="string", length=255, nullable=true) */
     protected $facebook_link;
 
@@ -359,7 +379,7 @@ class User extends BaseUser {
     }
 
     public function textForNavbarHighlight() {
-        $text = $this->getUsername();
+        $text = $this->getName();
         if ($this->getCity())
             $text .= ' / ' . ucfirst($this->getCity());
         return $text;
@@ -375,6 +395,12 @@ class User extends BaseUser {
         return true;
     }
 
+    public function getName() {
+        if($this->getShowLastFirstname() and ($this->getFirstname() or $this->getLastname()) )
+            return trim(ucfirst($this->getFirstname ()).' '.ucfirst ($this->getLastname()));
+        return $this->getUsername();
+    }
+
     /**
      * Get id
      *
@@ -382,6 +408,48 @@ class User extends BaseUser {
      */
     public function getId() {
         return $this->id;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return User
+     */
+    public function setFirstname($firstname) {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname() {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return User
+     */
+    public function setLastname($lastname) {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname() {
+        return $this->lastname;
     }
 
     /**
@@ -401,7 +469,7 @@ class User extends BaseUser {
     /**
      * Get facebook_id
      *
-     * @return string 
+     * @return string
      */
     public function getFacebookId() {
         return $this->facebook_id;
@@ -1230,6 +1298,50 @@ class User extends BaseUser {
      */
     public function getFooter() {
         return $this->footer;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return User
+     */
+    public function setPublished($published) {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished() {
+        return $this->published;
+    }
+
+    /**
+     * Set show_last_firstname
+     *
+     * @param boolean $show_last_firstname
+     *
+     * @return User
+     */
+    public function setShowLastFirstname($show_last_firstname) {
+        $this->show_last_firstname = $show_last_firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get show_last_firstname
+     *
+     * @return boolean
+     */
+    public function getShowLastFirstname() {
+        return $this->show_last_firstname;
     }
 
 }

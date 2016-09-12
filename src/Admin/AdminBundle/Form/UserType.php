@@ -25,6 +25,10 @@ class UserType extends AbstractType {
                 ->add('username')
                 ->add('email')
                 ->add('enabled')
+                ->add('firstname')
+                ->add('lastname')
+                ->add('show_last_firstname')
+                ->add('published')
                 ->add('translations', 'a2lix_translations', array(
                     'fields' => array(
                         'baseline' => array('attr' => array()),

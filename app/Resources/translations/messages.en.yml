@@ -687,6 +687,14 @@ form:
 
             username:
                 label: Username
+            firstname:
+                label: Firstname
+            lastname:
+                label: Lastname
+            published:
+                label: "Display my profile in search results"
+            show_last_firstname:
+                label: "Display my first and last name"
 
         flashbags:
             update: 'Your profil has been updated'

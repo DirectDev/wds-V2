@@ -1,5 +1,5 @@
 {% if photo.isRelatedToEvent %}
-    {% set desc = photo.event.getUser.getUsername %}
+    {% set desc = photo.event.getUser.getName %}
 {% endif %}
 {% if photo.isRelatedToUSer %}
     {% set desc = false %}

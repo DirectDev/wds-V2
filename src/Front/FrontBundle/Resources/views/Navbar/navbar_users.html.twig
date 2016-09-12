@@ -19,7 +19,7 @@
 {% if is_granted("ROLE_USER") %}
     <li class="dropdown mega-menu-fullwidth">
         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-            <strong>{{ app.user.username|capitalize }}</strong>
+            <strong>{{ app.user.getName|capitalize }}</strong>
         </a>
         <ul class="dropdown-menu">
             <li>

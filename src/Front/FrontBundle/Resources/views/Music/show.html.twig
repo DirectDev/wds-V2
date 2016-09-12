@@ -15,7 +15,7 @@
                     <span>{% trans %}user.by{% endtrans %}</span>&nbsp;
                     {% if music.user %}
                         <a href="{{ path('front_user_show_public', { username : music.user.username, id : music.user.id } ) }}">
-                            {{  music.user.username|capitalize|truncate(10) }}
+                            {{  music.user.getName|capitalize|truncate(10) }}
                         </a>
                     {% endif %}
                 </li>

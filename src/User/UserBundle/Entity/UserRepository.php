@@ -17,6 +17,7 @@ class UserRepository extends EntityRepository {
         $query = $this->createQueryBuilder('u')
                 ->leftJoin('u.userTypes', 'ut')
                 ->leftJoin('u.addresses', 'a')
+                ->where('u.published = 1')
                 ->setMaxResults($limit)
         ;
 
@@ -51,6 +52,7 @@ class UserRepository extends EntityRepository {
                 ->select('COUNT(u.id)')
                 ->leftJoin('u.userTypes', 'ut')
                 ->leftJoin('u.addresses', 'a')
+                ->where('u.published = 1')
         ;
 
         if ($userTypes && count($userTypes)) {
@@ -148,6 +150,7 @@ class UserRepository extends EntityRepository {
     public function findWithMusic($limit = 12) {
         $query = $this->createQueryBuilder('u')
                 ->innerJoin('u.musics', 'm')
+                ->where('u.published = 1')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -157,6 +160,7 @@ class UserRepository extends EntityRepository {
         $query = $this->createQueryBuilder('u')
                 ->innerJoin('u.videos', 'v')
                 ->where('(v.move = 0 OR v.move IS NULL)')
+                ->andWhere('u.published = 1')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
@@ -166,13 +170,15 @@ class UserRepository extends EntityRepository {
         $query = $this->createQueryBuilder('u')
                 ->innerJoin('u.videos', 'v')
                 ->where('v.move = 1')
+                ->andWhere('u.published = 1')
                 ->setMaxResults($limit);
 
         return $query->getQuery()->getResult();
     }
 
     public function findForUserIndex() {
-        $query = $this->createQueryBuilder('u');
+        $query = $this->createQueryBuilder('u')
+                ->where('u.published = 1');
         // order by count loves
 
         return $query->getQuery();
@@ -188,7 +194,7 @@ class UserRepository extends EntityRepository {
                 ->leftJoin('a.country', 'co')
                 ->leftJoin('co.translations', 'cot', 'WITH', 'cot.locale = :locale')
                 ->setParameter('locale', $locale)
-                ->where("1 = 1");
+                ->where('u.published = 1');
 
         if (isset($data["search"])) {
             $orQuery = $query->expr()->orx();

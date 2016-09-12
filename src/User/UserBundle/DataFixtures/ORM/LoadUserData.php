@@ -64,6 +64,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
             $this->setDetails($User, $value);
+            if (rand(0, 1))
+                $User->setPublished (true);
+            if (rand(0, 1))
+                $User->setShowLastFirstname (true);
 
             $User->addUserType($this->getReference('usertype-dancer'));
             $this->addMusicType($User);
@@ -90,6 +94,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
             $this->setDetails($User, $value);
+            if (rand(0, 1))
+                $User->setPublished (true);
+            if (rand(0, 1))
+                $User->setShowLastFirstname (true);
 
             $User->addUserType($this->getReference('usertype-teacher'));
             $this->addMusicType($User);
@@ -117,6 +125,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
             $this->setDetails($User, $value);
+            if (rand(0, 1))
+                $User->setPublished (true);
+            if (rand(0, 1))
+                $User->setShowLastFirstname (true);
 
             $User->addUserType($this->getReference('usertype-artist'));
             $this->addMusicType($User);
@@ -143,6 +155,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             $User->setPassword($encoder->encodePassword($this->password, $User->getSalt()));
 
             $this->setDetails($User, $value);
+            if (rand(0, 1))
+                $User->setPublished (true);
+            if (rand(0, 1))
+                $User->setShowLastFirstname (true);
 
             $User->addUserType($this->getReference('usertype-bar'));
             $this->addMusicType($User);

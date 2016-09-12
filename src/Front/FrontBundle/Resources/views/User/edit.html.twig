@@ -1,7 +1,7 @@
 {% extends 'FrontFrontBundle::layout.html.twig' %}
 
 {% block title %}
-    {{ entity.username|capitalize }}
+    {{ entity.getName()|capitalize }}
 {% endblock %}
 
 {% block stylesheets %}
