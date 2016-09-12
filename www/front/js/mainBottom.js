@@ -326,7 +326,7 @@ $(document).on('click', '#userAddAddress', function () {
 });
 
 $(document).on('submit', 'form.newAddress', function (e) {
-    e.preventDefault();loc
+    e.preventDefault();
 
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
