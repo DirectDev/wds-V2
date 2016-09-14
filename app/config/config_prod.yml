@@ -23,14 +23,11 @@ monolog:
             handler:            grouped
         grouped:
             type:               group
-            members:            [streamed, deduplicated]
+            members:            [streamed, swift]
         streamed:
             type:               stream
             path:               "%kernel.logs_dir%/%kernel.environment%.log"
             level:              debug
-        deduplicated:
-            type:    deduplication
-            handler: swift
         swift:
             type:               swift_mailer
             from_email:         monolog@wedancesalsa.com
