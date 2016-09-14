@@ -59,5 +59,28 @@ class FacebookFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientFacebook->getResponse()->isSuccessful());
     }
 
+    public function testImportWeekEventsPage() {
+        $crawler = $this->client->request('GET', $this->router->generate('facebook_import_week_events', array('_locale' => $this->locale)));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('facebook_import_week_events', array('_locale' => $this->locale)));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $crawler = $this->clientFacebook->request('GET', $this->router->generate('facebook_import_week_events', array('_locale' => $this->locale)));
+        var_dump($this->clientFacebook->getResponse()->getContent());
+        $this->assertTrue($this->clientFacebook->getResponse()->isSuccessful());
+    }
+
+    public function testShowImportButton() {
+        $crawler = $this->client->request('GET', $this->router->generate('facebook_show_import_button', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('facebook_show_import_button', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+
+        $crawler = $this->clientFacebook->request('GET', $this->router->generate('facebook_show_import_button', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientFacebook->getResponse()->isSuccessful());
+    }
+
 
 }

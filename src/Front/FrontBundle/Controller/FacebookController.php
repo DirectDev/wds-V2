@@ -110,4 +110,37 @@ class FacebookController extends Controller {
         return null;
     }
 
+    public function showImportButtonAction(Request $request) {
+
+        $user = $this->getUser();
+
+        return $this->render('FrontFrontBundle:Facebook:importButton.html.twig', array(
+                    'user' => $user,
+        ));
+    }
+
+    public function importWeekEventsAction(Request $request) {
+
+        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('facebook-imported-events');
+        if (!$page)
+            throw new \Exception('Page not found!');
+
+
+        $user = $this->getUser();
+
+        $facebookServices = $this->get('facebook.services');
+        $events = $facebookServices->importWeekEvents();
+
+        return $this->render('FrontFrontBundle:Facebook:importWeekEvents.html.twig', array(
+                    'page' => $page,
+                    'user' => $user,
+                    'events' => $events,
+        ));
+    }
+
 }

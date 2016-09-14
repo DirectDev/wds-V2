@@ -34,9 +34,12 @@
                 <h1>{% trans %}home.banner{% endtrans %}</h1>
             </div>   
         </div>   
-        {% include 'FrontFrontBundle:Home:search.html.twig' %}    
+        {% include 'FrontFrontBundle:Home:search.html.twig' %} 
     </div>    
-
+    
+    <div class="container hidden-xs margin-bottom-30">
+        {% render(path('facebook_show_import_button')) %}
+    </div>
 
     <!-- Portfolio Section -->
     <section id="portfolio-cities" class="">
@@ -89,5 +92,7 @@
             </div>
         </div>
     </section>
+                
+    {% include "::scriptFacebook.html.twig" %}            
 
 {% endblock %}

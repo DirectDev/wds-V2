@@ -31,13 +31,25 @@
 
 
     <!--=== Profile ===-->
-    <div class="container content profile">	
+    <div class="container content profile">
         <div class="row">
 
             <!-- Profile Content -->
             <div class="col-md-12">
                 <div class="profile-body">
+
+                    {% if app.user and app.user.isFacebookUser() %}
+                        <div class="row hidden-md hidden-lg m-b-20">
+                            <div class="col-md-12">
+                                <a class="btn btn-block btn-lg btn-social btn-social-center btn-facebook" href="{{ path('facebook_import_week_events') }}">
+                                    <i class="fa fa-facebook"></i> {% trans %}user.button.import_week_facebook{% endtrans %}
+                                </a>            
+                            </div>
+                        </div>
+                    {% endif %}
+
                     <div class="profile-bio">
+
                         <div class="row">
                             <div class="col-md-4 margin-bottom-15">
                                 {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user, class : '', filter : 'profile_photo' } %}
@@ -87,6 +99,18 @@
                     <div class="row">
 
                         {% render(path('front_user_show_overviews_profile', { id : user.id } )) %}   
+                        
+                        {% if app.user and app.user.isFacebookUser() %}
+                            <div class="col-sm-6 m-b-30 hidden-xs hidden-sm" >
+                                <div class="panel panel-profile">
+                                    <div class="panel-body">
+                                        <a class="btn btn-block btn-lg btn-social btn-social-center btn-facebook" href="{{ path('facebook_import_week_events') }}">
+                                            <i class="fa fa-facebook"></i> {% trans %}user.button.import_week_facebook{% endtrans %}
+                                        </a>            
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
 
                         {% render(path('front_user_loves', { id : user.id } )) %}     
 
@@ -129,6 +153,8 @@
         </div>
     </div>		
     <!--=== End Profile ===-->
+
+    {% include "::scriptFacebook.html.twig" %}
 
 {% endblock %}
 

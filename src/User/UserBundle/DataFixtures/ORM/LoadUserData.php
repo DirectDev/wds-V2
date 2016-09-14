@@ -198,6 +198,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $User->setUsername($value);
         $User->setPassword($this->password);
         $User->setEmail($value . '@yopmail.com');
+        $User->setFacebookId('10152588820180519');
+        $User->setFacebookAccessToken('EAAVzVQXK1JsBAGkubdknm3KZAcRMjMNOGArRF9HJWiV6sLO6NWZABUNxA5XFCT14Ylb2kuTuX2qit9zkIKXctKVgZBNW4nIJSSEZAWCbzVW6BjtHLTGG0Jyoz6mvGAuGMwDRo35KjeU7KMWxtl1ZBz9DgQLZCE20AZD');
         $User->addRole('ROLE_USER');
         $encoder = $this->container
                 ->get('security.encoder_factory')

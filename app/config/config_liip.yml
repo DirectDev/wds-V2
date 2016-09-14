@@ -157,8 +157,8 @@ liip_imagine:
             default_image:        null
             filters:
                 # min size
-                upscale: { min: [150, 95] } 
-                thumbnail: { size: [150, 95], mode: outbound }         
+                upscale: { min: [480, 302] } 
+                thumbnail: { size: [480, 302], mode: outbound }         
         navbar:
             quality:              100
             animated:             false

@@ -1,68 +1,116 @@
 {% set image_default_uri = 'images/wds_750x340_rose.png' %}
-<div class="table-search-v2">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <tbody>
 
-                {% for event in events %}
-                    <tr class="" >
-                        <td>
-                            {% set break = false %}
-                            {% for eventFile in event.eventFiles  if not break %}
-                                {% if eventFile.isValid %}
-                                    <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(eventFile.getLargePathUri)|imagine_filter('facebook_imported_event') }}">
-                                    {% set break = true %}
-                                {% endif %}
-                            {% endfor %}
-                            {% if event.eventFiles|length == 0 %}
-                                <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(image_default_uri)|imagine_filter('facebook_imported_event') }}">
-                            {% endif %}
-                        </td>
-                        <td class="td-width">
-                            <h3>
-                                {{ event.getName()|capitalize }}
-                            </h3>
-                            {% if event.getNextEventDate() %}
-                                <p>
-                                    <small class="hex">
-                                        {{ event.getNextEventDate().startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
-                                    </small>
-                                </p>
-                            {% endif %}
-                            {% if event.place or event.city or event.country %}
-                                <p>
-                                    <small class="hex">
-                                        {{ event.getPlace()|capitalize }}
-                                        {{ event.getCity() ? ' / ' }}
-                                        {{ event.getCity() ? event.getCity()|capitalize }}
-                                        {{ event.getCountry() ? ' / ' }}
-                                        {{ event.getCountry() ? event.getCountry()|capitalize }}
-                                    </small>
-                                </p>
-                            {% endif %}
+<div class="blog_masonry_3col">
+    <div class="container content grid-boxes masonry">
 
-                        </td>
-                        <td>
-                            <span class="text-success">
-                                <i class="fa fa-check"></i>
-                                {% trans %}facebook.event_added{% endtrans %}
-                            </span>
-                        </td>
-                        <td>
+        {% for event in events %}
+
+            <div class="grid-boxes-in masonry-brick">
+
+                <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}" target="_blank" >
+                    {% set break = false %}
+                    {% for eventFile in event.eventFiles  if not break %}
+                        {% if eventFile.isValid %}
+                            <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(eventFile.getLargePathUri)|imagine_filter('facebook_imported_event') }}" class="img-responsive">
+                            {% set break = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if event.eventFiles|length == 0 and event.getFacebookPictureUrl %}
+                        <img alt="{{ event.getTitle|capitalize }}" src="{{ event.getFacebookPictureUrl }}" class="img-responsive">
+                    {% elseif event.eventFiles|length == 0 %}
+                        <img alt="{{ event.getTitle|capitalize }}" src="{{ asset(image_default_uri)|imagine_filter('facebook_imported_event') }}" class="img-responsive">
+                    {% endif %}
+                </a>
+
+                <div class="grid-boxes-caption">
+                    <h3>
+                        <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}" target="_blank" >
+                            {{ event.getTitle()|capitalize|truncate(60, true) }}
+                        </a>
+                    </h3>
+                    <ul class="list-inline grid-boxes-news">
+
+                        {% if event.getNextEventDate() %}
+                            <li>
+                                {{ event.getNextEventDate().startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                            </li>
+                        {% endif %}
+                        {% if event.place or event.city or event.country %}
+                            <li>|</li>
+                            <li>
+                                {{ event.getPlace()|capitalize }}
+                                {{ event.getCity() ? ' / ' }}
+                                {{ event.getCity() ? event.getCity()|capitalize }}
+                                {{ event.getCountry() ? ' / ' }}
+                                {{ event.getCountry() ? event.getCountry()|capitalize }}
+                            </li>
+                        {% endif %}
+
+                    </ul>                    
+
+
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            {% include "FrontFrontBundle:Event:alerts.html.twig" %}        
+                        </div>
+
+                        {#<div class="col-sm-12">
                             <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}" 
-                               class="btn btn-default" target="_blank" alt="{% trans %}facebook.event_show{% endtrans %}">
-                                <i class="fa fa-eye"></i>
+                               class="btn btn-default full-width" target="_blank" alt="{% trans %}facebook.event_show{% endtrans %}">
+                                <i class="fa fa-eye"></i> {% trans %}facebook.event_show{% endtrans %}
                             </a>
-                        </td>
-                        <td>
+                        </div>#}
+                        {#<div class="col-sm-12 m-t-10">
                             <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
-                               class="btn btn-warning" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>    
+                               class="btn btn-warning full-width" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
+                                <i class="fa fa-pencil"></i> {% trans %}facebook.event_edit{% endtrans %}
+                            </a>  
+                        </div>#}
+
+                        {% if not event.getAddress() %}
+                            <div class="col-sm-12 m-t-10">
+                                <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
+                                   class="btn btn-info full-width" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
+                                    <i class="fa fa-map-marker"></i> {% trans %}facebook.event_edit_address{% endtrans %}
+                                </a>  
+                            </div>
+                        {% endif %}
+                        {% if event.getAddress() and not event.hasOneValidAddress %}
+                            <div class="col-sm-12 m-t-10">
+                                <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
+                                   class="btn btn-warning full-width" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
+                                    <i class="fa fa-map-marker"></i> {% trans %}facebook.event_edit_address{% endtrans %}
+                                </a>  
+                            </div>
+                        {% endif %}
+
+                        {% if not event.getNextEventDate()  %}
+                            <div class="col-sm-12 m-t-10">
+                                <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
+                                   class="btn btn-warning full-width" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
+                                    <i class="fa fa-calendar"></i> {% trans %}facebook.event_edit_date{% endtrans %}
+                                </a>  
+                            </div>
+                        {% endif %}
+
+                        {% if not event.getProfilePicture() %}
+                            <div class="col-sm-12 m-t-10">
+                                <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
+                                   class="btn btn-info full-width" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
+                                    <i class="fa fa-picture-o"></i> {% trans %}facebook.event_edit_picture{% endtrans %}
+                                </a>  
+                            </div>
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}   
+
+    </div>
 </div>

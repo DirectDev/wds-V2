@@ -26,7 +26,7 @@ class FacebookServices {
     private $event;
     private $locale = 'en';
     private $limit = 200;
-    private $limit_add = 10;
+    private $limit_add = 20;
 
     public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
         $this->em = $em;
@@ -75,7 +75,7 @@ class FacebookServices {
 
         $fields = 'id,description,name,type,place,cover,start_time,end_time';
         $since = 'since=' . date('U');
-        $until = 'until=' . date('U') + 7776000;
+        $until = 'until=' . (date('U') + 7776000);
         $request = $this->facebook->request('GET', '/me/events?' . $since . '&' . $until . '&fields=' . $fields . '&limit=' . $this->limit);
         try {
             $response = $this->facebook->getClient()->sendRequest($request);
@@ -192,6 +192,7 @@ class FacebookServices {
 
         foreach ($ids as $facebook_event_id) {
             if ($this->importEvent($facebook_event_id)) {
+                $this->em->refresh($this->event);
                 $this->facebook_events_imported[] = $this->event;
             }
         }
@@ -302,11 +303,14 @@ class FacebookServices {
     }
 
     private function setEventTranslations() {
+        $description = $this->getNodeData('description');
+        $description = str_replace("\n", "<br>", $description);
+
         $this->event->translate('en')->setTitle($this->getNodeData('name'));
-        $this->event->translate('en')->setDescription($this->getNodeData('description'));
+        $this->event->translate('en')->setDescription($description);
         if ($this->locale != 'en') {
             $this->event->translate($this->locale)->setTitle($this->getNodeData('name'));
-            $this->event->translate($this->locale)->setDescription($this->getNodeData('description'));
+            $this->event->translate($this->locale)->setDescription($description);
         }
         $this->event->mergeNewTranslations();
     }
@@ -567,6 +571,55 @@ class FacebookServices {
             foreach ($users as $user)
                 if ($this->event->getUserPresents()->contains($user) == false)
                     $this->event->addUserPresent($user);
+    }
+
+    public function importWeekEvents() {
+        if (!$this->facebook)
+            return;
+
+        $this->setLocale();
+
+        $fields = 'id,description,name,type,place,cover,start_time,end_time';
+        $since = 'since=' . date('U');
+        $until = 'until=' . (date('U') + 604800 * 2); //(14 days)
+        $fb_request_url = '/me/events?' . $since . '&' . $until . '&fields=' . $fields . '&limit=' . $this->limit;
+        $request = $this->facebook->request('GET', $fb_request_url);
+        try {
+            $response = $this->facebook->getClient()->sendRequest($request);
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $edge = $response->getGraphEdge();
+
+        $add = 0;
+        $ids = array();
+        foreach ($edge->getIterator() as $fb_event) {
+
+            if (!$this->allowImportEvent($fb_event))
+                continue;
+
+            $add++;
+            if ($add > $this->limit_add)
+                continue;
+
+            $event = $this->getEventByFacebookId($fb_event->getField('id'));
+            if ($event and ! $event->allowModificationByFacebookUser($this->user))
+                continue;
+
+            $dateStart = $fb_event->getField('start_time');
+            if(is_object($dateStart))
+                $ids[$dateStart->format('U')] = $fb_event->getField('id');
+        }
+
+        if(count($ids)){
+            ksort($ids);
+            return( $this->importEvents($ids));
+        }
     }
 
 }

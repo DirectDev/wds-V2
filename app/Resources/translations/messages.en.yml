@@ -160,11 +160,11 @@ event:
 facebook:
     event_add: New
     event_added: added
-    event_do_not_import: 'Do not import this event'
+    event_do_not_import: 'Do not add this event'
     event_edit: Edit
-    event_import_button: 'Import from Facebook'
-    event_import_p: 'Import events listed below'
-    event_import_title: Import
+    event_import_button: 'Add from Facebook'
+    event_import_p: 'Add events listed below'
+    event_import_title: Add
     event_preview_button: List
     event_preview_p: 'List my events from Facebook'
     event_preview_title: 'List events'
@@ -811,6 +811,10 @@ home:
         warning_no_events: 'There are no events around <strong>%city%</strong> on <strong>%date%</strong>.  Feel free to add your event'
 
     banner: 'Find Salsa, Bachata and Kizomba, anywhere on the Globe.'
+    
+    button:
+        import_week_facebook: "Add my next Facebook events"
+        signin_import_facebook: "Log in and add my next Facebook events"
 
     cities:
         h2: 'Destinations to discover'
@@ -957,7 +961,7 @@ navbar:
     user.add_event: 'Add Event'
     user.add_events: 'Add Events'
     user.events: Events
-    user.import_facebook: 'Import from Facebook'
+    user.import_facebook: 'Add from Facebook'
     user.my_events: 'My Events'
     user.my_page: 'See my profile'
     user.my_profile: 'Edit my profile'
@@ -1004,6 +1008,8 @@ user:
     address_title: 'My Address'
     addresses_title: 'My Addresses'
     by: By
+    button:
+        import_week_facebook: "Add my next Facebook events"
 
     delete:
         button: 'Delete my profile'
@@ -1079,7 +1085,7 @@ user_bundle:
     signin:
         or: or
         signin_facebook: 'Sign in with facebook'
-        signin_facebook_paragraphe: 'Connect with Facebook to import all your facebook events easily !'
+        signin_facebook_paragraphe: 'Connect with Facebook to add all your facebook events easily !'
         signin_google: 'Sign in with google'
 
 video:

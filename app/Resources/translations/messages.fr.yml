@@ -159,12 +159,17 @@ event:
 
 facebook:
     event_add: Nouveau
-    event_added: Importé
-    event_do_not_import: 'Ne pas importer cet événement'
+    event_added: Ajouté
+    event_do_not_import: 'Ne pas ajouter cet événement'
     event_edit: Modifier
-    event_import_button: 'Importer les événements'
-    event_import_p: 'Importez les événements Facebook listés ci dessous'
-    event_import_title: Importer
+    event_edit_address: "Ajouter une adresse"
+    event_edit_date: "Ajouter une date"
+    event_edit_picture: "Ajouter une image"
+    event_import_button: 'Ajouter les événements'
+    event_import_p: 'Ajoutez les événements Facebook listés ci dessous'
+    event_import_week_success: "Vos prochains événements Facebook ont été ajoutés. Pour en ajouter d'autres ou pour plus détails consultez la page 'Partagez vos événements'"
+    event_import_week_fail: "Vous n'avez pas d'événements Facebook prochainement. Pour plus détails consultez la page 'Partagez vos événements'"
+    event_import_title: Ajouter
     event_preview_button: Lister
     event_preview_p: 'Cherchez vos événements importables depuis Facebook'
     event_preview_title: 'Lister mes événements facebook'
@@ -175,7 +180,7 @@ facebook:
     event_update: 'Mettre à jour'
     no_events: 'Nous n''avons pas trouvé d''événements'
     not_facebook_user: 'Vous n''êtes pas connecté via Facebook'
-    not_logged: 'Vous n''êtes pas connecté. Connectez-vous avec Facebook pour pouvoir importer vos événements.'
+    not_logged: 'Vous n''êtes pas connecté. Connectez-vous avec Facebook pour pouvoir ajouter vos événements.'
 
 festivals:
     calendar:
@@ -638,6 +643,10 @@ home:
         warning_no_events: 'Il n''y a pas encore d''événement Salsa autour de <strong>%city%</strong> le <strong>%date%</strong>.  Ajoutez votre événement.'
 
     banner: 'Trouvez les événements Salsa, Bachata et Kizomba, n''importe où dans le monde.'
+    
+    button:
+        import_week_facebook: "Ajouter mes prochains événements Facebook"
+        signin_import_facebook: "Me connecter et ajouter mes événements Facebook"
 
     cities:
         h2: 'Les destinations à découvrir'
@@ -830,6 +839,8 @@ user:
     address_title: Adresse
     addresses_title: 'Mon Adresse'
     by: Par
+    button:
+        import_week_facebook: "Ajouter mes prochains événements"
 
     delete:
         button: 'Supprimer mon profil'
@@ -905,7 +916,7 @@ user_bundle:
     signin:
         or: ou
         signin_facebook: 'Se connecter avec Facebook'
-        signin_facebook_paragraphe: 'Facile ! Connectez vous avec Facebook pour importer tous vos événements en quelques clics.'
+        signin_facebook_paragraphe: 'Facile ! Connectez vous avec Facebook pour ajouter tous vos événements en quelques clics.'
         signin_google: 'Se connecter avec Google'
 
 video:

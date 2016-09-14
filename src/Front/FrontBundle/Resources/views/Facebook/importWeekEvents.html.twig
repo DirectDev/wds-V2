@@ -1,0 +1,45 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ page.getTitle|capitalize }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription|capitalize }}" />
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:Facebook:facebookBreadcrumb.html.twig' with { active : 'videos' } %}
+
+    <div class="container  s-results">
+
+        <div class="margin-bottom-20">
+            <div class="row">
+                <div class="col-md-12" id="facebookResults">
+
+                    {% include "FrontFrontBundle:Facebook:importedEvents.html.twig" %}
+
+                </div>
+            </div>
+        </div>
+
+        {% if not events|length %}
+            <div class="alert alert-warning fade in">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+                {% trans %}facebook.event_import_week_fail{% endtrans %}
+            </div>  
+        {% else %}
+            <div class="alert alert-success fade in">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                <strong>{% trans %}front.alert.success{% endtrans %}</strong>
+                {% trans %}facebook.event_import_week_success{% endtrans %} 
+            </div>   
+        {% endif %}
+
+    </div>
+
+{% endblock %}

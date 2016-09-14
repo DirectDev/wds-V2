@@ -33,10 +33,12 @@
                 "front/plugins/font-awesome/css/font-awesome.min.css"
                 "front/plugins/revolution-slider/rs-plugin/css/settings.css"
                 "front/plugins/revolution-slider/rs-plugin/css/settings-ie8.css"
-"front/plugins/brand-buttons/brand-buttons.css"
-"front/plugins/brand-buttons/brand-buttons-inversed.css"
+                "front/plugins/brand-buttons/brand-buttons.css"
+                "front/plugins/brand-buttons/brand-buttons-inversed.css"
                 "front/css/custom.css"
                 "front/css/main.css"
+                "front/css/bootstrap-social.css"
+                "front/css/pages/blog_masonry_3col.css"
             filter='cssrewrite' 
             output='front/css/compiled/main.css'  %}
             <link rel="stylesheet" href="{{ asset_url }}" />
@@ -99,6 +101,8 @@
             "front/js/cube-portfolio-lightbox-home-cities.js"
             "front/js/cube-portfolio-lightbox-home-festivals.js"
             "front/js/cube-portfolio-lightbox-home-users.js"
+            "front/plugins/masonry/jquery.masonry.min.js"
+            "front/js/pages/blog-masonry.js"
             output='front/js/compiled/bottom.js'  %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}

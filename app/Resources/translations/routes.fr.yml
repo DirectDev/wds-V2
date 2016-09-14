@@ -92,6 +92,12 @@ facebook_import_event_page: /facebook/importer_evenement_page
 # Desc: /facebook/import_events
 facebook_import_events: /facebook/importer__evenements
 
+# Desc: /facebook/show_import_button
+facebook_show_import_button: /facebook/importer_bouttons
+
+# Desc: /facebook/show_week_events
+facebook_import_week_events: /facebook/importer_evenements_semaine
+
 # Desc: /login/check-facebook
 facebook_login: /connexion/check-facebook
 

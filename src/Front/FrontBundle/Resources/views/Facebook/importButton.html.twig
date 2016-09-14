@@ -1,0 +1,14 @@
+
+{% if not app.user or not app.user.isFacebookUser() %}
+   
+    <a class="btn btn-block btn-lg btn-social btn-social-center btn-facebook" onclick="fb_login();">
+        <i class="fa fa-facebook"></i> {% trans %}home.button.signin_import_facebook{% endtrans %}
+    </a>
+
+{% else %}
+
+    <a class="btn btn-block btn-lg btn-social btn-social-center btn-facebook" href="{{ path('facebook_import_week_events') }}">
+        <i class="fa fa-facebook"></i> {% trans %}home.button.import_week_facebook{% endtrans %}
+    </a>
+
+{% endif %}

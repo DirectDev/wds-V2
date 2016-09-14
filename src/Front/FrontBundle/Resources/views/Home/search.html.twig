@@ -33,8 +33,12 @@
                                name="searcheventdate">
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 ">
                     <button type="submit" class="btn btn-u-lg btn-lg width-full"> {% trans %}front.search_event_button{% endtrans %}</button>
+                </div>
+                
+                <div class="col-sm-12 hidden-sm hidden-md hidden-lg m-t-20">
+                    {% render(path('facebook_show_import_button')) %}
                 </div>
             </div>
         </div>    

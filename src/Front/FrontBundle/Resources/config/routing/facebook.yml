@@ -26,3 +26,11 @@ facebook_import_events:
     defaults:  { _controller: FrontFrontBundle:Facebook:importEvents }    
     requirements:
       _method: POST
+
+facebook_show_import_button:
+    path:      /show_import_button
+    defaults:  { _controller: FrontFrontBundle:Facebook:showImportButton } 
+
+facebook_import_week_events:
+    path:      /show_week_events
+    defaults:  { _controller: FrontFrontBundle:Facebook:importWeekEvents } 
