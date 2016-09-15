@@ -2,21 +2,21 @@
  * Base js functions
  */
 
-$(document).ready(function(){
+function loadMasonry() {
     var $container = $('.grid-boxes');
 
     var gutter = 30;
     var min_width = 300;
-    $container.imagesLoaded( function(){
+    $container.imagesLoaded(function () {
         $container.masonry({
-            itemSelector : '.grid-boxes-in',
+            itemSelector: '.grid-boxes-in',
             gutterWidth: gutter,
             isAnimated: true,
-              columnWidth: function( containerWidth ) {
-                var box_width = (((containerWidth - 2*gutter)/3) | 0) ;
+            columnWidth: function (containerWidth) {
+                var box_width = (((containerWidth - 2 * gutter) / 3) | 0);
 
                 if (box_width < min_width) {
-                    box_width = (((containerWidth - gutter)/2) | 0);
+                    box_width = (((containerWidth - gutter) / 2) | 0);
                 }
 
                 if (box_width < min_width) {
@@ -26,7 +26,11 @@ $(document).ready(function(){
                 $('.grid-boxes-in').width(box_width);
 
                 return box_width;
-              }
+            }
         });
     });
+}
+
+$(document).ready(function () {
+    loadMasonry();
 });

@@ -632,13 +632,15 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
             $('#blockImportEventsFacebook').show();
             hideLoaderGif($('#previewImportEventsFacebook'));
             scrollToElement($("#blockImportEventsFacebook"));
+            loadMasonry();
         }
     });
     return false;
 });
 
-$(document).on('click', 'button.supprFacebookEventTr', function () {
-    $(this).parent().parent().remove();
+$(document).on('click', 'button.supprFacebookEventBrick', function () {
+    $(this).parent().parent().parent().parent().remove();
+    loadMasonry();
 });
 
 $(document).on('click', '#importEventsFacebook', function () {
@@ -647,7 +649,7 @@ $(document).on('click', '#importEventsFacebook', function () {
     }
 
     var data = new Array();
-    $('#facebookResults').find("tr.facebookEventTr").each(function () {
+    $('#facebookResults').find(".masonry-brick-facebook-event").each(function () {
         data.push($(this).data('id'));
     });
 
@@ -663,6 +665,7 @@ $(document).on('click', '#importEventsFacebook', function () {
             $('#blockImportEventsFacebook').hide();
             hideLoaderGif($('#importEventsFacebook'));
             scrollToElement($("#facebookResults"));
+            loadMasonry();
         }
     });
     return false;
@@ -689,6 +692,7 @@ $(document).on('submit', 'form[name="facebook_event_import"]', function (e) {
                     $('#facebookResults').html(html);
                     loadBootstrapValidator();
                     $('#blockImportEventsFacebook').show();
+                    loadMasonry();
                 }
             });
     return false;

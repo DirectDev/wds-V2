@@ -32,6 +32,9 @@ class FacebookController extends Controller {
 
     public function previewImportEventsAction(Request $request) {
 
+        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
@@ -46,6 +49,9 @@ class FacebookController extends Controller {
     }
 
     public function importEventsAction(Request $request) {
+
+        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $em = $this->getDoctrine()->getManager();
 
@@ -72,6 +78,9 @@ class FacebookController extends Controller {
     }
 
     public function previewImportEventAction(Request $request) {
+
+        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $em = $this->getDoctrine()->getManager();
 

@@ -26,7 +26,7 @@ class FacebookServices {
     private $event;
     private $locale = 'en';
     private $limit = 200;
-    private $limit_add = 20;
+    private $limit_add = 10;
 
     public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
         $this->em = $em;

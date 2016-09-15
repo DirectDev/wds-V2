@@ -162,8 +162,13 @@ facebook:
     event_added: added
     event_do_not_import: 'Do not add this event'
     event_edit: Edit
+    event_edit_address: "Add address"
+    event_edit_date: "Add date"
+    event_edit_picture: "Add picture"
     event_import_button: 'Add from Facebook'
     event_import_p: 'Add events listed below'
+    event_import_week_success: "Your next Facebook events have been added. To add more or for more details see  'Share you events' page"
+    event_import_week_fail: "You don't have Facebook events soon. For more details see 'Share you events' page"
     event_import_title: Add
     event_preview_button: List
     event_preview_p: 'List my events from Facebook'
