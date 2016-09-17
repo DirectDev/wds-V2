@@ -1101,3 +1101,24 @@ video:
 
     search_input_placeholder: 'Search video'
     search_title: Videos
+
+toastr:
+    click:
+        btn_facebook_import: "Please be patient while adding your Facebook events" 
+        preview_import_events_facebook: "Please be patient while searching for your Salsa/Bachata/Kizomba events"
+        preview_import_unique_event_facebook: "Please be patient while searching for your Facebook event"
+        
+    load:
+        import_facebook:
+            no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
+            success: "Your next Salsa/Bachata/kizomba events have been added successfully."  
+            success_count: "Added events : %COUNT%"   
+            thanks: "Thanks a lot for sharing your event on WeDanceSalsa" 
+            event: 
+                no_address: "Please add an address for event : %NAME% "
+                no_valid_address: "Please verify address for event : %NAME% "
+                no_next_date: "Please add a date for event : %NAME% "
+                no_picture: "Please add a picture for event : %NAME% "
+        preview_import_facebook:
+            success: "You can add or update those Salsa/Bachata/Kizomba events"  
+            success_count: "Events to add : %COUNT%"         

@@ -114,3 +114,32 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+
+    {% if not events|length %}
+            toastr.warning("{% trans %}toastr.load.import_facebook.no_events{% endtrans %}");
+    {% else %}
+            toastr.success("{% trans %}toastr.load.import_facebook.success{% endtrans %}");
+            toastr.success("{% trans with {'%COUNT%': events|length } %}toastr.load.import_facebook.success_count{% endtrans %}");
+            toastr.success("{% trans %}toastr.load.import_facebook.thanks{% endtrans %}");
+    {% endif %}
+
+    {% for event in events %}
+        {% if not event.getAddress() %}
+                toastr.info("{% trans with {'%NAME%': event.getTitle()|truncate(10, true) } %}toastr.load.import_facebook.event.no_address{% endtrans %}");
+        {% endif %}
+        {% if event.getAddress() and not event.hasOneValidAddress %}
+                toastr.info("{% trans with {'%NAME%': event.getTitle()|truncate(10, true) } %}toastr.load.import_facebook.event.no_valid_address{% endtrans %}");
+        {% endif %}
+
+        {% if not event.getNextEventDate()  %}
+                toastr.info("{% trans with {'%NAME%': event.getTitle()|truncate(10, true) } %}toastr.load.import_facebook.event.no_next_date{% endtrans %}");
+        {% endif %}
+
+        {% if not event.getProfilePicture() %}
+                toastr.info("{% trans with {'%NAME%': event.getTitle()|truncate(10, true) } %}toastr.load.import_facebook.event.no_picture{% endtrans %}");
+        {% endif %}    
+    {% endfor %}    
+
+</script>

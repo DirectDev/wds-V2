@@ -16,6 +16,22 @@
 
     <div class="container  s-results">
 
+        <div class="m-t-20">
+            {% if not events|length %}
+                <div class="alert alert-warning fade in">
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                    <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
+                    {% trans %}facebook.event_import_week_fail{% endtrans %}
+                </div>  
+            {% else %}
+                <div class="alert alert-success fade in">
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                    <strong>{% trans %}front.alert.success{% endtrans %}</strong>
+                    {% trans %}facebook.event_import_week_success{% endtrans %} 
+                </div>   
+            {% endif %}
+        </div>
+
         <div class="margin-bottom-20">
             <div class="row">
                 <div class="col-md-12" id="facebookResults">
@@ -25,20 +41,6 @@
                 </div>
             </div>
         </div>
-
-        {% if not events|length %}
-            <div class="alert alert-warning fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
-                {% trans %}facebook.event_import_week_fail{% endtrans %}
-            </div>  
-        {% else %}
-            <div class="alert alert-success fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.success{% endtrans %}</strong>
-                {% trans %}facebook.event_import_week_success{% endtrans %} 
-            </div>   
-        {% endif %}
 
     </div>
 

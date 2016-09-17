@@ -606,9 +606,9 @@ front:
     addresses_title: Adresses
 
     alert:
-        error: front.alert.error
+        error: 'Erreur :'
         info: 'Info : '
-        success: 'Info : '
+        success: 'Bravo ! '
         warning: 'Attention ! '
 
     back: Retour
@@ -927,3 +927,24 @@ video:
 
     search_input_placeholder: 'Rechercher une vidéo'
     search_title: Vidéos
+
+toastr:
+    click:
+        btn_facebook_import: "Veuillez patienter pendant l'ajout de vos évenements depuis Facebook"
+        preview_import_events_facebook: "Veuillez patienter pendant que nous recherchons vos évenements Salsa/Bachata/Kizomba sur Facebook"
+        preview_import_unique_event_facebook: "Veuillez patienter pendant que nous recherchons votre évenement sur Facebook"
+        
+    load:
+        import_facebook:
+            no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
+            success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés."  
+            success_count: "Nombre d'événements ajoutés : %COUNT%"  
+            thanks: "Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
+            event: 
+                no_address: "Veuillez ajouter une addresse pour l'évenement : %NAME% "
+                no_valid_address: "Veuillez vérifier l'addresse de l'évenement : %NAME% "
+                no_next_date: "Veuillez ajouter une date pour l'évenement : %NAME% "
+                no_picture: "Veuillez ajouter une image pour l'évenement : %NAME% "
+        preview_import_facebook:
+            success: "Voici les prochains événements Facebook Salsa/Bachata/kizomba vous pouvez ajouter ou mettre à jour."  
+            success_count: "Nombre d'événements a ajouter : %COUNT%"         
