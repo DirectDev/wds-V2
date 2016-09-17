@@ -169,6 +169,7 @@ facebook:
     event_import_p: 'Ajoutez les événements Facebook listés ci dessous'
     event_import_week_success: "Vos prochains événements Facebook ont été ajoutés. Pour en ajouter d'autres ou pour plus détails consultez la page 'Partagez vos événements'"
     event_import_week_fail: "Vous n'avez pas d'événements Facebook prochainement. Pour plus détails consultez la page 'Partagez vos événements'"
+    event_import_fail: "Nous n'avons pas trouvé d'événements concernant la Salsa/Bachata/Kizomba sur votre Facebook."
     event_import_title: Ajouter
     event_preview_button: Lister
     event_preview_p: 'Cherchez vos événements importables depuis Facebook'
@@ -930,6 +931,7 @@ video:
 
 toastr:
     click:
+        btn_facebook_connect: "Vous allé être connecté grâce à votre profil Facebook."
         btn_facebook_import: "Veuillez patienter pendant l'ajout de vos évenements depuis Facebook"
         preview_import_events_facebook: "Veuillez patienter pendant que nous recherchons vos évenements Salsa/Bachata/Kizomba sur Facebook"
         preview_import_unique_event_facebook: "Veuillez patienter pendant que nous recherchons votre évenement sur Facebook"

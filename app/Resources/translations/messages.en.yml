@@ -169,6 +169,7 @@ facebook:
     event_import_p: 'Add events listed below'
     event_import_week_success: "Your next Facebook events have been added. To add more or for more details see  'Share you events' page"
     event_import_week_fail: "You don't have Facebook events soon. For more details see 'Share you events' page"
+    event_import_fail: "We didn't find any Salsa/Bachata/Kizomba event on your Facebook."
     event_import_title: Add
     event_preview_button: List
     event_preview_p: 'List my events from Facebook'
@@ -823,7 +824,7 @@ home:
 
     cities:
         h2: 'Destinations to discover'
-        p: 'Discover some danseurs, teachers, venues and all the best of Salsa/Bachata/Kizomba in those destinations.'
+        p: 'Discover some dancers, teachers, venues and all the best of Salsa/Bachata/Kizomba in those destinations.'
 
     festivals:
         h2: 'Festivals to make you dance'
@@ -1104,6 +1105,7 @@ video:
 
 toastr:
     click:
+        btn_facebook_connect: "You will be logged in with your Facebook account."
         btn_facebook_import: "Please be patient while adding your Facebook events" 
         preview_import_events_facebook: "Please be patient while searching for your Salsa/Bachata/Kizomba events"
         preview_import_unique_event_facebook: "Please be patient while searching for your Facebook event"

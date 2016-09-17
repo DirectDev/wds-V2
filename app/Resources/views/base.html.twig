@@ -69,7 +69,7 @@
                 toastr.options = {
                     "positionClass": "toast-top-left",
                     "closeButton": true,
-                    "showDuration": "1000",
+                    "timeOut": "20000",
                     "newestOnTop": false
                 }
             </script>
@@ -127,15 +127,22 @@
                         language: "{{ app.request.locale }}"
                     });
                 });
+
+                $('.btn-facebook-import').on('click', function (e) {
+                    toastr.info("{% trans %}toastr.click.btn_facebook_import{% endtrans %}");
+                });
+                $('.btn-facebook-connect').on('click', function (e) {
+                    toastr.info("{% trans %}toastr.click.btn_facebook_connect{% endtrans %}");
+                });
         </script>
         <script src="{{ asset('front/plugins/ckeditor/ckeditor.js') }}"></script>
 
     {% endblock %}
 
     <script>
-            $(document).ready(function () {
-                CKEDITOR.replace('.ckeditor');
-            });
+                $(document).ready(function () {
+                    CKEDITOR.replace('.ckeditor');
+                });
     </script>
 </body>
 </html>
