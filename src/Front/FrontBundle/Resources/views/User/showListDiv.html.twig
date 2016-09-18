@@ -1,0 +1,21 @@
+<div class="grid-boxes-in">
+
+    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : person, class : '', filter : 'profile_photo' } %}
+
+    <div class="grid-boxes-caption">
+        <h3>
+            <a href="{{ path('front_user_show_public', { username : person.username, id : person.id } ) }}">
+                {{ person.getName()|capitalize }}
+            </a>
+        </h3>
+        {% include 'FrontFrontBundle:User:musicTypeList.html.twig' %}
+        {% include 'FrontFrontBundle:User:socialIconList.html.twig' %}
+
+        {% if person.getBaseline %}
+            <p>
+                {{ person.getBaseline|capitalize }}
+            </p>
+        {% endif %}
+        {% render(path('front_user_show_overviews_index', { id : person.id } )) %}
+    </div>
+</div>

@@ -1,15 +1,15 @@
-<div class="table-search-v2">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <tbody>
+ <div class="blog_masonry_3col">
+        <div class="grid-boxes">
+
                 {% for person in people %}
-                    {% include 'FrontFrontBundle:User:showListTr.html.twig' %}
+                    {% include 'FrontFrontBundle:User:showListDiv.html.twig' %}
                 {% endfor %}
 
                 {% if 4 > people|length %}
                     {% include 'FrontFrontBundle:User:add.html.twig' %}
                 {% endif %}
-            </tbody>
-        </table>
+                
+{#       manque alerte, toastr, pagination, voir user:index.html.twig#}
+
     </div>    
 </div>

@@ -1,5 +1,7 @@
-{% for musicType in person.musicTypes %}
+{% if person.musicTypes is defined and person.musicTypes|length %}
     <p>
-        <span class="label label-{{ musicType.name|lower }} ">{{ musicType|capitalize }}</span>
+        {% for musicType in person.musicTypes %}
+            <span class="label label-{{ musicType.name|lower }} ">{{ musicType|capitalize }}</span>
+        {% endfor %}
     </p>
-{% endfor %}
+{% endif %}

@@ -1,23 +1,33 @@
-<td> 
+<p> 
+    <ul class="list-inline">
+        {% if count_lovesme %}
+            <li>
+                {% trans %}overviews.likes{% endtrans %} : {{ count_lovesme }}
+            </li>
+        {% endif %}
 
-    {% if count_lovesme %}
-        <span>{% trans %}overviews.likes{% endtrans %} : {{ count_lovesme }}</span>
-    {% endif %}
+        {% if count_events %}
+            <li>
+                {% trans %}overviews.events{% endtrans %} : {{ count_events }}
+            </li>
+        {% endif %}
 
-    {% if count_events %}
-        <span>{% trans %}overviews.events{% endtrans %} : {{ count_events }}</span>
-    {% endif %}
+        {% if count_videos %}
+            <li>
+                {% trans %}overviews.videos{% endtrans %} : {{ count_videos }}
+            </li>
+        {% endif %}
 
-    {% if count_videos %}
-        <span>{% trans %}overviews.videos{% endtrans %} : {{ count_videos }}</span>
-    {% endif %}
+        {% if count_photos %}
+            <li>
+                {% trans %}overviews.photos{% endtrans %} : {{ count_photos }}
+            </li>
+        {% endif %}
 
-    {% if count_photos %}
-        <span>{% trans %}overviews.photos{% endtrans %} : {{ count_photos }}</span>
-    {% endif %}
-
-    {% if count_musics %}
-        <span>{% trans %}overviews.musics{% endtrans %} : {{ count_musics }}</span>
-    {% endif %}
-
-</td>
+        {% if count_musics %}
+            <li>
+                {% trans %}overviews.musics{% endtrans %} : {{ count_musics }}
+            </li>
+        {% endif %}
+    </ul>
+</p>

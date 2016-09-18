@@ -22,5 +22,5 @@ parameters:
     debug_toolbar: fzlse
     debug_redirects: false
     use_assetic_controller: true
-    pagination_line_number: 5
+    pagination_line_number: 6
     admin_pagination_line_number: 50

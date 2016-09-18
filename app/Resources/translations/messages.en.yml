@@ -1058,8 +1058,9 @@ user:
 
     list:
         add:
-            h3: Register
-            span: 'register and appear here'
+            h3: "How to appear here ?"
+            span: "Create an account on WeDanceSalsa to appear in serach results and boost your popularity"
+        no_users: "We didn't find anybody matching your search."        
 
     musics_title: 'My Musics'
     my_events: 'My Events'
@@ -1110,12 +1111,13 @@ toastr:
         preview_import_events_facebook: "Please be patient while searching for your Salsa/Bachata/Kizomba events"
         preview_import_unique_event_facebook: "Please be patient while searching for your Facebook event"
         
+    filter:
+        criterias: "Your search criterias : <br> %CRITERIAS%"
+        
     load:
         import_facebook:
             no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
-            success: "Your next Salsa/Bachata/kizomba events have been added successfully."  
-            success_count: "Added events : %COUNT%"   
-            thanks: "Thanks a lot for sharing your event on WeDanceSalsa" 
+            success: "Your next Salsa/Bachata/kizomba events have been added successfully. <br>Added events : %COUNT% <br>Thanks a lot for sharing your event on WeDanceSalsa" 
             event: 
                 no_address: "Please add an address for event : %NAME% "
                 no_valid_address: "Please verify address for event : %NAME% "
@@ -1123,4 +1125,8 @@ toastr:
                 no_picture: "Please add a picture for event : %NAME% "
         preview_import_facebook:
             success: "You can add or update those Salsa/Bachata/Kizomba events"  
-            success_count: "Events to add : %COUNT%"         
+            success_count: "Events to add : %COUNT%"     
+        user:
+            no_users: "We didn't find anybody matching your criterias."
+            more_5: "We found more than 5 people matching your criterias."
+            less_5: "We found some people matching your criterias."

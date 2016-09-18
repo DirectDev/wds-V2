@@ -1,15 +1,19 @@
-{% set image_default_uri = 'images/wds_70x70_add.png' %}
+{% set image_default_uri = 'images/wds_300x150_add_inversed.png' %}
 
-<tr>
-    <td width='95px'>
-        <img src="{{ asset(image_default_uri) }}" alt="" class="member_min_thumb" >
-    </td>
-    <td colspan='4'>
+<div class="grid-boxes-in">
+
+    <a  href="{{ path('landing_pro') }}">
+        <img src="{{ asset(image_default_uri) }}" alt="" class="" >
+    </a>
+
+    <div class="grid-boxes-caption">
         <h3>
             <a class="color-red"  href="{{ path('landing_pro') }}">
                 {% trans %}user.list.add.h3{% endtrans %}
             </a>
         </h3>
-        <small class="hex">{% trans %}user.list.add.span{% endtrans %}</small>
-    </td>
-</tr>
+        <p>
+            {% trans %}user.list.add.span{% endtrans %}
+        </p>
+    </div>
+</div>

@@ -884,8 +884,9 @@ user:
 
     list:
         add:
-            h3: Inscrivez-vous
-            span: 'Apparaissez ici'
+            h3: "Comment apparaître ici ?"
+            span: 'Créez votre compte sur WeDanceSalsa pour apparaître dans les recherches et booster votre popularité.'
+        no_users: "Nous n'avons pas trouvé personne correspondant à votre recherche."    
 
     musics_title: Musiques
     my_events: 'Mes événements'
@@ -936,12 +937,13 @@ toastr:
         preview_import_events_facebook: "Veuillez patienter pendant que nous recherchons vos évenements Salsa/Bachata/Kizomba sur Facebook"
         preview_import_unique_event_facebook: "Veuillez patienter pendant que nous recherchons votre évenement sur Facebook"
         
+    filter:
+        criterias: "Vos critères de recherches : <br> %CRITERIAS%"
+        
     load:
         import_facebook:
             no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
-            success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés."  
-            success_count: "Nombre d'événements ajoutés : %COUNT%"  
-            thanks: "Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
+            success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés. <br>Nombre d'événements ajoutés : %COUNT% <br>Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
             event: 
                 no_address: "Veuillez ajouter une addresse pour l'évenement : %NAME% "
                 no_valid_address: "Veuillez vérifier l'addresse de l'évenement : %NAME% "
@@ -949,4 +951,8 @@ toastr:
                 no_picture: "Veuillez ajouter une image pour l'évenement : %NAME% "
         preview_import_facebook:
             success: "Voici les prochains événements Facebook Salsa/Bachata/kizomba vous pouvez ajouter ou mettre à jour."  
-            success_count: "Nombre d'événements a ajouter : %COUNT%"         
+            success_count: "Nombre d'événements a ajouter : %COUNT%" 
+        user:
+            no_users: "Nous n'avons trouvé personne correspondant à votre recherche."
+            more_5: "Nous avons plus de 5 personnes correspondantes à votre recherche."
+            less_5: "Nous avons des personnes correspondantes à votre recherche."

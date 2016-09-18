@@ -23,6 +23,11 @@
                                 <i class="fa fa-search"></i> <strong>{% trans %}navbar.home_mobile{% endtrans %}</strong>
                             </a>
                         </li>
+                        <li class='hide-for-desktop'>
+                            <a href="{{ path('landing-share-event') }}" >
+                                <strong>{% trans %}front.landing_share_event{% endtrans %}</strong>
+                            </a>
+                        </li>
 
                         {% include 'FrontFrontBundle:Navbar:navbar_festivals.html.twig' %}  
 
