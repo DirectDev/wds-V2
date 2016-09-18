@@ -82,6 +82,7 @@ city:
     shows: Shows
     teachers: Teachers
     videos: Videos
+    no_users: "There is no %USERTYPE% registered in %CITY%. Be the first one and boost your popularity."
 
 contact:
     contact_alert_success: 'Your contact enquiry was successfully sent. Thank you!'
@@ -1060,7 +1061,7 @@ user:
         add:
             h3: "How to appear here ?"
             span: "Create an account on WeDanceSalsa to appear in serach results and boost your popularity"
-        no_users: "We didn't find anybody matching your search."        
+        no_users: "We didn't find anybody matching your search." 
 
     musics_title: 'My Musics'
     my_events: 'My Events'
@@ -1115,6 +1116,8 @@ toastr:
         criterias: "Your search criterias : <br> %CRITERIAS%"
         
     load:
+        city:
+            no_users: "There is no %USERTYPE% registered in %CITY%. Be the first one and boost your popularity."
         import_facebook:
             no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
             success: "Your next Salsa/Bachata/kizomba events have been added successfully. <br>Added events : %COUNT% <br>Thanks a lot for sharing your event on WeDanceSalsa" 

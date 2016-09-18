@@ -1,15 +1,33 @@
- <div class="blog_masonry_3col">
-        <div class="grid-boxes">
+{% set count_people = 0 %}
+{% for person in pagination %}
+    {% set count_people = count_people + 1 %}
+{% endfor %}
 
-                {% for person in people %}
-                    {% include 'FrontFrontBundle:User:showListDiv.html.twig' %}
-                {% endfor %}
+{% if 1 > count_people %}
+    <div class="alert alert-info fade in">
+        <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+        <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+        {% trans with { '%USERTYPE%' : userType.getTitle()|lower, '%CITY%' : app.session.get('city')|capitalize } %}city.no_users{% endtrans %}
+    </div>
+    <script type="text/javascript">
+        toastr.info("{% trans with { '%USERTYPE%' : userType.getTitle()|lower, '%CITY%' : app.session.get('city')|capitalize }  %}toastr.load.city.no_users{% endtrans %}");
+    </script>
+{% endif %}
 
-                {% if 4 > people|length %}
-                    {% include 'FrontFrontBundle:User:add.html.twig' %}
-                {% endif %}
-                
-{#       manque alerte, toastr, pagination, voir user:index.html.twig#}
+<div class="blog_masonry_3col">
+    <div class="grid-boxes">
+
+        {% for person in pagination %}
+            {% include 'FrontFrontBundle:User:showListDiv.html.twig' %}
+        {% endfor %}
+
+        {% if 5 > count_people %}
+            {% include 'FrontFrontBundle:User:add.html.twig' %}
+        {% endif %}
 
     </div>    
 </div>
+
+<div class="margin-bottom-10"></div>
+
+{{ knp_pagination_render(pagination) }}

@@ -6,7 +6,7 @@ function loadMasonry() {
     var $container = $('.grid-boxes');
 
     var gutter = 30;
-    var min_width = 290;
+    var min_width = 240;
     $container.imagesLoaded(function () {
         $container.masonry({
             itemSelector: '.grid-boxes-in',

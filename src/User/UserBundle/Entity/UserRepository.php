@@ -14,6 +14,14 @@ class UserRepository extends EntityRepository {
 
     public function findUserByLocation($limit = 6, $latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
 
+        $query = $this->findUserByLocationQuery($limit, $latitude, $longitude, $distance, $userTypes);
+        $result = $query->getResult();
+        shuffle($result);
+        return $result;
+    }
+
+    public function findUserByLocationQuery($limit = 6, $latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
+
         $query = $this->createQueryBuilder('u')
                 ->leftJoin('u.userTypes', 'ut')
                 ->leftJoin('u.addresses', 'a')
@@ -37,13 +45,7 @@ class UserRepository extends EntityRepository {
                 ->setParameter('distance', $distance);
         /* Geocode */
 
-        $result = $query->getQuery()->getResult();
-        shuffle($result);
-        return $result;
-
-
-
-        ;
+        return  $query->getQuery();
     }
 
     public function countUserByLocation($latitude = null, $longitude = null, $distance = 20, $userTypes = null) {

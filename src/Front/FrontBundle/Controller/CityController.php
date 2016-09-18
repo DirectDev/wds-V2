@@ -123,14 +123,20 @@ class CityController extends Controller {
 
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('dancer');
 
-        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
-        $this->incrementDisplayCountersForPeople($People);
+        $query = $this->getUsersQuery($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+        $this->incrementDisplayCountersForPeople($pagination);
 
         return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
-                    'people' => $People,
+                    'userType' => $UserType,
+                    'pagination' => $pagination,
         ));
     }
 
@@ -149,14 +155,20 @@ class CityController extends Controller {
 
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
 
-        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
-        $this->incrementDisplayCountersForPeople($People);
+        $query = $this->getUsersQuery($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
-        return $this->render('FrontFrontBundle:City:teachers.html.twig', array(
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+        $this->incrementDisplayCountersForPeople($pagination);
+
+        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
-                    'people' => $People,
+                    'userType' => $UserType,
+                    'pagination' => $pagination,
         ));
     }
 
@@ -175,14 +187,20 @@ class CityController extends Controller {
 
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
 
-        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
-        $this->incrementDisplayCountersForPeople($People);
+        $query = $this->getUsersQuery($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
-        return $this->render('FrontFrontBundle:City:artists.html.twig', array(
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+        $this->incrementDisplayCountersForPeople($pagination);
+
+        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
-                    'people' => $People,
+                    'userType' => $UserType,
+                    'pagination' => $pagination,
         ));
     }
 
@@ -201,14 +219,20 @@ class CityController extends Controller {
 
         $UserType = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
 
-        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
-        $this->incrementDisplayCountersForPeople($People);
+        $query = $this->getUsersQuery($em, 200, $city->getLatitude(), $city->getLongitude(), 20, array($UserType));
 
-        return $this->render('FrontFrontBundle:City:bars.html.twig', array(
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+        $this->incrementDisplayCountersForPeople($pagination);
+
+        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
-                    'people' => $People,
+                    'userType' => $UserType,
+                    'pagination' => $pagination,
         ));
     }
 
@@ -468,6 +492,14 @@ class CityController extends Controller {
                 ->findUserByLocation($limit, $latitude, $longitude, $distance, $userTypes);
 
         return $users;
+    }
+
+    private function getUsersQuery($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20, $userTypes = null) {
+
+        $query = $em->getRepository('UserUserBundle:User')
+                ->findUserByLocationQuery($limit, $latitude, $longitude, $distance, $userTypes);
+
+        return $query;
     }
 
     private function getPhotos($em, $limit = 6, $latitude = null, $longitude = null, $distance = 20) {

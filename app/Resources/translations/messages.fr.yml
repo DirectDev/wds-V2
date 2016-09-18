@@ -82,8 +82,9 @@ city:
     shows: 'Les shows'
     teachers: 'Les professeurs'
     videos: 'Les vidéos'
+    no_users: "Aucun %USERTYPE% n'est enregistré à %CITY%, pour le moment. Soyez le premier et boostez votre popularité."
 
-contact:
+contact: 
     contact_alert_success: 'Votre message a été envoyé avec succès. Merci !'
     contact_alert_warning: 'Votre message n''a pas été envoyé. Merci de réessayer.'
     contact_page_title: Contact
@@ -886,7 +887,7 @@ user:
         add:
             h3: "Comment apparaître ici ?"
             span: 'Créez votre compte sur WeDanceSalsa pour apparaître dans les recherches et booster votre popularité.'
-        no_users: "Nous n'avons pas trouvé personne correspondant à votre recherche."    
+        no_users: "Nous n'avons pas trouvé de personne correspondant à votre recherche."    
 
     musics_title: Musiques
     my_events: 'Mes événements'
@@ -941,6 +942,8 @@ toastr:
         criterias: "Vos critères de recherches : <br> %CRITERIAS%"
         
     load:
+        city:
+            no_users: "Aucun %USERTYPE% n'est enregistré à %CITY%, pour le moment. Soyez le premier et boostez votre popularité."
         import_facebook:
             no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
             success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés. <br>Nombre d'événements ajoutés : %COUNT% <br>Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
@@ -953,6 +956,6 @@ toastr:
             success: "Voici les prochains événements Facebook Salsa/Bachata/kizomba vous pouvez ajouter ou mettre à jour."  
             success_count: "Nombre d'événements a ajouter : %COUNT%" 
         user:
-            no_users: "Nous n'avons trouvé personne correspondant à votre recherche."
+            no_users: "Nous n'avons trouvé de personne correspondant à votre recherche."
             more_5: "Nous avons plus de 5 personnes correspondantes à votre recherche."
             less_5: "Nous avons des personnes correspondantes à votre recherche."
