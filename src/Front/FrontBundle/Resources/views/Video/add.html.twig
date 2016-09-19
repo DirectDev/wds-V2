@@ -1,26 +1,25 @@
-{% set image_default_uri = 'images/wds_750x340_add.png' %}
 
-<div id="video_">  
+{% set image_default_uri = 'images/wds_300x150_add_inversed.png' %}
+
+<div class="grid-boxes-in" id="video_">
 
     {% set url = path('fos_user_security_login') %}
     {% if app.user %}
         {% set url = path('front_user_edit', { id : app.user.id } ) %}
     {% endif %}
 
-    <a href='{{ url }}'>
-        <div class="col-md-6 col-lg-4 md-margin-bottom-20">
-
-            <div class="responsive-video margin-bottom-10">
-                <img src="{{ asset(image_default_uri) }}" alt="" class="img-responsive">
-            </div>
-
-            <div class="news-v1 margin-bottom-40">
-                <h3 class="font-normal color-red">{% trans %}video.list.add.title{% endtrans %}</h3>
-                <p>
-                    {% trans %}video.list.add.p{% endtrans %}             
-                </p>            
-            </div>
-        </div>
+    <a  href="{{ url }}">
+        <img src="{{ asset(image_default_uri) }}" alt="" class="img-responsive" >
     </a>
 
+    <div class="grid-boxes-caption">
+        <h3>
+            <a class="color-red"  href="{{ path('landing_pro') }}">
+                {% trans %}video.list.add.title{% endtrans %}
+            </a>
+        </h3>
+        <p>
+            {% trans %}video.list.add.p{% endtrans %}
+        </p>
+    </div>
 </div>

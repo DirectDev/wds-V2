@@ -65,10 +65,15 @@ class MusicController extends Controller {
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
         );
 
+        $userInFilter = null;
+        if($filterData['user'])
+            $userInFilter = $em->getRepository('UserUserBundle:User')->find($filterData['user']);
+
         return $this->render('FrontFrontBundle:Music:index.html.twig', array(
                     'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
+                    'userInFilter' => $userInFilter
         ));
     }
     

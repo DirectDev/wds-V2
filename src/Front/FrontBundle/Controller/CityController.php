@@ -163,7 +163,7 @@ class CityController extends Controller {
         );
         $this->incrementDisplayCountersForPeople($pagination);
 
-        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
+        return $this->render('FrontFrontBundle:City:teachers.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
@@ -195,7 +195,7 @@ class CityController extends Controller {
         );
         $this->incrementDisplayCountersForPeople($pagination);
 
-        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
+        return $this->render('FrontFrontBundle:City:artists.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
@@ -227,7 +227,7 @@ class CityController extends Controller {
         );
         $this->incrementDisplayCountersForPeople($pagination);
 
-        return $this->render('FrontFrontBundle:City:dancers.html.twig', array(
+        return $this->render('FrontFrontBundle:City:bars.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,

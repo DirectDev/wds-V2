@@ -880,6 +880,7 @@ music:
         add:
             desc: 'Add your music here'
             title: 'Add your music'
+        no_videos: "There are no musics matching matching your search."    
 
     search_input_placeholder: 'Search Music'
     search_title: Musics
@@ -1101,6 +1102,7 @@ video:
         add:
             p: 'Share your favourite videos.'
             title: 'Add a video'
+        no_videos: "There are no videos matching matching your search."    
 
     search_input_placeholder: 'Search video'
     search_title: Videos
@@ -1126,6 +1128,10 @@ toastr:
                 no_valid_address: "Please verify address for event : %NAME% "
                 no_next_date: "Please add a date for event : %NAME% "
                 no_picture: "Please add a picture for event : %NAME% "
+        music:
+            no_musics: "There are no musics matching your search."
+            less_5: "There are a few musics matching your search."
+            more_5: "There are all musics matching your search." 
         preview_import_facebook:
             success: "You can add or update those Salsa/Bachata/Kizomba events"  
             success_count: "Events to add : %COUNT%"     
@@ -1133,3 +1139,7 @@ toastr:
             no_users: "We didn't find anybody matching your criterias."
             more_5: "We found more than 5 people matching your criterias."
             less_5: "We found some people matching your criterias."
+        video:
+            no_videos: "There are no videos matching your search."
+            less_5: "There are a few videos matching your search."
+            more_5: "There are all videos matching your search." 

@@ -13,6 +13,7 @@ class UserFileRepository extends EntityRepository {
                 ->leftJoin('u.userTypes', 'ut')
                 ->leftJoin('u.addresses', 'a')
                 ->setMaxResults($limit)
+                ->orderBy('uf.id', 'DESC')
         ;
 
         /* Geocode */

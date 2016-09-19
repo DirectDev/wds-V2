@@ -18,6 +18,7 @@ class EventFileRepository extends EntityRepository {
                 ->leftJoin('ef.event', 'e')
                 ->leftJoin('e.addresses', 'a')
                 ->setMaxResults($limit)
+                ->orderBy('ef.id', 'DESC')
         ;
 
         /* Geocode */

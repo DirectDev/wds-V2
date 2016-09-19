@@ -19,13 +19,35 @@
             <!-- Profile Content -->            
             <div class="col-md-9">
 
+                {% set count_video = 0 %}
                 {% for video in videos %}
-                    {% render(path('front_video_show', { id : video.id } )) %}
+                    {% set count_video = count_video + 1 %}
                 {% endfor %}
 
-                {% if 8 > videos|length %}
-                    {% include 'FrontFrontBundle:Video:add.html.twig' %}
+                {% if 1 > count_video %}
+                    <div class="alert alert-info fade in">
+                        <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                        <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+                        {% trans with { '%CITY%' : app.session.get('city')|capitalize } %}city.no_videos{% endtrans %}
+                    </div>
+                    <script type="text/javascript">
+                        toastr.info("{% trans with { '%CITY%' : app.session.get('city')|capitalize }  %}toastr.load.city.no_videos{% endtrans %}");
+                    </script>
                 {% endif %}
+
+                <div class="blog_masonry_3col">
+                    <div class="grid-boxes">
+
+                        {% for video in videos %}
+                            {% render(path('front_video_show', { id : video.id } )) %}
+                        {% endfor %}
+
+                        {% if 8 > videos|length %}
+                            {% include 'FrontFrontBundle:Video:add.html.twig' %}
+                        {% endif %}
+
+                    </div>    
+                </div>
 
             </div>
             <!-- End Profile Content -->            

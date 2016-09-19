@@ -88,10 +88,15 @@ class VideoController extends Controller {
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
         );
 
+        $userInFilter = null;
+        if($filterData['user'])
+            $userInFilter = $em->getRepository('UserUserBundle:User')->find($filterData['user']);
+
         return $this->render('FrontFrontBundle:Video:index.html.twig', array(
                     'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
+                    'userInFilter' => $userInFilter
         ));
     }
 
@@ -118,10 +123,15 @@ class VideoController extends Controller {
                 $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
         );
 
+        $userInFilter = null;
+        if($filterData['user'])
+            $userInFilter = $em->getRepository('UserUserBundle:User')->find($filterData['user']);
+
         return $this->render('FrontFrontBundle:Move:index.html.twig', array(
                     'page' => $page,
                     'pagination' => $pagination,
                     'filterForm' => $filterForm->createView(),
+                    'userInFilter' => $userInFilter
         ));
     }
 

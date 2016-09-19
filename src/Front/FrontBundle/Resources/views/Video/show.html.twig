@@ -1,32 +1,32 @@
-<div id="video_{{ video.id }}">  
-    <div class="col-md-6 col-lg-4 md-margin-bottom-20">
-        {% include 'FrontFrontBundle:Video:player.html.twig' with { video : video } %} 
+<div class="grid-boxes-in" id="video_{{ video.id }}">
 
-        <div class="news-v1 margin-bottom-40">
-            <h3 class="font-normal">{{ video.getTitle() }}</h3>
-            <p>{% trans %}tags.label{% endtrans %} :
-                {{ video.getTagsText()|truncate(20) }}              
-            </p>            
-            <ul class="list-inline news-v1-info no-margin-bottom">
-                <li>
-                    <span>{% trans %}user.by{% endtrans %}</span>&nbsp;
-                    {% if video.user %}
-                        <a href="{{ path('front_user_show_public', { username : video.user.username, id : video.user.id } ) }}">
-                            {{  video.user.getName|capitalize|truncate(10) }}
-                        </a>
-                    {% endif %}
-                </li>
-                <li>|</li>
-                <li>
-                    <i class="fa fa-clock-o"></i> 
-                    {{  video.createdAt|localizeddate('medium', 'none', app.request.locale)|capitalize }}
-                </li>
-                <li>|</li>
-                <li class="pull-right">
-                    {% include 'FrontFrontBundle:Video:linkLoveVideo.html.twig' with { video : video } %} 
-                </li>
-            </ul>   
-        </div>
+    <div class="bg-color-dark">
+        {% include 'FrontFrontBundle:Video:player.html.twig' with { video : video } %}
     </div>
 
+    <div class="grid-boxes-caption">
+        <h3>{{ video.getTitle() }}</h3>    
+        <p>{% trans %}tags.label{% endtrans %} :
+            {{ video.getTagsText()|truncate(20) }}              
+        </p> 
+        <ul class="list-inline grid-boxes-news">
+            <li>
+                <span>{% trans %}user.by{% endtrans %}</span>&nbsp; 
+                {% if video.user %}
+                    <a href="{{ path('front_user_show_public', { username : video.user.username, id : video.user.id } ) }}">
+                        {{  video.user.getName|capitalize|truncate(10) }}
+                    </a>
+                {% endif %}
+            </li>
+            <li>|</li>
+            <li>
+                <i class="fa fa-clock-o"></i> 
+                {{  video.createdAt|localizeddate('medium', 'none', app.request.locale)|capitalize }}
+            </li>
+            <li>|</li>
+            <li class="pull-right">
+                {% include 'FrontFrontBundle:Video:linkLoveVideo.html.twig' with { video : video } %} 
+            </li>
+        </ul>                    
+    </div>
 </div>

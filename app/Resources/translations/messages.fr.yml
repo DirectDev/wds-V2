@@ -707,6 +707,7 @@ music:
         add:
             desc: 'Partagez vos musiques préférées'
             title: 'Ajoutez votre musique'
+        no_musics: "Nous n'avons trouvé de musique correspondante à votre recherche."
 
     search_input_placeholder: 'Recherchez une musique'
     search_title: Musiques
@@ -927,6 +928,7 @@ video:
         add:
             p: 'Partagez et faites décourvir vos vidéos préférées.'
             title: 'Ajoutez vos vidéos'
+        no_videos: "Nous n'avons trouvé de vidéo correspondante à votre recherche."
 
     search_input_placeholder: 'Rechercher une vidéo'
     search_title: Vidéos
@@ -952,6 +954,10 @@ toastr:
                 no_valid_address: "Veuillez vérifier l'addresse de l'évenement : %NAME% "
                 no_next_date: "Veuillez ajouter une date pour l'évenement : %NAME% "
                 no_picture: "Veuillez ajouter une image pour l'évenement : %NAME% "
+        music:
+            no_musics: "Nous n'avons trouvé de musique correspondante à votre recherche."
+            less_5: "Nous avons trouvé quelques musiques correspondantes à votre recherche."
+            more_5: "Voici les musiques correspondantes à votre recherche." 
         preview_import_facebook:
             success: "Voici les prochains événements Facebook Salsa/Bachata/kizomba vous pouvez ajouter ou mettre à jour."  
             success_count: "Nombre d'événements a ajouter : %COUNT%" 
@@ -959,3 +965,7 @@ toastr:
             no_users: "Nous n'avons trouvé de personne correspondant à votre recherche."
             more_5: "Nous avons plus de 5 personnes correspondantes à votre recherche."
             less_5: "Nous avons des personnes correspondantes à votre recherche."
+        video:
+            no_videos: "Nous n'avons trouvé de vidéo correspondante à votre recherche."
+            less_5: "Nous avons trouvé quelques vidéos correspondantes à votre recherche."
+            more_5: "Voici les vidéos correspondantes à votre recherche."   
