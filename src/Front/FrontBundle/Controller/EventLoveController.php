@@ -53,7 +53,7 @@ class EventLoveController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createLoveForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -78,7 +78,7 @@ class EventLoveController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createUnLoveForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

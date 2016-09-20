@@ -87,7 +87,7 @@ class FacebookController extends Controller {
         $user = $this->getUser();
 
         $facebookEventImportForm = $this->createFacebookEventImportForm();
-        $facebookEventImportForm->handleRequest($request);
+        $facebookEventImportForm->submit($request);
 
         if ($facebookEventImportForm->isValid()) {
             $data = $facebookEventImportForm->getData();

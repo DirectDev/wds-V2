@@ -39,7 +39,7 @@ class UserController extends Controller {
         );
 
         $filterForm = $this->createFilterUserForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('FrontFrontBundle:User:index.html.twig', array(
                     'page' => $page,
@@ -56,7 +56,7 @@ class UserController extends Controller {
             throw new \Exception('Page not found!');
 
         $filterForm = $this->createFilterUserForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -234,10 +234,9 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-
         $deleteForm = $this->createDeleteForm($id);
         $editProfileForm = $this->createEditProfileForm($entity);
-        $editProfileForm->handleRequest($request);
+        $editProfileForm->submit($request);
 
         if ($editProfileForm->isValid()) {
             $em->flush();
@@ -246,6 +245,10 @@ class UserController extends Controller {
                     'success', $this->get('translator')->trans('form.ffup.flashbags.update')
             );
         }
+        else
+            $this->get('session')->getFlashBag()->add(
+                    'error', $this->get('translator')->trans('form.ffup.flashbags.error')
+            );
 
         return $this->render('FrontFrontBundle:User:profileForm.html.twig', array(
                     'entity' => $entity,
@@ -268,7 +271,7 @@ class UserController extends Controller {
         }
 
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
-        $editDescriptionForm->handleRequest($request);
+        $editDescriptionForm->submit($request);
 
         if ($editDescriptionForm->isValid()) {
             $em->flush();
@@ -298,7 +301,7 @@ class UserController extends Controller {
         }
 
         $editLinkForm = $this->createEditLinkForm($entity);
-        $editLinkForm->handleRequest($request);
+        $editLinkForm->submit($request);
 
         if ($editLinkForm->isValid()) {
             $em->flush();
@@ -483,7 +486,7 @@ class UserController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createLoveForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -508,7 +511,7 @@ class UserController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createUnLoveForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -642,7 +645,7 @@ class UserController extends Controller {
         );
 
         $filterForm = $this->createFilterEventForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('FrontFrontBundle:User:events.html.twig', array(
                     'pagination' => $pagination,
@@ -658,7 +661,7 @@ class UserController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $filterForm = $this->createFilterEventForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -696,7 +699,7 @@ class UserController extends Controller {
      */
     public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if (!$id or ! $this->getUser())
             throw $this->createNotFoundException('Unable to find User entity.');

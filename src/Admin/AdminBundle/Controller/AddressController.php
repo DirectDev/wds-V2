@@ -24,7 +24,7 @@ class AddressController extends Controller {
         );
 
         $filterForm = $this->createFilterForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('AdminAdminBundle:Address:index.html.twig', array(
                     'pagination' => $pagination,
@@ -45,7 +45,7 @@ class AddressController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $filterForm = $this->createFilterForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -73,7 +73,7 @@ class AddressController extends Controller {
     public function createAction(Request $request) {
         $entity = new Address();
         $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -207,7 +207,7 @@ class AddressController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
 
@@ -237,7 +237,7 @@ class AddressController extends Controller {
      */
     public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

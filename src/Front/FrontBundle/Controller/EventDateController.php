@@ -37,7 +37,7 @@ class EventDateController extends Controller {
         $entity = new EventDate();
         $entity->addEvent($event);
         $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
 
@@ -220,7 +220,7 @@ class EventDateController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $em->flush();
@@ -251,7 +251,7 @@ class EventDateController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

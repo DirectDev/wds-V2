@@ -33,7 +33,7 @@ class MusicController extends Controller {
         );
 
         $filterForm = $this->createFilterMusicForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('FrontFrontBundle:Music:index.html.twig', array(
                     'page' => $page,
@@ -50,7 +50,7 @@ class MusicController extends Controller {
             throw new \Exception('Page not found!');
 
         $filterForm = $this->createFilterMusicForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -109,7 +109,7 @@ class MusicController extends Controller {
         $music->setUser($user);
         $music->setCreatedAt(new \DateTime());
         $form = $this->createCreateForm($music, $id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -269,7 +269,7 @@ class MusicController extends Controller {
             return new Response('', 403);
 
         $editForm = $this->createEditForm($music);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $music->setName($music->getTitle());

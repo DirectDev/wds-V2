@@ -24,7 +24,7 @@ class CityController extends Controller {
         );
 
         $filterForm = $this->createFilterForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('AdminAdminBundle:City:index.html.twig', array(
                     'pagination' => $pagination,
@@ -45,7 +45,7 @@ class CityController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $filterForm = $this->createFilterForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -73,7 +73,7 @@ class CityController extends Controller {
     public function createAction(Request $request) {
         $entity = new City();
         $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -192,7 +192,7 @@ class CityController extends Controller {
         }
 
         $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $em->flush();

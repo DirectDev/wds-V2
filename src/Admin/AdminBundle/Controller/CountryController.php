@@ -24,7 +24,7 @@ class CountryController extends Controller {
         );
 
         $filterForm = $this->createFilterForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('AdminAdminBundle:Country:index.html.twig', array(
                     'pagination' => $pagination,
@@ -45,7 +45,7 @@ class CountryController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $filterForm = $this->createFilterForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -73,7 +73,7 @@ class CountryController extends Controller {
     public function createAction(Request $request) {
         $entity = new Country();
         $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -198,7 +198,7 @@ class CountryController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $em->flush();
@@ -219,7 +219,7 @@ class CountryController extends Controller {
      */
     public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

@@ -13,7 +13,7 @@ class DefaultController extends Controller {
         $form = $this->createCreateForm($enquiry);
 
         $request = $this->getRequest();
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
 

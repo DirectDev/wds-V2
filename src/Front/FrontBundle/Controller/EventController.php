@@ -28,7 +28,7 @@ class EventController extends Controller {
 
         $entity = new Event();
         $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -210,7 +210,7 @@ class EventController extends Controller {
 
 
         $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
 
         if ($editForm->isValid()) {
@@ -269,7 +269,7 @@ class EventController extends Controller {
             return new Response('', 403);
 
         $editLinkForm = $this->createEditLinkForm($entity);
-        $editLinkForm->handleRequest($request);
+        $editLinkForm->submit($request);
 
 
         if ($editLinkForm->isValid()) {
@@ -302,7 +302,7 @@ class EventController extends Controller {
                 return new Response('', 403);
 
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
-        $editDescriptionForm->handleRequest($request);
+        $editDescriptionForm->submit($request);
 
 
         if ($editDescriptionForm->isValid()) {
@@ -331,7 +331,7 @@ class EventController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

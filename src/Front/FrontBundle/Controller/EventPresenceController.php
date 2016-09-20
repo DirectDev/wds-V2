@@ -53,7 +53,7 @@ class EventPresenceController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createPresenceForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -78,7 +78,7 @@ class EventPresenceController extends Controller {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         $form = $this->createUnPresenceForm($id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

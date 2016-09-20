@@ -33,7 +33,7 @@ class VideoController extends Controller {
         );
 
         $filterForm = $this->createFilterVideoForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('FrontFrontBundle:Video:index.html.twig', array(
                     'page' => $page,
@@ -56,7 +56,7 @@ class VideoController extends Controller {
         );
 
         $filterForm = $this->createFilterMoveForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         return $this->render('FrontFrontBundle:Move:index.html.twig', array(
                     'page' => $page,
@@ -73,7 +73,7 @@ class VideoController extends Controller {
             throw new \Exception('Page not found!');
 
         $filterForm = $this->createFilterVideoForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -108,7 +108,7 @@ class VideoController extends Controller {
             throw new \Exception('Page not found!');
 
         $filterForm = $this->createFilterMoveForm();
-        $filterForm->handleRequest($request);
+        $filterForm->submit($request);
 
         $filterData = array();
 
@@ -176,7 +176,7 @@ class VideoController extends Controller {
         $video->setUser($user);
         $video->setCreatedAt(new \DateTime());
         $form = $this->createCreateForm($video, $id);
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -334,7 +334,7 @@ class VideoController extends Controller {
             return new Response('', 403);
 
         $editForm = $this->createEditForm($video);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $video->setName($video->getTitle());

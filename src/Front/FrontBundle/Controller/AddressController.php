@@ -43,7 +43,7 @@ class AddressController extends Controller {
         $address = new Address();
         $address->addEvent($event);
         $form = $this->createCreateFormByEvent($address, $event->getId());
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -120,7 +120,7 @@ class AddressController extends Controller {
         $address = new Address();
         $address->addUser($user);
         $form = $this->createCreateFormByUser($address, $user->getId());
-        $form->handleRequest($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -279,7 +279,7 @@ class AddressController extends Controller {
             return new Response('', 403);
 
         $editForm = $this->createEditForm($address);
-        $editForm->handleRequest($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
 
