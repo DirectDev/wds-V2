@@ -13,12 +13,12 @@ $(document).on('submit', 'form[name="ffup"]', function (e) {
                 data: postData,
                 success: function (html)
                 {
-                    $('#profilFormDiv').empty().html(html);
+                    $('#profilForm').empty().html(html);
                     loadBootstrapValidator();
-                    scrollToElement($('#profilFormDiv .flashbags'));
+                    scrollToElement($('#profilForm'));
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -49,10 +49,10 @@ $(document).on('submit', 'form[name="ffud"]', function (e) {
                     $('#descriptionForm').empty().html(html);
                     updateCKEditors();
                     loadBootstrapValidator();
-                    scrollToElement($('#descriptionForm .flashbags'));
+                    scrollToElement($('#descriptionForm'));
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -77,10 +77,10 @@ $(document).on('submit', 'form[name="fful"]', function (e) {
                 {
                     $('#linkForm').empty().html(html);
                     loadBootstrapValidator();
-                    scrollToElement($('#linkForm .flashbags'));
+                    scrollToElement($('#linkForm'));
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -126,7 +126,7 @@ $(document).on('submit', 'form.newMusic', function (e) {
                     loadBootstrapValidator();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -189,7 +189,7 @@ $(document).on('submit', 'form.editMusic', function (e) {
                     loadBootstrapValidator();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -207,8 +207,9 @@ $(document).on('click', '#userAddVideo', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#userVideoList').prepend(html);
+            $('#userVideoForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;
@@ -221,7 +222,6 @@ $(document).on('submit', 'form.newVideo', function (e) {
         xhr.abort();
     }
 
-    var div = $(this).parent();
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
     xhr = $.ajax(
@@ -231,11 +231,12 @@ $(document).on('submit', 'form.newVideo', function (e) {
                 data: postData,
                 success: function (html)
                 {
-                    div.replaceWith(html);
+                    $('#userVideoForms').empty();
+                    prependDivToMasonry(html);
                     loadBootstrapValidator();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -300,7 +301,7 @@ $(document).on('submit', 'form.editVideo', function (e) {
                     loadBootstrapValidator();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -347,7 +348,7 @@ $(document).on('submit', 'form.newAddress', function (e) {
                     reloadEventAlerts();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -413,7 +414,7 @@ $(document).on('submit', 'form.editAddress', function (e) {
                     reloadEventAlerts();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -445,10 +446,10 @@ $(document).on('submit', 'form[name="ffede"]', function (e) {
                     $('#descriptionForm').empty().html(html);
                     updateCKEditors();
                     loadBootstrapValidator();
-                    scrollToElement($('#descriptionForm .flashbags'));
+                    scrollToElement($('#descriptionForm'));
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }
@@ -473,10 +474,10 @@ $(document).on('submit', 'form[name="ffel"]', function (e) {
                 {
                     $('#linkForm').empty().html(html);
                     loadBootstrapValidator();
-                    scrollToElement($('#linkForm .flashbags'));
+                    scrollToElement($('#linkForm'));
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
-                    if(error_xhr.status==403) {
+                    if (error_xhr.status == 403) {
                         location.reload();
                     }
                 }

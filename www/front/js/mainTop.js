@@ -1,6 +1,7 @@
 var xhr;
 var xhr_list;
 var xhr_map;
+var masonryContainer;
 
 $(document).ajaxStart(function () {
     $('body').addClass('wait');
