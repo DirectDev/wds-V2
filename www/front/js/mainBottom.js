@@ -256,8 +256,10 @@ $(document).on('click', 'button.modifyVideo, button.cancelVideo', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#video_' + videoId).replaceWith(html);
+            $('#video_' + videoId).remove();
+            $('#userVideoForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;
@@ -279,6 +281,7 @@ $(document).on('click', 'button.deleteVideo', function () {
         {
             $('#video_' + videoId).remove();
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;
@@ -297,8 +300,10 @@ $(document).on('submit', 'form.editVideo', function (e) {
                 data: postData,
                 success: function (html)
                 {
-                    $('#video_' + videoId).replaceWith(html);
+                    $('#userVideoForms').empty();
+                    prependDivToMasonry(html);
                     loadBootstrapValidator();
+                    loadMasonry();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
                     if (error_xhr.status == 403) {

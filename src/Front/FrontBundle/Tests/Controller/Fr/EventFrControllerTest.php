@@ -47,6 +47,10 @@ class EventFrControllerTest extends WebTestCase {
         $this->deleteData();
     }
 
+    private function findUserLogged() {
+        return $this->em->getRepository('UserUserBundle:User')->findOneByUsername($this->PHP_AUTH_USER);
+    }
+
     private function findEvent() {
         $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(
                 array(
@@ -266,6 +270,144 @@ class EventFrControllerTest extends WebTestCase {
             )));
             $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         }
+    }
+
+    public function testEdit() {
+        $event = $this->findOneEvent();
+        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findUserLogged();
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditDescription() {
+        $event = $this->findOneEvent();
+        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit_description', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_description', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findUserLogged();
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_description', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditAddresses() {
+        $event = $this->findOneEvent();
+        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit_addresses', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_addresses', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findUserLogged();
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_addresses', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditDates() {
+        $event = $this->findOneEvent();
+        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit_dates', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_dates', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findUserLogged();
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_dates', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditPictures() {
+        $event = $this->findOneEvent();
+        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit_pictures', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_pictures', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findUserLogged();
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_pictures', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditLinks() {
+        $event = $this->findOneEvent();
+        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit_links', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_links', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $user = $this->findUserLogged();
+        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_links', array(
+                    'id' => $event->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
 }

@@ -22,6 +22,14 @@ class User extends BaseUser {
 
     use ORMBehaviors\Translatable\Translatable;
 
+
+    /**
+     * @var string
+     *
+     * @Assert\NotNull()
+     */
+    protected $username;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

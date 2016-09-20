@@ -14,6 +14,30 @@ front_user_show_private:
 front_user_edit:
     path:     /profile/edit/{id}
     defaults: { _controller: "FrontFrontBundle:User:edit" }
+
+front_user_edit_description:
+    path:     /profile_description/edit/{id}
+    defaults: { _controller: "FrontFrontBundle:User:editDescription" }
+
+front_user_edit_pictures:
+    path:     /profile_pictures/edit/{id}
+    defaults: { _controller: "FrontFrontBundle:User:editPictures" }
+
+front_user_edit_musics:
+    path:     /profile_musics/edit/{id}
+    defaults: { _controller: "FrontFrontBundle:User:editMusics" }
+
+front_user_edit_videos:
+    path:     /profile_videos/edit/{id}
+    defaults: { _controller: "FrontFrontBundle:User:editVideos" }
+
+front_user_edit_links:
+    path:     /profile_links/edit/{id}
+    defaults: { _controller: "FrontFrontBundle:User:editLinks" }
+
+front_user_edit_addresses:
+    path:     /profile_addresses/edit/{id}
+    defaults: { _controller: "FrontFrontBundle:User:editAddresses" }
   
 front_user_update_profile:
     path:     /profile/update_profile/{id}

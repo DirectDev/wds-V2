@@ -1,0 +1,47 @@
+<!--Left Sidebar-->
+<div class="col-md-2 md-margin-bottom-40">
+
+    <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+
+        <li class="list-group-item {% if active == 'profile' %}active{% endif %}">
+            <a href="{{ path('front_user_edit', { id : app.user.id }) }}">
+                {% trans %}user.edit.profil{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'descriptions' %}active{% endif %}">
+            <a href="{{ path('front_user_edit_description', { id : app.user.id }) }}">
+                {% trans %}user.edit.descriptions{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'addresses' %}active{% endif %}">
+            <a href="{{ path('front_user_edit_addresses', { id : app.user.id }) }}">
+                {% trans %}user.edit.addresses.title{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'pictures' %}active{% endif %}">
+            <a href="{{ path('front_user_edit_pictures', { id : app.user.id }) }}">
+                {% trans %}user.edit.pictures{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'musics' %}active{% endif %}">
+            <a href="{{ path('front_user_edit_musics', { id : app.user.id }) }}">
+                {% trans %}user.edit.musics{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'videos' %}active{% endif %}">
+            <a href="{{ path('front_user_edit_videos', { id : app.user.id }) }}">
+                {% trans %}user.edit.videos{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'links' %}active{% endif %}">
+            <a href="{{ path('front_user_edit_links', { id : app.user.id }) }}">
+                {% trans %}user.edit.links{% endtrans %}
+            </a>
+        </li>      
+        
+    </ul>
+            
+    <div class="margin-bottom-50"></div>
+
+</div>
+<!--End Left Sidebar-->

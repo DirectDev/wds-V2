@@ -49,14 +49,15 @@ class VideoRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
-    public function filter($data, $locale = 'en') {
+    public function filter($data, $locale = 'en', $sort = 'v.id', $order = 'DESC') {
         $query = $this->createQueryBuilder('v')
                 ->leftJoin('v.translations', 'vt', 'WITH', 'vt.locale = :locale')
                 ->leftJoin('v.user', 'u')
                 ->leftJoin('v.tags', 't')
                 ->leftJoin('t.translations', 'tt', 'WITH', 'tt.locale = :locale')
                 ->setParameter('locale', $locale)
-                ->where("1 = 1");
+                ->where("1 = 1")
+                ->orderBy($sort, $order);
 
         if (isset($data["search"])) {
             $orQuery = $query->expr()->orx();

@@ -8,6 +8,7 @@ Delete: Supprimer
 Next: Suivant
 Previous: Précédent
 Update: 'Mettre à jour'
+Edit: 'Modifier'
 
 add_block:
     event:
@@ -520,7 +521,7 @@ form:
                 label: Type
 
             username:
-                label: Login
+                label: Login / Pseudo
             firstname:
                 label: Prénom
             lastname:
@@ -528,12 +529,19 @@ form:
             published:
                 label: "Afficher mon profil sur le site et dans les recherches"
             show_last_firstname:
-                label: "Afficher mon prénom et mon nom"
+                label: "Afficher mon prénom et mon nom sur le site, plutôt que mon pseudo"
 
         flashbags:
-            update: 'Votre profil a été mis à jour'
+            update: "Votre profil a été mis à jour avec succès."
+            error: "Votre profil n'a pas été mis à jour, veuillez vérifier le formulaire."
 
     ffv:
+        flashbags:
+            create: "Votre vidéo a été ajoutée avec succès"
+            update: "Votre vidéo a été mise à jour avec succès"
+            error: "Une erreur c'est produite, veuillez vérifier le formulaire."
+        button:
+            create: "Ajouter la vidéo"
         children:
             move:
                 label: 'Vidéo d''une passe ou d''un shine'
@@ -853,10 +861,10 @@ user:
 
     edit:
         addresses:
+            title : "Adresses"
             h2: 'Indiquez votre ou vos adresses'
             p: 'Ajoutez une ou plusieurs adresses pour apparaitre dans les villes de votre choix.'
 
-        adresses: Adresses
         descriptions: Descriptions
         descriptions.h2: 'Décrivez-vous ici'
         links: Liens
@@ -968,4 +976,13 @@ toastr:
         video:
             no_videos: "Nous n'avons trouvé de vidéo correspondante à votre recherche."
             less_5: "Nous avons trouvé quelques vidéos correspondantes à votre recherche."
-            more_5: "Voici les vidéos correspondantes à votre recherche."   
+            more_5: "Voici les vidéos correspondantes à votre recherche." 
+            not_valid: "La vidéo %NAME% n'est pas correcte. Vérifiez le lien." 
+            new:
+                title: "Vous pouvez ajouter un titre pour votre vidéo, en français et/ou en anglais."
+                url: "Vous pouvez ajouter des vidéos venant de Youtube, Dailymotion et Vimeo. <br>Indiquez le lien ou l'url de celle çi."
+                tags: "Sélectionnez des tags en rapport avec votre vidéo. Ces tags seront utiles pour faire apparaître celle çi dans les résultats de recherches."
+    form:
+        submit:
+            ffup_success: "Votre profil a été mis à jour."
+            ffup_fail: ""

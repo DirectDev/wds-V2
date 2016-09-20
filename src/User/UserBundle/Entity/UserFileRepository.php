@@ -39,6 +39,16 @@ class UserFileRepository extends EntityRepository {
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function findByUser(\User\UserBundle\Entity\User $User, $order = 'uf.id', $sort = 'DESC') {
+        $query = $this->createQueryBuilder('uf')
+                ->select('COUNT(uf.id)')
+                ->leftJoin('uf.user', 'u')
+                ->where('u.id = :id')
+                ->orderBy($sort, $order)
+                ->setParameter('id', $User->getId());
+        return $query->getQuery();
+    }
+
     public function findForAdmin($locale = 'en') {
         $query = $this->createQueryBuilder('uf');
 

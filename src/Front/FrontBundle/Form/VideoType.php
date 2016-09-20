@@ -32,6 +32,7 @@ class VideoType extends AbstractType {
                     'multiple' => true,
                     'expanded' => true,
                     'by_reference' => false,
+                    'required' => false,
                     'label_attr' => array('class' => 'checkbox-inline')
                 ))
         ;

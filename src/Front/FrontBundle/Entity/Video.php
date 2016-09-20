@@ -89,7 +89,9 @@ class Video {
     }
 
     public function __toString() {
-        return $this->getTitle();
+        if($this->getTitle())
+            return $this->getTitle();
+        return $this->getUrl();
     }
 
     public function isVimeo() {
@@ -106,6 +108,16 @@ class Video {
 
     public function isYoutube() {
         if (stripos($this->getUrl(), 'youtube') !== false)
+            return true;
+        return false;
+    }
+
+    public function isValid() {
+        if($this->isDailymotion())
+            return true;
+        if($this->isVimeo())
+            return true;
+        if($this->isYoutube())
             return true;
         return false;
     }

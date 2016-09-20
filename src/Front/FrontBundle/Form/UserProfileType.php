@@ -15,7 +15,10 @@ class UserProfileType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
-        $builder->add('username')
+        $builder->add('username', 'text', array(
+                'required' => true,
+                'trim' => true
+            ))
             ->add('firstname')
             ->add('lastname')
             ->add('show_last_firstname')

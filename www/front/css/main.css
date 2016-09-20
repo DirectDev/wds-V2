@@ -987,3 +987,6 @@ label.required:after {
 .color-white{
     color: white !important;
 }
+.masonry-border{
+    border: 1px solid #ddd;
+}

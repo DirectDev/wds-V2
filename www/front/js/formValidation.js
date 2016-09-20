@@ -15,6 +15,7 @@ function loadBootstrapValidator() {
     });
     $('#userProfilForm input[type=checkbox]').on('click', function (e) {
         $('#userProfilForm').bootstrapValidator('resetForm');
+        $('#userProfilForm').bootstrapValidator('validate');
     });
 }
 

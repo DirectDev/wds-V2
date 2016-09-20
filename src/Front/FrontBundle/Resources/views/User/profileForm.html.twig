@@ -41,12 +41,9 @@
             if (!confirm("{% trans %}user.delete.confirmation{% endtrans %}")) {
                 return false;
             }
-            {#var bootstrapValidator = $("#userDeleteForm").data('bootstrapValidator');
-            bootstrapValidator.validate();
-            if (bootstrapValidator.isValid())#}
-                $("#userDeleteForm").submit();
-            {#else
-                return;#}
+
+            $("#userDeleteForm").submit();
+
         });
 
     });

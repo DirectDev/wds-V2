@@ -133,7 +133,7 @@ class UserFrControllerTest extends WebTestCase {
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
-    public function testFilterLoggued() {
+    public function testFilterLogged() {
 
         $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_index', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -243,7 +243,7 @@ class UserFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
-    public function testFilterEventsLoggued() {
+    public function testFilterEventsLogged() {
 
         $crawler = $this->clientLogged->request('POST', $this->router->generate('front_user_events', array('_locale' => $this->locale)));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
@@ -416,5 +416,160 @@ class UserFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         $this->assertEquals(0, $crawler->filter('html:contains("false")')->count());
     }
+    
+    public function testEditProfile() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditDescription() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit_description', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_description', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_description', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditAddresses() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit_addresses', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_addresses', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_addresses', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditPictures() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit_pictures', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_pictures', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_pictures', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditMusics() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit_musics', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_musics', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_musics', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditVideos() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit_videos', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_videos', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_videos', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
+    public function testEditLinks() {
+        $user = $this->findOneUser();
+        $crawler = $this->client->request('GET', $this->router->generate('front_user_edit_links', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_links', array(
+                    'id' => $user->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
+
+        $userLogged = $this->findUserLogged();
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_user_edit_links', array(
+                    'id' => $userLogged->getId(),
+                    '_locale' => $this->locale)
+        ));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
 
 }

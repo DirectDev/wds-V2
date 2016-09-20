@@ -58,14 +58,15 @@ class MusicRepository extends EntityRepository {
         return $query->getQuery();
     }
 
-    public function filter($data, $locale = 'en') {
+    public function filter($data, $locale = 'en', $sort = 'm.id', $order = 'DESC') {
         $query = $this->createQueryBuilder('m')
                 ->leftJoin('m.translations', 'mt', 'WITH', 'mt.locale = :locale')
                 ->leftJoin('m.user', 'u')
                 ->leftJoin('m.tags', 't')
                 ->leftJoin('t.translations', 'tt', 'WITH', 'tt.locale = :locale')
                 ->setParameter('locale', $locale)
-                ->where("1 = 1");
+                ->where("1 = 1")
+                ->orderBy($sort, $order);
 
         if (isset($data["search"])) {
             $orQuery = $query->expr()->orx();

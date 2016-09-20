@@ -12,6 +12,22 @@ front_event_edit:
     path:     /edit/{id}
     defaults: { _controller: "FrontFrontBundle:Event:edit" }
 
+front_event_edit_description:
+    path:     /edit_description/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:editDescription" }
+
+front_event_edit_dates:
+    path:     /edit_dates/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:editDates" }
+
+front_event_edit_links:
+    path:     /edit_links/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:editLinks" }
+
+front_event_edit_pictures:
+    path:     /edit_pictures/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:editPictures" }
+
 front_event_update:
     path:     /update/{id}
     defaults: { _controller: "FrontFrontBundle:Event:update" }

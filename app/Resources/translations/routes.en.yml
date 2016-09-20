@@ -250,6 +250,21 @@ front_event_delete: '/event/delete/{id}'
 # Desc: /event/edit/{id}
 front_event_edit: '/event/edit/{id}'
 
+# Desc: /event/edit_description/{id}
+front_event_edit_description: '/event/edit_description/{id}'
+
+# Desc: /event/edit_date/{id}
+front_event_edit_dates: '/event/edit_dates/{id}'
+
+# Desc: /event/edit_addresses/{id}
+front_event_edit_addresses: '/event/edit_addresses/{id}'
+
+# Desc: /event/edit_pictures/{id}
+front_event_edit_pictures: '/event/edit_pictures/{id}'
+
+# Desc: /event/edit_links/{id}
+front_event_edit_links: '/event/edit_links/{id}'
+
 # Desc: /event/new
 front_event_new: /event/new
 
@@ -381,6 +396,24 @@ front_user_delete: '/user/{id}/delete'
 
 # Desc: /user/profile/edit/{id}
 front_user_edit: '/profile/edit/{id}'
+
+# Desc: /user/profile_description/edit/{id}
+front_user_edit_description: '/profile_description/edit/{id}'
+
+# Desc: /user/profile_pictures/edit/{id}
+front_user_edit_pictures: '/profile_pictures/edit/{id}'
+
+# Desc: /user/profile_musics/edit/{id}
+front_user_edit_musics: '/profile_musics/edit/{id}'
+
+# Desc: /user/profile_videos/edit/{id}
+front_user_edit_videos: '/profile_videos/edit/{id}'
+
+# Desc: /user/profile_links/edit/{id}
+front_user_edit_links: '/profile_links/edit/{id}'
+
+# Desc: /user/profile_addresses/edit/{id}
+front_user_edit_addresses: '/profile_addresses/edit/{id}'
 
 # Desc: /user/events
 front_user_events: /user/events

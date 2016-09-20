@@ -1,34 +1,39 @@
-<div id="video_{{ video.id }}" class="tag-box tag-box-v2 box-shadow shadow-effect-1">
 
-    <div class="col-md-10 md-margin-bottom-20">
+<div class="grid-boxes-in" id="video_{{ video.id }}">
+
+    <div class="bg-color-dark">
         {% include 'FrontFrontBundle:Video:player.html.twig' with { video : video } %}
-
-        <div class="margin-bottom-40">
-            <h3>{{ video.getTitle() }}</h3>
-            <p>{% trans %}tags.label{% endtrans %} :
-                {% for tag in video.getTags() %}
-                    {{ tag.getTitle() }}              
-                {% endfor %}
-            </p>                  
-        </div>
-
     </div>
 
-    <div class="col-md-2 md-margin-bottom-20">
+    <div class="grid-boxes-caption">
+        <h3>{{ video.getTitle() }}</h3>    
+        <p>{% trans %}tags.label{% endtrans %} :
+            {{ video.getTagsText()|truncate(20) }}              
+        </p> 
+        <ul class="list-inline grid-boxes-news">
+            <li>
+                <i class="fa fa-clock-o"></i> 
+                {{  video.createdAt|localizeddate('medium', 'none', app.request.locale)|capitalize }}
+            </li>
+        </ul>      
         {% if app.user is not null and app.user == video.getUser() and is_granted('ROLE_USER') %} 
             <p> 
-                <button class="modifyVideo btn-u btn-u-green" data-video-id="{{ video.id }}" href="{{ path('front_video_edit', { 'id': video.id }) }}">
-                    <i class='fa fa-pencil'></i>
+                <button class="modifyVideo btn-u btn-u-green m-r-10" data-video-id="{{ video.id }}" href="{{ path('front_video_edit', { 'id': video.id }) }}">
+                    <i class='fa fa-pencil'></i> {{ 'Edit'|trans }}
                 </button> 
-            </p>
-            <p>
+
                 <button class="deleteVideo btn-u btn-u-red"  data-video-id="{{ video.id }}"  href="{{ path('front_video_delete', { 'id': video.id }) }}">
-                    <i class='fa fa-times'></i>
+                    <i class='fa fa-times'></i> {{ 'Delete'|trans }}
                 </button>
             </p>
         {% endif %}   
     </div>
 
-    <div class="clear-both"></div>
+    {% include 'FrontFrontBundle::flashbags.html.twig'%}
 
+    {% if not video.isValid %}
+        <script type="text/javascript">
+            toastr.warning("{% trans with { '%NAME%' : video } %}toastr.load.video.not_valid{% endtrans %}");
+        </script>
+    {% endif %}
 </div>

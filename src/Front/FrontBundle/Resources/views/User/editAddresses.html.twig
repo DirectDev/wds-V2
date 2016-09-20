@@ -1,0 +1,76 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ entity.getName()|capitalize }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('front/css/compiled/profile.css') }}" />       
+{% endblock %} 
+
+
+
+{% block content %}
+
+    {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { title : 'user.edit.addresses.title'|trans } %}
+
+
+    <!--=== Content Part ===-->
+    <div class="container content profile">
+
+        <div class="row">
+            <!--Left Sidebar-->
+            {% include 'FrontFrontBundle:User:leftSidebar.html.twig' with { active : 'addresses' } %}
+            <!--End Left Sidebar-->
+
+            <!-- Profile Content -->            
+            <div class="col-md-10">
+
+                <div class="profile-body">
+
+                    <h2 class="heading-md">{% trans %}user.edit.addresses.h2{% endtrans %}</h2>
+
+                    <p>{% trans %}user.edit.addresses.p{% endtrans %}</p>
+
+                    <button class='btn btn-success margin-bottom-30 pull-left' id="userAddAddress" href="{{ path('front_address_user_new', { id : entity.id } ) }}">
+                        {% trans %}user.add_address_button{% endtrans %}
+                    </button>
+
+                    <div  class="row margin-bottom-20" id="userAddressList">
+                        {% for address in entity.addresses %}
+                            {% render(path('front_address_show_with_buttons', { id : address.id } )) %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="margin-bottom-10"></div>
+
+                    {{ knp_pagination_render(pagination) }}
+                </div>  
+            </div>
+        </div>
+    </div>
+    <!-- End Profile Content -->
+
+</div><!--/container-->	 	
+<!--=== End Content Part ===-->
+
+{% endblock %}
+
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
+
+    <script src="{{ asset('front/js/underscore-min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/punkavefileuploader/js/jquery.fileupload.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/punkavefileuploader/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script>  
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+        });
+    </script>
+
+{% endblock %}    

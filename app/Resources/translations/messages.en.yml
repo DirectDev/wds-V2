@@ -8,6 +8,7 @@ Delete: Delete
 Next: Next
 Previous: Previous
 Update: Update
+Edit: Edit
 
 add_block:
     event:
@@ -701,12 +702,18 @@ form:
             published:
                 label: "Display my profile in search results"
             show_last_firstname:
-                label: "Display my first and last name"
+                label: "Display my first and last name, rather than my username"
 
         flashbags:
             update: 'Your profil has been updated'
 
     ffv:
+        flashbags:
+            create: "Your video has been added"
+            update: "Your video has been updated successfully"
+            error: "Oups an error occurred, please check the form again."
+        button:
+            create: "Add video"
         children:
             move:
                 label: Move
@@ -1027,10 +1034,10 @@ user:
 
     edit:
         addresses:
+            title : "Addresses"
             h2: 'Manage your addresses'
             p: 'Add one or more addresses to appear in cities you dance in.'
 
-        adresses: Adresses
         descriptions: Descriptions
         descriptions.h2: 'Manage your descriptions'
         links: Links

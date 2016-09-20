@@ -18,6 +18,48 @@ class AddressRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+
+    public function filter($data, $locale = 'en', $sort = 'a.id', $order = 'DESC') {
+        $query = $this->createQueryBuilder('a')
+                ->leftJoin('a.users', 'au')
+                ->leftJoin('au.translations', 'aut', 'WITH', 'aut.locale = :locale')
+                ->leftJoin('a.events', 'ae')
+                ->leftJoin('ae.translations', 'aet', 'WITH', 'aet.locale = :locale')
+                ->leftJoin('a.country', 'ac')
+                ->leftJoin('ac.translations', 'act', 'WITH', 'act.locale = :locale')
+                ->setParameter('locale', $locale)
+                ->where("1 = 1")
+                ->orderBy($sort, $order);
+
+        if (isset($data["search"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("a.name", ":search"));
+            $orQuery->add($query->expr()->like("a.street", ":search"));
+            $orQuery->add($query->expr()->like("a.streetComplement", ":search"));
+            $orQuery->add($query->expr()->like("a.city", ":search"));
+            $orQuery->add($query->expr()->like("a.postcode", ":search"));
+            $orQuery->add($query->expr()->like("a.facebook_id", ":search"));
+            $orQuery->add($query->expr()->like("ac.name", ":search"));
+            $orQuery->add($query->expr()->like("act.title", ":search"));
+            $orQuery->add($query->expr()->like("ae.name", ":search"));
+            $orQuery->add($query->expr()->like("aet.title", ":search"));
+            $orQuery->add($query->expr()->like("au.username", ":search"));
+            $orQuery->add($query->expr()->like("au.email", ":search"));
+            $query->andWhere($orQuery);
+            $query->setParameter('search', '%' . $data["search"] . '%');
+        }
+
+        if (isset($data["user"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->like("au.username", ":user"));
+            $orQuery->add($query->expr()->like("au.id", ":user"));
+            $query->andWhere($orQuery);
+            $query->setParameter('user', '%' . $data["user"] . '%');
+        }
+
+        return $query->getQuery();
+    }
+
     public function filterAdmin($data, $locale = 'en') {
         $query = $this->createQueryBuilder('a')
                 ->leftJoin('a.users', 'au')

@@ -148,19 +148,190 @@ class UserController extends Controller {
         }
 
         $editProfileForm = $this->createEditProfileForm($entity);
-        $editDescriptionForm = $this->createEditDescriptionForm($entity);
-        $editLinkForm = $this->createEditLinkForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('FrontFrontBundle:User:editProfile.html.twig', array(
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
+                    'edit_profile_form' => $editProfileForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing User entity.
+     *
+     */
+    public function editDescriptionAction($id) {
+
+        if (!$this->getUser() or $id != $this->getUser()->getId())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+
+        return $this->render('FrontFrontBundle:User:editDescription.html.twig', array(
+                    'entity' => $entity,
+                    'edit_description_form' => $editDescriptionForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing User entity.
+     *
+     */
+    public function editLinksAction($id) {
+
+        if (!$this->getUser() or $id != $this->getUser()->getId())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $editLinkForm = $this->createEditLinkForm($entity);
+
+        return $this->render('FrontFrontBundle:User:editLinks.html.twig', array(
+                    'entity' => $entity,
+                    'edit_link_form' => $editLinkForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing User entity.
+     *
+     */
+    public function editMusicsAction(Request $request, $id) {
+
+        if (!$this->getUser() or $id != $this->getUser()->getId())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Music')->filter(array('user' => $this->getUser()));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+
+        return $this->render('FrontFrontBundle:User:editMusics.html.twig', array(
+                    'entity' => $entity,
+                    'pagination' => $pagination
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing User entity.
+     *
+     */
+    public function editVideosAction(Request $request, $id) {
+
+        if (!$this->getUser() or $id != $this->getUser()->getId())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Video')->filter(array('user' => $this->getUser()));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        return $this->render('FrontFrontBundle:User:editVideos.html.twig', array(
+                    'entity' => $entity,
+                    'pagination' => $pagination,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing User entity.
+     *
+     */
+    public function editAddressesAction(Request $request, $id) {
+
+        if (!$this->getUser() or $id != $this->getUser()->getId())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $query = $em->getRepository('FrontFrontBundle:Address')->filter(array('user' => $this->getUser()));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+
+        return $this->render('FrontFrontBundle:User:editAddresses.html.twig', array(
+                    'entity' => $entity,
+                    'pagination' => $pagination
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing User entity.
+     *
+     */
+    public function editPicturesAction(Request $request, $id) {
+
+        if (!$this->getUser() or $id != $this->getUser()->getId())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UserUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        $query = $em->getRepository('UserUserBundle:UserFile')->findByUser($this->getUser());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
 
 
         /*
          * UPLOAD FILE FORM
          * remplacer le User par entite souhaitee
-         * ajouter au render  
+         * ajouter au render
           'editId' => $editId,
           'existingFiles' => $existingFiles,
          * ajouter fonction handleFiles
-         * 
+         *
          */
         $editId = $this->getRequest()->get('editId');
         $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
@@ -170,14 +341,11 @@ class UserController extends Controller {
          * UPLOAD FILE FORM END
          */
 
-        return $this->render('FrontFrontBundle:User:edit.html.twig', array(
+        return $this->render('FrontFrontBundle:User:editPictures.html.twig', array(
                     'entity' => $entity,
-                    'delete_form' => $deleteForm->createView(),
-                    'edit_profile_form' => $editProfileForm->createView(),
-                    'edit_description_form' => $editDescriptionForm->createView(),
-                    'edit_link_form' => $editLinkForm->createView(),
                     'editId' => $editId,
                     'existingFiles' => $existingFiles,
+                    'pagination' => $pagination
         ));
     }
 
@@ -715,29 +883,31 @@ class UserController extends Controller {
                 throw $this->createNotFoundException('Unable to find User entity.');
             }
 
-            foreach ($entity->getEvents() as $event) {
-                $event->setPublishedBy(null);
-                $event->setOrganizedBy(null);
-                $em->persist($event);
-            }
-            $em->flush();
-            $em->refresh($entity);
-
-            foreach ($entity->getEventsPublished() as $event) {
-                $event->setPublishedBy(null);
-                $em->persist($event);
-            }
-
-            foreach ($entity->getEventsOrganized() as $event) {
-                $event->setOrganizedBy(null);
-                $em->persist($event);
-            }
-            $em->flush();
-            $em->refresh($entity);
-
-            $em->remove($entity);
-            $em->flush();
+//            foreach ($entity->getEvents() as $event) {
+//                $event->setPublishedBy(null);
+//                $event->setOrganizedBy(null);
+//                $em->persist($event);
+//            }
+//            $em->flush();
+//            $em->refresh($entity);
+//
+//            foreach ($entity->getEventsPublished() as $event) {
+//                $event->setPublishedBy(null);
+//                $em->persist($event);
+//            }
+//
+//            foreach ($entity->getEventsOrganized() as $event) {
+//                $event->setOrganizedBy(null);
+//                $em->persist($event);
+//            }
+//            $em->flush();
+//            $em->refresh($entity);
+//
+//            $em->remove($entity);
+//            $em->flush();
         }
+
+        die("deleted !!!");
 
         return $this->redirect($this->generateUrl('fos_user_security_logout'));
     }
