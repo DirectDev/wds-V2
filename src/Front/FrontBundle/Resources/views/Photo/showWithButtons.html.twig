@@ -1,8 +1,10 @@
 {% if photo.isRelatedToEvent %}
     {% set desc = photo.event.getUser.getName %}
+    {% set delete_path = path('front_eventfile_delete', { 'id': photo.id }) %}
 {% endif %}
 {% if photo.isRelatedToUSer %}
     {% set desc = false %}
+    {% set delete_path = path('front_userfile_delete', { 'id': photo.id }) %}
 {% endif %}
 
 {% if photo.isImage %}
@@ -15,7 +17,7 @@
 
         <div class="grid-boxes-caption">
             <p> 
-                <button class="deletePhoto btn-u btn-u-red"  data-photo-id="{{ photo.id }}" href="{{ path('front_userfile_delete', { 'id': photo.id }) }}" >
+                <button class="deletePhoto btn-u btn-u-red"  data-photo-id="{{ photo.id }}" href="{{ delete_path }}" >
                     <i class='fa fa-times'></i> {{ 'Delete'|trans }}
                 </button>
             </p>   

@@ -54,6 +54,7 @@ address:
         title: "Modifier l'adresse"
     list:
         user_no_addresses: "Vous n'avez pas encore indiqué d'adresse. Indiquez une ou plusieurs adresse pour figurer dans les résultats de recherche aux environs de vos adresses."
+        event_no_addresses: "Vous n'avez pas encore indiqué d'adresse. Indiquez une ou plusieurs adresse pour que cet événement soit publié sur le site. Il apparaîtra dans les résultats de recherche aux environs de ces adresses."
 
 city:
     artits: 'Les artistes'
@@ -139,6 +140,7 @@ event:
         links.h2: 'Liez votre événement aux réseaux sociaux'
         pictures: Photos
         pictures.h2: 'Ajoutez des photos'
+        pictures.list.h2: "Photos de l'événement"
 
     event_title: Evenement
     event_types: Type
@@ -210,7 +212,7 @@ file:
     cancel: Annuler
     delete_file: Effacer
     drag_drop_message: 'ou glissez-déposez vos fichiers ici'
-    reminder: "Pour ajouter de nouvelles photos sur votre profil, utilisez le bouton 'Ajouter' ou glissez-déposez vos images à droite du bouton. Une fois celles ci uploadées, n'oubliez pas de cliquer sur 'Enregistrer les images'"
+    reminder: "Pour ajouter de nouvelles photos, utilisez le bouton 'Ajouter' ou glissez-déposez vos images à droite du bouton. Une fois celles ci uploadées, n'oubliez pas de cliquer sur 'Enregistrer les images'"
     save: 'Enregistrer les images'
     start_upload: Uploader
     uploading: Chargement
@@ -981,12 +983,16 @@ toastr:
         
     load:
         address:
+            event_no_addresses: "Vous n'avez pas encore indiqué d'adresse. Indiquez une ou plusieurs adresse pour que cet événement soit publié sur le site. Il apparaîtra dans les résultats de recherche aux environs de ces adresses."
             user_no_addresses: "Vous n'avez pas encore indiqué d'adresse. Indiquez une ou plusieurs adresse pour figurer dans les résultats de recherche aux environs de vos adresses."
             not_valid: "L'adresse %NAME% n'est pas correcte. Les coordonnées GPS n'ont pas pu être trouvées. Veuillez vérifier." 
             new:
                 title: "Complétez votre adresse le plus précisèment possible pour que nous puissions déterminer les coordonnées GPS."            
         city:
             no_users: "Aucun %USERTYPE% n'est enregistré à %CITY%, pour le moment. Soyez le premier et boostez votre popularité."
+        event:
+            links: "Si cet événements existe sur les réseaux sociaux, lié-le en précisant les liens correspondants."
+            descriptions : "."
         import_facebook:
             no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
             success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés. <br>Nombre d'événements ajoutés : %COUNT% <br>Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  

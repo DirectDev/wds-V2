@@ -9,12 +9,12 @@ front_event_create:
     requirements: { _method: post }
 
 front_event_edit:
-    path:     /edit/{id}
+    path:     /edit_description/{id}
     defaults: { _controller: "FrontFrontBundle:Event:edit" }
 
-front_event_edit_description:
-    path:     /edit_description/{id}
-    defaults: { _controller: "FrontFrontBundle:Event:editDescription" }
+front_event_edit_addresses:
+    path:     /edit_addresses/{id}
+    defaults: { _controller: "FrontFrontBundle:Event:editAddresses" }
 
 front_event_edit_dates:
     path:     /edit_dates/{id}

@@ -551,7 +551,12 @@ $(document).on('submit', 'form[name="ffel"]', function (e) {
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
@@ -581,8 +586,9 @@ $(document).on('click', '#eventAddAddress', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#eventAddressList').prepend(html);
+            $('#addressForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;

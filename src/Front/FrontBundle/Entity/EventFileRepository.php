@@ -3,6 +3,7 @@
 namespace Front\FrontBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Front\FrontBundle\Entity\Event;
 
 /**
  * EventFileRepository
@@ -69,6 +70,16 @@ class EventFileRepository extends EntityRepository {
         $query = $this->createQueryBuilder('ef')
                 ->select('COUNT(ef.id)');
         return $query->getQuery()->getSingleScalarResult();
+    }
+
+
+    public function findByEvent(Event $event, $order = 'ef.id', $sort = 'DESC') {
+        $query = $this->createQueryBuilder('ef')
+                ->leftJoin('ef.event', 'e')
+                ->where('e.id = :id')
+                ->orderBy($order, $sort)
+                ->setParameter('id', $event->getId());
+        return $query->getQuery();
     }
 
 }

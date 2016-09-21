@@ -250,9 +250,6 @@ front_event_delete: '/event/delete/{id}'
 # Desc: /event/edit/{id}
 front_event_edit: '/event/edit/{id}'
 
-# Desc: /event/edit_description/{id}
-front_event_edit_description: '/event/edit_description/{id}'
-
 # Desc: /event/edit_date/{id}
 front_event_edit_dates: '/event/edit_dates/{id}'
 
@@ -332,6 +329,9 @@ front_eventtype_list_for_event_search: /eventtype/list_for_event_search/
 front_eventtype_new: '/eventtype/new/{id}'
 front_eventtype_show: '/eventtype/show/{id}'
 front_eventtype_update: '/eventtype/update/{id}'
+
+# Desc: /event/picture/delete/{id}
+front_eventfile_delete: '/event/picture/delete/{id}'
 
 # Desc: /video/move
 front_move: /video/move

@@ -1,0 +1,4 @@
+
+front_eventfile_delete:
+    path:     /event/picture/delete/{id}
+    defaults: { _controller: "FrontFrontBundle:EventFile:delete" }  

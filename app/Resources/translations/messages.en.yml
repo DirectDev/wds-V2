@@ -54,6 +54,7 @@ address:
         title: "Edit address"
     list:
         user_no_addresses: "Add one or more addresses to appear in search results around those addresses."
+        event_no_addresses: "There are no address.  For this event to be found in search results, add one or more address."
 
 city:
     artits: Artits
@@ -138,7 +139,8 @@ event:
         links: Links
         links.h2: 'Link your profile to social networks.'
         pictures: Pictures
-        pictures.h2: 'Show your favorite pictures'
+        pictures.h2: 'Add photos'
+        pictures.list.h2: "Event photos"
 
     event_title: Event
     event_types: Type
@@ -210,7 +212,7 @@ file:
     cancel: Cancel
     delete_file: 'Delete image'
     drag_drop_message: 'Or drag and drop your images here'
-    reminder: "To add new photos on your profil, use button 'Add' or drag and drop photos on the button's right. Once uploaded, don't forget to click 'Save images'"
+    reminder: "To add new photos, use button 'Add' or drag and drop photos on the button's right. Once uploaded, don't forget to click 'Save images'"
     save: 'Save images'
     start_upload: 'Start upload'
     uploading: Uploading
@@ -1150,12 +1152,16 @@ toastr:
         
     load:
         address:
+            event_no_addresses: "There are no address.  For this event to be found in search results, add one or more address."
             user_no_addresses: "Add one or more addresses to appear in search results around those addresses."
             not_valid: "Address %NAME% is not correct. GPS coordinates can't be found. Please re-check this address." 
             new:
                 title: "Fill the address form the more precisely you can, to be sure we can find out the right GPS coordinates."            
         city:
             no_users: "There is no %USERTYPE% registered in %CITY%. Be the first one and boost your popularity."
+        event:
+            links: "If this event exist on socials networks, please add the links."
+            descriptions : "."
         import_facebook:
             no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
             success: "Your next Salsa/Bachata/kizomba events have been added successfully. <br>Added events : %COUNT% <br>Thanks a lot for sharing your event on WeDanceSalsa" 

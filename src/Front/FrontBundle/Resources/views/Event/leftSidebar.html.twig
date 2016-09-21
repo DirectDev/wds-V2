@@ -1,0 +1,38 @@
+<!--Left Sidebar-->
+<div class="col-md-2 md-margin-bottom-40">
+
+    <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+
+
+        <li class="list-group-item {% if active == 'descriptions' %}active{% endif %}">
+            <a href="{{ path('front_event_edit', { id : event.id }) }}">
+                {% trans %}event.edit.description{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'addresses' %}active{% endif %}">
+            <a href="{{ path('front_event_edit_addresses', { id : event.id }) }}">
+                {% trans %}event.edit.addresses{% endtrans %}
+            </a>
+        </li>         
+        <li class="list-group-item {% if active == 'dates' %}active{% endif %}">
+            <a href="{{ path('front_event_edit_dates', { id : event.id }) }}">
+                {% trans %}event.edit.dates{% endtrans %}
+            </a>
+        </li>     
+        <li class="list-group-item {% if active == 'pictures' %}active{% endif %}">
+            <a href="{{ path('front_event_edit_pictures', { id : event.id }) }}">
+                {% trans %}event.edit.pictures{% endtrans %}
+            </a>
+        </li>      
+        <li class="list-group-item {% if active == 'links' %}active{% endif %}">
+            <a href="{{ path('front_event_edit_links', { id : event.id }) }}">
+                {% trans %}event.edit.links{% endtrans %}
+            </a>
+        </li>      
+
+    </ul>
+
+    <div class="margin-bottom-50"></div>
+
+</div>
+<!--End Left Sidebar-->

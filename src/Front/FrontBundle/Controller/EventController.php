@@ -115,6 +115,56 @@ class EventController extends Controller {
         ));
     }
 
+//    /**
+//     * Displays a form to edit an existing Event entity.
+//     *
+//     */
+//    public function editAction($id) {
+//        if (!$this->getUser())
+//            return $this->redirect($this->generateUrl('fos_user_security_login'));
+//
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+//
+//        if (!$entity) {
+//            throw $this->createNotFoundException('Unable to find Event entity.');
+//        }
+//
+//        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+//                return $this->redirect($this->generateUrl('fos_user_security_login'));
+//
+//        $editForm = $this->createEditForm($entity);
+//        $editLinkForm = $this->createEditLinkForm($entity);
+//        $editDescriptionForm = $this->createEditDescriptionForm($entity);
+//
+//        /*
+//         * UPLOAD FILE FORM
+//         * remplacer le User par entite souhaitee
+//         * ajouter au render
+//          'editId' => $editId,
+//          'existingFiles' => $existingFiles,
+//         * ajouter fonction handleFiles
+//         *
+//         */
+//        $editId = $this->getRequest()->get('editId');
+//        $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
+//        $editId = $arrayFile ['editId'];
+//        $existingFiles = $arrayFile ['existingFiles'];
+//        /*
+//         * UPLOAD FILE FORM END
+//         */
+//
+//        return $this->render('FrontFrontBundle:Event:edit.html.twig', array(
+//                    'event' => $entity,
+//                    'edit_form' => $editForm->createView(),
+//                    'edit_link_form' => $editLinkForm->createView(),
+//                    'edit_description_form' => $editDescriptionForm->createView(),
+//                    'editId' => $editId,
+//                    'existingFiles' => $existingFiles,
+//        ));
+//    }
+
     /**
      * Displays a form to edit an existing Event entity.
      *
@@ -134,18 +184,125 @@ class EventController extends Controller {
         if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
                 return $this->redirect($this->generateUrl('fos_user_security_login'));
 
-        $editForm = $this->createEditForm($entity);
-        $editLinkForm = $this->createEditLinkForm($entity);
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
+
+        return $this->render('FrontFrontBundle:Event:editDescription.html.twig', array(
+                    'event' => $entity,
+                    'edit_description_form' => $editDescriptionForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Event entity.
+     *
+     */
+    public function editDatesAction($id) {
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        return $this->render('FrontFrontBundle:Event:editDates.html.twig', array(
+                    'event' => $entity,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Event entity.
+     *
+     */
+    public function editLinksAction($id) {
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $editLinkForm = $this->createEditLinkForm($entity);
+
+        return $this->render('FrontFrontBundle:Event:editLinks.html.twig', array(
+                    'event' => $entity,
+                    'edit_link_form' => $editLinkForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Event entity.
+     *
+     */
+    public function editAddressesAction(Request $request, $id) {
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+
+        $query = $em->getRepository('FrontFrontBundle:Address')->filter(array('event' => $entity));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        return $this->render('FrontFrontBundle:Event:editAddresses.html.twig', array(
+                    'event' => $entity,
+                    'pagination' => $pagination,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Event entity.
+     *
+     */
+    public function editPicturesAction(Request $request, $id) {
+        if (!$this->getUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+
+        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
 
         /*
          * UPLOAD FILE FORM
          * remplacer le User par entite souhaitee
-         * ajouter au render  
+         * ajouter au render
           'editId' => $editId,
           'existingFiles' => $existingFiles,
          * ajouter fonction handleFiles
-         * 
+         *
          */
         $editId = $this->getRequest()->get('editId');
         $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
@@ -155,13 +312,19 @@ class EventController extends Controller {
          * UPLOAD FILE FORM END
          */
 
-        return $this->render('FrontFrontBundle:Event:edit.html.twig', array(
+
+        $query = $em->getRepository('FrontFrontBundle:EventFile')->findByEvent($entity);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
+
+        return $this->render('FrontFrontBundle:Event:editPictures.html.twig', array(
                     'event' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'edit_link_form' => $editLinkForm->createView(),
-                    'edit_description_form' => $editDescriptionForm->createView(),
                     'editId' => $editId,
                     'existingFiles' => $existingFiles,
+                    'pagination' => $pagination,
         ));
     }
 
@@ -409,12 +572,21 @@ class EventController extends Controller {
                 $EventFile->setName($file_name)
                         ->setEvent($entity);
                 $em->persist($EventFile);
+
+                 $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('toastr.load.photo.add', array( '%NAME%' => $file_name))
+                );
             }
+            else
+                $this->get('session')->getFlashBag()->add(
+                        'error', $this->get('translator')->trans('toastr.load.photo.already_exist', array( '%NAME%' => $file_name))
+                );
+
         }
-        if ($entity->getEventFiles())
-            foreach ($entity->getEventFiles() as $EventFile)
-                if (!in_array($EventFile->getName(), $existingFiles))
-                    $em->remove($EventFile);
+//        if ($entity->getEventFiles())
+//            foreach ($entity->getEventFiles() as $EventFile)
+//                if (!in_array($EventFile->getName(), $existingFiles))
+//                    $em->remove($EventFile);
 
         $em->flush();
 

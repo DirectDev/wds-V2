@@ -57,6 +57,13 @@ class AddressRepository extends EntityRepository {
             $query->setParameter('user', '%' . $data["user"] . '%');
         }
 
+        if (isset($data["event"])) {
+            $orQuery = $query->expr()->orx();
+            $orQuery->add($query->expr()->eq("ae.id", ":event"));
+            $query->andWhere($orQuery);
+            $query->setParameter('event', $data["event"] );
+        }
+
         return $query->getQuery();
     }
 
