@@ -282,6 +282,7 @@ $(document).on('click', 'button.deleteVideo', function () {
             $('#video_' + videoId).remove();
             loadBootstrapValidator();
             loadMasonry();
+            toastr.success(html);
         }
     });
     return false;
@@ -290,10 +291,13 @@ $(document).on('click', 'button.deleteVideo', function () {
 $(document).on('submit', 'form.editVideo', function (e) {
     e.preventDefault();
 
-    var videoId = $(this).data('video-id')
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",

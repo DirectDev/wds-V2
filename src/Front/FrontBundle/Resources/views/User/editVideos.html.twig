@@ -42,12 +42,6 @@
 
                         <div class='clear-both'  id='userVideoForms'></div>
 
-                        {#<div  class="row margin-bottom-20"  id="userVideoList">
-                            {% for video in pagination %}
-                                {% render(path('front_video_show_with_buttons', { id : video.id } )) %}
-                            {% endfor %}
-                        </div>#}
-
                         {% set count_video = 0 %}
                         {% for video in pagination %}
                             {% set count_video = count_video + 1 %}
@@ -57,10 +51,10 @@
                             <div class="alert alert-info fade in">
                                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                                 <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-                                {% trans %}video.list.no_videos{% endtrans %}
+                                {% trans %}video.list.user_no_videos{% endtrans %}
                             </div>
                             <script type="text/javascript">
-                                toastr.info("{% trans %}toastr.load.video.no_videos{% endtrans %}");
+                                toastr.info("{% trans %}toastr.load.video.user_no_videos{% endtrans %}");
                             </script>
                         {% endif %}
 
@@ -70,24 +64,9 @@
                                 {% for video in pagination %}
                                     {% render(path('front_video_show_with_buttons', { id : video.id } )) %}
                                 {% endfor %}
-                                {#
-                                                       
-
-                               {# {% if count_video %}
-                                    {% if 5 > count_video %}
-                                        <script type="text/javascript">
-                                            toastr.success("{% trans %}toastr.load.video.less_5{% endtrans %}");
-                                        </script>
-                                    {% else %}
-                                        <script type="text/javascript">
-                                            toastr.success("{% trans %}toastr.load.video.more_5{% endtrans %}");
-                                        </script>
-                                    {% endif %}
-                                {% endif %}#}
 
                             </div>    
                         </div>
-
 
 
                         <div class="margin-bottom-10"></div>

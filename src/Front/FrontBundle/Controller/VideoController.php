@@ -388,7 +388,7 @@ class VideoController extends Controller {
         $em->remove($video);
         $em->flush();
 
-        return new Response('', 200);
+        return new Response(/** @Ignore */ $this->get('translator')->trans('toastr.xhr_success.delete_video'), 200);
     }
 
     public function loveAction(Request $request, $id) {

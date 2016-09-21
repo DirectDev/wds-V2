@@ -705,7 +705,8 @@ form:
                 label: "Display my first and last name, rather than my username"
 
         flashbags:
-            update: 'Your profil has been updated'
+            update: 'Your profile has been updated'
+            error: "Your profile hasn't benn updated correctly, please re-check the form."
 
     ffv:
         flashbags:
@@ -1105,11 +1106,16 @@ user_bundle:
         signin_google: 'Sign in with google'
 
 video:
+    new:
+        title: "New video"
+    edit:
+        tilte: "Edit video"
     list:
         add:
             p: 'Share your favourite videos.'
             title: 'Add a video'
-        no_videos: "There are no videos matching matching your search."    
+        no_videos: "There are no videos matching matching your search."
+        user_no_videos: "You have'nt shared any video yet, add the videos you like most to fill your profile."
 
     search_input_placeholder: 'Search video'
     search_title: Videos
@@ -1148,5 +1154,18 @@ toastr:
             less_5: "We found some people matching your criterias."
         video:
             no_videos: "There are no videos matching your search."
+            user_no_videos: "You have'nt shared any video yet, add the videos you like most to fill your profile."
             less_5: "There are a few videos matching your search."
-            more_5: "There are all videos matching your search." 
+            more_5: "There are all videos matching your search."
+            not_valid: "Video %NAME% is not correct. Please check the link." 
+            new:
+                title: "You can add a title in differents languages, look at the translations options."
+                url: "You can add videos from Youtube, Dailymotion and Vimeo. <br>Specify link or URL of the video."
+                tags: "Check tags for the video. It helps to match it in serach results."
+    form:
+        submit:
+            ffup_success: "Your profile has been updated."
+            ffup_fail: ""
+            
+    xhr_success:
+        delete_video: "Your video has been deleted."  

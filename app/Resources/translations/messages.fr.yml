@@ -870,7 +870,7 @@ user:
         links: Liens
         links.h2: 'Liez votre profil aux réseaux sociaux'
         musics: Musiques
-        musics.h2: 'Partagez vos musiques préfèrées'
+        musics.h2: 'Partagez vos musiques préférées'
         musics.p: 'Ajoutez vos musiques SoundCloud ou Spotify.'
 
         photos:
@@ -880,7 +880,7 @@ user:
         profil: Profil
         profil.h2: 'Indiquez votre nom et vos préférences'
         videos: Vidéos
-        videos.h2: 'Partagez vos vidéos préfèrées'
+        videos.h2: 'Partagez vos vidéos préférées'
         videos.p: 'Ajoutez vos vidéos Youtube, Vimeo ou Dailymotion.'
 
     edit_profil: 'Modifier mon profil'
@@ -932,11 +932,17 @@ user_bundle:
         signin_google: 'Se connecter avec Google'
 
 video:
+    new:
+        title: "Nouvelle vidéo"
+    edit:
+        tilte: "Modifier la vidéo"
     list:
         add:
             p: 'Partagez et faites décourvir vos vidéos préférées.'
             title: 'Ajoutez vos vidéos'
         no_videos: "Nous n'avons trouvé de vidéo correspondante à votre recherche."
+        user_no_videos: "Vous n'avez pas encore partagé de vidéos. Ajoutez vos vidéos préférées et faites resortir votre profil"
+
 
     search_input_placeholder: 'Rechercher une vidéo'
     search_title: Vidéos
@@ -975,6 +981,7 @@ toastr:
             less_5: "Nous avons des personnes correspondantes à votre recherche."
         video:
             no_videos: "Nous n'avons trouvé de vidéo correspondante à votre recherche."
+            user_no_videos: "Vous n'avez pas encore partagé de vidéos. Ajoutez vos vidéos préférées et faites resortir votre profil"
             less_5: "Nous avons trouvé quelques vidéos correspondantes à votre recherche."
             more_5: "Voici les vidéos correspondantes à votre recherche." 
             not_valid: "La vidéo %NAME% n'est pas correcte. Vérifiez le lien." 
@@ -986,3 +993,6 @@ toastr:
         submit:
             ffup_success: "Votre profil a été mis à jour."
             ffup_fail: ""
+            
+    xhr_success:
+        delete_video: "Votre vidéo a bien été effacée." 
