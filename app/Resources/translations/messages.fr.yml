@@ -48,6 +48,12 @@ address:
     postcode: 'Code postal'
     street: Rue
     streetComplement: 'Rue (complément)'
+    new:
+        title: "Nouvelle adresse"
+    edit:    
+        title: "Modifier l'adresse"
+    list:
+        user_no_addresses: "Vous n'avez pas encore indiqué d'adresse. Indiquez une ou plusieurs adresse pour figurer dans les résultats de recherche aux environs de vos adresses."
 
 city:
     artits: 'Les artistes'
@@ -241,6 +247,10 @@ form:
                 label: Sujet
 
     ffa:
+        flashbags:
+            create: "Votre adresse a été ajoutée avec succès"
+            update: "Votre adresse a été mise à jour avec succès"
+            error: "Une erreur c'est produite, veuillez vérifier le formulaire."
         children:
             city:
                 label: Ville
@@ -967,6 +977,11 @@ toastr:
         criterias: "Vos critères de recherches : <br> %CRITERIAS%"
         
     load:
+        address:
+            user_no_addresses: "Vous n'avez pas encore indiqué d'adresse. Indiquez une ou plusieurs adresse pour figurer dans les résultats de recherche aux environs de vos adresses."
+            not_valid: "L'adresse %NAME% n'est pas correcte. Les coordonnées GPS n'ont pas pu être trouvées. Veuillez vérifier." 
+            new:
+                title: "Complétez votre adresse le plus précisèment possible pour que nous puissions déterminer les coordonnées GPS."            
         city:
             no_users: "Aucun %USERTYPE% n'est enregistré à %CITY%, pour le moment. Soyez le premier et boostez votre popularité."
         import_facebook:
@@ -1012,3 +1027,8 @@ toastr:
     xhr_success:
         delete_video: "Votre vidéo a bien été effacée." 
         delete_music: "Votre musique a bien été effacée." 
+        delete_address: "Votre adresse a bien été effacée." 
+    xhr_error:
+        create_address: "Une erreur s'est produite. Veuillez vérifier le formulaire."
+        create_music: "Une erreur s'est produite. Veuillez vérifier le formulaire."
+        create_video: "Une erreur s'est produite. Veuillez vérifier le formulaire."

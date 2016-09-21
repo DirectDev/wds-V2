@@ -1,5 +1,5 @@
 {% if address.name %}
-    <strong>{% trans %}address.name{% endtrans %}</strong> : {{ address.name|capitalize }}</br>
+    <h3>{{ address.name|capitalize }}</h3>
 {% endif %}
 {% if address.street %}
     <strong>{% trans %}address.street{% endtrans %}</strong> : {{ address.street|capitalize }}</br>

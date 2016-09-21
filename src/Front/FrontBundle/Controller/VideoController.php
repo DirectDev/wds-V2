@@ -192,15 +192,8 @@ class VideoController extends Controller {
             if ($user)
                 return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $video->getId())));
         }
-        else
-            $this->get('session')->getFlashBag()->add(
-                    'error', $this->get('translator')->trans('form.ffv.flashbags.error')
-            );
 
-        return $this->render('FrontFrontBundle:Video:new.html.twig', array(
-                    'video' => $video,
-                    'form' => $form->createView(),
-        ));
+        return new Response($this->get('translator')->trans('toastr.xhr_error.create_video'), 500);
     }
 
     /**
@@ -349,21 +342,18 @@ class VideoController extends Controller {
             $em->persist($video);
             $em->flush();
 
-             $this->get('session')->getFlashBag()->add(
+            $this->get('session')->getFlashBag()->add(
                     'success', $this->get('translator')->trans('form.ffv.flashbags.update')
             );
 
-            return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $id)));
         }
         else
              $this->get('session')->getFlashBag()->add(
                     'error', $this->get('translator')->trans('form.ffv.flashbags.error')
             );
 
-        return $this->render('FrontFrontBundle:Video:edit.html.twig', array(
-                    'video' => $video,
-                    'edit_form' => $editForm->createView(),
-        ));
+        return $this->redirect($this->generateUrl('front_video_show_with_buttons', array('id' => $id)));
+
     }
 
     /**

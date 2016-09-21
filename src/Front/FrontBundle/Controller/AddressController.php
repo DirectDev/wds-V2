@@ -59,13 +59,14 @@ class AddressController extends Controller {
                 
             }
 
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffa.flashbags.create')
+            );
+
             return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $address->getId())));
         }
 
-        return $this->render('FrontFrontBundle:Address:new.html.twig', array(
-                    'address' => $address,
-                    'form' => $form->createView(),
-        ));
+        return new Response($this->get('translator')->trans('toastr.xhr_error.create_address'), 500);
     }
 
     /**
@@ -136,13 +137,14 @@ class AddressController extends Controller {
                 
             }
 
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffa.flashbags.create')
+            );
+
             return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $address->getId())));
         }
 
-        return $this->render('FrontFrontBundle:Address:new.html.twig', array(
-                    'address' => $address,
-                    'form' => $form->createView(),
-        ));
+        return new Response($this->get('translator')->trans('toastr.xhr_error.create_address'), 500);
     }
 
     /**
@@ -293,13 +295,18 @@ class AddressController extends Controller {
 
             $em->flush();
 
-            return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $id)));
-        }
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffa.flashbags.update')
+            );
 
-        return $this->render('FrontFrontBundle:Address:edit.html.twig', array(
-                    'address' => $address,
-                    'edit_form' => $editForm->createView(),
-        ));
+        }
+        else
+             $this->get('session')->getFlashBag()->add(
+                    'error', $this->get('translator')->trans('form.ffa.flashbags.error')
+            );
+
+        return $this->redirect($this->generateUrl('front_address_show_with_buttons', array('id' => $id)));
+
     }
 
     /**
@@ -331,7 +338,7 @@ class AddressController extends Controller {
         $em->remove($address);
         $em->flush();
 
-        return new Response('', 200);
+        return new Response(/** @Ignore */ $this->get('translator')->trans('toastr.xhr_success.delete_address'), 200);
     }
 
     private function setLatitudeAndLongitude($address = null) {

@@ -1,24 +1,29 @@
-<div id="address_{{ address.id }}" class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+<div class="grid-boxes-in" id="address_{{ address.id }}">
 
-    <div class="col-md-10 md-margin-bottom-20">
-        {% include 'FrontFrontBundle:Address:template.html.twig' %}
-    </div>
+    <div class="grid-boxes-caption">
 
-    <div class="col-md-2 md-margin-bottom-20">
+        <p>
+            {% include 'FrontFrontBundle:Address:template.html.twig' %}
+        </p> 
+
         {% if app.user is not null and app.user == address.getUser() and is_granted('ROLE_USER') %} 
             <p> 
-                <button class="modifyAddress btn-u btn-u-green" data-address-id="{{ address.id }}" href="{{ path('front_address_edit', { 'id': address.id }) }}">
-                    <i class='fa fa-pencil'></i>
+                <button class="modifyAddress btn-u btn-u-green m-r-10" data-address-id="{{ address.id }}" href="{{ path('front_address_edit', { 'id': address.id }) }}">
+                    <i class='fa fa-pencil'></i> {{ 'Edit'|trans }}
                 </button> 
-            </p>
-            <p>
+
                 <button class="deleteAddress btn-u btn-u-red"  data-address-id="{{ address.id }}"  href="{{ path('front_address_delete', { 'id': address.id }) }}">
-                    <i class='fa fa-times'></i>
+                    <i class='fa fa-times'></i> {{ 'Delete'|trans }}
                 </button>
             </p>
         {% endif %}   
     </div>
-    
-    <div class="clear-both"></div>
 
+    {% include 'FrontFrontBundle::flashbags.html.twig'%}
+
+    {% if not address.isValid %}
+        <script type="text/javascript">
+            toastr.warning("{% trans with { '%NAME%' : address } %}toastr.load.address.not_valid{% endtrans %}");
+        </script>
+    {% endif %}
 </div>

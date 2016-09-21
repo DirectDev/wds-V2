@@ -125,15 +125,8 @@ class MusicController extends Controller {
             if ($user)
                 return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $music->getId())));
         }
-        else
-            $this->get('session')->getFlashBag()->add(
-                    'error', $this->get('translator')->trans('form.ffm.flashbags.error')
-            );
 
-        return $this->render('FrontFrontBundle:Music:new.html.twig', array(
-                    'music' => $music,
-                    'form' => $form->createView(),
-        ));
+        return new Response($this->get('translator')->trans('toastr.xhr_error.create_music'), 500);
     }
 
     /**
@@ -288,17 +281,14 @@ class MusicController extends Controller {
                     'success', $this->get('translator')->trans('form.ffm.flashbags.update')
             );
 
-            return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $id)));
         }
         else
              $this->get('session')->getFlashBag()->add(
                     'error', $this->get('translator')->trans('form.ffm.flashbags.error')
             );
 
-        return $this->render('FrontFrontBundle:Music:edit.html.twig', array(
-                    'music' => $music,
-                    'edit_form' => $editForm->createView(),
-        ));
+        return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $id)));
+
     }
 
     /**

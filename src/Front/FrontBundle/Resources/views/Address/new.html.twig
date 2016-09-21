@@ -1,5 +1,7 @@
-<div class="margin-bottom-30">
+<div class='col-sm-12 margin-bottom-30 p-t-20 masonry-border' >
 
+    <h2 class="heading-md">{{ "address.new.title"|trans }}</h2>
+    
     {% if form.vars.value.event %}
         {% set target_user = form.vars.value.event.user %}
     {% endif %}
@@ -9,26 +11,30 @@
 
     {% if app.user is not null and app.user == target_user and is_granted('ROLE_USER') %}
 
-        {{ form_start(form, { 'attr' : { 'class' : 'newAddress' } } ) }}
+    {{ form_start(form, { 'attr' : { 'class' : 'newAddress' } } ) }}
 
-        <div class="col-md-10">                                
-            {{ form_row(form.country) }}
+    <div class="col-md-10 col-sm-12">
+        {{ form_row(form.country) }}
             {{ form_row(form.city) }}    
             {{ form_row(form.postcode) }}
             {{ form_row(form.street) }}
             {{ form_row(form.streetComplement) }}
             {{ form_row(form.name) }}
-        </div>
+    </div>
 
-        <div class="col-md-2">
-            {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left margin-bottom-10' } } ) }}
+    <div class="col-md-2 col-sm-12">
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md margin-bottom-10 full-width' } } ) }}
+    </div>
 
-        </div>
-
-        {{ form_end(form) }}
+    {{ form_end(form) }}
+    
 
     {% endif %}
 
 </div>
+
+<script type="text/javascript">
+    toastr.info("{% trans %}toastr.load.address.new.title{% endtrans %}");
+</script>
 
 <div class="clear-both"></div>

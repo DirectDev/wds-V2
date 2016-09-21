@@ -1,9 +1,10 @@
-<div id="address_{{ address.id }}"  class="margin-bottom-30">
+<div class='col-sm-12 margin-bottom-30 p-t-20 masonry-border' >
+
+    <h2 class="heading-md">{{ "address.edit.title"|trans }}</h2>
 
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editAddress', 'data-address-id' : address.id } } ) }}
 
-    <div class="col-md-10">
-
+    <div class="col-md-10 col-sm-12">
         {{ form_errors(edit_form) }}
 
         {{ form_row(edit_form.country) }}
@@ -12,20 +13,17 @@
         {{ form_row(edit_form.street) }}
         {{ form_row(edit_form.streetComplement) }}
         {{ form_row(edit_form.name) }}
-
     </div>
 
-    <div class="col-md-2">
-        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left  margin-bottom-10 clear-both' } } ) }}
+    <div class="col-md-2 col-sm-12">
+        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md margin-bottom-10 full-width' } } ) }}
 
-        <button class="cancelAddress btn btn-warning btn-sm pull-left margin-bottom-10 clear-both"  data-address-id="{{ address.id }}"  href="{{ path('front_address_show_with_buttons', { 'id': address.id }) }}">
+        <button class="cancelAddress btn btn-warning btn-sm margin-bottom-10 full-width"  data-address-id="{{ address.id }}"  href="{{ path('front_address_show_with_buttons', { 'id': address.id }) }}">
             {% trans %}front.cancel{% endtrans %}
         </button>
     </div>
 
-
     {{ form_end(edit_form) }}
-
 </div>
 
 <div class="clear-both"></div>

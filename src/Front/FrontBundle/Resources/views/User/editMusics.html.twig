@@ -29,7 +29,6 @@
 
                 <div class="profile-body">
                     
-                    
                     <div class='row m-b-10 clear-both'>
                         <div class='col-md-9 col-sm-12'>
                             <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
@@ -75,26 +74,6 @@
                         {{ knp_pagination_render(pagination) }}
 
                     </div>
-                        {#
-                                            <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
-                        
-                                            <p>{% trans %}user.edit.musics.p{% endtrans %}</p>
-                        
-                        
-                                            <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
-                                                {% trans %}user.add_music_button{% endtrans %}
-                                            </button>
-                        
-                                            <div class="row margin-bottom-20" id="userMusicList">
-                                                {% for music in entity.musics %}
-                                                    {% render(path('front_music_show_with_buttons', { id : music.id } )) %}
-                                                {% endfor %}
-                                            </div>
-                        
-                        
-                                            <div class="margin-bottom-10"></div>
-                        
-                                            {{ knp_pagination_render(pagination) }}#}
 
                 </div>  
             </div>

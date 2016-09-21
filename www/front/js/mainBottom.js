@@ -131,12 +131,14 @@ $(document).on('submit', 'form.newMusic', function (e) {
                     if (error_xhr.status == 403) {
                         location.reload();
                     }
+                    if(error_xhr.responseText)
+                        toastr.error(error_xhr.responseText);
                 }
             });
     e.preventDefault();
 });
 
-$(document).on('click', 'button.modifyMusic, button.cancelMusic', function () {
+$(document).on('click', 'button.modifyMusic', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
@@ -157,14 +159,31 @@ $(document).on('click', 'button.modifyMusic, button.cancelMusic', function () {
     return false;
 });
 
-$(document).on('click', 'button.deleteMusic', function () {
+
+$(document).on('click', 'button.cancelMusic', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
+    
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#userMusicForms').empty();
+            prependDivToMasonry(html);
+            loadBootstrapValidator();
+            reloadEventAlerts();
+        }
+    });
+    return false;
+});
+
+$(document).on('click', 'button.deleteMusic', function () {
 
     var musicId = $(this).data('music-id');
 
-    xhr = $.ajax({
+    $.ajax({
         type: "POST",
         url: $(this).attr("href"),
         success: function (html)
@@ -250,12 +269,14 @@ $(document).on('submit', 'form.newVideo', function (e) {
                     if (error_xhr.status == 403) {
                         location.reload();
                     }
+                    if(error_xhr.responseText)
+                        toastr.error(error_xhr.responseText);
                 }
             });
     e.preventDefault();
 });
 
-$(document).on('click', 'button.modifyVideo, button.cancelVideo', function () {
+$(document).on('click', 'button.modifyVideo', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
@@ -277,15 +298,31 @@ $(document).on('click', 'button.modifyVideo, button.cancelVideo', function () {
 });
 
 
-
-$(document).on('click', 'button.deleteVideo', function () {
+$(document).on('click', 'button.cancelVideo', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
+    
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#userVideoForms').empty();
+            prependDivToMasonry(html);
+            loadBootstrapValidator();
+            reloadEventAlerts();
+        }
+    });
+    return false;
+});
+
+
+$(document).on('click', 'button.deleteVideo', function () {
 
     var videoId = $(this).data('video-id');
 
-    xhr = $.ajax({
+    $.ajax({
         type: "POST",
         url: $(this).attr("href"),
         success: function (html)
@@ -339,8 +376,9 @@ $(document).on('click', '#userAddAddress', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#userAddressList').prepend(html);
+            $('#addressForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;
@@ -353,7 +391,6 @@ $(document).on('submit', 'form.newAddress', function (e) {
         xhr.abort();
     }
 
-    var div = $(this).parent();
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
     xhr = $.ajax(
@@ -363,7 +400,8 @@ $(document).on('submit', 'form.newAddress', function (e) {
                 data: postData,
                 success: function (html)
                 {
-                    div.replaceWith(html);
+                    $('#addressForms').empty();
+                    prependDivToMasonry(html);
                     loadBootstrapValidator();
                     reloadEventAlerts();
                 },
@@ -371,25 +409,48 @@ $(document).on('submit', 'form.newAddress', function (e) {
                     if (error_xhr.status == 403) {
                         location.reload();
                     }
+                    if(error_xhr.responseText)
+                        toastr.error(error_xhr.responseText);
                 }
             });
     e.preventDefault();
 });
 
-$(document).on('click', 'button.modifyAddress, button.cancelAddress', function () {
+$(document).on('click', 'button.modifyAddress', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
 
     var addressId = $(this).data('address-id');
-
+    
     xhr = $.ajax({
         type: "POST",
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#address_' + addressId).replaceWith(html);
+            $('#address_' + addressId).remove();
+            $('#addressForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
+        }
+    });
+    return false;
+});
+
+$(document).on('click', 'button.cancelAddress', function () {
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    
+    xhr = $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#addressForms').empty();
+            prependDivToMasonry(html);
+            loadBootstrapValidator();
+            reloadEventAlerts();
         }
     });
     return false;
@@ -397,19 +458,18 @@ $(document).on('click', 'button.modifyAddress, button.cancelAddress', function (
 
 
 $(document).on('click', 'button.deleteAddress', function () {
-    if (xhr && xhr.readystate != 4) {
-        xhr.abort();
-    }
-
+    
     var addressId = $(this).data('address-id');
 
-    xhr = $.ajax({
+    $.ajax({
         type: "POST",
         url: $(this).attr("href"),
         success: function (html)
         {
             $('#address_' + addressId).remove();
             loadBootstrapValidator();
+            loadMasonry();
+            toastr.success(html);
             reloadEventAlerts();
         }
     });
@@ -418,19 +478,24 @@ $(document).on('click', 'button.deleteAddress', function () {
 
 $(document).on('submit', 'form.editAddress', function (e) {
     e.preventDefault();
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
 
-    var addressId = $(this).data('address-id')
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
                 data: postData,
                 success: function (html)
                 {
-                    $('#address_' + addressId).replaceWith(html);
+                    $('#addressForms').empty();
+                    prependDivToMasonry(html);
                     loadBootstrapValidator();
+                    loadMasonry();
                     reloadEventAlerts();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {

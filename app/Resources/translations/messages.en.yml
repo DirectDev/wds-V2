@@ -48,6 +48,12 @@ address:
     postcode: Postcode
     street: Street
     streetComplement: 'Street complement'
+    new:
+        title: "New address"
+    edit:    
+        title: "Edit address"
+    list:
+        user_no_addresses: "Add one or more addresses to appear in search results around those addresses."
 
 city:
     artits: Artits
@@ -1140,6 +1146,11 @@ toastr:
         criterias: "Your search criterias : <br> %CRITERIAS%"
         
     load:
+        address:
+            user_no_addresses: "Add one or more addresses to appear in search results around those addresses."
+            not_valid: "Address %NAME% is not correct. GPS coordinates can't be found. Please re-check this address." 
+            new:
+                title: "Fill the address form the more precisely you can, to be sure we can find out the right GPS coordinates."            
         city:
             no_users: "There is no %USERTYPE% registered in %CITY%. Be the first one and boost your popularity."
         import_facebook:
@@ -1185,3 +1196,8 @@ toastr:
     xhr_success:
         delete_video: "Your video has been deleted."  
         delete_music: "Your music has been deleted."  
+        delete_address: "Your address has been deleted." 
+    xhr_error:
+        create_address: "Oups an error occured. Please re-check the form."
+        create_music: "Oups an error occured. Please re-check the form."
+        create_video: "Oups an error occured. Please re-check the form."
