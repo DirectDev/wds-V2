@@ -210,7 +210,7 @@ file:
     cancel: Cancel
     delete_file: 'Delete image'
     drag_drop_message: 'Or drag and drop your images here'
-    reminder: 'Don''t forget to click ''Save images'' once uploaded'
+    reminder: "To add new photos on your profil, use button 'Add' or drag and drop photos on the button's right. Once uploaded, don't forget to click 'Save images'"
     save: 'Save images'
     start_upload: 'Start upload'
     uploading: Uploading
@@ -1016,6 +1016,7 @@ overviews:
 
 photo:
     list:
+        user_no_photos: "You didn't add any photos yet. Add photos to fill your profile."
         add:
             desc: 'Add your photo'
             title: 'Add your photo here'
@@ -1063,6 +1064,8 @@ user:
         musics.p: 'Add SoundCloud or Spotify musics'
 
         photos:
+            list:
+                h2: "Your photos"
             h2: 'Share your favorite photos'
 
         pictures: Photos
@@ -1171,6 +1174,10 @@ toastr:
                 title: "You can add a title in differents languages, look at the translations options."
                 url: "You can add musics from Spotify or SoundCloud. <br>Specify link or URL of the music."
                 tags: "Check tags for the music. It helps to match it in search results." 
+        photo:
+            user_no_photos: "You didn't add any photos yet. Add photos to fill your profile."
+            add: "Your photo '%NAME%' has been added." 
+            already_exist: "you already had a photo named '%NAME%'. This photo couldn't be added correctly." 
         preview_import_facebook:
             success: "You can add or update those Salsa/Bachata/Kizomba events"  
             success_count: "Events to add : %COUNT%"     
@@ -1199,6 +1206,7 @@ toastr:
         delete_video: "Your video has been deleted."  
         delete_music: "Your music has been deleted."  
         delete_address: "Your address has been deleted." 
+        delete_userfile: "Your photo has been deleted." 
     xhr_error:
         create_address: "Oups an error occured. Please re-check the form."
         create_music: "Oups an error occured. Please re-check the form."

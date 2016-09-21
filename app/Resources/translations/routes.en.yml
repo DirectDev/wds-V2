@@ -391,6 +391,9 @@ front_tag_list_for_music_search: /tag/list_for_music_search/
 # Desc: /tag/list_for_video_search/
 front_tag_list_for_video_search: /tag/list_for_video_search/
 
+# Desc: /profile/picture/delete/{id}
+front_userfile_delete: '/profile/picture/delete/{id}'
+
 # Desc: /user/{id}/delete
 front_user_delete: '/user/{id}/delete'
 

@@ -1,0 +1,4 @@
+
+front_userfile_delete:
+    path:     /profile/picture/delete/{id}
+    defaults: { _controller: "FrontFrontBundle:UserFile:delete" }  

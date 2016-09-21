@@ -210,7 +210,7 @@ file:
     cancel: Annuler
     delete_file: Effacer
     drag_drop_message: 'ou glissez-déposez vos fichiers ici'
-    reminder: 'N''oubliez pas de cliquer sur ''Enregistrer les images'''
+    reminder: "Pour ajouter de nouvelles photos sur votre profil, utilisez le bouton 'Ajouter' ou glissez-déposez vos images à droite du bouton. Une fois celles ci uploadées, n'oubliez pas de cliquer sur 'Enregistrer les images'"
     save: 'Enregistrer les images'
     start_upload: Uploader
     uploading: Chargement
@@ -846,6 +846,7 @@ overviews:
 
 photo:
     list:
+        user_no_photos: "Vous n'avez pas encore partagé de photos. Ajoutez vos photos préférées et faites resortir votre profil"
         add:
             desc: 'Partagez vos photos ici'
             title: 'Ajoutez vos photos'
@@ -894,6 +895,8 @@ user:
 
         photos:
             h2: 'Partagez vos photos'
+            list:
+                h2: "Vos photos actuelles"
 
         pictures: Photos
         profil: Profil
@@ -1002,6 +1005,10 @@ toastr:
                 title: "Vous pouvez ajouter un titre pour votre musique, en français et/ou en anglais."
                 url: "Vous pouvez ajouter des musiques venant de Spotify et SoundCloud. <br>Indiquez le lien ou l'url de celle çi."
                 tags: "Sélectionnez des tags en rapport avec votre musique. Ces tags seront utiles pour faire apparaître celle çi dans les résultats de recherches."
+        photo:
+            user_no_photos: "Vous n'avez pas encore partagé de photos. Ajoutez vos photos préférées et faites resortir votre profil"
+            add: "Votre photo '%NAME%' a bien été ajoutée." 
+            already_exist: "Vous avez déjà une photo nommée '%NAME%'. La photo n'a pas pu être enregistrée correctement." 
         preview_import_facebook:
             success: "Voici les prochains événements Facebook Salsa/Bachata/kizomba vous pouvez ajouter ou mettre à jour."  
             success_count: "Nombre d'événements a ajouter : %COUNT%" 
@@ -1029,6 +1036,7 @@ toastr:
         delete_video: "Votre vidéo a bien été effacée." 
         delete_music: "Votre musique a bien été effacée." 
         delete_address: "Votre adresse a bien été effacée." 
+        delete_userfile: "Votre photo a bien été effacée." 
     xhr_error:
         create_address: "Une erreur s'est produite. Veuillez vérifier le formulaire."
         create_music: "Une erreur s'est produite. Veuillez vérifier le formulaire."

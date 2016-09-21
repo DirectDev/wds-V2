@@ -316,14 +316,6 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $query = $em->getRepository('UserUserBundle:UserFile')->findByUser($this->getUser());
-
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
-        );
-
-
         /*
          * UPLOAD FILE FORM
          * remplacer le User par entite souhaitee
@@ -340,6 +332,14 @@ class UserController extends Controller {
         /*
          * UPLOAD FILE FORM END
          */
+
+
+        $query = $em->getRepository('UserUserBundle:UserFile')->findByUser($this->getUser());
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), $this->getParameter('pagination_line_number')
+        );
 
         return $this->render('FrontFrontBundle:User:editPictures.html.twig', array(
                     'entity' => $entity,
@@ -514,11 +514,19 @@ class UserController extends Controller {
                 $UserFile->setName($file_name)
                         ->setUser($entity);
                 $em->persist($UserFile);
+
+                $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('toastr.load.photo.add', array( '%NAME%' => $file_name))
+                );
             }
+            else
+                $this->get('session')->getFlashBag()->add(
+                        'error', $this->get('translator')->trans('toastr.load.photo.already_exist', array( '%NAME%' => $file_name))
+                );
         }
-        foreach ($entity->getUserFiles() as $UserFile)
-            if (!in_array($UserFile->getName(), $existingFiles))
-                $em->remove($UserFile);
+//        foreach ($entity->getUserFiles() as $UserFile)
+//            if (!in_array($UserFile->getName(), $existingFiles))
+//                $em->remove($UserFile);
 
         $em->flush();
 

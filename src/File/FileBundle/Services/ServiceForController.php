@@ -28,11 +28,11 @@ class ServiceForController
             if ($entityId)
             {
                 /* get existing files */
-                $this->container->get('punk_ave.file_uploader')->syncFiles(
-                    array(
-                    'from_folder' => $entityName.'/' . $entityId,
-                    'to_folder' => $this->container->getParameter('upload_folder') . $editId,
-                    'create_to_folder' => true));
+//                $this->container->get('punk_ave.file_uploader')->syncFiles(
+//                    array(
+//                    'from_folder' => $entityName.'/' . $entityId,
+//                    'to_folder' => $this->container->getParameter('upload_folder') . $editId,
+//                    'create_to_folder' => true));
             }
         }
         

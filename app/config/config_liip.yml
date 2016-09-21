@@ -178,6 +178,16 @@ liip_imagine:
             default_image:        null
             filters:
                 downscale: { max: [973, 615] } 
+        photo_masonry:        
+            quality:              100
+            animated:             false
+            format:               ~
+            cache:                ~
+            data_loader:          ~
+            default_image:        null
+            filters:
+                thumbnail: { size: [500, 500], mode: inbound }
+        city_thumb:                
                 
 knp_gaufrette:
     adapters:

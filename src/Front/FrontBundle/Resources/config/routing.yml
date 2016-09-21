@@ -26,7 +26,11 @@ policy:
     
 FrontFrontBundle_user:
     resource: "@FrontFrontBundle/Resources/config/routing/user.yml"
-    prefix:   /user      
+    prefix:   /user   
+    
+FrontFrontBundle_userfile:
+    resource: "@FrontFrontBundle/Resources/config/routing/userfile.yml"
+    prefix:   /userfile      
     
 FrontFrontBundle_address:
     resource: "@FrontFrontBundle/Resources/config/routing/address.yml"

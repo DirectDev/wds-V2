@@ -1,0 +1,28 @@
+{% if photo.isRelatedToEvent %}
+    {% set desc = photo.event.getUser.getName %}
+{% endif %}
+{% if photo.isRelatedToUSer %}
+    {% set desc = false %}
+{% endif %}
+
+{% if photo.isImage %}
+
+    <div class="grid-boxes-in" id="photo_{{ photo.id }}">
+
+        <div class="bg-color-dark">
+            <img src="{{ asset(photo.getLargePathUri())|imagine_filter('photo_masonry') }}" class="img-responsive" alt="">
+        </div>
+
+        <div class="grid-boxes-caption">
+            <p> 
+                <button class="deletePhoto btn-u btn-u-red"  data-photo-id="{{ photo.id }}" href="{{ path('front_userfile_delete', { 'id': photo.id }) }}" >
+                    <i class='fa fa-times'></i> {{ 'Delete'|trans }}
+                </button>
+            </p>   
+        </div>
+
+        {% include 'FrontFrontBundle::flashbags.html.twig'%}
+
+    </div>
+
+{% endif %}

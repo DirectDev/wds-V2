@@ -784,3 +784,22 @@ $(document).on('submit', 'form[name="facebook_event_import"]', function (e) {
             });
     return false;
 });
+
+
+$(document).on('click', 'button.deletePhoto', function () {
+
+    var photoId = $(this).data('photo-id');
+
+    $.ajax({
+        type: "POST",
+        url: $(this).attr("href"),
+        success: function (html)
+        {
+            $('#photo_' + photoId).remove();
+            loadBootstrapValidator();
+            loadMasonry();
+            toastr.success(html);
+        }
+    });
+    return false;
+});

@@ -1,9 +1,9 @@
 {# Underscore templates for the uploader #}
 {% include "FileFileBundle::fileUploadTemplate.html.twig" %}
 
-<div class="alert alert-success fade in">
+<div class="alert alert-info fade in">
     <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-    <strong>{% trans %}front.alert.success{% endtrans %}</strong>
+    <strong>{% trans %}front.alert.info{% endtrans %}</strong>
     {% trans %}file.reminder{% endtrans %}
 </div>
 
@@ -19,7 +19,7 @@
 
     <button class="btn btn-success" type="submit">{% trans %}file.save{% endtrans %}</button>
     {% if cancel_path %}
-        <a class="btn" href="{{ path(cancel_path) }}">{% trans %}file.cancel{% endtrans %}</a>
+        <a class="btn" href="{{ cancel_path }}">{% trans %}file.cancel{% endtrans %}</a>
     {%  endif %}
     <!--{% if not isNew and delete_path %}
         <a class="btn btn-danger" href="{{ path(delete_path, { id: entity.id } ) }}">{% trans %}delete{% endtrans %}</a>
