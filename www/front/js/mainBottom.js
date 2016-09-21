@@ -62,13 +62,14 @@ $(document).on('submit', 'form[name="ffud"]', function (e) {
 
 $(document).on('submit', 'form[name="fful"]', function (e) {
     e.preventDefault();
-    var $form = $(e.target);
-    // Get the BootstrapValidator instance
-    var bv = $form.data('bootstrapValidator');
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",

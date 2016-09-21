@@ -35,6 +35,10 @@
                     <div id="linkForm">
                         {% include 'FrontFrontBundle:User:linkForm.html.twig' %}
                     </div>
+                    
+                    <script type="text/javascript">
+                        toastr.info("{% trans %}toastr.load.user.links{% endtrans %}");
+                    </script>
 
                 </div>  
             </div>

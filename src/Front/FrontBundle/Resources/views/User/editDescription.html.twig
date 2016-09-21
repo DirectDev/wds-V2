@@ -35,6 +35,10 @@
                     <div id="descriptionForm">
                         {% include 'FrontFrontBundle:User:descriptionForm.html.twig' %}
                     </div>
+                    
+                    <script type="text/javascript">
+                        toastr.info("{% trans %}toastr.load.user.descriptions{% endtrans %}");
+                    </script>
 
                 </div>  
             </div>

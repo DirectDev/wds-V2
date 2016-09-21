@@ -1178,6 +1178,8 @@ toastr:
             no_users: "We didn't find anybody matching your criterias."
             more_5: "We found more than 5 people matching your criterias."
             less_5: "We found some people matching your criterias."
+            links: "Add links to your social network profiles."
+            descriptions : "Add a slogan and/or a description to your profile, and let everybody know more about who you are."
         video:
             no_videos: "There are no videos matching your search."
             user_no_videos: "You have'nt shared any video yet, add the videos you like most to fill your profile."

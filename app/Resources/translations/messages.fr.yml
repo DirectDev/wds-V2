@@ -474,14 +474,14 @@ form:
     ffud:
         children:
             baseline:
-                label: Baseline
+                label: Accroche
 
             translations:
                 children:
                     fr:
                         children:
                             baseline:
-                                label: Baseline
+                                label: Accroche
 
                             description:
                                 label: Description
@@ -1009,6 +1009,8 @@ toastr:
             no_users: "Nous n'avons trouvé de personne correspondant à votre recherche."
             more_5: "Nous avons plus de 5 personnes correspondantes à votre recherche."
             less_5: "Nous avons des personnes correspondantes à votre recherche."
+            links: "Précisez les liens vers vos profils sur les réseaux sociaux, afin qu'ils soient accessibles depuis votre profil sur WeDanceSalsa."
+            descriptions : "Vous pouvez ajouter une accroche et une description, en français et/ou en anglais."
         video:
             no_videos: "Nous n'avons trouvé de vidéo correspondante à votre recherche."
             user_no_videos: "Vous n'avez pas encore partagé de vidéos. Ajoutez vos vidéos préférées et faites resortir votre profil"
@@ -1022,7 +1024,6 @@ toastr:
     form:
         submit:
             ffup_success: "Votre profil a été mis à jour."
-            ffup_fail: ""
             
     xhr_success:
         delete_video: "Votre vidéo a bien été effacée." 
