@@ -30,6 +30,7 @@ class MusicType extends AbstractType {
                     'property' => 'title',
                     'multiple' => true,
                     'expanded' => true,
+                    'required' => false,
                     'by_reference' => false,
                     'label_attr' => array('class' => 'checkbox-inline')
                 ))

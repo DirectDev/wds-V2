@@ -1,12 +1,14 @@
-<div class="margin-bottom-30">
+<div class='col-sm-12 margin-bottom-30 p-t-20 masonry-border' >
+
+    <h2 class="heading-md">{{ "music.new.title"|trans }}</h2>
 
     {{ form_start(form, { 'attr' : { 'class' : 'newMusic' } } ) }}
 
-    <div class="col-md-10">
+    <div class="col-md-10 col-sm-12">
         {{ form_row(form.translations) }}
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-10 col-sm-12">
         {% set placeholder %}
             {% trans %}form.ffm.children.url.placeholder{% endtrans %}
         {% endset %}                            
@@ -14,12 +16,18 @@
         {{ form_row(form.tags) }}
     </div>
 
-    <div class="col-md-2">
-        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left margin-bottom-10' } } ) }}
+    <div class="col-md-2 col-sm-12">
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md margin-bottom-10 full-width' } } ) }}
     </div>
 
     {{ form_end(form) }}
 
 </div>
+
+<script type="text/javascript">
+    toastr.info("{% trans %}toastr.load.music.new.title{% endtrans %}");
+    toastr.info("{% trans %}toastr.load.music.new.url{% endtrans %}");
+    toastr.info("{% trans %}toastr.load.music.new.tags{% endtrans %}");
+</script>
 
 <div class="clear-both"></div>

@@ -28,26 +28,73 @@
             <div class="col-md-10">
 
                 <div class="profile-body">
+                    
+                    
+                    <div class='row m-b-10 clear-both'>
+                        <div class='col-md-9 col-sm-12'>
+                            <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
+                            <p>{% trans %}user.edit.musics.p{% endtrans %}</p>
+                        </div>
+                        <div class='col-md-3 col-sm-12'>
+                            <button class='btn btn-success m-r-10 m-b-20 full-width' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
+                                {% trans %}user.add_music_button{% endtrans %}
+                            </button>
+                        </div>
 
-                    <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
+                        <div class='clear-both'  id='userMusicForms'></div>
 
-                    <p>{% trans %}user.edit.musics.p{% endtrans %}</p>
-
-
-                    <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
-                        {% trans %}user.add_music_button{% endtrans %}
-                    </button>
-
-                    <div class="row margin-bottom-20" id="userMusicList">
-                        {% for music in entity.musics %}
-                            {% render(path('front_music_show_with_buttons', { id : music.id } )) %}
+                        {% set count_music = 0 %}
+                        {% for music in pagination %}
+                            {% set count_music = count_music + 1 %}
                         {% endfor %}
+
+                        {% if 1 > count_music %}
+                            <div class="alert alert-info fade in">
+                                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                                <strong>{% trans %}front.alert.info{% endtrans %}</strong>
+                                {% trans %}music.list.user_no_musics{% endtrans %}
+                            </div>
+                            <script type="text/javascript">
+                                toastr.info("{% trans %}toastr.load.music.user_no_musics{% endtrans %}");
+                            </script>
+                        {% endif %}
+
+                        <div class="blog_masonry_3col" id="userMusicList">
+                            <div class="grid-boxes">
+
+                                {% for music in pagination %}
+                                    {% render(path('front_music_show_with_buttons', { id : music.id } )) %}
+                                {% endfor %}
+
+                            </div>    
+                        </div>
+
+
+                        <div class="margin-bottom-10"></div>
+
+                        {{ knp_pagination_render(pagination) }}
+
                     </div>
-
-
-                    <div class="margin-bottom-10"></div>
-
-                    {{ knp_pagination_render(pagination) }}
+                        {#
+                                            <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
+                        
+                                            <p>{% trans %}user.edit.musics.p{% endtrans %}</p>
+                        
+                        
+                                            <button class='btn btn-success margin-bottom-30 pull-left' id="userAddMusic" href="{{ path('front_music_new', { id : entity.id } ) }}">
+                                                {% trans %}user.add_music_button{% endtrans %}
+                                            </button>
+                        
+                                            <div class="row margin-bottom-20" id="userMusicList">
+                                                {% for music in entity.musics %}
+                                                    {% render(path('front_music_show_with_buttons', { id : music.id } )) %}
+                                                {% endfor %}
+                                            </div>
+                        
+                        
+                                            <div class="margin-bottom-10"></div>
+                        
+                                            {{ knp_pagination_render(pagination) }}#}
 
                 </div>  
             </div>

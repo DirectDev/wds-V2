@@ -84,7 +84,17 @@ class Music {
     }
 
     public function __toString() {
-        return $this->getTitle();
+        if($this->getTitle())
+            return $this->getTitle();
+        return $this->getUrl();
+    }
+
+    public function isValid() {
+        if($this->isSoundCloud())
+            return true;
+        if($this->isSpotify())
+            return true;
+        return false;
     }
 
     public function isSoundCloud() {

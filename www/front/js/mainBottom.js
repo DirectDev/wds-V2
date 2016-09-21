@@ -98,8 +98,9 @@ $(document).on('click', '#userAddMusic', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#userMusicList').prepend(html);
+            $('#userMusicForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;
@@ -122,7 +123,8 @@ $(document).on('submit', 'form.newMusic', function (e) {
                 data: postData,
                 success: function (html)
                 {
-                    div.replaceWith(html);
+                    $('#userMusicForms').empty();
+                    prependDivToMasonry(html);
                     loadBootstrapValidator();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
@@ -146,8 +148,10 @@ $(document).on('click', 'button.modifyMusic, button.cancelMusic', function () {
         url: $(this).attr("href"),
         success: function (html)
         {
-            $('#music_' + musicId).replaceWith(html);
+            $('#music_' + musicId).remove();
+            $('#userMusicForms').html(html);
             loadBootstrapValidator();
+            loadMasonry();
         }
     });
     return false;
@@ -167,6 +171,8 @@ $(document).on('click', 'button.deleteMusic', function () {
         {
             $('#music_' + musicId).remove();
             loadBootstrapValidator();
+            loadMasonry();
+            toastr.success(html);
         }
     });
     return false;
@@ -175,18 +181,23 @@ $(document).on('click', 'button.deleteMusic', function () {
 $(document).on('submit', 'form.editMusic', function (e) {
     e.preventDefault();
 
-    var musicId = $(this).data('music-id')
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
                 data: postData,
                 success: function (html)
                 {
-                    $('#music_' + musicId).replaceWith(html);
+                    $('#userMusicForms').empty();
+                    prependDivToMasonry(html);
                     loadBootstrapValidator();
+                    loadMasonry();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
                     if (error_xhr.status == 403) {

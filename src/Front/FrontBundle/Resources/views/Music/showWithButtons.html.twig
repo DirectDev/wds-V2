@@ -1,36 +1,38 @@
-<div id="music_{{ music.id }}" class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+<div class="grid-boxes-in" id="music_{{ music.id }}">
 
-    <div class="col-md-10 md-margin-bottom-20">
-        <div class="bg-color-light">
-            {% include 'FrontFrontBundle:Music:player.html.twig' with { music : music } %}
-        </div>
-
-        <div class="margin-bottom-40">
-            <h3>{{ music.getTitle() }}</h3>
-            <p>{% trans %}tags.label{% endtrans %} :
-                {% for tag in music.getTags() %}
-                    {{ tag.getTitle() }}              
-                {% endfor %}
-            </p>                  
-        </div>
-
+    <div class="bg-color-dark">
+        {% include 'FrontFrontBundle:Music:player.html.twig' with { music : music } %}
     </div>
 
-    <div class="col-md-2 md-margin-bottom-20">
+    <div class="grid-boxes-caption">
+        <h3>{{ music.getTitle() }}</h3>    
+        <p>{% trans %}tags.label{% endtrans %} :
+            {{ music.getTagsText()|truncate(20) }}              
+        </p> 
+        <ul class="list-inline grid-boxes-news">
+            <li>
+                <i class="fa fa-clock-o"></i> 
+                {{  music.createdAt|localizeddate('medium', 'none', app.request.locale)|capitalize }}
+            </li>
+        </ul>      
         {% if app.user is not null and app.user == music.getUser() and is_granted('ROLE_USER') %} 
             <p> 
-                <button class="modifyMusic btn-u btn-u-green" data-music-id="{{ music.id }}" href="{{ path('front_music_edit', { 'id': music.id }) }}">
-                    <i class='fa fa-pencil'></i>
+                <button class="modifyMusic btn-u btn-u-green m-r-10" data-music-id="{{ music.id }}" href="{{ path('front_music_edit', { 'id': music.id }) }}">
+                    <i class='fa fa-pencil'></i> {{ 'Edit'|trans }}
                 </button> 
-            </p>
-            <p>
+
                 <button class="deleteMusic btn-u btn-u-red"  data-music-id="{{ music.id }}"  href="{{ path('front_music_delete', { 'id': music.id }) }}">
-                    <i class='fa fa-times'></i>
+                    <i class='fa fa-times'></i> {{ 'Delete'|trans }}
                 </button>
             </p>
         {% endif %}   
     </div>
-    
-    <div class="clear-both"></div>
 
+    {% include 'FrontFrontBundle::flashbags.html.twig'%}
+
+    {% if not music.isValid %}
+        <script type="text/javascript">
+            toastr.warning("{% trans with { '%NAME%' : music } %}toastr.load.music.not_valid{% endtrans %}");
+        </script>
+    {% endif %}
 </div>

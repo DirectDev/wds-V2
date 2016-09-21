@@ -594,6 +594,10 @@ form:
                 label: 'Event type'
 
     ffm:
+        flashbags:
+            create: "Your music has been added"
+            update: "Your music has been updated successfully"
+            error: "Oups an error occurred, please check the form again."
         children:
             tags:
                 label: Tags
@@ -884,11 +888,16 @@ move:
     search_title: 'Moves & Shines'
 
 music:
+    new:
+        title: "New music"
+    edit:
+        title: "Edit music"
     list:
         add:
             desc: 'Add your music here'
             title: 'Add your music'
-        no_videos: "There are no musics matching matching your search."    
+        no_musics: "There are no musics matching matching your search."    
+        user_no_musics: "You have'nt shared any music yet, add the videos you like most to fill your profile."
 
     search_input_placeholder: 'Search Music'
     search_title: Musics
@@ -1069,7 +1078,7 @@ user:
     list:
         add:
             h3: "How to appear here ?"
-            span: "Create an account on WeDanceSalsa to appear in serach results and boost your popularity"
+            span: "Create an account on WeDanceSalsa to appear in search results and boost your popularity"
         no_users: "We didn't find anybody matching your search." 
 
     musics_title: 'My Musics'
@@ -1109,7 +1118,7 @@ video:
     new:
         title: "New video"
     edit:
-        tilte: "Edit video"
+        title: "Edit video"
     list:
         add:
             p: 'Share your favourite videos.'
@@ -1143,8 +1152,14 @@ toastr:
                 no_picture: "Please add a picture for event : %NAME% "
         music:
             no_musics: "There are no musics matching your search."
+            user_no_musics: "You have'nt shared any music yet, add the videos you like most to fill your profile."
             less_5: "There are a few musics matching your search."
-            more_5: "There are all musics matching your search." 
+            more_5: "There are all musics matching your search."
+            not_valid: "Music %NAME% is not correct. Please check the link." 
+            new:
+                title: "You can add a title in differents languages, look at the translations options."
+                url: "You can add musics from Spotify or SoundCloud. <br>Specify link or URL of the music."
+                tags: "Check tags for the music. It helps to match it in search results." 
         preview_import_facebook:
             success: "You can add or update those Salsa/Bachata/Kizomba events"  
             success_count: "Events to add : %COUNT%"     
@@ -1161,7 +1176,7 @@ toastr:
             new:
                 title: "You can add a title in differents languages, look at the translations options."
                 url: "You can add videos from Youtube, Dailymotion and Vimeo. <br>Specify link or URL of the video."
-                tags: "Check tags for the video. It helps to match it in serach results."
+                tags: "Check tags for the video. It helps to match it in search results."
     form:
         submit:
             ffup_success: "Your profile has been updated."
@@ -1169,3 +1184,4 @@ toastr:
             
     xhr_success:
         delete_video: "Your video has been deleted."  
+        delete_music: "Your music has been deleted."  

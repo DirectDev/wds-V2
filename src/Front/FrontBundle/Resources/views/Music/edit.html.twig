@@ -1,23 +1,26 @@
-<div id="music_{{ music.id }}" class="margin-bottom-30">
+<div class='col-sm-12 margin-bottom-30 p-t-20 masonry-border' >
+
+    <h2 class="heading-md">{{ "music.edit.title"|trans }}</h2>
+
     {{ form_start(edit_form, { 'attr' : { 'class' : 'editMusic', 'data-music-id' : music.id } } ) }}
 
-    <div class="col-md-10">
+    <div class="col-md-10 col-sm-12">
         {{ form_row(edit_form.translations) }}
     </div>
 
-    
-    <div class="col-md-10">
+
+    <div class="col-md-10 col-sm-12">
         {% set placeholder %}
-            {% trans %}form.ffm.children.url.placeholder{% endtrans %}
+            {% trans %}form.ffm.children.url.placeholder{% endtrans %}  
         {% endset %}                            
         {{ form_row(edit_form.url, { 'attr' : { 'placeholder' : placeholder|trim } } ) }}
         {{ form_row(edit_form.tags) }}
     </div>
 
-    <div class="col-md-2">
-        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md pull-left margin-bottom-10 clear-both' } } ) }}
+    <div class="col-md-2 col-sm-12">
+        {{ form_widget(edit_form.submit, { 'attr' : { 'class' : 'btn btn-success btn-md margin-bottom-10 full-width' } } ) }}
 
-        <button class="cancelMusic btn btn-warning btn-sm pull-left clear-both margin-bottom-10"  data-music-id="{{ music.id }}"  href="{{ path('front_music_show_with_buttons', { 'id': music.id }) }}">
+        <button class="cancelMusic btn btn-warning btn-sm margin-bottom-10 full-width"  data-music-id="{{ music.id }}"  href="{{ path('front_music_show_with_buttons', { 'id': music.id }) }}">
             {% trans %}front.cancel{% endtrans %}
         </button>
     </div>

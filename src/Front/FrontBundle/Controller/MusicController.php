@@ -117,10 +117,18 @@ class MusicController extends Controller {
             $em->persist($music);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffm.flashbags.create')
+            );
+
             $user = $music->getUser();
             if ($user)
                 return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $music->getId())));
         }
+        else
+            $this->get('session')->getFlashBag()->add(
+                    'error', $this->get('translator')->trans('form.ffm.flashbags.error')
+            );
 
         return $this->render('FrontFrontBundle:Music:new.html.twig', array(
                     'music' => $music,
@@ -276,8 +284,16 @@ class MusicController extends Controller {
             $em->persist($music);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffm.flashbags.update')
+            );
+
             return $this->redirect($this->generateUrl('front_music_show_with_buttons', array('id' => $id)));
         }
+        else
+             $this->get('session')->getFlashBag()->add(
+                    'error', $this->get('translator')->trans('form.ffm.flashbags.error')
+            );
 
         return $this->render('FrontFrontBundle:Music:edit.html.twig', array(
                     'music' => $music,
@@ -308,7 +324,7 @@ class MusicController extends Controller {
         $em->flush();
 
 
-        return new Response('', 200);
+        return new Response(/** @Ignore */ $this->get('translator')->trans('toastr.xhr_success.delete_music'), 200);
     }
     
     

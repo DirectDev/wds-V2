@@ -421,6 +421,10 @@ form:
                 label: Type
 
     ffm:
+        flashbags:
+            create: "Votre musique a été ajoutée avec succès"
+            update: "Votre musique a été mise à jour avec succès"
+            error: "Une erreur c'est produite, veuillez vérifier le formulaire."
         children:
             tags:
                 label: Tags
@@ -711,11 +715,16 @@ move:
     search_title: 'Passes et Shines'
 
 music:
+    new:
+        title: "Nouvelle musique"
+    edit:
+        title: "Modifier la musique"
     list:
         add:
             desc: 'Partagez vos musiques préférées'
             title: 'Ajoutez votre musique'
         no_musics: "Nous n'avons trouvé de musique correspondante à votre recherche."
+        user_no_musics: "Vous n'avez pas encore partagé de musiques. Ajoutez vos musiques préférées et faites resortir votre profil"
 
     search_input_placeholder: 'Recherchez une musique'
     search_title: Musiques
@@ -935,7 +944,7 @@ video:
     new:
         title: "Nouvelle vidéo"
     edit:
-        tilte: "Modifier la vidéo"
+        title: "Modifier la vidéo"
     list:
         add:
             p: 'Partagez et faites décourvir vos vidéos préférées.'
@@ -970,8 +979,14 @@ toastr:
                 no_picture: "Veuillez ajouter une image pour l'évenement : %NAME% "
         music:
             no_musics: "Nous n'avons trouvé de musique correspondante à votre recherche."
+            user_no_musics: "Vous n'avez pas encore partagé de musiques. Ajoutez vos musiques préférées et faites resortir votre profil"
             less_5: "Nous avons trouvé quelques musiques correspondantes à votre recherche."
             more_5: "Voici les musiques correspondantes à votre recherche." 
+            not_valid: "La musique %NAME% n'est pas correcte. Vérifiez le lien." 
+            new:
+                title: "Vous pouvez ajouter un titre pour votre musique, en français et/ou en anglais."
+                url: "Vous pouvez ajouter des musiques venant de Spotify et SoundCloud. <br>Indiquez le lien ou l'url de celle çi."
+                tags: "Sélectionnez des tags en rapport avec votre musique. Ces tags seront utiles pour faire apparaître celle çi dans les résultats de recherches."
         preview_import_facebook:
             success: "Voici les prochains événements Facebook Salsa/Bachata/kizomba vous pouvez ajouter ou mettre à jour."  
             success_count: "Nombre d'événements a ajouter : %COUNT%" 
@@ -996,3 +1011,4 @@ toastr:
             
     xhr_success:
         delete_video: "Votre vidéo a bien été effacée." 
+        delete_music: "Votre musique a bien été effacée." 
