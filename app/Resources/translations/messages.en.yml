@@ -147,6 +147,10 @@ event:
     eventdates_edit_form_title: 'Edit date'
     eventdates_repeat_form_title: 'Add a weekly date : '
     eventdates_title: Dates
+    eventdates: 
+        list:
+            no_eventdates : "There are no dates yet for this event."
+            no_next_eventdates : "There are no coming dates for this event."
     from: From
     hours: Hours
     images_title: Images
@@ -505,6 +509,9 @@ form:
                 label: User
 
     ffed:
+        flashbags:
+            create: "Date %DATE% has been added."
+            update: "Event date has been updated"
         children:
             startdate:
                 label: 'Start date'
@@ -1172,6 +1179,9 @@ toastr:
             new_info: "Thanks for adding an event! First, add a title, a description, a type and the music types. You may add an address, dates, and pictures on the next page."
             links: "If this event exist on socials networks, please add the links."
             descriptions : "Describe event here. Check 'Published' for this event to appear in search results."
+        eventdate:
+            no_eventdates : "There are no dates yet for this event."
+            no_next_eventdates : "There are no coming dates for this event."
         import_facebook:
             no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
             success: "Your next Salsa/Bachata/kizomba events have been added successfully. <br>Added events : %COUNT% <br>Thanks a lot for sharing your event on WeDanceSalsa" 
@@ -1225,7 +1235,9 @@ toastr:
         delete_music: "Your music has been deleted."  
         delete_address: "Your address has been deleted." 
         delete_userfile: "Your photo has been deleted." 
+        delete_date: "Event date has been deleted." 
     xhr_error:
         create_address: "Oups an error occured. Please re-check the form."
         create_music: "Oups an error occured. Please re-check the form."
         create_video: "Oups an error occured. Please re-check the form."
+        create_date_exist_already: "This date already exist."

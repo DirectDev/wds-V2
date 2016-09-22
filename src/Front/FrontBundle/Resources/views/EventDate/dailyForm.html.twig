@@ -4,7 +4,9 @@
         {{ form_start(form, { 'attr' : {'id': 'form_eventdate_daily'} } ) }}
         {{ form_errors(form) }}
 
-        {{ form_row(form.weekday, { 'label_attr' : {'class' : 'checkbox-inline' } } ) }}
+        <div class="col-sm-12 m-b-20">
+            {{ form_widget(form.weekday, { 'label_attr' : {'class' : 'checkbox-inline' } } ) }}
+        </div>
         {{ form_row(form.time) }}
         {{ form_row(form.stopdate) }}
 

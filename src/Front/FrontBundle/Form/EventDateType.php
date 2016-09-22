@@ -18,13 +18,15 @@ class EventDateType extends AbstractType {
                 ->add('startdate', 'date', array(
                     'widget' => 'single_text',
                     'input' => 'datetime',
+                    'required' => true,
                     'format' => 'yyyy-MM-dd', // bug avec les heures
                     'attr' => array('class' => 'datepicker')
                 ))
                 ->add('starttime', 'time', array(
                     'input' => 'datetime',
                     'widget' => 'choice',
-                    'with_seconds' => false
+                    'with_seconds' => false,
+                    'required' => false
                 ))
                 ->add('stopdate', 'date', array(
                     'widget' => 'single_text',

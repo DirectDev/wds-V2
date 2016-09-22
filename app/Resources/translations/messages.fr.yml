@@ -148,6 +148,10 @@ event:
     eventdates_edit_form_title: 'Modifier la date'
     eventdates_repeat_form_title: 'Ajouter une date hebdomadaire : '
     eventdates_title: Dates
+    eventdates: 
+        list:
+            no_eventdates : "Il n'y a pas encore de dates pour cet événement."
+            no_next_eventdates : "Il n'y a pas date future pour cet événement."
     from: Du
     hours: Horaires
     images_title: Images
@@ -337,6 +341,9 @@ form:
                 label: User
 
     ffed:
+        flashbags:
+            create: "La date du %DATE% a été ajoutée."
+            update: "La date a été mise à jour."
         children:
             startdate:
                 label: Début
@@ -1004,6 +1011,9 @@ toastr:
             new_info: "Merci d'ajouter un événement ! Indiquez d'abord un titre, une description, les musiques ainsi que le type d'événement. Vous pourrez ajouter l'adresse, les dates et des images sur la page suivante."
             links: "Si cet événements existe sur les réseaux sociaux, lié-le en précisant les liens correspondants."
             descriptions : "Décrivez votre événement. Vous pouvez ajouter un titre et une description, en français et/ou en anglais. Cochez 'publié' pour le faire apparaître dans les recherches."
+        eventdate:
+            no_eventdates : "Il n'y a pas encore de dates pour cet événement."
+            no_next_eventdates : "Il n'y a pas date future pour cet événement."
         import_facebook:
             no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
             success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés. <br>Nombre d'événements ajoutés : %COUNT% <br>Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
@@ -1056,7 +1066,9 @@ toastr:
         delete_music: "Votre musique a bien été effacée." 
         delete_address: "Votre adresse a bien été effacée." 
         delete_userfile: "Votre photo a bien été effacée." 
+        delete_date: "La date a bien été supprimée." 
     xhr_error:
         create_address: "Une erreur s'est produite. Veuillez vérifier le formulaire."
         create_music: "Une erreur s'est produite. Veuillez vérifier le formulaire."
         create_video: "Une erreur s'est produite. Veuillez vérifier le formulaire."
+        create_date_exist_already: "Cette date existe déjà."

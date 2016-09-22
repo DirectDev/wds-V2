@@ -66,10 +66,16 @@ class EventDate {
     }
 
     public function __toString() {
-        return $this->startdate->format('Y-m-d')
-                . ' ' . $this->starttime->format('H:i')
-                . ' - ' . $this->stopdate->format('Y-m-d')
-                . ' ' . $this->stoptime->format('H:i');
+        $text = '';
+        if($this->startdate)
+            $text .= $this->startdate->format('Y-m-d');
+        if($this->starttime)
+            $text .= ' ' . $this->starttime->format('H:i');
+        if($this->stopdate)
+            $text .=  ' - ' . $this->stopdate->format('Y-m-d');
+        if($this->stoptime)
+            $text .= ' ' . $this->stoptime->format('H:i');
+        return $text;
     }
 
     public function getEvent() {

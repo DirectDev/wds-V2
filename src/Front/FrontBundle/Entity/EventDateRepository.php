@@ -37,6 +37,15 @@ class EventDateRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function findByEvent(Event $event, $order = 'ed.startdate', $sort = 'DESC') {
+        $query = $this->createQueryBuilder('ed')
+                ->leftJoin('ed.events', 'e')
+                ->where('e.id = :id')
+                ->orderBy($order, $sort)
+                ->setParameter('id', $event->getId());
+        return $query->getQuery();
+    }
+
     public function count() {
         $query = $this->createQueryBuilder('ed')
                 ->select('COUNT(ed.id)');

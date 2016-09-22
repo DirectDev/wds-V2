@@ -42,12 +42,16 @@ class EventDateController extends Controller {
         if ($form->isValid()) {
 
             if ($event->hasEventDateForDate($entity->getStartdate()->format('Y-m-d')))
-                throw $this->createNotFoundException('EventDate already entity.');
+                return new Response($this->get('translator')->trans('toastr.xhr_error.create_date_exist_already'), 500);
 
             $em->persist($entity);
             $em->flush();
             $em->refresh($event);
         }
+
+        $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffed.flashbags.create', array('%DATE%' => $entity))
+        );
 
         if ($request->isMethod('POST'))
             return $this->render('FrontFrontBundle:EventDate:list_tagbox.html.twig', array(
@@ -225,11 +229,11 @@ class EventDateController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            $event = $entity->getEvent();
-            if ($event)
-                return $this->render('FrontFrontBundle:EventDate:list_tagbox.html.twig', array(
-                            'event' => $event,
-                ));
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffed.flashbags.update')
+            );
+
+            return new Response('', 200);
         }
 
         return array(
@@ -267,7 +271,7 @@ class EventDateController extends Controller {
             $em->flush();
 
             if ($request->isXmlHttpRequest())
-                return new Response('', 200);
+                return new Response($this->get('translator')->trans('toastr.xhr_success.delete_date'), 200);
         }
 
         if ($event)
@@ -322,6 +326,10 @@ class EventDateController extends Controller {
                 $today->add(new \DateInterval('P1D'));
             }
 
+            $em->refresh($event);
+            foreach($event->getEventDates() as $eventDate)
+                $em->refresh($eventDate);
+
             return $this->render('FrontFrontBundle:EventDate:list_tagbox.html.twig', array(
                         'event' => $event,
             ));
@@ -365,6 +373,7 @@ class EventDateController extends Controller {
                 ->add('time', 'time', array(
                     'input' => 'datetime',
                     'widget' => 'choice',
+                    'required' => false,
                     'with_seconds' => false
                 ))
                 ->setAction($this->generateUrl('front_eventdate_add_by_weekday', array('id' => $id)))
@@ -381,7 +390,7 @@ class EventDateController extends Controller {
         if (!$event)
             throw $this->createNotFoundException('Unable to find Event entity.');
 
-        if ($event->hasEventDateForDate($startdate))
+        if ($event->hasEventDateForDate($startdate->format('Y-m-d')))
             return;
 
         $eventDate = new EventDate();
@@ -390,6 +399,10 @@ class EventDateController extends Controller {
         $eventDate->setStarttime($starttime);
         $em->persist($eventDate);
         $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffed.flashbags.create', array('%DATE%' => $eventDate))
+        );
     }
 
 }

@@ -128,16 +128,18 @@ $(document).on('click', 'button.eventdate_delete', function () {
 
     var postData = form.serializeArray();
     var formURL = form.attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
                 data: postData,
                 success: function (html)
                 {
+                    toastr.success(html);
                     box.focus().remove();
                     loadBootstrapValidator();
                     reloadEventAlerts();
+                    loadMasonry();
                 }
             });
     return false;
@@ -147,7 +149,7 @@ $(document).on('click focus', 'a.eventdate_edit', function () {
     if (xhr && xhr.readystate != 4) {
         xhr.abort();
     }
-    xhr_map = $.ajax({
+    xhr = $.ajax({
         type: "POST",
         url: $(this).attr("href"),
         success: function (html)
@@ -168,7 +170,7 @@ $(document).on('click focus', 'a.eventdate_cancel', function () {
         xhr.abort();
     }
     var rel = $(this).attr("rel");
-    xhr_map = $.ajax({
+    xhr = $.ajax({
         type: "POST",
         url: $(this).attr("href"),
         success: function (html)
@@ -189,10 +191,14 @@ $(document).on('submit', '#form_eventdate_new, #form_eventdate_daily', function 
     var $form = $(e.target);
     // Get the BootstrapValidator instance
     var bv = $form.data('bootstrapValidator');
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
@@ -202,11 +208,14 @@ $(document).on('submit', '#form_eventdate_new, #form_eventdate_daily', function 
                     $('#eventdates').empty().html(html);
                     scrollToElement($('#eventdates'));
                     reloadEventAlerts();
+                    refreshMasonry();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
                     if(error_xhr.status==403) {
                         location.reload();
                     }
+                    if(error_xhr.responseText)
+                        toastr.error(error_xhr.responseText);
                 }
             });
     e.preventDefault(); //STOP default actiont.
@@ -219,10 +228,14 @@ $(document).on('submit', '#form_eventdate_edit', function (e) {
     var $form = $(e.target);
     // Get the BootstrapValidator instance
     var bv = $form.data('bootstrapValidator');
+    
+    if (xhr && xhr.readystate != 4) {
+        xhr.abort();
+    }
 
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    $.ajax(
+    xhr = $.ajax(
             {
                 url: formURL,
                 type: "POST",
@@ -235,6 +248,8 @@ $(document).on('submit', '#form_eventdate_edit', function (e) {
                     if(error_xhr.status==403) {
                         location.reload();
                     }
+                    if(error_xhr.responseText)
+                        toastr.error(error_xhr.responseText);
                 }
             });
     e.preventDefault(); //STOP default actiont.
@@ -244,8 +259,6 @@ $(document).on('click', 'button.love_button', function (e) {
     e.preventDefault();
     // Get the form instance
     var form = $(this).parent().closest('form');
-    console.log('click');
-    console.log(form);
     var postData = form.serializeArray();
     var formURL = form.attr("action");
     $.ajax(

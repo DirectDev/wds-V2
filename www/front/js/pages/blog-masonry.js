@@ -48,6 +48,11 @@ function prependDivToMasonry(div) {
     loadMasonry();
 }
 
+function refreshMasonry() {
+    masonryContainer.masonry('reloadItems').masonry();
+    loadMasonry();
+}
+
 $(document).ready(function () {
     loadMasonry();
 });
