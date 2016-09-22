@@ -139,10 +139,11 @@ class MusicFrControllerTest extends WebTestCase {
                 )
         );
         $url = "https://open.spotify.com/track/testupdate" . $this->locale;
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music_update', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_music_edit', array(
                     'id' => $music->getId(),
                     '_locale' => $this->locale)
         ));
+
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
 
         $this->assertContains($update, $this->clientLogged->getResponse()->getContent());

@@ -59,6 +59,10 @@ class UserFrControllerTest extends WebTestCase {
         return $this->em->getRepository('UserUserBundle:User')->findAll();
     }
 
+    private function findUserLogged() {
+        return $this->em->getRepository('UserUserBundle:User')->findOneByUsername($this->PHP_AUTH_USER);
+    }
+
     private function findOneUser() {
         $i = 0;
         foreach ($this->findAllUsers() as $user) {
@@ -269,7 +273,6 @@ class UserFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
-
     public function testRegister() {
 
         $crawler = $this->client->request('GET', $this->router->generate('fos_user_registration_register', array(
@@ -373,7 +376,7 @@ class UserFrControllerTest extends WebTestCase {
 
 
 
-// edit user        
+// edit user
 
         $crawler = $this->client->request('GET', $this->router->generate('callback_username', array(
                     '_locale' => $this->locale,
@@ -416,7 +419,7 @@ class UserFrControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
         $this->assertEquals(0, $crawler->filter('html:contains("false")')->count());
     }
-    
+
     public function testEditProfile() {
         $user = $this->findOneUser();
         $crawler = $this->client->request('GET', $this->router->generate('front_user_edit', array(
@@ -570,6 +573,5 @@ class UserFrControllerTest extends WebTestCase {
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
-
 
 }

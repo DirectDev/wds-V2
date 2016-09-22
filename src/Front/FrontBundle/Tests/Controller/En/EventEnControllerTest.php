@@ -19,7 +19,7 @@ class EventFrControllerTest extends WebTestCase {
     private $description;
     private $updated_description;
     private $facebook_link;
-    private $PHP_AUTH_USER = 'Jerome';
+    private $PHP_AUTH_USER = 'Marie';
     private $PHP_AUTH_PW = '1234';
 
     public function __construct() {
@@ -124,7 +124,7 @@ class EventFrControllerTest extends WebTestCase {
 
     public function testCreateUpdateLogged() {
         /*         * **** Create ***** */
-        $create = $this->translator->trans('Create', array(), 'messages', $this->locale);
+        $create = $this->translator->trans('Continue', array(), 'messages', $this->locale);
 
         $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_new', array(
                     '_locale' => $this->locale)
@@ -156,24 +156,22 @@ class EventFrControllerTest extends WebTestCase {
         $this->assertNotNull($event);
 
 
-        /*         * **** Update ***** */
+        /*         * **** Update pictures ***** */
         $update = $this->translator->trans('Update', array(), 'messages', $this->locale);
 
 
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit', array(
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_pictures', array(
                     '_locale' => $this->locale,
                     'id' => $event->getId()
                         )
         ));
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
 
-        $this->assertContains($update, $this->clientLogged->getResponse()->getContent());
-
         $form = $crawler->filter('form[enctype="multipart/form-data"]')->form();
 
         $crawler = $this->clientLogged->submit($form);
 
-        $response = $this->clientLogged->getResponse();
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
 
         $this->em->refresh($event);
 
@@ -216,7 +214,7 @@ class EventFrControllerTest extends WebTestCase {
         $update = $this->translator->trans('Update', array(), 'messages', $this->locale);
 
 
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit', array(
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_links', array(
                     '_locale' => $this->locale,
                     'id' => $event->getId()
                         )
@@ -289,29 +287,6 @@ class EventFrControllerTest extends WebTestCase {
         $user = $this->findUserLogged();
         $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
         $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit', array(
-                    'id' => $event->getId(),
-                    '_locale' => $this->locale)
-        ));
-        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
-    }
-
-    public function testEditDescription() {
-        $event = $this->findOneEvent();
-        $crawler = $this->client->request('GET', $this->router->generate('front_event_edit_description', array(
-                    'id' => $event->getId(),
-                    '_locale' => $this->locale)
-        ));
-        $this->assertFalse($this->client->getResponse()->isSuccessful());
-
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_description', array(
-                    'id' => $event->getId(),
-                    '_locale' => $this->locale)
-        ));
-        $this->assertFalse($this->clientLogged->getResponse()->isSuccessful());
-
-        $user = $this->findUserLogged();
-        $event = $this->em->getRepository('FrontFrontBundle:Event')->findOneBy(array('user' => $user));
-        $crawler = $this->clientLogged->request('GET', $this->router->generate('front_event_edit_description', array(
                     'id' => $event->getId(),
                     '_locale' => $this->locale)
         ));

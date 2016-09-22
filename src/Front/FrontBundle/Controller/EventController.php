@@ -113,56 +113,6 @@ class EventController extends Controller {
         ));
     }
 
-//    /**
-//     * Displays a form to edit an existing Event entity.
-//     *
-//     */
-//    public function editAction($id) {
-//        if (!$this->getUser())
-//            return $this->redirect($this->generateUrl('fos_user_security_login'));
-//
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('FrontFrontBundle:Event')->find($id);
-//
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find Event entity.');
-//        }
-//
-//        if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
-//                return $this->redirect($this->generateUrl('fos_user_security_login'));
-//
-//        $editForm = $this->createEditForm($entity);
-//        $editLinkForm = $this->createEditLinkForm($entity);
-//        $editDescriptionForm = $this->createEditDescriptionForm($entity);
-//
-//        /*
-//         * UPLOAD FILE FORM
-//         * remplacer le User par entite souhaitee
-//         * ajouter au render
-//          'editId' => $editId,
-//          'existingFiles' => $existingFiles,
-//         * ajouter fonction handleFiles
-//         *
-//         */
-//        $editId = $this->getRequest()->get('editId');
-//        $arrayFile = $this->handleFiles($entity, $this->getRequest()->get('editId'));
-//        $editId = $arrayFile ['editId'];
-//        $existingFiles = $arrayFile ['existingFiles'];
-//        /*
-//         * UPLOAD FILE FORM END
-//         */
-//
-//        return $this->render('FrontFrontBundle:Event:edit.html.twig', array(
-//                    'event' => $entity,
-//                    'edit_form' => $editForm->createView(),
-//                    'edit_link_form' => $editLinkForm->createView(),
-//                    'edit_description_form' => $editDescriptionForm->createView(),
-//                    'editId' => $editId,
-//                    'existingFiles' => $existingFiles,
-//        ));
-//    }
-
     /**
      * Displays a form to edit an existing Event entity.
      *

@@ -105,7 +105,7 @@ class VideoFrControllerTest extends WebTestCase {
 
     public function testCreateUpdateDelete() {
 
-        $create = $this->translator->trans('Create', array(), 'messages', $this->locale);
+        $create = $this->translator->trans('form.ffv.button.create', array(), 'messages', $this->locale);
         $update = $this->translator->trans('Update', array(), 'messages', $this->locale);
 
         $user = $this->findUser();
@@ -139,7 +139,7 @@ class VideoFrControllerTest extends WebTestCase {
                 )
         );
         $url = "https://open.spotify.com/track/testupdate" . $this->locale;
-        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_video_update', array(
+        $crawler = $this->clientLogged->request('POST', $this->router->generate('front_video_edit', array(
                     'id' => $video->getId(),
                     '_locale' => $this->locale)
         ));

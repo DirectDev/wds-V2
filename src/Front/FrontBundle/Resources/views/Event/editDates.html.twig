@@ -53,12 +53,6 @@
                     </div>
                     <div class="clear-both"></div>
 
-                    {#
-                    
-                                        <div id='eventdates' class='row'>
-                                            {% include 'FrontFrontBundle:EventDate:list_tagbox.html.twig' with { event : event } %}
-                                        </div>#}
-
                     {% set count_eventdates = 0 %}
                     {% for eventdate in event.getEventDates() %}
                         {% set count_eventdates = count_eventdates + 1 %}
