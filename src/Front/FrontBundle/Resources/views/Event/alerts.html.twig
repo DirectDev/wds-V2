@@ -2,50 +2,46 @@
 
     <div id='event_alerts' rel='{{ path('front_event_alerts', { id: event.id } ) }}'>
 
+        {% set nothing_displayed_yet = true %}
+
         {% if not event.getAddress() %}
-            <div class="alert alert-info fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-                {% trans %}event.alert.missing_address{% endtrans %}
-            </div>
+            <script type="text/javascript">
+                toastr.warning("{% trans %}toastr.load.address.event_no_addresses{% endtrans %}");
+            </script>
+            {% set nothing_displayed_yet = false %}
         {% endif %}
-        {% if event.getAddress() and not event.hasOneValidAddress %}
-            <div class="alert alert-warning fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
-                {% trans %}event.alert.invalid_address{% endtrans %}
-            </div>
+        {% if nothing_displayed_yet and event.getAddress() and not event.hasOneValidAddress %}
+            <script type="text/javascript">
+                toastr.warning("{% trans %}event.alert.invalid_address{% endtrans %}");
+            </script>
+            {% set nothing_displayed_yet = false %}
         {% endif %}
 
 
-        {% if not event.getEventDates()|length %}
-            <div class="alert alert-info fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-                {% trans %}event.alert.missing_date{% endtrans %}
-            </div>
-        {% elseif not event.getNextEventDate()  %}
-            <div class="alert alert-warning fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.warning{% endtrans %}</strong>
-                {% trans %}event.alert.no_next_date{% endtrans %}</a>
-            </div>
+        {% if nothing_displayed_yet and not event.getEventDates()|length %}
+            <script type="text/javascript">
+                toastr.warning("{% trans %}event.alert.missing_date{% endtrans %}");
+            </script>
+            {% set nothing_displayed_yet = false %}
+        {% elseif nothing_displayed_yet and not event.getNextEventDate()  %}
+            <script type="text/javascript">
+                toastr.info("{% trans %}event.alert.no_next_date{% endtrans %}");
+            </script>
+            {% set nothing_displayed_yet = false %}
         {% endif %}
 
-        {% if not event.getProfilePicture() %}
-            <div class="alert alert-info fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-                {% trans %}event.alert.missing_profile_picture{% endtrans %}
-            </div>
+        {% if nothing_displayed_yet and not event.getProfilePicture() %}
+            <script type="text/javascript">
+                toastr.info("{% trans %}toastr.load.photo.event_no_photos{% endtrans %}");
+            </script>
+            {% set nothing_displayed_yet = false %}
         {% endif %}
 
-        {% if  event.isShownInSearchResults()  %}
-            <div class="alert alert-success fade in">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <strong>{% trans %}front.alert.success{% endtrans %}</strong>
-                {% trans %}event.alert.valid{% endtrans %} 
-            </div>
+        {% if  nothing_displayed_yet and event.isShownInSearchResults()  %}
+            <script type="text/javascript">
+                toastr.success("{% trans %}event.alert.valid{% endtrans %}");
+            </script>
+            {% set nothing_displayed_yet = false %}
         {% endif %}
 
     </div>

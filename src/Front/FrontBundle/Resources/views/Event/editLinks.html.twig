@@ -35,7 +35,7 @@
 
             <!-- Profile Content -->            
             <div class="col-md-10">
-
+                
                 <div class="profile-body">
 
                     <h2 class="heading-md">{% trans %}event.edit.links.h2{% endtrans %}</h2>
@@ -50,101 +50,9 @@
                     </script>
 
                 </div>  
-
-                {# {% render(path('front_event_alerts', { id : event.id } )) %}
-         
-                 <!-- Profile Content -->
-                 <div class="col-md-12">
-                     <div class="profile-body margin-bottom-20">
-                         <div class="tab-v1">
-                             <ul class="nav nav-justified nav-tabs">
-                                 <li class="active"><a data-toggle="tab" href="#description">{% trans %}event.edit.description{% endtrans %}</a></li>
-                                 <li><a data-toggle="tab" href="#address">{% trans %}event.edit.addresses{% endtrans %}</a></li>
-                                 <li><a data-toggle="tab" href="#eventdate">{% trans %}event.edit.dates{% endtrans %}</a></li>
-                                 <li><a data-toggle="tab" href="#link">{% trans %}event.edit.links{% endtrans %}</a></li>
-                                 <li><a data-toggle="tab" href="#picture">{% trans %}event.edit.pictures{% endtrans %}</a></li>
-                             </ul>          
-                             <div class="tab-content">
-         
-         
-         
-                                 <div id="description" class="profile-edit tab-pane fade in active">
-                                     <h2 class="heading-md">{% trans %}event.edit.description.h2{% endtrans %}</h2>
-         
-                                     <div id="descriptionForm">
-                                         {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
-                                     </div>
-                                 </div>
-         
-         
-                                 <div id="link" class="profile-edit tab-pane fade">
-                                     <h2 class="heading-md">{% trans %}event.edit.links.h2{% endtrans %}</h2>
-         
-                                     <div id="linkForm">
-                                         {% include 'FrontFrontBundle:Event:linkForm.html.twig' %}
-                                     </div>
-         
-                                 </div>
-         
-                                 <div id="picture" class="profile-edit tab-pane fade">
-                                     <h2 class="heading-md">{% trans %}event.edit.pictures.h2{% endtrans %}</h2>
-                                     <br>
-         
-                                     {% set action_path = path('front_event_edit' , { id: event.id, editId: editId }) %}
-                                     {% include 'FileFileBundle::uploadFileForm.html.twig' with {
-                                                             action_path: action_path,
-                                                             cancel_path: null,
-                                                             delete_path: '',
-                                                             id: event.id, 
-                                                             editId: editId, 
-                                                             existingFiles: existingFiles,
-                                                             entity: event,
-                                                     } %}
-         
-         
-                                 </div>
-         
-                                 <div id="address" class="profile-edit tab-pane fade">
-                                     <h2 class="heading-md">{% trans %}event.edit.addresses.h2{% endtrans %}</h2>
-         
-                                     <button class='btn btn-success margin-bottom-30 pull-left' id="eventAddAddress" href="{{ path('front_address_event_new', { id : event.id } ) }}">
-                                         {% trans %}event.add_address_button{% endtrans %}
-                                     </button>
-         
-                                     <div  class="row margin-bottom-20" id="eventAddressList">
-                                         {% for address in event.addresses %}
-                                             {% render(path('front_address_show_with_buttons', { id : address.id } )) %}
-                                         {% endfor %}
-                                     </div>
-         
-         
-                                 </div>
-         
-         
-                                 <div id="eventdate" class="profile-edit tab-pane fade">
-                                     <h2 class="heading-md">{% trans %}event.edit.dates.h2{% endtrans %}</h2>
-                                     <br>
-         
-                                     <div id='eventdates_form' class="panel-body col-sm-6">
-                                         <div  id='eventdate_new_edit' class="panel panel-default">
-                                             {% render(path('front_eventdate_new', { id : event.id } )) %}
-                                         </div>
-                                     </div>
-                                     <div class="panel-body col-sm-6">
-                                         {% render(path('front_eventdate_add_by_weekday', { id : event.id } )) %}
-                                     </div>
-                                     <div class="clear-both"></div>
-                                     <div id='eventdates' class='row'>
-                                         {% include 'FrontFrontBundle:EventDate:list_tagbox.html.twig' with { event : event } %}
-                                     </div>
-         
-                                 </div>
-         
-         
-                             </div>
-                         </div>
-                     </div>    
-                 </div>#}
+                    
+                {% render(path('front_event_alerts', { id : event.id } )) %}
+                
             </div>
         </div>
         <!-- End Profile Content -->

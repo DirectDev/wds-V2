@@ -115,7 +115,7 @@ event:
     addresses_title: Addresses
 
     alert:
-        invalid_address: 'Please add a correct address'
+        invalid_address: "This event has no correct address. I does not appear in search results."
         missing_address: 'Please add an address'
         missing_date: 'Please add one or more dates for this event'
         missing_profile_picture: 'Please add one or more pictures for this event'
@@ -1035,6 +1035,7 @@ overviews:
 photo:
     list:
         user_no_photos: "You didn't add any photos yet. Add photos to fill your profile."
+        event_no_photos: "This event has not photos. Add one or more photos to make it more interesting."
         add:
             desc: 'Add your photo'
             title: 'Add your photo here'
@@ -1202,6 +1203,7 @@ toastr:
                 tags: "Check tags for the music. It helps to match it in search results." 
         photo:
             user_no_photos: "You didn't add any photos yet. Add photos to fill your profile."
+            event_no_photos: "This event has not photos. Add one or more photos to make it more interesting."
             add: "Your photo '%NAME%' has been added." 
             already_exist: "you already had a photo named '%NAME%'. This photo couldn't be added correctly." 
         preview_import_facebook:

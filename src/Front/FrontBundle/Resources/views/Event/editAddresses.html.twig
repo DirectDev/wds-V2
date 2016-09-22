@@ -39,6 +39,8 @@
                 <div class="profile-body">
 
                     {% include 'FrontFrontBundle::flashbags.html.twig'%}
+                    
+                    {% render(path('front_event_alerts', { id : event.id } )) %}
 
                     <div class='row m-b-10 clear-both'>
                         <div class='col-md-9 col-sm-12'>
@@ -64,9 +66,6 @@
                                 <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                 {% trans %}address.list.event_no_addresses{% endtrans %}
                             </div>
-                            <script type="text/javascript">
-                                toastr.info("{% trans %}toastr.load.address.event_no_addresses{% endtrans %}");
-                            </script>
                         {% endif %}
 
                         <div class="blog_masonry_3col" id="eventAddressList">

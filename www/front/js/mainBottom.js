@@ -533,6 +533,7 @@ $(document).on('submit', 'form[name="ffede"]', function (e) {
                     updateCKEditors();
                     loadBootstrapValidator();
                     scrollToElement($('#descriptionForm'));
+                    reloadEventAlerts();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
                     if (error_xhr.status == 403) {
@@ -566,6 +567,7 @@ $(document).on('submit', 'form[name="ffel"]', function (e) {
                     $('#linkForm').empty().html(html);
                     loadBootstrapValidator();
                     scrollToElement($('#linkForm'));
+                    reloadEventAlerts();
                 },
                 error: function (error_xhr, ajaxOptions, thrownError) {
                     if (error_xhr.status == 403) {

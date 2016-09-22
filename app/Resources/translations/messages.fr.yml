@@ -116,7 +116,7 @@ event:
     addresses_title: Adresses
 
     alert:
-        invalid_address: 'Merci d''indiquer une adresse correcte'
+        invalid_address: "Cet événement n'a pas d'adresse correcte. Il n'apparaît pas dans les recherches."
         missing_address: 'Ajoutez une adresse pour cet événement.'
         missing_date: 'Ajoutez une ou plusieurs dates pour cet événement'
         missing_profile_picture: 'Ajoutez une image pour cet événement'
@@ -866,6 +866,7 @@ overviews:
 photo:
     list:
         user_no_photos: "Vous n'avez pas encore partagé de photos. Ajoutez vos photos préférées et faites resortir votre profil"
+        event_no_photos: "Cet événement n'a pas de photos. Ajoutez une ou plusieurs photos pour le mettre en valeur."
         add:
             desc: 'Partagez vos photos ici'
             title: 'Ajoutez vos photos'
@@ -1034,6 +1035,7 @@ toastr:
                 tags: "Sélectionnez des tags en rapport avec votre musique. Ces tags seront utiles pour faire apparaître celle çi dans les résultats de recherches."
         photo:
             user_no_photos: "Vous n'avez pas encore partagé de photos. Ajoutez vos photos préférées et faites resortir votre profil"
+            event_no_photos: "Cet événement n'a pas de photos. Ajoutez une ou plusieurs photos pour le mettre en valeur."
             add: "Votre photo '%NAME%' a bien été ajoutée." 
             already_exist: "Vous avez déjà une photo nommée '%NAME%'. La photo n'a pas pu être enregistrée correctement." 
         preview_import_facebook:

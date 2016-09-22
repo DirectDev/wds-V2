@@ -35,7 +35,7 @@
 
             <!-- Profile Content -->            
             <div class="col-md-10">
-                
+
                 {% include 'FrontFrontBundle::flashbags.html.twig'%}
 
                 <div class="profile-body">
@@ -68,7 +68,7 @@
                             toastr.info("{% trans %}toastr.load.eventdate.no_eventdates{% endtrans %}");
                         </script>
                     {% endif %}
-                    
+
                     {% if 0 < count_eventdates and not event.getNextEventDate() %}
                         <div class="alert alert-info fade in">
                             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
@@ -95,6 +95,7 @@
             </div>
 
 
+            {% render(path('front_event_alerts', { id : event.id } )) %}
 
         </div>
         <!-- End Profile Content -->
