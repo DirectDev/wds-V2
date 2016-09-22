@@ -9,6 +9,7 @@ Next: Suivant
 Previous: Précédent
 Update: 'Mettre à jour'
 Edit: 'Modifier'
+Continue: "Continuer"
 
 add_block:
     event:
@@ -119,8 +120,7 @@ event:
         missing_address: 'Ajoutez une adresse pour cet événement.'
         missing_date: 'Ajoutez une ou plusieurs dates pour cet événement'
         missing_profile_picture: 'Ajoutez une image pour cet événement'
-        new_info: 'Indiquez d''abord un titre, une description, les musiques ainsi que le type d''événement.'
-        new_info2: 'Vous pourrez ajouter l''adresse, les dates et des images sur la page suivante.'
+        new_info: "Merci d'ajouter un événement ! Indiquez d'abord un titre, une description, les musiques ainsi que le type d'événement. Vous pourrez ajouter l'adresse, les dates et des images sur la page suivante."
         no_next_date: 'Il n''y a pas de date à venir pour cet événement'
         valid: 'Cet événement apparaît dans les résultats de recherche.'
 
@@ -158,6 +158,7 @@ event:
 
     music: Musique
     music_types: Musique
+    new.title : "Nouvel événement"
     not_published: 'Non publié'
     not_valid: 'A corriger'
     published: Publié
@@ -298,6 +299,9 @@ form:
                 label: Traductions
 
     ffe:
+        flashbags:
+            create: "L'événement a été crée avec succès."
+            error: "Une erreur c'est produite, veuillez vérifier le formulaire."
         children:
             eventTypes:
                 label: Type
@@ -308,8 +312,8 @@ form:
             name:
                 label: Evenement
 
-            organizedBy:
-                label: 'Organisé par'
+            formFilledByOrganizator:
+                label: "Etes-vous l'organisateur ?"
 
             published:
                 label: 'Publié (cochez cette case pour faire apparaître votre évenement dans les recherches)'
@@ -323,6 +327,9 @@ form:
 
                             title:
                                 label: Titre
+
+                            price:
+                                label: Prix
 
                 label: Traductions
 
@@ -354,8 +361,8 @@ form:
             name:
                 label: Evenement
 
-            organizedBy:
-                label: 'Organisé par'
+            formFilledByOrganizator:
+                label: "Etes-vous l'organisateur ?"
 
             published:
                 label: 'Publié (cochez cette case pour faire apparaître votre évenement dans les recherches)'
@@ -369,6 +376,9 @@ form:
 
                             title:
                                 label: Titre
+
+                            price:
+                                label: Prix
 
                 label: Traductions
 
@@ -991,8 +1001,9 @@ toastr:
         city:
             no_users: "Aucun %USERTYPE% n'est enregistré à %CITY%, pour le moment. Soyez le premier et boostez votre popularité."
         event:
+            new_info: "Merci d'ajouter un événement ! Indiquez d'abord un titre, une description, les musiques ainsi que le type d'événement. Vous pourrez ajouter l'adresse, les dates et des images sur la page suivante."
             links: "Si cet événements existe sur les réseaux sociaux, lié-le en précisant les liens correspondants."
-            descriptions : "."
+            descriptions : "Décrivez votre événement. Vous pouvez ajouter un titre et une description, en français et/ou en anglais. Cochez 'publié' pour le faire apparaître dans les recherches."
         import_facebook:
             no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
             success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés. <br>Nombre d'événements ajoutés : %COUNT% <br>Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
@@ -1034,6 +1045,8 @@ toastr:
                 title: "Vous pouvez ajouter un titre pour votre vidéo, en français et/ou en anglais."
                 url: "Vous pouvez ajouter des vidéos venant de Youtube, Dailymotion et Vimeo. <br>Indiquez le lien ou l'url de celle çi."
                 tags: "Sélectionnez des tags en rapport avec votre vidéo. Ces tags seront utiles pour faire apparaître celle çi dans les résultats de recherches."
+        translations: "Vous pouvez ajouter des traductions en changeant la langue pour cette page depuis le menu principal."
+    
     form:
         submit:
             ffup_success: "Votre profil a été mis à jour."

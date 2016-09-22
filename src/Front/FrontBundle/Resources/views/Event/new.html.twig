@@ -23,47 +23,65 @@
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info{% endtrans %}
         </div>
+       
+        <script type="text/javascript">
+            toastr.info("{% trans %}toastr.load.event.new_info{% endtrans %}");
+        </script>
 
-        <div class="alert alert-info fade in">
-            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-            <strong>{% trans %}front.alert.info{% endtrans %}</strong>
-            {% trans %}event.alert.new_info2{% endtrans %}
-        </div>
+        <div class="row">
 
-        <!-- Profile Content -->
-        <div class="col-md-12">
-            <div class="profile-body margin-bottom-20">
-                <div class="tab-v1">
-                    <ul class="nav nav-justified nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#description">{% trans %}event.edit.description{% endtrans %}</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.addresses{% endtrans %}</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.dates{% endtrans %}</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.links{% endtrans %}</a></li>
-                        <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.pictures{% endtrans %}</a></li>
-                    </ul>          
-                    <div class="tab-content">
+            <!-- Profile Content -->            
+            <div class="col-md-12">
 
+                <div class="profile-body">
 
+                    <h2 class="heading-md">{% trans %}event.new.title{% endtrans %}</h2>
+                    <br>
 
-                        <div id="profile" class="profile-edit tab-pane fade in active">
-                            <h2 class="heading-md">{% trans %}event.edit.description.h2{% endtrans %}</h2>
-                            <div id="descriptionForm">
-                                {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
-                            </div>
-                        </div>
-
-
+                    <div id="descriptionForm">
+                        {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
                     </div>
-                </div>    
+
+                </div> 
+
+            </div>  
+        </div>  
+
+        {#
+                <!-- Profile Content -->
+                <div class="col-md-12">
+                    <div class="profile-body margin-bottom-20">
+                        <div class="tab-v1">
+                            <ul class="nav nav-justified nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#description">{% trans %}event.edit.description{% endtrans %}</a></li>
+                                <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.addresses{% endtrans %}</a></li>
+                                <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.dates{% endtrans %}</a></li>
+                                <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.links{% endtrans %}</a></li>
+                                <li class="disabled"><a data-toggle="tab" href="#description">{% trans %}event.edit.pictures{% endtrans %}</a></li>
+                            </ul>          
+                            <div class="tab-content">
+        
+        
+        
+                                <div id="profile" class="profile-edit tab-pane fade in active">
+                                    <h2 class="heading-md">{% trans %}event.edit.description.h2{% endtrans %}</h2>
+                                    <div id="descriptionForm">
+                                        {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
+                                    </div>
+                                </div>
+        
+        
+                            </div>
+                        </div>    
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- End Profile Content -->
+            <!-- End Profile Content -->
+        #}
 
 
-
-</div><!--/container-->	 	
-<!--=== End Content Part ===-->
+    </div><!--/container-->	 	
+    <!--=== End Content Part ===-->
 
 
 

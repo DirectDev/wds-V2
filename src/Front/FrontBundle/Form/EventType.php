@@ -10,7 +10,6 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class EventType extends AbstractType {
-
     private $securityContext;
 
     public function __construct(SecurityContext $securityContext) {
@@ -23,52 +22,52 @@ class EventType extends AbstractType {
      *  
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $locales = array('en');
+        $locales   = array('en');
         if (isset($options['attr']['locale']))
-            $locales[] = $options['attr']['locale'];
+                $locales[] = $options['attr']['locale'];
 
         $User = $this->securityContext->getToken()->getUser();
 
         $builder
-                ->add('eventTypes', 'entity', array(
-                    'class' => 'FrontFrontBundle:EventType',
-                    'property' => 'title',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'by_reference' => true,
-                ))
-                ->add('musicTypes', 'entity', array(
-                    'class' => 'FrontFrontBundle:MusicType',
-                    'property' => 'title',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'by_reference' => true,
-                ))
-                ->add('translations', 'a2lix_translations', array(
-                    'locales' => $locales,
-                    'fields' => array(
-                        'title' => array('attr' => array('required' => true)),
-                        'description' => array('attr' => array('class' => 'ckeditor form-control'))
-                    )
-                ))
-                ->add('published', 'checkbox', array(
-                    'required' => false,
-                ))
-        ;
-        if ($User)
-            $builder->add('organizedBy', 'entity', array(
-                'class' => 'UserUserBundle:User',
-                'required' => false,
-                'property' => 'username',
-                'multiple' => false,
-                'expanded' => false,
+            ->add('eventTypes',
+                'entity',
+                array(
+                'class' => 'FrontFrontBundle:EventType',
+                'property' => 'title',
+                'multiple' => true,
+                'expanded' => true,
                 'by_reference' => true,
-                'query_builder' => function (EntityRepository $er) use ($User) {
-                    return $er->createQueryBuilder('u')
-                                    ->where('u.id = :user')
-                                    ->setParameter('user', $User->getId());
-                },
-            ));
+            ))
+            ->add('musicTypes',
+                'entity',
+                array(
+                'class' => 'FrontFrontBundle:MusicType',
+                'property' => 'title',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => true,
+            ))
+            ->add('translations',
+                'a2lix_translations',
+                array(
+                'locales' => $locales,
+                'fields' => array(
+                    'title' => array('attr' => array('required' => true)),
+                    'description' => array('attr' => array('class' => 'ckeditor form-control')),
+                    'title' => array('attr' => array('required' => false)),
+                )
+            ))
+            ->add('published',
+                'checkbox',
+                array(
+                'required' => false,
+            ))
+            ->add('formFilledByOrganizator',
+                'checkbox',
+                array(
+                'required' => false,
+            ))
+        ;
     }
 
     /**
@@ -86,5 +85,4 @@ class EventType extends AbstractType {
     public function getName() {
         return 'ffe';
     }
-
 }

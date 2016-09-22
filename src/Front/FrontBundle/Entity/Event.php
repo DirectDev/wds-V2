@@ -45,6 +45,13 @@ class Event {
     /**
      * @var boolean
      *
+     * @ORM\Column(name="form_filled_by_organizator", type="boolean", nullable=true, options={"default":0})
+     */
+    private $formFilledByOrganizator;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="footer", type="boolean", nullable=true)
      */
     private $footer;
@@ -1055,4 +1062,28 @@ class Event {
         return $this->footer;
     }
 
+
+    /**
+     * Set formFilledByOrganizator
+     *
+     * @param boolean $formFilledByOrganizator
+     *
+     * @return Event
+     */
+    public function setFormFilledByOrganizator($formFilledByOrganizator)
+    {
+        $this->formFilledByOrganizator = $formFilledByOrganizator;
+
+        return $this;
+    }
+
+    /**
+     * Get formFilledByOrganizator
+     *
+     * @return boolean
+     */
+    public function getFormFilledByOrganizator()
+    {
+        return $this->formFilledByOrganizator;
+    }
 }

@@ -25,6 +25,13 @@ class EventTranslation {
     /**
      * @var string
      *
+     * @ORM\Column(name="price", type="string", length=100, nullable=true)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -71,4 +78,28 @@ class EventTranslation {
         return $this->description;
     }
 
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return EventTranslation
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

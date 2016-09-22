@@ -40,18 +40,16 @@ class EventController extends Controller {
             $em->persist($entity);
             $em->flush();
 
-            try {
-                $em->refresh($entity);
-                $address = $entity->getAddress();
-                $this->setLatitudeAndLongitude($address);
-                $em->persist($address);
-                $em->flush();
-            } catch (\Exception $e) {
-                
-            }
+            $this->get('session')->getFlashBag()->add(
+                    'success', $this->get('translator')->trans('form.ffe.flashbags.create')
+            );
 
-            return $this->redirect($this->generateUrl('front_event_edit', array('id' => $entity->getId(), 'uri' => $entity->getURI())));
-        }
+            return $this->redirect($this->generateUrl('front_event_edit_addresses', array('id' => $entity->getId(), 'uri' => $entity->getURI())));
+        } 
+        else
+            $this->get('session')->getFlashBag()->add(
+                    'error', $this->get('translator')->trans('form.ffe.flashbags.error')
+            );
 
         return $this->render('FrontFrontBundle:Event:new.html.twig', array(
                     'entity' => $entity,
@@ -75,7 +73,7 @@ class EventController extends Controller {
             'attr' => array('locale' => $this->get('request')->getLocale())
         ));
 
-        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('create')));
+        $form->add('submit', 'submit', array('label' => /** @Ignore */ $this->get('translator')->trans('Continue')));
 
         return $form;
     }
@@ -183,6 +181,9 @@ class EventController extends Controller {
 
         if (!$this->getUser() or !$entity->allowModificationByUser($this->getUser()))
                 return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        if($entity->getOrganizedBy() == $this->getUser())
+            $entity->setFormFilledByOrganizator(true);
 
         $editDescriptionForm = $this->createEditDescriptionForm($entity);
 
@@ -469,6 +470,11 @@ class EventController extends Controller {
 
 
         if ($editDescriptionForm->isValid()) {
+
+            if($entity->getFormFilledByOrganizator())
+                $entity->setOrganizedBy($this->getUser());
+
+            $em->persist($entity);
             $em->flush();
 
             $this->get('session')->getFlashBag()->add(

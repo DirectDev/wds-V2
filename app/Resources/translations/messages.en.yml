@@ -119,8 +119,7 @@ event:
         missing_address: 'Please add an address'
         missing_date: 'Please add one or more dates for this event'
         missing_profile_picture: 'Please add one or more pictures for this event'
-        new_info: 'First, add a title, a description, a type and the music types.'
-        new_info2: 'You may add an address, dates, and pictures on the next page.'
+        new_info: "Thanks for adding an event! First, add a title, a description, a type and the music types. You may add an address, dates, and pictures on the next page."
         no_next_date: 'There are no future dates for this event'
         valid: 'This event is valid and shows in search results.'
 
@@ -158,6 +157,7 @@ event:
 
     music: Music
     music_types: Music
+    new.title : "New event"
     not_published: 'Event not published'
     not_valid: 'Event not valid'
     published: 'Event published'
@@ -467,6 +467,9 @@ form:
                 label: Translations
 
     ffe:
+        flashbags:
+            create: "Event has been created successsfully."
+            error: "Oups, an error occured, please re-check form."
         children:
             eventTypes:
                 label: Type
@@ -477,8 +480,8 @@ form:
             name:
                 label: Event
 
-            organizedBy:
-                label: 'Organized by'
+            formFilledByOrganizator:
+                label: "Are you the organizer ?"
 
             published:
                 label: Published
@@ -492,6 +495,9 @@ form:
 
                             title:
                                 label: Title
+
+                            price:
+                                label: Price
 
                 label: Translations
 
@@ -523,8 +529,8 @@ form:
             name:
                 label: Event
 
-            organizedBy:
-                label: 'Organized by'
+            formFilledByOrganizator:
+                label: "Are you the organizer ?"
 
             published:
                 label: Published
@@ -538,6 +544,9 @@ form:
 
                             title:
                                 label: Title
+
+                            price:
+                                label: Prix
 
                 label: Translations
 
@@ -1160,8 +1169,9 @@ toastr:
         city:
             no_users: "There is no %USERTYPE% registered in %CITY%. Be the first one and boost your popularity."
         event:
+            new_info: "Thanks for adding an event! First, add a title, a description, a type and the music types. You may add an address, dates, and pictures on the next page."
             links: "If this event exist on socials networks, please add the links."
-            descriptions : "."
+            descriptions : "Describe event here. Check 'Published' for this event to appear in search results."
         import_facebook:
             no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
             success: "Your next Salsa/Bachata/kizomba events have been added successfully. <br>Added events : %COUNT% <br>Thanks a lot for sharing your event on WeDanceSalsa" 
@@ -1203,6 +1213,8 @@ toastr:
                 title: "You can add a title in differents languages, look at the translations options."
                 url: "You can add videos from Youtube, Dailymotion and Vimeo. <br>Specify link or URL of the video."
                 tags: "Check tags for the video. It helps to match it in search results."
+        translations: "You can add translations, by switching language for this page in the main menu."
+           
     form:
         submit:
             ffup_success: "Your profile has been updated."

@@ -54,22 +54,11 @@ class EventDescriptionType extends AbstractType {
                 ->add('published', 'checkbox', array(
                     'required' => false,
                 ))
+                ->add('formFilledByOrganizator', 'checkbox', array(
+                    'required' => false,
+                ))
         ;
 
-        if ($User)
-            $builder->add('organizedBy', 'entity', array(
-                'class' => 'UserUserBundle:User',
-                'required' => false,
-                'property' => 'username',
-                'multiple' => false,
-                'expanded' => false,
-                'by_reference' => true,
-                'query_builder' => function (EntityRepository $er) use ($User) {
-                    return $er->createQueryBuilder('u')
-                                    ->where('u.id = :user')
-                                    ->setParameter('user', $User->getId());
-                },
-            ));
     }
 
     /**
