@@ -109,7 +109,7 @@
                     {% if not count_image %}
                         {% if app.user and app.user == event.user %}
                             {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
-                                    path : path('front_event_edit', { id : event.id } ) , 
+                                    path : path('front_event_edit_pictures', { id : event.id } ) , 
                                     title : 'add_block.event.images.add_title'|trans, 
                                     paragraphe: 'add_block.event.images.add_paragraphe'|trans, 
                                     color: 'grey' 
@@ -136,11 +136,7 @@
                             {% render(path('front_event_alerts', { id : event.id } )) %}
                         </div>
 
-                        {% if app.user and app.user == event.user %}
-                            <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" class="btn-u btn-block btn">
-                                {% trans %}modify{% endtrans %}
-                            </a>
-                        {% endif%}
+                        {% include 'FrontFrontBundle:Event:showButtons.html.twig' %}
 
                         <hr>
 

@@ -669,6 +669,7 @@ front:
     landing_share_event: 'Partagez vos événements'
     link_add_address: 'Ajouter une adresse'
     link_add_eventdate: 'Ajouter une date'
+    link_add_picture: 'Ajouter une photo'
     link_delete_address: 'Effacer l''adresse'
     link_delete_eventdate: 'Effacer la date'
     map_title: Carte

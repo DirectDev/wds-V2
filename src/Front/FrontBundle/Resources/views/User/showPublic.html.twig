@@ -76,7 +76,7 @@
                                 {% if user.hasNoDetails %}
                                     {% if app.user and app.user == user %}
                                         {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
-                                            path : path('front_user_edit', { id : app.user.id } ), 
+                                            path : path('front_user_edit_description', { id : app.user.id } ), 
                                             title : 'add_block.user.details.add_title'|trans, 
                                             paragraphe: 'add_block.user.details.add_paragraphe'|trans 
                                         } %}

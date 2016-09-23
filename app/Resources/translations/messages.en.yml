@@ -837,6 +837,7 @@ front:
     landing_share_event: 'Share your events'
     link_add_address: 'Add address'
     link_add_eventdate: 'Add event date'
+    link_add_picture: 'Add a photo'
     link_delete_address: 'Delete address'
     link_delete_eventdate: 'Delete event date'
     map_title: Map

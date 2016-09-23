@@ -12,7 +12,7 @@
         <div class='panel-body'>
             {% if app.user and app.user == user %}
                 {% include 'FrontFrontBundle::addBlock.html.twig' with  { 
-                    path : path('front_user_edit', { id : app.user.id } ) , 
+                    path : path('front_user_edit_musics', { id : app.user.id } ) , 
                     title : 'add_block.user.musics.add_title'|trans, 
                     paragraphe: 'add_block.user.musics.add_paragraphe'|trans, 
                     color: 'grey' 

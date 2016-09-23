@@ -289,6 +289,14 @@ class User extends BaseUser {
             return '/images/no_user_picture.jpg';
     }
 
+    public function profilePictureUrlIsFacebook(){
+        if(!$this->getProfilePictureUrl())
+            return false;
+        if(stripos($this->getProfilePictureUrl(), 'graph.facebook.com') !== false)
+            return true;
+        return false;
+    }
+
     public function getAddress() {
         foreach ($this->addresses as $address)
             return $address;

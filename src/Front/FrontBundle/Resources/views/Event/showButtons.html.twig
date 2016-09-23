@@ -1,0 +1,46 @@
+
+
+{% if app.user and app.user == event.user %}
+
+    {% set nothing_displayed_yet = true %}
+
+    
+    {% if  nothing_displayed_yet and not event.getAddress() %}
+        <a href="{{ path('front_event_edit_addresses', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+            {% trans %}event.add_address_button{% endtrans %}
+        </a>
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
+    {% if  nothing_displayed_yet and event.getAddress() and not event.hasOneValidAddress %}
+        <a href="{{ path('front_event_edit_addresses', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+            {% trans %}event.add_address_button{% endtrans %}
+        </a>
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
+    
+    {% if  nothing_displayed_yet and not event.getEventDates()|length %}
+        <a href="{{ path('front_event_edit_dates', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+            {% trans %}front.link_add_eventdate{% endtrans %}
+        </a>
+        {% set nothing_displayed_yet = false %}
+    {% elseif nothing_displayed_yet and not event.getNextEventDate()  %}
+        <a href="{{ path('front_event_edit_dates', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+            {% trans %}front.link_add_eventdate{% endtrans %}
+        </a>
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
+    
+    {% if nothing_displayed_yet and not event.getProfilePicture() %}
+        <a href="{{ path('front_event_edit_pictures', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+            {% trans %}front.link_add_picture{% endtrans %}
+        </a>
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
+    
+    {% if  nothing_displayed_yet %}
+        <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" class="btn-u btn-block btn">
+            {% trans %}modify{% endtrans %}
+        </a>
+    {% endif %}
+
+{% endif%}
