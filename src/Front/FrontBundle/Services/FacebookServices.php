@@ -19,7 +19,6 @@ class FacebookServices {
     private $user;
     private $access_token;
     private $facebook_event_id;
-    private $facebook_events_imported = array();
     private $facebook_events_preview = array();
     private $music_array = array();
     private $eventNode;
@@ -27,6 +26,7 @@ class FacebookServices {
     private $locale = 'en';
     private $limit = 200;
     private $limit_add = 10;
+    private $limit_add_weeks = 8;
 
     public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
         $this->em = $em;
@@ -87,39 +87,41 @@ class FacebookServices {
             exit;
         }
 
-        $edge = $response->getGraphEdge();
+        $this->graphEdge = $response->getGraphEdge();
 
         $add = 0;
-        foreach ($edge->getIterator() as $fb_event) {
+        foreach ($this->graphEdge->getIterator() as $eventNode) {
 
-            if (!$this->allowImportEvent($fb_event))
+            $this->eventNode = $eventNode;
+
+            if (!$this->allowImportEvent())
                 continue;
 
             $add++;
             if ($add > $this->limit_add)
                 continue;
 
-            $event = $this->getEventByFacebookId($fb_event->getField('id'));
+            $event = $this->getEventByFacebookId($this->eventNode->getField('id'));
             if ($event and ! $event->allowModificationByFacebookUser($this->user))
                 continue;
 
             $img_url = $place = $city = $country = null;
-            $array_place = $fb_event->getField('place');
+            $array_place = $this->eventNode->getField('place');
             if (isset($array_place['name']))
                 $place = $array_place['name'];
             if (isset($array_place['location']) && isset($array_place['location']['city']))
                 $city = $array_place['location']['city'];
             if (isset($array_place['location']) && isset($array_place['location']['country']))
                 $city = $array_place['location']['country'];
-            $array_cover = $fb_event->getField('cover');
+            $array_cover = $this->eventNode->getField('cover');
             if (isset($array_cover['source']))
                 $img_url = $array_cover['source'];
 
             $this->facebook_events_preview[] = array(
-                'id' => $fb_event->getField('id'),
-                'name' => $fb_event->getField('name'),
-                'start_time' => $fb_event->getField('start_time'),
-                'end_time' => $fb_event->getField('end_time'),
+                'id' => $this->eventNode->getField('id'),
+                'name' => $this->eventNode->getField('name'),
+                'start_time' => $this->eventNode->getField('start_time'),
+                'end_time' => $this->eventNode->getField('end_time'),
                 'place' => $place,
                 'city' => $city,
                 'country' => $country,
@@ -151,7 +153,8 @@ class FacebookServices {
             exit;
         }
 
-        $this->getEventNode();
+//        $this->getEventNode();
+        $this->eventNode = $response->getGraphNode();
 
         $event = $this->getEventByFacebookId($this->facebook_event_id);
         if ($event and ! $event->allowModificationByFacebookUser($this->user))
@@ -190,24 +193,45 @@ class FacebookServices {
 
         $this->setLocale();
 
-        foreach ($ids as $facebook_event_id) {
-            if ($this->importEvent($facebook_event_id)) {
-                $this->em->refresh($this->event);
+        $fields = 'id,description,name,type,place,cover,start_time,end_time,admins,attending';
+        $since = 'since=' . date('U');
+        $until = 'until=' . (date('U') + 7776000);
+        $request = $this->facebook->request('GET', '/me/events?' . $since . '&' . $until . '&fields=' . $fields . '&limit=' . $this->limit);
+        try {
+            $response = $this->facebook->getClient()->sendRequest($request);
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $this->graphEdge = $response->getGraphEdge();
+
+        $add = 0;
+        foreach ($this->graphEdge->getIterator() as $eventNode) {
+
+            $this->eventNode = $eventNode;
+            $id = $this->eventNode->getField('id');
+            if(!in_array($id, $ids))
+                continue;
+
+            if ($this->importEvent()) 
                 $this->facebook_events_imported[] = $this->event;
-            }
+            
         }
 
         return $this->facebook_events_imported;
     }
 
-    public function importEvent($facebook_event_id = null) {
-        if (!$facebook_event_id)
+    public function importEvent() {
+        if (!$this->eventNode)
             return;
 
-        $this->facebook_event_id = $facebook_event_id;
-        $this->getEventNode();
+        $this->facebook_event_id = $this->eventNode->getField('id');;
 
-        $event = $this->getEventByFacebookId($facebook_event_id);
+        $event = $this->getEventByFacebookId($this->facebook_event_id);
         if ($event and ! $event->allowModificationByFacebookUser($this->user))
             return;
 
@@ -218,32 +242,33 @@ class FacebookServices {
 
         $this->em->persist($this->event);
         $this->em->flush();
+        $this->em->refresh($this->event);
 
         return true;
     }
 
-    private function allowImportEvent($fb_event) {
-        if ($fb_event->getField('type') != 'public')
+    private function allowImportEvent() {
+        if ($this->eventNode->getField('type') != 'public')
             return false;
 
-        if ($fb_event->getField('end_time')) {
+        if ($this->eventNode->getField('end_time')) {
             $now = new \DateTime();
-            $end = $fb_event->getField('end_time');
+            $end = $this->eventNode->getField('end_time');
             if ($end->format('U') < $now->format('U'))
                 return false;
         }
 
-        if ($fb_event->getField('start_time')) {
+        if ($this->eventNode->getField('start_time')) {
             $now = new \DateTime();
-            $start = $fb_event->getField('start_time');
+            $start = $this->eventNode->getField('start_time');
             if ($start->format('U') < $now->format('U'))
                 return false;
         }
 
         foreach ($this->music_array as $music_title) {
-            if (stripos($fb_event->getField('name'), $music_title) !== false)
+            if (stripos($this->eventNode->getField('name'), $music_title) !== false)
                 return true;
-            if (stripos($fb_event->getField('description'), $music_title) !== false)
+            if (stripos($this->eventNode->getField('description'), $music_title) !== false)
                 return true;
         }
 
@@ -355,45 +380,12 @@ class FacebookServices {
             return;
         if (!$type)
             return;
-        $nodes = array('id', 'attending_count', 'can_guests_invite', 'category', 'cover',
+        $nodes = array('id', 'attending_count', 'can_guests_invite', 'category', 'cover', 'attending', 'admins',
             'declined_count', 'description', 'end_time', 'guest_list_enabled', 'interested_count', 'is_page_owned', 'is_viewer_admin',
             'maybe_count', 'name', 'no_reply_count', 'owner', 'parent_group', 'place', 'start_time', 'ticket_uri', 'timezone', 'type', 'updated_time');
         if (!in_array($type, $nodes))
             return;
         return $this->eventNode->getField($type);
-    }
-
-    private function getEventNode() {
-        if (!$this->facebook or ! $this->facebook_event_id)
-            return;
-
-        $request = $this->facebook->request('GET', '/' . $this->facebook_event_id);
-        try {
-            $response = $this->facebook->getClient()->sendRequest($request);
-        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
-
-        $this->eventNode = $response->getGraphNode();
-    }
-
-    private function getEdge($type) {
-        if (!$this->facebook or ! $this->facebook_event_id)
-            return;
-        if (!$type)
-            return;
-        $edges = array('admins', 'attending', 'comments', 'declined', 'interested',
-            'live_videos', 'maybe', 'noreply', 'photos', 'picture', 'roles', 'video', 'feed');
-        if (!in_array($type, $edges))
-            return;
-
-        $request = $this->facebook->request('GET', '/' . $this->facebook_event_id . '/' . $type);
-        $response = $this->facebook->getClient()->sendRequest($request);
-        return $response->getGraphEdge();
     }
 
     private function setEventPictureUrl() {
@@ -403,13 +395,9 @@ class FacebookServices {
     }
 
     private function getEventPictureUrl() {
-        if (!$this->facebook or ! $this->facebook_event_id)
-            return;
-        $request = $this->facebook->request('GET', '/' . $this->facebook_event_id . '/?fields=cover');
-        $response = $this->facebook->getClient()->sendRequest($request);
-        $node = $response->getGraphNode();
-        if ($node->getField('cover') && $node->getField('cover')->getField('source'))
-            return $node->getField('cover')->getField('source');
+
+        if ($this->eventNode->getField('cover') && $this->eventNode->getField('cover')->getField('source'))
+            return $this->eventNode->getField('cover')->getField('source');
     }
 
     private function createEventFile() {
@@ -456,7 +444,7 @@ class FacebookServices {
         $owner = $this->getNodeData('owner');
         if ($owner)
             return $this->findUserByFacebookId($owner->getField('id'));
-        $admins = $this->getEdge('admins');
+        $admins = $this->getNodeData('admins');
         foreach ($admins->getIterator() as $item) {
             $facebook_id = $item->getField('id');
             if ($item->getField('id'))
@@ -561,11 +549,12 @@ class FacebookServices {
 
     private function setEventPresences() {
         $array = array();
-        $attending = $this->getEdge('attending');
+        $attending = $this->getNodeData('attending');
         foreach ($attending->getIterator() as $node_attending)
             if ($node_attending->getField('id'))
                 $array[] = $node_attending->getField('id');
 
+        $array = array_slice($array, 0, 100);
         $users = $this->em->getRepository('UserUserBundle:User')->findByArrayFacebookIds($array);
         if (count($users))
             foreach ($users as $user)
@@ -579,7 +568,7 @@ class FacebookServices {
 
         $this->setLocale();
 
-        $fields = 'id,description,name,type,place,cover,start_time,end_time';
+        $fields = 'id,description,name,type,place,cover,start_time,end_time,admins,attending';
         $since = 'since=' . date('U');
         $until = 'until=' . (date('U') + 604800 * 2); //(14 days)
         $fb_request_url = '/me/events?' . $since . '&' . $until . '&fields=' . $fields . '&limit=' . $this->limit;
@@ -594,31 +583,33 @@ class FacebookServices {
             exit;
         }
 
-        $edge = $response->getGraphEdge();
+        $this->graphEdge = $response->getGraphEdge();
 
         $add = 0;
         $ids = array();
-        foreach ($edge->getIterator() as $fb_event) {
+        foreach ($this->graphEdge->getIterator() as $eventNode) {
 
-            if (!$this->allowImportEvent($fb_event))
+            $this->eventNode = $eventNode;
+
+            if (!$this->allowImportEvent())
                 continue;
 
             $add++;
-            if ($add > $this->limit_add)
+            if ($add > $this->limit_add_weeks)
                 continue;
 
-            $event = $this->getEventByFacebookId($fb_event->getField('id'));
+            $event = $this->getEventByFacebookId($this->eventNode->getField('id'));
             if ($event and ! $event->allowModificationByFacebookUser($this->user))
                 continue;
 
-            $dateStart = $fb_event->getField('start_time');
-            if(is_object($dateStart))
-                $ids[$dateStart->format('U')] = $fb_event->getField('id');
+            $dateStart = $this->eventNode->getField('start_time');
+            if(is_object($dateStart) && $this->importEvent())
+                $ids[$dateStart->format('U')] = $this->event;
         }
 
         if(count($ids)){
             ksort($ids);
-            return( $this->importEvents($ids));
+            return $ids;
         }
     }
 
