@@ -9,7 +9,7 @@
     <!-- partage facebook -->
     <meta property="og:title" content="{{ user.getName()|capitalize }}" />
     <meta property="og:description" content="{{ user.getDescription()|striptags }}" />
-    <meta property="og:image" content="{{ asset('images/wedancesalsa_logo.png')}}" />
+    <meta property="og:image" content="{{ asset('images/wedancesalsa_logo.png', absolute=true)}}" />
     <!-- partage facebook -->
 {% endblock %}
 
