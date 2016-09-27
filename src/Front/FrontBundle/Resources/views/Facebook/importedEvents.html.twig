@@ -51,23 +51,6 @@
 
                     <div class="row">
 
-                        <div class="col-sm-12">
-                            {% include "FrontFrontBundle:Event:alerts.html.twig" %}        
-                        </div>
-
-                        {#<div class="col-sm-12">
-                            <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}" 
-                               class="btn btn-default full-width" target="_blank" alt="{% trans %}facebook.event_show{% endtrans %}">
-                                <i class="fa fa-eye"></i> {% trans %}facebook.event_show{% endtrans %}
-                            </a>
-                        </div>#}
-                        {#<div class="col-sm-12 m-t-10">
-                            <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 
-                               class="btn btn-warning full-width" target="_blank" alt="{% trans %}facebook.event_edit{% endtrans %}">
-                                <i class="fa fa-pencil"></i> {% trans %}facebook.event_edit{% endtrans %}
-                            </a>  
-                        </div>#}
-
                         {% if not event.getAddress() %}
                             <div class="col-sm-12 m-t-10">
                                 <a href="{{ path('front_event_edit', { 'id': event.id } ) }}" title="{{ event.getTitle()|capitalize }}" 

@@ -14,6 +14,7 @@ parameters:
     mailer_port: 25
     mailer_encryption: null
     locale: en
+    locales: [en, fr]
     secret: cejetonestpourtravis
     debug_toolbar: true
     debug_redirects: false

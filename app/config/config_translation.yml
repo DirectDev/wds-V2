@@ -1,7 +1,7 @@
 # translations   
 jms_i18n_routing:
     default_locale: "%locale%"
-    locales: [en, fr]
+    locales: %locales%
     strategy: custom    
     
 jms_translation:
@@ -28,7 +28,7 @@ jms_di_extra:
             setRouter: ["@router"]    
             
 a2lix_translation_form:
-    locales: [en, fr]       #  Locales of translations
+    locales: %locales%       #  Locales of translations
     #required_locales: [fr]      #  Empty by default
     manager_registry: doctrine      # [3]
     templating: "A2lixTranslationFormBundle::default.html.twig"      #  The default template is Twitter Bootstrap compatible        

@@ -18,8 +18,9 @@ parameters:
     mailer_port:       ~
     mailer_encryption: null
     locale: en
+    locales: [en, fr]
     secret: jetondetravis
-    debug_toolbar: fzlse
+    debug_toolbar: false
     debug_redirects: false
     use_assetic_controller: true
     pagination_line_number: 6

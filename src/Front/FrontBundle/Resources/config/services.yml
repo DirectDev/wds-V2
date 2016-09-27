@@ -8,7 +8,7 @@ services:
             
     facebook.services:
         class: Front\FrontBundle\Services\FacebookServices
-        arguments: ["@doctrine.orm.entity_manager", "@security.context", '%facebook_app_id%', '%facebook_app_secret%']  
+        arguments: ["@doctrine.orm.entity_manager", "@security.context", '%facebook_app_id%', '%facebook_app_secret%', '%locales%']  
         
     displayCounters.services:
         class: Front\FrontBundle\Services\DisplayCountersServices

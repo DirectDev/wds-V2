@@ -24,11 +24,12 @@ class FacebookServices {
     private $eventNode;
     private $event;
     private $locale = 'en';
+    private $locales = array();
     private $limit = 200;
     private $limit_add = 10;
     private $limit_add_weeks = 8;
 
-    public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret) {
+    public function __construct(EntityManager $em, $securityContext, $facebook_app_id, $facebook_app_secret, $locales) {
         $this->em = $em;
         $this->user = $securityContext->getToken()->getUser();
         if ($this->user)
@@ -40,6 +41,8 @@ class FacebookServices {
             'default_graph_version' => 'v2.6',
         ]);
         $this->facebook->setDefaultAccessToken((string) $this->access_token);
+
+        $this->locales = $locales;
     }
 
     private function setLocale() {
@@ -63,8 +66,11 @@ class FacebookServices {
 
     private function setMusicArray() {
         $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
-        foreach ($musicTypes as $musicType)
+        foreach ($musicTypes as $musicType){
             $this->music_array[] = $musicType->translate($this->locale)->getTitle();
+            foreach ($this->locales as $locale)
+                $this->music_array[] = $musicType->translate($locale)->getTitle();
+        }
     }
 
     public function previewImportEvents() {
@@ -524,6 +530,17 @@ class FacebookServices {
                 if ($this->event->getMusicTypes()->contains($musicType) == false)
                     $this->event->addMusicType($musicType);
             }
+            foreach ($this->locales as $locale) {
+                $music_title = $musicType->translate($locale)->getTitle();
+                if (stripos($this->getNodeData('name'), $music_title) !== false) {
+                    if ($this->event->getMusicTypes()->contains($musicType) == false)
+                        $this->event->addMusicType($musicType);
+                }
+                if (stripos($this->getNodeData('description'), $music_title) !== false) {
+                    if ($this->event->getMusicTypes()->contains($musicType) == false)
+                        $this->event->addMusicType($musicType);
+                }
+            }
         }
     }
 
@@ -538,6 +555,17 @@ class FacebookServices {
             if (stripos($this->getNodeData('description'), $eventtype_title) !== false) {
                 if ($this->event->getEventTypes()->contains($eventType) == false)
                     $this->event->addEventType($eventType);
+            }
+            foreach ($this->locales as $locale) {
+                $eventtype_title = $eventType->translate($locale)->getTitle();
+                if (stripos($this->getNodeData('name'), $eventtype_title) !== false) {
+                    if ($this->event->getEventTypes()->contains($eventType) == false)
+                        $this->event->addEventType($eventType);
+                }
+                if (stripos($this->getNodeData('description'), $eventtype_title) !== false) {
+                    if ($this->event->getEventTypes()->contains($eventType) == false)
+                        $this->event->addEventType($eventType);
+                }
             }
         }
         if (!count($this->event->getEventTypes())) {
