@@ -540,7 +540,7 @@ a.disabled {
     width: 123px !important;
     display: table-cell;
     vertical-align: middle;
-    background: url('../../images/wedancesalsa_logo.png') no-repeat !important; 
+    /*background: url('../../images/wedancesalsa_logo.png') no-repeat !important;*/ 
 }
 
 
@@ -753,7 +753,7 @@ fieldset[disabled] .btn-search.active {
 @media screen and (min-width:978px) and (max-width:1200px)
 {
     .navbar-brand {
-        background: url('../../images/wedancesalsa_logo.png') no-repeat !important;
+        /*background: url('../../images/wedancesalsa_logo.png') no-repeat !important;*/
         width: 110px !important;
         height: 120px !important;
     }
@@ -761,7 +761,7 @@ fieldset[disabled] .btn-search.active {
 @media screen and (min-width:1200px)
 {
     .navbar-brand {
-        background: url('../../images/wedancesalsa_logo.png') no-repeat !important;
+        /*background: url('../../images/wedancesalsa_logo.png') no-repeat !important;*/
         width: 123px !important;
         height: 120px !important;
     }

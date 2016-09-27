@@ -4,7 +4,7 @@
         <a href="{{ path('city_calendar', { 'searchcity':  meaCity.getName }) }}" class="cbp-caption "
            data-title="{{ meaCity.getName|capitalize }}">
             <div class="cbp-caption-defaultWrap">
-                <img src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('home_city') }}" alt="">
+                <img src="{{ asset('uploadedFiles/Cities/'~meaCity.image|lower~'.jpg')|imagine_filter('home_city') }}" alt="{{ meaCity.getName|capitalize }}">
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignLeft">
