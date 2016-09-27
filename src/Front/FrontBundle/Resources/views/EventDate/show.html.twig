@@ -6,7 +6,11 @@
         <p> 
             <b>{% trans %}event.hours{% endtrans %} :</b> {{ entity.starttime|date('H:i') }}
             {% if entity.stopdate and entity.stoptime %}
-                {% trans %}event.to{% endtrans %} {{ entity.stoptime|date('H:i') }}
+                {% if entity.startdate != entity.stopdate %}
+                    {% trans %}event.to{% endtrans %} {{ entity.stopdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }} {{ entity.stoptime|date('H:i') }} 
+                {% else %}
+                    {% trans %}event.to_hours{% endtrans %} {{ entity.stoptime|date('H:i') }}
+                {% endif %}
             {% endif %}
         </p>
         {% if entity.getAddress and entity.getAddress().isValid() %}  

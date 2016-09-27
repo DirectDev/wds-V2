@@ -169,6 +169,7 @@ event:
     share_this: Partager
     they_like: 'Ils aiment'
     to: Au
+    to_hours: à
     type: 'Type d''événement'
     user_presences: 'Ils/elles y vont'
 

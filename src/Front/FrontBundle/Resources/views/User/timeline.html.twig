@@ -21,7 +21,11 @@
                                 <p> 
                                     <b>{% trans %}timeline.hours{% endtrans %} :</b> {{ eventDate.starttime|date('H:i') }}
                                     {% if eventDate.stopdate and eventDate.stoptime %}
-                                        {% trans %}event.to{% endtrans %} {{ eventDate.stoptime|date('H:i') }}
+                                        {% if eventDate.startdate != eventDate.stopdate %}
+                                            {% trans %}event.to{% endtrans %} {{ eventDate.stopdate|localizeddate('medium', 'none', app.request.locale, null, 'cccc dd')|capitalize }} {{ eventDate.stoptime|date('H:i') }} 
+                                        {% else %}
+                                            {% trans %}event.to_hours{% endtrans %} {{ eventDate.stoptime|date('H:i') }}
+                                        {% endif %}
                                     {% endif %}
                                 </p>
                                 {% if event.getAddress and event.getAddress().isValid() %}  

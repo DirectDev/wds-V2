@@ -168,6 +168,7 @@ event:
     share_this: 'Share this'
     they_like: Likes
     to: To
+    to_hours: To
     type: 'Event type'
     user_presences: 'They are going'
 
