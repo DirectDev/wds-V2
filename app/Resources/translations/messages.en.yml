@@ -1099,7 +1099,8 @@ user:
         videos.h2: 'Share your favorite videos'
         videos.p: 'Add Youtube, Vimeo, or Dailymotion videos'
 
-    edit_profil: 'Edit Profil'
+    edit_profil: 'Edit my profile'
+    see_profil: 'See my profile'
 
     event:
         search_input_placeholder: 'Search event'

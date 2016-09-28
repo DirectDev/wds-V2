@@ -931,6 +931,7 @@ user:
         videos.p: 'Ajoutez vos vidéos Youtube, Vimeo ou Dailymotion.'
 
     edit_profil: 'Modifier mon profil'
+    see_profil: 'Voir mon profil'
 
     event:
         search_input_placeholder: 'Rechercher un événement'
