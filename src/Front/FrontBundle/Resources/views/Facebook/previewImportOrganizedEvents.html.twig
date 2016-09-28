@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
     {% if not facebook_events or facebook_events|length < 1 %}
-        toastr.warning("{% trans %}toastr.load.import_facebook.no_events{% endtrans %}");
+        toastr.warning("{% trans %}toastr.load.import_facebook.no_organized_events{% endtrans %}");
     {% else %}
         toastr.success("{% trans %}toastr.load.preview_import_facebook.success{% endtrans %}");
         toastr.success("{% trans with {'%COUNT%': facebook_events|length } %}toastr.load.preview_import_facebook.success_count{% endtrans %}");

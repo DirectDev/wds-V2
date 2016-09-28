@@ -726,7 +726,7 @@ $(document).on('click', '#previewImportEventsFacebook', function () {
             $('#facebookResults').html(html);
             $('#blockImportEventsFacebook').show();
             hideLoaderGif($('#previewImportEventsFacebook'));
-            scrollToElement($("#blockImportEventsFacebook"));
+            scrollToElement($("#facebookResults"));
             loadMasonry();
         }
     });

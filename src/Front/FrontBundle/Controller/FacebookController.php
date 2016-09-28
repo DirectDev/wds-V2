@@ -48,6 +48,24 @@ class FacebookController extends Controller {
         ));
     }
 
+    public function previewImportOrganizedEventsAction(Request $request) {
+
+        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getUser();
+
+        $facebookServices = $this->get('facebook.services');
+        $facebook_events = $facebookServices->previewImportEvents(true);
+
+        return $this->render('FrontFrontBundle:Facebook:previewImportOrganizedEvents.html.twig', array(
+                    'user' => $user,
+                    'facebook_events' => $facebook_events,
+        ));
+    }
+
     public function importEventsAction(Request $request) {
 
         if (!$this->getUser() or !$this->getUser()->isFacebookUser())
@@ -67,6 +85,26 @@ class FacebookController extends Controller {
                     'events' => $events,
         ));
     }
+
+//    public function importOrganizedEventsAction(Request $request) {
+//
+//        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+//            return $this->redirect($this->generateUrl('fos_user_security_login'));
+//
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $user = $this->getUser();
+//
+//        $ids = explode(',', $request->get('ids'));
+//
+//        $facebookServices = $this->get('facebook.services');
+//        $events = $facebookServices->importEvents($ids);
+//
+//        return $this->render('FrontFrontBundle:Facebook:importedEvents.html.twig', array(
+//                    'user' => $user,
+//                    'events' => $events,
+//        ));
+//    }
 
     private function createFacebookEventImportForm() {
         $form = $this->createForm(new FacebookEventImportType(), null, array(

@@ -73,13 +73,13 @@ class FacebookServices {
         }
     }
 
-    public function previewImportEvents() {
+    public function previewImportEvents($organized = false) {
         if (!$this->facebook)
             return;
 
         $this->setLocale();
 
-        $fields = 'id,description,name,type,place,cover,start_time,end_time';
+        $fields = 'id,description,name,type,place,cover,start_time,end_time,owner,admins';
         $since = 'since=' . date('U');
         $until = 'until=' . (date('U') + 7776000);
         $request = $this->facebook->request('GET', '/me/events?' . $since . '&' . $until . '&fields=' . $fields . '&limit=' . $this->limit);
@@ -101,6 +101,9 @@ class FacebookServices {
             $this->eventNode = $eventNode;
 
             if (!$this->allowImportEvent())
+                continue;
+
+            if($organized and !$this->isInFacebookOwnerOrFacebookAdmins($this->user->getFacebookId()))
                 continue;
 
             $add++;
@@ -147,7 +150,7 @@ class FacebookServices {
 
         $this->setLocale();
 
-        $fields = 'id,description,name,type,place,cover,start_time,end_time';
+        $fields = 'id,description,name,type,place,cover,start_time,end_time,owner,admins';
         $request = $this->facebook->request('GET', '/' . $facebook_event_id . '?fields=' . $fields);
         try {
             $response = $this->facebook->getClient()->sendRequest($request);
@@ -159,7 +162,6 @@ class FacebookServices {
             exit;
         }
 
-//        $this->getEventNode();
         $this->eventNode = $response->getGraphNode();
 
         $event = $this->getEventByFacebookId($this->facebook_event_id);
@@ -458,6 +460,25 @@ class FacebookServices {
             if ($user)
                 return $user;
         }
+    }
+
+    private function isInFacebookOwnerOrFacebookAdmins($facebook_id = null) {
+        if(!$facebook_id)
+            return false;
+        $owner = $this->getNodeData('owner');
+        if($owner){
+            $owner_id = $owner->getField('id');
+            if($facebook_id == $owner_id)
+                return true;
+        }
+        $admins = $this->getNodeData('admins');
+        if($admins)
+            foreach ($admins->getIterator() as $item) {
+                $admin_id = $item->getField('id');
+                if($facebook_id == $admin_id)
+                    return true;
+            }
+        return false;
     }
 
     private function findUserByFacebookId($facebook_id = null) {

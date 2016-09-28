@@ -1,0 +1,53 @@
+
+{% for facebook_event in facebook_events %}
+
+    <div class="grid-boxes-in masonry-brick masonry-brick-facebook-event" data-id="{{ facebook_event.id }}">
+
+        {% if facebook_event.img_url is not null %}
+            <img alt="{{ facebook_event.name|capitalize }}" src="{{ facebook_event.img_url }}" class="img-responsive">
+        {% endif %}
+
+
+        <div class="grid-boxes-caption">
+            <h3>
+                {{ facebook_event.name|capitalize }}
+            </h3>
+            <ul class="list-inline grid-boxes-news">
+
+                {% if facebook_event.start_time %}
+                    <li>
+                        {{ facebook_event.start_time|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                        {{ facebook_event.end_time ? ' / ' }}
+                        {{ facebook_event.end_time ? facebook_event.end_time|localizeddate('full', 'none', app.request.locale )|capitalize : '' }}
+                    </li>
+                {% endif %}
+                {% if facebook_event.place or facebook_event.city or facebook_event.country %}
+                    <li>|</li>
+                    <li>
+                        {{ facebook_event.place|capitalize }}
+                        {{ facebook_event.city ? ' / ' }}
+                        {{ facebook_event.city ? facebook_event.city|capitalize }}
+                        {{ facebook_event.country ? ' / ' }}
+                        {{ facebook_event.country ? facebook_event.country|capitalize }}
+                    </li>
+                {% endif %}
+
+            </ul>                    
+
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <button class="supprFacebookEventBrick btn btn-warning full-width" title="{% trans %}facebook.facebook_event_do_not_import{% endtrans %}" >
+                        <i class="fa fa-times"></i> {% trans %}facebook.event_do_not_import{% endtrans %}
+                    </button>       
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}   
+

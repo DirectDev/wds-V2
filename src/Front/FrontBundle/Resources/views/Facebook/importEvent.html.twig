@@ -34,6 +34,20 @@
         {% if user and  user.isFacebookUser() %}
 
             <div class="col-md-4 col-sm-12">
+                <div class="service-block service-block-sea">
+                    <i class="icon-custom icon-color-light rounded-x fa fa-search"></i>
+                    <h2 class="heading-md">{% trans %}facebook.event_preview_organized_title{% endtrans %}</h2>
+                    <p>{% trans %}facebook.event_preview_organized_p{% endtrans %}</p>
+                    <div>
+                        <button id="previewImportEventsFacebook" class="btn btn-default  full-width" href="{{ path('facebook_preview_import_organized_events') }}">
+                            <img src="{{ asset('front/plugins/bxslider/images/bx_loader.gif') }}" height="15px" class="m-r-10" style="display: none">
+                            {% trans %}facebook.event_preview_organized_button{% endtrans %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
                 <div class="service-block service-block-wds2">
                     <i class="icon-custom icon-color-light rounded-x fa fa-search"></i>
                     <h2 class="heading-md">{% trans %}facebook.event_preview_title{% endtrans %}</h2>
@@ -45,7 +59,8 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>            
+
             <div class="col-md-4 col-sm-12">
                 <div class="service-block service-block-light">
                     <i class="icon-custom icon-color-dark rounded-x fa fa-search"></i>
@@ -70,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12">
+            {#<div class="col-md-4 col-sm-12">
                 <div class="service-block service-block-blue" id="blockImportEventsFacebook">            
                     <i class="icon-custom icon-color-light rounded-x fa fa-exchange"></i>
                     <h2 class="heading-md">{% trans %}facebook.event_import_title{% endtrans %}</h2>
@@ -82,7 +97,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>#}
 
         {% endif %}
 
@@ -93,6 +108,20 @@
             </div>
         </div>
 
+        <div class="col-md-12 col-sm-12">
+            <div class="service-block service-block-blue" id="blockImportEventsFacebook">            
+                <i class="icon-custom icon-color-light rounded-x fa fa-exchange"></i>
+                <h2 class="heading-md">{% trans %}facebook.event_import_title{% endtrans %}</h2>
+                <p>{% trans %}facebook.event_import_p{% endtrans %}</p>
+                <div id="divImportEventsFacebook" >
+                    <button id="importEventsFacebook" class="btn btn-facebook btn-facebook-import full-width" href="{{ path('facebook_import_events') }}">
+                        <img src="{{ asset('front/plugins/bxslider/images/bx_loader.gif') }}" height="15px" class="m-r-10" style="display: none">
+                        {% trans %}facebook.event_import_button{% endtrans %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 {% endblock %}
@@ -100,12 +129,12 @@
 {% block bottomJavascripts %}
     {{ parent() }}
 
-    <script type="text/javascript">        
+    <script type="text/javascript">
         $('#previewImportEventsFacebook').on('click', function (e) {
-                toastr.info("{% trans %}toastr.click.preview_import_events_facebook{% endtrans %}" );
+            toastr.info("{% trans %}toastr.click.preview_import_events_facebook{% endtrans %}");
         });
         $('#previewImportUniqueEventFacebook').on('click', function (e) {
-                toastr.info("{% trans %}toastr.click.preview_import_unique_event_facebook{% endtrans %}" );
+            toastr.info("{% trans %}toastr.click.preview_import_unique_event_facebook{% endtrans %}");
         });
     </script>
 

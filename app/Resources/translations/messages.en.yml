@@ -181,14 +181,17 @@ facebook:
     event_edit_date: "Add date"
     event_edit_picture: "Add picture"
     event_import_button: 'Add from Facebook'
-    event_import_p: 'Add events listed below'
+    event_import_p: 'Add events listed above'
     event_import_week_success: "Your next Facebook events have been added. To add more or for more details see  'Share you events' page"
     event_import_week_fail: "You don't have Facebook events soon. For more details see 'Share you events' page"
     event_import_fail: "We didn't find any Salsa/Bachata/Kizomba event on your Facebook."
     event_import_title: Add
-    event_preview_button: List
-    event_preview_p: 'List my events from Facebook'
-    event_preview_title: 'List events'
+    event_preview_button: "List events I'm interested in"
+    event_preview_p: "List events from Facebook, I'm in interested in or going to"
+    event_preview_title: "List events I'm interested in"
+    event_preview_organized_button: "List events I'm organizing"
+    event_preview_organized_p: "List events from Facebook, I'm organizing or at least administrator"
+    event_preview_organized_title: "List events I'm organizing"
     event_search_p: 'Search an event with Facebook url or id'
     event_search_placeholder: 'Event url or id'
     event_search_title: 'Search event'
@@ -1187,6 +1190,7 @@ toastr:
             no_next_eventdates : "There are no coming dates for this event."
         import_facebook:
             no_events: "You don't have any Facebook event about Salsa/Bachata/Kizomba coming soon."    
+            no_organized_events: "You don't have organized any Facebook event about Salsa/Bachata/Kizomba coming soon."    
             success: "Your next Salsa/Bachata/kizomba events have been added successfully. <br>Added events : %COUNT% <br>Thanks a lot for sharing your event on WeDanceSalsa" 
             event: 
                 no_address: "Please add an address for event : %NAME% "

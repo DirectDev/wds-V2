@@ -886,7 +886,13 @@ a.navbar_highlight {
 .service-block-blue h2,  .service-block-blue p{
     color: white !important;
 }
+.service-block-sea h2,  .service-block-sea p{
+    color: white !important;
+}
 .service-block-blue{
+    color: white !important;
+}
+.service-block-sea{
     color: white !important;
 }
 

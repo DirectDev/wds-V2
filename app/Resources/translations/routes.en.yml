@@ -108,6 +108,9 @@ facebook_preview_import_event: /facebook/preview_import_event
 # Desc: /facebook/preview_import_events
 facebook_preview_import_events: /facebook/preview_import_events
 
+# Desc: /facebook/preview_import_organized_events
+facebook_preview_import_organized_events: /facebook/preview_import_organized_events
+
 # Desc: /facebook/facebook_test
 facebook_test: /facebook_test
 

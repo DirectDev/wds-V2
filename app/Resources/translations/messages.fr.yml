@@ -182,14 +182,17 @@ facebook:
     event_edit_date: "Ajouter une date"
     event_edit_picture: "Ajouter une image"
     event_import_button: 'Ajouter les événements'
-    event_import_p: 'Ajoutez les événements Facebook listés ci dessous'
+    event_import_p: 'Ajoutez les événements Facebook listés ci dessus'
     event_import_week_success: "Vos prochains événements Facebook ont été ajoutés. Pour en ajouter d'autres ou pour plus détails consultez la page 'Partagez vos événements'"
     event_import_week_fail: "Vous n'avez pas d'événements Facebook prochainement. Pour plus détails consultez la page 'Partagez vos événements'"
     event_import_fail: "Nous n'avons pas trouvé d'événements concernant la Salsa/Bachata/Kizomba sur votre Facebook."
     event_import_title: Ajouter
-    event_preview_button: Lister
-    event_preview_p: 'Cherchez vos événements importables depuis Facebook'
-    event_preview_title: 'Lister mes événements facebook'
+    event_preview_button: "Lister les événements qui m'intéressent"
+    event_preview_p: 'Cherchez les événements Facebook qui vous intéressent, ou auxquels vous participez.'
+    event_preview_title: "Lister les événements facebook qui m'intéressent"
+    event_preview_organized_button: "Lister les événements que j'organise"
+    event_preview_organized_p: 'Cherchez les événements que vous avez créés sur Facebook'
+    event_preview_organized_title: 'Lister mes événements facebook'
     event_search_p: 'Rechercher un événement en particulier avec son url ou son identifiant Facebook'
     event_search_placeholder: 'url ou id de l''événement'
     event_search_title: Rechercher
@@ -1019,6 +1022,7 @@ toastr:
             no_next_eventdates : "Il n'y a pas date future pour cet événement."
         import_facebook:
             no_events: "Vous n'avez pas d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
+            no_organized_events: "Vous n'avez pas organisé d'événements Facebook concernant la Salsa/Bachata/Kizomba dans les jours qui viennent."    
             success: "Vos prochains événements Facebook Salsa/Bachata/kizomba ont été ajoutés. <br>Nombre d'événements ajoutés : %COUNT% <br>Merci beaucoup d'avoir partagé vos événements sur WeDanceSalsa"  
             event: 
                 no_address: "Veuillez ajouter une addresse pour l'évenement : %NAME% "
