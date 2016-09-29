@@ -26,6 +26,7 @@ class FacebookServices {
     private $locale = 'en';
     private $locales = array();
     private $limit = 200;
+    private $limit_search = 20;
     private $limit_add = 10;
     private $limit_add_weeks = 8;
 
@@ -66,10 +67,16 @@ class FacebookServices {
 
     private function setMusicArray() {
         $musicTypes = $this->em->getRepository('FrontFrontBundle:MusicType')->findAll();
-        foreach ($musicTypes as $musicType){
-            $this->music_array[] = $musicType->translate($this->locale)->getTitle();
-            foreach ($this->locales as $locale)
-                $this->music_array[] = $musicType->translate($locale)->getTitle();
+        foreach ($musicTypes as $musicType) {
+            $music_title         = trim($musicType->translate($this->locale)->getTitle());
+            if (!in_array($music_title,
+                    $this->music_array)) $this->music_array[] = $music_title;
+            foreach ($this->locales as $locale) {
+                $music_title         = trim($musicType->translate($locale)->getTitle());
+                if (!in_array($music_title,
+                        $this->music_array))
+                        $this->music_array[] = $music_title;
+            }
         }
     }
 
@@ -307,6 +314,10 @@ class FacebookServices {
     }
 
     private function updateEvent($event) {
+
+        if (!$event->allowModificationByFacebookUser($this->user))
+            return;
+        
         $this->event = $event;
         $this->updateEventData();
         $this->setEventTranslations();
@@ -453,6 +464,8 @@ class FacebookServices {
         if ($owner)
             return $this->findUserByFacebookId($owner->getField('id'));
         $admins = $this->getNodeData('admins');
+        if(!$admins)
+            return;
         foreach ($admins->getIterator() as $item) {
             $facebook_id = $item->getField('id');
             if ($item->getField('id'))
@@ -599,6 +612,8 @@ class FacebookServices {
     private function setEventPresences() {
         $array = array();
         $attending = $this->getNodeData('attending');
+        if(!$attending)
+            return;
         foreach ($attending->getIterator() as $node_attending)
             if ($node_attending->getField('id'))
                 $array[] = $node_attending->getField('id');
@@ -660,6 +675,65 @@ class FacebookServices {
             ksort($ids);
             return $ids;
         }
+    }
+
+    public function searchEventsByCity($city_name = null) {
+        if (!$this->facebook)
+            return;
+        if (!$city_name)
+            return;
+
+        $this->setMusicArray();
+        $q = '&q='.$city_name.',{'.implode('|', $this->music_array).'}';
+
+        $fields         = 'id,description,name,type,place,cover,start_time,end_time,admins,attending';
+        $since          = 'since='.date('U');
+        $until          = 'until='.(date('U') + 604800 * 4);
+        $fb_request_url = '/search?type=event&'.$since.'&'.$until.'&fields='.$fields.$q.'&limit='.$this->limit_search;
+        $request        = $this->facebook->request('GET', $fb_request_url);
+        try {
+            $response = $this->facebook->getClient()->sendRequest($request);
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: '.$e->getMessage();
+            exit;
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: '.$e->getMessage();
+            exit;
+        }
+
+        $this->graphEdge = $response->getGraphEdge();
+
+        $add = 0;
+        $names = array();
+        
+        if(!$this->graphEdge)
+            return array();
+
+        foreach ($this->graphEdge->getIterator() as $eventNode) {
+
+            $this->eventNode = $eventNode;
+            $this->facebook_event_id = $this->eventNode->getField('id');
+
+            if (!$this->allowImportEvent())
+                continue;
+            $add++;
+            if ($add > $this->limit_search)
+                continue;
+
+            $event = $this->getEventByFacebookId($this->eventNode->getField('id'));
+            if ($event)
+                $this->updateEvent($event);
+            else
+                $this->createEvent();
+
+            $this->em->persist($this->event);
+            $this->em->flush();
+
+            $names[] = $this->event->getName();
+        }
+
+        if (count($names))
+            return $names;
     }
 
 }

@@ -190,4 +190,53 @@ class FacebookController extends Controller {
         ));
     }
 
+    public function searchFacebookEventsByCityAction(Request $request) {
+
+        if (!$this->getUser() or !$this->getUser()->isFacebookUser())
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $city = $this->getDoctrine()->getRepository('FrontFrontBundle:City')->findOneBy(array('big' => true), array('lastImportEvents' => 'ASC'));
+
+        $city->setLastImportEvents(new \DateTime());
+
+        if(!$city->getLatitude() or !$city->getLongitude())
+            $this->setLatitudeAndLongitude ($city);
+        
+        $em->persist($city);
+
+        $em->flush();
+
+        $facebookServices = $this->get('facebook.services');
+        $facebook_events  = $facebookServices->searchEventsByCity($city->getName());
+
+        $em->flush();
+
+        return $this->render('FrontFrontBundle:Facebook:searchFacebookEventsByCity.html.twig', array(
+                    'facebook_events' => $facebook_events,
+                    'city' => $city,
+        ));
+    }
+
+    private function setLatitudeAndLongitude($city = null) {
+        if (!$city)
+            return;
+        try {
+            $geocodeAddresses = $this->get('bazinga_geocoder.geocoder')
+                    ->using('google_maps')
+                    ->geocode($city->getName());
+            if (!count($geocodeAddresses))
+                return;
+
+            foreach ($geocodeAddresses as $geocodeAddress) {
+                $city->setLatitude($geocodeAddress->getLatitude());
+                $city->setLongitude($geocodeAddress->getLongitude());
+                return;
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }

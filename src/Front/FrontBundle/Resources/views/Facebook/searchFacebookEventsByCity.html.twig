@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<head>
+
+    <title>Search Events By City</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta http-equiv="refresh" content="15">
+
+</head>
+
+<body>
+
+    <div class="container  s-results">
+
+        <h2>{{ city.name}}</h2>
+
+        {% for name in facebook_events %}
+            <p>{{ name }}</p>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

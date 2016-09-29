@@ -40,3 +40,7 @@ facebook_show_import_button:
 facebook_import_week_events:
     path:      /show_week_events
     defaults:  { _controller: FrontFrontBundle:Facebook:importWeekEvents } 
+
+facebook_search_facebook_events_by_city:
+    path:      /search_facebook_events_by_city
+    defaults:  { _controller: FrontFrontBundle:Facebook:searchFacebookEventsByCity } 
