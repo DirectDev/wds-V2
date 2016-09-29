@@ -1,2 +1,6 @@
-## YAML Template.
----
+services:
+    
+    admin.facebook.services:
+        class: Admin\AdminBundle\Services\AdminFacebookServices
+        arguments: ["@doctrine.orm.entity_manager", "@security.context", '%facebook_app_id%', '%facebook_app_secret%', '%facebook_user_id%', '%locales%']  
+        

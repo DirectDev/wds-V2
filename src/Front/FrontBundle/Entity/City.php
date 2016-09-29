@@ -50,6 +50,27 @@ class City {
     private $footer;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="capital", type="boolean", nullable=true)
+     */
+    private $capital;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="big", type="boolean", nullable=true)
+     */
+    private $big;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_import_events", type="datetime", length=18)
+     */
+    private $lastImportEvents;
+
+    /**
      * @ORM\OneToOne(targetEntity="Front\FrontBundle\Entity\MeaCity", mappedBy="city")
      * */
     private $meaCity;
@@ -204,5 +225,77 @@ class City {
     public function getFooter()
     {
         return $this->footer;
+    }
+
+    /**
+     * Set capital
+     *
+     * @param boolean $capital
+     *
+     * @return City
+     */
+    public function setCapital($capital)
+    {
+        $this->capital = $capital;
+
+        return $this;
+    }
+
+    /**
+     * Get capital
+     *
+     * @return boolean
+     */
+    public function getCapital()
+    {
+        return $this->capital;
+    }
+
+    /**
+     * Set lastImportEvents
+     *
+     * @param \DateTime $lastImportEvents
+     *
+     * @return City
+     */
+    public function setLastImportEvents($lastImportEvents)
+    {
+        $this->lastImportEvents = $lastImportEvents;
+
+        return $this;
+    }
+
+    /**
+     * Get lastImportEvents
+     *
+     * @return \DateTime
+     */
+    public function getLastImportEvents()
+    {
+        return $this->lastImportEvents;
+    }
+
+    /**
+     * Set big
+     *
+     * @param boolean $big
+     *
+     * @return City
+     */
+    public function setBig($big)
+    {
+        $this->big = $big;
+
+        return $this;
+    }
+
+    /**
+     * Get big
+     *
+     * @return boolean
+     */
+    public function getBig()
+    {
+        return $this->big;
     }
 }
