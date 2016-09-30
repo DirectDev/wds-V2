@@ -203,8 +203,9 @@ class FacebookController extends Controller {
 
         if(!$city->getLatitude() or !$city->getLongitude())
             $this->setLatitudeAndLongitude ($city);
-        
-        $em->persist($city);
+
+        if($city)
+            $em->persist($city);
 
         $em->flush();
 

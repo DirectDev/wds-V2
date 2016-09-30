@@ -66,7 +66,7 @@ class City {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="last_import_events", type="datetime", length=18)
+     * @ORM\Column(name="last_import_events", type="datetime", length=18, nullable=true)
      */
     private $lastImportEvents;
 
