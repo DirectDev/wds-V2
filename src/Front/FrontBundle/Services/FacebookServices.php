@@ -726,7 +726,8 @@ class FacebookServices {
             else
                 $this->createEvent();
 
-            $this->em->persist($this->event);
+            if($this->event)
+                $this->em->persist($this->event);
             $this->em->flush();
 
             $names[] = $this->event->getName();
