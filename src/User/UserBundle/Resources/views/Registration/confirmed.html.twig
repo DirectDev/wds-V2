@@ -18,17 +18,13 @@
 
             <div class="panel panel-default">
 
-                <div class="panel-padding panel-body">
-
-
-                    <div>
-                        <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-                    </div>
-
-
+                <div class="panel-padding panel-body text-center">
+                    <h3>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h3>
                 </div>
 
             </div>
+
+            {% include "UserUserBundle::buttons.html.twig" %}
 
         </div>     
 

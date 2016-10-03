@@ -20,23 +20,10 @@
                 <div class="panel-padding panel-body text-center">
                     <h3>{{ 'header.success' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3>
                 </div>
-                
-                </div>
 
-                {% if app.user %} 
+            </div>
 
-                    <a class="btn btn-default btn-md full-width m-b-20" href="{{ path('front_user_show_private', { id : app.user.id } ) }}">
-                        <i class="fa fa-user"></i> {% trans %}user.see_profil{% endtrans %}
-                    </a>
-
-                    <a class="btn btn-default btn-md full-width m-b-20" href="{{ path('front_user_edit', { id : app.user.id }) }}">
-                        <i class="fa fa-pencil"></i> {% trans %}user.edit_profil{% endtrans %}
-                    </a>
-
-
-                    {% include "FrontFrontBundle:Facebook:importButton.html.twig" %}
-
-                {% endif %}
+            {% include "UserUserBundle::buttons.html.twig" %}
 
         </div>
     </div>
