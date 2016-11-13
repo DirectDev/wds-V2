@@ -21,13 +21,14 @@ class SitemapServices {
     private $max_cities = 10000;
     private $max_events = 1000;
     private $max_users = 1000;
-    private $dir = __DIR__ . "/../../../../www/sitemaps/";
+    private $dir;
 
     function __construct(EntityManager $em, Container $container, Router $router, $locales) {
         $this->em = $em;
         $this->container = $container;
         $this->router = $router;
         $this->locales = $locales;
+        $this->dir = __DIR__ . "/../../../../www/sitemaps/";
         $this->routes = array(
             'dance_salsa',
             'dance_salsa_cubana',
