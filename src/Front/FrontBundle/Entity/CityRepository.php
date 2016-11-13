@@ -46,5 +46,15 @@ class CityRepository extends EntityRepository {
                 ->select('COUNT(c.id)');
         return $query->getQuery()->getSingleScalarResult();
     }
+    
+    public function findForSitemaps($limit = 10000) {
+
+        $query = $this->createQueryBuilder('c')
+                ->select('c.id', 'c.name')
+                ->where('c.big = 1')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getScalarResult();
+    }
 
 }

@@ -51,4 +51,11 @@ class DefaultControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
+    public function testSitemap() {
+        $crawler = $this->client->request('GET', $this->router->generate('admin_admin_sitemap', array('_locale' => 'fr')));
+        $this->assertFalse($this->client->getResponse()->isSuccessful());
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('admin_admin_sitemap', array('_locale' => 'fr')));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
 }

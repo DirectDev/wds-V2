@@ -273,5 +273,16 @@ class UserRepository extends EntityRepository {
 
         return $query->getQuery();
     }
+    
+    public function findForSitemaps($limit = 1000) {
+        $query = $this->createQueryBuilder('u')
+                ->select('u.id', 'u.username')
+                ->where('u.enabled = 1')
+                ->andWhere('u.published = 1')
+                ->orderBy('u.id', 'DESC')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getScalarResult();
+    }
 
 }

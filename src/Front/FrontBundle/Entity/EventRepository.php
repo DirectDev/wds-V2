@@ -396,4 +396,27 @@ class EventRepository extends EntityRepository {
         return $query->getQuery();
     }
 
+    public function findForSitemaps($limit = 1000) {
+
+        $startdate = date('Y-m-d');
+        $stopdate = date('Y-m-d', strtotime('+365 days'));
+
+        $query = $this->createQueryBuilder('e')
+                ->innerJoin('e.eventDates', 'ed')
+                ->innerJoin('e.addresses', 'a')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('stopdate', $stopdate)
+                ->groupBy('e.id, ed.startdate')
+                ->where('e.published = 1')
+                ->andWhere('((
+                    (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
+                    OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
+                    OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
+                    )
+                    OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))')
+                ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
 }

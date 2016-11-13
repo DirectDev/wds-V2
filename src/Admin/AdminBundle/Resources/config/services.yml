@@ -1,3 +1,6 @@
-#services:
+services:
+    sitemap.services:
+        class: Admin\AdminBundle\Services\SitemapServices
+        arguments: [ @doctrine.orm.entity_manager, @service_container, @router, '%locales%' ]  
     
    

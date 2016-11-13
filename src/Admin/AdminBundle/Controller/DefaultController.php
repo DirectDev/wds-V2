@@ -3,6 +3,7 @@
 namespace Admin\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller {
 
@@ -26,6 +27,14 @@ class DefaultController extends Controller {
                     'count_musics' => $count_musics,
                     'count_videos' => $count_videos,
         ));
+    }
+    
+    public function sitemapAction(){
+         
+        $sitemapservices = $this->get('sitemap.services');
+        $xml = $sitemapservices->generate();
+        
+        return new Response($xml, 200);
     }
 
 }

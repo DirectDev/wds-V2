@@ -2,6 +2,10 @@ admin_admin_homepage:
     path:      /
     defaults:  { _controller: AdminAdminBundle:Default:index }
     
+admin_admin_sitemap:
+    path:      /sitemap
+    defaults:  { _controller: AdminAdminBundle:Default:sitemap }
+    
 AdminAdminBundle_page:
     resource: "@AdminAdminBundle/Resources/config/routing/page.yml"
     prefix: /page

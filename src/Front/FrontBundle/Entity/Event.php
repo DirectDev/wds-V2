@@ -282,21 +282,44 @@ class Event {
             return $this->getAddress()->getLongitude();
     }
 
-    public function getURI() {
+    public function getURI($locale = null) {
         $uri = $this->name;
         foreach ($this->getMusicTypes() as $musicType) {
-            $uri .= '-' . $musicType;
+            if ($locale)
+                $music = $musicType->translate($locale)->getTitle();
+            else
+                $music = $musicType;
+            $uri .= '-' . $music;
             break;
         }
         foreach ($this->getEventTypes() as $eventType) {
-            $uri .= '-' . $eventType;
+            if ($locale)
+                $type = $eventType->translate($locale)->getTitle();
+            else
+                $type = $eventType;
+            $uri .= '-' . $type;
             break;
         }
         return $this->cleanURI($uri);
     }
 
     private function cleanURI($uri) {
-        $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $uri);
+        $clean = preg_replace('#Ç#', 'C', $uri);
+        $clean = preg_replace('#ç#', 'c', $clean);
+        $clean = preg_replace('#è|é|ê|ë#', 'e', $clean);
+        $clean = preg_replace('#È|É|Ê|Ë#', 'E', $clean);
+        $clean = preg_replace('#à|á|â|ã|ä|å#', 'a', $clean);
+        $clean = preg_replace('#@|À|Á|Â|Ã|Ä|Å#', 'A', $clean);
+        $clean = preg_replace('#ì|í|î|ï#', 'i', $clean);
+        $clean = preg_replace('#Ì|Í|Î|Ï#', 'I', $clean);
+        $clean = preg_replace('#ð|ò|ó|ô|õ|ö#', 'o', $clean);
+        $clean = preg_replace('#Ò|Ó|Ô|Õ|Ö#', 'O', $clean);
+        $clean = preg_replace('#ù|ú|û|ü#', 'u', $clean);
+        $clean = preg_replace('#Ù|Ú|Û|Ü#', 'U', $clean);
+        $clean = preg_replace('#ý|ÿ#', 'y', $clean);
+        $clean = preg_replace('#Ý#', 'Y', $clean);
+        
+        $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
         $clean = strtolower(trim($clean, '-'));
         $clean = preg_replace("/[\/_|+ -]+/", '-', $clean);
         $clean = urlencode($clean);
@@ -378,7 +401,7 @@ class Event {
 
         if ($this->getUser() and $this->getUser() == $user)
             return true;
-        
+
         return false;
     }
 
@@ -1062,7 +1085,6 @@ class Event {
         return $this->footer;
     }
 
-
     /**
      * Set formFilledByOrganizator
      *
@@ -1070,8 +1092,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFormFilledByOrganizator($formFilledByOrganizator)
-    {
+    public function setFormFilledByOrganizator($formFilledByOrganizator) {
         $this->formFilledByOrganizator = $formFilledByOrganizator;
 
         return $this;
@@ -1082,8 +1103,8 @@ class Event {
      *
      * @return boolean
      */
-    public function getFormFilledByOrganizator()
-    {
+    public function getFormFilledByOrganizator() {
         return $this->formFilledByOrganizator;
     }
+
 }
