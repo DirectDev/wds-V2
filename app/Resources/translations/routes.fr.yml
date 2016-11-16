@@ -590,7 +590,7 @@ navbar_meet: /navbar_rencontrer
 policy: /mentions-legales
 
 # Desc: /sitemap
-policy: /plan-du-site
+sitemap: /plan-du-site
 
 # Desc: /admin/search/user
 search_search_admin_user: /administration/rechercher/utilisateur

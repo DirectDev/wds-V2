@@ -590,7 +590,7 @@ navbar_meet: /navbar_meet
 policy: /policy
 
 # Desc: /sitemap
-policy: /sitemap
+sitemap: /sitemap
 
 # Desc: /admin/search/user
 search_search_admin_user: /admin/search/user
