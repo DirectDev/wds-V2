@@ -141,5 +141,24 @@ class DefaultController extends Controller {
 
         return $form;
     }
+    
+    public function sitemapAction(Request $request) {
+
+        $page = $this->getDoctrine()->getRepository('AdminAdminBundle:Page')->findOneByName('sitemap');
+        if (!$page)
+            throw new \Exception('Page not found!');
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $locales = $this->getParameter('locales');
+
+        $cities = $this->getDoctrine()->getRepository('FrontFrontBundle:City')->findByFooter(1);
+
+        return $this->render('FrontFrontBundle:Home:sitemap.html.twig', array(
+                    'page' => $page,
+                    'cities' => $cities,
+                    'locales' => $locales,
+        ));
+    }
 
 }

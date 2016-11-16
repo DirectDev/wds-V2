@@ -52,6 +52,14 @@ class DefaultEnControllerTest extends WebTestCase {
         $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
     }
 
+    public function testSitemap() {
+        $crawler = $this->client->request('GET', $this->router->generate('sitemap', array('_locale' => $this->locale)));
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $crawler = $this->clientLogged->request('GET', $this->router->generate('sitemap', array('_locale' => $this->locale)));
+        $this->assertTrue($this->clientLogged->getResponse()->isSuccessful());
+    }
+
     public function testFooter() {
         $crawler = $this->client->request('GET', $this->router->generate('footer', array('_locale' => $this->locale)));
         $this->assertTrue($this->client->getResponse()->isSuccessful());

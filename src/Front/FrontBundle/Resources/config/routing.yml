@@ -23,6 +23,10 @@ footer:
 policy:
     path:      /policy
     defaults:  { _controller: FrontFrontBundle:Default:policy }
+
+sitemap:
+    path:      /sitemap
+    defaults:  { _controller: FrontFrontBundle:Default:sitemap }
     
 FrontFrontBundle_user:
     resource: "@FrontFrontBundle/Resources/config/routing/user.yml"

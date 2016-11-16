@@ -16,7 +16,7 @@ class SitemapServices {
     private $events;
     private $users;
     private $routes;
-    private $url = 'http://wedancesalsa.com/';
+    private $url = 'http://wedancesalsa.com/sitemaps/';
     private $max_link = 50000;
     private $max_cities = 10000;
     private $max_events = 1000;

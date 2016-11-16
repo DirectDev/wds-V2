@@ -4,52 +4,52 @@
 callback_username: /callback_username/en/
 
 # Desc: /city/artists/{searchcity}
-city_artist: '/city/artists/{searchcity}'
+city_artist: '/salsa-bachata-kizomba/artists/{searchcity}/city'
 
 # Desc: /city/bars/{searchcity}
-city_bar: '/city/places/{searchcity}'
+city_bar: '/salsa-bachata-kizomba/places/{searchcity}/city'
 
 # Desc: /city/calendar/{searchcity}
-city_calendar: '/city/calendar/{searchcity}'
+city_calendar: '/salsa-bachata-kizomba/calendar/{searchcity}/city'
 
 # Desc: /city/concerts/{searchcity}
-city_concert: '/city/concerts/{searchcity}'
+city_concert: '/salsa-bachata-kizomba/concerts/{searchcity}/city'
 
 # Desc: /city/dancers/{searchcity}
-city_dancer: '/city/dancers/{searchcity}'
+city_dancer: '/salsa-bachata-kizomba/dancers/{searchcity}/city'
 
 # Desc: /city/edito/{searchcity}
-city_edito: '/city/overview/{searchcity}'
+city_edito: '/salsa-bachata-kizomba/overview/{searchcity}/city'
 
 # Desc: /city/festivals/{searchcity}
-city_festival: '/city/festivals/{searchcity}'
+city_festival: '/salsa-bachata-kizomba/festivals/{searchcity}/city'
 
 # Desc: /city/introductions/{searchcity}
-city_introduction: '/city/introductions/{searchcity}'
+city_introduction: '/salsa-bachata-kizomba/introductions/{searchcity}/city'
 
 # Desc: /city/musics/{searchcity}
-city_music: '/city/musics/{searchcity}'
+city_music: '/salsa-bachata-kizomba/musics/{searchcity}/city'
 
 # Desc: /city/numbers/{searchcity}
-city_number: '/city/numbers/{searchcity}'
+city_number: '/salsa-bachata-kizomba/numbers/{searchcity}/city'
 
 # Desc: /city/parties/{searchcity}
-city_party: '/city/parties/{searchcity}'
+city_party: '/salsa-bachata-kizomba/parties/{searchcity}/city'
 
 # Desc: /city/photos/{searchcity}
-city_photo: '/city/photos/{searchcity}'
+city_photo: '/salsa-bachata-kizomba/photos/{searchcity}/city'
 
 # Desc: /city/shows/{searchcity}
-city_show: '/city/shows/{searchcity}'
+city_show: '/salsa-bachata-kizomba/shows/{searchcity}/city'
 
 # Desc: /city/teachers/{searchcity}
-city_teacher: '/city/teachers/{searchcity}'
+city_teacher: '/salsa-bachata-kizomba/teachers/{searchcity}/city'
 
 # Desc: /city/videos/{searchcity}
-city_video: '/city/videos/{searchcity}'
+city_video: '/salsa-bachata-kizomba/videos/{searchcity}/city'
 
 # Desc: /city/workshops/{searchcity}
-city_workshop: '/city/workshops/{searchcity}'
+city_workshop: '/salsa-bachata-kizomba/workshops/{searchcity}/city'
 
 # Desc: /contact
 contact_contact_contact: /contact/en/
@@ -115,46 +115,46 @@ facebook_preview_import_organized_events: /facebook/preview_import_organized_eve
 facebook_test: /facebook_test
 
 # Desc: /festival/australia
-festival_australia: /festival/australia
+festival_australia: /salsa-bachata-kizomba/festival/australia
 
 # Desc: /festival/calendar/{startdate}
-festival_calendar: '/festival/calendar/{startdate}'
+festival_calendar: '/salsa-bachata-kizomba/festival/calendar/{startdate}'
 
 # Desc: /festival/central_africa
-festival_central_africa: /festival/central_africa
+festival_central_africa: /salsa-bachata-kizomba/festival/central_africa
 
 # Desc: /festival/central_america
-festival_central_america: /festival/central_america
+festival_central_america: /salsa-bachata-kizomba/festival/central_america
 
 # Desc: /festival/europe
-festival_europe: /festival/europe_en
+festival_europe: /salsa-bachata-kizomba/festival/europe_en
 
 # Desc: /festival/india
-festival_india: /festival/india
+festival_india: /salsa-bachata-kizomba/festival/india
 
 # Desc: /festival/indonesia
-festival_indonesia: /festival/indonesia
+festival_indonesia: /salsa-bachata-kizomba/festival/indonesia
 
 # Desc: /festival/middle_east
-festival_middle_east: /festival/middle_east
+festival_middle_east: /salsa-bachata-kizomba/festival/middle_east
 
 # Desc: /festival/north_africa
-festival_north_africa: /festival/north_africa
+festival_north_africa: /salsa-bachata-kizomba/festival/north_africa
 
 # Desc: /festival/north_america
-festival_north_america: /festival/north_america
+festival_north_america: /salsa-bachata-kizomba/festival/north_america
 
 # Desc: /festival/north_asia
-festival_north_asia: /festival/north_asia
+festival_north_asia: /salsa-bachata-kizomba/festival/north_asia
 
 # Desc: /festival/south_africa
-festival_south_africa: /festival/south_africa
+festival_south_africa: /salsa-bachata-kizomba/festival/south_africa
 
 # Desc: /festival/south_america
-festival_south_america: /festival/south_america
+festival_south_america: /salsa-bachata-kizomba/festival/south_america
 
 # Desc: /festival/south_asia
-festival_south_asia: /festival/south_asia
+festival_south_asia: /salsa-bachata-kizomba/festival/south_asia
 
 # Desc: /footer
 footer: /footer/en/
@@ -269,7 +269,7 @@ front_event_edit_links: '/event/edit_links/{id}'
 front_event_new: /event/new
 
 # Desc: /event/{uri}/{id}
-front_event_show: '/event/{uri}/{id}'
+front_event_show: '/{uri}/{id}/event'
 
 # Desc: /event/update/{id}
 front_event_update: '/event/update/{id}'
@@ -588,6 +588,9 @@ navbar_meet: /navbar_meet
 
 # Desc: /policy
 policy: /policy
+
+# Desc: /sitemap
+policy: /sitemap
 
 # Desc: /admin/search/user
 search_search_admin_user: /admin/search/user

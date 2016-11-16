@@ -71,6 +71,16 @@ class LoadPageData extends AbstractFixture implements OrderedFixtureInterface, C
         $Page->mergeNewTranslations();
 
         $Page = new Page();
+        $Page->setName('sitemap');
+        $Page->translate('en')->setTitle('Sitemap');
+        $Page->translate('fr')->setTitle('Plan du site');
+        $Page->translate('en')->setDescription('Sitemap');
+        $Page->translate('fr')->setDescription('Plan du site');
+        $manager->persist($Page);
+        $this->addReference('page-sitemap', $Page);
+        $Page->mergeNewTranslations();
+
+        $Page = new Page();
         $Page->setName('city_edito');
         $Page->translate('en')->setTitle('edito');
         $Page->translate('fr')->setTitle('edito');

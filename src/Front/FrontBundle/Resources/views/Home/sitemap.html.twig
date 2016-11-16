@@ -1,0 +1,88 @@
+{% extends 'FrontFrontBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ page.getTitle|capitalize }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.getDescription|capitalize }}" />
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ page.getTitle|capitalize }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="container">
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        {% set dances3 =  'salsa'|trans~' '~'bachata'|trans~' '~'kizomba'|trans %}
+
+                        <a href="{{ path('dance_salsa') }}">{% trans %}navbar.dances.salsa{% endtrans %}</a></br>
+                        <a href="{{ path('dance_salsa_cubana') }}">{% trans %}navbar.dances.salsa_cubana{% endtrans %}</a></br>
+                        <a href="{{ path('dance_salsa_on1') }}">{% trans %}navbar.dances.salsa_on1{% endtrans %}</a></br>
+                        <a href="{{ path('dance_salsa_on2') }}">{% trans %}navbar.dances.salsa_on2{% endtrans %}</a></br>
+                        <a href="{{ path('dance_salsa_rueda') }}">{% trans %}navbar.dances.salsa_rueda{% endtrans %}</a></br>
+                        <a href="{{ path('dance_bachata') }}">{% trans %}navbar.dances.bachata{% endtrans %}</a></br>
+                        <a href="{{ path('dance_bachata_moderna') }}">{% trans %}navbar.dances.bachata_moderna{% endtrans %}</a></br>
+                        <a href="{{ path('dance_bachata_dominicana') }}">{% trans %}navbar.dances.bachata_dominicana{% endtrans %}</a></br>
+                        <a href="{{ path('dance_bachata_sensual') }}">{% trans %}navbar.dances.bachata_sensual{% endtrans %}</a></br>
+                        <a href="{{ path('dance_kizomba') }}">{% trans %}navbar.dances.kizomba{% endtrans %}</a></br>
+                        <a href="{{ path('festival_calendar') }}">{% trans %}navbar.festivals.calendar{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_europe') }}">{% trans %}navbar.festivals.europe{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_north_america') }}">{% trans %}navbar.festivals.america{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_central_america') }}">{% trans %}navbar.festivals.central_america{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_south_america') }}">{% trans %}navbar.festivals.south_america{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_north_africa') }}">{% trans %}navbar.festivals.north_africa{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_central_africa') }}">{% trans %}navbar.festivals.central_africa{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_south_africa') }}">{% trans %}navbar.festivals.south_africa{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_north_asia') }}">{% trans %}navbar.festivals.north_asia{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_south_asia') }}">{% trans %}navbar.festivals.south_asia{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_india') }}">{% trans %}navbar.festivals.india{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_australia') }}">{% trans %}navbar.festivals.australia{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_indonesia') }}">{% trans %}navbar.festivals.indonesia{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('festival_middle_east') }}">{% trans %}navbar.festivals.middle_east{% endtrans %} {{ 'city.festivals'|trans }} {{ dances3 }}</a></br>
+                        <a href="{{ path('landing_dancer') }}">{% trans %}footer.landing_page_dancer{% endtrans %} {{ dances3 }}</a></br>
+                        <a href="{{ path('landing_pro') }}">{% trans %}footer.landing_page_pro{% endtrans %} {{ dances3 }}</a></br>
+                        <a href="{{ path('landing-share-event') }}">{% trans %}front.landing_share_event{% endtrans %} {{ dances3 }}</a></br>
+                        <a href="{{ path('learn_salsa') }}">{% trans %}navbar.learn.salsa{% endtrans %}</a></br>
+                        <a href="{{ path('learn_bachata') }}">{% trans %}navbar.learn.bachata{% endtrans %}</a></br>
+                        <a href="{{ path('learn_kizomba') }}">{% trans %}navbar.learn.kizomba{% endtrans %}</a></br>
+                        <a href="{{ path('front_video') }}">{% trans %}navbar.videos{% endtrans %} {{ dances3 }}</a></br>
+                        <a href="{{ path('front_move') }}">{% trans %}navbar.moves{% endtrans %} {{ dances3 }}</a></br>
+                        <a href="{{ path('front_music') }}">{% trans %}navbar.musics{% endtrans %} {{ dances3 }}</a></br>
+                        </br>
+                        </br>
+
+                        {% for city in cities %}
+
+                            <a href="{{ path('city_edito', { 'searchcity' : city.getName() } ) }}">{% trans %}city.edito{% endtrans %} {{ city.getName() }} {{ dances3 }}</a></br>
+                            <a href="{{ path('city_calendar', { 'searchcity' : city.getName() } ) }}">{% trans %}city.calendar{% endtrans %} {{ city.getName() }} {{ dances3 }}</a></br>
+                            <a href="{{ path('city_teacher', { 'searchcity' : city.getName() } ) }}">{% trans %}city.lessons{% endtrans %} {{ city.getName() }} {{ dances3 }}</a></br>
+                            <a href="{{ path('city_introduction', { 'searchcity' : city.getName() } ) }}">{% trans %}city.introductions{% endtrans %} {{ city.getName() }} {{ dances3 }}</a></br>
+                            <a href="{{ path('city_festival', { 'searchcity' : city.getName() } ) }}">{% trans %}city.festivals{% endtrans %} {{ city.getName() }} {{ dances3 }}</a></br>
+
+                            </br>
+                            </br>
+                        {% endfor  %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
