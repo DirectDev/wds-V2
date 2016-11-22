@@ -18,7 +18,7 @@ city_concert: '/salsa-bachata-kizomba/concerts/{searchcity}/ville'
 city_dancer: '/salsa-bachata-kizomba/danseurs/{searchcity}/ville'
 
 # Desc: /city/edito/{searchcity}
-city_edito: '/salsa-bachata-kizomba/presentation/{searchcity}/ville'
+city_edito: '/salsa-bachata-kizomba/edito/{searchcity}/ville'
 
 # Desc: /city/festivals/{searchcity}
 city_festival: '/salsa-bachata-kizomba/festivals/{searchcity}/ville'

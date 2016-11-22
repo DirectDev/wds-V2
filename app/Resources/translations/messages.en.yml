@@ -64,24 +64,80 @@ city:
     calendar: Calendar
     concerts: Concerts
     dancers: Dancers
-    edito: Overview
-    edito.artist.h4: Artits
-    edito.artist.p: 'All the artists from the city'
-    edito.bar.h4: Places
-    edito.bar.p: 'The places to dance'
-    edito.calendar.h4: Calendar
-    edito.calendar.p: 'All events on a map'
-    edito.festival.h4: Festivals
-    edito.festival.p: 'All the festivals in this city'
-    edito.introduction.h4: Introductions
-    edito.introduction.p: 'Introductions, to discover what dance is'
-    edito.party.h4: Parties
-    edito.party.p: 'All the parties'
-    edito.photo.h4: Photos
-    edito.photo.p: 'The best photos'
-    edito.teacher.h4: Teachers
-    edito.teacher.p: 'Discover all teachers and learn to dance'
-    edito.users: 'Some dancers'
+    editorial: "Overview"
+    edito:
+        intro:
+            h4: "Salsa, Bachata and Kizomba in %CITY%"
+            p: "%TOTAL_EVENTS% Salsa/Bachata/Kizomba events have been found in %CITY%. There are %TOTAL_WEEK% event ar %CITY% this week and %TOTAL_MONTH% event this month, including %TOTAL_MONTH_SALSA% for Salsa, %TOTAL_MONTH_BACHATA% for Bachata et %TOTAL_MONTH_KIZOMBA% for Kizomba." 
+        artist:
+            h4: 'Artits'
+            p: 'All the artists from the city'
+        bar:
+            h4: 'Places'
+            p: "The places to dance"
+        calendar:
+            h4: 'Calendar'
+            p: 'There are %TOTAL_WEEK% Salsa/Bachata/Kizomba event in %CITY% this week.'
+            p_link: "Where to dance Salsa/Bachata/Kizomba in %CITY% today."
+            p_salsa: "When can I dance Salsa in %CITY% : "
+            p_bachata: "When can I dance Bachata in %CITY% : "
+            p_kizomba: "When can I dance Kizomba in  %CITY% : "
+        festival:
+            h4: 'Festivals'
+            p: 'Discover all the festivals'
+            p_link: "All Salsa, Bachata and Kizomba festivals from %CITY%"
+            p_salsa: "%TOTAL_FESTIVAL_SALSA% Salsa festivals in %CITY% have been found."
+            p_salsa_next: "Salsa festivals coming soon :"
+            p_salsa_no_next: "There are no Salsa Festival in %CITY% soon."
+            p_salsa_add: "Add a Salsa festival in %CITY%."
+            p_bachata: "%TOTAL_FESTIVAL_BACHATA% Bachata festivals in %CITY% have been found."
+            p_bachata_next: "Bachata festivals coming soon :"
+            p_bachata_no_next: "There are no Bachata Festival in %CITY% soon."
+            p_bachata_add: "Add a Bachata festival in %CITY%."
+            p_kizomba: "%TOTAL_FESTIVAL_KIZOMBA% Kizomba festivals in %CITY% have been found."
+            p_kizomba_next: "Kizomba festivals coming soon :"
+            p_kizomba_no_next: "There are no Kizomba Festival in %CITY% soon."
+            p_kizomba_add: "Add a Kizomba festival in %CITY%."
+        introduction:
+            h4: 'Introductions'
+            p: '%TOTAL_INTRODUCTION% Salsa, Bachata and Kizomba have been found.'
+            p_avg: 'In %CITY% There is an average of %AVG_MONTH_INTRODUCTION_SALSA% Salsa introductions, %AVG_MONTH_INTRODUCTION_BACHATA% Bachata introductions and %AVG_MONTH_INTRODUCTION_KIZOMBA% Kizomba introductions per month.'
+            p_link: "Discover all Salsa/Bachata/Kizomba introductions in %CITY%."
+            p_salsa: "There are %TOTAL_INTRODUCTION_SALSA% Salsa introductions in %CITY% coming soon :"
+            p_bachata: "There are %TOTAL_INTRODUCTION_BACHATA% Bachata introductions in %CITY% coming soon :"
+            p_kizomba: "There are %TOTAL_INTRODUCTION_KIZOMBA% Kizomba introductions in %CITY% coming soon :"
+            p_no_introductions: "There are no Salsa/Bachata/Kizomba introductions in %CITY% coming soon."
+            p_add: "Add your Salsa, Bachata ou Kizomba introductions in %CITY%"
+            p_organisers: "Who can introduce me to Salsa/Bachata/Kizomba in %CITY% ?"
+        lesson:
+            h4: 'Lessons'
+            p: '%TOTAL_LESSON% Salsa, Bachata and Kizomba have been found.'
+            p_avg: 'In %CITY% There is an average of %AVG_MONTH_LESSON_SALSA% Salsa lessons, %AVG_MONTH_LESSON_BACHATA% Bachata lessons and %AVG_MONTH_LESSON_KIZOMBA% Kizomba lessons per month.'
+            p_link: "Discover all Salsa/Bachata/Kizomba lessons in %CITY%."
+            p_salsa: "There are %TOTAL_LESSON_SALSA% Salsa lessons in %CITY% coming soon :"
+            p_bachata: "There are %TOTAL_LESSON_BACHATA% Bachata lessons in %CITY% coming soon :"
+            p_kizomba: "There are %TOTAL_LESSON_KIZOMBA% Kizomba lessons in %CITY% coming soon :"
+            p_no_lessons: "There are no Salsa/Bachata/Kizomba lessons in %CITY% coming soon."
+            p_add: "Add your Salsa, Bachata ou Kizomba lessons in %CITY%"
+            p_organisers: "Who can introduce me to Salsa/Bachata/Kizomba in %CITY% ?"
+        party:
+            h4: 'Parties'
+            p: '%TOTAL_PARTY% Salsa, Bachata and Kizomba have been found.'
+            p_avg: 'In %CITY% There is an average of %AVG_MONTH_PARTY_SALSA% Salsa parties, %AVG_MONTH_PARTY_BACHATA% Bachata parties and %AVG_MONTH_PARTY_KIZOMBA% Kizomba parties per month.'
+            p_link: "Discover all Salsa/Bachata/Kizomba parties in %CITY%."
+            p_week_salsa: "There are %TOTAL_WEEK_PARTY_SALSA% Salsa parties coming this week :"
+            p_week_bachata: "There are %TOTAL_WEEK_PARTY_BACHATA% Bachata parties coming this week :"
+            p_week_kizomba: "There are %TOTAL_WEEK_PARTY_KIZOMBA% Kizomba parties coming this week :"
+            p_no_partys: "There are no Salsa/Bachata/Kizomba parties in %CITY% coming soon."
+            p_add: "Add your Salsa, Bachata ou Kizomba parties in %CITY%"
+            p_organisers: "Who is organizing Salsa/Bachata/Kizomba parties in %CITY% ?"
+        photo:
+            h4: 'Photos'
+            p: 'The best photos'
+        teacher:
+            h4: 'Teachers'
+            p: 'Discover all teachers and learn to dance'
+        users: 'Some dancers' 
     festivals: Festivals
     in: in
     introductions: Introductions

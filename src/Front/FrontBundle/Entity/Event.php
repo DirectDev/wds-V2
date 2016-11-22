@@ -199,7 +199,7 @@ class Event {
     public function __toString() {
         return $this->getName();
     }
-
+    
     public function getMusicTypesText() {
         $array = array();
         foreach ($this->getMusicTypes() as $musicType)

@@ -60,21 +60,198 @@ class CityController extends Controller {
 
         $user = $this->getUser();
 
-        $UserTypeArtist = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
-        $UserTypeTeacher = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
-        $UserTypeBar = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
+//        $UserTypeArtist = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('artist');
+//        $UserTypeTeacher = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('teacher');
+//        $UserTypeBar = $this->getDoctrine()->getRepository('UserUserBundle:UserType')->findOneByName('bar');
 
-        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 40, array($UserTypeArtist, $UserTypeTeacher, $UserTypeBar));
+        $musicTypeSalsa = $em->getRepository('FrontFrontBundle:MusicType')->findOneByName('Salsa');
+        $musicTypeBachata = $em->getRepository('FrontFrontBundle:MusicType')->findOneByName('Bachata');
+        $musicTypeKizomba = $em->getRepository('FrontFrontBundle:MusicType')->findOneByName('Kizomba');
 
+        $eventTypeFestival = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Festival');
+        $eventTypeParty = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Party');
+        $eventTypeIntroduction = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Introduction');
+        $eventTypeWorkshop = $em->getRepository('FrontFrontBundle:EventType')->findOneByName('Workshop');
+
+//        $People = $this->getUsers($em, 200, $city->getLatitude(), $city->getLongitude(), 40, array($UserTypeArtist, $UserTypeTeacher, $UserTypeBar));
+//findForCitypages($startdate_only = true, $limit = 6, $eventTypes = null, $musicTypes = null, $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20, $excludedEvents = array())
+
+        $festivalSalsaNext = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeFestival), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $festivalBachataNext = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeFestival), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $festivalKizombaNext = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeFestival), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+
+        $eventSalsaNext = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, null, array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $eventBachataNext = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, null, array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $eventKizombaNext = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, null, array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+
+        $introductionsSalsa = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $introductionsBachata = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $introductionsKizomba = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+
+        $introductionOrganisers = null;
+
+        $lessonsSalsa = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $lessonsBachata = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $lessonsKizomba = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+
+        $lessonOrganisers = null;
+
+        $partiesSalsa = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $partiesBachata = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+        $partiesKizomba = $em->getRepository('FrontFrontBundle:Event')
+                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+
+        $partyOrganisers = null;
+
+        $lastYearDateTime = new \DateTime();
+        $lastYear = $lastYearDateTime->modify('-365 days')->format('Y-m-d');
+        $last2MonthDateTime = new \DateTime();
+        $last2Month = $last2MonthDateTime->modify('-60 days')->format('Y-m-d');
+        $nextYearDateTime = new \DateTime();
+        $nextYearDateTime->add(new \DateInterval('P365D'));
+        $nextYear = $nextYearDateTime->format('Y-m-d');
+        $nextWeekDateTime = new \DateTime();
+        $nextWeekDateTime->add(new \DateInterval('P7D'));
+        $nextWeek = $nextWeekDateTime->format('Y-m-d');
+        $nextMonthDateTime = new \DateTime();
+        $nextMonthDateTime->add(new \DateInterval('P30D'));
+        $nextMonth = $nextMonthDateTime->format('Y-m-d');
+        $next2MonthDateTime = new \DateTime();
+        $next2MonthDateTime->add(new \DateInterval('P60D'));
+        $next2Month = $next2MonthDateTime->format('Y-m-d');
+
+        $TOTAL_EVENTS = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(null, null, $lastYear, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_WEEK = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(null, null, null, $nextWeek, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_MONTH = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(null, null, null, $nextMonth, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_MONTH_SALSA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(null, array($musicTypeSalsa), null, $nextMonth, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_MONTH_BACHATA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(null, array($musicTypeBachata), null, $nextMonth, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_MONTH_KIZOMBA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(null, array($musicTypeKizomba), null, $nextMonth, $city->getLatitude(), $city->getLongitude());
+
+        $TOTAL_INTRODUCTION = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeIntroduction), null, $lastYear, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $AVG_MONTH_INTRODUCTION_SALSA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeIntroduction), array($musicTypeSalsa), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $AVG_MONTH_INTRODUCTION_BACHATA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeIntroduction), array($musicTypeBachata), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $AVG_MONTH_INTRODUCTION_KIZOMBA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeIntroduction), array($musicTypeKizomba), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+
+        $TOTAL_LESSON = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeWorkshop), null, $lastYear, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_LESSON_SALSA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeWorkshop), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_LESSON_BACHATA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeWorkshop), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_LESSON_KIZOMBA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeWorkshop), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $AVG_MONTH_LESSON_SALSA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeWorkshop), array($musicTypeSalsa), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $AVG_MONTH_LESSON_BACHATA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeWorkshop), array($musicTypeBachata), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $AVG_MONTH_LESSON_KIZOMBA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeWorkshop), array($musicTypeKizomba), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+
+        $TOTAL_PARTY = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), null, $lastYear, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_PARTY_SALSA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_PARTY_BACHATA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_PARTY_KIZOMBA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $AVG_MONTH_PARTY_SALSA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeParty), array($musicTypeSalsa), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $AVG_MONTH_PARTY_BACHATA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeParty), array($musicTypeBachata), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $AVG_MONTH_PARTY_KIZOMBA = ($em->getRepository('FrontFrontBundle:Event')
+                        ->countForEdito(array($eventTypeParty), array($musicTypeKizomba), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
+        $TOTAL_WEEK_PARTY_SALSA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), array($musicTypeSalsa), null, $nextWeek, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_WEEK_PARTY_BACHATA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), array($musicTypeBachata), null, $nextWeek, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_WEEK_PARTY_KIZOMBA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeParty), array($musicTypeKizomba), null, $nextWeek, $city->getLatitude(), $city->getLongitude());
+
+        $TOTAL_FESTIVAL_SALSA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeFestival), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_FESTIVAL_BACHATA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeFestival), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_FESTIVAL_KIZOMBA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeFestival), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
 
         return $this->render('FrontFrontBundle:City:edito.html.twig', array(
                     'page' => $page,
                     'city' => $city,
                     'user' => $user,
-                    'People' => $People,
-//                    'events' => $events,
-//                    'nextEvents' => $nextEvents,
                     'startdate' => $this->startdate,
+                    "festivalSalsaNext" => $festivalSalsaNext,
+                    "festivalBachataNext" => $festivalBachataNext,
+                    "festivalKizombaNext" => $festivalKizombaNext,
+                    "eventSalsaNext" => $eventSalsaNext,
+                    "eventBachataNext" => $eventBachataNext,
+                    "eventKizombaNext" => $eventKizombaNext,
+                    "introductionsSalsa" => $introductionsSalsa,
+                    "introductionsBachata" => $introductionsBachata,
+                    "introductionsKizomba" => $introductionsKizomba,
+                    "introductionOrganisers" => $introductionOrganisers,
+                    "lessonsSalsa" => $lessonsSalsa,
+                    "lessonsBachata" => $lessonsBachata,
+                    "lessonsKizomba" => $lessonsKizomba,
+                    "lessonOrganisers" => $lessonOrganisers,
+                    "partiesSalsa" => $partiesSalsa,
+                    "partiesBachata" => $partiesBachata,
+                    "partiesKizomba" => $partiesKizomba,
+                    "partyOrganisers" => $partyOrganisers,
+                    "TOTAL_EVENTS" => $TOTAL_EVENTS,
+                    "TOTAL_WEEK" => $TOTAL_WEEK,
+                    "TOTAL_MONTH" => $TOTAL_MONTH,
+                    "TOTAL_MONTH_SALSA" => $TOTAL_MONTH_SALSA,
+                    "TOTAL_MONTH_BACHATA" => $TOTAL_MONTH_BACHATA,
+                    "TOTAL_MONTH_KIZOMBA" => $TOTAL_MONTH_KIZOMBA,
+                    "TOTAL_INTRODUCTION" => $TOTAL_INTRODUCTION,
+                    "AVG_MONTH_INTRODUCTION_SALSA" => round($AVG_MONTH_INTRODUCTION_SALSA),
+                    "AVG_MONTH_INTRODUCTION_BACHATA" => round($AVG_MONTH_INTRODUCTION_BACHATA),
+                    "AVG_MONTH_INTRODUCTION_KIZOMBA" => round($AVG_MONTH_INTRODUCTION_KIZOMBA),
+                    "TOTAL_LESSON" => $TOTAL_LESSON,
+                    "TOTAL_LESSON_SALSA" => $TOTAL_LESSON_SALSA,
+                    "TOTAL_LESSON_BACHATA" => $TOTAL_LESSON_BACHATA,
+                    "TOTAL_LESSON_KIZOMBA" => $TOTAL_LESSON_KIZOMBA,
+                    "AVG_MONTH_LESSON_SALSA" => round($AVG_MONTH_LESSON_SALSA),
+                    "AVG_MONTH_LESSON_BACHATA" => round($AVG_MONTH_LESSON_BACHATA),
+                    "AVG_MONTH_LESSON_KIZOMBA" => round($AVG_MONTH_LESSON_KIZOMBA),
+                    "TOTAL_PARTY" => $TOTAL_PARTY,
+                    "TOTAL_PARTY_SALSA" => $TOTAL_PARTY_SALSA,
+                    "TOTAL_PARTY_BACHATA" => $TOTAL_PARTY_BACHATA,
+                    "TOTAL_PARTY_KIZOMBA" => $TOTAL_PARTY_KIZOMBA,
+                    "AVG_MONTH_PARTY_SALSA" => round($AVG_MONTH_PARTY_SALSA),
+                    "AVG_MONTH_PARTY_BACHATA" => round($AVG_MONTH_PARTY_BACHATA),
+                    "AVG_MONTH_PARTY_KIZOMBA" => round($AVG_MONTH_PARTY_KIZOMBA),
+                    "TOTAL_WEEK_PARTY_SALSA" => $TOTAL_WEEK_PARTY_SALSA,
+                    "TOTAL_WEEK_PARTY_BACHATA" => $TOTAL_WEEK_PARTY_BACHATA,
+                    "TOTAL_WEEK_PARTY_KIZOMBA" => $TOTAL_WEEK_PARTY_KIZOMBA,
+                    "TOTAL_FESTIVAL_SALSA" => $TOTAL_FESTIVAL_SALSA,
+                    "TOTAL_FESTIVAL_BACHATA" => $TOTAL_FESTIVAL_BACHATA,
+                    "TOTAL_FESTIVAL_KIZOMBA" => $TOTAL_FESTIVAL_KIZOMBA,
         ));
     }
 

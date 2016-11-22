@@ -418,5 +418,58 @@ class EventRepository extends EntityRepository {
 
         return $query->getQuery()->getResult();
     }
+    
+    public function countForEdito($eventTypes = null, $musicTypes = null, $startdate = null, $stopdate = null, $latitude = null, $longitude = null, $distance = 20) {
+
+        if (!$startdate)
+            $startdate = date('Y-m-d');
+        if (!$stopdate)
+            $stopdate = date('Y-m-d', strtotime('+365 days'));
+
+        $arrayEventType = array();
+        $arraymusicTypes = array();
+
+        $query = $this->createQueryBuilder('e')
+                ->select('COUNT(ed.id)')
+                ->leftJoin('e.eventTypes', 'et')
+                ->leftJoin('e.musicTypes', 'mt')
+                ->leftJoin('e.eventDates', 'ed')
+                ->leftJoin('e.addresses', 'a')
+                ->where('e.published = 1')
+                ->setParameter('startdate', $startdate)
+                ->setParameter('stopdate', $stopdate)
+                ->andWhere('((
+                    (ed.startdate <= :startdate AND ed.stopdate >= :startdate) 
+                    OR (ed.startdate < :stopdate AND ed.stopdate >= :stopdate)
+                    OR (ed.startdate >= :startdate AND ed.stopdate <= :stopdate)
+                    )
+                    OR ( ed.stopdate IS NULL AND ed.startdate >= :startdate AND ed.startdate <= :stopdate))');
+
+        if ($eventTypes && count($eventTypes)) {
+            foreach ($eventTypes as $eventType)
+                $arrayEventType [] = $eventType->getId();
+
+            $query->andWhere($query->expr()->in('et.id', $arrayEventType));
+        }
+
+        if ($musicTypes && count($musicTypes)) {
+            foreach ($musicTypes as $musicType)
+                $arraymusicTypes [] = $musicType->getId();
+
+            $query->andWhere($query->expr()->in('mt.id', $arraymusicTypes));
+        }
+
+        /* Geocode */
+        $query->andWhere("(3958*3.1415926*sqrt((a.latitude - :latitude)*(a.latitude - :latitude)
+                + cos(a.latitude/57.29578)*cos(:latitude/57.29578)*(a.longitude - :longitude)*(a.longitude-:longitude))/180)
+                <= :distance")
+                ->setParameter('latitude', $latitude)
+                ->setParameter('longitude', $longitude)
+                ->setParameter('distance', $distance);
+        /* Geocode */
+
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
 
 }

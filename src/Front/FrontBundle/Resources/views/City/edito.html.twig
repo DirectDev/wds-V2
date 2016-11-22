@@ -21,7 +21,21 @@
                              alt="" class="pull-left m-b-20 m-r-20">
                     {% endif %}
 
+                    <h4>{% trans with { '%CITY%' : city } %}city.edito.intro.h4{% endtrans %}</h4>
+
                     {{ city.getEdito()|raw }}
+
+                    <p>
+                        {% trans with { 
+                        '%CITY%' : city, 
+                        '%TOTAL_EVENTS%' : TOTAL_EVENTS, 
+                        '%TOTAL_WEEK%' : TOTAL_WEEK, 
+                        '%TOTAL_MONTH%' : TOTAL_MONTH,
+                        '%TOTAL_MONTH_SALSA%' : TOTAL_MONTH_SALSA,
+                        '%TOTAL_MONTH_BACHATA%' : TOTAL_MONTH_BACHATA,
+                        '%TOTAL_MONTH_KIZOMBA%' : TOTAL_MONTH_KIZOMBA,
+                        } %}city.edito.intro.p{% endtrans %}
+                    </p>
 
                 </div>
 
@@ -29,115 +43,436 @@
 
                 <div class="m-b-20">
 
-                    <a href="{{ path('city_calendar', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-calendar service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.calendar.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.calendar.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
+                    <div class="col-md-6">
+                        <div class="service">
+                            <i class="fa fa-calendar service-icon"></i>
+                            <div class="desc">
+                                <h4>{% trans %}city.edito.calendar.h4{% endtrans %}</h4>
+                                <p>
+                                    {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%TOTAL_WEEK%' : TOTAL_WEEK, 
+                                        } %}city.edito.calendar.p{% endtrans %}
+                                </p>
+                                <p>
+                                    <a href="{{ path('city_calendar', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.calendar.p_link{% endtrans %}
+                                    </a>
+                                </p>
+                                {% if eventSalsaNext is defined and eventSalsaNext|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.calendar.p_salsa{% endtrans %}
+                                        {% for event in eventSalsaNext %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if eventBachataNext is defined and eventBachataNext|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.calendar.p_bachata{% endtrans %}
+                                        {% for event in eventBachataNext %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if eventKizombaNext is defined and eventKizombaNext|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.calendar.p_kizomba{% endtrans %}
+                                        {% for event in eventKizombaNext %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
 
-                    <a href="{{ path('city_festival', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-star service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.festival.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.festival.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
-                    <a href="{{ path('city_party', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-glass service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.party.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.party.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
-                    <a href="{{ path('city_introduction', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-eye service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.introduction.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.introduction.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
+                            </div>
+                        </div>	
+                    </div>
 
-                    <a href="{{ path('city_artist', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-group service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.artist.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.artist.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
+                    <div class="col-md-6">
+                        <div class="service">
+                            <i class="fa fa-graduation-cap service-icon"></i>
+                            <div class="desc">
+                                <h4>{% trans %}city.edito.lesson.h4{% endtrans %}</h4>
+                                <p>
+                                    {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%TOTAL_LESSON%' : TOTAL_LESSON,
+                                        } %}city.edito.lesson.p{% endtrans %}
+                                    {% if AVG_MONTH_LESSON_SALSA or AVG_MONTH_LESSON_BACHATA or AVG_MONTH_LESSON_KIZOMBA %}
+                                        {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%AVG_MONTH_LESSON_SALSA%' : AVG_MONTH_LESSON_SALSA, 
+                                        '%AVG_MONTH_LESSON_BACHATA%' : AVG_MONTH_LESSON_BACHATA, 
+                                        '%AVG_MONTH_LESSON_KIZOMBA%' : AVG_MONTH_LESSON_KIZOMBA,
+                                        } %}city.edito.lesson.p_avg{% endtrans %}
+                                    {% endif %}
+                                </p>
 
-                    <a href="{{ path('city_teacher', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-graduation-cap service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.teacher.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.teacher.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
+                                <p>
+                                    <a href="{{ path('city_workshop', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.lesson.p_link{% endtrans %}
+                                    </a>
+                                </p>
 
-                    <a href="{{ path('city_bar', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-beer service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.bar.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.bar.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
+                                {% if lessonsSalsa is defined and lessonsSalsa|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_LESSON_SALSA%' : TOTAL_LESSON_SALSA } %}city.edito.lesson.p_salsa{% endtrans %}
+                                        {% for event in lessonsSalsa %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if lessonsBachata is defined and lessonsBachata|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_LESSON_BACHATA' : TOTAL_LESSON_BACHATA } %}city.edito.lesson.p_bachata{% endtrans %}
+                                        {% for event in lessonsBachata %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if lessonsKizomba is defined and lessonsKizomba|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_LESSON_KIZOMBA%' : TOTAL_LESSON_KIZOMBA } %}city.edito.lesson.p_kizomba{% endtrans %}
+                                        {% for event in lessonsKizomba %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
 
-                    <a href="{{ path('city_photo', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
-                        <div class="col-md-6">
-                            <div class="service">
-                                <i class="fa fa-camera service-icon"></i>
-                                <div class="desc">
-                                    <h4>{% trans %}city.edito.photo.h4{% endtrans %}</h4>
-                                    <p>{% trans %}city.edito.photo.p{% endtrans %}</p>
-                                </div>
-                            </div>	
-                        </div>
-                    </a>
+                                {% if not lessonsKizomba and not lessonsBachata and not lessonsSalsa %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.lesson.p_no_lessons{% endtrans %}
+                                    </p>
+                                {% endif %}
+                                <p>
+                                    <a href="{{ path('landing-share-event') }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.lesson.p_add{% endtrans %}
+                                    </a>
+                                </p>
+
+
+
+                                {# {% if lessonOrganisers is defined and lessonOrganisers|length %}
+                                     <p>
+                                         {% trans with {  '%CITY%' : city } %}city.edito.lesson.p_organisers{% endtrans %}
+                                     <ul class="list-unstyled list-inline margin-bottom-30">
+                                         {% for user in lessonOrganisers %}
+                                             <li class="pull-left m-r-10">
+                                                 {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
+                                             </li>
+                                         {% endfor %}
+                                     </ul>
+                                     </p>
+                                 {% endif %}#}
+                            </div>
+                        </div>	
+                    </div>        
+
+
+                    <div class="col-md-6">
+                        <div class="service">
+                            <i class="fa fa-glass service-icon"></i>
+                            <div class="desc">
+                                <h4>{% trans %}city.edito.party.h4{% endtrans %}</h4>
+                                <p>
+                                    {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%TOTAL_PARTY%' : TOTAL_PARTY, 
+                                        } %}city.edito.party.p{% endtrans %}
+                                    {% if AVG_MONTH_PARTY_SALSA or AVG_MONTH_PARTY_BACHATA or AVG_MONTH_PARTY_KIZOMBA %}
+                                        {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%AVG_MONTH_PARTY_SALSA%' : AVG_MONTH_PARTY_SALSA, 
+                                        '%AVG_MONTH_PARTY_BACHATA%' : AVG_MONTH_PARTY_BACHATA, 
+                                        '%AVG_MONTH_PARTY_KIZOMBA%' : AVG_MONTH_PARTY_KIZOMBA, 
+                                        } %}city.edito.party.p_avg{% endtrans %}
+                                    {% endif %}
+                                </p>
+
+                                <p>
+                                    <a href="{{ path('city_party', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.party.p_link{% endtrans %}
+                                    </a>
+                                </p>
+
+                                {% if partiesSalsa is defined and partiesSalsa|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_WEEK_PARTY_SALSA%' : TOTAL_WEEK_PARTY_SALSA } %}city.edito.party.p_week_salsa{% endtrans %}
+                                        {% for event in partiesSalsa %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if partiesBachata is defined and partiesBachata|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_WEEK_PARTY_BACHATA%' : TOTAL_WEEK_PARTY_BACHATA } %}city.edito.party.p_week_bachata{% endtrans %}
+                                        {% for event in partiesBachata %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if partiesKizomba is defined and partiesKizomba|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_WEEK_PARTY_KIZOMBA%' : TOTAL_WEEK_PARTY_KIZOMBA} %}city.edito.party.p_week_kizomba{% endtrans %}
+                                        {% for event in partiesKizomba %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+
+                                {% if not partiesKizomba and not partiesBachata and not partiesSalsa %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.party.p_no_partys{% endtrans %}
+                                    </p>
+                                {% endif %}
+                                <p>
+                                    <a href="{{ path('landing-share-event') }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.party.p_add{% endtrans %}
+                                    </a>
+                                </p>
+
+
+
+                                {#{% if partyOrganisers is defined and partyOrganisers|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.party.p_organisers{% endtrans %}
+                                    <ul class="list-unstyled list-inline margin-bottom-30">
+                                        {% for user in partyOrganisers %}
+                                            <li class="pull-left m-r-10">
+                                                {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    </p>
+                                {% endif %}#}
+                            </div>
+                        </div>	
+                    </div>   
+
+                    <div class="col-md-6">
+                        <div class="service">
+                            <i class="fa fa-eye service-icon"></i>
+                            <div class="desc">
+                                <h4>{% trans %}city.edito.introduction.h4{% endtrans %}</h4>
+                                <p>
+                                    {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%TOTAL_INTRODUCTION%' : TOTAL_INTRODUCTION, 
+                                        } %}city.edito.introduction.p{% endtrans %}
+                                    {% if AVG_MONTH_INTRODUCTION_SALSA or AVG_MONTH_INTRODUCTION_BACHATA or AVG_MONTH_INTRODUCTION_KIZOMBA %}
+                                        {% trans with { 
+                                        '%CITY%' : city, 
+                                        '%AVG_MONTH_INTRODUCTION_SALSA%' : AVG_MONTH_INTRODUCTION_SALSA, 
+                                        '%AVG_MONTH_INTRODUCTION_BACHATA%' : AVG_MONTH_INTRODUCTION_BACHATA, 
+                                        '%AVG_MONTH_INTRODUCTION_KIZOMBA%' : AVG_MONTH_INTRODUCTION_KIZOMBA,
+                                        } %}city.edito.introduction.p_avg{% endtrans %}
+                                    {% endif %}
+                                </p>
+
+                                <p>
+                                    <a href="{{ path('city_introduction', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.introduction.p_link{% endtrans %}
+                                    </a>
+                                </p>
+
+                                {% if introductionsSalsa is defined and introductionsSalsa|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_INTRODUCTION_SALSA%' : TOTAL_INTRODUCTION_SALSA } %}city.edito.introduction.p_salsa{% endtrans %}
+                                        {% for event in introductionsSalsa %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if introductionsBachata is defined and introductionsBachata|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_INTRODUCTION_BACHATA%' : TOTAL_INTRODUCTION_BACHATA } %}city.edito.introduction.p_bachata{% endtrans %}
+                                        {% for event in introductionsBachata %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                {% if introductionsKizomba is defined and introductionsKizomba|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_INTRODUCTION_KIZOMBA%' : TOTAL_INTRODUCTION_KIZOMBA } %}city.edito.introduction.p_kizomba{% endtrans %}
+                                        {% for event in introductionsKizomba %}
+                                            <br>{% include 'FrontFrontBundle:Event:eventLink.html.twig' with { 'event' : event } %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+
+                                {% if not introductionsKizomba and not introductionsBachata and not introductionsSalsa %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.introduction.p_no_introductions{% endtrans %}
+                                    </p>
+                                {% endif %}
+                                <p>
+                                    <a href="{{ path('landing-share-event') }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.introduction.p_add{% endtrans %}
+                                    </a>
+                                </p>
+
+
+
+                                {#{% if introductionOrganisers is defined and introductionOrganisers|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.introduction.p_organisers{% endtrans %}
+                                    <ul class="list-unstyled list-inline margin-bottom-30">
+                                        {% for user in introductionOrganisers %}
+                                            <li class="pull-left m-r-10">
+                                                {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    </p>
+                                {% endif %}#}
+                            </div>
+                        </div>	
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="service">
+                            <i class="fa fa-star service-icon"></i>
+                            <div class="desc">
+                                <h4>{% trans %}city.edito.festival.h4{% endtrans %}</h4>
+                                <p>{% trans %}city.edito.festival.p{% endtrans %}</p>
+
+                                <a href="{{ path('city_festival', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                    {% trans with {  '%CITY%' : city } %}city.edito.festival.p_link{% endtrans %}
+                                </a>
+
+                                {% if TOTAL_FESTIVAL_SALSA is defined and TOTAL_FESTIVAL_SALSA%}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_FESTIVAL_SALSA%' : TOTAL_FESTIVAL_SALSA } %}city.edito.festival.p_salsa{% endtrans %}
+                                    </p>
+                                {% endif %}
+
+                                {% if festivalSalsaNext is defined and festivalSalsaNext|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_salsa_next{% endtrans %}
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_salsa_no_next{% endtrans %}
+                                    </p>
+                                {% endif %}
+                                <p>
+                                    <a href="{{ path('landing-share-event') }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_salsa_add{% endtrans %}
+                                    </a>
+                                </p>
+
+                                {% if TOTAL_FESTIVAL_BACHATA is defined and TOTAL_FESTIVAL_BACHATA%}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_FESTIVAL_BACHATA%' : TOTAL_FESTIVAL_BACHATA } %}city.edito.festival.p_bachata{% endtrans %}
+                                    </p>
+                                {% endif %}
+
+                                {% if festivalBachataNext is defined and festivalBachataNext|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_bachata_next{% endtrans %}
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_bachata_no_next{% endtrans %}
+                                    </p>
+                                {% endif %}
+                                <p>
+                                    <a href="{{ path('landing-share-event') }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_bachata_add{% endtrans %}
+                                    </a>
+                                </p>
+
+                                {% if TOTAL_FESTIVAL_KIZOMBA is defined and TOTAL_FESTIVAL_KIZOMBA%}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city, '%TOTAL_FESTIVAL_KIZOMBA%' : TOTAL_FESTIVAL_KIZOMBA } %}city.edito.festival.p_kizomba{% endtrans %}
+                                    </p>
+                                {% endif %}
+
+                                {% if festivalKizombaNext is defined and festivalKizombaNext|length %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_kizomba_next{% endtrans %}
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_kizomba_no_next{% endtrans %}
+                                    </p>
+                                {% endif %}
+                                <p>
+                                    <a href="{{ path('landing-share-event') }}">
+                                        {% trans with {  '%CITY%' : city } %}city.edito.festival.p_kizomba_add{% endtrans %}
+                                    </a>
+                                </p>
+
+                            </div>
+                        </div>	
+                    </div>
+
+
+
+                    {#
+                                        <a href="{{ path('city_artist', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                            <div class="col-md-6">
+                                                <div class="service">
+                                                    <i class="fa fa-group service-icon"></i>
+                                                    <div class="desc">
+                                                        <h4>{% trans %}city.edito.artist.h4{% endtrans %}</h4>
+                                                        <p>{% trans %}city.edito.artist.p{% endtrans %}</p>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        </a>
+                    
+                                        <a href="{{ path('city_teacher', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                            <div class="col-md-6">
+                                                <div class="service">
+                                                    <i class="fa fa-graduation-cap service-icon"></i>
+                                                    <div class="desc">
+                                                        <h4>{% trans %}city.edito.teacher.h4{% endtrans %}</h4>
+                                                        <p>{% trans %}city.edito.teacher.p{% endtrans %}</p>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        </a>
+                    
+                                        <a href="{{ path('city_bar', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                            <div class="col-md-6">
+                                                <div class="service">
+                                                    <i class="fa fa-beer service-icon"></i>
+                                                    <div class="desc">
+                                                        <h4>{% trans %}city.edito.bar.h4{% endtrans %}</h4>
+                                                        <p>{% trans %}city.edito.bar.p{% endtrans %}</p>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        </a>
+                    
+                                        <a href="{{ path('city_photo', { 'searchcity': city.getName(), 'searcheventdate': app.session.get('startdate') }) }}">
+                                            <div class="col-md-6">
+                                                <div class="service">
+                                                    <i class="fa fa-camera service-icon"></i>
+                                                    <div class="desc">
+                                                        <h4>{% trans %}city.edito.photo.h4{% endtrans %}</h4>
+                                                        <p>{% trans %}city.edito.photo.p{% endtrans %}</p>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        </a>#}
 
                 </div>
                 <div class="clearfix"></div>
-
-                <div>
-                    {% if People|length > 0 %}
-                        <h3>{% trans %}city.edito.users{% endtrans %}</h3>
-                        <ul class="list-unstyled list-inline margin-bottom-30">
-                            {% for user in People %}
-                                <li class="pull-left m-r-10">
-                                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
+                {#
+                                <div>
+                                    {% if People|length > 0 %}
+                                        <h3>{% trans %}city.edito.users{% endtrans %}</h3>
+                                        <ul class="list-unstyled list-inline margin-bottom-30">
+                                            {% for user in People %}
+                                                <li class="pull-left m-r-10">
+                                                    {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>#}
 
                 <div class="clearfix"></div>
 

@@ -77,7 +77,7 @@ class City {
     
     public function __toString() {
         if ($this->getName())
-            return $this->getName();
+            return ucfirst ($this->getName());
     }
 
     public function getEdito() {

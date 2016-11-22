@@ -65,24 +65,80 @@ city:
     calendar: 'Le calendrier'
     concerts: 'Les concerts'
     dancers: 'Les danseurs'
-    edito: 'L''édito'
-    edito.artist.h4: 'Les artistes'
-    edito.artist.p: 'Découvrez les artistes de cette ville'
-    edito.bar.h4: 'Les lieux'
-    edito.bar.p: 'Découvrez les lieux où danser'
-    edito.calendar.h4: 'Le calendrier'
-    edito.calendar.p: 'Ne ratez aucun événement'
-    edito.festival.h4: 'Les festivals'
-    edito.festival.p: 'Découvrez les festivals'
-    edito.introduction.h4: 'Les initiations'
-    edito.introduction.p: 'Apprenez à danser'
-    edito.party.h4: 'Les soirées'
-    edito.party.p: 'Découvrez toutes les soirées et amusez-vous'
-    edito.photo.h4: 'Les photos'
-    edito.photo.p: 'Les photos préférées des danseurs'
-    edito.teacher.h4: 'Les professeurs'
-    edito.teacher.p: 'Envie d''apprendre, ils sont là pour vous'
-    edito.users: 'Quelques danseurs'
+    editorial: "Présentation"
+    edito:
+        intro:
+            h4: "La Salsa, Bachata et Kizomba à %CITY%"
+            p: "%TOTAL_EVENTS% événements Salsa/Bachata/Kizomba ont été enregistrés à %CITY%. Il y a %TOTAL_WEEK% événements à %CITY% cette semaine et %TOTAL_MONTH% événements à venir ce mois ci, dont %TOTAL_MONTH_SALSA% événements Salsa, %TOTAL_MONTH_BACHATA% événements Bachata et %TOTAL_MONTH_KIZOMBA% événements Kizomba." 
+        artist:
+            h4: 'Les artistes'
+            p: 'Découvrez les artistes de cette ville'
+        bar:
+            h4: 'Les lieux'
+            p: "Découvrez les lieux où danser"
+        calendar:
+            h4: 'Le calendrier'
+            p: 'Il y a %TOTAL_WEEK% événements Salsa/Bachata/Kizomba à %CITY% cette semaine.'
+            p_link: "Où danser la Salsa/Bachata/Kizomba à %CITY% aujourd'hui."
+            p_salsa: "Quand danser la Salsa à %CITY% : "
+            p_bachata: "Quand danser la Bachata à %CITY% : "
+            p_kizomba: "Quand danser la Kizomba à %CITY% : "
+        festival:
+            h4: 'Les festivals'
+            p: 'Découvrez les festivals'
+            p_link: "Tous les festivals de Salsa, Bachata et Kizomba à %CITY%"
+            p_salsa: "%TOTAL_FESTIVAL_SALSA% festivals de Salsa à %CITY% ont été enregistrés."
+            p_salsa_next: "Les prochains festivals de Salsa à venir :"
+            p_salsa_no_next: "Il n'y a pas de festival de Salsa à %CITY% prochainement."
+            p_salsa_add: "Ajoutez un festival de Salsa à %CITY%."
+            p_bachata: "%TOTAL_FESTIVAL_BACHATA% festivals de Bachata à %CITY% ont été enregistrés."
+            p_bachata_next: "Les prochains festivals de Bachata à venir :"
+            p_bachata_no_next: "Il n'y a pas de festival de Bachata à %CITY% prochainement."
+            p_bachata_add: "Ajoutez un festival de Bachata à %CITY%."
+            p_kizomba: "%TOTAL_FESTIVAL_KIZOMBA% festivals de Kizomba à %CITY% ont été enregistrés."
+            p_kizomba_next: "Les prochains festivals de Kizomba à venir :"
+            p_kizomba_no_next: "Il n'y a pas de festival de Kizomba à %CITY% prochainement."
+            p_kizomba_add: "Ajoutez un festival de Kizomba à %CITY%."
+        introduction:
+            h4: 'Les initiations'
+            p: '%TOTAL_INTRODUCTION% initiations à la Salsa, Bachata et Kizomba ont été enregistrées.'
+            p_avg: 'En moyenne, à %CITY% il y a %AVG_MONTH_INTRODUCTION_SALSA% initiations à la Salsa, %AVG_MONTH_INTRODUCTION_BACHATA% initiations à la Bachata et %AVG_MONTH_INTRODUCTION_KIZOMBA% initiations à la Kizomba par mois.'
+            p_link: "Découvrez les initiations Salsa/Bachata/Kizomba à %CITY%."
+            p_salsa: "il y a %TOTAL_INTRODUCTION_SALSA% initiations Salsa à %CITY% prochainement :"
+            p_bachata: "il y a %TOTAL_INTRODUCTION_BACHATA% initiations Bachata à %CITY% prochainement :"
+            p_kizomba: "il y a %TOTAL_INTRODUCTION_KIZOMBA% initiations Kizomba à %CITY% prochainement :"
+            p_no_introductions: "Il n'y a pas d'initiations Salsa/Bachata/Kizomba à %CITY% prochainement."
+            p_add: "Ajoutez vos initiations Salsa, Bachata ou Kizomba à %CITY%"
+            p_organisers: "Avec qui vous initier à la Salsa/Bachata/Kizomba à %CITY% ?"
+        lesson:
+            h4: 'Les cours'
+            p: '%TOTAL_LESSON% cours de Salsa, Bachata et Kizomba ont été enregistrés.'
+            p_avg: 'En moyenne, à %CITY% il y a %AVG_MONTH_LESSON_SALSA% cours de Salsa, %AVG_MONTH_LESSON_BACHATA% cours de Bachata et %AVG_MONTH_LESSON_KIZOMBA% cours de Kizomba par mois.'
+            p_link: "Découvrez les cours de Salsa/Bachata/Kizomba à %CITY%."
+            p_salsa: "il y a %TOTAL_LESSON_SALSA% cours de Salsa à %CITY% prochainement :"
+            p_bachata: "il y a %TOTAL_LESSON_BACHATA% cours de Bachata à %CITY% prochainement :"
+            p_kizomba: "il y a %TOTAL_LESSON_KIZOMBA% cours de Kizomba à %CITY% prochainement :"
+            p_no_lessons: "Il n'y a pas de cours de Salsa/Bachata/Kizomba à %CITY% prochainement."
+            p_add: "Ajoutez vos cours de Salsa, Bachata ou Kizomba à %CITY%"
+            p_organisers: "Avec qui vous apprendre à la Salsa/Bachata/Kizomba à %CITY% ?"
+        party:
+            h4: 'Les soirées'
+            p: '%TOTAL_PARTY% soirées Salsa, Bachata et Kizomba ont été enregistrées.'
+            p_avg: 'En moyenne, à %CITY% il y a %AVG_MONTH_PARTY_SALSA% soirées Salsa, %AVG_MONTH_PARTY_BACHATA% soirées Bachata et %AVG_MONTH_PARTY_KIZOMBA% soirées Kizomba par mois.'
+            p_link: "Découvrez tous les cours de Salsa/Bachata/Kizomba à %CITY%."
+            p_week_salsa: "Il y a %TOTAL_WEEK_PARTY_SALSA% soirées Salsa à venir cette semaine :"
+            p_week_bachata: "Il y a %TOTAL_WEEK_PARTY_BACHATA% soirées Bachata à venir cette semaine :"
+            p_week_kizomba: "Il y a %TOTAL_WEEK_PARTY_KIZOMBA% soirées Kizomba à venir cette semaine :"
+            p_no_partys: "Il n'y a pas de soirées Salsa/Bachata/Kizomba à %CITY% prochainement."
+            p_organisers: "Qui organise les soirées Salsa/Bachata/Kizomba à %CITY% :"
+            p_add: "Ajoutez vos soirées Salsa, Bachata ou Kizomba à %CITY%"
+        photo:
+            h4: 'Les photos'
+            p: 'Les photos préférées des danseurs'
+        teacher:
+            h4: 'Les professeurs'
+            p: 'Envie d''apprendre, ils sont là pour vous'
+        users: 'Quelques danseurs'    
     festivals: Festivals
     in: 'à'
     introductions: 'Les initiations'
