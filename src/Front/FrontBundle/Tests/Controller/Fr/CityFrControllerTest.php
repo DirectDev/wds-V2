@@ -41,14 +41,13 @@ class CityFrControllerTest extends WebTestCase {
     }
 
     public function testEdito() {
-        foreach ($this->findCities() as $City) {
-            if(!$City->hasEdito())
-                continue;
-            
+        foreach ($this->findCities() as $City) {            
             $crawler = $this->client->request('GET', $this->router->generate('city_edito', array(
                         '_locale' => $this->locale,
                         'searchcity' => $City->getName()
             )));
+            if(!$this->client->getResponse()->isSuccessful())
+            var_dump($this->client->getResponse()->getContent());
             $this->assertTrue($this->client->getResponse()->isSuccessful());
             $crawler = $this->clientLogged->request('GET', $this->router->generate('city_edito', array(
                         '_locale' => $this->locale,

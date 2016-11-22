@@ -149,6 +149,12 @@ class CityController extends Controller {
 
         $TOTAL_INTRODUCTION = $em->getRepository('FrontFrontBundle:Event')
                 ->countForEdito(array($eventTypeIntroduction), null, $lastYear, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_INTRODUCTION_SALSA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeIntroduction), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_INTRODUCTION_BACHATA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeIntroduction), array($musicTypeBachata), null, $nextYear, $city->getLatitude(), $city->getLongitude());
+        $TOTAL_INTRODUCTION_KIZOMBA = $em->getRepository('FrontFrontBundle:Event')
+                ->countForEdito(array($eventTypeIntroduction), array($musicTypeKizomba), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $AVG_MONTH_INTRODUCTION_SALSA = ($em->getRepository('FrontFrontBundle:Event')
                         ->countForEdito(array($eventTypeIntroduction), array($musicTypeSalsa), $last2Month, $next2Month, $city->getLatitude(), $city->getLongitude()) / 4);
         $AVG_MONTH_INTRODUCTION_BACHATA = ($em->getRepository('FrontFrontBundle:Event')
@@ -229,6 +235,9 @@ class CityController extends Controller {
                     "TOTAL_MONTH_BACHATA" => $TOTAL_MONTH_BACHATA,
                     "TOTAL_MONTH_KIZOMBA" => $TOTAL_MONTH_KIZOMBA,
                     "TOTAL_INTRODUCTION" => $TOTAL_INTRODUCTION,
+                    "TOTAL_INTRODUCTION_SALSA" => $TOTAL_INTRODUCTION_SALSA,
+                    "TOTAL_INTRODUCTION_BACHATA" => $TOTAL_INTRODUCTION_BACHATA,
+                    "TOTAL_INTRODUCTION_KIZOMBA" => $TOTAL_INTRODUCTION_KIZOMBA,
                     "AVG_MONTH_INTRODUCTION_SALSA" => round($AVG_MONTH_INTRODUCTION_SALSA),
                     "AVG_MONTH_INTRODUCTION_BACHATA" => round($AVG_MONTH_INTRODUCTION_BACHATA),
                     "AVG_MONTH_INTRODUCTION_KIZOMBA" => round($AVG_MONTH_INTRODUCTION_KIZOMBA),
