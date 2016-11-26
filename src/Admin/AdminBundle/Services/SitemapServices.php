@@ -193,10 +193,10 @@ class SitemapServices {
             return $count;
 
         $itemNode = $rootNode->addChild('url');
-        $itemNodeLoc = $itemNode->addChild('loc');
-        $itemNodeLoc->addAttribute('rel', 'alternate');
-        $itemNodeLoc->addAttribute('hreflang', $locale);
-        $itemNodeLoc->addAttribute('href', $path);
+        $itemNodeLoc = $itemNode->addChild('loc', $path);
+//        $itemNodeLoc->addAttribute('rel', 'alternate');
+//        $itemNodeLoc->addAttribute('hreflang', $locale);
+//        $itemNodeLoc->addAttribute('href', $path);
         return $count++;
     }
 
