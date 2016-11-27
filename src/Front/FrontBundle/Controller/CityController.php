@@ -51,6 +51,23 @@ class CityController extends Controller {
 
         $city = $this->getCity($request);
         $this->setDates($request);
+        
+        $lastYearDateTime = new \DateTime();
+        $lastYear = $lastYearDateTime->modify('-365 days')->format('Y-m-d');
+        $last2MonthDateTime = new \DateTime();
+        $last2Month = $last2MonthDateTime->modify('-60 days')->format('Y-m-d');
+        $nextYearDateTime = new \DateTime();
+        $nextYearDateTime->add(new \DateInterval('P365D'));
+        $nextYear = $nextYearDateTime->format('Y-m-d');
+        $nextWeekDateTime = new \DateTime();
+        $nextWeekDateTime->add(new \DateInterval('P7D'));
+        $nextWeek = $nextWeekDateTime->format('Y-m-d');
+        $nextMonthDateTime = new \DateTime();
+        $nextMonthDateTime->add(new \DateInterval('P30D'));
+        $nextMonth = $nextMonthDateTime->format('Y-m-d');
+        $next2MonthDateTime = new \DateTime();
+        $next2MonthDateTime->add(new \DateInterval('P60D'));
+        $next2Month = $next2MonthDateTime->format('Y-m-d');
 
 //        $musicTypes = $em->getRepository('FrontFrontBundle:MusicType')->findById($session->get('musicTypes'));
 //        $eventTypes = $em->getRepository('FrontFrontBundle:EventType')->findById($session->get('eventTypes'));
@@ -91,48 +108,31 @@ class CityController extends Controller {
                 ->findForCitypages(false, 3, null, array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
 
         $introductionsSalsa = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $introductionsBachata = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeBachata), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $introductionsKizomba = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeIntroduction), array($musicTypeKizomba), null, $nextYear, $city->getLatitude(), $city->getLongitude());
 
         $introductionOrganisers = null;
 
         $lessonsSalsa = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $lessonsBachata = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeBachata), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $lessonsKizomba = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeWorkshop), array($musicTypeKizomba), null, $nextYear, $city->getLatitude(), $city->getLongitude());
 
         $lessonOrganisers = null;
 
         $partiesSalsa = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeSalsa), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeSalsa), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $partiesBachata = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeBachata), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeBachata), null, $nextYear, $city->getLatitude(), $city->getLongitude());
         $partiesKizomba = $em->getRepository('FrontFrontBundle:Event')
-                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeKizomba), date('Y-m-d'), null, $city->getLatitude(), $city->getLongitude());
+                ->findForCitypages(false, 3, array($eventTypeParty), array($musicTypeKizomba), null, $nextYear, $city->getLatitude(), $city->getLongitude());
 
         $partyOrganisers = null;
-
-        $lastYearDateTime = new \DateTime();
-        $lastYear = $lastYearDateTime->modify('-365 days')->format('Y-m-d');
-        $last2MonthDateTime = new \DateTime();
-        $last2Month = $last2MonthDateTime->modify('-60 days')->format('Y-m-d');
-        $nextYearDateTime = new \DateTime();
-        $nextYearDateTime->add(new \DateInterval('P365D'));
-        $nextYear = $nextYearDateTime->format('Y-m-d');
-        $nextWeekDateTime = new \DateTime();
-        $nextWeekDateTime->add(new \DateInterval('P7D'));
-        $nextWeek = $nextWeekDateTime->format('Y-m-d');
-        $nextMonthDateTime = new \DateTime();
-        $nextMonthDateTime->add(new \DateInterval('P30D'));
-        $nextMonth = $nextMonthDateTime->format('Y-m-d');
-        $next2MonthDateTime = new \DateTime();
-        $next2MonthDateTime->add(new \DateInterval('P60D'));
-        $next2Month = $next2MonthDateTime->format('Y-m-d');
 
         $TOTAL_EVENTS = $em->getRepository('FrontFrontBundle:Event')
                 ->countForEdito(null, null, $lastYear, $nextYear, $city->getLatitude(), $city->getLongitude());

@@ -68,7 +68,7 @@ city:
     edito:
         intro:
             h4: "Salsa, Bachata and Kizomba in %CITY%"
-            p: "%TOTAL_EVENTS% Salsa/Bachata/Kizomba events have been found in %CITY%. There are %TOTAL_WEEK% event ar %CITY% this week and %TOTAL_MONTH% event this month, including %TOTAL_MONTH_SALSA% for Salsa, %TOTAL_MONTH_BACHATA% for Bachata et %TOTAL_MONTH_KIZOMBA% for Kizomba." 
+            p: "%TOTAL_EVENTS% Salsa/Bachata/Kizomba events have been found in %CITY%. There are %TOTAL_WEEK% events at %CITY% this week and %TOTAL_MONTH% event this month, including %TOTAL_MONTH_SALSA% for Salsa, %TOTAL_MONTH_BACHATA% for Bachata et %TOTAL_MONTH_KIZOMBA% for Kizomba." 
         artist:
             h4: 'Artits'
             p: 'All the artists from the city'
@@ -77,7 +77,7 @@ city:
             p: "The places to dance"
         calendar:
             h4: 'Calendar'
-            p: 'There are %TOTAL_WEEK% Salsa/Bachata/Kizomba event in %CITY% this week.'
+            p: 'There are %TOTAL_WEEK% Salsa/Bachata/Kizomba events in %CITY% this week.'
             p_link: "Where to dance Salsa/Bachata/Kizomba in %CITY% today."
             p_salsa: "When can I dance Salsa in %CITY% : "
             p_bachata: "When can I dance Bachata in %CITY% : "
@@ -100,8 +100,8 @@ city:
             p_kizomba_add: "Add a Kizomba festival in %CITY%."
         introduction:
             h4: 'Introductions'
-            p: '%TOTAL_INTRODUCTION% Salsa, Bachata and Kizomba have been found.'
-            p_avg: 'In %CITY% There is an average of %AVG_MONTH_INTRODUCTION_SALSA% Salsa introductions, %AVG_MONTH_INTRODUCTION_BACHATA% Bachata introductions and %AVG_MONTH_INTRODUCTION_KIZOMBA% Kizomba introductions per month.'
+            p: '%TOTAL_INTRODUCTION% Salsa, Bachata and Kizomba introductions have been found.'
+            p_avg: 'In %CITY% there is an average of %AVG_MONTH_INTRODUCTION_SALSA% Salsa introductions, %AVG_MONTH_INTRODUCTION_BACHATA% Bachata introductions and %AVG_MONTH_INTRODUCTION_KIZOMBA% Kizomba introductions per month.'
             p_link: "Discover all Salsa/Bachata/Kizomba introductions in %CITY%."
             p_salsa: "There are %TOTAL_INTRODUCTION_SALSA% Salsa introductions in %CITY% coming soon :"
             p_bachata: "There are %TOTAL_INTRODUCTION_BACHATA% Bachata introductions in %CITY% coming soon :"
@@ -111,8 +111,8 @@ city:
             p_organisers: "Who can introduce me to Salsa/Bachata/Kizomba in %CITY% ?"
         lesson:
             h4: 'Lessons'
-            p: '%TOTAL_LESSON% Salsa, Bachata and Kizomba have been found.'
-            p_avg: 'In %CITY% There is an average of %AVG_MONTH_LESSON_SALSA% Salsa lessons, %AVG_MONTH_LESSON_BACHATA% Bachata lessons and %AVG_MONTH_LESSON_KIZOMBA% Kizomba lessons per month.'
+            p: '%TOTAL_LESSON% Salsa, Bachata and Kizomba lessons have been found.'
+            p_avg: 'In %CITY% there is an average of %AVG_MONTH_LESSON_SALSA% Salsa lessons, %AVG_MONTH_LESSON_BACHATA% Bachata lessons and %AVG_MONTH_LESSON_KIZOMBA% Kizomba lessons per month.'
             p_link: "Discover all Salsa/Bachata/Kizomba lessons in %CITY%."
             p_salsa: "There are %TOTAL_LESSON_SALSA% Salsa lessons in %CITY% coming soon :"
             p_bachata: "There are %TOTAL_LESSON_BACHATA% Bachata lessons in %CITY% coming soon :"
@@ -122,8 +122,8 @@ city:
             p_organisers: "Who can introduce me to Salsa/Bachata/Kizomba in %CITY% ?"
         party:
             h4: 'Parties'
-            p: '%TOTAL_PARTY% Salsa, Bachata and Kizomba have been found.'
-            p_avg: 'In %CITY% There is an average of %AVG_MONTH_PARTY_SALSA% Salsa parties, %AVG_MONTH_PARTY_BACHATA% Bachata parties and %AVG_MONTH_PARTY_KIZOMBA% Kizomba parties per month.'
+            p: '%TOTAL_PARTY% Salsa, Bachata and Kizomba parties have been found.'
+            p_avg: 'In %CITY% there is an average of %AVG_MONTH_PARTY_SALSA% Salsa parties, %AVG_MONTH_PARTY_BACHATA% Bachata parties and %AVG_MONTH_PARTY_KIZOMBA% Kizomba parties per month.'
             p_link: "Discover all Salsa/Bachata/Kizomba parties in %CITY%."
             p_week_salsa: "There are %TOTAL_WEEK_PARTY_SALSA% Salsa parties coming this week :"
             p_week_bachata: "There are %TOTAL_WEEK_PARTY_BACHATA% Bachata parties coming this week :"

@@ -1,0 +1,3 @@
+{% for eventDate in event.getNextEventDates() %}
+    {% render(path('front_eventdate_show', { id : eventDate.id } )) %}   
+{% endfor %}

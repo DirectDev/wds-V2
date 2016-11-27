@@ -199,7 +199,7 @@ class Event {
     public function __toString() {
         return $this->getName();
     }
-    
+
     public function getMusicTypesText() {
         $array = array();
         foreach ($this->getMusicTypes() as $musicType)
@@ -318,7 +318,7 @@ class Event {
         $clean = preg_replace('#Ù|Ú|Û|Ü#', 'U', $clean);
         $clean = preg_replace('#ý|ÿ#', 'y', $clean);
         $clean = preg_replace('#Ý#', 'Y', $clean);
-        
+
         $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
         $clean = strtolower(trim($clean, '-'));
         $clean = preg_replace("/[\/_|+ -]+/", '-', $clean);
@@ -365,6 +365,31 @@ class Event {
             if ($eventDate->getStartdate() >= $today)
                 return $eventDate;
         }
+    }
+
+    public function getNextEventDates($date = null, $limit = 5) {
+
+        $today = new \DateTime();
+        if ($date)
+            $today = new \DateTime($date);
+
+        $result = array();
+
+        $count = 0;
+        foreach ($this->eventDates as $eventDate) {
+            if ($count >= $limit)
+                break;
+
+            if ($today->format('Y-m-d') == $eventDate->getStartDate()->format('Y-m-d')) {
+                $result[] = $eventDate;
+                $count++;
+            } elseif ($eventDate->getStartdate() >= $today) {
+                $result[] = $eventDate;
+                $count++;
+            }
+        }
+
+        return $result;
     }
 
     public function hasEventDateForDate($startdate) {

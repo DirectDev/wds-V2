@@ -430,7 +430,7 @@ class EventRepository extends EntityRepository {
         $arraymusicTypes = array();
 
         $query = $this->createQueryBuilder('e')
-                ->select('COUNT(ed.id)')
+                ->select('COUNT( DISTINCT ed.id)')
                 ->leftJoin('e.eventTypes', 'et')
                 ->leftJoin('e.musicTypes', 'mt')
                 ->leftJoin('e.eventDates', 'ed')

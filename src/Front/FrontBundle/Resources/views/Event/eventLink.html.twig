@@ -1,5 +1,9 @@
 {% if event is defined %}
     <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}">
-        {{ event.getNextEventDate(startdate).startdate|localizeddate('medium', 'none', app.request.locale )|capitalize }} {{ event.getTitle()|capitalize }}
+        {{ event.getNextEventDate(startdate).startdate|localizeddate('medium', 'none', app.request.locale )|capitalize }} 
+        {% if event.getAddress is defined and event.getAddress is not null %}
+            {{ event.getAddress.getName|capitalize }} {{ event.getAddress.getCity|capitalize }}
+        {% endif %}
+        {#        {{ event.getTitle()|capitalize }}#}
     </a>
 {% endif %}
