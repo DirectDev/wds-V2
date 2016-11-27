@@ -58,13 +58,13 @@ contact_contact_contact: /contact/en/
 dance_bachata: /dance/bachata
 
 # Desc: /dance/dance_bachata_dominicana
-dance_bachata_dominicana: /dance/dominican_bachata
+dance_bachata_dominicana: /dance/dominican-bachata
 
 # Desc: /dance/dance_bachata_moderna
-dance_bachata_moderna: /dance/modern_bachata
+dance_bachata_moderna: /dance/modern-bachata
 
 # Desc: /dance/dance_bachata_sensual
-dance_bachata_sensual: /dance/sensual_bachata
+dance_bachata_sensual: /dance/sensual-bachata
 
 # Desc: /dance/dance_kizomba
 dance_kizomba: /dance/kizomba
@@ -73,19 +73,19 @@ dance_kizomba: /dance/kizomba
 dance_salsa: /dance/salsa
 
 # Desc: /dance/dance_salsa_cubana
-dance_salsa_cubana: /dance/cuban_salsa
+dance_salsa_cubana: /dance/cuban-salsa
 
 # Desc: /dance/dance_salsa_dominicana
-dance_salsa_dominicana: /dance/dominican_salsa
+dance_salsa_dominicana: /dance/dominican-salsa
 
 # Desc: /dance/dance_salsa_on1
-dance_salsa_on1: /dance/salsa_on1
+dance_salsa_on1: /dance/salsa-on1
 
 # Desc: /dance/dance_salsa_on2
-dance_salsa_on2: /dance/salsa_on2
+dance_salsa_on2: /dance/salsa-on2
 
 # Desc: /dance/dance_salsa_rueda
-dance_salsa_rueda: /dance/salsa_rueda
+dance_salsa_rueda: /dance/salsa-rueda
 
 # Desc: /facebook/import_event_page
 facebook_import_event_page: /facebook/import_event_page
@@ -121,13 +121,13 @@ festival_australia: /salsa-bachata-kizomba/festival/australia
 festival_calendar: '/salsa-bachata-kizomba/festival/calendar/{startdate}'
 
 # Desc: /festival/central_africa
-festival_central_africa: /salsa-bachata-kizomba/festival/central_africa
+festival_central_africa: /salsa-bachata-kizomba/festival/central-africa
 
 # Desc: /festival/central_america
-festival_central_america: /salsa-bachata-kizomba/festival/central_america
+festival_central_america: /salsa-bachata-kizomba/festival/central-america
 
 # Desc: /festival/europe
-festival_europe: /salsa-bachata-kizomba/festival/europe_en
+festival_europe: /salsa-bachata-kizomba/festival/europe-en
 
 # Desc: /festival/india
 festival_india: /salsa-bachata-kizomba/festival/india
@@ -136,25 +136,25 @@ festival_india: /salsa-bachata-kizomba/festival/india
 festival_indonesia: /salsa-bachata-kizomba/festival/indonesia
 
 # Desc: /festival/middle_east
-festival_middle_east: /salsa-bachata-kizomba/festival/middle_east
+festival_middle_east: /salsa-bachata-kizomba/festival/middle-east
 
 # Desc: /festival/north_africa
-festival_north_africa: /salsa-bachata-kizomba/festival/north_africa
+festival_north_africa: /salsa-bachata-kizomba/festival/north-africa
 
 # Desc: /festival/north_america
-festival_north_america: /salsa-bachata-kizomba/festival/north_america
+festival_north_america: /salsa-bachata-kizomba/festival/north-america
 
 # Desc: /festival/north_asia
-festival_north_asia: /salsa-bachata-kizomba/festival/north_asia
+festival_north_asia: /salsa-bachata-kizomba/festival/north-asia
 
 # Desc: /festival/south_africa
-festival_south_africa: /salsa-bachata-kizomba/festival/south_africa
+festival_south_africa: /salsa-bachata-kizomba/festival/south-africa
 
 # Desc: /festival/south_america
-festival_south_america: /salsa-bachata-kizomba/festival/south_america
+festival_south_america: /salsa-bachata-kizomba/festival/south-america
 
 # Desc: /festival/south_asia
-festival_south_asia: /salsa-bachata-kizomba/festival/south_asia
+festival_south_asia: /salsa-bachata-kizomba/festival/south-asia
 
 # Desc: /footer
 footer: /footer/en/
@@ -352,7 +352,7 @@ front_music_delete: '/music/delete/{id}'
 front_music_edit: '/music/edit/{id}'
 
 # Desc: /music/filter_music
-front_music_filter: /music/filter_music
+front_music_filter: /music/filter-music
 
 # Desc: /music/love/{id}
 front_music_love: '/music/love/{id}'
@@ -503,10 +503,10 @@ front_video_delete: '/video/delete/{id}'
 front_video_edit: '/video/edit/{id}'
 
 # Desc: /video/filter_move
-front_video_filter_move: /video/filter_move
+front_video_filter_move: /video/filter-move
 
 # Desc: /video/filter_video
-front_video_filter_video: /video/filter_video
+front_video_filter_video: /video/filter-video
 
 # Desc: /video/love/{id}
 front_video_love: '/video/love/{id}'
@@ -551,22 +551,22 @@ hwi_oauth_service_redirect: '/connect/{service}'
 landing-share-event: /landing/share-event
 
 # Desc: /landing/landing_dancer
-landing_dancer: /welcome/wedancesalsa_for_salsa_bachata_kizomba_dancers
+landing_dancer: /welcome/wedancesalsa-for-salsa-bachata-kizomba-dancers
 
 # Desc: /landing/landing_pro
-landing_pro: /welcome/professional_platform_salsa_bachata_kizomba
+landing_pro: /welcome/professional-platform-salsa-bachata-kizomba
 
 # Desc: /landing/landing_pub
 landing_pub: /landing/landing_pub
 
 # Desc: /learn/learn_bachata
-learn_bachata: /learn/learn_bachata
+learn_bachata: /learn/learn-bachata
 
 # Desc: /learn/learn_kizomba
-learn_kizomba: /learn/learn_kizomba
+learn_kizomba: /learn/learn-kizomba
 
 # Desc: /learn/learn_salsa
-learn_salsa: /learn/learn_salsa
+learn_salsa: /learn/learn-salsa
 
 # Desc: /media/cache/resolve/{filter}/{path}
 liip_imagine_filter: '/media/cache/resolve/{filter}/{path}'
