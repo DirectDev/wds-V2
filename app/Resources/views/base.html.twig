@@ -55,6 +55,7 @@
                 'front/js/mainTop.js'
                 'front/plugins/datepicker/js/bootstrap-datepicker.js'
                 "front/js/plugins/toastr.js"
+                filter="?jsqueeze"
                 output='front/js/compiled/top.js'  %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
@@ -111,6 +112,7 @@
             "front/plugins/masonry/jquery.imagesLoaded.min.js"
             "front/plugins/masonry/jquery.masonry.min.js"
             "front/js/pages/blog-masonry.js"
+            filter="?jsqueeze"
             output='front/js/compiled/bottom.js'  %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
@@ -202,6 +204,7 @@
     "front/plugins/jquery.mixitup.min.js"
     "front/js/pages/page_portfolio.js"
     "front/js/pages/page_contacts.js"
+    filter="?jsqueeze"
     output='front/js/compiled/page-portfolio.js'  %}
 {% endjavascripts %}
 
@@ -212,5 +215,6 @@
     "front/plugins/gmap/gmap.js"
     "front/js/pages/page_contacts.js"
     "front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js"
+    filter="?jsqueeze"
     output='front/js/compiled/event.js'  %}
 {% endjavascripts %}
