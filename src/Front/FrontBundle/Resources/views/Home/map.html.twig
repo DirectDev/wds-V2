@@ -4,6 +4,10 @@
 {% set latitude = app.session.get('latitude') %}
 {% set longitude = app.session.get('longitude') %}
 
+<script type="text/javascript"
+   src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+</script>
+
 <script type="text/javascript">
 
             function initializeGoogleMap() {
