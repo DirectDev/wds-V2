@@ -53,7 +53,12 @@
             </a>
         </li> #}
 
-
+ <li class="list-group-item {% if active == 'dancers' %}active{% endif %} hidden-sm hidden-xs">
+            <a href="{{ path('city_dancer', { 'searchcity': city.getName() }) }}">
+                <i class="fa fa-group"></i> 
+                {% trans %}city.dancers{% endtrans %}
+            </a>
+        </li>  
 
      {#   <li class="list-group-item {% if active == 'artists' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_artist', { 'searchcity': city.getName() }) }}">
@@ -67,12 +72,7 @@
                 {% trans %}city.teachers{% endtrans %}
             </a>
         </li>
-        <li class="list-group-item {% if active == 'dancers' %}active{% endif %} hidden-sm hidden-xs">
-            <a href="{{ path('city_dancer', { 'searchcity': city.getName() }) }}">
-                <i class="fa fa-group"></i> 
-                {% trans %}city.dancers{% endtrans %}
-            </a>
-        </li>  
+       
         <li class="list-group-item {% if active == 'bars' %}active{% endif %} hidden-sm hidden-xs">
             <a href="{{ path('city_bar', { 'searchcity': city.getName() }) }}">
                 <i class="fa fa-beer"></i> 
