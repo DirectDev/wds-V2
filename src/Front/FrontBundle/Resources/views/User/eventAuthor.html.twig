@@ -27,9 +27,9 @@
             / <span class="hex">{{ user.getMusicTypesText }}</span>
         {% endif %}
     </p>
-{#    {% include 'FrontFrontBundle:User:userSocialIcons.html.twig'  %}#}
+    {% include 'FrontFrontBundle:User:userSocialIcons.html.twig'  %}
 </div>    
 
 <hr>
 
-{% render path('front_user_show_overviews', { id : user.id } ) %}
+{#{% render path('front_user_show_overviews', { id : user.id } ) %}#}
