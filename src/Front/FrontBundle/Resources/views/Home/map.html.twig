@@ -1,57 +1,60 @@
 <div id="map-canvas-home"></div>
 
-
 {% set latitude = app.session.get('latitude') %}
 {% set longitude = app.session.get('longitude') %}
 
+{% if nextEvents is defined and nextEvents|length and  nextEvents[0] is not null  and nextEvents[0].latitude and nextEvents[0].longitude %}
+    {% set latitude = nextEvents[0].latitude %}
+    {% set longitude = nextEvents[0].longitude %}
+{% endif %}
+
+{% if events is defined and events|length and  events[0] is not null  and events[0].latitude and events[0].longitude %}
+    {% set latitude = events[0].latitude %}
+    {% set longitude = events[0].longitude %}
+{% endif %}
+
+
 <script type="text/javascript"
-   src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api_key }}">
 </script>
 
 <script type="text/javascript">
 
-            function initializeGoogleMap() {
-            var city = new google.maps.LatLng({{ latitude }}, {{ longitude }});
+    function initializeGoogleMap() {
+    var city = new google.maps.LatLng({{ latitude }}, {{ longitude }});
             var mapOptions = {
-                zoom: 12,
-                center: city
+            zoom: 12,
+                    center: city
             }
-            var map = new google.maps.Map(document.getElementById('map-canvas-home'), mapOptions);
-            
-            var image = '{{ asset('images/google_marker.gif')}}';
-            
-            {% set count = 0 %}
-            {% for event in events %}
-                {% if event.isValid %}
-                    {% set count = count + 1  %}    
+    var map = new google.maps.Map(document.getElementById('map-canvas-home'), mapOptions);
+            var image = '{{ asset('images/google_marker.gif')}}';            {% set count = 0 %}
+    {% for event in events %}
+        {% if event.isValid %}
+            {% set count = count + 1  %}    
 
-                    var pointer{{ loop.index }} = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
-                    var marker{{ loop.index }} = new google.maps.Marker({
-                        position: pointer{{ loop.index }},
-                        map: map,
-                        title: '{{ event.getTitle|capitalize }}'
-                    }); 
-            
-                {% endif %}
-            {% endfor %}
-                
-            {% set max = (max_event_list - count) %}
-            {% for event in nextEvents %}
-                {% if event.isValid and loop.index <= max %}
-            
-                var pointerN{{ loop.index }} = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
-                var markerN{{ loop.index }} = new google.maps.Marker({
-                    position: pointerN{{ loop.index }},
-                    map: map,
-                    icon: image,
-                    title: '{{ event.getTitle|capitalize }}'
-                });
-            
-                {% endif %}
-            {% endfor %}    
+                            var pointer{{ loop.index }} = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
+                            var marker{{ loop.index }} = new google.maps.Marker({
+                            position: pointer{{ loop.index }},
+                                    map: map,
+                                    title: '{{ event.getTitle|capitalize }}'
+                           });                {% endif %}
+    {% endfor %}
 
-            }
+    {% set max = (max_event_list - count) %}
+    {% for event in nextEvents %}
+        {% if event.isValid and loop.index <= max %}
 
-           google.maps.event.addDomListener(window, 'load', initializeGoogleMap);
+                            var pointerN{{ loop.index }} = new google.maps.LatLng({{ event.latitude }}, {{ event.longitude }});
+                            var markerN{{ loop.index }} = new google.maps.Marker({
+                            position: pointerN{{ loop.index }},
+                                    map: map,
+                                    icon: image,
+                                    title: '{{ event.getTitle|capitalize }}'
+                            });                {% endif %}
+    {% endfor %}    
+
+                                }
+
+                                google.maps.event.addDomListener(window, 'load', initializeGoogleMap);
 
 </script>
