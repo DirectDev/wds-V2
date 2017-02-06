@@ -996,3 +996,7 @@ label.required:after {
 .masonry-border{
     border: 1px solid #ddd;
 }
+
+.author-details .font-s a{
+    color: #333 !important;
+}

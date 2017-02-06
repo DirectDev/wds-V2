@@ -14,7 +14,11 @@
 {% include 'FrontFrontBundle:User:memberPhoto.html.twig' with { user : user } %}
 
 <div class="overflow-h author-details">
-    <span class="font-s">{{ user.getName()|capitalize }}</span>
+    <span class="font-s">
+        <a href="{{ path('front_user_show_public', { username : user.username, id : user.id } ) }}" target="_blank" >
+            {{ user.getName()|capitalize }}
+        </a>
+    </span>
     <p class="color-green">
         {% if user.getUserType %}
             {{ user.getUserTypesText }}
@@ -23,7 +27,7 @@
             / <span class="hex">{{ user.getMusicTypesText }}</span>
         {% endif %}
     </p>
-    {% include 'FrontFrontBundle:User:userSocialIcons.html.twig'  %}
+{#    {% include 'FrontFrontBundle:User:userSocialIcons.html.twig'  %}#}
 </div>    
 
 <hr>
