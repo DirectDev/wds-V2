@@ -10,15 +10,15 @@
         <a href="{{ path('front_event_show', { 'id': event.id, 'uri' : event.getURI }) }}" title="{{ event.getTitle()|capitalize }}">
 
             <div class="easy-block-v1">
-                <div class="easy-block-v1-badge {{ next ? 'easy-block-v1-badge-blue' : 'easy-block-v1-badge-red' }}">
-                    {% if event.getNextEventDate(startdate) and event.getNextEventDate(startdate).startdate|date("m/d/Y") == "now"|date("m/d/Y") %}
-                        {% trans %}front.today{% endtrans %}
-                    {% elseif event.getNextEventDate(startdate) %}
-                        {{ event.getNextEventDate(startdate).startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
-                    {% else %}
-                        {{ startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
-                    {% endif %}
-                </div>                
+                {# <div class="easy-block-v1-badge {{ next ? 'easy-block-v1-badge-blue' : 'easy-block-v1-badge-red' }}">
+                     {% if event.getNextEventDate(startdate) and event.getNextEventDate(startdate).startdate|date("m/d/Y") == "now"|date("m/d/Y") %}
+                         {% trans %}front.today{% endtrans %}
+                     {% elseif event.getNextEventDate(startdate) %}
+                         {{ event.getNextEventDate(startdate).startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                     {% else %}
+                         {{ startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                     {% endif %}
+                 </div>  #}              
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         {% for eventFile in event.eventFiles %}
@@ -49,7 +49,20 @@
                 </div>
 
                 <div class="overflow-h">
-                    <h3>{{ event.getTitle()|capitalize }}</h3>
+                    {% set h3_class = "" %}
+                    {% if event.getNextEventDate(startdate) and event.getNextEventDate(startdate).startdate|date("m/d/Y") == "now"|date("m/d/Y") %}
+                        {% set h3_class = "color-green" %}
+                    {% endif %}
+                    <h3 class="{{ h3_class }}">
+                        {{ event.getTitle()|capitalize }} </br>
+                        {% if event.getNextEventDate(startdate) and event.getNextEventDate(startdate).startdate|date("m/d/Y") == "now"|date("m/d/Y") %}
+                            {% trans %}front.today{% endtrans %}
+                        {% elseif event.getNextEventDate(startdate) %}
+                            {{ event.getNextEventDate(startdate).startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                        {% else %}
+                            {{ startdate|localizeddate('full', 'none', app.request.locale )|capitalize }}
+                        {% endif %}
+                    </h3>
                 </div>     
                 <ul class="list-unstyled">
                     {% if event.getEventTypesText %}
