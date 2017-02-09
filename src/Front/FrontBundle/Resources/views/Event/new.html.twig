@@ -24,9 +24,11 @@
             {% trans %}event.alert.new_info{% endtrans %}
         </div>
 
-        {% set toastr_message = 'toastr.load.event.new_info'|trans  %}
-        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-
+        {% block toastr %}
+            {{ parent() }}
+            {% set toastr_message = 'toastr.load.event.new_info'|trans  %}
+            {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+        {% endblock %}
         <div class="row">
 
             <!-- Profile Content -->            

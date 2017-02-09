@@ -30,19 +30,24 @@
     <script type="text/javascript">
 
         // Enable the file uploader
+        function enableFileUploader() {
 
-        $(function () {
-            new PunkAveFileUploader({
-                'uploadUrl': "{{ path(upload_url, { editId: editId }) | raw }}",
-                'viewUrl': "{{ asset(upload_view_url ~ editId | raw) }}",
-                'el': '.file-uploader',
-                'existingFiles':{{ punkave_get_files(upload_folder ~ editId) | json_encode | raw }},
-                        'delaySubmitWhileUploading': '.edit-form',
-                'errorCallback': function (errorObj) {
-                    if (errorObj.error == 'maxNumberOfFiles') {
-                        alert("Maximum uploaded files exceeded!");
+            console.log('function file upload called');
+
+            $(function () {
+                new PunkAveFileUploader({
+                    'uploadUrl': "{{ path(upload_url, { editId: editId }) | raw }}",
+                    'viewUrl': "{{ asset(upload_view_url ~ editId | raw) }}",
+                    'el': '.file-uploader',
+                    'existingFiles':{{ punkave_get_files(upload_folder ~ editId) | json_encode | raw }},
+                            'delaySubmitWhileUploading': '.edit-form',
+                    'errorCallback': function (errorObj) {
+                        if (errorObj.error == 'maxNumberOfFiles') {
+                            alert("Maximum uploaded files exceeded!");
+                        }
                     }
-                }
+                });
             });
-        });
+
+        }
     </script>

@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ asset('front/css/compiled/profile.css') }}" />       
 {% endblock %} 
 
+{% set count_eventdates = 0 %}
+{% for eventdate in event.getEventDates() %}
+    {% set count_eventdates = count_eventdates + 1 %}
+{% endfor %}
+
 {% block content %}
 
 
@@ -51,19 +56,12 @@
                     </div>
                     <div class="clear-both"></div>
 
-                    {% set count_eventdates = 0 %}
-                    {% for eventdate in event.getEventDates() %}
-                        {% set count_eventdates = count_eventdates + 1 %}
-                    {% endfor %}
-
                     {% if 1 > count_eventdates %}
                         <div class="alert alert-info fade in">
                             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                             {% trans %}event.eventdates.list.no_eventdates{% endtrans %}
                         </div>
-                        {% set toastr_message = 'toastr.load.eventdate.no_eventdates'|trans  %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                     {% endif %}
 
                     {% if 0 < count_eventdates and not event.getNextEventDate() %}
@@ -72,8 +70,6 @@
                             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                             {% trans %}event.eventdates.list.no_next_eventdates{% endtrans %}
                         </div>
-                        {% set toastr_message = 'toastr.load.eventdate.no_next_eventdates'|trans  %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                     {% endif %}
 
                     <div class="blog_masonry_3col">
@@ -123,3 +119,23 @@
     <script src="{{ asset('bundles/punkavefileuploader/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script>  
 {% endblock %}          
+
+
+
+
+{% block toastr %}
+    {{ parent() }}
+
+    {% if 1 > count_eventdates %}
+        {% set toastr_message = 'toastr.load.eventdate.no_eventdates'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+    {% endif %}
+    
+    {% if 0 < count_eventdates and not event.getNextEventDate() %}
+
+        {% set toastr_message = 'toastr.load.eventdate.no_next_eventdates'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+    {% endif %}
+
+{% endblock %}

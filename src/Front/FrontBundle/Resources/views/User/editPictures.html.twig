@@ -67,9 +67,11 @@
                                     <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                     {% trans %}photo.list.user_no_photos{% endtrans %}
                                 </div>
-                                {% set toastr_message = 'toastr.load.photo.user_no_photos'|trans  %}
-                                {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-
+                                    {% block toastr %}
+                                        {{ parent() }}
+                                        {% set toastr_message = 'toastr.load.photo.user_no_photos'|trans  %}
+                                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+                                    {% endblock %}
                             {% endif %} 
                             <div class="grid-boxes">
 
@@ -115,4 +117,10 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            console.log('user edit upload');
+            enableFileUploader();
+        });
+    </script>
 {% endblock %}    

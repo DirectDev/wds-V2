@@ -31,8 +31,11 @@
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans with { '%CITY%' : app.session.get('city')|capitalize } %}city.no_musics{% endtrans %}
                     </div>
-                    {% set message = 'toastr.load.city.no_musics'|trans({'%CITY%': app.session.get('city')|capitalize}) %}
-                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { message : message } %}    
+                    {% block toastr %}
+                        {{ parent() }}
+                        {% set message = 'toastr.load.city.no_musics'|trans({'%CITY%': app.session.get('city')|capitalize}) %}
+                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { message : message } %}    
+                    {% endblock %}
                 {% endif %}
 
                 <div class="blog_masonry_3col">

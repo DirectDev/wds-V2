@@ -30,8 +30,11 @@
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans with { '%CITY%' : app.session.get('city')|capitalize } %}city.no_videos{% endtrans %}
                     </div>
-                    {% set toastr_message = 'toastr.load.city.no_videos'|trans ({'%CITY%': app.session.get('city')|capitalize}) %}
-                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+                    {% block toastr %}
+                        {{ parent() }}
+                        {% set toastr_message = 'toastr.load.city.no_videos'|trans ({'%CITY%': app.session.get('city')|capitalize}) %}
+                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+                    {% endblock %}
                 {% endif %}
 
                 <div class="blog_masonry_3col">

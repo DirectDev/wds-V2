@@ -45,9 +45,11 @@
                         {% include 'FrontFrontBundle:Event:linkForm.html.twig' %}
                     </div>
 
-                    {% set toastr_message = 'toastr.load.event.links'|trans %}
-                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-
+                    {% block toastr %}
+                        {{ parent() }}
+                        {% set toastr_message = 'toastr.load.event.links'|trans %}
+                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+                    {% endblock %}
                 </div>  
 
                 {% render(path('front_event_alerts', { id : event.id } )) %}

@@ -1,5 +1,17 @@
 {% extends 'FrontFrontBundle:Music:musicLayout.html.twig' %}
 
+
+{% set criterias = null %}
+{% if userInFilter is defined and userInFilter %}
+    {% set criterias = userInFilter.getName()|capitalize %}
+{% endif %}
+{% set criterias = criterias~(' '~filterForm.search.vars.value~' '~filterForm.tag.vars.value)|trim %}
+
+{% set count_music = 0 %}
+{% for music in pagination %}
+    {% set count_music = count_music + 1 %}
+{% endfor %}
+
 {% block content %}
 
     {% include 'FrontFrontBundle:Music:musicBreadcrumb.html.twig' with { active : 'musics' } %}
@@ -23,12 +35,6 @@
                     {{ form_row(filterForm.tag) }}
                     {{ form_row(filterForm.user) }}
                 </div>
-
-                {% set criterias = null %}
-                {% if userInFilter is defined and userInFilter %}
-                    {% set criterias = userInFilter.getName()|capitalize %}
-                {% endif %}
-                {% set criterias = criterias~(' '~filterForm.search.vars.value~' '~filterForm.tag.vars.value)|trim %}
 
                 {{ form_end(filterForm) }}
 
@@ -56,19 +62,12 @@
 
             <div class="col-md-10" id="music_list">
 
-                {% set count_music = 0 %}
-                {% for music in pagination %}
-                    {% set count_music = count_music + 1 %}
-                {% endfor %}
-
                 {% if 1 > count_music %}
                     <div class="alert alert-info fade in">
                         <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans %}music.list.no_musics{% endtrans %}
                     </div>
-                    {% set toastr_message = 'toastr.load.music.no_musics'|trans %}
-                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                 {% endif %}
 
                 <div class="blog_masonry_3col">
@@ -82,16 +81,6 @@
                             {% include 'FrontFrontBundle:Music:add.html.twig' %}
                         {% endif %}
 
-                        {% if count_music %}
-                            {% if 5 > count_music %}
-                                {% set toastr_message = 'toastr.load.music.less_5'|trans %}
-                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %}
-                            {% else %}
-                                {% set toastr_message = 'toastr.load.music.more_5'|trans %}
-                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %}
-                            {% endif %}
-                        {% endif %}
-
                     </div>    
                 </div>
 
@@ -103,6 +92,24 @@
         </div>        
     </div><!--/container-->     
     <!--=== End Search Results ===-->
+
+
+{% endblock %}
+
+{% block toastr %}
+    {{ parent() }}
+    {% if count_music %}
+        {% if 5 > count_music %}
+            {% set toastr_message = 'toastr.load.music.less_5'|trans %}
+            {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %}
+        {% else %}
+            {% set toastr_message = 'toastr.load.music.more_5'|trans %}
+            {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %}
+        {% endif %}
+    {% else %}
+        {% set toastr_message = 'toastr.load.music.no_musics'|trans %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+    {% endif %}
 
     {% set toastr_message = 'toastr.filter.criterias'|trans({'%CRITERIAS%': criterias}) %}
     {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 

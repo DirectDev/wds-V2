@@ -1,5 +1,10 @@
 {% extends 'FrontFrontBundle:User:userLayout.html.twig' %}
 
+{% set count_people = 0 %}
+{% for person in pagination %}
+    {% set count_people = count_people + 1 %}
+{% endfor %}
+
 {% block content %}
 
     {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { active : 'users' } %}
@@ -52,19 +57,12 @@
 
             <div class="col-md-10 profile" id="user_list">
 
-                {% set count_people = 0 %}
-                {% for person in pagination %}
-                    {% set count_people = count_people + 1 %}
-                {% endfor %}
-
                 {% if 1 > count_people %}
                     <div class="alert alert-info fade in">
                         <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans %}user.list.no_users{% endtrans %}
                     </div>
-                    {% set toastr_message = 'toastr.load.user.no_users'|trans  %}
-                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                 {% endif %}
 
                 <div class="blog_masonry_3col">
@@ -76,17 +74,6 @@
 
                         {% if 5 > count_people %}
                             {% include 'FrontFrontBundle:User:add.html.twig' %}
-                        {% endif %}
-
-                        {% if count_people %}
-                            {% if 5 > count_people %}
-
-                                {% set toastr_message = 'toastr.load.user.less_5'|trans  %}
-                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
-                            {% else %}
-                                {% set toastr_message = 'toastr.load.user.more_5'|trans %}
-                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
-                            {% endif %}
                         {% endif %}
 
                     </div>    
@@ -101,7 +88,27 @@
     </div><!--/container-->     
     <!--=== End Search Results ===-->
 
+{% endblock %}
+
+{% block toastr %}
+    {{ parent() }}
+
+    {% if 1 > count_people %}
+
+        {% set toastr_message = 'toastr.load.user.no_users'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+    {% endif %}
+
+    {% if count_people %}
+        {% if 5 > count_people %}
+            {% set toastr_message = 'toastr.load.user.less_5'|trans  %}
+            {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
+        {% else %}
+            {% set toastr_message = 'toastr.load.user.more_5'|trans %}
+            {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
+        {% endif %}
+    {% endif %}
+
     {% set toastr_message = 'toastr.filter.criterias'|trans ({'%CRITERIAS%': criterias}) %}
     {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-
 {% endblock %}
