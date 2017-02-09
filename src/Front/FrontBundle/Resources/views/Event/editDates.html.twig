@@ -87,7 +87,7 @@
             </div>
 
 
-            {% render(path('front_event_alerts', { id : event.id } )) %}
+            <div id='event_alerts' rel='{{ path('front_event_alerts', { id: event.id } ) }}'></div>
 
         </div>
         <!-- End Profile Content -->
@@ -130,7 +130,7 @@
         {% set toastr_message = 'toastr.load.eventdate.no_eventdates'|trans  %}
         {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
     {% endif %}
-    
+
     {% if 0 < count_eventdates and not event.getNextEventDate() %}
 
         {% set toastr_message = 'toastr.load.eventdate.no_next_eventdates'|trans  %}
@@ -138,4 +138,8 @@
 
     {% endif %}
 
+{% endblock %}
+
+{% block alerts %}
+    {% render(path('front_event_alerts', { id : event.id } )) %}
 {% endblock %}

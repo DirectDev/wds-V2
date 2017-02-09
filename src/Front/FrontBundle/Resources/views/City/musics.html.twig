@@ -7,6 +7,11 @@
 {% endblock %}
 
 
+{% set count_music = 0 %}
+{% for music in musics %}
+    {% set count_music = count_music + 1 %}
+{% endfor %}
+
 {% block content %}
 
     {% include 'FrontFrontBundle:City:cityBreadcrumb.html.twig' with { active : 'musics' } %}
@@ -20,10 +25,6 @@
             <!-- Profile Content -->            
             <div class="col-md-9">
 
-                {% set count_music = 0 %}
-                {% for music in musics %}
-                    {% set count_music = count_music + 1 %}
-                {% endfor %}
 
                 {% if 1 > count_music %}
                     <div class="alert alert-info fade in">
@@ -31,11 +32,6 @@
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans with { '%CITY%' : app.session.get('city')|capitalize } %}city.no_musics{% endtrans %}
                     </div>
-                    {% block toastr %}
-                        {{ parent() }}
-                        {% set message = 'toastr.load.city.no_musics'|trans({'%CITY%': app.session.get('city')|capitalize}) %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { message : message } %}    
-                    {% endblock %}
                 {% endif %}
 
                 <div class="blog_masonry_3col">
@@ -65,3 +61,13 @@
     {{ parent() }}    
     <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
 {% endblock %}   
+
+{% block toastr %}
+    {{ parent() }}
+    {% if 1 > count_music %}
+
+        {% set message = 'toastr.load.city.no_musics'|trans({'%CITY%': app.session.get('city')|capitalize}) %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { message : message } %}    
+
+    {% endif %}
+{% endblock %}

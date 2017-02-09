@@ -24,7 +24,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('front/css/compiled/event.css') }}" />       
 {% endblock %}
-   
+
 
 {% block content %}
 
@@ -123,9 +123,8 @@
                 <div class="col-md-5"> 
                     <div class="right-inner">
 
-                        <div id="event_alerts" rel="{{ path('front_event_alerts', { id : event.id } ) }}">
-                            {% render(path('front_event_alerts', { id : event.id } )) %}
-                        </div>
+                        <div id='event_alerts' rel='{{ path('front_event_alerts', { id: event.id } ) }}'></div>
+
 
                         {% include 'FrontFrontBundle:Event:showButtons.html.twig' %}
 
@@ -139,7 +138,7 @@
                         </ul>
                         <!-- End timeline Content -->
 
-{#                        {% render(path('front_eventpresence_presences', { id : event.id } )) %}#}
+                        {#                        {% render(path('front_eventpresence_presences', { id : event.id } )) %}#}
 
                         <!-- Basic Map -->
                         <hr>
@@ -149,16 +148,16 @@
                         <!-- End Basic Map -->
 
 
-{#                        {% render(path('front_eventlove_loves', { id : event.id } )) %}#}
+                        {#                        {% render(path('front_eventlove_loves', { id : event.id } )) %}#}
 
 
                         <hr> 
-                        
+
                         {% include 'FrontFrontBundle:User:eventAuthor.html.twig' %}
 
-                       {# <h3>{% trans %}event.share_this{% endtrans %} </h3>
-
-                        {% include 'FrontFrontBundle::socialIcons.html.twig' %}#}
+                        {# <h3>{% trans %}event.share_this{% endtrans %} </h3>
+ 
+                         {% include 'FrontFrontBundle::socialIcons.html.twig' %}#}
 
                     </div>   
 
@@ -179,13 +178,18 @@
     {{ parent() }}
     <script src="{{ asset("front/js/compiled/event.js") }}"></script>
     <script type="text/javascript">
-                jQuery(document).ready(function () {
-                    App.init();
-                    PortfolioPage.init();
+        jQuery(document).ready(function () {
+            App.init();
+            PortfolioPage.init();
 
-                });
+        });
     </script>
     {% if event.getAddress and event.getAddress().isValid() %}    
         {% include 'FrontFrontBundle:Event:map.html.twig' %}
     {% endif %}
+{% endblock %}
+
+
+{% block alerts %}
+    {% render(path('front_event_alerts', { id : event.id } )) %}
 {% endblock %}

@@ -45,20 +45,9 @@
                         {% include 'FrontFrontBundle:Event:descriptionForm.html.twig' %}
                     </div>
 
-                    {% block toastr %}
-                        {{ parent() }}
-
-                        {% set toastr_message = 'toastr.load.event.descriptions'|trans  %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-
-                        {% set toastr_message = 'toastr.load.translations'|trans  %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-
-                    {% endblock %}
-
                 </div>  
 
-                {% render(path('front_event_alerts', { id : event.id } )) %}   
+                <div id='event_alerts' rel='{{ path('front_event_alerts', { id: event.id } ) }}'></div>
 
             </div>
         </div>
@@ -91,3 +80,18 @@
     <script src="{{ asset('bundles/punkavefileuploader/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/punkavefileuploader/js/FileUploader.js') }}" type="text/javascript"></script>  
 {% endblock %}          
+
+{% block toastr %}
+    {{ parent() }}
+
+    {% set toastr_message = 'toastr.load.event.descriptions'|trans  %}
+    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+    {% set toastr_message = 'toastr.load.translations'|trans  %}
+    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+{% endblock %}
+
+{% block alerts %}
+    {% render(path('front_event_alerts', { id : event.id } )) %}
+{% endblock %}

@@ -93,7 +93,7 @@
 
                     </div>
 
-                    {% render(path('front_event_alerts', { id : event.id } )) %}
+                    <div id='event_alerts' rel='{{ path('front_event_alerts', { id: event.id } ) }}'></div>
 
                 </div> 
             </div>
@@ -132,3 +132,8 @@
         });
     </script>
 {% endblock %}          
+
+
+{% block alerts %}
+    {% render(path('front_event_alerts', { id : event.id } )) %}
+{% endblock %}

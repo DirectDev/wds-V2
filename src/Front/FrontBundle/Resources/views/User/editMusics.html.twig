@@ -10,6 +10,10 @@
 {% endblock %} 
 
 
+{% set count_music = 0 %}
+{% for music in pagination %}
+    {% set count_music = count_music + 1 %}
+{% endfor %}
 
 {% block content %}
 
@@ -42,22 +46,12 @@
 
                         <div class='clear-both'  id='userMusicForms'></div>
 
-                        {% set count_music = 0 %}
-                        {% for music in pagination %}
-                            {% set count_music = count_music + 1 %}
-                        {% endfor %}
-
                         {% if 1 > count_music %}
                             <div class="alert alert-info fade in">
                                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                                 <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                 {% trans %}music.list.user_no_musics{% endtrans %}
                             </div>
-                            {% block toastr %}
-                                {{ parent() }}
-                                {% set toastr_message = 'toastr.load.music.user_no_musics'|trans %}
-                                {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                            {% endblock %}
                         {% endif %}
 
                         <div class="blog_masonry_3col" id="userMusicList">
@@ -106,3 +100,14 @@
     </script>
 
 {% endblock %}    
+
+{% block toastr %}
+    {{ parent() }}
+
+    {% if 1 > count_music %}
+
+        {% set toastr_message = 'toastr.load.music.user_no_musics'|trans %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+    {% endif %}
+{% endblock %}

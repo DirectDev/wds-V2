@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="{{ asset('front/css/compiled/profile.css') }}" />       
 {% endblock %} 
 
-
+{% set count_video = 0 %}
+{% for video in pagination %}
+    {% set count_video = count_video + 1 %}
+{% endfor %}
 
 {% block content %}
 
@@ -42,22 +45,12 @@
 
                         <div class='clear-both'  id='userVideoForms'></div>
 
-                        {% set count_video = 0 %}
-                        {% for video in pagination %}
-                            {% set count_video = count_video + 1 %}
-                        {% endfor %}
-
                         {% if 1 > count_video %}
                             <div class="alert alert-info fade in">
                                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                                 <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                 {% trans %}video.list.user_no_videos{% endtrans %}
                             </div>
-                            {% block toastr %}
-                                {{ parent() }}
-                                {% set toastr_message = 'toastr.load.video.user_no_videos'|trans  %}
-                                {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                            {% endblock %}
                         {% endif %}
 
                         <div class="blog_masonry_3col" id="userVideoList">
@@ -103,3 +96,14 @@
     </script>
 
 {% endblock %}    
+
+
+{% block toastr %}
+    {{ parent() }}
+    {% if 1 > count_video %}
+
+        {% set toastr_message = 'toastr.load.video.user_no_videos'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+    {% endif %}
+{% endblock %}

@@ -35,11 +35,7 @@
                     <div id="descriptionForm">
                         {% include 'FrontFrontBundle:User:descriptionForm.html.twig' %}
                     </div>
-                    {% block toastr %}
-                        {{ parent() }}
-                        {% set toastr_message = 'toastr.load.user.descriptions'|trans %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                    {% endblock %}
+
                 </div>  
             </div>
         </div>
@@ -67,4 +63,10 @@
         });
     </script>
 
-{% endblock %}    
+{% endblock %}  
+
+{% block toastr %}
+    {{ parent() }}
+    {% set toastr_message = 'toastr.load.user.descriptions'|trans %}
+    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+{% endblock %}

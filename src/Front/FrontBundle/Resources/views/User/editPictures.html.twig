@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="{{ asset('front/css/compiled/profile.css') }}" />       
 {% endblock %} 
 
-
+{% set count_photo = 0 %}
+{% for photo in pagination %}
+    {% set count_photo = count_photo + 1 %}
+{% endfor %}
 
 {% block content %}
 
@@ -56,22 +59,12 @@
                         <div class="blog_masonry_3col col-md-12" id="userPhotoList">
                             <h2 class="heading-md m-b-20">{% trans %}user.edit.photos.list.h2{% endtrans %}</h2>
 
-                            {% set count_photo = 0 %}
-                            {% for photo in pagination %}
-                                {% set count_photo = count_photo + 1 %}
-                            {% endfor %}
-
                             {% if 1 > count_photo %}
                                 <div class="alert alert-info fade in">
                                     <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                                     <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                     {% trans %}photo.list.user_no_photos{% endtrans %}
                                 </div>
-                                    {% block toastr %}
-                                        {{ parent() }}
-                                        {% set toastr_message = 'toastr.load.photo.user_no_photos'|trans  %}
-                                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                                    {% endblock %}
                             {% endif %} 
                             <div class="grid-boxes">
 
@@ -124,3 +117,13 @@
         });
     </script>
 {% endblock %}    
+
+{% block toastr %}
+    {{ parent() }}
+    {% if 1 > count_photo %}
+
+        {% set toastr_message = 'toastr.load.photo.user_no_photos'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+    {% endif %}
+{% endblock %}

@@ -6,6 +6,11 @@
 {% endblock %}
 
 
+{% set count_video = 0 %}
+{% for video in videos %}
+    {% set count_video = count_video + 1 %}
+{% endfor %}
+
 {% block content %}
 
     {% include 'FrontFrontBundle:City:cityBreadcrumb.html.twig' with { active : 'videos' } %}
@@ -19,10 +24,6 @@
             <!-- Profile Content -->            
             <div class="col-md-9">
 
-                {% set count_video = 0 %}
-                {% for video in videos %}
-                    {% set count_video = count_video + 1 %}
-                {% endfor %}
 
                 {% if 1 > count_video %}
                     <div class="alert alert-info fade in">
@@ -30,11 +31,6 @@
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans with { '%CITY%' : app.session.get('city')|capitalize } %}city.no_videos{% endtrans %}
                     </div>
-                    {% block toastr %}
-                        {{ parent() }}
-                        {% set toastr_message = 'toastr.load.city.no_videos'|trans ({'%CITY%': app.session.get('city')|capitalize}) %}
-                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                    {% endblock %}
                 {% endif %}
 
                 <div class="blog_masonry_3col">
@@ -63,3 +59,13 @@
     {{ parent() }}    
     <script type="text/javascript" src="{{ asset("front/js/plugins/cube-portfolio/cube-portfolio-4-fw.js") }}"></script>
 {% endblock %}   
+
+{% block toastr %}
+    {{ parent() }}
+    {% if 1 > count_video %}
+
+        {% set toastr_message = 'toastr.load.city.no_videos'|trans ({'%CITY%': app.session.get('city')|capitalize}) %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
+    {% endif %}
+{% endblock %}

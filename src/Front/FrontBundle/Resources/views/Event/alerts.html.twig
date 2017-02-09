@@ -1,48 +1,39 @@
 {% if app.user is not null and app.user == event.user and is_granted('ROLE_USER') %}
 
-    <div id='event_alerts' rel='{{ path('front_event_alerts', { id: event.id } ) }}'>
+    {% set nothing_displayed_yet = true %}
 
-        {% block toastr %}
-            {{ parent() }}
-
-            {% set nothing_displayed_yet = true %}
-
-            {% if not event.getAddress() %}
-                {% set toastr_message = 'toastr.load.address.event_no_addresses'|trans  %}
-                {% include 'FrontFrontBundle:Toastr:warning.html.twig' with { toastr_message : toastr_message } %} 
-                {% set nothing_displayed_yet = false %}
-            {% endif %}
-            {% if nothing_displayed_yet and event.getAddress() and not event.hasOneValidAddress %}
-                {% set toastr_message = 'event.alert.invalid_address'|trans  %}
-                {% include 'FrontFrontBundle:Toastr:warning.html.twig' with { toastr_message : toastr_message } %} 
-                {% set nothing_displayed_yet = false %}
-            {% endif %}
+    {% if not event.getAddress() %}
+        {% set toastr_message = 'toastr.load.address.event_no_addresses'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:warning.html.twig' with { toastr_message : toastr_message } %} 
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
+    {% if nothing_displayed_yet and event.getAddress() and not event.hasOneValidAddress %}
+        {% set toastr_message = 'event.alert.invalid_address'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:warning.html.twig' with { toastr_message : toastr_message } %} 
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
 
 
-            {% if nothing_displayed_yet and not event.getEventDates()|length %}
-                {% set toastr_message = 'event.alert.missing_date'|trans  %}
-                {% include 'FrontFrontBundle:Toastr:warning.html.twig' with { toastr_message : toastr_message } %} 
-                {% set nothing_displayed_yet = false %}
-            {% elseif nothing_displayed_yet and not event.getNextEventDate()  %}
-                {% set toastr_message = 'event.alert.no_next_date'|trans  %}
-                {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                {% set nothing_displayed_yet = false %}
-            {% endif %}
+    {% if nothing_displayed_yet and not event.getEventDates()|length %}
+        {% set toastr_message = 'event.alert.missing_date'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:warning.html.twig' with { toastr_message : toastr_message } %} 
+        {% set nothing_displayed_yet = false %}
+    {% elseif nothing_displayed_yet and not event.getNextEventDate()  %}
+        {% set toastr_message = 'event.alert.no_next_date'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
 
-            {% if nothing_displayed_yet and not event.getProfilePicture() %}
-                {% set toastr_message = 'toastr.load.photo.event_no_photos'|trans  %}
-                {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
-                {% set nothing_displayed_yet = false %}
-            {% endif %}
+    {% if nothing_displayed_yet and not event.getProfilePicture() %}
+        {% set toastr_message = 'toastr.load.photo.event_no_photos'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
 
-            {% if  nothing_displayed_yet and event.isShownInSearchResults()  %}
-                {% set toastr_message = 'event.alert.valid'|trans  %}
-                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
-                {% set nothing_displayed_yet = false %}
-            {% endif %}
-
-        {% endblock %}
-
-    </div>
+    {% if  nothing_displayed_yet and event.isShownInSearchResults()  %}
+        {% set toastr_message = 'event.alert.valid'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
+        {% set nothing_displayed_yet = false %}
+    {% endif %}
 
 {% endif %}
