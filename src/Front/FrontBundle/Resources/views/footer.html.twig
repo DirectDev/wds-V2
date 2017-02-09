@@ -86,7 +86,11 @@
                 <!-- Social Links -->
                 <div class="col-md-6">  
                     <ul class="social-icons pull-right">
-                        <li><a href="#" data-original-title="Facebook" class="rounded-x social_facebook"></a></li>
+                        {% set social_facebook_url = facebook_page_url%}
+                        {% if app.request.locale == 'fr'  %}
+                            {% set social_facebook_url = facebook_page_url_fr %}
+                        {% endif %}
+                        <li><a href="{{ social_facebook_url }}" data-original-title="Facebook" class="rounded-x social_facebook"></a></li>
                             {# <li><a href="#" data-original-title="Twitter" class="rounded-x social_twitter"></a></li>
                              <li><a href="#" data-original-title="Goole Plus" class="rounded-x social_googleplus"></a></li>
                              <li><a href="#" data-original-title="Linkedin" class="rounded-x social_linkedin"></a></li>

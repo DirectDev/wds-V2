@@ -40,6 +40,8 @@ twig:
     globals:
         facebook_app_id: "%facebook_app_id%"
         facebook_scope: "%facebook_scope%"
+        facebook_page_url: "%facebook_page_url%"
+        facebook_page_url_fr: "%facebook_page_url_fr%"
         google_app_id: "%google_app_id%"
         google_map_api_key: "%google_map_api_key%"
         share_this_publisher: "%share_this_publisher%"
