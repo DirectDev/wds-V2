@@ -25,29 +25,5 @@
         <a class="btn btn-danger" href="{{ path(delete_path, { id: entity.id } ) }}">{% trans %}delete{% endtrans %}</a>
     {% endif %}-->
 
-    </form>
+</form>
 
-    <script type="text/javascript">
-
-        // Enable the file uploader
-        function enableFileUploader() {
-
-            console.log('function file upload called');
-
-            $(function () {
-                new PunkAveFileUploader({
-                    'uploadUrl': "{{ path(upload_url, { editId: editId }) | raw }}",
-                    'viewUrl': "{{ asset(upload_view_url ~ editId | raw) }}",
-                    'el': '.file-uploader',
-                    'existingFiles':{{ punkave_get_files(upload_folder ~ editId) | json_encode | raw }},
-                            'delaySubmitWhileUploading': '.edit-form',
-                    'errorCallback': function (errorObj) {
-                        if (errorObj.error == 'maxNumberOfFiles') {
-                            alert("Maximum uploaded files exceeded!");
-                        }
-                    }
-                });
-            });
-
-        }
-    </script>

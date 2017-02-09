@@ -14,6 +14,9 @@
     {% set count_photo = count_photo + 1 %}
 {% endfor %}
 
+{% set action_path = path('front_user_edit_pictures' , { id: entity.id, editId: editId }) %}
+{% set cancel_path = path('front_user_edit_pictures' , { id: entity.id }) %}
+
 {% block content %}
 
     {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { title : 'user.edit.pictures'|trans } %}
@@ -38,8 +41,6 @@
                             <h2 class="heading-md">{% trans %}user.edit.photos.h2{% endtrans %}</h2>
 
                             <div  class='col-md-12 col-sm-12 m-b-20'>
-                                {% set action_path = path('front_user_edit_pictures' , { id: entity.id, editId: editId }) %}
-                                {% set cancel_path = path('front_user_edit_pictures' , { id: entity.id }) %}
                                 {% include 'FileFileBundle::uploadFileForm.html.twig' with {
                                                      action_path: action_path,
                                                      cancel_path: cancel_path,
@@ -110,12 +111,15 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            console.log('user edit upload');
-            enableFileUploader();
-        });
-    </script>
+    {% include 'FileFileBundle::uploadFileJs.html.twig' with {
+            action_path: action_path,
+            cancel_path: cancel_path,
+            delete_path: '',
+            id: entity.id, 
+            editId: editId, 
+            existingFiles: existingFiles,
+            entity: entity,
+    } %}
 {% endblock %}    
 
 {% block toastr %}
