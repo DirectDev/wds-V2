@@ -6,6 +6,12 @@
     {% set count_video = count_video + 1 %}
 {% endfor %}
 
+{% set criterias = null %}
+{% if userInFilter is defined and userInFilter %}
+    {% set criterias = userInFilter.getName()|capitalize %}
+{% endif %}
+{% set criterias = criterias~(' '~filterForm.search.vars.value~' '~filterForm.tag.vars.value)|trim %}
+
 
 {% block content %}
 
@@ -30,12 +36,6 @@
                     {{ form_row(filterForm.tag) }}
                     {{ form_row(filterForm.user) }}
                 </div>
-
-                {% set criterias = null %}
-                {% if userInFilter is defined and userInFilter %}
-                    {% set criterias = userInFilter.getName()|capitalize %}
-                {% endif %}
-                {% set criterias = criterias~(' '~filterForm.search.vars.value~' '~filterForm.tag.vars.value)|trim %}
 
                 {{ form_end(filterForm) }}
 

@@ -5,6 +5,8 @@
     {% set count_people = count_people + 1 %}
 {% endfor %}
 
+{% set criterias = (filterForm.search.vars.value~' '~filterForm.musictype.vars.value~' '~filterForm.usertype.vars.value)|trim %}
+
 {% block content %}
 
     {% include 'FrontFrontBundle:User:userBreadcrumb.html.twig' with { active : 'users' } %}
@@ -27,8 +29,6 @@
                     </span>
                     {{ form_row(filterForm.musictype) }}
                     {{ form_row(filterForm.usertype) }}
-
-                    {% set criterias = (filterForm.search.vars.value~' '~filterForm.musictype.vars.value~' '~filterForm.usertype.vars.value)|trim %}
 
                 </div>
                 {{ form_end(filterForm) }}
