@@ -28,7 +28,7 @@
             <div class="col-md-10">
 
                 <div class="profile-body">
-                    
+
                     <div class='row m-b-10 clear-both'>
                         <div class='col-md-9 col-sm-12'>
                             <h2 class="heading-md">{% trans %}user.edit.musics.h2{% endtrans %}</h2>
@@ -53,9 +53,8 @@
                                 <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                 {% trans %}music.list.user_no_musics{% endtrans %}
                             </div>
-                            <script type="text/javascript">
-                                toastr.info("{% trans %}toastr.load.music.user_no_musics{% endtrans %}");
-                            </script>
+                            {% set toastr_message = 'toastr.load.music.user_no_musics'|trans %}
+                            {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                         {% endif %}
 
                         <div class="blog_masonry_3col" id="userMusicList">
@@ -84,7 +83,6 @@
 </div><!--/container-->	 	
 <!--=== End Content Part ===-->
 
-    {% include 'FrontFrontBundle::flashbags.html.twig'%}
 
 {% endblock %}
 

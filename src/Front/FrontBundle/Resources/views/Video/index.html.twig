@@ -29,7 +29,7 @@
                     {% set criterias = userInFilter.getName()|capitalize %}
                 {% endif %}
                 {% set criterias = criterias~(' '~filterForm.search.vars.value~' '~filterForm.tag.vars.value)|trim %}
-                
+
                 {{ form_end(filterForm) }}
 
             </div>
@@ -67,9 +67,8 @@
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans %}video.list.no_videos{% endtrans %}
                     </div>
-                    <script type="text/javascript">
-                        toastr.info("{% trans %}toastr.load.video.no_videos{% endtrans %}");
-                    </script>
+                    {% set toastr_message = 'toastr.load.video.no_videos'|trans %}
+                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                 {% endif %}
 
                 <div class="blog_masonry_3col">
@@ -85,20 +84,18 @@
 
                         {% if count_video %}
                             {% if 5 > count_video %}
-                                <script type="text/javascript">
-                                    toastr.success("{% trans %}toastr.load.video.less_5{% endtrans %}");
-                                </script>
+                                {% set toastr_message = 'toastr.load.video.less_5'|trans  %}
+                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
                             {% else %}
-                                <script type="text/javascript">
-                                    toastr.success("{% trans %}toastr.load.video.more_5{% endtrans %}");
-                                </script>
+                                {% set toastr_message = 'toastr.load.video.more_5'|trans %}
+                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %} 
                             {% endif %}
                         {% endif %}
 
                     </div>    
                 </div>
 
-                
+
                 <div class="margin-bottom-10"></div>
 
                 {{ knp_pagination_render(pagination) }}
@@ -107,8 +104,7 @@
         </div>        
     </div><!--/container-->     
     <!--=== End Search Results ===-->
-    
-    <script type="text/javascript">
-        toastr.info("{% trans with { '%CRITERIAS%' : criterias} %}toastr.filter.criterias{% endtrans %}");
-    </script>
+
+    {% set toastr_message = 'toastr.filter.criterias'|trans ({'%CRITERIAS%': criterias}) %}
+    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
 {% endblock %}

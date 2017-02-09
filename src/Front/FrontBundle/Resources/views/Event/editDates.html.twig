@@ -36,8 +36,6 @@
             <!-- Profile Content -->            
             <div class="col-md-10">
 
-                {% include 'FrontFrontBundle::flashbags.html.twig'%}
-
                 <div class="profile-body">
 
                     <h2 class="heading-md">{% trans %}event.edit.dates.h2{% endtrans %}</h2>
@@ -64,9 +62,8 @@
                             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                             {% trans %}event.eventdates.list.no_eventdates{% endtrans %}
                         </div>
-                        <script type="text/javascript">
-                            toastr.info("{% trans %}toastr.load.eventdate.no_eventdates{% endtrans %}");
-                        </script>
+                        {% set toastr_message = 'toastr.load.eventdate.no_eventdates'|trans  %}
+                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                     {% endif %}
 
                     {% if 0 < count_eventdates and not event.getNextEventDate() %}
@@ -75,9 +72,8 @@
                             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                             {% trans %}event.eventdates.list.no_next_eventdates{% endtrans %}
                         </div>
-                        <script type="text/javascript">
-                            toastr.info("{% trans %}toastr.load.eventdate.no_next_eventdates{% endtrans %}");
-                        </script>
+                        {% set toastr_message = 'toastr.load.eventdate.no_next_eventdates'|trans  %}
+                        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                     {% endif %}
 
                     <div class="blog_masonry_3col">

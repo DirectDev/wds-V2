@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block toastr %}
+    {{ parent() }}
+    {% if toastr_message is defined and toastr_message is not null %}
+        <script type="text/javascript">
+            toastr.success("{{ toastr_message|raw }}");
+        </script>
+    {% endif %}
+{% endblock %}

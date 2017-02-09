@@ -16,7 +16,7 @@
 
                 <!-- Basic Map -->
                 <div class="home-map">
-                    {% include 'FrontFrontBundle:Home:map.html.twig' %}
+                    <div id="map-canvas-home"></div>
                 </div>
                 <!-- End Basic Map -->
 
@@ -40,4 +40,9 @@
             <!-- End Profile Content -->            
         </div>
     </div><!--/container-->    
+{% endblock %}
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+    {% include 'FrontFrontBundle:Home:map.html.twig' %}
 {% endblock %}

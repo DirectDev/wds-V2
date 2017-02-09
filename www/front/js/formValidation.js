@@ -1,6 +1,6 @@
 
 function loadBootstrapValidator() {
-    $('form:not(.navbar-form):not(.no_validation)').bootstrapValidator({
+    $('form:not(.navbar-form):not(.no_validation):not(#userProfilForm)').bootstrapValidator({
         message: 'This value is not valid',
         submitButtons: 'button[type="submit"]',
         feedbackIcons: {

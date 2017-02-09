@@ -20,31 +20,10 @@
 {{ form_row(delete_form.submit, { 'id' : 'userDeleteButton' } ) }}
 {{ form_end(delete_form) }}
 
+
+
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('form:not(.no_validation)').bootstrapValidator({
-            fields: {
-                "ffup[username]": {
-                    validators: {
-                        remote: {
-                            message: "{% trans from 'validators' %}fos_user.username.already_used{% endtrans %}",
-                            url: '{{ path('callback_username') }}',
-                            delay: 1000
-                        }
-                    }
-                }
-            }
-        });
-
-        $("#userDeleteButton").on("click", function (e) {
-            e.preventDefault();
-            if (!confirm("{% trans %}user.delete.confirmation{% endtrans %}")) {
-                return false;
-            }
-
-            $("#userDeleteForm").submit();
-
-        });
-
-    });
+    if (typeof loadProfileFormJS == 'function') {
+        loadProfileFormJS();
+    }
 </script>

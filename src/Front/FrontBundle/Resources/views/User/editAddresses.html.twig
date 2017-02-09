@@ -54,9 +54,8 @@
                                 <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                                 {% trans %}address.list.user_no_addresses{% endtrans %}
                             </div>
-                            <script type="text/javascript">
-                                toastr.info("{% trans %}toastr.load.address.user_no_addresses{% endtrans %}");
-                            </script>
+                            {% set toastr_message = 'toastr.load.address.user_no_addresses'|trans %}
+                            {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                         {% endif %}
 
                         <div class="blog_masonry_3col" id="userAddressList">
@@ -75,7 +74,7 @@
                         {{ knp_pagination_render(pagination) }}
 
                     </div>
-                        
+
                 </div>  
             </div>
         </div>

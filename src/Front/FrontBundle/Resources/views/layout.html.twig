@@ -17,3 +17,8 @@
 {{ render_esi( path('footer')) }}
 
 {% endblock %}
+
+{% block bottomJavascripts %}
+    {{ parent() }}
+    {% include 'FrontFrontBundle::flashbags.html.twig'%}
+{% endblock %}

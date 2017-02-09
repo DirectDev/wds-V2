@@ -24,11 +24,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('front/css/compiled/event.css') }}" />       
 {% endblock %}
-
-
-{% block topJavascripts %}   
-    {{ parent() }}
-{% endblock %}    
+   
 
 {% block content %}
 
@@ -148,7 +144,7 @@
                         <!-- Basic Map -->
                         <hr>
                         {% if event.getAddress and event.getAddress().isValid() %}    
-                            {% include 'FrontFrontBundle:Event:map.html.twig' %}
+                            <div id="map-canvas-event"></div>
                         {% endif %}
                         <!-- End Basic Map -->
 
@@ -189,4 +185,7 @@
 
                 });
     </script>
+    {% if event.getAddress and event.getAddress().isValid() %}    
+        {% include 'FrontFrontBundle:Event:map.html.twig' %}
+    {% endif %}
 {% endblock %}

@@ -67,9 +67,8 @@
                         <strong>{% trans %}front.alert.info{% endtrans %}</strong>
                         {% trans %}music.list.no_musics{% endtrans %}
                     </div>
-                    <script type="text/javascript">
-                        toastr.info("{% trans %}toastr.load.music.no_musics{% endtrans %}");
-                    </script>
+                    {% set toastr_message = 'toastr.load.music.no_musics'|trans %}
+                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
                 {% endif %}
 
                 <div class="blog_masonry_3col">
@@ -85,13 +84,11 @@
 
                         {% if count_music %}
                             {% if 5 > count_music %}
-                                <script type="text/javascript">
-                                    toastr.success("{% trans %}toastr.load.music.less_5{% endtrans %}");
-                                </script>
+                                {% set toastr_message = 'toastr.load.music.less_5'|trans %}
+                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %}
                             {% else %}
-                                <script type="text/javascript">
-                                    toastr.success("{% trans %}toastr.load.music.more_5{% endtrans %}");
-                                </script>
+                                {% set toastr_message = 'toastr.load.music.more_5'|trans %}
+                                {% include 'FrontFrontBundle:Toastr:success.html.twig' with { toastr_message : toastr_message } %}
                             {% endif %}
                         {% endif %}
 
@@ -106,8 +103,8 @@
         </div>        
     </div><!--/container-->     
     <!--=== End Search Results ===-->
-    
-    <script type="text/javascript">
-        toastr.info("{% trans with { '%CRITERIAS%' : criterias} %}toastr.filter.criterias{% endtrans %}");
-    </script>
+
+    {% set toastr_message = 'toastr.filter.criterias'|trans({'%CRITERIAS%': criterias}) %}
+    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
+
 {% endblock %}

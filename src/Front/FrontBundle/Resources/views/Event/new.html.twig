@@ -23,10 +23,9 @@
             <strong>{% trans %}front.alert.info{% endtrans %}</strong>
             {% trans %}event.alert.new_info{% endtrans %}
         </div>
-       
-        <script type="text/javascript">
-            toastr.info("{% trans %}toastr.load.event.new_info{% endtrans %}");
-        </script>
+
+        {% set toastr_message = 'toastr.load.event.new_info'|trans  %}
+        {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
 
         <div class="row">
 

@@ -1,20 +1,25 @@
 <script type="text/javascript">
 
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        toastr.success("{{ flashMessage }}");
-    {% endfor %}    
-        
-    {% for flashMessage in app.session.flashbag.get('info') %}
-        toastr.info("{{ flashMessage }}");
-    {% endfor %}    
-        
-    {% for flashMessage in app.session.flashbag.get('warning') %}
-        toastr.warning("{{ flashMessage }}");
-    {% endfor %}    
-        
-    {% for flashMessage in app.session.flashbag.get('error') %}
-        toastr.error("{{ flashMessage }}");
-    {% endfor %}    
+    if (typeof toastr !== 'undefined') {
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+                toastr.success("{{ flashMessage }}");
+        {% endfor %}    
+
+        {% for flashMessage in app.session.flashbag.get('info') %}
+                toastr.info("{{ flashMessage }}");
+        {% endfor %}    
+
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+                toastr.warning("{{ flashMessage }}");
+        {% endfor %}    
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+                toastr.error("{{ flashMessage }}");
+        {% endfor %}    
+
+    }
+
 
 </script>
 

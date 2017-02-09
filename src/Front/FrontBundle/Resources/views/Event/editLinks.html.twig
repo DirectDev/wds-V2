@@ -35,7 +35,7 @@
 
             <!-- Profile Content -->            
             <div class="col-md-10">
-                
+
                 <div class="profile-body">
 
                     <h2 class="heading-md">{% trans %}event.edit.links.h2{% endtrans %}</h2>
@@ -45,14 +45,13 @@
                         {% include 'FrontFrontBundle:Event:linkForm.html.twig' %}
                     </div>
 
-                    <script type="text/javascript">
-                        toastr.info("{% trans %}toastr.load.event.links{% endtrans %}");
-                    </script>
+                    {% set toastr_message = 'toastr.load.event.links'|trans %}
+                    {% include 'FrontFrontBundle:Toastr:info.html.twig' with { toastr_message : toastr_message } %} 
 
                 </div>  
-                    
+
                 {% render(path('front_event_alerts', { id : event.id } )) %}
-                
+
             </div>
         </div>
         <!-- End Profile Content -->
