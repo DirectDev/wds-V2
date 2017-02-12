@@ -32,7 +32,7 @@ liip_imagine:
         filter_runtime_action: liip_imagine.controller:filterRuntimeAction
     filter_sets:
         home_user:
-            quality:              100
+            quality:              50
             animated:             false
             format:               ~
             cache:                ~
@@ -42,7 +42,7 @@ liip_imagine:
                 upscale: { min: [250, 250] } 
                 thumbnail: { size: [250, 250], mode: inbound }
         home_city:
-            quality:              100
+            quality:              50
             animated:             false
             format:               ~
             cache:                ~
@@ -52,7 +52,7 @@ liip_imagine:
                 upscale: { min: [250, 250] } 
                 thumbnail: { size: [250, 250], mode: inbound }
         home_festival:
-            quality:              100
+            quality:              50
             animated:             false
             format:               ~
             cache:                ~

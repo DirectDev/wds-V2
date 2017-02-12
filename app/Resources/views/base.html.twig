@@ -12,12 +12,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
-        {% include "::cssLoader.html.twig" %}
+    </head>
 
-        {% block stylesheets %}
+    <body>    
+
+        <div class="wrapper">    
 
 
-            {% stylesheets 
+            {% block body %}
+            {% endblock %}
+
+
+        </div>
+
+    </body>
+
+    {% block stylesheets %}
+
+
+        {% stylesheets 
                 "front/css/open-sans.css"
                 "front/plugins/bootstrap/css/bootstrap.min.css"
                 'front/plugins/bootstrap-validator/bootstrapValidator.css'
@@ -42,23 +55,10 @@
                 "front/css/toastr.css"
             filter='cssrewrite' 
             output='front/css/compiled/main.css'  %}
-            <script>loadCSS("{{ asset_url }}");</script>
-            {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
 
-        {% endblock %}
-
-
-    </head>
-
-    <body>    
-
-        <div class="wrapper">    
-
-
-        {% block body %}{% endblock %}
-
-
-    </div>
+    {% endblock %}
 
     {% block bottomJavascripts %}
 
@@ -102,46 +102,48 @@
         {% endif  %}
 
         <script>
-                toastr.options = {
-                    "positionClass": "toast-top-left",
-                    "closeButton": true,
-                    "timeOut": "15000",
-                    "newestOnTop": false
-                }
+            toastr.options = {
+                "positionClass": "toast-top-left",
+                "closeButton": true,
+                "timeOut": "15000",
+                "newestOnTop": false
+            }
         </script>
 
         <script  src="{{ asset('front/plugins/bootstrap-validator/language/'~ app.request.locale ~'.js') }}" type="text/javascript"></script>
 
         <script>
-                $(document).on('click focus', 'form input.datepicker', function () {
+            $(document).on('click focus', 'form input.datepicker', function () {
 
-                    $("form input.datepicker").datepicker({
-                        format: "yyyy-mm-dd", // bug avec les heures
-                        autoclose: true,
-                        language: "{{ app.request.locale }}"
-                    });
+                $("form input.datepicker").datepicker({
+                    format: "yyyy-mm-dd", // bug avec les heures
+                    autoclose: true,
+                    language: "{{ app.request.locale }}"
                 });
+            });
 
-                $('.btn-facebook-import').on('click', function (e) {
-                    toastr.info("{% trans %}toastr.click.btn_facebook_import{% endtrans %}");
-                });
-                $('.btn-facebook-connect').on('click', function (e) {
-                    toastr.info("{% trans %}toastr.click.btn_facebook_connect{% endtrans %}");
-                });
+            $('.btn-facebook-import').on('click', function (e) {
+                toastr.info("{% trans %}toastr.click.btn_facebook_import{% endtrans %}");
+            });
+            $('.btn-facebook-connect').on('click', function (e) {
+                toastr.info("{% trans %}toastr.click.btn_facebook_connect{% endtrans %}");
+            });
         </script>
         <script src="{{ asset('front/plugins/ckeditor/ckeditor.js') }}"></script>
 
     {% endblock %}
 
-{% block toastr %}{% endblock %}
-{% block alerts %}{% endblock %}
+    {% block toastr %}
+    {% endblock %}
+    {% block alerts %}
+    {% endblock %}
 
-<script>
+    <script>
             $(document).ready(function () {
                 CKEDITOR.replace('.ckeditor');
             });
-</script>
-</body>
+    </script>
+
 </html>
 
 {% stylesheets 
